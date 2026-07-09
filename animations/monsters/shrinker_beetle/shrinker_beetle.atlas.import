@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://b0vn66kxuuoqs"
+path="res://.godot/imported/shrinker_beetle.atlas-13475ca0d5678d5696cbd2a60407d05c.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/shrinker_beetle/shrinker_beetle.atlas"
+dest_files=["res://.godot/imported/shrinker_beetle.atlas-13475ca0d5678d5696cbd2a60407d05c.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

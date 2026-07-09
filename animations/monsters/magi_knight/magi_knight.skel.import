@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://dgye3dca6vpoe"
+path="res://.godot/imported/magi_knight.skel-ea26b4e340a0bf78f62ad9839df82c9e.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/magi_knight/magi_knight.skel"
+dest_files=["res://.godot/imported/magi_knight.skel-ea26b4e340a0bf78f62ad9839df82c9e.spskel"]
+
+[params]
+

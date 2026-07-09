@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://dwjwdk4hqye6s"
+path="res://.godot/imported/gaze.skel-35b0819eac58da099ff475d8b4867f53.spskel"
+
+[deps]
+
+source_file="res://animations/vfx/vfx_gaze/gaze.skel"
+dest_files=["res://.godot/imported/gaze.skel-35b0819eac58da099ff475d8b4867f53.spskel"]
+
+[params]
+

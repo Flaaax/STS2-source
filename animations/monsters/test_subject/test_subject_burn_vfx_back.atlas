@@ -1,0 +1,17 @@
+test_subject_burn_vfx_front.png
+size:604,262
+filter:Linear,Linear
+scale:0.179
+attack_strobe
+bounds:2,7,340,253
+offsets:20,20,377,293
+burnzap1
+bounds:344,129,125,131
+burnzap2
+bounds:344,2,125,131
+rotate:90
+burnzap3
+bounds:471,135,125,131
+rotate:90
+burnzap4
+bounds:477,2,125,131

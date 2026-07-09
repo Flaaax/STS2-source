@@ -1,0 +1,144 @@
+globe_head.png
+size:1476,205
+filter:Linear,Linear
+scale:0.199
+apron
+bounds:411,50,153,251
+offsets:0,6,154,257
+rotate:90
+apron bottom
+bounds:411,28,20,20
+back tubes
+bounds:1035,5,56,88
+bod
+bounds:1093,2,92,94
+rotate:90
+bod highlight
+bounds:1311,125,61,78
+offsets:0,6,76,84
+burn smudge 1
+bounds:897,3,85,89
+offsets:4,0,89,91
+burn smudge 2
+bounds:1374,152,51,69
+offsets:0,2,54,83
+rotate:90
+burn smudge 3
+bounds:1327,70,53,42
+offsets:0,0,55,43
+rotate:90
+head zap short
+bounds:377,2,23,24
+rotate:90
+head zaps 0
+bounds:2,2,8,50
+rotate:90
+head zaps branched
+bounds:325,3,18,50
+rotate:90
+l arm bottom
+bounds:573,3,45,70
+rotate:90
+l arm top
+bounds:1268,111,41,92
+l boot
+bounds:1189,10,68,95
+l hand
+bounds:456,2,46,70
+rotate:90
+l index
+bounds:403,3,22,51
+rotate:90
+l middle
+bounds:230,3,16,54
+rotate:90
+l pinky
+bounds:286,2,19,37
+rotate:90
+l ring
+bounds:1395,23,14,48
+offsets:0,1,14,49
+l sleeve inside
+bounds:675,36,38,13
+l thumb
+bounds:645,3,28,45
+lightning branch1
+bounds:664,85,62,118
+offsets:16,79,110,205
+lightning branch2
+bounds:795,91,62,112
+offsets:17,78,110,205
+lightning branch3
+bounds:1105,97,63,106
+offsets:17,77,110,205
+lightning branch4
+bounds:1039,96,64,107
+offsets:17,76,110,205
+lightning main1
+bounds:2,12,90,191
+offsets:7,11,110,205
+lightning main2
+bounds:94,16,89,187
+offsets:13,8,110,205
+lightning main3
+bounds:249,23,81,180
+offsets:22,7,110,205
+lightning main4
+bounds:332,27,77,176
+offsets:26,6,110,205
+neck
+bounds:1413,65,48,52
+rotate:90
+neck highlights
+bounds:1411,13,48,50
+offsets:0,0,48,52
+orb
+bounds:859,94,109,109
+orb center
+bounds:433,28,20,20
+r arm highlight
+bounds:716,3,26,80
+r arm lower
+bounds:838,3,57,86
+r arm upper
+bounds:1259,11,54,94
+offsets:0,0,54,102
+r boot
+bounds:970,95,67,108
+r hand
+bounds:984,4,49,89
+r index
+bounds:1315,7,28,61
+r middle
+bounds:1445,138,29,65
+r pinky
+bounds:664,51,32,50
+rotate:90
+r ring
+bounds:1374,115,35,61
+rotate:90
+r sleeve inside
+bounds:185,2,43,17
+shadow
+bounds:185,21,182,62
+rotate:90
+shine
+bounds:744,3,92,82
+slappy hand
+bounds:728,87,65,116
+smoke
+bounds:1345,15,53,48
+rotate:90
+smoke 2
+bounds:1371,73,40,40
+smoke 3
+bounds:528,2,46,43
+rotate:90
+smoke 4
+bounds:675,3,30,31
+zap flash
+bounds:1170,107,96,96
+offsets:1,1,98,98
+zap glow
+bounds:1311,108,14,15
+offsets:0,0,15,16

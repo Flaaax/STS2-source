@@ -1,0 +1,129 @@
+flailknight.png
+size:1658,523
+filter:Linear,Linear
+scale:0.186
+ball 1 l
+bounds:1600,276,59,50
+rotate:90
+ball 1 r
+bounds:1125,2,67,57
+ball 2 l
+bounds:1526,85,52,60
+ball 2 r
+bounds:1305,166,59,68
+breaker_swish
+bounds:353,128,227,301
+offsets:0,0,228,304
+chain 1 l
+bounds:441,4,112,122
+offsets:6,12,118,134
+chain 1 r
+bounds:220,16,126,138
+offsets:0,13,133,151
+chain 2 l
+bounds:1149,291,60,154
+offsets:4,13,64,167
+rotate:90
+chain 2 r
+bounds:950,2,67,173
+offsets:0,15,72,188
+rotate:90
+chestplate
+bounds:1389,338,140,116
+circ_blurs_1
+bounds:582,251,347,270
+circ_blurs_2
+bounds:2,156,349,273
+circ_rotator
+bounds:931,291,216,230
+offsets:0,0,216,233
+circ_swishes
+bounds:2,26,216,128
+eyes
+bounds:555,68,58,23
+rotate:90
+eyes copy
+bounds:835,7,50,16
+flail staff l
+bounds:950,71,115,218
+flail staff r
+bounds:835,25,113,224
+grill
+bounds:1620,459,62,35
+rotate:90
+head
+bounds:1450,57,74,86
+hips
+bounds:1241,162,127,62
+offsets:0,24,127,86
+rotate:90
+l arm
+bounds:1507,456,65,111
+rotate:90
+l arm armor
+bounds:1138,73,86,109
+rotate:90
+l foot
+bounds:1557,167,66,42
+rotate:90
+l hand
+bounds:1586,14,50,50
+l hand flip
+bounds:1586,66,58,54
+l hand flip top
+bounds:1526,29,58,54
+l hand top
+bounds:1450,5,50,50
+l leg
+bounds:1531,337,91,117
+l leg 2
+bounds:1305,236,73,115
+offsets:2,0,75,117
+l shoulder
+bounds:1249,61,91,99
+offsets:0,2,91,101
+neck
+bounds:1342,44,106,99
+offsets:2,0,108,99
+r arm
+bounds:1477,147,78,85
+r arm armor
+bounds:1491,235,100,107
+rotate:90
+r foot
+bounds:1601,122,55,44
+r hand
+bounds:1601,168,55,52
+r hand flip
+bounds:1194,10,61,53
+rotate:90
+r hand flip top
+bounds:1249,7,61,52
+r hand top
+bounds:1601,222,55,52
+r leg
+bounds:1138,161,101,128
+r leg 2
+bounds:348,2,91,124
+ram_slam
+bounds:582,2,247,251
+offsets:2,2,251,256
+rotate:90
+ram_swish
+bounds:2,431,562,90
+offsets:2,0,567,90
+right shoulder
+bounds:1380,234,102,109
+rotate:90
+shadow
+bounds:1149,456,356,65
+offsets:1,0,358,66
+waist
+bounds:1366,145,109,87
+waist armor bottom
+bounds:1149,353,238,101
+offsets:0,0,238,116
+waist armor top
+bounds:1067,86,203,69
+offsets:0,0,203,82
+rotate:90

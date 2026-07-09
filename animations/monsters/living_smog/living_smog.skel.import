@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://dvglws6vsie6j"
+path="res://.godot/imported/living_smog.skel-8e10fd6d60b5ea0aa3fe4b957c5d720b.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/living_smog/living_smog.skel"
+dest_files=["res://.godot/imported/living_smog.skel-8e10fd6d60b5ea0aa3fe4b957c5d720b.spskel"]
+
+[params]
+

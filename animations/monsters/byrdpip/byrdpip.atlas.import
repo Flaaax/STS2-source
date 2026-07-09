@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://b1gppfoihgeei"
+path="res://.godot/imported/byrdpip.atlas-295da2e9d3d074388bb33f666606f1a6.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/byrdpip/byrdpip.atlas"
+dest_files=["res://.godot/imported/byrdpip.atlas-295da2e9d3d074388bb33f666606f1a6.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

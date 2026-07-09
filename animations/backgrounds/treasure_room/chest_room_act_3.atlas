@@ -1,0 +1,220 @@
+chest_room_act_3.png
+size:5571,2140
+filter:Linear,Linear
+scale:0.5
+act 3_chest shine
+bounds:2118,1032,1105,668
+offsets:24,0,1160,668
+rotate:90
+act3_chest bottom
+bounds:417,550,1587,621
+rotate:90
+act3_stroke
+bounds:1388,892,1245,724
+rotate:90
+act3_top 0 copy
+bounds:2472,44,982,318
+offsets:0,0,982,319
+rotate:90
+act3_top 1
+bounds:3,8,993,310
+offsets:0,0,997,310
+act3_top 10
+bounds:4706,649,862,562
+offsets:22,4,885,572
+act3_top 11
+bounds:4706,75,855,568
+offsets:21,3,877,578
+act3_top 2
+bounds:2796,178,976,321
+offsets:0,0,976,322
+rotate:90
+act3_top 3
+bounds:3123,240,971,300
+offsets:0,0,971,301
+rotate:90
+act3_top 4
+bounds:2792,1160,977,323
+offsets:0,0,978,324
+rotate:90
+act3_top 5
+bounds:3429,250,961,367
+offsets:0,1,963,369
+rotate:90
+act3_top 6
+bounds:3802,260,951,422
+offsets:0,2,958,427
+rotate:90
+act3_top 7
+bounds:4230,265,946,470
+offsets:0,2,951,472
+rotate:90
+act3_top 8
+bounds:1002,30,912,514
+offsets:13,3,928,517
+act3_top 9
+bounds:1920,4,882,546
+offsets:14,4,897,573
+rotate:90
+open vfs 3
+bounds:3121,1217,2385,492
+open vfx 1
+bounds:1044,690,1447,338
+offsets:0,1,1447,339
+rotate:90
+open vfx 2
+bounds:3,324,1813,408
+rotate:90
+open vfx 4
+bounds:3121,1715,2396,422
+offsets:4,7,2408,429
+rocka 1
+bounds:1497,8,16,23
+rotate:90
+rocka 10
+bounds:1526,8,23,16
+rocka 11
+bounds:1410,6,23,18
+rocka 12
+bounds:1410,6,23,18
+rocka 13
+bounds:1468,7,23,17
+rocka 14
+bounds:1116,3,21,16
+rotate:90
+rocka 15
+bounds:1116,3,21,16
+rotate:90
+rocka 16
+bounds:1093,3,21,17
+rotate:90
+rocka 2
+bounds:1044,3,19,21
+rocka 3
+bounds:1138,3,21,16
+rotate:90
+rocka 4
+bounds:1555,8,23,16
+rocka 5
+bounds:1069,3,18,21
+rocka 6
+bounds:1584,8,16,23
+rotate:90
+rocka 7
+bounds:1439,6,18,23
+rotate:90
+rocka 8
+bounds:1224,4,20,20
+rocka 9
+bounds:1160,3,21,16
+rotate:90
+rockb 1
+bounds:730,336,80,33
+offsets:7,0,87,33
+rotate:90
+rockb 10
+bounds:769,356,60,49
+offsets:0,6,60,55
+rotate:90
+rockb 8
+bounds:769,356,60,49
+offsets:0,6,60,55
+rotate:90
+rockb 9
+bounds:769,356,60,49
+offsets:0,6,60,55
+rotate:90
+rockb 2
+bounds:1044,628,56,39
+offsets:6,0,62,39
+rotate:90
+rockb 3
+bounds:1044,573,49,44
+offsets:5,0,54,44
+rotate:90
+rockb 4
+bounds:555,326,43,50
+offsets:1,9,44,59
+rockb 5
+bounds:931,359,44,57
+offsets:0,3,44,60
+rockb 6
+bounds:876,359,57,49
+offsets:0,6,57,55
+rotate:90
+rockb 7
+bounds:824,357,59,46
+offsets:0,6,59,52
+rotate:90
+rockc 1
+bounds:887,324,53,29
+rockd 1
+bounds:946,325,49,28
+rockd 10
+bounds:973,422,25,23
+offsets:0,0,26,23
+rotate:90
+rockd 11
+bounds:828,324,27,24
+rotate:90
+rockd 12
+bounds:576,382,26,23
+offsets:1,0,27,23
+rotate:90
+rockd 13
+bounds:799,325,25,23
+rotate:90
+rockd 14
+bounds:1089,660,24,24
+rockd 15
+bounds:1089,630,24,24
+rockd 2
+bounds:464,324,85,52
+offsets:0,0,85,53
+rockd 3
+bounds:973,485,23,26
+rockd 4
+bounds:1094,570,23,24
+rockd 5
+bounds:973,517,27,23
+rotate:90
+rockd 6
+bounds:973,453,26,23
+rotate:90
+rockd 7
+bounds:1094,600,24,24
+rockd 8
+bounds:858,326,23,25
+rockd 9
+bounds:769,325,25,24
+rotate:90
+rocks1
+bounds:2796,12,636,160
+rocks2
+bounds:3438,85,638,159
+rocks3
+bounds:610,423,357,121
+sparkle h 1
+bounds:1002,3,21,36
+rotate:90
+sparkle h 2
+bounds:605,327,119,81
+offsets:0,2,119,83
+sparkle h 3
+bounds:464,382,162,106
+rotate:90
+sparkle h 4
+bounds:417,338,206,24
+offsets:0,3,208,27
+rotate:90
+sparkle v 1
+bounds:1182,4,20,36
+rotate:90
+sparkle v 2
+bounds:576,414,28,130
+sparkle v 3
+bounds:1250,5,19,154
+offsets:6,0,25,154
+rotate:90
+sparkle v 4
+bounds:447,338,11,206

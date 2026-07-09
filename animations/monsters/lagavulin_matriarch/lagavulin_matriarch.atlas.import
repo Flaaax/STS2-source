@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://ytflhxss7jjb"
+path="res://.godot/imported/lagavulin_matriarch.atlas-639c83f01e9be3312d330127f2b60ee7.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/lagavulin_matriarch/lagavulin_matriarch.atlas"
+dest_files=["res://.godot/imported/lagavulin_matriarch.atlas-639c83f01e9be3312d330127f2b60ee7.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

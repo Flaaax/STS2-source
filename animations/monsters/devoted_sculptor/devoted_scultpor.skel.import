@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://sp2mlo0yla1i"
+path="res://.godot/imported/devoted_scultpor.skel-4ba80843730e581b397e1ebf8e0843c2.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/devoted_sculptor/devoted_scultpor.skel"
+dest_files=["res://.godot/imported/devoted_scultpor.skel-4ba80843730e581b397e1ebf8e0843c2.spskel"]
+
+[params]
+

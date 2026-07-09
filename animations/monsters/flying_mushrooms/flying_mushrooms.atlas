@@ -1,0 +1,41 @@
+flying_mushrooms.png
+size:482,376
+filter:Linear,Linear
+scale:0.532
+bod
+bounds:2,2,104,249
+rotate:90
+eyes
+bounds:402,244,33,78
+offsets:4,5,41,87
+rotate:90
+mush 1
+bounds:270,230,130,144
+offsets:5,3,139,151
+mush 2
+bounds:270,149,79,140
+offsets:5,3,87,148
+rotate:90
+mush 3
+bounds:402,279,78,95
+offsets:5,4,87,103
+mush 4
+bounds:253,21,85,129
+offsets:4,4,93,136
+rotate:90
+pffft
+bounds:2,108,266,266
+shadow
+bounds:412,154,62,14
+offsets:1,0,63,15
+wing 1
+bounds:412,170,57,72
+wing 1 copy
+bounds:384,21,60,27
+offsets:1,1,62,29
+wing 1 copy 2
+bounds:384,50,97,77
+rotate:90
+wing 1 copy 3
+bounds:270,115,85,32
+offsets:1,1,86,33

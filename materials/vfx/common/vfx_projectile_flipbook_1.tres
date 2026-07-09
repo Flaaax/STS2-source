@@ -1,0 +1,20 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://de0y6xw1x8lk2"]
+
+[ext_resource type="Shader" uid="uid://c32ggmx7nhrkp" path="res://shaders/vfx/common/vfx_projectile_flipbook_shader.gdshader" id="1_xctbk"]
+
+[sub_resource type="Gradient" id="Gradient_d42sf"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_b1blv"]
+gradient = SubResource("Gradient_d42sf")
+
+[sub_resource type="Gradient" id="Gradient_0xsd4"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_s7ma8"]
+gradient = SubResource("Gradient_0xsd4")
+
+[resource]
+shader = ExtResource("1_xctbk")
+shader_parameter/hue_shift_curve = SubResource("GradientTexture1D_b1blv")
+shader_parameter/lut = SubResource("GradientTexture1D_s7ma8")

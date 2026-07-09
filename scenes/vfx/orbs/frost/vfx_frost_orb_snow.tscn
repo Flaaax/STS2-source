@@ -1,0 +1,114 @@
+[gd_scene load_steps=20 format=3 uid="uid://ddy0wjomidgt8"]
+
+[ext_resource type="Material" uid="uid://blg076y3vypkh" path="res://materials/vfx/common/vfx_speck_glow_white.tres" id="1_saa5w"]
+[ext_resource type="Texture2D" uid="uid://dk2k6vgbu3xpf" path="res://images/vfx/common/common_glow_speck.png" id="2_vgdng"]
+
+[sub_resource type="Curve" id="Curve_viv74"]
+_data = [Vector2(0, 0.008886695), 0.0, 8.318056, 0, 0, Vector2(0.1489899, 0.49532264), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_0ur1b"]
+curve = SubResource("Curve_viv74")
+
+[sub_resource type="Curve" id="Curve_58etj"]
+_data = [Vector2(0, 0), 0.0, 4.30388, 0, 0, Vector2(0.501292, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -5.93081, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_j0kjh"]
+curve = SubResource("Curve_58etj")
+
+[sub_resource type="Curve" id="Curve_4y30d"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_scova"]
+curve_x = SubResource("Curve_4y30d")
+
+[sub_resource type="Curve" id="Curve_blvbh"]
+_data = [Vector2(0, 1), 0.0, -2.1498735, 0, 0, Vector2(1, 0.100093484), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_4ubse"]
+curve = SubResource("Curve_blvbh")
+
+[sub_resource type="Curve" id="Curve_ofc0e"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.59382, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_tsqmi"]
+curve = SubResource("Curve_ofc0e")
+
+[sub_resource type="Curve" id="Curve_iim27"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.604607), -1.44846, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_20ikn"]
+_limits = [0.0, 5.0, 0.0, 1.0]
+_data = [Vector2(0, 0.997601), 0.0, 0.0, 0, 0, Vector2(1, 3.25336), 6.03527, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_o1jd7"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_lkn0k"]
+curve_x = SubResource("Curve_iim27")
+curve_y = SubResource("Curve_20ikn")
+curve_z = SubResource("Curve_o1jd7")
+
+[sub_resource type="Curve" id="Curve_h63y1"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.19999999), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_d5xc4"]
+curve = SubResource("Curve_h63y1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1usc8"]
+lifetime_randomness = 0.35
+particle_flag_align_y = true
+particle_flag_disable_z = true
+particle_flag_damping_as_friction = true
+emission_shape = 1
+emission_sphere_radius = 20.0
+direction = Vector3(-1, 0, 0)
+spread = 180.0
+flatness = 1.0
+directional_velocity_min = -20.000015
+directional_velocity_max = 19.999983
+directional_velocity_curve = SubResource("CurveXYZTexture_scova")
+radial_velocity_min = 4.9999776
+radial_velocity_max = 14.999977
+radial_velocity_curve = SubResource("CurveTexture_4ubse")
+gravity = Vector3(0, 49, 0)
+damping_min = 0.26
+damping_max = 0.26
+damping_curve = SubResource("CurveTexture_j0kjh")
+scale_min = 0.12
+scale_max = 0.14999999
+scale_curve = SubResource("CurveTexture_tsqmi")
+scale_over_velocity_max = 670.71
+scale_over_velocity_curve = SubResource("CurveXYZTexture_lkn0k")
+alpha_curve = SubResource("CurveTexture_0ur1b")
+turbulence_noise_scale = 10.1
+turbulence_noise_speed = Vector3(0.2, 0.2, 0.2)
+turbulence_noise_speed_random = 1.0
+turbulence_influence_max = 0.25
+turbulence_initial_displacement_min = 1.49012e-06
+turbulence_initial_displacement_max = 1.49012e-06
+turbulence_influence_over_life = SubResource("CurveTexture_d5xc4")
+
+[node name="vfx_frost_orb_snow" type="GPUParticles2D"]
+material = ExtResource("1_saa5w")
+rotation = 1.57079
+amount = 12
+texture = ExtResource("2_vgdng")
+lifetime = 2.0
+preprocess = 1.0
+explosiveness = 0.1
+randomness = 0.5
+fixed_fps = 60
+trail_sections = 2
+trail_section_subdivisions = 2
+process_material = SubResource("ParticleProcessMaterial_1usc8")

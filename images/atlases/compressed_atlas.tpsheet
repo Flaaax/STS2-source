@@ -1,0 +1,842 @@
+{
+  "textures": [
+    {
+      "image": "compressed_atlas.png",
+      "size": {
+        "w": 1484,
+        "h": 1360
+      },
+      "sprites": [
+        {
+          "filename": "map_select_box.png",
+          "region": {
+            "x": 1,
+            "y": 1,
+            "w": 600,
+            "h": 180
+          },
+          "margin": {
+            "x": 19,
+            "y": 14,
+            "w": 40,
+            "h": 28
+          }
+        },
+        {
+          "filename": "ancient_portrait_mask_large.png",
+          "region": {
+            "x": 603,
+            "y": 1,
+            "w": 408,
+            "h": 574
+          },
+          "margin": {
+            "x": 1,
+            "y": 1,
+            "w": 2,
+            "h": 2
+          }
+        },
+        {
+          "filename": "ancient_card_border.png",
+          "region": {
+            "x": 1,
+            "y": 183,
+            "w": 410,
+            "h": 573
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "proceed_button_outline.png",
+          "region": {
+            "x": 413,
+            "y": 577,
+            "w": 391,
+            "h": 188
+          },
+          "margin": {
+            "x": 1,
+            "y": 2,
+            "w": 2,
+            "h": 4
+          }
+        },
+        {
+          "filename": "ancient_text_bg_power.png",
+          "region": {
+            "x": 1,
+            "y": 758,
+            "w": 344,
+            "h": 266
+          },
+          "margin": {
+            "x": 2,
+            "y": 2,
+            "w": 4,
+            "h": 2
+          }
+        },
+        {
+          "filename": "ancient_text_bg_skill.png",
+          "region": {
+            "x": 806,
+            "y": 577,
+            "w": 344,
+            "h": 216
+          },
+          "margin": {
+            "x": 2,
+            "y": 52,
+            "w": 4,
+            "h": 52
+          }
+        },
+        {
+          "filename": "ancient_text_bg_attack.png",
+          "region": {
+            "x": 1013,
+            "y": 1,
+            "w": 343,
+            "h": 264
+          },
+          "margin": {
+            "x": 3,
+            "y": 4,
+            "w": 5,
+            "h": 4
+          }
+        },
+        {
+          "filename": "back_button_outline.png",
+          "region": {
+            "x": 1013,
+            "y": 267,
+            "w": 259,
+            "h": 137
+          },
+          "margin": {
+            "x": 0,
+            "y": 23,
+            "w": 41,
+            "h": 65
+          }
+        },
+        {
+          "filename": "confirm_button_outline.png",
+          "region": {
+            "x": 1013,
+            "y": 406,
+            "w": 259,
+            "h": 137
+          },
+          "margin": {
+            "x": 41,
+            "y": 22,
+            "w": 41,
+            "h": 65
+          }
+        },
+        {
+          "filename": "flower.png",
+          "region": {
+            "x": 347,
+            "y": 767,
+            "w": 235,
+            "h": 253
+          },
+          "margin": {
+            "x": 21,
+            "y": 3,
+            "w": 21,
+            "h": 3
+          }
+        },
+        {
+          "filename": "flower_anticipation.png",
+          "region": {
+            "x": 584,
+            "y": 795,
+            "w": 235,
+            "h": 253
+          },
+          "margin": {
+            "x": 21,
+            "y": 3,
+            "w": 21,
+            "h": 3
+          }
+        },
+        {
+          "filename": "flower_happy.png",
+          "region": {
+            "x": 1,
+            "y": 1026,
+            "w": 235,
+            "h": 253
+          },
+          "margin": {
+            "x": 21,
+            "y": 3,
+            "w": 21,
+            "h": 3
+          }
+        },
+        {
+          "filename": "the_sun.png",
+          "region": {
+            "x": 238,
+            "y": 1026,
+            "w": 234,
+            "h": 224
+          },
+          "margin": {
+            "x": 10,
+            "y": 17,
+            "w": 22,
+            "h": 32
+          }
+        },
+        {
+          "filename": "cupcake.png",
+          "region": {
+            "x": 413,
+            "y": 183,
+            "w": 149,
+            "h": 216
+          },
+          "margin": {
+            "x": 56,
+            "y": 21,
+            "w": 107,
+            "h": 40
+          }
+        },
+        {
+          "filename": "popup_confirm_button_outline.png",
+          "region": {
+            "x": 821,
+            "y": 795,
+            "w": 198,
+            "h": 91
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 5
+          }
+        },
+        {
+          "filename": "popup_cancel_button_outline.png",
+          "region": {
+            "x": 821,
+            "y": 888,
+            "w": 196,
+            "h": 89
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 7
+          }
+        },
+        {
+          "filename": "back_button_arrow.png",
+          "region": {
+            "x": 413,
+            "y": 401,
+            "w": 174,
+            "h": 146
+          },
+          "margin": {
+            "x": 0,
+            "y": 17,
+            "w": 6,
+            "h": 34
+          }
+        },
+        {
+          "filename": "confirm_button_circle.png",
+          "region": {
+            "x": 1019,
+            "y": 888,
+            "w": 169,
+            "h": 169
+          },
+          "margin": {
+            "x": 6,
+            "y": 6,
+            "w": 11,
+            "h": 11
+          }
+        },
+        {
+          "filename": "confirm_button_tick.png",
+          "region": {
+            "x": 1152,
+            "y": 545,
+            "w": 169,
+            "h": 144
+          },
+          "margin": {
+            "x": 6,
+            "y": 17,
+            "w": 11,
+            "h": 36
+          }
+        },
+        {
+          "filename": "back_button_x.png",
+          "region": {
+            "x": 1274,
+            "y": 267,
+            "w": 166,
+            "h": 166
+          },
+          "margin": {
+            "x": 7,
+            "y": 7,
+            "w": 14,
+            "h": 14
+          }
+        },
+        {
+          "filename": "map_complete_icon.png",
+          "region": {
+            "x": 1358,
+            "y": 1,
+            "w": 125,
+            "h": 128
+          },
+          "margin": {
+            "x": 67,
+            "y": 66,
+            "w": 131,
+            "h": 128
+          }
+        },
+        {
+          "filename": "map_circle_3.png",
+          "region": {
+            "x": 1358,
+            "y": 131,
+            "w": 121,
+            "h": 118
+          },
+          "margin": {
+            "x": 38,
+            "y": 37,
+            "w": 71,
+            "h": 74
+          }
+        },
+        {
+          "filename": "map_circle_4.png",
+          "region": {
+            "x": 1152,
+            "y": 691,
+            "w": 121,
+            "h": 118
+          },
+          "margin": {
+            "x": 38,
+            "y": 37,
+            "w": 71,
+            "h": 74
+          }
+        },
+        {
+          "filename": "map_circle_2.png",
+          "region": {
+            "x": 474,
+            "y": 1050,
+            "w": 96,
+            "h": 118
+          },
+          "margin": {
+            "x": 63,
+            "y": 37,
+            "w": 96,
+            "h": 74
+          }
+        },
+        {
+          "filename": "map_chest_boss_outline.png",
+          "region": {
+            "x": 1021,
+            "y": 795,
+            "w": 96,
+            "h": 83
+          },
+          "margin": {
+            "x": 17,
+            "y": 16,
+            "w": 32,
+            "h": 45
+          }
+        },
+        {
+          "filename": "map_elite_outline.png",
+          "region": {
+            "x": 1274,
+            "y": 435,
+            "w": 95,
+            "h": 77
+          },
+          "margin": {
+            "x": 17,
+            "y": 24,
+            "w": 33,
+            "h": 51
+          }
+        },
+        {
+          "filename": "map_rest_outline.png",
+          "region": {
+            "x": 572,
+            "y": 1050,
+            "w": 73,
+            "h": 95
+          },
+          "margin": {
+            "x": 29,
+            "y": 15,
+            "w": 55,
+            "h": 33
+          }
+        },
+        {
+          "filename": "map_circle_1.png",
+          "region": {
+            "x": 647,
+            "y": 1050,
+            "w": 92,
+            "h": 80
+          },
+          "margin": {
+            "x": 66,
+            "y": 37,
+            "w": 100,
+            "h": 112
+          }
+        },
+        {
+          "filename": "map_rest_traversed.png",
+          "region": {
+            "x": 741,
+            "y": 1050,
+            "w": 61,
+            "h": 90
+          },
+          "margin": {
+            "x": 33,
+            "y": 18,
+            "w": 67,
+            "h": 38
+          }
+        },
+        {
+          "filename": "map_elite_traversed.png",
+          "region": {
+            "x": 1119,
+            "y": 811,
+            "w": 89,
+            "h": 70
+          },
+          "margin": {
+            "x": 19,
+            "y": 27,
+            "w": 39,
+            "h": 58
+          }
+        },
+        {
+          "filename": "map_chest_outline.png",
+          "region": {
+            "x": 647,
+            "y": 1132,
+            "w": 88,
+            "h": 67
+          },
+          "margin": {
+            "x": 20,
+            "y": 31,
+            "w": 40,
+            "h": 61
+          }
+        },
+        {
+          "filename": "map_chest_traversed.png",
+          "region": {
+            "x": 474,
+            "y": 1170,
+            "w": 84,
+            "h": 59
+          },
+          "margin": {
+            "x": 23,
+            "y": 34,
+            "w": 44,
+            "h": 69
+          }
+        },
+        {
+          "filename": "map_unknown_traversed.png",
+          "region": {
+            "x": 560,
+            "y": 1170,
+            "w": 81,
+            "h": 80
+          },
+          "margin": {
+            "x": 23,
+            "y": 24,
+            "w": 47,
+            "h": 48
+          }
+        },
+        {
+          "filename": "drawing_clear_glow.png",
+          "region": {
+            "x": 474,
+            "y": 1231,
+            "w": 80,
+            "h": 80
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "map_unknown_outline.png",
+          "region": {
+            "x": 1,
+            "y": 1281,
+            "w": 80,
+            "h": 78
+          },
+          "margin": {
+            "x": 24,
+            "y": 25,
+            "w": 48,
+            "h": 50
+          }
+        },
+        {
+          "filename": "drawing_eraser_glow.png",
+          "region": {
+            "x": 83,
+            "y": 1281,
+            "w": 80,
+            "h": 76
+          },
+          "margin": {
+            "x": 0,
+            "y": 4,
+            "w": 0,
+            "h": 4
+          }
+        },
+        {
+          "filename": "drawing_quill_glow.png",
+          "region": {
+            "x": 165,
+            "y": 1281,
+            "w": 80,
+            "h": 76
+          },
+          "margin": {
+            "x": 0,
+            "y": 3,
+            "w": 0,
+            "h": 4
+          }
+        },
+        {
+          "filename": "map_shop_outline.png",
+          "region": {
+            "x": 247,
+            "y": 1252,
+            "w": 74,
+            "h": 76
+          },
+          "margin": {
+            "x": 28,
+            "y": 25,
+            "w": 54,
+            "h": 52
+          }
+        },
+        {
+          "filename": "map_monster_outline.png",
+          "region": {
+            "x": 323,
+            "y": 1252,
+            "w": 72,
+            "h": 74
+          },
+          "margin": {
+            "x": 28,
+            "y": 27,
+            "w": 56,
+            "h": 54
+          }
+        },
+        {
+          "filename": "map_shop_traversed.png",
+          "region": {
+            "x": 397,
+            "y": 1252,
+            "w": 69,
+            "h": 72
+          },
+          "margin": {
+            "x": 29,
+            "y": 30,
+            "w": 59,
+            "h": 56
+          }
+        },
+        {
+          "filename": "map_circle_0.png",
+          "region": {
+            "x": 1013,
+            "y": 545,
+            "w": 72,
+            "h": 27
+          },
+          "margin": {
+            "x": 66,
+            "y": 37,
+            "w": 120,
+            "h": 165
+          }
+        },
+        {
+          "filename": "ancient_card_flame_5.png",
+          "region": {
+            "x": 804,
+            "y": 1050,
+            "w": 48,
+            "h": 68
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 1,
+            "h": 0
+          }
+        },
+        {
+          "filename": "ancient_card_flame_0.png",
+          "region": {
+            "x": 821,
+            "y": 979,
+            "w": 48,
+            "h": 67
+          },
+          "margin": {
+            "x": 0,
+            "y": 1,
+            "w": 1,
+            "h": 1
+          }
+        },
+        {
+          "filename": "ancient_card_flame_9.png",
+          "region": {
+            "x": 854,
+            "y": 1048,
+            "w": 48,
+            "h": 67
+          },
+          "margin": {
+            "x": 0,
+            "y": 1,
+            "w": 1,
+            "h": 1
+          }
+        },
+        {
+          "filename": "ancient_card_flame_3.png",
+          "region": {
+            "x": 871,
+            "y": 979,
+            "w": 48,
+            "h": 65
+          },
+          "margin": {
+            "x": 0,
+            "y": 3,
+            "w": 1,
+            "h": 3
+          }
+        },
+        {
+          "filename": "ancient_card_flame_8.png",
+          "region": {
+            "x": 904,
+            "y": 1046,
+            "w": 48,
+            "h": 65
+          },
+          "margin": {
+            "x": 0,
+            "y": 3,
+            "w": 1,
+            "h": 3
+          }
+        },
+        {
+          "filename": "ancient_card_flame_6.png",
+          "region": {
+            "x": 921,
+            "y": 979,
+            "w": 49,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 4,
+            "w": 0,
+            "h": 4
+          }
+        },
+        {
+          "filename": "ancient_card_flame_4.png",
+          "region": {
+            "x": 954,
+            "y": 1045,
+            "w": 48,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 4,
+            "w": 1,
+            "h": 4
+          }
+        },
+        {
+          "filename": "ancient_card_flame_7.png",
+          "region": {
+            "x": 1004,
+            "y": 1059,
+            "w": 48,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 4,
+            "w": 1,
+            "h": 4
+          }
+        },
+        {
+          "filename": "ancient_card_flame_1.png",
+          "region": {
+            "x": 804,
+            "y": 1120,
+            "w": 48,
+            "h": 62
+          },
+          "margin": {
+            "x": 0,
+            "y": 6,
+            "w": 1,
+            "h": 6
+          }
+        },
+        {
+          "filename": "ancient_card_flame_2.png",
+          "region": {
+            "x": 737,
+            "y": 1142,
+            "w": 49,
+            "h": 60
+          },
+          "margin": {
+            "x": 0,
+            "y": 8,
+            "w": 0,
+            "h": 8
+          }
+        },
+        {
+          "filename": "drawing_clear.png",
+          "region": {
+            "x": 643,
+            "y": 1201,
+            "w": 58,
+            "h": 56
+          },
+          "margin": {
+            "x": 12,
+            "y": 11,
+            "w": 22,
+            "h": 24
+          }
+        },
+        {
+          "filename": "drawing_quill.png",
+          "region": {
+            "x": 556,
+            "y": 1252,
+            "w": 54,
+            "h": 50
+          },
+          "margin": {
+            "x": 12,
+            "y": 16,
+            "w": 26,
+            "h": 30
+          }
+        },
+        {
+          "filename": "drawing_eraser.png",
+          "region": {
+            "x": 854,
+            "y": 1117,
+            "w": 53,
+            "h": 48
+          },
+          "margin": {
+            "x": 13,
+            "y": 18,
+            "w": 27,
+            "h": 32
+          }
+        },
+        {
+          "filename": "map_dot.png",
+          "region": {
+            "x": 972,
+            "y": 979,
+            "w": 14,
+            "h": 25
+          },
+          "margin": {
+            "x": 9,
+            "y": 3,
+            "w": 18,
+            "h": 7
+          }
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "app": "bento",
+    "version": "1.0"
+  }
+}

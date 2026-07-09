@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://cxd5r640a7kvj"
+path="res://.godot/imported/queen_boss_node.skel-ddd4098f7c13c79f8ddbea3996fe8f38.spskel"
+
+[deps]
+
+source_file="res://animations/map/queen_boss/queen_boss_node.skel"
+dest_files=["res://.godot/imported/queen_boss_node.skel-ddd4098f7c13c79f8ddbea3996fe8f38.spskel"]
+
+[params]
+

@@ -1,0 +1,161 @@
+frog_knight.png
+size:332,922
+filter:Linear,Linear
+scale:0.199
+arm bottom 2
+bounds:122,43,48,51
+arm bottom1
+bounds:66,20,37,50
+offsets:7,0,44,56
+rotate:90
+beetle_bottom leg 1 bottom
+bounds:127,156,69,44
+offsets:0,0,69,45
+rotate:90
+beetle_bottom leg 1 foot
+bounds:288,152,60,39
+rotate:90
+beetle_bottom leg 1 top
+bounds:287,49,48,40
+rotate:90
+beetle_bottom leg 2 bottom
+bounds:310,680,20,24
+beetle_bottom leg 2 foot
+bounds:295,527,34,47
+beetle_bottom leg 2 top
+bounds:172,48,38,38
+beetle_bottom leg 3 bottom
+bounds:212,30,33,28
+offsets:0,0,33,32
+beetle_bottom leg 3 foot
+bounds:295,474,51,31
+rotate:90
+beetle_bottom leg 3 top
+bounds:173,201,41,28
+rotate:90
+beetle_carapace 1
+bounds:208,358,146,82
+rotate:90
+beetle_carapace 2
+bounds:204,158,95,82
+rotate:90
+beetle_carapace back
+bounds:207,2,29,26
+beetle_chest
+bounds:2,299,171,95
+beetle_head
+bounds:2,396,204,151
+beetle_leg_hole_1
+bounds:295,587,10,10
+beetle_leg_hole_2
+bounds:295,577,8,10
+rotate:90
+beetle_saddle strap
+bounds:310,772,16,65
+beetle_top joint 1
+bounds:281,21,26,28
+rotate:90
+beetle_top joint 2
+bounds:238,2,28,24
+beetle_top joint 3
+bounds:212,60,37,26
+beetle_top leg 1 bottom
+bounds:288,273,71,39
+offsets:0,0,74,39
+rotate:90
+beetle_top leg 1 foot
+bounds:292,408,64,36
+rotate:90
+beetle_top leg 1 top
+bounds:2,5,49,37
+beetle_top leg 2 bottom
+bounds:310,653,17,25
+beetle_top leg 2 foot
+bounds:309,597,21,54
+beetle_top leg 2 top
+bounds:173,244,29,45
+beetle_top leg 3 bottom
+bounds:172,18,33,28
+beetle_top leg 3 foot
+bounds:175,343,51,31
+rotate:90
+beetle_top leg 3 top
+bounds:173,158,41,28
+rotate:90
+bod
+bounds:2,44,62,75
+offsets:0,0,62,76
+closed_eye
+bounds:307,576,21,19
+cloth
+bounds:124,96,44,58
+elbow bottom
+bounds:310,736,18,34
+eye
+bounds:311,27,20,18
+rotate:90
+side eye
+bounds:311,27,20,18
+rotate:90
+hand bottom
+bounds:288,214,42,57
+offsets:0,7,46,64
+hand bottom top layer
+bounds:247,28,27,32
+rotate:90
+head
+bounds:208,255,101,78
+rotate:90
+head bottom
+bounds:127,227,70,44
+rotate:90
+neck armor
+bounds:74,108,82,48
+rotate:90
+neck backing
+bounds:295,839,81,31
+rotate:90
+pupil
+bounds:295,599,16,11
+rotate:90
+reigns
+bounds:173,88,68,112
+rotate:90
+reigns_back
+bounds:295,638,17,12
+rotate:90
+saddle
+bounds:2,192,123,105
+offsets:0,0,123,113
+shadow
+bounds:211,506,414,82
+offsets:1,1,416,83
+rotate:90
+spit drop
+bounds:295,617,19,10
+rotate:90
+tongue
+bounds:295,657,180,13
+rotate:90
+top arm
+bounds:2,121,70,69
+top elbow
+bounds:311,10,15,15
+top foot
+bounds:175,291,29,50
+top hand
+bounds:292,346,60,37
+rotate:90
+top knee
+bounds:310,706,28,19
+rotate:90
+top leg 1
+bounds:66,59,54,47
+offsets:0,0,56,47
+top leg 2
+bounds:287,99,38,51
+top shoulder
+bounds:251,57,32,29
+offsets:0,3,32,32
+trident
+bounds:2,549,207,371

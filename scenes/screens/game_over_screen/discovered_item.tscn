@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://blcq7fxwi2tmr"]
+
+[ext_resource type="Script" uid="uid://b8sk1driniq0s" path="res://src/Core/Nodes/Screens/GameOverScreen/NDiscoveredItem.cs" id="1_ri2lq"]
+[ext_resource type="PackedScene" uid="uid://bgy88bk44xxvk" path="res://scenes/ui/selection_reticle.tscn" id="2_3jecn"]
+[ext_resource type="Texture2D" uid="uid://d1gumiitphnit" path="res://images/ui/game_over_screen/discovery_card.png" id="2_5iavl"]
+[ext_resource type="FontVariation" uid="uid://ux4d708e7mk6" path="res://themes/kreon_bold_glyph_space_one.tres" id="3_3jecn"]
+[ext_resource type="Script" uid="uid://dtfio45agppyj" path="res://addons/mega_text/MegaLabel.cs" id="4_480b0"]
+
+[node name="DiscoveredItem" type="MarginContainer"]
+custom_minimum_size = Vector2(120, 48)
+offset_right = 120.0
+offset_bottom = 48.0
+focus_mode = 2
+script = ExtResource("1_ri2lq")
+
+[node name="SelectionReticle" parent="." instance=ExtResource("2_3jecn")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="DiscoveryIcon" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("2_5iavl")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 0.964706, 0.886275, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.501961)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("3_3jecn")
+theme_override_font_sizes/font_size = 28
+text = "404"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("4_480b0")
+AutoSizeEnabled = false

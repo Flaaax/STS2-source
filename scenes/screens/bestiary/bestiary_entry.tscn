@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=3 uid="uid://b0kyuy4b2wf3"]
+
+[ext_resource type="Script" uid="uid://cnpxell0dchco" path="res://src/Core/Nodes/Screens/Bestiary/NBestiaryEntry.cs" id="1_ascqn"]
+[ext_resource type="FontVariation" uid="uid://bg85h22rkxs6g" path="res://themes/kreon_bold_shared.tres" id="2_ascqn"]
+[ext_resource type="FontVariation" uid="uid://cfurftqxyn4mn" path="res://themes/kreon_regular_glyph_space_one.tres" id="2_oyof8"]
+[ext_resource type="Script" uid="uid://c2oywrx8xbqfx" path="res://addons/mega_text/MegaRichTextLabel.cs" id="3_oyof8"]
+[ext_resource type="Texture2D" uid="uid://q86di1eocspv" path="res://images/ancients/under_construction.png" id="5_oyof8"]
+
+[node name="BestiaryEntry" type="HBoxContainer"]
+custom_minimum_size = Vector2(280, 36)
+offset_right = 280.0
+offset_bottom = 36.0
+size_flags_vertical = 4
+focus_mode = 2
+script = ExtResource("1_ascqn")
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="Label" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+clip_contents = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.501961)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/normal_font = ExtResource("2_oyof8")
+theme_override_fonts/bold_font = ExtResource("2_ascqn")
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
+bbcode_enabled = true
+text = "Unknown"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 1
+script = ExtResource("3_oyof8")
+MinFontSize = 18
+MaxFontSize = 24
+
+[node name="Highlight" type="ColorRect" parent="Label"]
+unique_name_in_owner = true
+visible = false
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 16.363632
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.1, 1.1)
+pivot_offset = Vector2(140, 18)
+mouse_filter = 2
+color = Color(2.695322e-06, 0.7704557, 0.9505928, 0.29411766)
+
+[node name="UnderConstructionIcon" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("5_oyof8")
+expand_mode = 3

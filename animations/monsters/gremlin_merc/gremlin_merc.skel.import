@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://flo84rk1b6nx"
+path="res://.godot/imported/gremlin_merc.skel-adfb0b4e7e36993038aa60c89e7970ec.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/gremlin_merc/gremlin_merc.skel"
+dest_files=["res://.godot/imported/gremlin_merc.skel-adfb0b4e7e36993038aa60c89e7970ec.spskel"]
+
+[params]
+

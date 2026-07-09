@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://cihwnaeqxr2hj"
+path="res://.godot/imported/terror_eel.atlas-d32a6a6f3e213137c113edfde110364d.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/terror_eel/terror_eel.atlas"
+dest_files=["res://.godot/imported/terror_eel.atlas-d32a6a6f3e213137c113edfde110364d.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

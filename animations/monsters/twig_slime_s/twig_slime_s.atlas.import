@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://cu4qy12t7roas"
+path="res://.godot/imported/twig_slime_s.atlas-4ccd1fee850e090ad8dea9f71c7ff285.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/twig_slime_s/twig_slime_s.atlas"
+dest_files=["res://.godot/imported/twig_slime_s.atlas-4ccd1fee850e090ad8dea9f71c7ff285.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

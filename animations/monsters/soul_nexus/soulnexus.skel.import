@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://dbowwv813103i"
+path="res://.godot/imported/soulnexus.skel-733b9855500e2361f2bcdb330b0dfc1c.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/soul_nexus/soulnexus.skel"
+dest_files=["res://.godot/imported/soulnexus.skel-733b9855500e2361f2bcdb330b0dfc1c.spskel"]
+
+[params]
+

@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://3o5wl1poq00k"
+path="res://.godot/imported/zapbot.skel-1b8412a9e60674ee88d34d21b2ac9838.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/zapbot/zapbot.skel"
+dest_files=["res://.godot/imported/zapbot.skel-1b8412a9e60674ee88d34d21b2ac9838.spskel"]
+
+[params]
+

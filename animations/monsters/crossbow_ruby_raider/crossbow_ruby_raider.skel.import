@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://bnu5e6lldpir5"
+path="res://.godot/imported/crossbow_ruby_raider.skel-ba16ba9386d8ff100a359d8c205c5048.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/crossbow_ruby_raider/crossbow_ruby_raider.skel"
+dest_files=["res://.godot/imported/crossbow_ruby_raider.skel-ba16ba9386d8ff100a359d8c205c5048.spskel"]
+
+[params]
+

@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://cc4pqcwj2o6vr"
+path="res://.godot/imported/cultists.atlas-09298b5183cc2908cfbf2fd43136f451.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/cultists/cultists.atlas"
+dest_files=["res://.godot/imported/cultists.atlas-09298b5183cc2908cfbf2fd43136f451.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

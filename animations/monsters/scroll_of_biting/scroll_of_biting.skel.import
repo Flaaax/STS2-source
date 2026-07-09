@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://djll22747y3nd"
+path="res://.godot/imported/scroll_of_biting.skel-d1e73a597aeea69b80932287be3ff7f6.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/scroll_of_biting/scroll_of_biting.skel"
+dest_files=["res://.godot/imported/scroll_of_biting.skel-d1e73a597aeea69b80932287be3ff7f6.spskel"]
+
+[params]
+

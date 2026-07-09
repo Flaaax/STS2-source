@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://w5hrvpmk0l66"
+path="res://.godot/imported/test_subject.skel-ba06ab7ce2e4918d6f029cd41e213281.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/test_subject/test_subject.skel"
+dest_files=["res://.godot/imported/test_subject.skel-ba06ab7ce2e4918d6f029cd41e213281.spskel"]
+
+[params]
+

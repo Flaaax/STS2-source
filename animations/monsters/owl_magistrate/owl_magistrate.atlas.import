@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://cgj5xjuxojckh"
+path="res://.godot/imported/owl_magistrate.atlas-85220a3433b47813ce1e73cd96924104.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/owl_magistrate/owl_magistrate.atlas"
+dest_files=["res://.godot/imported/owl_magistrate.atlas-85220a3433b47813ce1e73cd96924104.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

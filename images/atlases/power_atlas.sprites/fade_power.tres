@@ -1,0 +1,8 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://b0m7uh1"]
+
+[ext_resource type="Texture2D" path="res://images/atlases/power_atlas.png" id="1"]
+
+[resource]
+atlas = ExtResource("1")
+region = Rect2(2408, 397, 45, 43)
+margin = Rect2(7, 11, 19, 21)

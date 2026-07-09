@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://cb4xat70hqgo8"
+path="res://.godot/imported/chomper.atlas-195d82660ae44dc9bad0e7d1cb681a26.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/chomper/chomper.atlas"
+dest_files=["res://.godot/imported/chomper.atlas-195d82660ae44dc9bad0e7d1cb681a26.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

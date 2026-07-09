@@ -1,0 +1,84 @@
+spectral_knight.png
+size:994,532
+filter:Linear,Linear
+scale:0.292
+3/4 leg
+bounds:521,168,80,124
+rotate:90
+arm_f
+bounds:423,250,222,114
+cape back
+bounds:185,240,236,290
+cape middle
+bounds:2,42,133,187
+offsets:4,2,183,189
+rotate:90
+cape top
+bounds:708,328,213,202
+offsets:4,4,218,207
+chest
+bounds:191,44,200,194
+debuff_whoosh
+bounds:2,12,245,28
+offsets:4,5,253,38
+extra sword hand
+bounds:916,159,74,76
+offsets:2,1,77,79
+rotate:90
+fabric1
+bounds:393,2,89,96
+rotate:90
+fabric2
+bounds:767,108,86,75
+offsets:6,8,96,89
+hand_f
+bounds:923,335,68,74
+offsets:2,2,72,78
+helmet
+bounds:393,93,126,145
+hemlet_fill
+bounds:916,90,60,67
+offsets:0,0,61,67
+leg f
+bounds:923,411,69,119
+offsets:3,3,76,126
+main shadow
+bounds:647,185,267,48
+offsets:1,1,271,50
+shoulder_f
+bounds:659,82,106,101
+offsets:2,2,110,105
+skelly arm lower
+bounds:855,88,59,95
+offsets:4,4,67,103
+skelly arm upper
+bounds:757,24,37,103
+offsets:4,4,45,111
+rotate:90
+skelly foot
+bounds:919,21,67,50
+offsets:4,3,75,54
+rotate:90
+skelly hand
+bounds:659,25,55,96
+rotate:90
+skelly leg lower
+bounds:767,63,43,80
+offsets:5,4,52,88
+rotate:90
+skelly leg upper
+bounds:862,25,55,61
+offsets:4,3,63,67
+sword
+bounds:647,235,91,324
+offsets:3,3,96,330
+rotate:90
+sword arm
+bounds:423,366,283,164
+sword shadow
+bounds:249,11,111,31
+offsets:1,0,112,32
+sword swish
+bounds:2,177,181,353
+torso
+bounds:521,33,136,133

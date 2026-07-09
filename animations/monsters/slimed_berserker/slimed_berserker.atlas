@@ -1,0 +1,131 @@
+slimed_berserker.png
+size:2033,459
+filter:Linear,Linear
+scale:0.199
+arm 1
+bounds:1582,192,211,265
+arm 2
+bounds:1738,2,100,95
+arm 3
+bounds:1589,26,147,80
+arm 4
+bounds:390,80,236,286
+arm 5
+bounds:629,11,100,116
+arm 6
+bounds:1962,346,54,55
+arm eyes L
+bounds:1087,23,31,27
+arm eyes L 2
+bounds:1054,18,31,32
+arm eyes R
+bounds:1589,2,23,22
+arm eyes backing L
+bounds:731,61,32,31
+arm eyes backing L 2
+bounds:731,94,33,33
+arm eyes backing R
+bounds:1183,25,24,25
+arm eyes backing R 2
+bounds:917,8,47,42
+arm eyes r2
+bounds:966,10,47,40
+arm irises L
+bounds:1785,133,9,8
+rotate:90
+arm irises L 2
+bounds:875,2,11,10
+arm irises R
+bounds:731,52,7,7
+arm irises R 2
+bounds:2018,388,13,13
+arm veins L
+bounds:1795,99,138,225
+rotate:90
+arm veins R
+bounds:628,129,138,237
+body
+bounds:774,52,437,405
+body bubbles
+bounds:2,23,343,386
+rotate:90
+body eye 1 backing
+bounds:1903,46,51,57
+rotate:90
+body eye 1 eye
+bounds:1962,50,47,57
+rotate:90
+body eye 1 iris
+bounds:28,10,11,20
+rotate:90
+body eye 2 eye
+bounds:790,3,60,47
+offsets:0,6,87,53
+body eye 2 fill
+bounds:731,2,57,48
+body eye 2 iris
+bounds:1154,24,27,26
+body eye 3 backing
+bounds:1962,289,54,55
+body eye 3 eye
+bounds:1743,144,46,50
+offsets:2,0,67,83
+rotate:90
+body eye 3 iris
+bounds:2018,373,13,13
+body eye 4 backing
+bounds:1962,242,52,45
+body eye 4 eye
+bounds:1961,2,51,42
+body eye 4 iris
+bounds:2016,259,11,11
+body eye 5 backing
+bounds:1962,403,61,54
+body eye 5 eye
+bounds:1840,45,61,52
+body eye 5 iris
+bounds:852,2,21,10
+body eye 6 backing
+bounds:1015,12,37,38
+body eye 6 eye
+bounds:1903,2,56,42
+body eye 6 iris
+bounds:1645,12,12,12
+body eye 7 backing
+bounds:2,2,24,19
+body eye 7 eye
+bounds:1614,4,29,20
+body eye 7 iris
+bounds:768,359,7,4
+rotate:90
+body eye 8 eye
+bounds:2016,272,15,15
+body eye 8 iris
+bounds:1897,39,4,4
+bubbles 1
+bounds:1582,108,82,159
+offsets:9,50,133,209
+rotate:90
+bubbles 2
+bounds:1743,114,40,28
+bubbles 3
+bounds:1120,26,32,24
+bubbles 4
+bounds:1795,239,165,218
+bubbles 5
+bounds:852,14,63,36
+bubbles 6
+bounds:1840,6,37,55
+rotate:90
+middle slime
+bounds:1213,89,367,368
+offsets:0,10,367,378
+puddle_l
+bounds:390,11,237,67
+offsets:0,0,238,67
+puddle_r
+bounds:1213,16,374,71
+offsets:3,0,377,71
+shadow
+bounds:2,368,770,89
+offsets:1,0,771,89

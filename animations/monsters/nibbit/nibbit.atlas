@@ -1,0 +1,52 @@
+nibbit.png
+size:832,141
+filter:Linear,Linear
+scale:0.372
+bod
+bounds:2,2,266,137
+bottom front foot
+bounds:437,7,40,31
+bottom front leg
+bounds:479,3,41,61
+rotate:90
+ear bacl
+bounds:756,16,80,74
+offsets:7,0,87,74
+rotate:90
+eye
+bounds:645,16,30,29
+rotate:90
+eye_red
+bounds:656,66,30,29
+rotate:90
+head
+bounds:270,40,194,99
+mouth back
+bounds:270,9,90,29
+shadow
+bounds:466,98,313,41
+offsets:3,0,317,41
+tail shade patch
+bounds:676,3,61,78
+offsets:1,0,62,78
+rotate:90
+teeth
+bounds:362,16,73,22
+tongue
+bounds:687,79,45,17
+top back foot
+bounds:611,14,32,32
+top back foot copy
+bounds:577,12,32,32
+top back leg
+bounds:530,46,50,62
+rotate:90
+top back leg copy
+bounds:466,46,50,62
+rotate:90
+top front foot
+bounds:542,8,36,33
+rotate:90
+top front leg
+bounds:594,48,48,60
+rotate:90

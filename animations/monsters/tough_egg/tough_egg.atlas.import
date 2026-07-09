@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://bii8pkhkfvp3q"
+path="res://.godot/imported/tough_egg.atlas-3137d8552c1ea98f5e9a412e6cda2275.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/tough_egg/tough_egg.atlas"
+dest_files=["res://.godot/imported/tough_egg.atlas-3137d8552c1ea98f5e9a412e6cda2275.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://beotays2fdngk"]
+
+[ext_resource type="Script" uid="uid://blxa1ogj13rbg" path="res://src/Core/Nodes/Vfx/Utilities/NVfxProjectile.cs" id="1_rr5tb"]
+[ext_resource type="Material" uid="uid://djawuiyoxrp1y" path="res://materials/vfx/sprite_additive.tres" id="2_fan7g"]
+[ext_resource type="Texture2D" uid="uid://bhrgca2f01djv" path="res://images/vfx/orbs/plasma_orb_particle.png" id="2_q42je"]
+[ext_resource type="Script" uid="uid://bj1v3hinr1lx7" path="res://src/Core/Nodes/Vfx/NBezierTrail.cs" id="4_ci4ph"]
+
+[sub_resource type="Curve" id="Curve_huqp2"]
+_data = [Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="Gradient" id="Gradient_q42je"]
+offsets = PackedFloat32Array(0, 0.05, 0.95, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="vfx_plasma_orb_projectile" type="Node2D" node_paths=PackedStringArray("_particles")]
+script = ExtResource("1_rr5tb")
+_particles = []
+_alignToVelocity = true
+
+[node name="trail" type="Line2D" parent="."]
+self_modulate = Color(1, 0.83137256, 0.6, 1)
+material = ExtResource("2_fan7g")
+width = 50.0
+width_curve = SubResource("Curve_huqp2")
+gradient = SubResource("Gradient_q42je")
+texture = ExtResource("2_q42je")
+texture_mode = 2
+antialiased = true
+script = ExtResource("4_ci4ph")
+_pointDuration = 0.1

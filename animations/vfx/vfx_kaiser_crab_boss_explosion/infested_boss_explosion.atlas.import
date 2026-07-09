@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://1pm6y4gt0n65"
+path="res://.godot/imported/infested_boss_explosion.atlas-62f0f65619967249b9901f1f46a8e160.spatlas"
+
+[deps]
+
+source_file="res://animations/vfx/vfx_kaiser_crab_boss_explosion/infested_boss_explosion.atlas"
+dest_files=["res://.godot/imported/infested_boss_explosion.atlas-62f0f65619967249b9901f1f46a8e160.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

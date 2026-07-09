@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://3h2c4t1nsylj"
+path="res://.godot/imported/frog_knight.atlas-10d3efb75e33edc6eef16ee0341635b9.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/frog_knight/frog_knight.atlas"
+dest_files=["res://.godot/imported/frog_knight.atlas-10d3efb75e33edc6eef16ee0341635b9.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

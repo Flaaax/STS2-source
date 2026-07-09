@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://biaiobchkaj2t"
+path="res://.godot/imported/spectral_knight.atlas-0a505fadd107e21470b72d9d48ebb699.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/spectral_knight/spectral_knight.atlas"
+dest_files=["res://.godot/imported/spectral_knight.atlas-0a505fadd107e21470b72d9d48ebb699.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

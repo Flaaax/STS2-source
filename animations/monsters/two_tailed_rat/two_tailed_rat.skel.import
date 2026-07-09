@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://dyf1a1hd63iqj"
+path="res://.godot/imported/two_tailed_rat.skel-eaf0c704d7baaf6e1ff4ae0e0d9b358b.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/two_tailed_rat/two_tailed_rat.skel"
+dest_files=["res://.godot/imported/two_tailed_rat.skel-eaf0c704d7baaf6e1ff4ae0e0d9b358b.spskel"]
+
+[params]
+

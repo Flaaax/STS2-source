@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://cayh2hq5qo0dj"
+path="res://.godot/imported/fossil_stalker.skel-aeccea58fe8cfa2ddfe1a573d578ba5e.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/fossil_stalker/fossil_stalker.skel"
+dest_files=["res://.godot/imported/fossil_stalker.skel-aeccea58fe8cfa2ddfe1a573d578ba5e.spskel"]
+
+[params]
+

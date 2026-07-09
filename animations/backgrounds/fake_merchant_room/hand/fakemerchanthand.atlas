@@ -1,0 +1,11 @@
+fakemerchanthand.png
+size:848,671
+filter:Linear,Linear
+scale:0.4
+fake merchant hand
+bounds:2,334,335,844
+rotate:90
+fake merchant hand shadow
+bounds:2,2,330,832
+offsets:6,15,345,854
+rotate:90

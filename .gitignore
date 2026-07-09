@@ -1,0 +1,87 @@
+# This repository is intended for comparing decompiled game code,
+# localization, and text-based Godot/art metadata across game versions.
+# Binary art/audio/font/model assets and generated editor caches are ignored.
+
+# Ignore everything by default.
+*
+
+# Allow recursion so nested allow rules can match.
+!*/
+
+# Repository metadata.
+!.gitignore
+
+# Project-level text files.
+!*.csproj
+!*.sln
+!*.godot
+!*.lock.json
+!*.editorconfig
+!*.md
+!*.txt
+
+# Code and script sources.
+!*.cs
+!*.gd
+!*.h
+!*.js
+!*.gdextension
+
+# Data and localization text.
+!*.json
+!*.yml
+!*.yaml
+!*.xml
+!*.cfg
+!*.props
+!*.targets
+!*.plist
+!*.sample
+!*.info
+!*.name
+!*.modulemap
+
+# Godot resources, scenes, shaders, and import metadata.
+!*.tres
+!*.tscn
+!*.scn
+!*.gdshader
+!*.gdshaderinc
+!*.import
+!*.uid
+
+# Text-based art/layout metadata.
+!*.atlas
+!*.spatlas
+!*.tpsheet
+!*.meta
+!*.map
+!*.swiftinterface
+
+# Generated/editor-local directories.
+.godot/
+.autoconverted/
+.idea/
+.vs/
+RiderTestRunner/
+
+# Common build outputs if this folder is ever opened as a C#/Godot project.
+bin/
+obj/
+Build/
+Builds/
+Export/
+Exports/
+
+# User-local IDE files.
+*.user
+*.userosscache
+*.suo
+*.rsuser
+*.DotSettings.user
+
+# Decompiler/editor logs and temporary files.
+*.log
+*.tmp
+*.temp
+*.cache

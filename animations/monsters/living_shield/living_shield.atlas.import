@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://crb8oped57f3q"
+path="res://.godot/imported/living_shield.atlas-a97556a966f4c0ba16ee013edfd17f5d.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/living_shield/living_shield.atlas"
+dest_files=["res://.godot/imported/living_shield.atlas-a97556a966f4c0ba16ee013edfd17f5d.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

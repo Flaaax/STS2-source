@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://cj45djwek3sbg"
+path="res://.godot/imported/corpse_slug.skel-118f3c7d8704164d0f43d86c5619aa26.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/corpse_slug/corpse_slug.skel"
+dest_files=["res://.godot/imported/corpse_slug.skel-118f3c7d8704164d0f43d86c5619aa26.spskel"]
+
+[params]
+

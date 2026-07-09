@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://ri7bwc8x7hoq"
+path="res://.godot/imported/kin_priest.atlas-ced3c1d9a931d2b31b27e9c123f4bf4c.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/kin_priest/kin_priest.atlas"
+dest_files=["res://.godot/imported/kin_priest.atlas-ced3c1d9a931d2b31b27e9c123f4bf4c.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

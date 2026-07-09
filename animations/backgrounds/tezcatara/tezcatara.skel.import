@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://dchb4cx8k3o2s"
+path="res://.godot/imported/tezcatara.skel-72b886a4168f60b72da07ffdd31bdb13.spskel"
+
+[deps]
+
+source_file="res://animations/backgrounds/tezcatara/tezcatara.skel"
+dest_files=["res://.godot/imported/tezcatara.skel-72b886a4168f60b72da07ffdd31bdb13.spskel"]
+
+[params]
+

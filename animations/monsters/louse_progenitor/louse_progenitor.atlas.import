@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://bt56s3cjt6iiv"
+path="res://.godot/imported/louse_progenitor.atlas-9a7cbe0cb847e878f7636ce976b7d430.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/louse_progenitor/louse_progenitor.atlas"
+dest_files=["res://.godot/imported/louse_progenitor.atlas-9a7cbe0cb847e878f7636ce976b7d430.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

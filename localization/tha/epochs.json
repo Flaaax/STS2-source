@@ -1,0 +1,14 @@
+{
+  "DAILY_RUN_EPOCH.unlock": "ต่อไปนี้คุณสามารถเล่นการท้าทายแบบสุ่มที่มีวันละครั้งได้แล้ว",
+  "DEFECT1_EPOCH.unlockInfo": "เล่นการเดินทางด้วย[pink]นักปลุกผีผูกจิต[/pink]{IsRevealed:เรียบร้อยแล้ว|เพื่อเปิดเผยศักราชนี้}",
+  "NECROBINDER1_EPOCH.unlockInfo": "เล่นการเดินทางด้วย[orange]นักษัตรประโคมฤกษ์[/orange]{IsRevealed:เรียบร้อยแล้ว|เพื่อเปิดเผยศักราชนี้}",
+  "NECROBINDER1_EPOCH.unlockText": "ปลดล็อกตัวละคร[pink]นักปลุกผีผูกจิต[/pink]",
+  "NECROBINDER2_EPOCH.unlockInfo": "ชนะ[gold]องก์[/gold] [blue]1[/blue] ด้วย[pink]นักปลุกผีผูกจิต[/pink]{IsRevealed:|เพื่อเปิดเผยศักราชนี้}",
+  "NECROBINDER3_EPOCH.unlockInfo": "ชนะ[gold]องก์[/gold] [blue]2[/blue] ด้วย[pink]นักปลุกผีผูกจิต[/pink]{IsRevealed:|เพื่อเปิดเผยศักราชนี้}",
+  "NECROBINDER4_EPOCH.unlockInfo": "ชนะ[gold]องก์[/gold] [blue]3[/blue] ด้วย[pink]นักปลุกผีผูกจิต[/pink]{IsRevealed:|เพื่อเปิดเผยศักราชนี้}",
+  "NECROBINDER4_EPOCH.unlockText": "ปลดล็อกโหมด[red]ผู้บรรลุ[/red]สำหรับ[pink]นักปลุกผีผูกจิต[/pink] และ [gold]{Potion1}[/gold], [gold]{Potion2}[/gold], และ[gold]{Potion3}[/gold]",
+  "NECROBINDER5_EPOCH.unlockInfo": "กำจัด[purple]ลูกพี่[/purple] [blue]15[/blue] ตัวด้วย[pink]นักปลุกผีผูกจิต[/pink]{IsRevealed:เรียบร้อยแล้ว|เพื่อเปิดเผยศักราชนี้}",
+  "NECROBINDER6_EPOCH.unlockInfo": "กำจัด[red]บอส[/red] [blue]15[/blue] ตัวด้วย[pink]นักปลุกผีผูกจิต[/pink]{IsRevealed:เรียบร้อยแล้ว|เพื่อเปิดเผยศักราชนี้}",
+  "NECROBINDER7_EPOCH.unlockInfo": "ชนะ[red]ผู้บรรลุ[/red] [blue]1[/blue] ด้วย[pink]นักปลุกผีผูกจิต[/pink]{IsRevealed:|เพื่อเปิดเผยศักราชนี้}",
+  "STORY_NECROBINDER": "นักปลุกผีผูกจิต"
+}

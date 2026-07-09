@@ -1,0 +1,8 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://brd2s40"]
+
+[ext_resource type="Texture2D" path="res://images/atlases/potion_outline_atlas.png" id="1"]
+
+[resource]
+atlas = ExtResource("1")
+region = Rect2(234, 737, 74, 80)
+margin = Rect2(4, 0, 6, 0)

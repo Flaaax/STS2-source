@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://dwvla3gidkw15"
+path="res://.godot/imported/eye_with_teeth.skel-e374a3e35d83c0a9c3b45756a65ae46c.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/eye_with_teeth/eye_with_teeth.skel"
+dest_files=["res://.godot/imported/eye_with_teeth.skel-e374a3e35d83c0a9c3b45756a65ae46c.spskel"]
+
+[params]
+

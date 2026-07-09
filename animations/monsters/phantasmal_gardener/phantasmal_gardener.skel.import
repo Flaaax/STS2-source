@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://sd3oj85dbxyd"
+path="res://.godot/imported/phantasmal_gardener.skel-9b9cef0807cee54842cc88c220796f75.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/phantasmal_gardener/phantasmal_gardener.skel"
+dest_files=["res://.godot/imported/phantasmal_gardener.skel-9b9cef0807cee54842cc88c220796f75.spskel"]
+
+[params]
+

@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://bnhy55sxl0k3"
+path="res://.godot/imported/frog_knight.skel-a5dde70c48e3b179ea1171027314efaa.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/frog_knight/frog_knight.skel"
+dest_files=["res://.godot/imported/frog_knight.skel-a5dde70c48e3b179ea1171027314efaa.spskel"]
+
+[params]
+

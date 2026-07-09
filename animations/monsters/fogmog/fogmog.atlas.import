@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://b1yt78v4q3ei1"
+path="res://.godot/imported/fogmog.atlas-3f8129218c53a6137729fa46b65035b7.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/fogmog/fogmog.atlas"
+dest_files=["res://.godot/imported/fogmog.atlas-3f8129218c53a6137729fa46b65035b7.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

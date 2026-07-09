@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://pspgdfqfpm5r"
+path="res://.godot/imported/ruby_raider_tracker.atlas-b367ce9712a42a186d890e4ce5583fa9.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/tracker_ruby_raider/ruby_raider_tracker.atlas"
+dest_files=["res://.godot/imported/ruby_raider_tracker.atlas-b367ce9712a42a186d890e4ce5583fa9.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

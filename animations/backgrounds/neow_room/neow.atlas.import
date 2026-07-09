@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://c6tufkmf5hgi6"
+path="res://.godot/imported/neow.atlas-ba9b0685fac26ea0f1ce566e2608144b.spatlas"
+
+[deps]
+
+source_file="res://animations/backgrounds/neow_room/neow.atlas"
+dest_files=["res://.godot/imported/neow.atlas-ba9b0685fac26ea0f1ce566e2608144b.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

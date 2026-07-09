@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://b3sjwvj7f520u"
+path="res://.godot/imported/wriggler.atlas-edf022919b4b8f42604a7ee19af906b9.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/wriggler/wriggler.atlas"
+dest_files=["res://.godot/imported/wriggler.atlas-edf022919b4b8f42604a7ee19af906b9.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

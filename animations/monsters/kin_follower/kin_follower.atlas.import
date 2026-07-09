@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://bo71r21et5cm2"
+path="res://.godot/imported/kin_follower.atlas-33c4637e1fcdc948207600148959473e.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/kin_follower/kin_follower.atlas"
+dest_files=["res://.godot/imported/kin_follower.atlas-33c4637e1fcdc948207600148959473e.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

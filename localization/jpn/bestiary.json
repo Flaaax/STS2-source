@@ -1,0 +1,19 @@
+{
+  "ACTIONS.header": "アクション",
+  "ACTION_NAME.attack": "攻撃",
+  "ACTION_NAME.cast": "詠唱",
+  "ACTION_NAME.die": "死亡",
+  "ACTION_NAME.hurt": "被弾",
+  "ACTION_NAME.revive": "復活",
+  "ACTION_NAME.stun": "スタン",
+  "DESCRIPTION.placeholder": "このモンスターの詳細はまだ明かされていない……",
+  "EVENTS.title": "イベント",
+  "LOCKED.monsterName": "[lb]ロック中[rb]",
+  "LOCKED.monsterTitle": "ロック中",
+  "MODE.viewActions": "アクションを確認",
+  "MODE.viewStats": "ステータスを確認",
+  "QUOTE_PLACEHOLDER": "[red][i]（キャラクターのセリフは未実装）[/i][/red]",
+  "STATS.layout": "遭遇数: [blue]{total}[/blue]\n討伐数: [green]{kills}[/green]\n敗北数: [red]{deaths}[/red]\n勝率: [gold]{winrate}%[/gold]",
+  "UNDER_CONSTRUCTION": "開発中",
+  "UNSEEN.monsterName": "[lb]不明[rb]"
+}

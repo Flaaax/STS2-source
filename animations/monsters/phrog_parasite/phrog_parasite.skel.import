@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://cv307ehs1pvec"
+path="res://.godot/imported/phrog_parasite.skel-aea3fc93f0768f6f772615a569f2d217.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/phrog_parasite/phrog_parasite.skel"
+dest_files=["res://.godot/imported/phrog_parasite.skel-aea3fc93f0768f6f772615a569f2d217.spskel"]
+
+[params]
+

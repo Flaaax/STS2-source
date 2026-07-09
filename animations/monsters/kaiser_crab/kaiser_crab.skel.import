@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://bjumuwyeqjkpr"
+path="res://.godot/imported/kaiser_crab.skel-72b9c9cace982b6b73ef8fc36c0c3221.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/kaiser_crab/kaiser_crab.skel"
+dest_files=["res://.godot/imported/kaiser_crab.skel-72b9c9cace982b6b73ef8fc36c0c3221.spskel"]
+
+[params]
+

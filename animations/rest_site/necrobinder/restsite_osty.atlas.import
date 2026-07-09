@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://bd8xd1mj082ub"
+path="res://.godot/imported/restsite_osty.atlas-30a17681c6aafc3653cf2318c0363409.spatlas"
+
+[deps]
+
+source_file="res://animations/rest_site/necrobinder/restsite_osty.atlas"
+dest_files=["res://.godot/imported/restsite_osty.atlas-30a17681c6aafc3653cf2318c0363409.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

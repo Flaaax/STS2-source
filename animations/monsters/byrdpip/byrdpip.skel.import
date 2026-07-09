@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://cl0kpibiy6me7"
+path="res://.godot/imported/byrdpip.skel-ac48b00f59cdcdcb71835bb80393770e.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/byrdpip/byrdpip.skel"
+dest_files=["res://.godot/imported/byrdpip.skel-ac48b00f59cdcdcb71835bb80393770e.spskel"]
+
+[params]
+

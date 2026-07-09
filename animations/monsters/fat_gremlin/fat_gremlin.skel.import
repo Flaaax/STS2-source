@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://cx3ojfdvf6g7l"
+path="res://.godot/imported/fat_gremlin.skel-070305db56a21a6c29857f5bc4fbf4ad.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/fat_gremlin/fat_gremlin.skel"
+dest_files=["res://.godot/imported/fat_gremlin.skel-070305db56a21a6c29857f5bc4fbf4ad.spskel"]
+
+[params]
+

@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://bj6kcoof045qy"
+path="res://.godot/imported/infested_guardian.skel-283bad1052a15ca9b539862dc34df4b7.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/infested_guardian/infested_guardian.skel"
+dest_files=["res://.godot/imported/infested_guardian.skel-283bad1052a15ca9b539862dc34df4b7.spskel"]
+
+[params]
+

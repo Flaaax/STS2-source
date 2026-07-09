@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://berxplnysoahx"
+path="res://.godot/imported/cubex_construct.skel-f698cb284492bf8bb225669de646b888.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/cubex_construct/cubex_construct.skel"
+dest_files=["res://.godot/imported/cubex_construct.skel-f698cb284492bf8bb225669de646b888.spskel"]
+
+[params]
+

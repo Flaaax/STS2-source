@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://c80lonanu1xm"
+path="res://.godot/imported/defect_lightning_orb.atlas-23bd721c78003edd1a808210490b6552.spatlas"
+
+[deps]
+
+source_file="res://animations/ui/combat/orbs/defect_lightning_orb.atlas"
+dest_files=["res://.godot/imported/defect_lightning_orb.atlas-23bd721c78003edd1a808210490b6552.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

@@ -1,0 +1,6 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cal01crf4wqub"]
+
+[ext_resource type="Shader" uid="uid://dfq1jl8rtvmae" path="res://shaders/vfx/common/vfx_common_subtractive.gdshader" id="1_rxitx"]
+
+[resource]
+shader = ExtResource("1_rxitx")

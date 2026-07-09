@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://casbcljvk3ak5"
+path="res://.godot/imported/test_subject_burn_vfx_back.skel-51224729c998bc9a2834040325e8ba07.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/test_subject/test_subject_burn_vfx_back.skel"
+dest_files=["res://.godot/imported/test_subject_burn_vfx_back.skel-51224729c998bc9a2834040325e8ba07.spskel"]
+
+[params]
+

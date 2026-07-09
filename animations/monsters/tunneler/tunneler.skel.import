@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://lo766err2mkq"
+path="res://.godot/imported/tunneler.skel-f3edea7f06c0cb611c5dad41657902bb.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/tunneler/tunneler.skel"
+dest_files=["res://.godot/imported/tunneler.skel-f3edea7f06c0cb611c5dad41657902bb.spskel"]
+
+[params]
+

@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://oang040glaeq"
+path="res://.godot/imported/haunted_ship.atlas-ced403b6504f53b007e7087a51013007.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/haunted_ship/haunted_ship.atlas"
+dest_files=["res://.godot/imported/haunted_ship.atlas-ced403b6504f53b007e7087a51013007.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

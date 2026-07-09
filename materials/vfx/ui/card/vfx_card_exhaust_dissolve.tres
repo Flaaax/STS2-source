@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://v3j01lvxquys"]
+
+[ext_resource type="Shader" uid="uid://deeaejjcnleg1" path="res://shaders/vfx/ui/card/exhaust/vfx_card_exhaust_dissolve_shader.gdshader" id="1_jv5rx"]
+[ext_resource type="Texture2D" uid="uid://0gcuixkqgpur" path="res://images/vfx/ui/card/exhaust/ui_card_exhaust_erosion.png" id="2_41mki"]
+
+[sub_resource type="Gradient" id="Gradient_41mki"]
+offsets = PackedFloat32Array(0, 0.54864866, 1)
+colors = PackedColorArray(0.05194843, 0, 0.03742121, 1, 0.37951225, 0, 0.5067887, 1, 1, 0, 0.31709385, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_lqoj2"]
+gradient = SubResource("Gradient_41mki")
+
+[resource]
+shader = ExtResource("1_jv5rx")
+shader_parameter/erosion_texture = ExtResource("2_41mki")
+shader_parameter/erosion_offset = 0.0
+shader_parameter/bright_offset = 0.20000000298024
+shader_parameter/bright_lut = SubResource("GradientTexture1D_lqoj2")

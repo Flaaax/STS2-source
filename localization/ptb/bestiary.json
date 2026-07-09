@@ -1,0 +1,19 @@
+{
+  "ACTIONS.header": "Ações",
+  "ACTION_NAME.attack": "Ataque",
+  "ACTION_NAME.cast": "Conjuração",
+  "ACTION_NAME.die": "Derrota",
+  "ACTION_NAME.hurt": "Dano",
+  "ACTION_NAME.revive": "Ressuscitar",
+  "ACTION_NAME.stun": "Atordoamento",
+  "DESCRIPTION.placeholder": "Informações sobre esta criatura ainda serão reveladas...",
+  "EVENTS.title": "Eventos",
+  "LOCKED.monsterName": "[lb]Bloqueado[rb]",
+  "LOCKED.monsterTitle": "Bloqueado",
+  "MODE.viewActions": "Visualizar Ações",
+  "MODE.viewStats": "Visualizar Estatísticas",
+  "QUOTE_PLACEHOLDER": "[red][i](Diálogo de personagem ainda não foi escrito)[/i][/red]",
+  "STATS.layout": "Encontros: [blue]{total}[/blue]\nVitórias: [green]{kills}[/green]\nDerrotas: [red]{deaths}[/red]\nPorcentagem de Vitórias: [gold]{winrate}%[/gold]",
+  "UNDER_CONSTRUCTION": "Em Construção",
+  "UNSEEN.monsterName": "[lb]Desconhecido[rb]"
+}

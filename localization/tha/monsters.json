@@ -1,0 +1,21 @@
+{
+  "BYRDONIS.moves.BITE.title": "กัด",
+  "BYRDONIS.moves.PECK.title": "จิก",
+  "BYRDONIS.moves.SWOOP.title": "โฉบ",
+  "BYRDONIS.name": "ณกยักษ์",
+  "BYRDONIS_NEST.moves.NOTHING.title": "ไม่มีอะไร",
+  "BYRDONIS_NEST.name": "รัง",
+  "BYRDPIP.moves.NOTHING.title": "ไม่มีอะไร",
+  "BYRDPIP.name": "ณกเจี๊ยบ",
+  "CORPSE_SLUG.name": "ทากศพ",
+  "INFESTED_PRISM.moves.WHIRLWIND.title": "พายุลมกรด",
+  "OSTY.name": "น้าผี",
+  "PUNCH_CONSTRUCT.moves.READY.title": "เตรียมพร้อม",
+  "PUNCH_CONSTRUCT.moves.STRONG_PUNCH.title": "หมัดหนัก",
+  "PUNCH_CONSTRUCT.name": "จักรกลชกต่อย",
+  "SEAPUNK.moves.BUBBLE_BURP.title": "เรอฟองน้ำ",
+  "SEAPUNK.moves.SEA_KICK.title": "ลูกเตะทะเล",
+  "SEAPUNK.name": "หร่ายเล",
+  "SOUL_FYSH.name": "ปฬาวิญญาณ",
+  "WATERFALL_GIANT.name": "ยักษ์น้ำตก"
+}

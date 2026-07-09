@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://ud3g8otmaqor"
+path="res://.godot/imported/bygone_effigy.skel-b1789699d9694fac6d7b01c1fcc47a52.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/bygone_effigy/bygone_effigy.skel"
+dest_files=["res://.godot/imported/bygone_effigy.skel-b1789699d9694fac6d7b01c1fcc47a52.spskel"]
+
+[params]
+

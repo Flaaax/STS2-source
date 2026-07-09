@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://dt7erdm7a1gky"
+path="res://.godot/imported/battleworn_dummy.skel-7d9cf8b16b8f44d52742a8d5346a6604.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/battleworn_dummy/battleworn_dummy.skel"
+dest_files=["res://.godot/imported/battleworn_dummy.skel-7d9cf8b16b8f44d52742a8d5346a6604.spskel"]
+
+[params]
+

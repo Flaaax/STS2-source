@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://i78d3m5vkjst"
+path="res://.godot/imported/turret_operator.atlas-a126ea1b6681b36dee816fd69234d1aa.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/turret_operator/turret_operator.atlas"
+dest_files=["res://.godot/imported/turret_operator.atlas-a126ea1b6681b36dee816fd69234d1aa.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

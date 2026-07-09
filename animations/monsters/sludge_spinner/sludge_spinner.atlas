@@ -1,0 +1,77 @@
+sludge_spinner.png
+size:745,173
+filter:Linear,Linear
+scale:0.332
+death blob b
+bounds:534,10,22,49
+rotate:90
+death glob a
+bounds:547,36,28,36
+offsets:2,0,30,36
+rotate:90
+death glob c
+bounds:678,105,50,66
+death glob d
+bounds:2,2,18,92
+rotate:90
+death glob e
+bounds:566,136,35,110
+rotate:90
+death puddle
+bounds:240,128,176,43
+eye
+bounds:513,34,30,32
+rotate:90
+eye shine
+bounds:653,2,22,20
+rotate:90
+oil blob 1
+bounds:675,23,28,12
+oil blob 2
+bounds:398,94,32,15
+rotate:90
+oil blob 3
+bounds:675,5,16,16
+oil blob 4
+bounds:537,134,10,10
+oil blob 5
+bounds:653,26,34,13
+rotate:90
+oil in mouth
+bounds:522,66,68,66
+oil strand 1
+bounds:418,146,146,25
+oil strand 2
+bounds:96,4,134,16
+oil strand 3
+bounds:730,121,50,13
+rotate:90
+oil strand 4
+bounds:240,89,156,37
+oil strand 5
+bounds:418,134,117,10
+shadow
+bounds:426,10,106,22
+offsets:1,0,108,24
+shel jaw top
+bounds:426,34,85,32
+shell 1
+bounds:674,37,68,66
+offsets:2,0,70,66
+shell 2
+bounds:592,62,72,80
+rotate:90
+shell 3
+bounds:240,2,92,85
+offsets:0,0,92,89
+shell 4
+bounds:334,2,85,90
+rotate:90
+shell 5
+bounds:426,68,94,64
+shell jaw bottom
+bounds:585,10,50,66
+rotate:90
+skitter_blur
+bounds:2,22,236,149
+offsets:1,0,237,149

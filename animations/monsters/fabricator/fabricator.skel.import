@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://cir4unc6ue0yx"
+path="res://.godot/imported/fabricator.skel-c38a8c29b34bb409007b045f3f609c41.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/fabricator/fabricator.skel"
+dest_files=["res://.godot/imported/fabricator.skel-c38a8c29b34bb409007b045f3f609c41.spskel"]
+
+[params]
+

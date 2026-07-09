@@ -1,0 +1,270 @@
+ironclad_shop.png
+size:1652,657
+filter:Linear,Linear
+scale:0.651
+back mask
+bounds:1248,79,98,85
+offsets:0,1,98,86
+belt
+bounds:2,2,146,58
+belt 2
+bounds:1535,86,46,60
+offsets:0,3,46,64
+rotate:90
+belt 3
+bounds:1453,33,46,78
+offsets:1,1,47,79
+bod
+bounds:1481,461,167,194
+offsets:0,1,167,195
+bottom lower arm
+bounds:1459,194,97,65
+offsets:7,1,104,68
+bottom upper arm
+bounds:150,2,58,129
+rotate:90
+bottom_hand
+bounds:1591,335,59,54
+offsets:0,0,59,57
+bottom_hand_fingers
+bounds:1535,134,59,54
+offsets:0,0,59,57
+collar_back
+bounds:1501,32,79,31
+rotate:90
+eye glow
+bounds:1534,38,49,46
+hair
+bounds:455,12,48,79
+offsets:1,0,49,79
+rotate:90
+head
+bounds:1374,3,77,95
+hip armor right back
+bounds:1597,105,30,37
+offsets:1,1,32,39
+hip bottom armor
+bounds:1596,144,37,44
+offsets:1,0,38,44
+hip top bottom
+bounds:918,2,18,27
+hips
+bounds:1382,292,154,98
+offsets:0,0,155,98
+rotate:90
+l foot
+bounds:1274,2,98,75
+offsets:0,0,98,76
+l hip armor bottom
+bounds:1482,261,117,68
+offsets:0,0,118,68
+l hip armor top
+bounds:1153,3,119,69
+offsets:1,1,120,70
+l knee
+bounds:1348,100,92,92
+offsets:0,0,95,92
+l lower leg
+bounds:578,26,88,161
+offsets:8,14,96,175
+rotate:90
+l neck armor
+bounds:536,11,40,49
+l shoulder armor bottom
+bounds:281,2,72,58
+offsets:0,1,72,60
+l shoulder armor top
+bounds:1558,190,69,54
+offsets:0,0,70,55
+rotate:90
+l upper leg
+bounds:1237,301,143,145
+neck
+bounds:844,2,72,93
+r foot
+bounds:1040,363,62,69
+r hip armor bottom
+bounds:918,31,141,64
+r hip armor top
+bounds:1104,74,142,60
+offsets:1,0,144,60
+r knee
+bounds:1442,113,91,79
+offsets:0,1,95,81
+r lower leg
+bounds:1482,331,107,128
+offsets:0,0,107,139
+r neck armor
+bounds:1601,271,62,49
+rotate:90
+r shoulder armor bottom
+bounds:1061,2,90,70
+offsets:0,1,94,71
+r shoulder armor top
+bounds:355,6,98,54
+offsets:0,1,98,56
+r upper leg
+bounds:1104,276,131,170
+offsets:1,0,132,170
+shadow
+bounds:578,345,460,87
+offsets:11,2,473,90
+shine
+bounds:1614,218,51,31
+offsets:1,1,53,33
+rotate:90
+slash
+bounds:2,62,574,370
+offsets:0,0,596,370
+slash2
+bounds:2,434,1077,221
+offsets:382,309,1497,691
+sword blade
+bounds:1081,448,207,398
+rotate:90
+sword_handle
+bounds:1238,166,100,133
+offsets:1,0,102,134
+top hand
+bounds:1591,391,68,59
+offsets:0,0,69,59
+rotate:90
+top lower arm
+bounds:1340,194,117,96
+offsets:0,2,117,98
+top mask
+bounds:741,30,84,101
+offsets:0,1,84,102
+rotate:90
+top upper arm
+bounds:1104,136,138,132
+rotate:90
+zaps1
+bounds:578,116,274,227
+offsets:1,1,276,228
+zaps_2
+bounds:854,97,248,246
+offsets:5,5,255,253
+
+ironclad_shop_2.png
+size:405,509
+filter:Linear,Linear
+scale:0.651
+attack/bod attack
+bounds:2,352,155,172
+offsets:0,0,156,172
+rotate:90
+attack/bottom hand attack
+bounds:2,3,69,63
+offsets:1,1,71,64
+attack/bottom lower arm attack
+bounds:134,159,124,82
+offsets:2,0,129,87
+attack/bottom upper arm attack
+bounds:176,376,131,146
+rotate:90
+attack/front arm attack
+bounds:176,243,138,131
+attack/front bracer attack
+bounds:188,73,84,65
+offsets:5,4,124,71
+rotate:90
+attack/front hand attack
+bounds:159,14,59,57
+attack/l ankle attack
+bounds:255,70,69,49
+offsets:0,0,71,50
+rotate:90
+attack/l foot attack
+bounds:324,329,66,86
+offsets:1,0,67,86
+attack/l knee attack
+bounds:2,139,98,91
+offsets:3,0,104,91
+attack/l leg attack
+bounds:316,175,87,152
+offsets:5,0,92,152
+attack/l neck armor attack
+bounds:220,11,57,58
+offsets:0,0,59,58
+rotate:90
+attack/l shoulder bottom attack
+bounds:324,417,90,70
+rotate:90
+attack/l shoulder bottom back attack
+bounds:2,68,69,78
+offsets:15,1,84,92
+rotate:90
+attack/l shoulder top attack
+bounds:260,141,100,54
+rotate:90
+attack/r foot attack
+bounds:306,2,78,72
+attack/r knee attack
+bounds:316,76,97,83
+offsets:4,2,101,87
+rotate:90
+attack/r lower leg attack
+bounds:2,232,118,130
+rotate:90
+attack/r neck armor attack
+bounds:134,308,28,42
+attack/r shoulder bottom attack
+bounds:102,76,84,81
+offsets:6,0,90,98
+attack/r shoulder top attack
+bounds:82,9,65,75
+offsets:0,1,66,77
+rotate:90
+
+ironclad_shop_3.png
+size:552,279
+filter:Linear,Linear
+scale:0.651
+death/body death
+bounds:2,97,221,180
+death/bottom shoulder death
+bounds:177,6,89,75
+offsets:1,2,90,77
+rotate:90
+death/bracer_death
+bounds:225,200,146,77
+offsets:1,1,147,78
+death/hair death
+bounds:254,24,74,93
+rotate:90
+death/hand death
+bounds:494,185,92,56
+offsets:1,0,93,56
+rotate:90
+death/head death
+bounds:373,180,119,97
+offsets:0,0,120,97
+death/knee_death
+bounds:349,2,76,90
+offsets:1,0,77,90
+rotate:90
+death/lower arm_death
+bounds:350,80,115,98
+death/lower leg_death
+bounds:2,19,76,173
+offsets:2,0,79,173
+rotate:90
+death/open hand_death
+bounds:441,6,70,72
+offsets:0,1,70,73
+death/top shoulder death
+bounds:467,80,98,77
+offsets:11,10,120,96
+rotate:90
+death/upper arm_death
+bounds:225,100,98,123
+offsets:2,1,100,124
+rotate:90
+
+ironclad_shop_4.png
+size:82,30
+filter:Linear,Linear
+scale:0.651
+slash/slash_placeholder
+bounds:2,2,78,26

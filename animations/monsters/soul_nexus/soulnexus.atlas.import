@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://dkgirctsvwh3u"
+path="res://.godot/imported/soulnexus.atlas-7e347e598df253d481f1be580936a77c.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/soul_nexus/soulnexus.atlas"
+dest_files=["res://.godot/imported/soulnexus.atlas-7e347e598df253d481f1be580936a77c.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

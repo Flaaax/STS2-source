@@ -1,0 +1,40 @@
+restsite_osty.png
+size:1097,599
+filter:Linear,Linear
+scale:0.817
+cast shadow
+bounds:549,231,366,254
+offsets:0,10,366,264
+rotate:90
+flame
+bounds:276,210,387,271
+offsets:0,0,387,273
+rotate:90
+hand base
+bounds:954,229,236,141
+offsets:2,0,238,141
+rotate:90
+highlight
+bounds:587,7,337,222
+index finger
+bounds:276,2,156,206
+offsets:1,1,158,207
+index_shadz
+bounds:805,475,60,122
+offsets:0,1,60,123
+middle finger
+bounds:805,250,147,215
+offsets:0,1,148,216
+osty shadow
+bounds:2,47,550,272
+offsets:5,2,556,275
+rotate:90
+pinky
+bounds:926,467,151,130
+offsets:0,0,153,130
+ring finger
+bounds:434,21,151,187
+offsets:1,0,152,187
+thumb
+bounds:926,52,147,175
+offsets:0,1,147,176

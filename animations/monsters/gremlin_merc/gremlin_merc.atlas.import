@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://oab0ydgv5nxm"
+path="res://.godot/imported/gremlin_merc.atlas-dc65ff7826ccc4549363feb78ca59f2b.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/gremlin_merc/gremlin_merc.atlas"
+dest_files=["res://.godot/imported/gremlin_merc.atlas-dc65ff7826ccc4549363feb78ca59f2b.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

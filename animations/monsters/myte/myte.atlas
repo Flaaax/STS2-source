@@ -1,0 +1,139 @@
+myte.png
+size:570,1025
+filter:Linear,Linear
+scale:0.319
+bod
+bounds:366,811,212,189
+rotate:90
+bottom back leg 1
+bounds:489,16,42,41
+offsets:1,0,43,41
+rotate:90
+bottom back leg 2
+bounds:530,170,36,57
+bottom back leg 3
+bounds:360,391,58,174
+rotate:90
+bottom front leg 1
+bounds:444,13,43,45
+offsets:1,1,44,46
+bottom front leg 2
+bounds:46,173,44,58
+bottom front leg 3
+bounds:363,578,47,189
+rotate:90
+bottom lil leg 1
+bounds:557,980,9,43
+bottom lil leg 2
+bounds:543,474,23,25
+rotate:90
+bottom lil leg 3
+bounds:92,173,26,58
+carapace 1
+bounds:2,2,166,136
+rotate:90
+carapace 2
+bounds:274,611,129,87
+rotate:90
+feather 1
+bounds:274,742,53,88
+offsets:0,0,53,89
+rotate:90
+feather 2
+bounds:274,861,65,90
+offsets:0,0,65,91
+rotate:90
+feather 3
+bounds:536,380,27,67
+feather 4
+bounds:547,499,19,77
+offsets:0,0,19,78
+ooze
+bounds:240,309,108,45
+orifice
+bounds:496,77,91,72
+rotate:90
+pincer 1
+bounds:274,797,62,90
+rotate:90
+pincer 2
+bounds:265,551,58,95
+offsets:0,0,59,95
+rotate:90
+pincer 3
+bounds:2,172,54,42
+offsets:0,0,55,42
+rotate:90
+pincer 4
+bounds:530,335,37,43
+projectile
+bounds:265,457,92,94
+offsets:1,0,100,94
+rotate:90
+shadow
+bounds:2,928,362,95
+offsets:4,1,373,97
+suckwind
+bounds:557,677,257,5
+rotate:90
+throat
+bounds:444,60,46,41
+top back leg 1
+bounds:287,233,45,74
+top back leg 2
+bounds:395,103,24,87
+rotate:90
+top back leg 3
+bounds:362,522,54,183
+rotate:90
+top front leg 1
+bounds:240,231,45,76
+offsets:0,0,46,76
+top front leg 2
+bounds:530,229,36,87
+top front leg 3
+bounds:361,451,69,180
+rotate:90
+top lil leg 1
+bounds:557,936,9,42
+top lil leg 2
+bounds:543,449,23,25
+rotate:90
+top lil leg 3
+bounds:120,173,26,58
+toxic_drop
+bounds:530,318,37,15
+toxic_goo00
+bounds:395,24,47,51
+offsets:174,129,327,327
+toxic_goo01
+bounds:265,356,99,93
+offsets:151,109,327,327
+rotate:90
+toxic_goo02
+bounds:360,228,161,168
+offsets:89,72,327,327
+rotate:90
+toxic_goo03
+bounds:366,627,182,189
+offsets:74,64,327,327
+rotate:90
+toxic_goo04
+bounds:2,233,212,236
+offsets:55,33,327,327
+rotate:90
+toxic_goo05
+bounds:148,6,220,245
+offsets:47,28,327,327
+rotate:90
+toxic_goo06
+bounds:2,447,234,261
+offsets:37,20,327,327
+rotate:90
+toxic_goo07
+bounds:2,683,243,270
+offsets:31,15,327,327
+rotate:90
+wind_ring
+bounds:395,129,99,97
+offsets:1,1,103,100

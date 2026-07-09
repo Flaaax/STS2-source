@@ -1,0 +1,65 @@
+battleworn_dummy.png
+size:396,502
+filter:Linear,Linear
+scale:0.33
+bod
+bounds:2,305,184,195
+offsets:0,0,184,196
+bottom weight
+bounds:164,145,97,69
+offsets:0,1,97,70
+rotate:90
+chest arrows
+bounds:324,139,198,70
+rotate:90
+cracked_shield
+bounds:2,47,160,195
+offsets:2,0,162,195
+eye shine
+bounds:295,170,36,21
+offsets:0,10,40,37
+rotate:90
+eye sparkle
+bounds:74,4,41,45
+rotate:90
+head
+bounds:239,208,83,101
+head arrow
+bounds:164,14,44,67
+rotate:90
+jaw
+bounds:235,153,58,53
+jaw back
+bounds:235,141,14,10
+l arm
+bounds:233,20,117,38
+neck
+bounds:290,316,21,23
+rotate:90
+orb
+bounds:266,315,22,22
+orb glow
+bounds:121,9,36,36
+offsets:1,1,38,38
+orb_energy
+bounds:295,146,21,22
+offsets:2,1,24,25
+post
+bounds:188,311,26,76
+rotate:90
+r arm
+bounds:2,2,70,43
+offsets:0,0,92,49
+rope
+bounds:352,18,33,40
+shadow
+bounds:2,244,235,59
+offsets:1,0,236,60
+shield
+bounds:188,339,161,204
+offsets:1,0,162,204
+rotate:90
+sword
+bounds:164,60,77,225
+offsets:0,1,77,226
+rotate:90

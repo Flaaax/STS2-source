@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://dl4v043cl5qx5"
+path="res://.godot/imported/devoted_sculptor.atlas-ec63d38159e4516c970059767e2d68cd.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/devoted_sculptor/devoted_sculptor.atlas"
+dest_files=["res://.godot/imported/devoted_sculptor.atlas-ec63d38159e4516c970059767e2d68cd.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

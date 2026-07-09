@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://cu62fn2eeqv4q"
+path="res://.godot/imported/architect_bg_animate.skel-68951e498626c0be3cf72164db8a7ad1.spskel"
+
+[deps]
+
+source_file="res://scenes/backgrounds/the_architect_event_encounter/architect_bg_animate.skel"
+dest_files=["res://.godot/imported/architect_bg_animate.skel-68951e498626c0be3cf72164db8a7ad1.spskel"]
+
+[params]
+

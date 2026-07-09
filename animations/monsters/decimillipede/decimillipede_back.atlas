@@ -1,0 +1,285 @@
+decimillipede.png
+size:1317,1540
+filter:Linear,Linear
+scale:0.598
+drip1
+bounds:1301,387,14,149
+offsets:0,0,14,150
+drip2
+bounds:1300,1398,13,96
+glob1
+bounds:1283,183,32,50
+offsets:0,1,32,51
+glob2
+bounds:1180,124,57,18
+offsets:0,14,57,32
+rotate:90
+glob3
+bounds:1196,54,26,46
+offsets:0,1,48,47
+glob4
+bounds:1116,183,47,41
+glob5
+bounds:1150,25,75,25
+offsets:0,1,75,26
+rotate:90
+glob6
+bounds:1165,200,54,38
+offsets:0,1,55,39
+glob7
+bounds:1222,150,29,38
+offsets:0,1,29,39
+holes_l
+bounds:326,646,464,228
+offsets:0,0,766,228
+rotate:90
+holes_r
+bounds:326,254,390,228
+offsets:346,0,736,228
+rotate:90
+ooze_l
+bounds:849,13,134,32
+offsets:1,0,136,32
+ooze_r
+bounds:702,13,145,35
+scar_1
+bounds:313,128,124,190
+offsets:0,1,124,191
+rotate:90
+scar_2
+bounds:313,34,92,200
+rotate:90
+scar_2_shriveled
+bounds:515,18,89,185
+offsets:1,14,90,199
+rotate:90
+scar_2_shriveled_front
+bounds:702,50,57,147
+offsets:929,178,1587,773
+rotate:90
+seg1 arms 1
+bounds:1071,7,77,82
+offsets:0,0,77,83
+seg1 arms 10
+bounds:956,113,27,83
+seg1 arms 11
+bounds:190,31,38,121
+offsets:1,0,39,122
+rotate:90
+seg1 arms 12
+bounds:1010,226,32,139
+offsets:1,0,33,139
+rotate:90
+seg1 arms 13
+bounds:1045,1186,17,220
+rotate:90
+seg1 arms 14
+bounds:956,198,27,204
+seg1 arms 15
+bounds:2,32,37,186
+offsets:1,0,38,186
+rotate:90
+seg1 arms 16
+bounds:1221,212,26,60
+offsets:0,1,26,61
+rotate:90
+seg1 arms 17
+bounds:499,1112,47,58
+seg1 arms 18
+bounds:1222,126,36,22
+offsets:1,0,37,22
+seg1 arms 19
+bounds:1180,102,29,20
+offsets:1,1,30,21
+seg1 arms 2
+bounds:985,92,89,97
+offsets:0,1,89,98
+rotate:90
+seg1 arms 20
+bounds:1253,158,30,28
+offsets:0,0,30,29
+rotate:90
+seg1 arms 21
+bounds:1165,1172,16,12
+offsets:1,1,18,14
+seg1 arms 3
+bounds:1084,91,90,57
+rotate:90
+seg1 arms 4
+bounds:1143,102,35,79
+offsets:0,0,35,80
+seg1 arms 5
+bounds:1224,83,25,41
+offsets:1,0,26,41
+seg1 arms 6
+bounds:1251,89,17,35
+seg1 arms 7
+bounds:1267,1172,18,41
+rotate:90
+seg1 arms 8
+bounds:515,124,16,39
+rotate:90
+seg1 arms 9
+bounds:505,142,18,49
+offsets:1,0,19,50
+rotate:90
+seg2 arms 1
+bounds:1177,49,17,51
+seg2 arms 10
+bounds:313,397,11,80
+seg2 arms 11
+bounds:1300,1304,13,92
+offsets:1,0,14,92
+seg2 arms 12
+bounds:1217,1519,19,98
+rotate:90
+seg2 arms 13
+bounds:1217,1496,21,91
+offsets:0,0,22,91
+rotate:90
+seg2 arms 14
+bounds:1301,235,14,45
+offsets:5,0,19,45
+seg2 arms 15
+bounds:1093,1172,41,12
+offsets:0,0,41,13
+seg2 arms 16
+bounds:1150,7,29,16
+offsets:0,1,30,17
+seg2 arms 17
+bounds:1165,183,29,15
+offsets:4,0,34,36
+seg2 arms 18
+bounds:1136,1172,27,12
+offsets:0,1,28,13
+seg2 arms 19
+bounds:313,366,29,11
+offsets:1,0,31,11
+rotate:90
+seg2 arms 2
+bounds:509,3,13,75
+offsets:2,1,15,77
+rotate:90
+seg2 arms 3
+bounds:313,479,11,85
+offsets:0,1,11,86
+seg2 arms 4
+bounds:985,256,23,146
+offsets:1,0,25,146
+seg2 arms 5
+bounds:1010,260,21,156
+offsets:1,0,22,156
+rotate:90
+seg2 arms 6
+bounds:313,13,19,130
+offsets:1,0,20,131
+rotate:90
+seg2 arms 7
+bounds:985,183,16,112
+offsets:0,0,17,112
+rotate:90
+seg2 arms 8
+bounds:1301,282,14,103
+seg2 arms 9
+bounds:1300,1219,13,83
+offsets:1,0,14,83
+seg3 arm 1
+bounds:985,201,23,129
+offsets:1,0,25,130
+rotate:90
+seg3 arm 10
+bounds:505,162,47,90
+offsets:0,0,48,90
+seg3 arm 11
+bounds:985,226,28,8
+offsets:1,2,30,11
+rotate:90
+seg3 arm 12
+bounds:586,2,27,14
+offsets:0,0,28,15
+seg3 arm 13
+bounds:1045,1172,46,12
+offsets:0,0,46,13
+seg3 arm 14
+bounds:1224,47,34,20
+offsets:1,1,36,23
+rotate:90
+seg3 arm 15
+bounds:1300,1192,25,15
+offsets:0,1,25,16
+rotate:90
+seg3 arm 16
+bounds:1283,154,30,27
+offsets:1,0,31,28
+seg3 arm 17
+bounds:980,54,36,89
+offsets:1,1,38,90
+rotate:90
+seg3 arm 18
+bounds:1138,1496,42,77
+offsets:0,1,42,78
+rotate:90
+seg3 arm 2
+bounds:155,2,27,145
+offsets:0,0,28,147
+rotate:90
+seg3 arm 3
+bounds:2,2,27,151
+offsets:0,1,28,152
+rotate:90
+seg3 arm 4
+bounds:1168,240,41,131
+offsets:0,0,41,132
+rotate:90
+seg3 arm 5
+bounds:445,3,29,62
+offsets:1,0,30,62
+rotate:90
+seg3 arm 6
+bounds:1221,190,20,58
+offsets:1,0,21,58
+rotate:90
+seg3 arm 7
+bounds:1200,135,20,46
+offsets:0,1,20,47
+seg3 arm 8
+bounds:985,13,39,81
+offsets:1,1,41,83
+rotate:90
+seg3 arm 9
+bounds:851,47,60,127
+rotate:90
+seg_2_fx_bottom
+bounds:1045,1205,289,253
+rotate:90
+seg_2_fx_top
+bounds:1010,855,294,315
+offsets:0,1,295,316
+seg_3_fx
+bounds:2,566,544,322
+rotate:90
+segment 1
+bounds:556,788,452,382
+offsets:0,0,495,382
+segment 1 shriveled
+bounds:2,1112,495,382
+segment 2 shriveled
+bounds:556,109,398,293
+offsets:1,50,399,343
+segment 3
+bounds:499,1172,544,322
+segment 3 shriveled
+bounds:2,71,493,309
+offsets:40,31,541,353
+rotate:90
+segment_1_fx
+bounds:556,404,452,382
+offsets:0,0,495,382
+shadow_v2
+bounds:2,1496,1134,42
+wormy_bottom_mid
+bounds:1010,283,289,253
+offsets:490,225,1580,771
+wormy_top_mid
+bounds:1010,538,294,315
+offsets:0,1,295,316

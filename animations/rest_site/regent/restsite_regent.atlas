@@ -1,0 +1,58 @@
+restsite_regent.png
+size:1833,713
+filter:Linear,Linear
+scale:1.01
+body
+bounds:1730,300,100,101
+offsets:1,0,101,102
+rotate:90
+bottom leg
+bounds:1615,13,113,180
+offsets:2,8,116,189
+chain
+bounds:15,3,60,20
+eye
+bounds:2,2,21,11
+offsets:2,1,25,13
+rotate:90
+ground shadow
+bounds:1113,23,377,285
+offsets:1,1,379,287
+rotate:90
+guys
+bounds:1400,175,209,225
+offsets:1,1,212,227
+hands
+bounds:1400,2,171,111
+offsets:6,2,178,115
+rotate:90
+head
+bounds:1513,2,100,171
+offsets:0,0,101,172
+light
+bounds:1113,402,309,718
+offsets:32,1,341,719
+rotate:90
+lower arm
+bounds:684,3,97,88
+offsets:0,5,97,94
+neck
+bounds:783,32,54,59
+offsets:1,0,57,60
+shadow
+bounds:684,93,427,618
+shoulders
+bounds:839,35,143,56
+offsets:0,1,144,57
+throne
+bounds:2,25,340,686
+offsets:1,5,348,693
+throne shadow
+bounds:344,25,338,686
+offsets:1,2,340,690
+top arm
+bounds:1730,169,94,129
+offsets:1,0,221,129
+top leg
+bounds:1611,195,102,205
+offsets:1,2,105,208

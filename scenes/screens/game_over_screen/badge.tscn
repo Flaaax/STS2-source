@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdtk338q7g825"]
+
+[ext_resource type="Script" uid="uid://cpinnm7y0c2f4" path="res://src/Core/Nodes/Screens/GameOverScreen/NBadge.cs" id="1_cv65r"]
+[ext_resource type="PackedScene" uid="uid://bgy88bk44xxvk" path="res://scenes/ui/selection_reticle.tscn" id="2_byvcm"]
+[ext_resource type="Texture2D" uid="uid://hio334p3oc77" path="res://images/ui/game_over_screen/badge_bronze.png" id="2_fbkwr"]
+
+[node name="Badge" type="Control"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 3
+anchors_preset = 0
+focus_mode = 2
+script = ExtResource("1_cv65r")
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="SelectionReticle" parent="." instance=ExtResource("2_byvcm")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(32, 32)
+
+[node name="BadgeHolder" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_fbkwr")
+expand_mode = 1
+
+[node name="Icon" type="TextureRect" parent="BadgeHolder"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1

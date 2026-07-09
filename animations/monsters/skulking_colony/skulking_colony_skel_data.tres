@@ -1,0 +1,43 @@
+[gd_resource type="SpineSkeletonDataResource" load_steps=10 format=3 uid="uid://cmayt3ru6idbn"]
+
+[ext_resource type="SpineAtlasResource" uid="uid://b05jh360prw1c" path="res://animations/monsters/skulking_colony/skulking_colony.atlas" id="1_hw162"]
+[ext_resource type="SpineSkeletonFileResource" uid="uid://p211sb7gl6w8" path="res://animations/monsters/skulking_colony/skulking_colony.skel" id="2_r2bdi"]
+
+[sub_resource type="SpineAnimationMix" id="SpineAnimationMix_gtgwp"]
+from = "attack_double"
+to = "idle_loop"
+mix = 0.05
+
+[sub_resource type="SpineAnimationMix" id="SpineAnimationMix_hw162"]
+from = "idle_loop"
+to = "hurt"
+mix = 0.02
+
+[sub_resource type="SpineAnimationMix" id="SpineAnimationMix_r2bdi"]
+from = "idle_loop"
+to = "die"
+mix = 0.02
+
+[sub_resource type="SpineAnimationMix" id="SpineAnimationMix_qlmnl"]
+from = "hurt"
+to = "hurt"
+
+[sub_resource type="SpineAnimationMix" id="SpineAnimationMix_f4q3e"]
+from = "hurt"
+to = "die"
+
+[sub_resource type="SpineAnimationMix" id="SpineAnimationMix_2bamy"]
+from = "attack_buff"
+to = "idle_loop"
+mix = 0.1
+
+[sub_resource type="SpineAnimationMix" id="SpineAnimationMix_hwxsi"]
+from = "idle_loop"
+to = "attack"
+mix = 0.02
+
+[resource]
+atlas_res = ExtResource("1_hw162")
+skeleton_file_res = ExtResource("2_r2bdi")
+default_mix = 0.05
+animation_mixes = [SubResource("SpineAnimationMix_gtgwp"), SubResource("SpineAnimationMix_hw162"), SubResource("SpineAnimationMix_r2bdi"), SubResource("SpineAnimationMix_qlmnl"), SubResource("SpineAnimationMix_f4q3e"), SubResource("SpineAnimationMix_2bamy"), SubResource("SpineAnimationMix_hwxsi")]

@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://c0ytfmi0lk7uv"
+path="res://.godot/imported/characterselect_defect.skel-6d4ec1fe706d5c1ebfa590e832f4675a.spskel"
+
+[deps]
+
+source_file="res://animations/character_select/defect/characterselect_defect.skel"
+dest_files=["res://.godot/imported/characterselect_defect.skel-6d4ec1fe706d5c1ebfa590e832f4675a.spskel"]
+
+[params]
+

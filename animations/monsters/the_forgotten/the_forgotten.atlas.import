@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://8xv1drftjqgg"
+path="res://.godot/imported/the_forgotten.atlas-bebeecd790df9a574c7f615ee354939e.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/the_forgotten/the_forgotten.atlas"
+dest_files=["res://.godot/imported/the_forgotten.atlas-bebeecd790df9a574c7f615ee354939e.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

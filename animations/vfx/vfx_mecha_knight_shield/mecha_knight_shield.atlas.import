@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://dmrpoog8pl2tr"
+path="res://.godot/imported/mecha_knight_shield.atlas-10de6a30a2ee1d7057825608f2c101b0.spatlas"
+
+[deps]
+
+source_file="res://animations/vfx/vfx_mecha_knight_shield/mecha_knight_shield.atlas"
+dest_files=["res://.godot/imported/mecha_knight_shield.atlas-10de6a30a2ee1d7057825608f2c101b0.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3y6uaqy6ubre"]
+
+[ext_resource type="PackedScene" uid="uid://b281hpcqhjart" path="res://scenes/vfx/ui/card/afflictions/galvanized/vfx_ui_card_affliction_galvanized.tscn" id="1_mmsxs"]
+
+[node name="Galvanic" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="vfx_ui_card_affliction_galvanized" parent="." instance=ExtResource("1_mmsxs")]
+layout_mode = 1

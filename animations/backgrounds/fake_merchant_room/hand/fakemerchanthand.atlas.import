@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://dietptpukirwh"
+path="res://.godot/imported/fakemerchanthand.atlas-b8fcbc7455c7e14c0470e45afd1b60d7.spatlas"
+
+[deps]
+
+source_file="res://animations/backgrounds/fake_merchant_room/hand/fakemerchanthand.atlas"
+dest_files=["res://.godot/imported/fakemerchanthand.atlas-b8fcbc7455c7e14c0470e45afd1b60d7.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

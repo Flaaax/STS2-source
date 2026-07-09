@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://b8rwx48do8ygo"
+path="res://.godot/imported/mawler.atlas-e1e0e62f0f4ab1f4f04626483b04bc00.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/mawler/mawler.atlas"
+dest_files=["res://.godot/imported/mawler.atlas-e1e0e62f0f4ab1f4f04626483b04bc00.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://c8g0midvhfyyl"
+path="res://.godot/imported/necrobinder_shop.atlas-cd9d89725fc91b5f3fb8b08f48bd0c66.spatlas"
+
+[deps]
+
+source_file="res://animations/merchant/necrobinder/necrobinder_shop.atlas"
+dest_files=["res://.godot/imported/necrobinder_shop.atlas-cd9d89725fc91b5f3fb8b08f48bd0c66.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

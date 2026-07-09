@@ -1,0 +1,82 @@
+defect_orbs.png
+size:253,267
+filter:Linear,Linear
+scale:0.15
+blobby_shines
+bounds:227,221,23,44
+dark orb back black
+bounds:115,107,45,47
+dark orb dark swirls
+bounds:63,155,50,50
+dark orb dots black
+bounds:180,27,35,31
+dark orb dots white
+bounds:2,2,34,39
+rotate:90
+dark orb fancy shade
+bounds:162,117,45,39
+offsets:2,0,47,42
+rotate:90
+dark orb light edge
+bounds:123,215,50,50
+dark orb light swirl
+bounds:2,38,50,50
+dark orb rim
+bounds:63,207,58,58
+dark orb rim lights
+bounds:2,90,54,52
+offsets:0,0,54,53
+dark orb shine
+bounds:180,10,15,21
+rotate:90
+frost orb shard1
+bounds:110,58,47,48
+rotate:90
+frost orb shard2
+bounds:115,156,40,49
+frost orb shard3
+bounds:63,112,41,50
+offsets:12,0,53,50
+rotate:90
+frost particle
+bounds:162,84,31,39
+offsets:2,1,35,41
+rotate:90
+glass/glass_base
+bounds:175,215,50,50
+glass/shines
+bounds:106,8,45,48
+glass/specks
+bounds:217,31,26,27
+inner_core
+bounds:203,88,40,38
+offsets:3,2,45,42
+lightning orb core
+bounds:207,128,42,42
+lightning orb lightning grid
+bounds:2,205,59,60
+lightning orb shine
+bounds:160,61,10,21
+ligntning orb backing
+bounds:58,60,50,50
+plasma orb edge
+bounds:2,144,59,59
+plasma orb endarkening
+bounds:207,172,41,44
+offsets:0,0,42,44
+rotate:90
+plasma orb fill
+bounds:54,8,50,50
+plasma orb line 1
+bounds:153,10,25,46
+plasma orb line 2
+bounds:203,60,26,39
+offsets:0,1,26,40
+rotate:90
+plasma orb line 3
+bounds:203,8,12,17
+offsets:0,0,12,18
+plasma orb lines
+bounds:157,164,48,49
+shine fill
+bounds:172,69,17,13

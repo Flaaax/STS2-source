@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://c1o8oh1wgvygo"
+path="res://.godot/imported/stabbot.skel-cef96f081e6e8d633cdcb1ac3fefa53e.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/stabbot/stabbot.skel"
+dest_files=["res://.godot/imported/stabbot.skel-cef96f081e6e8d633cdcb1ac3fefa53e.spskel"]
+
+[params]
+

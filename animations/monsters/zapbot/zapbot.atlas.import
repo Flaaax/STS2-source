@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://cuc5lmxth5gt2"
+path="res://.godot/imported/zapbot.atlas-c272586b7098669899a2d3ec37fd4dd9.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/zapbot/zapbot.atlas"
+dest_files=["res://.godot/imported/zapbot.atlas-c272586b7098669899a2d3ec37fd4dd9.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

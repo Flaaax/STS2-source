@@ -1,0 +1,79 @@
+crossbow_ruby_raider.png
+size:331,523
+filter:Linear,Linear
+scale:0.279
+arrow
+bounds:226,101,48,38
+back lower arm
+bounds:276,130,49,31
+back upper arm
+bounds:214,2,45,33
+rotate:90
+bottom shoulder
+bounds:276,163,50,57
+cape
+bounds:2,301,241,220
+chestplate
+bounds:226,222,61,76
+offsets:5,0,66,76
+crossbow
+bounds:71,176,153,123
+crossbow hand l
+bounds:2,2,20,22
+rotate:90
+crossbow hand r
+bounds:278,48,34,23
+crossbow handle
+bounds:185,19,27,23
+offsets:0,0,34,23
+hand
+bounds:276,18,33,28
+helmet
+bounds:245,407,114,66
+rotate:90
+helmet_feather
+bounds:26,4,18,35
+rotate:90
+helmet_fill
+bounds:313,455,66,13
+rotate:90
+hip armor
+bounds:129,101,95,73
+l foot
+bounds:289,238,59,40
+rotate:90
+l lower leg
+bounds:71,57,56,117
+l upper leg
+bounds:129,44,55,83
+rotate:90
+neck
+bounds:249,5,42,25
+rotate:90
+neck_ruffle
+bounds:278,73,33,32
+notch
+bounds:313,444,4,9
+r foot
+bounds:71,7,52,48
+r lower leg
+bounds:245,300,44,105
+r upper leg
+bounds:226,141,48,79
+shadow
+bounds:2,24,275,67
+offsets:3,1,279,69
+rotate:90
+string_tight
+bounds:291,299,106,26
+rotate:90
+top lower arm
+bounds:276,107,21,50
+rotate:90
+top shoulder
+bounds:214,49,50,62
+rotate:90
+top upper arm
+bounds:125,15,27,58
+offsets:2,0,29,58
+rotate:90

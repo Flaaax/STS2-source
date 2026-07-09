@@ -1,0 +1,14 @@
+{
+  "ACTIONS.header": "การกระทำ",
+  "ACTION_NAME.attack": "โจมตี",
+  "ACTION_NAME.cast": "ร่ายคาถา",
+  "ACTION_NAME.die": "ตาย",
+  "ACTION_NAME.hurt": "ทำร้าย",
+  "ACTION_NAME.revive": "ชุบชีวิต",
+  "ACTION_NAME.stun": "สตัน",
+  "DESCRIPTION.placeholder": "รอการเปิดเผยข้อมูลของมอนสเตอร์ตัวนี้...",
+  "LOCKED.monsterName": "[lb]ล็อก[rb]",
+  "LOCKED.monsterTitle": "ล็อก",
+  "UNDER_CONSTRUCTION": "อยู่ระหว่างจัดทำ",
+  "UNSEEN.monsterName": "[lb]ปริศนา[rb]"
+}

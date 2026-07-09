@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://dv6r6gwlrmq2k"
+path="res://.godot/imported/entomancer.atlas-453a5647a8fa6fd09cb8dda9f58e91cf.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/entomancer/entomancer.atlas"
+dest_files=["res://.godot/imported/entomancer.atlas-453a5647a8fa6fd09cb8dda9f58e91cf.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

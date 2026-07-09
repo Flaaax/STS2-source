@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://c1f8geucoove2"
+path="res://.godot/imported/laser.skel-bc6a623a0479ef298b07eb657c48c686.spskel"
+
+[deps]
+
+source_file="res://animations/vfx/vfx_laser/laser.skel"
+dest_files=["res://.godot/imported/laser.skel-bc6a623a0479ef298b07eb657c48c686.spskel"]
+
+[params]
+

@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://7d2tdop6gxn8"
+path="res://.godot/imported/sovereign_blade.atlas-1ffe916f593df7248357759c5960228f.spatlas"
+
+[deps]
+
+source_file="res://animations/vfx/vfx_sovereign_blade/sovereign_blade.atlas"
+dest_files=["res://.godot/imported/sovereign_blade.atlas-1ffe916f593df7248357759c5960228f.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

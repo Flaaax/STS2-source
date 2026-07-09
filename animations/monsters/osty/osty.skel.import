@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://d4nv1iw5u4vql"
+path="res://.godot/imported/osty.skel-38387c584c49e392370797e8a1fbe851.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/osty/osty.skel"
+dest_files=["res://.godot/imported/osty.skel-38387c584c49e392370797e8a1fbe851.spskel"]
+
+[params]
+

@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://d184jamnup0to"
+path="res://.godot/imported/fat_gremlin.atlas-4515aa617dbb15aef279b2fb5eb53d0f.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/fat_gremlin/fat_gremlin.atlas"
+dest_files=["res://.godot/imported/fat_gremlin.atlas-4515aa617dbb15aef279b2fb5eb53d0f.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

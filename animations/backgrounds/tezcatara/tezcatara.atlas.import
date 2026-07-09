@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://dgmvyr6akwrh7"
+path="res://.godot/imported/tezcatara.atlas-6ec0d8287cf278cc8efb34becc96aa4c.spatlas"
+
+[deps]
+
+source_file="res://animations/backgrounds/tezcatara/tezcatara.atlas"
+dest_files=["res://.godot/imported/tezcatara.atlas-6ec0d8287cf278cc8efb34becc96aa4c.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

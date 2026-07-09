@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://d4nvau82v6q20"
+path="res://.godot/imported/vantom.skel-93973b52b000f114f4513adf4f55caa5.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/vantom/vantom.skel"
+dest_files=["res://.godot/imported/vantom.skel-93973b52b000f114f4513adf4f55caa5.spskel"]
+
+[params]
+

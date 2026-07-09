@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://dkktravb17sj8"
+path="res://.godot/imported/false_queen_cages.skel-fb012ce12ba0173c44efa739ed783767.spskel"
+
+[deps]
+
+source_file="res://scenes/backgrounds/queen_boss/false_queen_cages.skel"
+dest_files=["res://.godot/imported/false_queen_cages.skel-fb012ce12ba0173c44efa739ed783767.spskel"]
+
+[params]
+

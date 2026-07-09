@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://d4fj07egu78og"
+path="res://.godot/imported/logo_megacrit_animate.atlas-444046dcfc34b5c75d8c8737bf78d793.spatlas"
+
+[deps]
+
+source_file="res://animations/ui/logo/logo_megacrit_animate.atlas"
+dest_files=["res://.godot/imported/logo_megacrit_animate.atlas-444046dcfc34b5c75d8c8737bf78d793.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

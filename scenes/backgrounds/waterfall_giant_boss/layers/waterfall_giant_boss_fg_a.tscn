@@ -1,0 +1,78 @@
+[gd_scene load_steps=12 format=3 uid="uid://bxr8al28l72fb"]
+
+[ext_resource type="Texture2D" uid="uid://gvoysorwhaiq" path="res://images/vfx/monsters/the_insatiable/sand_cloud.png" id="1_00qcb"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_77pri"]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_gjvkr"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_alpha_ParticleProcessMaterial_cl8og"]
+curve = SubResource("Curve_gjvkr")
+
+[sub_resource type="Curve" id="Curve_hj6e2"]
+_limits = [-360.0, 360.0, 0.0, 1.0]
+_data = [Vector2(0, -192.733), 0.0, 0.0, 0, 0, Vector2(1, -128.563), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_frrug"]
+curve = SubResource("Curve_hj6e2")
+
+[sub_resource type="Gradient" id="Gradient_ksmgr"]
+offsets = PackedFloat32Array(0, 0.230912, 0.780261, 0.998138)
+colors = PackedColorArray(0, 0, 0, 1, 0.57902, 0.57902, 0.57902, 1, 0.415686, 0.415686, 0.415686, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_oxuda"]
+gradient = SubResource("Gradient_ksmgr")
+
+[sub_resource type="Curve" id="Curve_djgnv"]
+_data = [Vector2(0, 0.337644), 0.0, 0.0, 0, 0, Vector2(0.546125, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_fja2n"]
+curve = SubResource("Curve_djgnv")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wuj2p"]
+particle_flag_disable_z = true
+angle_curve = SubResource("CurveTexture_frrug")
+gravity = Vector3(-50, -100, 0)
+scale_min = 4.0
+scale_max = 6.0
+scale_curve = SubResource("CurveTexture_fja2n")
+color = Color(0.5686275, 0.7254902, 0.7607843, 0.16470589)
+color_ramp = SubResource("GradientTexture1D_oxuda")
+alpha_curve = SubResource("CurveTexture_alpha_ParticleProcessMaterial_cl8og")
+anim_offset_max = 1.0
+
+[node name="A" type="TextureRect"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1382.4
+offset_top = -648.0
+offset_right = 1382.4
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="fog6" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_77pri")
+position = Vector2(402.41003, 1428)
+amount = 6
+texture = ExtResource("1_00qcb")
+lifetime = 5.0
+preprocess = 100.0
+fixed_fps = 0
+visibility_rect = Rect2(-1000, -1000, 2000, 2000)
+local_coords = true
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_wuj2p")

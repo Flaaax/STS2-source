@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://bnvqig45e0mw6"
+path="res://.godot/imported/paels_legion.skel-f8cb5a12b2c01eff9cb8f9b0989f7d9e.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/paels_legion/paels_legion.skel"
+dest_files=["res://.godot/imported/paels_legion.skel-f8cb5a12b2c01eff9cb8f9b0989f7d9e.spskel"]
+
+[params]
+

@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://d211irxmyfyab"
+path="res://.godot/imported/seapunk.atlas-75423b638c0e788e10e176ae7f385968.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/seapunk/seapunk.atlas"
+dest_files=["res://.godot/imported/seapunk.atlas-75423b638c0e788e10e176ae7f385968.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

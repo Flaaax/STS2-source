@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://b16qbyd6gn8wu"
+path="res://.godot/imported/kin_follower.skel-c35c7f653b8c6075be4ee21ba7cf619c.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/kin_follower/kin_follower.skel"
+dest_files=["res://.godot/imported/kin_follower.skel-c35c7f653b8c6075be4ee21ba7cf619c.spskel"]
+
+[params]
+

@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://c07dlyabp30oq"
+path="res://.godot/imported/characterselect_ironclad.atlas-b06f18b64456c1a191a18ae8efee7013.spatlas"
+
+[deps]
+
+source_file="res://animations/character_select/ironclad/characterselect_ironclad.atlas"
+dest_files=["res://.godot/imported/characterselect_ironclad.atlas-b06f18b64456c1a191a18ae8efee7013.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

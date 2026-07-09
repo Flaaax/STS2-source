@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://dw1dfgxjm3be7"
+path="res://.godot/imported/chomper.skel-c9e85c29c2b664974610486d19196efe.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/chomper/chomper.skel"
+dest_files=["res://.godot/imported/chomper.skel-c9e85c29c2b664974610486d19196efe.spskel"]
+
+[params]
+

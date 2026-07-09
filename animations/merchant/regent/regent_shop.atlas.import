@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://ckmvm451vebwy"
+path="res://.godot/imported/regent_shop.atlas-e43f8281849a38c6f5ba6194779968af.spatlas"
+
+[deps]
+
+source_file="res://animations/merchant/regent/regent_shop.atlas"
+dest_files=["res://.godot/imported/regent_shop.atlas-e43f8281849a38c6f5ba6194779968af.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

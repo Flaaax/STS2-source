@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://ddpjalfy74pl5"
+path="res://.godot/imported/neow.skel-d94a8005718d2f895a7355596a659c84.spskel"
+
+[deps]
+
+source_file="res://animations/backgrounds/neow_room/neow.skel"
+dest_files=["res://.godot/imported/neow.skel-d94a8005718d2f895a7355596a659c84.spskel"]
+
+[params]
+

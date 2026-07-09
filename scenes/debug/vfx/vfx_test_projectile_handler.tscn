@@ -1,0 +1,42 @@
+[gd_scene load_steps=9 format=3 uid="uid://3m14ynb7xuwe"]
+
+[ext_resource type="Script" uid="uid://88h3ubug81a6" path="res://src/Core/Nodes/Vfx/Utilities/NVfxProjectileHandler.cs" id="1_6e0ib"]
+
+[sub_resource type="Curve" id="Curve_6e0ib"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, -0.004955411), 0.0, 5.1062593, 0, 0, Vector2(0.25265956, 0.60059464), 0.0, 0.0, 0, 0, Vector2(0.6515958, -0.28840435), 0.0, 0.0, 0, 0, Vector2(1, -0.004955411), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Curve" id="Curve_s0b7x"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, -0.004955411), 0.0, -7.7069993, 0, 0, Vector2(0.25531912, -0.7006937), 0.0, 0.0, 0, 0, Vector2(0.65425533, 0.3171457), 0.0, 0.0, 0, 0, Vector2(1, -0.004955411), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Curve" id="Curve_gr4tq"]
+_data = [Vector2(0, 0), 0.0, 4.326837, 0, 0, Vector2(0.49999997, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -4.1456895, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_lmqav"]
+_limits = [-1.0, 0.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, -4.145977, 0, 0, Vector2(0.49999997, -1), 0.0, 0.0, 0, 0, Vector2(1, -0.004955411), 4.8444004, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_ygmvl"]
+_data = [Vector2(0, 0), 0.0, 7.041052, 0, 0, Vector2(0.32712764, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_msrtq"]
+_limits = [-1.0, 0.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, -7.1152134, 0, 0, Vector2(0.3218085, -1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_ddle5"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[node name="vfx_test_projectile_handler" type="Node2D"]
+script = ExtResource("1_6e0ib")
+_pathHeightOffsets = [SubResource("Curve_6e0ib"), SubResource("Curve_s0b7x"), SubResource("Curve_gr4tq"), SubResource("Curve_lmqav"), SubResource("Curve_ygmvl"), SubResource("Curve_msrtq")]
+_heightOffsetRange = Vector2(50, 200)
+_movementCurves = [SubResource("Curve_ddle5")]
+travelTimeRange = Vector2(0.15, 0.2)

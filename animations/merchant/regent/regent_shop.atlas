@@ -1,0 +1,181 @@
+regent_shop.png
+size:2033,729
+filter:Linear,Linear
+scale:0.674
+anger
+bounds:872,2,46,50
+offsets:1,1,47,52
+belt
+bounds:2006,662,65,20
+offsets:0,0,66,20
+rotate:90
+bod
+bounds:1193,359,94,99
+bottm fist
+bounds:1978,11,41,51
+offsets:1,0,42,51
+bottom arm 1
+bounds:1468,44,58,104
+offsets:0,4,58,108
+rotate:90
+bottom arm 1 flipped
+bounds:1235,253,58,104
+offsets:0,4,58,108
+bottom arm 2
+bounds:1202,13,84,77
+offsets:0,3,94,80
+bottom fingers
+bounds:1747,2,39,45
+offsets:0,0,40,46
+rotate:90
+bottom hand
+bounds:1810,56,41,44
+offsets:11,0,53,44
+rotate:90
+bottom hand freaked
+bounds:1028,12,51,69
+offsets:0,1,53,71
+chain
+bounds:1235,225,58,26
+death flash
+bounds:1297,104,361,434
+offsets:4,3,367,440
+rotate:90
+fist swish
+bounds:1468,2,40,95
+offsets:0,1,40,96
+rotate:90
+half eye
+bounds:2006,626,34,24
+offsets:2,2,39,28
+rotate:90
+hand
+bounds:1666,2,79,39
+offsets:0,2,79,42
+hand copy
+bounds:978,3,46,49
+offsets:0,1,49,51
+head
+bounds:1733,99,121,186
+inner_light
+bounds:1089,213,144,135
+offsets:1,1,159,140
+l shoulder
+bounds:1978,64,56,41
+offsets:0,1,57,42
+rotate:90
+left guy
+bounds:727,41,143,184
+left guy highlights
+bounds:1733,287,141,178
+offsets:1,1,143,180
+left guy top arm
+bounds:1288,11,91,93
+offsets:0,0,91,94
+rotate:90
+left guy top arm highlights
+bounds:1383,15,83,87
+offsets:0,1,83,89
+leg bottom
+bounds:1028,83,142,51
+offsets:0,137,143,188
+rotate:90
+leg bottom bottom
+bounds:1081,93,131,118
+offsets:0,0,131,119
+leg top
+bounds:1856,202,140,67
+offsets:0,107,152,175
+leg top bottom
+bounds:1876,271,61,145
+offsets:92,0,153,184
+rotate:90
+mad eye
+bounds:822,9,34,30
+offsets:2,2,38,34
+minion sweat
+bounds:1193,350,15,7
+offsets:0,1,16,8
+neck
+bounds:1666,43,59,59
+normal eye
+bounds:1614,2,35,26
+offsets:2,2,40,30
+rotate:90
+r shoulder
+bounds:1794,6,35,26
+offsets:1,2,36,28
+rotate:90
+regent death pop
+bounds:1865,501,226,139
+offsets:2,6,230,151
+rotate:90
+right guy
+bounds:872,54,154,171
+right guy bottom arm
+bounds:1998,179,33,90
+offsets:1,0,34,90
+right guy bottom arm highlights
+bounds:727,9,30,67
+offsets:132,34,162,102
+rotate:90
+right guy highlights
+bounds:1876,334,135,165
+offsets:1,0,136,166
+right guy top arm
+bounds:1574,39,63,90
+offsets:0,0,64,90
+rotate:90
+right guy top arm highlights
+bounds:1727,43,54,81
+offsets:1,1,55,84
+rotate:90
+shadow
+bounds:730,350,461,108
+offsets:1,2,463,111
+sparkle 3
+bounds:796,2,24,37
+offsets:1,1,26,39
+star eye
+bounds:1565,2,35,47
+offsets:3,3,41,53
+rotate:90
+throne bottom highlights
+bounds:2,10,354,723
+offsets:0,0,355,724
+rotate:90
+throne shadows
+bounds:727,227,360,121
+throne top
+bounds:730,460,267,565
+offsets:1,0,268,565
+rotate:90
+throne top highlights
+bounds:1297,467,260,566
+offsets:0,0,314,566
+rotate:90
+throne_bottom
+bounds:2,366,361,726
+rotate:90
+top arm 1
+bounds:1081,22,69,119
+offsets:1,2,70,121
+rotate:90
+top arm 1 flipped
+bounds:1214,92,69,119
+offsets:1,2,70,121
+top arm 2
+bounds:1856,48,75,120
+offsets:0,0,75,135
+rotate:90
+top arm 2 flipped
+bounds:1856,125,75,120
+offsets:0,0,75,135
+rotate:90
+top fist
+bounds:1978,122,55,48
+offsets:1,0,57,49
+rotate:90
+top hand 1
+bounds:920,4,56,48
+offsets:2,6,59,55

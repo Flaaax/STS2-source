@@ -1,0 +1,9 @@
+{
+  "TO_DISCARD": "Wähle {Amount:plural:eine Karte,|[blue]{}[/blue] Karten,} die du [gold]Abwirfst[/gold].",
+  "TO_ENCHANT": "Wähle {Amount:plural:eine Karte,|[blue]{}[/blue] Karten,} die du [purple]Verzauberst[/purple].",
+  "TO_EXHAUST": "Wähle {Amount:plural:eine Karte,|[blue]{}[/blue] Karten,} die du [gold]Erschöpfst[/gold].",
+  "TO_REMOVE": "Wähle {Amount:plural:eine Karte,|[blue]{}[/blue] Karten,} die du [gold]Entfernst[/gold].",
+  "TO_TRANSFORM": "Wähle {Amount:plural:eine Karte,|[blue]{}[/blue] Karten,} die du [gold]Transformierst[/gold].",
+  "TO_UPGRADE": "Wähle {Amount:plural:eine Karte,|[blue]{}[/blue] Karten,} die du [gold]Verbesserst[/gold].",
+  "VIEW_UPGRADES": "Verbesserung ansehen"
+}

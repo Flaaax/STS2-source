@@ -1,0 +1,16 @@
+infested_purifier.png
+size:456,516
+filter:Linear,Linear
+scale:0.32
+claw_r/arm_r_top
+bounds:2,251,263,278
+rotate:90
+claw_r/claw_r_1
+bounds:2,2,247,237
+rotate:90
+claw_r/claw_r_2
+bounds:282,299,215,172
+rotate:90
+claw_r/claw_r_3
+bounds:241,45,204,211
+rotate:90

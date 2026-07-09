@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://cgkgdjhujw6ot"
+path="res://.godot/imported/gas_bomb.atlas-f474b096e4ca56fca3e1db5a1be7b573.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/gas_bomb/gas_bomb.atlas"
+dest_files=["res://.godot/imported/gas_bomb.atlas-f474b096e4ca56fca3e1db5a1be7b573.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

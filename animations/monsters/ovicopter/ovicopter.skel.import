@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://dvx2o46q1eqk"
+path="res://.godot/imported/ovicopter.skel-1292da274e10a7fa7a5fa950b05af64e.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/ovicopter/ovicopter.skel"
+dest_files=["res://.godot/imported/ovicopter.skel-1292da274e10a7fa7a5fa950b05af64e.spskel"]
+
+[params]
+

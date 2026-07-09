@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bop1l2e8m166t"]
+
+[ext_resource type="Texture2D" uid="uid://daothh63dt1fi" path="res://images/packed/vfx/speech_bubble3.png" id="1_8v724"]
+
+[node name="SpeechBubblePositioner" type="Marker2D"]
+
+[node name="BubbleHelper" type="Sprite2D" parent="."]
+position = Vector2(-100, -47)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_8v724")
+flip_h = true

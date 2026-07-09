@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://bqksj5u4ejj41"
+path="res://.godot/imported/ceremonial_beast_bg_animation_bottom.skel-5d7e35177b225e4b47c85428b858d329.spskel"
+
+[deps]
+
+source_file="res://animations/backgrounds/ceremonial_beast/ceremonial_beast_bg_animation_bottom.skel"
+dest_files=["res://.godot/imported/ceremonial_beast_bg_animation_bottom.skel-5d7e35177b225e4b47c85428b858d329.spskel"]
+
+[params]
+

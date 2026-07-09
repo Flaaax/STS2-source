@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://l3lnp00jm0ot"
+path="res://.godot/imported/byrdonis.atlas-f3ab36e6f129dfdf52879b29ab22b7d4.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/byrdonis/byrdonis.atlas"
+dest_files=["res://.godot/imported/byrdonis.atlas-f3ab36e6f129dfdf52879b29ab22b7d4.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

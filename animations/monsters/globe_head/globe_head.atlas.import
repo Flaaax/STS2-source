@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://b1ev4vdmlu0s6"
+path="res://.godot/imported/globe_head.atlas-06c7e1f48621c3b0a36da0d5ad3c7d72.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/globe_head/globe_head.atlas"
+dest_files=["res://.godot/imported/globe_head.atlas-06c7e1f48621c3b0a36da0d5ad3c7d72.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

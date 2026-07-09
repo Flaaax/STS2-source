@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://dlrkocj3y2xbg"
+path="res://.godot/imported/slimed_berserker.atlas-002b586f5ddeee603c11a7bf2a937962.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/slimed_berserker/slimed_berserker.atlas"
+dest_files=["res://.godot/imported/slimed_berserker.atlas-002b586f5ddeee603c11a7bf2a937962.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

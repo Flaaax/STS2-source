@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://cqp647ggrr8ig"
+path="res://.godot/imported/slithering_strangler.atlas-a6013ae91954c128a3bf15172e1bee6a.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/slithering_strangler/slithering_strangler.atlas"
+dest_files=["res://.godot/imported/slithering_strangler.atlas-a6013ae91954c128a3bf15172e1bee6a.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

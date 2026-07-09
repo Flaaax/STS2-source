@@ -1,0 +1,74 @@
+entomancer.png
+size:952,269
+filter:Linear,Linear
+scale:0.399
+arm
+bounds:277,118,219,149
+arm_lower
+bounds:498,125,75,130
+rotate:90
+back arm 1
+bounds:625,2,42,77
+rotate:90
+back arm 2
+bounds:838,5,47,55
+big finger 1
+bounds:749,56,55,68
+rotate:90
+big finger 2
+bounds:822,89,77,30
+big hand
+bounds:630,120,80,119
+offsets:1,0,81,119
+rotate:90
+bottom foot
+bounds:819,62,68,25
+offsets:0,0,69,25
+bottom leg
+bounds:526,22,97,101
+offsets:3,0,101,101
+bottom leg 2
+bounds:625,46,72,122
+rotate:90
+bug 2
+bounds:498,118,5,5
+fist_l
+bounds:901,87,40,32
+offsets:8,3,49,36
+fist_l_back
+bounds:805,2,52,31
+offsets:1,8,56,40
+rotate:90
+hand
+bounds:704,16,28,43
+rotate:90
+head
+bounds:277,11,105,123
+offsets:0,4,105,127
+rotate:90
+hips
+bounds:751,113,87,69
+offsets:4,6,93,76
+rotate:90
+neck
+bounds:916,237,34,30
+shadow
+bounds:498,202,286,65
+offsets:1,0,287,66
+shoulder_clump
+bounds:889,14,71,41
+rotate:90
+staff
+bounds:2,13,273,254
+offsets:0,1,273,255
+top foot
+bounds:749,2,52,54
+rotate:90
+top leg
+bounds:822,121,80,112
+rotate:90
+top leg 2
+bounds:786,203,64,128
+rotate:90
+torso
+bounds:402,5,122,111

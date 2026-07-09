@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://dwr5toh7erusf"
+path="res://.godot/imported/entomancer.skel-6e3a0e4316869cf36a7bed19ede32eac.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/entomancer/entomancer.skel"
+dest_files=["res://.godot/imported/entomancer.skel-6e3a0e4316869cf36a7bed19ede32eac.spskel"]
+
+[params]
+

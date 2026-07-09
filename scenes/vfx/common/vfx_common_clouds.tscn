@@ -1,0 +1,83 @@
+[gd_scene load_steps=14 format=3 uid="uid://blnpeie00tb35"]
+
+[ext_resource type="Texture2D" uid="uid://btqpvklnyn4i4" path="res://images/vfx/shared_use/smoke_vfx.png" id="1_77v8d"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8k3et"]
+particles_animation = true
+particles_anim_h_frames = 2
+particles_anim_v_frames = 2
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_iqtnp"]
+_data = [Vector2(0, 0), 0.0, 6.271013, 0, 0, Vector2(0.14141414, 0.39195502), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_p8mjm"]
+curve = SubResource("Curve_iqtnp")
+
+[sub_resource type="Gradient" id="Gradient_wdwle"]
+colors = PackedColorArray(1, 1, 1, 0.5019608, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_s77fl"]
+gradient = SubResource("Gradient_wdwle")
+
+[sub_resource type="Gradient" id="Gradient_4mqt7"]
+colors = PackedColorArray(1, 1, 1, 1, 0.5, 0.5, 0.5, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5ec3f"]
+gradient = SubResource("Gradient_4mqt7")
+width = 64
+
+[sub_resource type="Curve" id="Curve_kvejv"]
+_data = [Vector2(0, 1), 0.0, -2.178539, 0, 0, Vector2(1, 0.24602425), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_gs3lx"]
+curve_y = SubResource("Curve_kvejv")
+
+[sub_resource type="Curve" id="Curve_0b2mi"]
+_data = [Vector2(0, 0.66557527), 0.0, 0.8599485, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1xjql"]
+width = 128
+curve = SubResource("Curve_0b2mi")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1u7qe"]
+lifetime_randomness = 0.4
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 100.0
+angle_min = -180.0
+angle_max = 180.0
+direction = Vector3(0, -1, 0)
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+directional_velocity_min = -200.00002
+directional_velocity_max = -200.00002
+directional_velocity_curve = SubResource("CurveXYZTexture_gs3lx")
+radial_velocity_min = -2.2351742e-05
+radial_velocity_max = -2.2351742e-05
+attractor_interaction_enabled = false
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_1xjql")
+color = Color(0.608, 0.64, 0.64, 1)
+color_ramp = SubResource("GradientTexture1D_5ec3f")
+color_initial_ramp = SubResource("GradientTexture1D_s77fl")
+alpha_curve = SubResource("CurveTexture_p8mjm")
+hue_variation_min = -0.01
+hue_variation_max = 0.00999998
+anim_offset_max = 1.0
+turbulence_noise_strength = 10.0
+turbulence_noise_scale = 3.0
+
+[node name="vfx_common_clouds" type="GPUParticles2D"]
+modulate = Color(1, 1, 1, 0.501961)
+material = SubResource("CanvasItemMaterial_8k3et")
+amount = 64
+texture = ExtResource("1_77v8d")
+lifetime = 1.5
+randomness = 0.5
+fixed_fps = 60
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_1u7qe")

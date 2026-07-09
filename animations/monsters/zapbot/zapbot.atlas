@@ -1,0 +1,47 @@
+zapbot.png
+size:204,269
+filter:Linear,Linear
+scale:0.199
+arm_l
+bounds:196,201,6,13
+offsets:3,5,9,18
+arm_r
+bounds:116,32,24,39
+body
+bounds:23,3,91,95
+bottom wing
+bounds:23,196,112,71
+ditch line
+bounds:2,8,259,19
+rotate:90
+eye
+bounds:116,2,27,28
+fly_lines_l
+bounds:133,73,34,68
+rotate:90
+fly_lines_r
+bounds:133,109,26,69
+rotate:90
+top wing
+bounds:23,100,94,108
+rotate:90
+zap
+bounds:137,167,57,47
+offsets:1,1,59,49
+zap_off
+bounds:137,216,17,62
+offsets:1,1,19,64
+rotate:90
+zappy_glow_l
+bounds:142,40,31,30
+rotate:90
+zappy_glow_r
+bounds:174,45,28,26
+offsets:2,1,31,30
+zappy_l
+bounds:137,235,32,65
+rotate:90
+zappy_r
+bounds:133,137,28,69
+offsets:1,0,29,69
+rotate:90

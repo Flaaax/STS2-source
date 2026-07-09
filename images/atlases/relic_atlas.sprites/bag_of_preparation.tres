@@ -1,0 +1,8 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://breus45"]
+
+[ext_resource type="Texture2D" path="res://images/atlases/relic_atlas.png" id="1"]
+
+[resource]
+atlas = ExtResource("1")
+region = Rect2(1920, 716, 81, 74)
+margin = Rect2(1, 7, 4, 11)

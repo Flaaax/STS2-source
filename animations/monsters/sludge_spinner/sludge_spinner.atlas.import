@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://b8736yabqool1"
+path="res://.godot/imported/sludge_spinner.atlas-8e31c0f6989320ee0bc9ea5f50483197.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/sludge_spinner/sludge_spinner.atlas"
+dest_files=["res://.godot/imported/sludge_spinner.atlas-8e31c0f6989320ee0bc9ea5f50483197.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://bn6wcytq0ayna"
+path="res://.godot/imported/globe_head.skel-b83d70e59a70ed16bef2509e2735d8e7.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/globe_head/globe_head.skel"
+dest_files=["res://.godot/imported/globe_head.skel-b83d70e59a70ed16bef2509e2735d8e7.spskel"]
+
+[params]
+

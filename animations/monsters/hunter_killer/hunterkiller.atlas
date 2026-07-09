@@ -1,0 +1,134 @@
+hunterkiller.png
+size:1000,523
+filter:Linear,Linear
+scale:0.365
+Layer 685
+bounds:651,4,86,57
+offsets:1,0,87,57
+bod
+bounds:783,328,193,158
+rotate:90
+bottom back arm 1
+bounds:448,125,88,133
+rotate:90
+bottom back arm 2
+bounds:943,447,55,74
+bottom back arm 3
+bounds:448,219,87,114
+rotate:90
+bottom back claw 1
+bounds:955,65,63,38
+offsets:0,0,64,38
+rotate:90
+bottom back claw 2
+bounds:439,5,77,35
+bottom back claw 3
+bounds:925,36,67,27
+bottom back claw 4
+bounds:180,2,18,16
+bottom back foot
+bounds:771,15,66,33
+bottom front arm 1
+bounds:142,69,58,128
+bottom front arm 2
+bounds:2,2,100,73
+bottom front claw 1
+bounds:955,200,68,39
+offsets:0,0,69,39
+rotate:90
+bottom front claw 2
+bounds:772,60,77,35
+rotate:90
+bottom front claw 3
+bounds:809,50,67,27
+bottom front claw 4
+bounds:323,153,18,16
+rotate:90
+eyes
+bounds:739,8,53,30
+rotate:90
+head
+bounds:204,173,135,133
+mandible 1
+bounds:687,333,79,86
+rotate:90
+mandible 2
+bounds:570,4,79,74
+neck
+bounds:687,139,187,128
+rotate:90
+neck armor 1
+bounds:202,19,119,152
+neck armor 2
+bounds:817,116,152,136
+offsets:0,1,152,137
+rotate:90
+neck armor 3
+bounds:575,215,197,110
+rotate:90
+neck armor 4
+bounds:341,110,196,105
+rotate:90
+neck armor 6
+bounds:142,199,148,60
+offsets:0,1,148,61
+rotate:90
+neck armor 7
+bounds:448,42,120,81
+pincer 1
+bounds:180,20,17,20
+pincer 2
+bounds:986,349,12,21
+shadow
+bounds:209,414,572,107
+offsets:1,1,573,108
+spadittle
+bounds:180,42,20,25
+tail
+bounds:209,308,364,104
+tail_shading
+bounds:943,270,100,41
+rotate:90
+top back arm 1
+bounds:583,80,88,133
+top back arm 2
+bounds:943,372,55,73
+top back arm 3
+bounds:323,21,87,114
+offsets:0,0,88,114
+rotate:90
+top back claw 1
+bounds:140,4,63,38
+offsets:0,0,64,38
+rotate:90
+top back claw 2
+bounds:809,79,77,35
+top back claw 3
+bounds:839,8,67,27
+top back claw 4
+bounds:518,23,18,17
+top back foot
+bounds:104,8,67,34
+rotate:90
+top front arm 1
+bounds:817,270,56,123
+rotate:90
+top front arm 2
+bounds:673,63,97,74
+top front claw 1
+bounds:955,130,68,39
+rotate:90
+top front claw 2
+bounds:888,37,77,35
+rotate:90
+top front claw 3
+bounds:908,7,67,27
+top front claw 4
+bounds:323,133,18,16
+rotate:90
+wing 1
+bounds:2,77,270,138
+rotate:90
+wing 2
+bounds:2,349,205,172
+offsets:0,1,205,173

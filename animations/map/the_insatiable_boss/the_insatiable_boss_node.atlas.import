@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://8s7vh26tcww"
+path="res://.godot/imported/the_insatiable_boss_node.atlas-b6257a5db1352358e1bd0fa1fda97a9c.spatlas"
+
+[deps]
+
+source_file="res://animations/map/the_insatiable_boss/the_insatiable_boss_node.atlas"
+dest_files=["res://.godot/imported/the_insatiable_boss_node.atlas-b6257a5db1352358e1bd0fa1fda97a9c.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

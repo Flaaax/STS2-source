@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://b4mp1arnudmjq"
+path="res://.godot/imported/hunterkiller.skel-ed1de91c91728fc162861d6e3fbbf548.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/hunter_killer/hunterkiller.skel"
+dest_files=["res://.godot/imported/hunterkiller.skel-ed1de91c91728fc162861d6e3fbbf548.spskel"]
+
+[params]
+

@@ -1,0 +1,95 @@
+owl_magistrate.png
+size:2020,539
+filter:Linear,Linear
+scale:0.172
+back armor
+bounds:1524,73,114,188
+back armor 2
+bounds:1221,45,158,200
+beak
+bounds:1331,12,31,56
+rotate:90
+bod
+bounds:525,236,301,280
+rotate:90
+body armor bottom
+bounds:1835,33,101,105
+body armor top
+bounds:1116,8,103,237
+offsets:18,0,121,237
+eyes
+bounds:1524,9,62,43
+offsets:0,2,80,45
+rotate:90
+foot bottom
+bounds:1719,6,114,79
+foot top
+bounds:1766,273,121,134
+head
+bounds:1889,140,124,164
+helmet
+bounds:1381,46,141,199
+helmet 2
+bounds:1656,265,108,142
+helmet 3
+bounds:1889,306,101,129
+rotate:90
+leg bottom
+bounds:1545,264,109,143
+leg top
+bounds:1640,87,171,175
+neck
+bounds:350,8,253,222
+peck1
+bounds:1813,199,72,72
+peck2
+bounds:1640,4,81,77
+rotate:90
+profile_beak_bottom
+bounds:1221,6,31,37
+offsets:0,4,31,41
+profile_beak_top
+bounds:1254,11,32,75
+offsets:10,1,48,76
+rotate:90
+profile_eye
+bounds:766,2,22,45
+rotate:90
+profile_head
+bounds:1456,263,87,144
+profile_helmet
+bounds:605,12,159,222
+profile_helmet_bottom
+bounds:283,5,65,225
+shadow
+bounds:1456,409,546,128
+shockwave
+bounds:2,211,233,326
+tail
+bounds:237,232,305,286
+rotate:90
+wing top
+bounds:1057,247,290,248
+offsets:0,0,290,334
+rotate:90
+wing top 2
+bounds:2,4,205,155
+offsets:0,58,205,213
+rotate:90
+wing top lighter
+bounds:807,247,290,248
+offsets:0,0,290,334
+rotate:90
+wing_bottom_raised
+bounds:159,5,204,122
+rotate:90
+wing_bottom_raised_2
+bounds:766,26,208,169
+offsets:0,0,211,171
+rotate:90
+wing_top_raised
+bounds:1307,247,290,147
+rotate:90
+wing_top_raised_2
+bounds:937,6,239,177
+rotate:90

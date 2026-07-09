@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://bitv6cp6gcvao"
+path="res://.godot/imported/regent_weapon.skel-eb5748d45dfdb21acd5f11da647cab6a.spskel"
+
+[deps]
+
+source_file="res://animations/characters/regent/regent_weapon.skel"
+dest_files=["res://.godot/imported/regent_weapon.skel-eb5748d45dfdb21acd5f11da647cab6a.spskel"]
+
+[params]
+

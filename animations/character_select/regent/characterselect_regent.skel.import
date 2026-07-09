@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://cwe3mjowcji7c"
+path="res://.godot/imported/characterselect_regent.skel-1f56f2acf6836408901fb02484a958c1.spskel"
+
+[deps]
+
+source_file="res://animations/character_select/regent/characterselect_regent.skel"
+dest_files=["res://.godot/imported/characterselect_regent.skel-1f56f2acf6836408901fb02484a958c1.spskel"]
+
+[params]
+

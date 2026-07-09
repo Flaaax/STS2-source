@@ -1,0 +1,32 @@
+eye_with_teeth.png
+size:619,276
+filter:Linear,Linear
+scale:0.465
+back petals
+bounds:330,60,168,214
+death_still
+bounds:2,30,244,234
+rotate:90
+extra vine
+bounds:2,2,26,326
+rotate:90
+eyeball
+bounds:500,179,95,95
+iris
+bounds:238,36,34,65
+rotate:90
+leaf 1
+bounds:238,72,62,86
+rotate:90
+leaf 1 open
+bounds:330,2,56,83
+offsets:1,0,57,83
+rotate:90
+leaf 2
+bounds:500,24,117,72
+leaf 3
+bounds:500,98,109,79
+leaf 4
+bounds:238,136,80,138
+pupil
+bounds:305,30,21,40

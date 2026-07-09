@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://cudd3ai6uqols"
+path="res://.godot/imported/decimillipede_middle.atlas-19e73cfa69a34716fc05f2c02429bd88.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/decimillipede/decimillipede_middle.atlas"
+dest_files=["res://.godot/imported/decimillipede_middle.atlas-19e73cfa69a34716fc05f2c02429bd88.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

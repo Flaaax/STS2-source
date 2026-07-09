@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://b20q152wg2u0h"
+path="res://.godot/imported/noisebot.atlas-7f660fbed17fba835271a136d5d4ce82.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/noisebot/noisebot.atlas"
+dest_files=["res://.godot/imported/noisebot.atlas-7f660fbed17fba835271a136d5d4ce82.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

@@ -1,0 +1,8 @@
+[gd_resource type="SpineSkeletonDataResource" load_steps=3 format=3 uid="uid://y2y2su1j65n1"]
+
+[ext_resource type="SpineAtlasResource" uid="uid://bq50ewnm5ehl5" path="res://animations/monsters/test_subject/test_subject_burn_vfx_front_and_back_2.atlas" id="1_nhigf"]
+[ext_resource type="SpineSkeletonFileResource" uid="uid://cwbmeerpytc6h" path="res://animations/monsters/test_subject/test_subject_burn_vfx_front.skel" id="2_fke3u"]
+
+[resource]
+atlas_res = ExtResource("1_nhigf")
+skeleton_file_res = ExtResource("2_fke3u")

@@ -1,0 +1,22 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://dq2d3p2m8tosl"]
+
+[ext_resource type="Shader" uid="uid://bk6jty4ex2gwq" path="res://shaders/vfx/ui/card/afflictions/galvanized/vfx_ui_card_affliction_galvanized_main_shader.gdshader" id="1_rehg6"]
+
+[sub_resource type="Gradient" id="Gradient_rehg6"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.21008404, 0.8935574)
+colors = PackedColorArray(0.19999999, 0.8, 1, 1, 0.9011674, 0.9920209, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_yncjk"]
+gradient = SubResource("Gradient_rehg6")
+use_hdr = true
+
+[resource]
+shader = ExtResource("1_rehg6")
+shader_parameter/blink_st = Vector4(0, 1, 0.67, 0)
+shader_parameter/blink_smoothstep = Vector2(0.2, 0.6)
+shader_parameter/lut = SubResource("GradientTexture1D_yncjk")
+shader_parameter/distortion_st = Vector4(1, 1, -0.3, 0)
+shader_parameter/distortion_offset = -0.2
+shader_parameter/distortion_intensity = 0.15
+shader_parameter/smoothstep_factors = Vector2(0.7, 0.3)

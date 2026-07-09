@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://rp6hd07365nx"
+path="res://.godot/imported/shop_fake_merchant_bottom_cutter.atlas-48fa7c7db6b9c3b59433705c5b5275b2.spatlas"
+
+[deps]
+
+source_file="res://animations/backgrounds/fake_merchant_room/bottom/shop_fake_merchant_bottom_cutter.atlas"
+dest_files=["res://.godot/imported/shop_fake_merchant_bottom_cutter.atlas-48fa7c7db6b9c3b59433705c5b5275b2.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

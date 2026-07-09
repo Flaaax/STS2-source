@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://c2klhbmryg3aa"
+path="res://.godot/imported/lightning_orb.skel-74057f53b58560dba8cefe8efb12f6fa.spskel"
+
+[deps]
+
+source_file="res://animations/ui/combat/orbs/lightning_orb.skel"
+dest_files=["res://.godot/imported/lightning_orb.skel-74057f53b58560dba8cefe8efb12f6fa.spskel"]
+
+[params]
+

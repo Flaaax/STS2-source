@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://b1h0b6h0j48xu"
+path="res://.godot/imported/plasma_orb.skel-3efdd8a9dbc2d282b6e24d4c7b430658.spskel"
+
+[deps]
+
+source_file="res://animations/ui/combat/orbs/plasma_orb.skel"
+dest_files=["res://.godot/imported/plasma_orb.skel-3efdd8a9dbc2d282b6e24d4c7b430658.spskel"]
+
+[params]
+

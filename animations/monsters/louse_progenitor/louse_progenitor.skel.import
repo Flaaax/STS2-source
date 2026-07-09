@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://cg84nu7n1xj0l"
+path="res://.godot/imported/louse_progenitor.skel-ce65723cb3279e67d4f954e107773801.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/louse_progenitor/louse_progenitor.skel"
+dest_files=["res://.godot/imported/louse_progenitor.skel-ce65723cb3279e67d4f954e107773801.spskel"]
+
+[params]
+

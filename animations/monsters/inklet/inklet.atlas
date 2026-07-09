@@ -1,0 +1,68 @@
+inklet.png
+size:554,277
+filter:Linear,Linear
+scale:0.449
+glob_1
+bounds:147,4,25,26
+glob_2
+bounds:263,72,36,48
+offsets:1,0,37,48
+glob_yellow_1
+bounds:128,32,43,30
+glob_yellow_2
+bounds:115,3,30,27
+landjellyfish2/blink a 2
+bounds:465,60,87,66
+landjellyfish2/blink b 2
+bounds:374,9,87,65
+offsets:0,1,87,66
+landjellyfish2/blink c 2
+bounds:219,210,87,65
+offsets:0,1,87,66
+landjellyfish2/blink d 2
+bounds:219,122,86,65
+offsets:0,1,86,66
+rotate:90
+landjellyfish2/blink e 2
+bounds:286,143,86,65
+offsets:0,1,86,66
+landjellyfish2/bod 2
+bounds:374,76,77,89
+offsets:13,0,101,89
+rotate:90
+landjellyfish2/bottom arms 2
+bounds:301,72,43,33
+offsets:1,0,44,34
+landjellyfish2/bottom feet 2
+bounds:2,2,28,54
+rotate:90
+landjellyfish2/ear_L
+bounds:308,210,42,65
+offsets:0,1,42,66
+landjellyfish2/ear_R
+bounds:219,65,42,55
+landjellyfish2/eye
+bounds:463,5,76,53
+offsets:0,2,79,57
+landjellyfish2/heads 2
+bounds:374,155,120,123
+offsets:0,0,120,150
+rotate:90
+landjellyfish2/top arms 2
+bounds:301,107,44,34
+landjellyfish2/top feet 2
+bounds:58,3,27,55
+offsets:0,0,27,56
+rotate:90
+puddle
+bounds:174,6,198,56
+offsets:0,0,198,63
+shadow
+bounds:128,64,211,89
+offsets:1,1,213,92
+rotate:90
+slappy_arm
+bounds:499,128,46,147
+swish1
+bounds:2,32,243,124
+rotate:90

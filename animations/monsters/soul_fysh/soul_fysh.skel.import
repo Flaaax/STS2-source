@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://do2b85qn22vh7"
+path="res://.godot/imported/soul_fysh.skel-0989a5fc1a7e6120094c5062f34a9f33.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/soul_fysh/soul_fysh.skel"
+dest_files=["res://.godot/imported/soul_fysh.skel-0989a5fc1a7e6120094c5062f34a9f33.spskel"]
+
+[params]
+

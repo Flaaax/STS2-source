@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://cwpwyglb7fk47"
+path="res://.godot/imported/sewer_clam.skel-ef622aee09e512f7b614478182fc6cd6.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/sewer_clam/sewer_clam.skel"
+dest_files=["res://.godot/imported/sewer_clam.skel-ef622aee09e512f7b614478182fc6cd6.spskel"]
+
+[params]
+

@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://cyuwdneeyl8pf"
+path="res://.godot/imported/ruby_raider_tracker.skel-2c7d5560101321975c8318c0062d0292.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/tracker_ruby_raider/ruby_raider_tracker.skel"
+dest_files=["res://.godot/imported/ruby_raider_tracker.skel-2c7d5560101321975c8318c0062d0292.spskel"]
+
+[params]
+

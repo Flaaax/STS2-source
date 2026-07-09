@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://c6nojmrnoxbwp"
+path="res://.godot/imported/ceremonial_beast_boss_node.atlas-a933b1c7518ec6e6c72c811c93c1ca66.spatlas"
+
+[deps]
+
+source_file="res://animations/map/ceremonial_beast_boss/ceremonial_beast_boss_node.atlas"
+dest_files=["res://.godot/imported/ceremonial_beast_boss_node.atlas-a933b1c7518ec6e6c72c811c93c1ca66.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://djev87juf0msu"
+path="res://.godot/imported/assassin_ruby_raider.atlas-a32410509662aef277613fa2239fc51e.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/assassin_ruby_raider/assassin_ruby_raider.atlas"
+dest_files=["res://.godot/imported/assassin_ruby_raider.atlas-a32410509662aef277613fa2239fc51e.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

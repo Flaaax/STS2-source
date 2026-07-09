@@ -1,0 +1,118 @@
+[gd_scene load_steps=22 format=3 uid="uid://dh40v1kt68me"]
+
+[ext_resource type="Script" uid="uid://bd46jtcut2h66" path="res://src/Core/Nodes/Vfx/Utilities/NParticlesContainer.cs" id="1_osk0b"]
+[ext_resource type="PackedScene" uid="uid://chqoe33c4gm6a" path="res://scenes/vfx/common/vfx_common_specks.tscn" id="2_ukt5f"]
+[ext_resource type="PackedScene" uid="uid://ceqrf0xghq0bb" path="res://scenes/vfx/lightning/vfx_lightning_flipbook_1.tscn" id="3_3h364"]
+[ext_resource type="PackedScene" uid="uid://bw4tvf7o6fvp1" path="res://scenes/vfx/lightning/vfx_lightning_flipbook_2.tscn" id="4_5bvge"]
+
+[sub_resource type="Curve" id="Curve_d5rxi"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 1, Vector2(0.1775457, 1), 0.0, 0.0, 0, 0, Vector2(0.18015665, 0), 0.0, 0.0, 0, 0, Vector2(0.24543083, 0), 0.0, 0.0, 0, 0, Vector2(0.25065276, 1), 0.0, 0.0, 0, 0, Vector2(0.69451696, 1), 0.0, 0.0, 0, 0, Vector2(0.70234984, 0), 0.0, 0.0, 0, 0, Vector2(0.74934727, 0), 0.0, 0.0, 0, 0, Vector2(0.7519582, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 10
+
+[sub_resource type="CurveTexture" id="CurveTexture_71x6u"]
+curve = SubResource("Curve_d5rxi")
+
+[sub_resource type="Gradient" id="Gradient_u1lcf"]
+offsets = PackedFloat32Array(0.17101449, 0.6463768)
+colors = PackedColorArray(1, 1, 1, 1, 2.454227, 2.454227, 2.454227, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_m0c3s"]
+gradient = SubResource("Gradient_u1lcf")
+use_hdr = true
+
+[sub_resource type="Curve" id="Curve_1ll8x"]
+_data = [Vector2(0, 0), 0.0, 4.30388, 0, 0, Vector2(0.501292, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -5.93081, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_oyuva"]
+curve = SubResource("Curve_1ll8x")
+
+[sub_resource type="Curve" id="Curve_wm1ds"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.8868, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ivp5k"]
+curve = SubResource("Curve_wm1ds")
+
+[sub_resource type="Curve" id="Curve_pod23"]
+_data = [Vector2(0.6475196, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -6.3006954, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_twkgf"]
+curve = SubResource("Curve_pod23")
+
+[sub_resource type="Curve" id="Curve_iejey"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.604607), -1.44846, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_ose0i"]
+_limits = [0.0, 5.0, 0.0, 1.0]
+_data = [Vector2(0, 0.997601), 0.0, 0.0, 0, 0, Vector2(1, 3.25336), 6.03527, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_2ykcv"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_3netq"]
+curve_x = SubResource("Curve_iejey")
+curve_y = SubResource("Curve_ose0i")
+curve_z = SubResource("Curve_2ykcv")
+
+[sub_resource type="Curve" id="Curve_yqfxx"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_6xgad"]
+curve = SubResource("Curve_yqfxx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4ms1i"]
+lifetime_randomness = 0.8
+particle_flag_align_y = true
+particle_flag_disable_z = true
+particle_flag_damping_as_friction = true
+direction = Vector3(-1, 0, 0)
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 400.0
+initial_velocity_max = 1200.0
+radial_velocity_min = 150.0
+radial_velocity_max = 250.0
+radial_velocity_curve = SubResource("CurveTexture_ivp5k")
+gravity = Vector3(0, 0, 0)
+damping_min = 0.3
+damping_max = 0.5
+damping_curve = SubResource("CurveTexture_oyuva")
+scale_min = 0.14999999
+scale_max = 0.25
+scale_curve = SubResource("CurveTexture_twkgf")
+scale_over_velocity_max = 670.71
+scale_over_velocity_curve = SubResource("CurveXYZTexture_3netq")
+color_initial_ramp = SubResource("GradientTexture1D_m0c3s")
+alpha_curve = SubResource("CurveTexture_71x6u")
+turbulence_enabled = true
+turbulence_noise_strength = 5.0
+turbulence_noise_scale = 10.1
+turbulence_noise_speed = Vector3(0.1, 0.1, 0.1)
+turbulence_noise_speed_random = 1.0
+turbulence_influence_min = 0.65
+turbulence_influence_max = 0.85
+turbulence_initial_displacement_min = 1.49012e-06
+turbulence_initial_displacement_max = 1.49012e-06
+turbulence_influence_over_life = SubResource("CurveTexture_6xgad")
+
+[node name="defect_energy_vfx_front" type="Node2D" node_paths=PackedStringArray("_particles")]
+script = ExtResource("1_osk0b")
+_particles = [NodePath("vfx_common_specks"), NodePath("vfx_lightning_flipbook_1"), NodePath("vfx_lightning_flipbook_2")]
+
+[node name="vfx_common_specks" parent="." instance=ExtResource("2_ukt5f")]
+self_modulate = Color(0.29803923, 0.7647059, 1, 1)
+amount = 6
+lifetime = 0.8
+process_material = SubResource("ParticleProcessMaterial_4ms1i")
+
+[node name="vfx_lightning_flipbook_1" parent="." instance=ExtResource("3_3h364")]
+
+[node name="vfx_lightning_flipbook_2" parent="." instance=ExtResource("4_5bvge")]

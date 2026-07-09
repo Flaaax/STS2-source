@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://dym7geh1luur6"
+path="res://.godot/imported/slimed_berserker.skel-ddee11bbd4b6d863be0ae5ab80a9660d.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/slimed_berserker/slimed_berserker.skel"
+dest_files=["res://.godot/imported/slimed_berserker.skel-ddee11bbd4b6d863be0ae5ab80a9660d.spskel"]
+
+[params]
+

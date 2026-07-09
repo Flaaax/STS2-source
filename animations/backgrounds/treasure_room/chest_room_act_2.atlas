@@ -1,0 +1,80 @@
+chest_room_act_2.png
+size:5353,2451
+filter:Linear,Linear
+scale:0.5
+act2_chest bottom
+bounds:3,444,1738,626
+offsets:2,0,1740,626
+act2_chest shine
+bounds:2189,994,1092,682
+offsets:26,5,1149,687
+act2_stroke
+bounds:3,1076,1630,874
+offsets:1,0,1633,875
+act2_top 1
+bounds:3847,1633,988,387
+offsets:0,0,988,388
+act2_top 10
+bounds:4841,1552,896,509
+offsets:0,2,898,511
+rotate:90
+act2_top 11
+bounds:3287,795,881,535
+offsets:0,2,883,537
+rotate:90
+act2_top 12
+bounds:1639,1084,866,544
+offsets:0,2,867,546
+rotate:90
+act2_top 2
+bounds:3828,755,1003,372
+act2_top 3
+bounds:4198,203,986,386
+act2_top 4
+bounds:3211,335,981,414
+act2_top 5
+bounds:2756,3,985,449
+rotate:90
+act2_top 6
+bounds:1747,523,1003,465
+act2_top 7
+bounds:3828,1133,1001,494
+offsets:1,0,1002,494
+act2_top 8
+bounds:4837,595,951,504
+offsets:0,0,952,513
+rotate:90
+act2_top 9
+bounds:1822,33,922,484
+offsets:0,1,924,485
+open vfs 3
+bounds:3,1956,2385,492
+open vfx 1
+bounds:2394,1682,1447,338
+offsets:0,1,1447,339
+open vfx 2
+bounds:3,30,1813,408
+open vfx 4
+bounds:2394,2026,2396,422
+offsets:4,7,2408,429
+sparkle h 1
+bounds:3,3,21,36
+rotate:90
+sparkle h 2
+bounds:3211,248,119,81
+offsets:0,2,119,83
+sparkle h 3
+bounds:2189,1844,162,106
+sparkle h 4
+bounds:1822,3,206,24
+offsets:0,3,208,27
+sparkle v 1
+bounds:3245,968,20,36
+rotate:90
+sparkle v 2
+bounds:3211,858,28,130
+sparkle v 3
+bounds:4198,595,19,154
+offsets:6,0,25,154
+sparkle v 4
+bounds:4796,2242,11,206

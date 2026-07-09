@@ -1,0 +1,91 @@
+soulnexus.png
+size:1063,656
+filter:Linear,Linear
+scale:0.399
+body
+bounds:584,276,148,378
+offsets:6,10,159,393
+eye ball
+bounds:584,128,148,146
+offsets:1,0,149,146
+eye shine
+bounds:1023,93,30,25
+glowie
+bounds:2,77,580,577
+offsets:98,90,768,770
+hair1
+bounds:829,147,97,166
+hair2
+bounds:928,200,32,113
+offsets:0,0,42,113
+iris 1
+bounds:962,248,81,85
+offsets:1,0,83,85
+light squig
+bounds:2,15,34,230
+rotate:90
+neutral_soul
+bounds:848,315,84,246
+pupil
+bounds:1039,600,19,54
+pupil angry
+bounds:928,168,30,30
+shadow
+bounds:734,563,303,91
+offsets:1,1,305,93
+soul 1
+bounds:259,6,69,115
+offsets:14,9,98,138
+rotate:90
+soul 10
+bounds:490,9,66,92
+offsets:14,10,94,117
+rotate:90
+soul 11
+bounds:987,335,72,50
+offsets:14,14,99,77
+soul 12 outer
+bounds:966,9,52,68
+offsets:14,10,81,91
+soul 13
+bounds:962,182,64,94
+offsets:14,14,89,122
+rotate:90
+soul 14
+bounds:734,95,63,93
+offsets:15,15,89,122
+rotate:90
+soul 15
+bounds:1023,120,32,60
+offsets:13,12,59,86
+soul 2
+bounds:584,19,107,132
+rotate:90
+soul 4 outer
+bounds:734,160,179,93
+offsets:10,14,203,122
+rotate:90
+soul 5
+bounds:987,387,74,174
+offsets:12,6,99,193
+soul 6 outer
+bounds:852,15,130,112
+offsets:14,13,156,138
+rotate:90
+soul 7
+bounds:718,2,91,132
+offsets:14,12,119,156
+rotate:90
+soul 8
+bounds:734,341,112,220
+offsets:8,8,132,238
+soul face 1
+bounds:966,79,55,101
+soul face 2
+bounds:376,12,63,112
+rotate:90
+straight soul
+bounds:934,343,51,218
+straight wave
+bounds:2,51,24,255
+rotate:90

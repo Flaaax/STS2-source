@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://d2506qhy56tnd"
+path="res://.godot/imported/chest_room_act_3.skel-097b762c25e1a732b8ca3f811a94516a.spskel"
+
+[deps]
+
+source_file="res://animations/backgrounds/treasure_room/chest_room_act_3.skel"
+dest_files=["res://.godot/imported/chest_room_act_3.skel-097b762c25e1a732b8ca3f811a94516a.spskel"]
+
+[params]
+

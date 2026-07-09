@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://d1vnnpw31d5ur"
+path="res://.godot/imported/bygone_effigy.atlas-22b63877edcb3104ecc44d2dc56b4249.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/bygone_effigy/bygone_effigy.atlas"
+dest_files=["res://.godot/imported/bygone_effigy.atlas-22b63877edcb3104ecc44d2dc56b4249.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

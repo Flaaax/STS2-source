@@ -1,0 +1,19 @@
+vine_shambler_vines.png
+size:757,28
+filter:Linear,Linear
+scale:0.3
+ground bump 1
+bounds:727,11,28,15
+offsets:0,0,28,16
+ground bump 2
+bounds:625,4,25,9
+offsets:1,0,27,9
+vine_long_ends
+bounds:2,15,11,723
+rotate:90
+vine_long_middle
+bounds:367,2,11,256
+rotate:90
+vine_short
+bounds:2,3,10,363
+rotate:90

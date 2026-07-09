@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://cma2o2fnr3ek4"
+path="res://.godot/imported/test_subject_burn_vfx_back.atlas-54ce68c95c26227d31e438d0921fb59b.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/test_subject/test_subject_burn_vfx_back.atlas"
+dest_files=["res://.godot/imported/test_subject_burn_vfx_back.atlas-54ce68c95c26227d31e438d0921fb59b.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

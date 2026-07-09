@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://ddn8rxeyxi5xp"
+path="res://.godot/imported/guardbot.atlas-80307d505d2f5bf0dc03f230d17c93a0.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/guardbot/guardbot.atlas"
+dest_files=["res://.godot/imported/guardbot.atlas-80307d505d2f5bf0dc03f230d17c93a0.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

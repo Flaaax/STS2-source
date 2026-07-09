@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://lbtys2pq3umj"
+path="res://.godot/imported/tough_egg.skel-c08abb3ecbd03a586733a77d488ff569.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/tough_egg/tough_egg.skel"
+dest_files=["res://.godot/imported/tough_egg.skel-c08abb3ecbd03a586733a77d488ff569.spskel"]
+
+[params]
+

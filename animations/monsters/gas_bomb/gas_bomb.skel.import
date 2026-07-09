@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://d3hupsmc7t2lq"
+path="res://.godot/imported/gas_bomb.skel-192641d829e17aead37eeb76cc2bc2af.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/gas_bomb/gas_bomb.skel"
+dest_files=["res://.godot/imported/gas_bomb.skel-192641d829e17aead37eeb76cc2bc2af.spskel"]
+
+[params]
+

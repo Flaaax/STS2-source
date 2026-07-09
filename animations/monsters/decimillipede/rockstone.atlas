@@ -1,0 +1,12 @@
+rockstone.png
+size:150,81
+filter:Linear,Linear
+scale:0.266
+rock
+bounds:2,2,77,77
+stone1
+bounds:117,36,31,43
+stone2
+bounds:81,36,34,43
+stone3
+bounds:81,2,43,32

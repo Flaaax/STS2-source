@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://bc1yvvdrgq2sf"
+path="res://.godot/imported/cursor_inspect.png-0633c0739fc49363e9163b2de15e4887.image"
+
+[deps]
+
+source_file="res://images/packed/common_ui/cursor_inspect.png"
+dest_files=["res://.godot/imported/cursor_inspect.png-0633c0739fc49363e9163b2de15e4887.image"]
+
+[params]
+

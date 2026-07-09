@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://cpqcvrgm3wwg3"
+path="res://.godot/imported/cursor_eraser_tilted.png-7f544e2f6223058c89b432f429505c51.image"
+
+[deps]
+
+source_file="res://images/packed/common_ui/cursor_eraser_tilted.png"
+dest_files=["res://.godot/imported/cursor_eraser_tilted.png-7f544e2f6223058c89b432f429505c51.image"]
+
+[params]
+

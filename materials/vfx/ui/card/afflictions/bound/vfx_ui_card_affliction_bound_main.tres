@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cgccwawweogof"]
+
+[ext_resource type="Shader" uid="uid://b4kolh6yrp2o5" path="res://shaders/vfx/ui/card/afflictions/bound/vfx_ui_card_affliction_bound_main_shader.gdshader" id="1_grje2"]
+
+[resource]
+shader = ExtResource("1_grje2")
+shader_parameter/bright_st = Vector4(0, 0, 0.5, 0)
+shader_parameter/bright_energy = 1.5

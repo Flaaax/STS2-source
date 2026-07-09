@@ -1,0 +1,335 @@
+[gd_scene load_steps=20 format=3 uid="uid://dl3ldno6oya0g"]
+
+[ext_resource type="Script" uid="uid://m8c3akvg7k04" path="res://src/Core/Nodes/Ftue/NAscensionSingleplayerFtue.cs" id="1_7mgmn"]
+[ext_resource type="Shader" uid="uid://c66gb6g7tup3n" path="res://shaders/hsv.gdshader" id="2_8583g"]
+[ext_resource type="Texture2D" uid="uid://bnk4r2y" path="res://images/atlases/ui_atlas.sprites/popup_vertical.tres" id="3_aejuu"]
+[ext_resource type="FontVariation" uid="uid://ciql5khgewwbm" path="res://themes/kreon_bold_glyph_space_two.tres" id="5_ov3o0"]
+[ext_resource type="Script" uid="uid://dtfio45agppyj" path="res://addons/mega_text/MegaLabel.cs" id="6_wougu"]
+[ext_resource type="FontVariation" uid="uid://cfurftqxyn4mn" path="res://themes/kreon_regular_glyph_space_one.tres" id="7_04ahh"]
+[ext_resource type="FontVariation" uid="uid://ux4d708e7mk6" path="res://themes/kreon_bold_glyph_space_one.tres" id="8_7v4k0"]
+[ext_resource type="Script" uid="uid://c2oywrx8xbqfx" path="res://addons/mega_text/MegaRichTextLabel.cs" id="9_2e2oh"]
+[ext_resource type="Texture2D" uid="uid://bge0uai3eqnq1" path="res://images/ftue/ftue_confirm_button.png" id="10_xsvoh"]
+[ext_resource type="Texture2D" uid="uid://dg21w1q37pjaq" path="res://images/ui/noise_mask_for_lines.tres" id="11_aejuu"]
+[ext_resource type="Script" uid="uid://dun8ku5mawif5" path="res://src/Core/Nodes/Ftue/NFtueConfirmButton.cs" id="11_kyryy"]
+[ext_resource type="Texture2D" uid="uid://b52383702y3s4" path="res://images/ftue/ftue_confirm_button_outline.png" id="12_1q0rt"]
+[ext_resource type="Texture2D" uid="uid://b5x513mavmk5v" path="res://images/ui/placeholder_controller_icon.png" id="13_8gbxg"]
+[ext_resource type="Texture2D" uid="uid://b75ih21" path="res://images/atlases/ui_atlas.sprites/top_bar/top_bar_ascension.tres" id="13_8583g"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dhdfu"]
+shader = ExtResource("2_8583g")
+shader_parameter/h = 0.505
+shader_parameter/s = 1.0
+shader_parameter/v = 0.75
+
+[sub_resource type="Gradient" id="Gradient_0wn0c"]
+offsets = PackedFloat32Array(0, 0.2, 0.8, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_v8aw3"]
+gradient = SubResource("Gradient_0wn0c")
+height = 4
+
+[sub_resource type="Shader" id="Shader_51tao"]
+code = "shader_type canvas_item;
+
+uniform float h: hint_range(0,1) = 1;
+uniform float s: hint_range(0,5) = 1;
+uniform float v = 1;
+
+// ⚠I am a very commonly used and important shader!
+// Please be careful when handling me
+void fragment() {
+    mat3 RGB_to_YIQ = mat3(
+        vec3(0.2989,  0.5959,  0.2115),
+        vec3(0.5870, -0.2774, -0.5229),
+        vec3(0.1140, -0.3216,  0.3114));
+
+    vec4 col = texture(TEXTURE, UV);
+
+    vec4 ModularCol = COLOR / col;
+
+    col.rgb = RGB_to_YIQ * col.rgb;
+    float hue = 1.0 - h;
+    hue = mix(0, 6.283185, hue);
+
+    float sin_hue = sin(hue);
+    float cos_hue = cos(hue);
+    mat3 hue_shift = mat3(
+        vec3(1.0, 0, 0),
+        vec3(0, cos_hue, -sin_hue),
+        vec3(0, sin_hue, cos_hue));
+    col.rgb *= hue_shift;
+
+    mat3 sat_shift = mat3(
+        vec3(1.0, 0, 0),
+        vec3(0, s, 0),
+        vec3(0, 0, s));
+    col.rgb = sat_shift * col.rgb;
+
+    col.rgb = mix(vec3(0,0,0), col.rgb, v);
+
+    col.rgb = inverse(RGB_to_YIQ) * col.rgb;
+    COLOR = col;
+    COLOR *= ModularCol;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8j4dq"]
+resource_local_to_scene = true
+shader = SubResource("Shader_51tao")
+shader_parameter/h = 1.0
+shader_parameter/s = 1.0
+shader_parameter/v = 1.0
+
+[node name="AscensionSingleplayerFtue" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7mgmn")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="VerticalPopup" type="TextureRect" parent="."]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_dhdfu")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -330.0
+offset_top = -380.0
+offset_right = 330.0
+offset_bottom = 378.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_aejuu")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AscensionIcon" type="TextureRect" parent="VerticalPopup"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+offset_left = 38.0
+offset_top = 42.29883
+offset_right = 102.0
+offset_bottom = 106.29883
+mouse_filter = 2
+texture = ExtResource("13_8583g")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Header" type="Label" parent="VerticalPopup"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 99.0
+offset_top = 48.0
+offset_right = -99.0
+offset_bottom = 120.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.937255, 0.784314, 0.317647, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.12549)
+theme_override_colors/font_outline_color = Color(0.33, 0.2475, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("5_ov3o0")
+theme_override_font_sizes/font_size = 36
+text = "ASC_SP_HEADER"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("6_wougu")
+MaxFontSize = 36
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VerticalPopup"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 73.0
+offset_top = 133.29883
+offset_right = -73.0
+offset_bottom = -102.29883
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Description" type="RichTextLabel" parent="VerticalPopup/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 0.964706, 0.886275, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/line_separation = -2
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/normal_font = ExtResource("7_04ahh")
+theme_override_fonts/bold_font = ExtResource("8_7v4k0")
+theme_override_font_sizes/normal_font_size = 26
+theme_override_font_sizes/bold_font_size = 26
+theme_override_font_sizes/bold_italics_font_size = 26
+theme_override_font_sizes/italics_font_size = 26
+theme_override_font_sizes/mono_font_size = 26
+bbcode_enabled = true
+text = "?Congratulations, encountering the [red]Architect[/red] has unlocked Ascensions!
+
+Ascensions are a way to further challenge yourself and prove your mastery for each character.
+
+Completing [gold]Act[/gold] [blue]3[/blue] with Ascensions will unlock progressively harder challenges.
+"
+scroll_active = false
+vertical_alignment = 1
+script = ExtResource("9_2e2oh")
+MaxFontSize = 26
+
+[node name="Spacer" type="Control" parent="VerticalPopup/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="NoiseMask" type="TextureRect" parent="VerticalPopup/VBoxContainer/Spacer"]
+clip_children = 1
+clip_contents = true
+custom_minimum_size = Vector2(256, 3)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -2.0
+offset_right = 128.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("11_aejuu")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Gradient" type="TextureRect" parent="VerticalPopup/VBoxContainer/Spacer/NoiseMask"]
+modulate = Color(1, 0.965167, 0.89, 0.501961)
+custom_minimum_size = Vector2(256, 3)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_v8aw3")
+
+[node name="Disclaimer" type="RichTextLabel" parent="VerticalPopup/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.529412, 0.807843, 0.921569, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/line_separation = 0
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/normal_font = ExtResource("7_04ahh")
+theme_override_fonts/bold_font = ExtResource("8_7v4k0")
+theme_override_font_sizes/normal_font_size = 26
+theme_override_font_sizes/bold_font_size = 26
+theme_override_font_sizes/bold_italics_font_size = 26
+theme_override_font_sizes/italics_font_size = 26
+theme_override_font_sizes/mono_font_size = 26
+bbcode_enabled = true
+text = "?Note: Completing Ascension 1 unlocks an Epoch, but higher Ascensions are optional."
+scroll_active = false
+vertical_alignment = 2
+script = ExtResource("9_2e2oh")
+MaxFontSize = 26
+
+[node name="FtueConfirmButton" type="TextureRect" parent="."]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_8j4dq")
+custom_minimum_size = Vector2(237, 75)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -148.0
+offset_top = 302.0
+offset_right = 148.0
+offset_bottom = 402.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(137, 37)
+texture = ExtResource("10_xsvoh")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("11_kyryy")
+
+[node name="Outline" type="TextureRect" parent="FtueConfirmButton"]
+modulate = Color(0.94, 0.72615, 0.0846, 0)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("12_1q0rt")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="FtueConfirmButton"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_right = -24.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.937255, 0.784314, 0.317647, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.12549)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.5019608)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 12
+theme_override_constants/shadow_outline_size = 12
+theme_override_fonts/font = ExtResource("8_7v4k0")
+theme_override_font_sizes/font_size = 30
+text = "Got it?"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("6_wougu")
+MaxFontSize = 30
+
+[node name="ControllerIcon" type="TextureRect" parent="FtueConfirmButton"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -208.0
+offset_top = -49.0
+offset_right = -80.0
+offset_bottom = 79.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(64, 64)
+mouse_filter = 2
+texture = ExtResource("13_8gbxg")
+expand_mode = 1
+stretch_mode = 5

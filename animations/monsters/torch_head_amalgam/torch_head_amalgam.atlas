@@ -1,0 +1,124 @@
+torch_head_amalgam.png
+size:1459,240
+filter:Linear,Linear
+scale:0.199
+arm 1 base
+bounds:1080,139,99,86
+rotate:90
+arm 1 lower
+bounds:1024,77,44,58
+arm 1 upper
+bounds:743,68,70,29
+arm 2 base
+bounds:573,97,120,141
+arm 2 lower
+bounds:1340,96,44,37
+rotate:90
+arm 2 upper
+bounds:695,99,65,139
+arm 3 base
+bounds:982,2,93,68
+offsets:0,1,93,69
+arm 3 lower
+bounds:1258,2,96,90
+arm 3 upper
+bounds:573,70,25,69
+rotate:90
+beam_base
+bounds:721,67,30,20
+rotate:90
+bod
+bounds:220,20,178,218
+foot 1
+bounds:471,4,61,23
+rotate:90
+foot 3
+bounds:644,70,44,25
+foot2
+bounds:815,69,87,38
+glare
+bounds:2,7,231,216
+offsets:25,20,285,266
+rotate:90
+laser_base
+bounds:400,67,171,171
+offsets:5,5,181,181
+leg 1 base
+bounds:1379,93,69,72
+rotate:90
+leg 1 lower
+bounds:1149,10,37,78
+leg 1 upper
+bounds:1077,3,70,83
+offsets:1,0,71,83
+leg 2 base
+bounds:1361,164,96,74
+leg 2 lower
+bounds:762,109,71,129
+offsets:0,0,71,130
+leg 3 lower
+bounds:917,132,66,106
+offsets:1,0,67,106
+leg 3 upper
+bounds:835,125,113,80
+rotate:90
+shadow
+bounds:496,7,382,58
+offsets:4,1,391,60
+string 1
+bounds:284,13,5,39
+rotate:90
+string 2
+bounds:309,7,4,40
+rotate:90
+string 3
+bounds:284,6,5,23
+rotate:90
+string 3 bowed
+bounds:220,5,13,62
+rotate:90
+toe 3
+bounds:690,73,29,22
+torch 1 bleed
+bounds:1257,94,36,45
+offsets:0,1,36,46
+torch 1 front
+bounds:1166,92,45,89
+offsets:5,0,56,89
+rotate:90
+torch 1 orb
+bounds:904,76,47,46
+rotate:90
+torch 2 back
+bounds:1379,23,71,68
+offsets:0,0,72,68
+torch 2 front
+bounds:985,137,93,101
+torch 2 orb
+bounds:1070,88,47,46
+rotate:90
+torch 3 back
+bounds:1356,24,21,70
+offsets:0,1,21,71
+torch 3 bleed
+bounds:1295,96,44,43
+offsets:1,1,46,45
+rotate:90
+torch 3 front
+bounds:1188,13,68,77
+offsets:0,0,68,78
+torch 3 middle
+bounds:1265,142,94,96
+torch 3 orb
+bounds:1118,90,47,46
+rotate:90
+torch1 bottom
+bounds:952,72,70,58
+offsets:0,1,70,59
+torch1 middle
+bounds:1168,141,95,97
+wahoosh
+bounds:400,3,62,69
+rotate:90
+zurp
+bounds:880,9,100,58

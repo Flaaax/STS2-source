@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://4d2n7qwoll72"]
+
+[ext_resource type="Material" uid="uid://de6s6txp0js5r" path="res://materials/vfx/common/vfx_clean_flare_1.tres" id="1_s3d3c"]
+[ext_resource type="Texture2D" uid="uid://db815vr0xhjuc" path="res://images/vfx/common/common_clean_flare_1.png" id="2_4j2ux"]
+
+[sub_resource type="Curve" id="Curve_mvavk"]
+_data = [Vector2(0, 1), 0.0, -2.188963, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_6rxrx"]
+curve = SubResource("Curve_mvavk")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0v6l5"]
+particle_flag_disable_z = true
+angular_velocity_min = -360.0
+angular_velocity_max = 359.99997
+gravity = Vector3(0, 0, 0)
+scale_min = 3.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_6rxrx")
+
+[node name="vfx_common_clean_flare_1" type="GPUParticles2D"]
+material = ExtResource("1_s3d3c")
+emitting = false
+amount = 1
+texture = ExtResource("2_4j2ux")
+lifetime = 0.15000000000000002
+one_shot = true
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_0v6l5")

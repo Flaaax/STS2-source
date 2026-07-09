@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://bits3b007mj4n"
+path="res://.godot/imported/toadpole.skel-8be8cd8c58a1bc4374460cce31c23205.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/toadpole/toadpole.skel"
+dest_files=["res://.godot/imported/toadpole.skel-8be8cd8c58a1bc4374460cce31c23205.spskel"]
+
+[params]
+

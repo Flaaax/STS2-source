@@ -1,0 +1,86 @@
+characterselect_necrobinder.png
+size:5160,1738
+filter:Linear,Linear
+scale:0.6
+belt
+bounds:4361,3,338,179
+chest bottom
+bounds:1061,49,398,372
+offsets:0,1,398,373
+rotate:90
+chest top
+bounds:705,40,407,354
+offsets:0,1,407,355
+rotate:90
+head
+bounds:4166,481,294,241
+offsets:1,0,296,241
+rotate:90
+index
+bounds:2,2,701,401
+left arm
+bounds:4314,1236,500,729
+offsets:1,0,501,729
+rotate:90
+left shoulder bottom
+bounds:4923,465,207,396
+offsets:1,3,209,400
+left shoulder top
+bounds:1435,51,225,396
+offsets:1,3,228,400
+left sleeve arm
+bounds:3759,843,265,893
+offsets:0,0,265,894
+left sleeve top
+bounds:2,405,570,1331
+offsets:157,0,727,1338
+middle
+bounds:1949,53,773,501
+neck_fire
+bounds:4923,863,209,214
+offsets:0,3,209,220
+rotate:90
+neck_streak
+bounds:574,441,6,65
+rotate:90
+osty_finger_outline
+bounds:2964,781,793,955
+osty_outline
+bounds:1488,556,1180,901
+offsets:0,0,1184,901
+rotate:90
+palm
+bounds:4314,777,607,457
+pinky
+bounds:4409,184,469,591
+right arm
+bounds:4701,30,242,152
+offsets:0,0,245,152
+right shoulder
+bounds:4945,83,202,380
+right sleeve
+bounds:1662,5,285,549
+ring
+bounds:2724,69,628,638
+scythe
+bounds:574,449,912,1287
+offsets:1,0,913,1288
+skirt
+bounds:4026,922,814,286
+rotate:90
+skirt top
+bounds:4923,1074,160,235
+rotate:90
+sparks 1 copy
+bounds:2391,709,1027,571
+offsets:7,6,1040,579
+rotate:90
+sparks 1 copy 2
+bounds:3354,3,810,776
+spine
+bounds:2391,586,121,276
+offsets:0,1,122,278
+rotate:90
+thumb
+bounds:4166,80,383,193
+rotate:90

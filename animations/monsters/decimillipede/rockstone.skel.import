@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://0a6j8muwqoxp"
+path="res://.godot/imported/rockstone.skel-d5df0a8978f3f1025700b365750c4270.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/decimillipede/rockstone.skel"
+dest_files=["res://.godot/imported/rockstone.skel-d5df0a8978f3f1025700b365750c4270.spskel"]
+
+[params]
+

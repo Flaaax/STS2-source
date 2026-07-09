@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://ct213h3fbbl8b"
+path="res://.godot/imported/sneaky_gremlin.skel-e1c18815110caf382073b95fe41cdd81.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/sneaky_gremlin/sneaky_gremlin.skel"
+dest_files=["res://.godot/imported/sneaky_gremlin.skel-e1c18815110caf382073b95fe41cdd81.spskel"]
+
+[params]
+

@@ -1,0 +1,15 @@
+[gd_resource type="SpineSkeletonDataResource" load_steps=4 format=3 uid="uid://ctu0okqoases1"]
+
+[ext_resource type="SpineAtlasResource" uid="uid://dqk5asoh2etei" path="res://animations/monsters/snapping_jaxfruit/snapping_jaxfruit.atlas" id="1_3n3s4"]
+[ext_resource type="SpineSkeletonFileResource" uid="uid://jfxee640ory" path="res://animations/monsters/snapping_jaxfruit/snapping_jaxfruit.skel" id="2_dim63"]
+
+[sub_resource type="SpineAnimationMix" id="SpineAnimationMix_ckvb6"]
+from = "hurt"
+to = "die"
+mix = 0.1
+
+[resource]
+atlas_res = ExtResource("1_3n3s4")
+skeleton_file_res = ExtResource("2_dim63")
+default_mix = 0.05
+animation_mixes = [SubResource("SpineAnimationMix_ckvb6")]

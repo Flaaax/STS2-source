@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://cbfyfk8jh484o"
+path="res://.godot/imported/paels_legion.atlas-301598584be125a5f17db8d75df0baa5.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/paels_legion/paels_legion.atlas"
+dest_files=["res://.godot/imported/paels_legion.atlas-301598584be125a5f17db8d75df0baa5.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

@@ -1,0 +1,57 @@
+fossil_stalker.png
+size:1484,236
+filter:Linear,Linear
+scale:0.332
+arm 1
+bounds:444,61,173,238
+rotate:90
+arm 2
+bounds:540,7,15,101
+rotate:90
+arm 3
+bounds:920,9,106,228
+rotate:90
+arm 4
+bounds:684,75,70,40
+bod
+bounds:2,3,231,219
+offsets:0,0,233,219
+rotate:90
+bod_dead
+bounds:1150,17,165,217
+offsets:45,2,212,219
+bod_dead_phobia
+bounds:1317,17,165,217
+offsets:45,2,212,219
+bod_phobia
+bounds:223,3,231,219
+offsets:0,0,233,219
+rotate:90
+dead_chunk
+bounds:756,78,55,37
+dead_chunk_phobia
+bounds:813,78,55,37
+dead_crumb
+bounds:444,4,7,5
+rotate:90
+dead_plate
+bounds:1073,117,50,52
+foot 1
+bounds:540,24,110,35
+foot 2
+bounds:652,24,89,35
+leg 1
+bounds:834,2,74,84
+rotate:90
+leg 2
+bounds:1073,171,72,63
+leg 3
+bounds:444,13,94,46
+shadow
+bounds:684,117,326,117
+offsets:1,0,328,117
+wound
+bounds:743,2,71,89
+rotate:90
+wound_meat
+bounds:1012,149,59,85

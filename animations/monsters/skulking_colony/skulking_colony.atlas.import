@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://b05jh360prw1c"
+path="res://.godot/imported/skulking_colony.atlas-032e3e1713f3b1660b1c85e6b66c0995.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/skulking_colony/skulking_colony.atlas"
+dest_files=["res://.godot/imported/skulking_colony.atlas-032e3e1713f3b1660b1c85e6b66c0995.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://dge0scjjh6ok0"
+path="res://.godot/imported/main_menu_bottom.skel-e34385f96eb32c507140f6526a56c143.spskel"
+
+[deps]
+
+source_file="res://animations/backgrounds/mainmenu/bottom/main_menu_bottom.skel"
+dest_files=["res://.godot/imported/main_menu_bottom.skel-e34385f96eb32c507140f6526a56c143.spskel"]
+
+[params]
+

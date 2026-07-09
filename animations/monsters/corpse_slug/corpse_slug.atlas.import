@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://cpirvxmkgnwqi"
+path="res://.godot/imported/corpse_slug.atlas-446b3534e92c9958770acf8d1d689bbc.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/corpse_slug/corpse_slug.atlas"
+dest_files=["res://.godot/imported/corpse_slug.atlas-446b3534e92c9958770acf8d1d689bbc.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

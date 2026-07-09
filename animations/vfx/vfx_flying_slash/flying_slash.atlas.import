@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://cqjw54idw7vyd"
+path="res://.godot/imported/flying_slash.atlas-e014b1b62f62a98f07444387c48ce66f.spatlas"
+
+[deps]
+
+source_file="res://animations/vfx/vfx_flying_slash/flying_slash.atlas"
+dest_files=["res://.godot/imported/flying_slash.atlas-e014b1b62f62a98f07444387c48ce66f.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

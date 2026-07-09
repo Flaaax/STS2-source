@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://b12kudvtj64rk"
+path="res://.godot/imported/waterfall_giant.skel-09b8d8f2719ed323e68a9b4a5d7fd50b.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/waterfall_giant/waterfall_giant.skel"
+dest_files=["res://.godot/imported/waterfall_giant.skel-09b8d8f2719ed323e68a9b4a5d7fd50b.spskel"]
+
+[params]
+

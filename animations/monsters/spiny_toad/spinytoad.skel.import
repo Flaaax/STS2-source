@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://dw6k2yr8nvaac"
+path="res://.godot/imported/spinytoad.skel-ed2e08fb71f240f6faa51fc0866e4c58.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/spiny_toad/spinytoad.skel"
+dest_files=["res://.godot/imported/spinytoad.skel-ed2e08fb71f240f6faa51fc0866e4c58.spskel"]
+
+[params]
+

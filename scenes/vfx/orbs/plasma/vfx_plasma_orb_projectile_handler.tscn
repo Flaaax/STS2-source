@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://be8jhol7ehu4y"]
+
+[ext_resource type="Script" uid="uid://88h3ubug81a6" path="res://src/Core/Nodes/Vfx/Utilities/NVfxProjectileHandler.cs" id="1_fbpdl"]
+
+[sub_resource type="Curve" id="Curve_fwv3g"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_twba3"]
+_data = [Vector2(0, 0), 0.0, 0.55062675, 0, 0, Vector2(0.59574467, 0.16253716), 0.057671323, 0.057671323, 0, 0, Vector2(1, 1), 4.057186, 0.0, 0, 0]
+point_count = 3
+
+[node name="vfx_plasma_orb_projectile_handler" type="Node2D"]
+script = ExtResource("1_fbpdl")
+_pathHeightOffsets = [SubResource("Curve_fwv3g")]
+_heightOffsetRange = Vector2(10, 30)
+_movementCurves = [SubResource("Curve_twba3")]
+travelTimeRange = Vector2(0.175, 0.2)
+_impactParticlesScenePath = "vfx/orbs/plasma/vfx_plasma_orb_projectile_impact"

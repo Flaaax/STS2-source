@@ -1,0 +1,23 @@
+{
+  "EXTENSION.card.humanizedCardTypes.attack": "Атака",
+  "EXTENSION.card.humanizedCardTypes.curse": "Проклятие",
+  "EXTENSION.card.humanizedCardTypes.power": "Талант",
+  "EXTENSION.card.humanizedCardTypes.quest": "Задание",
+  "EXTENSION.card.humanizedCardTypes.skill": "Навык",
+  "EXTENSION.card.humanizedCardTypes.status": "Статус",
+  "EXTENSION.config.activate": "Включите расширение, нажав кнопку «Активировать» в правом нижнем углу экрана.",
+  "EXTENSION.config.categoryWarning": "Убедитесь, что ваша вы установили категорию «Slay the Spire 2» на Twitch, иначе зрители не увидят расширение!",
+  "EXTENSION.config.inGameConnect": "Зайдите в игровое меню, чтобы подключиться и настроить интеграцию.",
+  "EXTENSION.config.title": "Компаньон Slay the Spire 2",
+  "EXTENSION.piles.clickHint.deck": "Нажмите, чтобы просмотреть колоду",
+  "EXTENSION.piles.clickHint.discardPile": "Нажмите, чтобы просмотреть стопку сброса",
+  "EXTENSION.piles.clickHint.drawPile": "Нажмите, чтобы просмотреть стопку добора",
+  "EXTENSION.poll.voteReceived": "Голос учтен!",
+  "EXTENSION.tutorial.back": "Назад",
+  "EXTENSION.tutorial.finish": "ОК!",
+  "EXTENSION.tutorial.hoverIndicator": "Наведите курсор на стрим, и {{streamerName}} покажет вам свои карты, реликвии и зелья, пока вы видите этот индикатор:",
+  "EXTENSION.tutorial.next": "Далее",
+  "EXTENSION.tutorial.title": "Slay the Spire 2",
+  "EXTENSION.tutorial.twitchIntegration": "Интеграция с Twitch",
+  "EXTENSION.tutorial.voting": "В сможете проголосовать, какие карты {{streamerName}} выберет в наградах и куда направится на карте."
+}

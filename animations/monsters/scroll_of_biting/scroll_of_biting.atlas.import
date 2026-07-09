@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://47kfdc7716qy"
+path="res://.godot/imported/scroll_of_biting.atlas-9c10c42061c8894e5ddc8da1780faf59.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/scroll_of_biting/scroll_of_biting.atlas"
+dest_files=["res://.godot/imported/scroll_of_biting.atlas-9c10c42061c8894e5ddc8da1780faf59.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

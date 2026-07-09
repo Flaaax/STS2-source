@@ -1,0 +1,34 @@
+guardbot.png
+size:426,517
+filter:Linear,Linear
+scale:0.212
+arm_l
+bounds:288,2,64,30
+rotate:90
+arm_r
+bounds:288,68,59,38
+offsets:0,1,59,39
+body
+bounds:189,5,97,101
+ditch line
+bounds:401,49,276,20
+rotate:90
+eye
+bounds:349,76,30,30
+shield grid
+bounds:2,321,306,194
+shield pop
+bounds:2,135,212,184
+shieldFX
+bounds:216,108,211,183
+offsets:1,1,213,185
+rotate:90
+shield_l
+bounds:310,327,114,188
+offsets:1,1,117,191
+shield_r
+bounds:2,3,130,185
+offsets:2,2,133,188
+rotate:90
+shield_shine
+bounds:189,108,13,25

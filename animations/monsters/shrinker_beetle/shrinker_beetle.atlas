@@ -1,0 +1,96 @@
+shrinker_beetle.png
+size:253,523
+filter:Linear,Linear
+scale:0.332
+bod
+bounds:2,375,166,95
+bod_death
+bounds:2,278,166,95
+bottom antennea
+bounds:40,63,4,135
+rotate:90
+top antennea
+bounds:40,63,4,135
+rotate:90
+bottom back_foot
+bounds:162,2,20,7
+offsets:33,0,53,13
+bottom front leg
+bounds:162,11,30,22
+rotate:90
+bottom left leg
+bounds:131,43,18,26
+rotate:90
+bottom pincher
+bounds:159,43,18,23
+rotate:90
+bottom pincher_death
+bounds:221,57,18,23
+bottom right leg
+bounds:164,69,6,24
+rotate:90
+bottom_front_Foot
+bounds:85,53,44,8
+offsets:0,1,101,9
+bottom_middle_foot
+bounds:112,45,16,6
+offsets:0,0,21,13
+eye 2
+bounds:193,57,26,23
+eye 3
+bounds:186,31,26,24
+glowy bits
+bounds:2,2,36,158
+rotate:90
+glowy bits copy
+bounds:2,40,36,158
+head
+bounds:170,270,66,77
+rotate:90
+head_death
+bounds:170,202,66,77
+rotate:90
+neck
+bounds:136,203,32,73
+neck_death
+bounds:164,127,32,73
+shadow
+bounds:2,472,244,49
+top foot 1
+bounds:214,23,23,6
+top foot 2
+bounds:214,2,19,10
+rotate:90
+top foot 3
+bounds:85,41,25,10
+top leg 1
+bounds:198,134,66,37
+rotate:90
+top leg 2 lower
+bounds:40,42,19,43
+rotate:90
+top leg 2 upper
+bounds:164,77,27,48
+top leg 3 lower
+bounds:237,147,14,53
+top leg 3 upper
+bounds:193,82,36,43
+top pincher
+bounds:214,31,26,24
+top pincher_death
+bounds:186,5,26,24
+wings 2
+bounds:40,69,129,60
+offsets:0,3,131,63
+rotate:90
+wings 2_death
+bounds:102,69,129,60
+offsets:0,3,131,63
+rotate:90
+wings1
+bounds:170,338,132,76
+offsets:0,0,135,83
+rotate:90
+wings1_death
+bounds:2,200,132,76
+offsets:0,0,135,83

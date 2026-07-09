@@ -1,0 +1,184 @@
+[gd_scene load_steps=16 format=3 uid="uid://brm7fnoyrcngn"]
+
+[ext_resource type="Script" uid="uid://cghtlla3sw0po" path="res://src/Core/Nodes/Combat/NCreatureVisuals.cs" id="1_yv8gd"]
+[ext_resource type="SpineSkeletonDataResource" uid="uid://0jt8y640ccjp" path="res://animations/monsters/soul_nexus/soulnexus_skel_data.tres" id="2_5nrrk"]
+[ext_resource type="Shader" uid="uid://dryvqo67omhm" path="res://shaders/vfx/vfx_stepped_shader_fire_flat.tres" id="3_3max1"]
+[ext_resource type="Texture2D" uid="uid://c65hcljas0pyo" path="res://images/vfx/fire/triangle_noise_tile.png" id="4_b5tux"]
+[ext_resource type="Texture2D" uid="uid://bid56elmy6fr6" path="res://images/vfx/tileable_noise_4.png" id="5_3gmms"]
+[ext_resource type="Texture2D" uid="uid://ctia3rua3hmm8" path="res://images/vfx/environment/fire/basic_fire_gradient.png" id="6_11dds"]
+[ext_resource type="Texture2D" uid="uid://dtaovewempx07" path="res://images/vfx/tileable_noise_1.png" id="8_4rfqo"]
+[ext_resource type="Texture2D" uid="uid://b8uuy71ocs26a" path="res://images/vfx/monsters/soul_nexus/soul_nexus_head_fire_base.png" id="9_8sfpt"]
+[ext_resource type="Script" uid="uid://cqp5aogknfk37" path="res://src/Core/Nodes/Vfx/NSoulNexusVfx.cs" id="11_3gmms"]
+[ext_resource type="Texture2D" uid="uid://dffr2d6cne73a" path="res://images/vfx/trail_faded.png" id="13_4rfqo"]
+[ext_resource type="Script" uid="uid://b5qsb7wn7ra2c" path="res://src/Core/Nodes/Vfx/NBasicTrail.cs" id="13_p7iak"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_p7iak"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_8sfpt"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 2.7998214, 0, 0, Vector2(1, 2.2794113), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_cfij4"]
+offsets = PackedFloat32Array(0.1365936, 0.608769, 0.99831367)
+colors = PackedColorArray(0.94, 0, 0.031333305, 1, 0.93, 0, 0.015499763, 1, 0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cfij4"]
+shader = ExtResource("3_3max1")
+shader_parameter/OuterColor = Color(0.46, 0.26680002, 0.41491994, 1)
+shader_parameter/InnerColorStep = Vector2(0.17, 0.22)
+shader_parameter/Noise2Strength = 1.0
+shader_parameter/Noise2Scaling = Vector2(1, 1)
+shader_parameter/Noise2Panning = Vector2(-0.03, 0.3)
+shader_parameter/Noise2Texture = ExtResource("8_4rfqo")
+shader_parameter/Noise1Strength = 1.0
+shader_parameter/Noise1Scaling = Vector2(1, 1)
+shader_parameter/Noise1Panning = Vector2(-0.2, 0.3)
+shader_parameter/Noise1Texture = ExtResource("4_b5tux")
+shader_parameter/InvertNoiseMask = false
+shader_parameter/NoiseMaskScale = Vector2(1, 0.845)
+shader_parameter/NoiseMaskOffset = Vector2(0, 0.185)
+shader_parameter/NoiseMask = ExtResource("6_11dds")
+shader_parameter/Distortion2Scale = Vector2(1, 1)
+shader_parameter/Distortion2Panning = Vector2(0.1, 0.2)
+shader_parameter/Distortion2Texture = ExtResource("5_3gmms")
+shader_parameter/Distortion2Strength = 0.095
+shader_parameter/Distortion1Scale = Vector2(0.5, 0.5)
+shader_parameter/Distortion1Panning = Vector2(0.1, 0.25)
+shader_parameter/Distortion1Texture = ExtResource("8_4rfqo")
+shader_parameter/Distortion1Strength = 0.085
+shader_parameter/DistortionMaskScale = Vector2(1, -1.26)
+shader_parameter/DistortionMaskOffset = Vector2(0, 0.81)
+shader_parameter/DistortionMask = ExtResource("6_11dds")
+shader_parameter/InnerColor = Color(0.02, 0.02, 0.02, 1)
+shader_parameter/OuterStep = Vector2(0.1, 0.11)
+
+[node name="SoulNexus" type="Node2D"]
+script = ExtResource("1_yv8gd")
+metadata/_edit_group_ = true
+
+[node name="Visuals" type="SpineSprite" parent="."]
+skeleton_data_res = ExtResource("2_5nrrk")
+preview_skin = "default"
+preview_animation = "cast"
+preview_frame = true
+preview_time = 0.0
+unique_name_in_owner = true
+position = Vector2(0, -31)
+scale = Vector2(0.3, 0.3)
+metadata/_edit_lock_ = true
+
+[node name="NSoulNexusVfx" type="Node" parent="Visuals"]
+script = ExtResource("11_3gmms")
+
+[node name="PathSlot1" type="SpineSlotNode" parent="Visuals"]
+slot_name = "path_particle_attach_1"
+show_behind_parent = true
+position = Vector2(-816.30536, -3837.6228)
+rotation = -1.1752098
+scale = Vector2(1.0005829, 1.0033644)
+skew = -0.0027925968
+
+[node name="Trail" type="Line2D" parent="Visuals/PathSlot1"]
+material = SubResource("CanvasItemMaterial_p7iak")
+width_curve = SubResource("Curve_8sfpt")
+default_color = Color(0, 0, 0, 1)
+gradient = SubResource("Gradient_cfij4")
+texture = ExtResource("13_4rfqo")
+texture_mode = 2
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+sharp_limit = 20.0
+round_precision = 16
+script = ExtResource("13_p7iak")
+_maxSegments = 20
+
+[node name="PathSlot2" type="SpineSlotNode" parent="Visuals"]
+slot_name = "path_particle_attach_2"
+show_behind_parent = true
+position = Vector2(330.0869, -3837.622)
+rotation = -1.1752117
+scale = Vector2(1.0005842, 1.0033723)
+skew = -0.0027991533
+
+[node name="Trail" type="Line2D" parent="Visuals/PathSlot2"]
+material = SubResource("CanvasItemMaterial_p7iak")
+scale = Vector2(0.9999987, 0.9999921)
+width_curve = SubResource("Curve_8sfpt")
+default_color = Color(0, 0, 0, 1)
+gradient = SubResource("Gradient_cfij4")
+texture = ExtResource("13_4rfqo")
+texture_mode = 2
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+sharp_limit = 20.0
+round_precision = 16
+script = ExtResource("13_p7iak")
+_maxSegments = 20
+
+[node name="PathSlot3" type="SpineSlotNode" parent="Visuals"]
+slot_name = "path_particle_attach_3"
+show_behind_parent = true
+position = Vector2(1501.4022, -3837.622)
+rotation = -1.1752123
+scale = Vector2(1.0005844, 1.003372)
+skew = -0.0027987957
+
+[node name="Trail" type="Line2D" parent="Visuals/PathSlot3"]
+material = SubResource("CanvasItemMaterial_p7iak")
+scale = Vector2(0.9999987, 0.9999924)
+width_curve = SubResource("Curve_8sfpt")
+default_color = Color(0, 0, 0, 1)
+gradient = SubResource("Gradient_cfij4")
+texture = ExtResource("13_4rfqo")
+texture_mode = 2
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+sharp_limit = 20.0
+round_precision = 16
+script = ExtResource("13_p7iak")
+_maxSegments = 20
+
+[node name="HeadFireSlot" type="SpineSlotNode" parent="Visuals"]
+slot_name = "head_fire_attach"
+show_behind_parent = true
+position = Vector2(15.32347, -847.30695)
+rotation = -0.041045707
+
+[node name="FireTexture" type="TextureRect" parent="Visuals/HeadFireSlot"]
+material = SubResource("ShaderMaterial_cfij4")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -385.6599
+offset_top = -488.9299
+offset_right = 454.3401
+offset_bottom = 241.0701
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.27654546
+pivot_offset = Vector2(420, 365)
+texture = ExtResource("9_8sfpt")
+
+[node name="Bounds" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -180.0
+offset_top = -419.0
+offset_right = 204.0
+mouse_filter = 2
+
+[node name="IntentPos" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -463)
+
+[node name="CenterPos" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -232)

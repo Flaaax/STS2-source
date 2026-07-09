@@ -1,0 +1,9 @@
+{
+  "TO_DISCARD": "Wybierz {Amount:plural:kartę|[blue]{}[/blue] karty|[blue]{}[/blue] kart} do [gold]Odrzucenia[/gold].",
+  "TO_ENCHANT": "Wybierz {Amount:plural:kartę|[blue]{}[/blue] karty|[blue]{}[/blue] kart} do [purple]Zaklęcia[/purple].",
+  "TO_EXHAUST": "Wybierz {Amount:plural:kartę|[blue]{}[/blue] karty|[blue]{}[/blue] kart} do [gold]Wyczerpania[/gold].",
+  "TO_REMOVE": "Wybierz {Amount:plural:kartę|[blue]{}[/blue] karty|[blue]{}[/blue] kart} do [gold]Usunięcia[/gold].",
+  "TO_TRANSFORM": "Wybierz {Amount:plural:kartę|[blue]{}[/blue] karty|[blue]{}[/blue] kart} do [gold]Zmiany[/gold].",
+  "TO_UPGRADE": "Wybierz {Amount:plural:kartę|[blue]{}[/blue] karty|[blue]{}[/blue] kart} do [gold]Ulepszenia[/gold].",
+  "VIEW_UPGRADES": "Ulepszenia"
+}

@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://dhd1w6ctgxuid"
+path="res://.godot/imported/attackbite.atlas-0dbdec9268a3475e6c9cf5c3f419c01a.spatlas"
+
+[deps]
+
+source_file="res://animations/vfx/vfx_bite/attackbite.atlas"
+dest_files=["res://.godot/imported/attackbite.atlas-0dbdec9268a3475e6c9cf5c3f419c01a.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

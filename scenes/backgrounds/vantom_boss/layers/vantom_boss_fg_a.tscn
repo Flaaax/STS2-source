@@ -1,0 +1,251 @@
+[gd_scene load_steps=13 format=3 uid="uid://bhkua3ctota00"]
+
+[ext_resource type="Texture2D" uid="uid://bepobfnr3fjc3" path="res://images/rooms/overgrowth_boss/vantom/vantom_bg_cutter.png" id="1_on0ic"]
+[ext_resource type="Texture2D" uid="uid://qinrp8kdcart" path="res://images/vfx/tiny_glow_dot.png" id="2_l3njv"]
+
+[sub_resource type="Curve" id="Curve_v8dg8"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_alpha_ParticleProcessMaterial_qqkat"]
+curve = SubResource("Curve_v8dg8")
+
+[sub_resource type="Gradient" id="Gradient_kedrb"]
+offsets = PackedFloat32Array(0, 0.258845, 1)
+colors = PackedColorArray(0.847059, 0.803922, 0.301961, 0, 1, 1, 1, 1, 0.780392, 0.65098, 0.403922, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_lrqsy"]
+gradient = SubResource("Gradient_kedrb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5irhe"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(1.875, 1.935, 1)
+emission_shape = 1
+emission_sphere_radius = 128.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.099999994
+scale_max = 0.5
+color = Color(0.9643653, 0.972169, 0.885995, 1)
+color_ramp = SubResource("GradientTexture1D_lrqsy")
+alpha_curve = SubResource("CurveTexture_alpha_ParticleProcessMaterial_qqkat")
+hue_variation_min = -2.2351742e-08
+hue_variation_max = 0.99999994
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_swl5j"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(2.225, 0.825, 1)
+emission_shape = 1
+emission_sphere_radius = 128.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.099999994
+scale_max = 0.5
+color = Color(0.9643653, 0.972169, 0.885995, 1)
+color_ramp = SubResource("GradientTexture1D_lrqsy")
+alpha_curve = SubResource("CurveTexture_alpha_ParticleProcessMaterial_qqkat")
+hue_variation_min = -2.2351742e-08
+hue_variation_max = 0.99999994
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_c13h1"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(4.265, 1.59, 1)
+emission_shape = 1
+emission_sphere_radius = 128.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.099999994
+scale_max = 0.5
+color = Color(0.9643653, 0.972169, 0.885995, 1)
+color_ramp = SubResource("GradientTexture1D_lrqsy")
+alpha_curve = SubResource("CurveTexture_alpha_ParticleProcessMaterial_qqkat")
+hue_variation_min = -2.2351742e-08
+hue_variation_max = 0.99999994
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hsupj"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(2.43, 0.9, 1)
+emission_shape = 1
+emission_sphere_radius = 128.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.099999994
+scale_max = 0.5
+color = Color(0.9643653, 0.972169, 0.885995, 1)
+color_ramp = SubResource("GradientTexture1D_lrqsy")
+alpha_curve = SubResource("CurveTexture_alpha_ParticleProcessMaterial_qqkat")
+hue_variation_min = -2.2351742e-08
+hue_variation_max = 0.99999994
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1xoow"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(0.595, 0.39, 1)
+emission_shape = 1
+emission_sphere_radius = 128.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.099999994
+scale_max = 0.5
+color = Color(0.9643653, 0.972169, 0.885995, 1)
+color_ramp = SubResource("GradientTexture1D_lrqsy")
+alpha_curve = SubResource("CurveTexture_alpha_ParticleProcessMaterial_qqkat")
+hue_variation_min = -2.2351742e-08
+hue_variation_max = 0.99999994
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_56sdt"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(0.865, 0.495, 1)
+emission_shape = 1
+emission_sphere_radius = 128.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.099999994
+scale_max = 0.5
+color = Color(0.9643653, 0.972169, 0.885995, 1)
+color_ramp = SubResource("GradientTexture1D_lrqsy")
+alpha_curve = SubResource("CurveTexture_alpha_ParticleProcessMaterial_qqkat")
+hue_variation_min = -2.2351742e-08
+hue_variation_max = 0.99999994
+
+[node name="A" type="TextureRect"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1382.0
+offset_top = 159.0
+offset_right = 1382.7998
+offset_bottom = 649.99976
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_on0ic")
+expand_mode = 1
+
+[node name="sparkles" type="GPUParticles2D" parent="."]
+position = Vector2(2326.4, 338)
+scale = Vector2(0.999997, 0.999997)
+amount = 20
+texture = ExtResource("2_l3njv")
+lifetime = 5.0
+preprocess = 5.0
+fixed_fps = 0
+local_coords = true
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_5irhe")
+
+[node name="sparkles2" type="GPUParticles2D" parent="."]
+position = Vector2(2681.4, 220.99994)
+rotation = -0.36651915
+scale = Vector2(0.999997, 0.999997)
+amount = 20
+texture = ExtResource("2_l3njv")
+lifetime = 5.0
+preprocess = 5.0
+fixed_fps = 0
+local_coords = true
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_swl5j")
+
+[node name="sparkles3" type="GPUParticles2D" parent="."]
+position = Vector2(422.40015, 414)
+rotation = 0.19896753
+scale = Vector2(0.999997, 0.999997)
+amount = 40
+texture = ExtResource("2_l3njv")
+lifetime = 5.0
+preprocess = 5.0
+fixed_fps = 0
+local_coords = true
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_c13h1")
+
+[node name="sparkles4" type="GPUParticles2D" parent="."]
+position = Vector2(1063.4, 398)
+scale = Vector2(0.999997, 0.999997)
+amount = 20
+texture = ExtResource("2_l3njv")
+lifetime = 5.0
+preprocess = 5.0
+fixed_fps = 0
+local_coords = true
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_hsupj")
+
+[node name="sparkles5" type="GPUParticles2D" parent="."]
+position = Vector2(1683.4, 467)
+scale = Vector2(0.999997, 0.999997)
+amount = 20
+texture = ExtResource("2_l3njv")
+lifetime = 5.0
+preprocess = 5.0
+fixed_fps = 0
+local_coords = true
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_hsupj")
+
+[node name="sparkles6" type="GPUParticles2D" parent="."]
+position = Vector2(1066.4, 257)
+scale = Vector2(0.999997, 0.999997)
+amount = 10
+texture = ExtResource("2_l3njv")
+lifetime = 5.0
+preprocess = 5.0
+fixed_fps = 0
+local_coords = true
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_1xoow")
+
+[node name="sparkles7" type="GPUParticles2D" parent="."]
+position = Vector2(2217.4, 154)
+scale = Vector2(0.999997, 0.999997)
+amount = 10
+texture = ExtResource("2_l3njv")
+lifetime = 5.0
+preprocess = 5.0
+fixed_fps = 0
+local_coords = true
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_1xoow")
+
+[node name="sparkles8" type="GPUParticles2D" parent="."]
+position = Vector2(2390.4, 138)
+scale = Vector2(0.999997, 0.999997)
+amount = 10
+texture = ExtResource("2_l3njv")
+lifetime = 5.0
+preprocess = 5.0
+fixed_fps = 0
+local_coords = true
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_1xoow")
+
+[node name="sparkles9" type="GPUParticles2D" parent="."]
+position = Vector2(434.40002, 224)
+scale = Vector2(0.999997, 0.999997)
+amount = 10
+texture = ExtResource("2_l3njv")
+lifetime = 5.0
+preprocess = 5.0
+fixed_fps = 0
+local_coords = true
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_1xoow")
+
+[node name="sparkles10" type="GPUParticles2D" parent="."]
+position = Vector2(696.4, 293)
+scale = Vector2(0.999997, 0.999997)
+amount = 10
+texture = ExtResource("2_l3njv")
+lifetime = 5.0
+preprocess = 5.0
+fixed_fps = 0
+local_coords = true
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_1xoow")
+
+[node name="sparkles11" type="GPUParticles2D" parent="."]
+position = Vector2(1854.4, 244)
+scale = Vector2(0.999997, 0.999997)
+amount = 15
+texture = ExtResource("2_l3njv")
+lifetime = 5.0
+preprocess = 5.0
+fixed_fps = 0
+local_coords = true
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_56sdt")

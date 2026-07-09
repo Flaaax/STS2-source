@@ -1,0 +1,517 @@
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Godot;
+using MegaCrit.Sts2.addons.mega_text;
+using MegaCrit.Sts2.Core.Assets;
+using MegaCrit.Sts2.Core.Audio.Debug;
+using MegaCrit.Sts2.Core.Entities.Multiplayer;
+using MegaCrit.Sts2.Core.Helpers;
+using MegaCrit.Sts2.Core.Hooks;
+using MegaCrit.Sts2.Core.Localization;
+using MegaCrit.Sts2.Core.Logging;
+using MegaCrit.Sts2.Core.Nodes.CommonUi;
+using MegaCrit.Sts2.Core.Nodes.Ftue;
+using MegaCrit.Sts2.Core.Nodes.GodotExtensions;
+using MegaCrit.Sts2.Core.Nodes.Rewards;
+using MegaCrit.Sts2.Core.Nodes.Screens.Overlays;
+using MegaCrit.Sts2.Core.Nodes.Screens.ScreenContext;
+using MegaCrit.Sts2.Core.Rewards;
+using MegaCrit.Sts2.Core.Rooms;
+using MegaCrit.Sts2.Core.Runs;
+using MegaCrit.Sts2.Core.Runs.History;
+using MegaCrit.Sts2.Core.Saves;
+using MegaCrit.Sts2.Core.TestSupport;
+
+namespace MegaCrit.Sts2.Core.Nodes.Screens;
+
+public partial class NRewardsScreen : Control, IOverlayScreen, IScreenContext
+{
+	[Signal]
+	public delegate void CompletedEventHandler();
+
+	private const float _scrollLimitTop = 35f;
+
+	private const int _scrollbarThreshold = 400;
+
+	private IRunState _runState;
+
+	private NProceedButton _proceedButton;
+
+	private Control _rewardsContainer;
+
+	private NScrollbar _scrollbar;
+
+	private MegaLabel _headerLabel;
+
+	private Control _rewardContainerMask;
+
+	private Control _waitingForOtherPlayersOverlay;
+
+	private Control _rewardsWindow;
+
+	private Vector2 _targetDragPos;
+
+	private bool _scrollbarPressed;
+
+	private Tween? _fadeTween;
+
+	private readonly List<Control> _rewardButtons = new List<Control>();
+
+	private readonly List<Control> _skippedRewardButtons = new List<Control>();
+
+	private Control? _lastRewardFocused;
+
+	private RewardsSet _rewardsSet;
+
+	/// <summary>
+	/// The proceed button is often disabled temporarily. Set this flag if it should never be re-enabled.
+	/// This is used when proceed is hit after a boss fight - the player shouldn't be able to re-press it.
+	/// </summary>
+	private bool _disableProceedForever;
+
+	/// <summary>
+	/// Whether this screen is the last thing you'll see in the current room.
+	///
+	/// See <see cref="M:MegaCrit.Sts2.Core.Runs.RunManager.ProceedFromTerminalRewardsScreen" /> for more info.
+	/// </summary>
+	private bool _isTerminal;
+
+	/// <summary>
+	/// If this rewards screen requires the player to take all rewards, then the skip button cannot be shown.
+	/// </summary>
+	private bool _skipDisallowed;
+
+	private static readonly LocString _waitingLoc = new LocString("gameplay_ui", "MULTIPLAYER_WAITING");
+
+	private bool CanScroll => _rewardsContainer.Size.Y >= 400f;
+
+	private float ScrollLimitBottom => 35f - _rewardsContainer.Size.Y + 400f;
+
+	private static string ScenePath => SceneHelper.GetScenePath("screens/rewards_screen");
+
+	public static IEnumerable<string> AssetPaths => new global::_003C_003Ez__ReadOnlySingleElementList<string>(ScenePath);
+
+	/// <summary>
+	/// If the rewards screen is terminal, this is true once the player has taken all rewards or skipped them.
+	/// False if the rewards screen is not terminal or the player has not taken all rewards yet.
+	/// </summary>
+	public bool IsComplete { get; private set; }
+
+	public NetScreenType ScreenType => NetScreenType.Rewards;
+
+	public bool UseSharedBackstop => true;
+
+	public Control DefaultFocusedControl
+	{
+		get
+		{
+			if (_rewardButtons.Count == 0)
+			{
+				return _rewardsContainer;
+			}
+			return _lastRewardFocused ?? _rewardButtons[0];
+		}
+	}
+
+	public Control FocusedControlFromTopBar
+	{
+		get
+		{
+			if (_rewardButtons.Count <= 0)
+			{
+				return _rewardsContainer;
+			}
+			return _rewardButtons[0];
+		}
+	}
+
+	public static NRewardsScreen ShowScreen(RewardsSet set, bool isTerminal, IRunState runState)
+	{
+		NRewardsScreen nRewardsScreen = PreloadManager.Cache.GetScene(ScenePath).Instantiate<NRewardsScreen>(PackedScene.GenEditState.Disabled);
+		nRewardsScreen._rewardsSet = set;
+		nRewardsScreen._isTerminal = isTerminal;
+		nRewardsScreen._runState = runState;
+		NOverlayStack.Instance.Push(nRewardsScreen);
+		return nRewardsScreen;
+	}
+
+	public override void _Ready()
+	{
+		_proceedButton = GetNode<NProceedButton>("ProceedButton");
+		_rewardContainerMask = GetNode<Control>("%RewardContainerMask");
+		_rewardsContainer = GetNode<Control>("%RewardsContainer");
+		_scrollbar = GetNode<NScrollbar>("%Scrollbar");
+		_headerLabel = GetNode<MegaLabel>("%HeaderLabel");
+		_waitingForOtherPlayersOverlay = GetNode<Control>("%WaitingForOtherPlayers");
+		_waitingForOtherPlayersOverlay.GetNode<MegaLabel>("Label").SetTextAutoSize(_waitingLoc.GetRawText());
+		_rewardsWindow = GetNode<Control>("Rewards");
+		_rewardsWindow.Modulate = StsColors.transparentBlack;
+		_proceedButton.Connect(NClickableControl.SignalName.Released, Callable.From<NButton>(OnProceedButtonPressed));
+		_proceedButton.SetPulseState(isPulsing: false);
+		TryEnableProceedButton();
+		_proceedButton.UpdateText(NProceedButton.SkipLoc);
+		NDebugAudioManager.Instance?.Play("victory.mp3");
+		_scrollbar.Connect(NScrollbar.SignalName.MousePressed, Callable.From<InputEvent>(delegate
+		{
+			_scrollbarPressed = true;
+		}));
+		_scrollbar.Connect(NScrollbar.SignalName.MouseReleased, Callable.From<InputEvent>(delegate
+		{
+			_scrollbarPressed = false;
+		}));
+		_targetDragPos = new Vector2(_rewardsContainer.Position.X, 35f);
+		object obj;
+		if (_runState.CurrentRoom is CombatRoom)
+		{
+			MapPointHistoryEntry? currentMapPointHistoryEntry = _runState.CurrentMapPointHistoryEntry;
+			if (currentMapPointHistoryEntry != null && currentMapPointHistoryEntry.GetEntry(_rewardsSet.Player.NetId).WasMugged)
+			{
+				obj = "COMBAT_REWARD_HEADER_MUGGED";
+				goto IL_01e6;
+			}
+		}
+		obj = "COMBAT_REWARD_HEADER_LOOT";
+		goto IL_01e6;
+		IL_01e6:
+		string locEntryKey = (string)obj;
+		_headerLabel.SetTextAutoSize(new LocString("gameplay_ui", locEntryKey).GetFormattedText());
+		GetViewport().Connect(Viewport.SignalName.GuiFocusChanged, Callable.From<Control>(ProcessGuiFocus));
+		_rewardsContainer.Connect(Control.SignalName.FocusEntered, Callable.From(delegate
+		{
+			DefaultFocusedControl.TryGrabFocus();
+		}));
+		foreach (Control rewardButton in _rewardButtons)
+		{
+			RemoveButton(rewardButton);
+		}
+		List<Reward> list = _rewardsSet.Rewards.ToList();
+		_rewardButtons.Clear();
+		foreach (Reward item in list)
+		{
+			Control option;
+			if (item is LinkedRewardSet linkedReward)
+			{
+				option = NLinkedRewardSet.Create(linkedReward, this);
+				option.Connect(NLinkedRewardSet.SignalName.RewardClaimed, Callable.From<NLinkedRewardSet>(RewardCollectedFrom));
+			}
+			else
+			{
+				option = NRewardButton.Create(item, this);
+				option.Connect(NRewardButton.SignalName.RewardClaimed, Callable.From<NRewardButton>(RewardCollectedFrom));
+				option.Connect(NRewardButton.SignalName.RewardSkipped, Callable.From<NRewardButton>(RewardSkippedFrom));
+				option.Connect(Control.SignalName.FocusEntered, Callable.From(() => _lastRewardFocused = option));
+			}
+			item.MarkContentAsSeen();
+			_rewardButtons.Add(option);
+			_rewardsContainer.AddChildSafely(option);
+		}
+		if (_rewardsSet.DisallowSkipping)
+		{
+			_skipDisallowed = true;
+			if (_proceedButton.IsSkip)
+			{
+				_proceedButton.Disable();
+			}
+		}
+		if (_rewardsContainer.HasFocus())
+		{
+			DefaultFocusedControl.TryGrabFocus();
+		}
+		TaskHelper.RunSafely(RelicFtueCheck());
+		Callable.From(UpdateScreenState).CallDeferred();
+	}
+
+	private async Task RelicFtueCheck()
+	{
+		if (SaveManager.Instance.SeenFtue("obtain_relic_ftue"))
+		{
+			return;
+		}
+		await this.AwaitProcessFrame();
+		await this.AwaitProcessFrame();
+		foreach (NRewardButton item in _rewardButtons.OfType<NRewardButton>())
+		{
+			if (item.Reward is RelicReward)
+			{
+				NModalContainer.Instance.Add(NRelicRewardFtue.Create(item));
+				SaveManager.Instance.MarkFtueAsComplete("obtain_relic_ftue");
+				break;
+			}
+		}
+	}
+
+	public void RewardCollectedFrom(Control button)
+	{
+		int a = _rewardButtons.IndexOf(button);
+		RemoveButton(button);
+		_lastRewardFocused = ((_rewardButtons.Count > 0) ? _rewardButtons[Mathf.Min(a, _rewardButtons.Count - 1)] : null);
+		UpdateScreenState();
+		if (_rewardButtons.Count > 0 || _isTerminal)
+		{
+			TryEnableProceedButton();
+			if (_proceedButton.IsEnabled && !_rewardButtons.Except(_skippedRewardButtons).Any())
+			{
+				_proceedButton.SetPulseState(isPulsing: true);
+			}
+		}
+	}
+
+	public void RewardSkippedFrom(Control button)
+	{
+		_skippedRewardButtons.Add(button);
+		if (!_rewardButtons.Except(_skippedRewardButtons).Any())
+		{
+			_proceedButton.SetPulseState(isPulsing: true);
+		}
+	}
+
+	private void UpdateScreenState()
+	{
+		if (_rewardButtons.Count == 0)
+		{
+			if (!RunManager.Instance.RewardsSetSynchronizer.IsRewardsSetCompleted(_rewardsSet))
+			{
+				Log.Error("All rewards have been taken, but the rewards set is not complete on the backend!");
+			}
+			if (_isTerminal)
+			{
+				_fadeTween?.Kill();
+				_fadeTween = CreateTween().SetParallel();
+				_fadeTween.TweenProperty(GetNode<Control>("Rewards"), "modulate:a", 0f, 0.25);
+				NOverlayStack.Instance.HideBackstop();
+				_proceedButton.UpdateText(NProceedButton.ProceedLoc);
+				TryEnableProceedButton();
+				_proceedButton.SetPulseState(isPulsing: true);
+				_rewardsContainer.FocusMode = FocusModeEnum.None;
+				IsComplete = true;
+				EmitSignal(SignalName.Completed);
+			}
+			else
+			{
+				NOverlayStack.Instance.Remove(this);
+			}
+		}
+		_rewardsContainer.ResetSize();
+		_scrollbar.Visible = CanScroll;
+		_scrollbar.MouseFilter = (MouseFilterEnum)(CanScroll ? 0 : 2);
+		if (!CanScroll)
+		{
+			_targetDragPos.Y = 35f;
+		}
+		for (int i = 0; i < _rewardButtons.Count; i++)
+		{
+			_rewardButtons[i].FocusNeighborLeft = _rewardButtons[i].GetPath();
+			_rewardButtons[i].FocusNeighborRight = _rewardButtons[i].GetPath();
+			_rewardButtons[i].FocusNeighborTop = ((i > 0) ? _rewardButtons[i - 1].GetPath() : _rewardButtons[i].GetPath());
+			_rewardButtons[i].FocusNeighborBottom = ((i < _rewardButtons.Count - 1) ? _rewardButtons[i + 1].GetPath() : _rewardButtons[i].GetPath());
+		}
+	}
+
+	private void RemoveButton(Control button)
+	{
+		button.GetParent().RemoveChildSafely(button);
+		button.QueueFreeSafely();
+		int a = _rewardButtons.IndexOf(button);
+		_rewardButtons.Remove(button);
+		if (_rewardButtons.Count > 0)
+		{
+			a = Mathf.Min(a, _rewardButtons.Count - 1);
+			_rewardButtons[a].TryGrabFocus();
+		}
+	}
+
+	private void OnProceedButtonPressed(NButton _)
+	{
+		if (RunManager.Instance.debugAfterCombatRewardsOverride != null && _isTerminal)
+		{
+			RunManager.Instance.debugAfterCombatRewardsOverride?.Invoke();
+		}
+		else if (_isTerminal && (_runState.CurrentRoom.RoomType == RoomType.Boss || _runState.CurrentRoom.IsVictoryRoom))
+		{
+			if (_runState.Map.SecondBossMapPoint != null && _runState.CurrentMapCoord == _runState.Map.BossMapPoint.coord)
+			{
+				TaskHelper.RunSafely(RunManager.Instance.ProceedFromTerminalRewardsScreen());
+				return;
+			}
+			_proceedButton.Disable();
+			_disableProceedForever = true;
+			if (RunManager.Instance.ActChangeSynchronizer.IsWaitingForOtherPlayers())
+			{
+				_waitingForOtherPlayersOverlay.Visible = true;
+			}
+			RunManager.Instance.ActChangeSynchronizer.SetLocalPlayerReady();
+		}
+		else if (_isTerminal)
+		{
+			if (_proceedButton.IsSkip)
+			{
+				if (TestMode.IsOn || SaveManager.Instance.SeenFtue("combat_reward_ftue"))
+				{
+					TaskHelper.RunSafely(RunManager.Instance.ProceedFromTerminalRewardsScreen());
+				}
+				else
+				{
+					TaskHelper.RunSafely(RewardFtueCheck());
+				}
+				return;
+			}
+			if (_runState.ActFloor > 4)
+			{
+				SaveManager.Instance.MarkFtueAsComplete("combat_reward_ftue");
+			}
+			TaskHelper.RunSafely(RunManager.Instance.ProceedFromTerminalRewardsScreen());
+		}
+		else
+		{
+			RunManager.Instance.RewardsSetSynchronizer.SkipLocalRewardsSet();
+			NOverlayStack.Instance.Remove(this);
+		}
+	}
+
+	/// <summary>
+	/// Called when RewardsSetSynchronizer skips all rewards just before we exit the room.
+	/// If we're still showing rewards at that time, we must hide all rewards to prevent the player from clicking them
+	/// just before the transition blocks input.
+	/// </summary>
+	private void BeforeRoomExit()
+	{
+		_rewardButtons.Clear();
+		UpdateScreenState();
+		if (this.IsValid())
+		{
+			_proceedButton.Disable();
+		}
+	}
+
+	public void AfterOverlayOpened()
+	{
+		RunManager.Instance.RewardsSetSynchronizer.RewardsSkippedDuringRoomExit += BeforeRoomExit;
+	}
+
+	public void AfterOverlayClosed()
+	{
+		_proceedButton.Disable();
+		RunManager.Instance.RewardsSetSynchronizer.RewardsSkippedDuringRoomExit -= BeforeRoomExit;
+		this.QueueFreeSafely();
+	}
+
+	private void TryEnableProceedButton()
+	{
+		if (!_disableProceedForever && (!_skipDisallowed || !_proceedButton.IsSkip) && Hook.ShouldProceedToNextMapPoint(_runState) && !_proceedButton.IsEnabled)
+		{
+			if (_isTerminal && _rewardButtons.Count == 0)
+			{
+				NOverlayStack.Instance.HideBackstop();
+			}
+			_proceedButton.Enable();
+		}
+	}
+
+	public void AfterOverlayShown()
+	{
+		TryEnableProceedButton();
+		UpdateScreenState();
+		if (!IsComplete)
+		{
+			_fadeTween?.FastForwardToCompletion();
+			_fadeTween = CreateTween().SetParallel();
+			_fadeTween.TweenProperty(_rewardsWindow, "modulate", Colors.White, 0.5);
+			_fadeTween.TweenProperty(_rewardsWindow, "position:y", _rewardsWindow.Position.Y, 0.5).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Back)
+				.From(_rewardsWindow.Position.Y + 100f);
+		}
+	}
+
+	public void AfterOverlayHidden()
+	{
+		_proceedButton.Disable();
+		if (!IsComplete)
+		{
+			_fadeTween?.FastForwardToCompletion();
+			_fadeTween = CreateTween();
+			_fadeTween.TweenProperty(_rewardsWindow, "modulate:a", 0, 0.25);
+		}
+	}
+
+	public override void _GuiInput(InputEvent inputEvent)
+	{
+		if (IsVisibleInTree() && CanScroll)
+		{
+			ProcessScrollEvent(inputEvent);
+		}
+	}
+
+	/// <summary>
+	/// Detects mouse wheel up/down and updates our scroll target accordingly
+	/// </summary>
+	/// <param name="inputEvent"></param>
+	private void ProcessScrollEvent(InputEvent inputEvent)
+	{
+		_targetDragPos += new Vector2(0f, ScrollHelper.GetDragForScrollEvent(inputEvent));
+	}
+
+	private void ProcessGuiFocus(Control focusedControl)
+	{
+		if (IsVisibleInTree() && CanScroll && NControllerManager.Instance.IsUsingController && _rewardButtons.Contains(focusedControl))
+		{
+			float value = 0f - focusedControl.Position.Y + _rewardContainerMask.Size.Y * 0.5f;
+			value = Mathf.Clamp(value, ScrollLimitBottom, 35f);
+			_targetDragPos = new Vector2(_targetDragPos.X, value);
+		}
+	}
+
+	public override void _Process(double delta)
+	{
+		if (IsVisibleInTree())
+		{
+			UpdateScrollPosition(delta);
+		}
+	}
+
+	private void UpdateScrollPosition(double delta)
+	{
+		if (!_rewardsContainer.Position.IsEqualApprox(_targetDragPos))
+		{
+			_rewardsContainer.Position = _rewardsContainer.Position.Lerp(_targetDragPos, Mathf.Clamp((float)delta * 15f, 0f, 1f));
+			if (_rewardsContainer.Position.DistanceTo(_targetDragPos) < 0.5f)
+			{
+				_rewardsContainer.Position = _targetDragPos;
+			}
+			if (!_scrollbarPressed && CanScroll)
+			{
+				_scrollbar.SetValueWithoutAnimation(Mathf.Clamp(_rewardsContainer.Position.Y / ScrollLimitBottom, 0f, 1f) * 100f);
+			}
+		}
+		if (_scrollbarPressed)
+		{
+			_targetDragPos.Y = Mathf.Lerp(35f, ScrollLimitBottom, (float)_scrollbar.Value * 0.01f);
+		}
+		if (_targetDragPos.Y < Mathf.Min(ScrollLimitBottom, 0f))
+		{
+			_targetDragPos.Y = Mathf.Lerp(_targetDragPos.Y, ScrollLimitBottom, (float)delta * 12f);
+		}
+		else if (_targetDragPos.Y > Mathf.Max(ScrollLimitBottom, 0f))
+		{
+			_targetDragPos.Y = Mathf.Lerp(_targetDragPos.Y, 35f, (float)delta * 12f);
+		}
+	}
+
+	/// <summary>
+	/// If the player attempts to skip rewards AND they have encountered less than 3 rewards, we show the Rewards FTUE to
+	/// let them know that they shouldn't skip rewards. You have to click em to get em!
+	/// </summary>
+	private async Task RewardFtueCheck()
+	{
+		_proceedButton.Hide();
+		NCombatRewardFtue nCombatRewardFtue = NCombatRewardFtue.Create(_rewardsContainer);
+		NModalContainer.Instance.Add(nCombatRewardFtue);
+		SaveManager.Instance.MarkFtueAsComplete("combat_reward_ftue");
+		await nCombatRewardFtue.WaitForPlayerToConfirm();
+		_proceedButton.Show();
+	}
+
+	public void HideWaitingForPlayersScreen()
+	{
+		_waitingForOtherPlayersOverlay.Visible = false;
+	}
+}

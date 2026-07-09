@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://xreqxafd5yre"
+path="res://.godot/imported/stabbot.atlas-3d6dbf56bdeca1953f3f86c3afcc4e8f.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/stabbot/stabbot.atlas"
+dest_files=["res://.godot/imported/stabbot.atlas-3d6dbf56bdeca1953f3f86c3afcc4e8f.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

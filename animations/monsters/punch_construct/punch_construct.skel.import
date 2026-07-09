@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://sdep3ba11al2"
+path="res://.godot/imported/punch_construct.skel-2e25427da2bfb94405919d1cac6eef21.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/punch_construct/punch_construct.skel"
+dest_files=["res://.godot/imported/punch_construct.skel-2e25427da2bfb94405919d1cac6eef21.spskel"]
+
+[params]
+

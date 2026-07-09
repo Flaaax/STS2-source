@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://xt688uf5oghr"
+path="res://.godot/imported/mecha_knight.skel-73acecfbf761c8318342cfbe9467ed65.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/mecha_knight/mecha_knight.skel"
+dest_files=["res://.godot/imported/mecha_knight.skel-73acecfbf761c8318342cfbe9467ed65.spskel"]
+
+[params]
+

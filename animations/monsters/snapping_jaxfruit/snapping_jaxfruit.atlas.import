@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://dqk5asoh2etei"
+path="res://.godot/imported/snapping_jaxfruit.atlas-5db33706002e22840e6bd607937f60ad.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/snapping_jaxfruit/snapping_jaxfruit.atlas"
+dest_files=["res://.godot/imported/snapping_jaxfruit.atlas-5db33706002e22840e6bd607937f60ad.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

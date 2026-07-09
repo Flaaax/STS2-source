@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://cla4d0v5flugx"
+path="res://.godot/imported/thievinghopper.atlas-e86f4175d7eec25380799abf548a47c1.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/thieving_hopper/thievinghopper.atlas"
+dest_files=["res://.godot/imported/thievinghopper.atlas-e86f4175d7eec25380799abf548a47c1.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://brypx1fl4prr2"
+path="res://.godot/imported/infested_purifier.atlas-05329b751a1c9b9aeeda42cee5dbf05b.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/infested_purifier/infested_purifier.atlas"
+dest_files=["res://.godot/imported/infested_purifier.atlas-05329b751a1c9b9aeeda42cee5dbf05b.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

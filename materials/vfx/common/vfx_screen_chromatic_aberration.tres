@@ -1,0 +1,22 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://biiimrm2xgift"]
+
+[ext_resource type="Shader" uid="uid://103vprltab4k" path="res://shaders/vfx/common/vfx_screen_chromatic_aberration_shader.gdshader" id="1_6lokl"]
+
+[sub_resource type="Curve" id="Curve_6lokl"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveTexture" id="CurveTexture_v7nso"]
+curve = SubResource("Curve_6lokl")
+
+[sub_resource type="Curve" id="Curve_16pm7"]
+_data = [Vector2(0, 1), 0.0, -2.4857147, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_wyexe"]
+curve = SubResource("Curve_16pm7")
+
+[resource]
+shader = ExtResource("1_6lokl")
+shader_parameter/intensity_curve = SubResource("CurveTexture_wyexe")
+shader_parameter/distance_curve = SubResource("CurveTexture_v7nso")

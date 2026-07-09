@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://dvlteruf5hb0v"
+path="res://.godot/imported/sewer_clam.atlas-29a6b85e77f2455cf67977d384d6b887.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/sewer_clam/sewer_clam.atlas"
+dest_files=["res://.godot/imported/sewer_clam.atlas-29a6b85e77f2455cf67977d384d6b887.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

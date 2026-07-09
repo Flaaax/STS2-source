@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://by5nbsgnpw4r6"
+path="res://.godot/imported/torch_head_amalgam.atlas-b72f3b911e01e1eea741a42ece45dbf7.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/torch_head_amalgam/torch_head_amalgam.atlas"
+dest_files=["res://.godot/imported/torch_head_amalgam.atlas-b72f3b911e01e1eea741a42ece45dbf7.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

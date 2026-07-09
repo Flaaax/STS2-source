@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://cp85kd7cflnrd"
+path="res://.godot/imported/scratch.skel-b26863d3ec5ccf862201d5adb573ba6b.spskel"
+
+[deps]
+
+source_file="res://animations/vfx/vfx_scratch/scratch.skel"
+dest_files=["res://.godot/imported/scratch.skel-b26863d3ec5ccf862201d5adb573ba6b.spskel"]
+
+[params]
+

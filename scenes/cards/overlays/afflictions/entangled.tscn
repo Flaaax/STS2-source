@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnna6pveivgf6"]
+
+[ext_resource type="PackedScene" uid="uid://dp40xuttq8ffs" path="res://scenes/vfx/ui/card/afflictions/entangled/vfx_ui_card_affliction_entangled.tscn" id="1_p4c3e"]
+
+[node name="Entangled" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="vfx_ui_card_affliction_entangled" parent="." instance=ExtResource("1_p4c3e")]
+layout_mode = 1

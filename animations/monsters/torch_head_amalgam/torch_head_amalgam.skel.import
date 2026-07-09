@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://dj3543l2d4n57"
+path="res://.godot/imported/torch_head_amalgam.skel-880f3240bfd0c366a613e8e1c1f7af37.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/torch_head_amalgam/torch_head_amalgam.skel"
+dest_files=["res://.godot/imported/torch_head_amalgam.skel-880f3240bfd0c366a613e8e1c1f7af37.spskel"]
+
+[params]
+

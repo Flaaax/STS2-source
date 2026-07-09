@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://fhnuqhvm7a17"
+path="res://.godot/imported/haunted_ship.skel-4473626710aae33a504c1f6889ec237f.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/haunted_ship/haunted_ship.skel"
+dest_files=["res://.godot/imported/haunted_ship.skel-4473626710aae33a504c1f6889ec237f.spskel"]
+
+[params]
+

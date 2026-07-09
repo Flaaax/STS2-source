@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://b5jqvn5gjbs4u"
+path="res://.godot/imported/osty.atlas-55198f3e4eab7dced95510d7a9fb2c74.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/osty/osty.atlas"
+dest_files=["res://.godot/imported/osty.atlas-55198f3e4eab7dced95510d7a9fb2c74.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

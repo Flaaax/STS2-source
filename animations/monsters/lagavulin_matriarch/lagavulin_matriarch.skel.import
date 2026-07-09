@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://dxjx88aec77ei"
+path="res://.godot/imported/lagavulin_matriarch.skel-0731b20101a2bcc0830e551994869c37.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/lagavulin_matriarch/lagavulin_matriarch.skel"
+dest_files=["res://.godot/imported/lagavulin_matriarch.skel-0731b20101a2bcc0830e551994869c37.spskel"]
+
+[params]
+

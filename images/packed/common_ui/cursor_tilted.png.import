@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://ceouejemr6l2v"
+path="res://.godot/imported/cursor_tilted.png-4b9481f5fa6340d8ebb3ed3d66020719.image"
+
+[deps]
+
+source_file="res://images/packed/common_ui/cursor_tilted.png"
+dest_files=["res://.godot/imported/cursor_tilted.png-4b9481f5fa6340d8ebb3ed3d66020719.image"]
+
+[params]
+

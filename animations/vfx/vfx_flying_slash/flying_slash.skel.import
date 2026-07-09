@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://bg17kfr1nidqt"
+path="res://.godot/imported/flying_slash.skel-7aed5ed7ba3076626a4e86712234be2d.spskel"
+
+[deps]
+
+source_file="res://animations/vfx/vfx_flying_slash/flying_slash.skel"
+dest_files=["res://.godot/imported/flying_slash.skel-7aed5ed7ba3076626a4e86712234be2d.spskel"]
+
+[params]
+

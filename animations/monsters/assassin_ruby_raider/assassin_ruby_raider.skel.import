@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://dncnv6iim6ekx"
+path="res://.godot/imported/assassin_ruby_raider.skel-80ed325601227726e0f60c86414e7936.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/assassin_ruby_raider/assassin_ruby_raider.skel"
+dest_files=["res://.godot/imported/assassin_ruby_raider.skel-80ed325601227726e0f60c86414e7936.spskel"]
+
+[params]
+

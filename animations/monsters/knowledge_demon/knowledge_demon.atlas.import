@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://b0evo45ja7dar"
+path="res://.godot/imported/knowledge_demon.atlas-dbc9f6e671dd1fe5e7c7905cb0863b44.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/knowledge_demon/knowledge_demon.atlas"
+dest_files=["res://.godot/imported/knowledge_demon.atlas-dbc9f6e671dd1fe5e7c7905cb0863b44.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

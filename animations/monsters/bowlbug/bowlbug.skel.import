@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://bvbi45poh5hvb"
+path="res://.godot/imported/bowlbug.skel-d1f40878c1c03bc0185976b32a5f2de0.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/bowlbug/bowlbug.skel"
+dest_files=["res://.godot/imported/bowlbug.skel-d1f40878c1c03bc0185976b32a5f2de0.spskel"]
+
+[params]
+

@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://dwihyu7u7wi6h"
+path="res://.godot/imported/thievinghopper.skel-ccdf0479d771cd6e1b547c8a605fb3e2.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/thieving_hopper/thievinghopper.skel"
+dest_files=["res://.godot/imported/thievinghopper.skel-ccdf0479d771cd6e1b547c8a605fb3e2.spskel"]
+
+[params]
+

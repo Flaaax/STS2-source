@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://c4q2wm878wu06"
+path="res://.godot/imported/spinytoad.atlas-93928e5708d11c2076c4b770d0ba4628.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/spiny_toad/spinytoad.atlas"
+dest_files=["res://.godot/imported/spinytoad.atlas-93928e5708d11c2076c4b770d0ba4628.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

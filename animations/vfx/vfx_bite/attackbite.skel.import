@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://dwfomm72pjqv0"
+path="res://.godot/imported/attackbite.skel-f399ea7df9980aa93d0e85559a0888fe.spskel"
+
+[deps]
+
+source_file="res://animations/vfx/vfx_bite/attackbite.skel"
+dest_files=["res://.godot/imported/attackbite.skel-f399ea7df9980aa93d0e85559a0888fe.spskel"]
+
+[params]
+

@@ -1,0 +1,109 @@
+seapunk.png
+size:569,269
+filter:Linear,Linear
+scale:0.34
+bod
+bounds:354,142,125,109
+rotate:90
+death_pile
+bounds:2,21,133,83
+offsets:0,0,141,83
+extendacle
+bounds:137,26,27,175
+rotate:90
+foot left
+bounds:164,115,57,62
+offsets:0,0,58,62
+foot right
+bounds:216,207,53,60
+huge_bubble
+bounds:2,106,160,161
+knee_left
+bounds:335,6,19,28
+rotate:90
+medium_bubble
+bounds:465,169,99,98
+mouth
+bounds:354,70,95,70
+seaweed 1
+bounds:465,142,25,38
+rotate:90
+seaweed 10
+bounds:223,111,43,66
+seaweed 11
+bounds:451,71,66,69
+seaweed 12
+bounds:356,39,29,85
+rotate:90
+seaweed 13
+bounds:519,79,44,88
+offsets:0,0,44,89
+seaweed 14
+bounds:536,20,31,57
+seaweed 15
+bounds:365,3,34,65
+offsets:0,1,34,66
+rotate:90
+seaweed 16
+bounds:536,3,15,23
+rotate:90
+seaweed 17
+bounds:319,177,38,31
+rotate:90
+seaweed 18
+bounds:297,9,15,36
+rotate:90
+seaweed 19
+bounds:284,140,35,52
+rotate:90
+seaweed 2
+bounds:207,10,14,46
+rotate:90
+seaweed 20
+bounds:216,179,26,38
+rotate:90
+seaweed 21
+bounds:99,3,16,41
+rotate:90
+seaweed 22
+bounds:312,109,29,33
+rotate:90
+seaweed 23
+bounds:268,140,14,37
+seaweed 24
+bounds:255,8,16,40
+rotate:90
+seaweed 25
+bounds:256,179,26,27
+rotate:90
+seaweed 26
+bounds:2,6,13,51
+offsets:0,0,14,51
+rotate:90
+seaweed 27
+bounds:285,177,40,32
+rotate:90
+seaweed 3
+bounds:268,109,29,42
+offsets:0,0,29,43
+rotate:90
+seaweed 4
+bounds:319,217,30,50
+seaweed 5
+bounds:314,27,26,40
+rotate:90
+seaweed 6
+bounds:164,179,50,88
+seaweed 7
+bounds:55,3,42,16
+seaweed 8
+bounds:443,14,54,91
+rotate:90
+seaweed 9
+bounds:271,219,46,48
+offsets:0,2,46,50
+shadow
+bounds:137,55,215,49
+offsets:2,1,218,53
+tongue
+bounds:142,2,63,22

@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://cnl5c3wsgrh5a"
+path="res://.godot/imported/shop_merchant_top.skel-ad2d42e4f6573dc2530e31337fb87e12.spskel"
+
+[deps]
+
+source_file="res://animations/backgrounds/merchant_room/top/shop_merchant_top.skel"
+dest_files=["res://.godot/imported/shop_merchant_top.skel-ad2d42e4f6573dc2530e31337fb87e12.spskel"]
+
+[params]
+

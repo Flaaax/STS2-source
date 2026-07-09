@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://r0s2c152fmb1"
+path="res://.godot/imported/cultists.skel-109c5f5f5943820bee1e8abf2ec441d3.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/cultists/cultists.skel"
+dest_files=["res://.godot/imported/cultists.skel-109c5f5f5943820bee1e8abf2ec441d3.spskel"]
+
+[params]
+

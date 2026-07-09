@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://d367bf5r48pir"
+path="res://.godot/imported/seapunk.skel-7b5ad78b2bf46d32758f4e658ed10a65.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/seapunk/seapunk.skel"
+dest_files=["res://.godot/imported/seapunk.skel-7b5ad78b2bf46d32758f4e658ed10a65.spskel"]
+
+[params]
+

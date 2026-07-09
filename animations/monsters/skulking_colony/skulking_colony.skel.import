@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://p211sb7gl6w8"
+path="res://.godot/imported/skulking_colony.skel-361608d2d29803cac297349dd9992980.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/skulking_colony/skulking_colony.skel"
+dest_files=["res://.godot/imported/skulking_colony.skel-361608d2d29803cac297349dd9992980.spskel"]
+
+[params]
+

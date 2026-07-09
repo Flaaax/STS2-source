@@ -1,0 +1,177 @@
+[gd_scene load_steps=7 format=3 uid="uid://dp40xuttq8ffs"]
+
+[ext_resource type="Texture2D" uid="uid://ddouphww0r8d6" path="res://images/vfx/ui/ui_card_mask.png" id="1_44321"]
+[ext_resource type="Texture2D" uid="uid://cnnu2hi8qwc6q" path="res://images/vfx/ui/card/ui_card_border_vignette.png" id="2_f610y"]
+[ext_resource type="Texture2D" uid="uid://cgpaf12xcgk58" path="res://images/vfx/ui/card/ui_card_border_glow.png" id="3_5poeo"]
+[ext_resource type="Material" uid="uid://c54i5w1m55b8i" path="res://materials/vfx/ui/card/afflictions/entangled/vfx_ui_card_affliction_entangled_main.tres" id="4_7qvo7"]
+[ext_resource type="Texture2D" uid="uid://c7vreiil83e4r" path="res://images/vfx/ui/card/afflictions/entangled/ui_card_entangled_main.png" id="5_tnayx"]
+[ext_resource type="PackedScene" uid="uid://wfxte61m2pd2" path="res://scenes/vfx/ui/card/afflictions/entangled/vfx_ui_card_entangled_leaf.tscn" id="6_42255"]
+
+[node name="vfx_ui_card_affliction_entangled" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -211.0
+offset_right = 150.0
+offset_bottom = 211.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="card_mask" type="TextureRect" parent="."]
+clip_children = 1
+custom_minimum_size = Vector2(300, 422)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_44321")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="card_vignette" type="TextureRect" parent="card_mask"]
+self_modulate = Color(0.20129895, 0.071228854, 0, 0.3764706)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -61.0
+offset_right = 61.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_f610y")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="card_glow" type="TextureRect" parent="card_mask"]
+self_modulate = Color(0.84705883, 0.47843137, 0.35686275, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_5poeo")
+expand_mode = 1
+
+[node name="vfx_container" type="TextureRect" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(300, 422)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 300.0
+offset_bottom = 422.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_44321")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="main" type="TextureRect" parent="vfx_container"]
+modulate = Color(0.84705883, 0.47843137, 0.35686275, 1)
+texture_repeat = 2
+material = ExtResource("4_7qvo7")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -253.0
+offset_top = -253.0
+offset_right = -131.0
+offset_bottom = -253.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+mouse_filter = 2
+texture = ExtResource("5_tnayx")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="leaves" type="Control" parent="vfx_container"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -211.0
+offset_right = -150.0
+offset_bottom = -211.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="vfx_ui_card_entangled_leaf" parent="vfx_container/leaves" instance=ExtResource("6_42255")]
+self_modulate = Color(0.70387197, 1, 0.779968, 1)
+position = Vector2(-102, -218)
+rotation = -0.5255747
+scale = Vector2(0.5397214, 0.5397214)
+
+[node name="vfx_ui_card_entangled_leaf2" parent="vfx_container/leaves" instance=ExtResource("6_42255")]
+position = Vector2(-82, -207)
+rotation = 1.3220456
+scale = Vector2(0.40900528, 0.40900528)
+
+[node name="vfx_ui_card_entangled_leaf3" parent="vfx_container/leaves" instance=ExtResource("6_42255")]
+position = Vector2(105, -205)
+rotation = -1.0907083
+scale = Vector2(0.419221, 0.419221)
+
+[node name="vfx_ui_card_entangled_leaf4" parent="vfx_container/leaves" instance=ExtResource("6_42255")]
+position = Vector2(148, -140)
+rotation = 0.62127
+scale = Vector2(0.5397214, 0.5397214)
+
+[node name="vfx_ui_card_entangled_leaf5" parent="vfx_container/leaves" instance=ExtResource("6_42255")]
+self_modulate = Color(0.70387197, 1, 0.779968, 1)
+position = Vector2(148, -33)
+rotation = -0.592255
+scale = Vector2(0.5397214, 0.5397214)
+
+[node name="vfx_ui_card_entangled_leaf6" parent="vfx_container/leaves" instance=ExtResource("6_42255")]
+position = Vector2(145, 81)
+rotation = -1.1490887
+scale = Vector2(0.39509588, 0.39509588)
+
+[node name="vfx_ui_card_entangled_leaf7" parent="vfx_container/leaves" instance=ExtResource("6_42255")]
+self_modulate = Color(0.70387197, 1, 0.779968, 1)
+position = Vector2(146, 145)
+rotation = -0.0710828
+scale = Vector2(0.5397214, 0.5397214)
+
+[node name="vfx_ui_card_entangled_leaf8" parent="vfx_container/leaves" instance=ExtResource("6_42255")]
+self_modulate = Color(0.70387197, 1, 0.779968, 1)
+position = Vector2(109, 203)
+rotation = -0.87968427
+scale = Vector2(0.44095248, 0.44095248)
+
+[node name="vfx_ui_card_entangled_leaf9" parent="vfx_container/leaves" instance=ExtResource("6_42255")]
+self_modulate = Color(0.70387197, 1, 0.779968, 1)
+position = Vector2(-145, 110)
+rotation = 0.50267345
+scale = Vector2(0.6153229, 0.6153229)
+
+[node name="vfx_ui_card_entangled_leaf10" parent="vfx_container/leaves" instance=ExtResource("6_42255")]
+position = Vector2(-153, 27)
+rotation = -1.2563549
+scale = Vector2(0.6800933, 0.6800933)
+
+[node name="vfx_ui_card_entangled_leaf11" parent="vfx_container/leaves" instance=ExtResource("6_42255")]
+position = Vector2(-158, -17)
+rotation = 0.49224094
+scale = Vector2(0.5397214, 0.5397214)

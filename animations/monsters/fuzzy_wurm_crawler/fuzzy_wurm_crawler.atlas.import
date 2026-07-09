@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://br7qvdotg4inp"
+path="res://.godot/imported/fuzzy_wurm_crawler.atlas-42029d43c86a1451ed442cff1c289aec.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/fuzzy_wurm_crawler/fuzzy_wurm_crawler.atlas"
+dest_files=["res://.godot/imported/fuzzy_wurm_crawler.atlas-42029d43c86a1451ed442cff1c289aec.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

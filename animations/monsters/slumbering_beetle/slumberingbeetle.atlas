@@ -1,0 +1,100 @@
+slumberingbeetle.png
+size:1985,970
+filter:Linear,Linear
+scale:0.399
+back 1
+bounds:641,7,175,342
+rotate:90
+back 1 goopies
+bounds:859,193,82,97
+rotate:90
+back 2
+bounds:1073,279,253,339
+back 2 goopies
+bounds:1536,350,114,102
+back 3
+bounds:1472,62,285,262
+rotate:90
+back 3 goopies
+bounds:707,553,45,47
+back 4
+bounds:1345,666,302,223
+rotate:90
+back 4 goopies
+bounds:568,545,55,87
+rotate:90
+back 5
+bounds:1250,2,275,220
+rotate:90
+back 5 goopies
+bounds:108,170,55,59
+bod back
+bounds:859,277,341,212
+rotate:90
+bod front
+bounds:1736,454,272,241
+rotate:90
+bottom arm 1
+bounds:1652,359,109,93
+bottom arm 2
+bounds:1763,359,109,93
+bottom arm 3
+bounds:1874,359,109,93
+curled/back 1 curled
+bounds:1736,106,251,232
+offsets:0,2,251,234
+rotate:90
+curled/back 2 curled
+bounds:1328,349,206,308
+offsets:5,0,212,308
+curled/back 3 curled
+bounds:985,2,273,263
+rotate:90
+curled/back 4 curled
+bounds:1124,659,309,219
+rotate:90
+curled/back 5 curled
+bounds:1736,728,240,242
+offsets:0,1,241,243
+rotate:90
+curled/head curled
+bounds:568,602,366,245
+offsets:1,0,368,245
+rotate:90
+curled/smear
+bounds:142,543,425,424
+offsets:0,0,425,425
+rotate:90
+curled/smear 2
+bounds:165,170,371,411
+rotate:90
+curled/smear 3
+bounds:815,620,307,348
+dirt_chunk
+bounds:657,549,48,51
+eye
+bounds:754,565,35,22
+rotate:90
+head
+bounds:159,6,480,162
+head goopies
+bounds:1570,608,113,105
+offsets:0,0,120,105
+head top
+bounds:578,184,359,279
+rotate:90
+shadow
+bounds:2,156,812,104
+offsets:3,0,815,104
+rotate:90
+slumberng_dirt
+bounds:108,231,737,32
+offsets:1,2,739,34
+rotate:90
+top arm 1
+bounds:2,21,155,133
+top arm 2
+bounds:1570,715,119,124
+rotate:90
+top arm 3
+bounds:1570,836,155,132

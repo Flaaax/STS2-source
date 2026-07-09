@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://bthlkijgxqupq"
+path="res://.godot/imported/slumberingbeetle.atlas-873d28ba11c05f1c3e8bc476107fe56e.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/slumbering_beetle/slumberingbeetle.atlas"
+dest_files=["res://.godot/imported/slumberingbeetle.atlas-873d28ba11c05f1c3e8bc476107fe56e.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

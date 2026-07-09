@@ -1,0 +1,65 @@
+main_menu_top.png
+size:5377,1317
+filter:Linear,Linear
+scale:0.66
+blue gradient
+bounds:3388,167,1986,1147
+offsets:0,0,2134,1248
+boat 1
+bounds:1247,88,83,55
+boat 1 lights
+bounds:3306,1037,62,25
+boat 1 shadow
+bounds:2457,829,67,32
+offsets:0,0,70,32
+rotate:90
+boat 2
+bounds:1247,56,51,26
+boat 2 lights
+bounds:83,21,24,19
+boat 2 shadow
+bounds:1336,121,53,22
+boat 3
+bounds:2328,246,80,57
+boat 3 lights
+bounds:2328,213,43,27
+boat 3 shadow
+bounds:3,5,74,35
+boat 4
+bounds:2414,275,34,28
+boat 4 lights
+bounds:2457,799,7,24
+boat 4 shadow
+bounds:1247,311,36,19
+city
+bounds:3,513,1358,383
+city lights
+bounds:1367,620,1084,276
+city lights reflection
+bounds:1368,309,1095,143
+offsets:0,0,1145,143
+city reflection
+bounds:3,336,1359,171
+offsets:0,0,1359,329
+cloud light pulse
+bounds:2501,42,1020,630
+offsets:73,72,1165,702
+rotate:90
+small spire windows
+bounds:1247,149,154,1075
+offsets:1,1,155,1076
+rotate:90
+small spire windows shine
+bounds:1368,458,156,1078
+rotate:90
+spire
+bounds:3,46,284,1238
+offsets:4,0,288,1238
+rotate:90
+spire windows
+bounds:3137,3,163,1059
+water shine
+bounds:3,902,2492,160
+water texture
+bounds:3,1068,3379,246
+offsets:0,0,3379,252

@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://vf7asipa1nmn"
+path="res://.godot/imported/brute_ruby_raider.skel-751893728ad62235f4fea224f4c9e9a4.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/brute_ruby_raider/brute_ruby_raider.skel"
+dest_files=["res://.godot/imported/brute_ruby_raider.skel-751893728ad62235f4fea224f4c9e9a4.spskel"]
+
+[params]
+

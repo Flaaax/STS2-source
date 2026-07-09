@@ -1,0 +1,931 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using Godot;
+using MegaCrit.Sts2.Core.Animation;
+using MegaCrit.Sts2.Core.Assets;
+using MegaCrit.Sts2.Core.Bindings.MegaSpine;
+using MegaCrit.Sts2.Core.Combat;
+using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Context;
+using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Entities.Players;
+using MegaCrit.Sts2.Core.Entities.Powers;
+using MegaCrit.Sts2.Core.Entities.UI;
+using MegaCrit.Sts2.Core.Helpers;
+using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Monsters;
+using MegaCrit.Sts2.Core.MonsterMoves.Intents;
+using MegaCrit.Sts2.Core.Nodes.CommonUi;
+using MegaCrit.Sts2.Core.Nodes.GodotExtensions;
+using MegaCrit.Sts2.Core.Nodes.HoverTips;
+using MegaCrit.Sts2.Core.Nodes.Multiplayer;
+using MegaCrit.Sts2.Core.Nodes.Orbs;
+using MegaCrit.Sts2.Core.Nodes.Rooms;
+using MegaCrit.Sts2.Core.Nodes.Screens.ScreenContext;
+using MegaCrit.Sts2.Core.Nodes.Vfx;
+using MegaCrit.Sts2.Core.Random;
+using MegaCrit.Sts2.Core.Rooms;
+using MegaCrit.Sts2.Core.Runs;
+using MegaCrit.Sts2.Core.Saves;
+using MegaCrit.Sts2.Core.Settings;
+using MegaCrit.Sts2.Core.TestSupport;
+
+namespace MegaCrit.Sts2.Core.Nodes.Combat;
+
+public partial class NCreature : Control
+{
+	private static readonly string _scenePath = SceneHelper.GetScenePath("combat/creature");
+
+	private NCreatureStateDisplay _stateDisplay;
+
+	private Tween? _intentFadeTween;
+
+	private Tween? _shakeTween;
+
+	private CreatureAnimator? _spineAnimator;
+
+	private bool _isRemotePlayerOrPet;
+
+	private bool _isInBestiary;
+
+	private float _tempScale = 1f;
+
+	private Tween? _scaleTween;
+
+	private bool _isInMultiselect;
+
+	private NSelectionReticle _selectionReticle;
+
+	/// <summary>
+	/// Keeps track of the looping sfx that are owned by this creature (ie thieving hopper's fluttering).
+	/// We use this as a way to easily cancel all looping sfx when a creature instance is killed or despawned.
+	/// - The Key is the string field of the sfx we are tracking (ie event://flying_sfx)
+	///
+	/// - The Value is a Tuple, where the first item is the loop param we will use to end the sfx and the second item
+	///   is the value that we need to set that param to end the sfx. (ie ("loop", 1)).
+	///   We need to do this because not all sfx loops use the same loop param or loop value to finish the FMOD event
+	///   (ie waterfall giant uses the same loop param to ramp up how intense it is AND to end the loop).
+	/// </summary>
+	private readonly Dictionary<string, (string, float)> _sfxLoops = new Dictionary<string, (string, float)>();
+
+	public static IEnumerable<string> AssetPaths => new global::_003C_003Ez__ReadOnlySingleElementList<string>(_scenePath);
+
+	public static Vector2 PowerAppliedVfxPositionOffset => new Vector2(0f, -200f);
+
+	public Task? DeathAnimationTask { get; set; }
+
+	public CancellationTokenSource DeathAnimCancelToken { get; } = new CancellationTokenSource();
+
+	public Control Hitbox { get; private set; }
+
+	public NOrbManager? OrbManager { get; private set; }
+
+	public bool IsInteractable { get; private set; } = true;
+
+	public Creature Entity { get; private set; }
+
+	public Vector2 VfxSpawnPosition => Visuals.VfxSpawnPosition.GlobalPosition;
+
+	public Vector2 PowerAppliedVfxSpawnPosition => VfxSpawnPosition + PowerAppliedVfxPositionOffset;
+
+	public NCreatureVisuals Visuals { get; private set; }
+
+	public Node2D Body => Visuals.GetCurrentBody();
+
+	public Control IntentContainer { get; private set; }
+
+	public bool IsPlayingDeathAnimation => DeathAnimationTask != null;
+
+	public bool HasSpineAnimation => Visuals.HasSpineAnimation;
+
+	public SpineAnimationAccess SpineAnimation => Visuals.SpineAnimation;
+
+	public bool IsFocused { get; private set; }
+
+	public NMultiplayerPlayerIntentHandler? PlayerIntentHandler { get; private set; }
+
+	public T? GetSpecialNode<T>(string name) where T : Node
+	{
+		return Visuals.GetNodeOrNull<T>(name);
+	}
+
+	public static NCreature? Create(Creature entity)
+	{
+		if (TestMode.IsOn)
+		{
+			return null;
+		}
+		NCreature nCreature = PreloadManager.Cache.GetScene(_scenePath).Instantiate<NCreature>(PackedScene.GenEditState.Disabled);
+		nCreature.Entity = entity;
+		nCreature.Visuals = entity.CreateVisuals();
+		return nCreature;
+	}
+
+	public override void _Ready()
+	{
+		_stateDisplay = GetNode<NCreatureStateDisplay>("%HealthBar");
+		IntentContainer = GetNode<Control>("%Intents");
+		Hitbox = GetNode<Control>("%Hitbox");
+		_selectionReticle = GetNode<NSelectionReticle>("%SelectionReticle");
+		Hitbox.Connect(Control.SignalName.FocusEntered, Callable.From(OnFocus));
+		Hitbox.Connect(Control.SignalName.FocusExited, Callable.From(OnUnfocus));
+		Hitbox.Connect(Control.SignalName.MouseEntered, Callable.From(OnFocus));
+		Hitbox.Connect(Control.SignalName.MouseExited, Callable.From(OnUnfocus));
+		if (Entity.IsPlayer)
+		{
+			OrbManager = NOrbManager.Create(this, LocalContext.IsMe(Entity));
+			this.AddChildSafely(OrbManager);
+			UpdateNavigation();
+		}
+		if (Entity.IsPlayer)
+		{
+			ICombatState? combatState = Entity.CombatState;
+			if (combatState != null && combatState.RunState.Players.Count > 1)
+			{
+				PlayerIntentHandler = NMultiplayerPlayerIntentHandler.Create(Entity.Player);
+				if (PlayerIntentHandler != null)
+				{
+					IntentContainer.AddChildSafely(PlayerIntentHandler);
+					IntentContainer.Modulate = Colors.White;
+				}
+			}
+		}
+		this.AddChildSafely(Visuals);
+		this.MoveChildSafely(Visuals, 0);
+		Visuals.Position = Vector2.Zero;
+		_stateDisplay.SetCreature(Entity);
+		bool flag = Entity.PetOwner != null && !LocalContext.IsMe(Entity.PetOwner);
+		bool flag2 = Entity.IsPlayer && !LocalContext.IsMe(Entity);
+		_isRemotePlayerOrPet = flag2 || flag;
+		if (_isRemotePlayerOrPet)
+		{
+			_stateDisplay.HideImmediately();
+		}
+		else
+		{
+			bool flag3 = NCombatRoom.Instance != null && Time.GetTicksMsec() - NCombatRoom.Instance.CreatedMsec < 1000;
+			_stateDisplay.AnimateIn(flag3 ? HealthBarAnimMode.SpawnedAtCombatStart : HealthBarAnimMode.SpawnedDuringCombat);
+		}
+		if (HasSpineAnimation)
+		{
+			if (Entity.Player != null)
+			{
+				_spineAnimator = Entity.Player.Character.GenerateAnimator(Visuals.SpineBody);
+			}
+			else
+			{
+				_spineAnimator = Entity.Monster.GenerateAnimator(Visuals.SpineBody);
+				Visuals.SetUpSkin(Entity.Monster);
+			}
+			ConnectSpineAnimatorSignals();
+			if (Entity.IsDead)
+			{
+				SetAnimationTrigger("Dead");
+				using MegaTrackEntry megaTrackEntry = SpineAnimation.GetCurrentTrack();
+				megaTrackEntry?.SetTrackTime(megaTrackEntry.GetAnimationEnd());
+			}
+		}
+		SetOrbManagerPosition();
+		if (Entity.Monster != null)
+		{
+			ToggleIsInteractable(Entity.Monster.IsHealthBarVisible);
+		}
+		UpdateBounds(Visuals);
+		UpdatePhobiaMode();
+	}
+
+	public override void _EnterTree()
+	{
+		base._EnterTree();
+		NGame.Instance?.Connect(NGame.SignalName.PhobiaModeToggled, Callable.From(UpdatePhobiaMode));
+		CombatManager.Instance.CombatEnded += OnCombatEnded;
+		Entity.PowerApplied += OnPowerApplied;
+		Entity.PowerRemoved += OnPowerRemoved;
+		Entity.PowerIncreased += OnPowerIncreased;
+		foreach (PowerModel power in Entity.Powers)
+		{
+			SubscribeToPower(power);
+		}
+		ConnectSpineAnimatorSignals();
+	}
+
+	public override void _ExitTree()
+	{
+		base._ExitTree();
+		StopAllSfxLoops();
+		DeathAnimCancelToken.Cancel();
+		NGame.Instance?.Disconnect(NGame.SignalName.PhobiaModeToggled, Callable.From(UpdatePhobiaMode));
+		CombatManager.Instance.CombatEnded -= OnCombatEnded;
+		Entity.PowerApplied -= OnPowerApplied;
+		Entity.PowerRemoved -= OnPowerRemoved;
+		Entity.PowerIncreased -= OnPowerIncreased;
+		foreach (PowerModel power in Entity.Powers)
+		{
+			UnsubscribeFromPower(power);
+		}
+		if (_spineAnimator != null)
+		{
+			_spineAnimator.BoundsUpdated -= UpdateBounds;
+		}
+		CombatManager.Instance.StateTracker.CombatStateChanged -= ShowCreatureHoverTips;
+	}
+
+	private void ConnectSpineAnimatorSignals()
+	{
+		if (_spineAnimator != null)
+		{
+			_spineAnimator.BoundsUpdated -= UpdateBounds;
+			_spineAnimator.BoundsUpdated += UpdateBounds;
+		}
+	}
+
+	private void UpdateBounds(string boundsNodeName)
+	{
+		UpdateBounds(Visuals.GetNode<Control>(boundsNodeName));
+	}
+
+	private void UpdatePhobiaMode()
+	{
+		Visuals.UpdatePhobiaMode(Entity.Monster);
+	}
+
+	/// <summary>
+	/// Called when a creatures hitbox is updated. Called on initialization and things like Osty getting bigger, thieving hopper flying, etc.
+	/// </summary>
+	/// <param name="boundsContainer"></param> The parent node which has the children: Bounds, CenterPos, and IntentPos nodes.
+	private void UpdateBounds(Node boundsContainer)
+	{
+		Control node = boundsContainer.GetNode<Control>("%Bounds");
+		Vector2 size = node.Size * Visuals.Scale / _tempScale;
+		Vector2 vector = (node.GlobalPosition - base.GlobalPosition) / _tempScale;
+		Hitbox.Size = size;
+		Hitbox.GlobalPosition = base.GlobalPosition + vector;
+		_selectionReticle.Size = size;
+		_selectionReticle.GlobalPosition = base.GlobalPosition + vector;
+		_selectionReticle.PivotOffset = _selectionReticle.Size * 0.5f;
+		IntentContainer.Position = boundsContainer.GetNode<Marker2D>("IntentPos").Position - IntentContainer.Size * 0.5f;
+		IntentContainer.Position = new Vector2(IntentContainer.Position.X, IntentContainer.Position.Y * Visuals.Scale.X);
+		_stateDisplay.SetCreatureBounds(Hitbox);
+	}
+
+	public void UpdateNavigation()
+	{
+		if (OrbManager != null)
+		{
+			Hitbox.FocusNeighborTop = OrbManager.DefaultFocusOwner.GetPath();
+		}
+	}
+
+	public Task UpdateIntent(IEnumerable<Creature> targets)
+	{
+		if (Entity.Monster == null)
+		{
+			throw new InvalidOperationException("Only valid on monsters.");
+		}
+		IReadOnlyList<AbstractIntent> intents = Entity.Monster.NextMove.Intents;
+		int i;
+		for (i = 0; i < intents.Count && i < IntentContainer.GetChildCount(); i++)
+		{
+			NIntent child = IntentContainer.GetChild<NIntent>(i);
+			child.SetFrozen(isFrozen: false);
+			child.UpdateIntent(intents[i], targets, Entity);
+		}
+		float num = (float)GetHashCode() * 0.01f;
+		for (; i < intents.Count; i++)
+		{
+			NIntent nIntent = NIntent.Create(num + (float)i * 0.3f);
+			IntentContainer.AddChildSafely(nIntent);
+			nIntent.UpdateIntent(intents[i], targets, Entity);
+		}
+		List<Node> list = IntentContainer.GetChildren().TakeLast(IntentContainer.GetChildCount() - i).ToList();
+		foreach (Node item in list)
+		{
+			IntentContainer.RemoveChildSafely(item);
+			item.QueueFreeSafely();
+		}
+		return Task.CompletedTask;
+	}
+
+	public async Task PerformIntent()
+	{
+		foreach (NIntent item in IntentContainer.GetChildren().OfType<NIntent>())
+		{
+			item.PlayPerform();
+			item.SetFrozen(isFrozen: true);
+		}
+		if (SaveManager.Instance.PrefsSave.FastMode == FastModeType.Instant)
+		{
+			IntentContainer.Modulate = new Color(IntentContainer.Modulate.R, IntentContainer.Modulate.G, IntentContainer.Modulate.B, 0f);
+			return;
+		}
+		AnimHideIntent(0.4);
+		await Cmd.CustomScaledWait(0.25f, 0.4f);
+	}
+
+	public async Task RefreshIntents()
+	{
+		await UpdateIntent(Entity.CombatState.Players.Select((Player p) => p.Creature));
+		await RevealIntents();
+	}
+
+	/// <summary>
+	/// This makes the intents visible again!
+	/// So let's fade them in.
+	/// </summary>
+	private Task RevealIntents()
+	{
+		IntentContainer.Modulate = Colors.Transparent;
+		_intentFadeTween?.Kill();
+		_intentFadeTween = CreateTween().SetParallel();
+		_intentFadeTween.TweenProperty(IntentContainer, "modulate:a", 1f, 1.0).SetDelay(Rng.Chaotic.NextFloat(0f, 0.3f));
+		return Task.CompletedTask;
+	}
+
+	private void OnFocus()
+	{
+		if (IsFocused || _isInBestiary)
+		{
+			return;
+		}
+		IsFocused = true;
+		if (_isRemotePlayerOrPet)
+		{
+			_stateDisplay.AnimateIn(HealthBarAnimMode.FromHidden);
+			_stateDisplay.ZIndex = 1;
+			Player me = LocalContext.GetMe(Entity.CombatState);
+			NCombatRoom.Instance?.GetCreatureNode(me?.Creature)?.SetRemotePlayerFocused(remotePlayerFocused: true);
+		}
+		else
+		{
+			_stateDisplay.ShowNameplate();
+		}
+		NRun.Instance.GlobalUi.MultiplayerPlayerContainer.HighlightPlayer(Entity.Player);
+		if (NTargetManager.Instance.IsInSelection)
+		{
+			NTargetManager.Instance.OnNodeHovered(this);
+			return;
+		}
+		if (NControllerManager.Instance.IsUsingController)
+		{
+			ShowSingleSelectReticle();
+		}
+		ShowHoverTips(Entity.HoverTips);
+		CombatManager.Instance.StateTracker.CombatStateChanged += ShowCreatureHoverTips;
+	}
+
+	private void OnUnfocus()
+	{
+		if (!_isInBestiary)
+		{
+			IsFocused = false;
+			HideSingleSelectReticle();
+			if (_isRemotePlayerOrPet)
+			{
+				_stateDisplay.AnimateOut();
+				Player me = LocalContext.GetMe(Entity.CombatState);
+				NCombatRoom.Instance?.GetCreatureNode(me?.Creature)?.SetRemotePlayerFocused(remotePlayerFocused: false);
+			}
+			else
+			{
+				_stateDisplay.HideNameplate();
+			}
+			NRun.Instance.GlobalUi.MultiplayerPlayerContainer.UnhighlightPlayer(Entity.Player);
+			NTargetManager.Instance.OnNodeUnhovered(this);
+			CombatManager.Instance.StateTracker.CombatStateChanged -= ShowCreatureHoverTips;
+			HideHoverTips();
+		}
+	}
+
+	public void OnTargetingStarted()
+	{
+		if (IsFocused)
+		{
+			NTargetManager.Instance.OnNodeHovered(this);
+			CombatManager.Instance.StateTracker.CombatStateChanged -= ShowCreatureHoverTips;
+			HideHoverTips();
+		}
+	}
+
+	private void ShowCreatureHoverTips(CombatState _)
+	{
+		if (Entity.CombatState != null)
+		{
+			ShowHoverTips(Entity.HoverTips);
+		}
+	}
+
+	public void ShowHoverTips(IEnumerable<IHoverTip> hoverTips)
+	{
+		if (!NCombatRoom.Instance.Ui.Hand.InCardPlay)
+		{
+			HideHoverTips();
+			NHoverTipSet.CreateAndShow(Hitbox, hoverTips, HoverTip.GetHoverTipAlignment(this, 0.5f));
+		}
+	}
+
+	public void SetRemotePlayerFocused(bool remotePlayerFocused)
+	{
+		if (!LocalContext.IsMe(Entity))
+		{
+			throw new InvalidOperationException("This should only be called on the local player's creature node!");
+		}
+		if (remotePlayerFocused)
+		{
+			_stateDisplay.AnimateOut();
+		}
+		else if (Entity.IsAlive)
+		{
+			_stateDisplay.AnimateIn(HealthBarAnimMode.FromHidden);
+		}
+	}
+
+	public void HideHoverTips()
+	{
+		NHoverTipSet.Remove(Hitbox);
+	}
+
+	private void SubscribeToPower(PowerModel power)
+	{
+		power.Flashed += OnPowerFlashed;
+	}
+
+	private void UnsubscribeFromPower(PowerModel power)
+	{
+		power.Flashed -= OnPowerFlashed;
+	}
+
+	private void OnPowerApplied(PowerModel power)
+	{
+		SubscribeToPower(power);
+	}
+
+	private void OnPowerIncreased(PowerModel power, int amount, bool silent)
+	{
+		if (silent || !CombatManager.Instance.IsInProgress)
+		{
+			return;
+		}
+		bool flag = power.GetTypeForAmount(power.Amount) == PowerType.Buff;
+		NPowerAppliedVfx vfx = NPowerAppliedVfx.Create(power, amount, flag);
+		if (vfx != null)
+		{
+			if (flag)
+			{
+				NPowerAppliedBuffVfx buffVfx = NPowerAppliedBuffVfx.Create(PowerAppliedVfxSpawnPosition);
+				Callable.From(delegate
+				{
+					NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(buffVfx);
+				}).CallDeferred();
+			}
+			else
+			{
+				NPowerAppliedDebuffVfx debuffVfx = NPowerAppliedDebuffVfx.Create(PowerAppliedVfxSpawnPosition);
+				Callable.From(delegate
+				{
+					NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(debuffVfx);
+				}).CallDeferred();
+			}
+			Callable.From(delegate
+			{
+				NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(vfx);
+			}).CallDeferred();
+		}
+		if (power.ShouldPlayVfx)
+		{
+			SfxCmd.Play(flag ? "event:/sfx/buff" : "event:/sfx/debuff");
+		}
+		if (!flag)
+		{
+			AnimShake();
+		}
+	}
+
+	private void OnPowerRemoved(PowerModel power)
+	{
+		NPowerRemovedVfx vfx = NPowerRemovedVfx.Create(power);
+		if (vfx != null)
+		{
+			Callable.From(delegate
+			{
+				NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(vfx);
+			}).CallDeferred();
+		}
+		UnsubscribeFromPower(power);
+	}
+
+	private void OnPowerFlashed(PowerModel power)
+	{
+		NPowerFlashVfx vfx = NPowerFlashVfx.Create(power);
+		if (vfx != null)
+		{
+			Callable.From(delegate
+			{
+				NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(vfx);
+			}).CallDeferred();
+		}
+	}
+
+	private void OnCombatEnded(CombatRoom _)
+	{
+		AnimHideIntent();
+		OrbManager?.ClearOrbs();
+	}
+
+	public void SetAnimationTrigger(string trigger)
+	{
+		_spineAnimator?.SetTrigger(trigger);
+	}
+
+	public float GetCurrentAnimationLength()
+	{
+		return SpineAnimation.GetCurrentAnimationDuration().GetValueOrDefault();
+	}
+
+	public float GetCurrentAnimationTimeRemaining()
+	{
+		using MegaTrackEntry megaTrackEntry = SpineAnimation.GetCurrentTrack();
+		if (megaTrackEntry == null)
+		{
+			return 0f;
+		}
+		return megaTrackEntry.GetTrackComplete() - megaTrackEntry.GetTrackTime();
+	}
+
+	public void ToggleIsInteractable(bool on)
+	{
+		IsInteractable = on;
+		_stateDisplay.Visible = !NCombatUi.IsDebugHidingHpBar && on;
+		Hitbox.MouseFilter = (MouseFilterEnum)(on ? 0 : 2);
+		Hitbox.FocusMode = (FocusModeEnum)(on ? 2 : 0);
+	}
+
+	public void DisableInteractionForDeath()
+	{
+		if (Hitbox.HasFocus())
+		{
+			ActiveScreenContext.Instance.FocusOnDefaultControl();
+		}
+		Hitbox.FocusMode = FocusModeEnum.None;
+		Hitbox.MouseFilter = MouseFilterEnum.Ignore;
+	}
+
+	public Tween AnimDisableUi()
+	{
+		Tween tween = CreateTween();
+		if (!IsNodeReady())
+		{
+			tween.TweenInterval(0.0);
+			return tween;
+		}
+		tween.TweenProperty(_stateDisplay, "modulate:a", 0f, 0.5).SetDelay(0.5).SetEase(Tween.EaseType.Out)
+			.SetTrans(Tween.TransitionType.Expo);
+		return tween;
+	}
+
+	public Tween AnimEnableUi()
+	{
+		Tween tween = CreateTween();
+		tween.TweenProperty(_stateDisplay, "modulate:a", 1f, 0.5).SetDelay(0.5).SetEase(Tween.EaseType.Out)
+			.SetTrans(Tween.TransitionType.Expo);
+		return tween;
+	}
+
+	public float StartDeathAnim(bool shouldRemove)
+	{
+		DisableInteractionForDeath();
+		foreach (NIntent item in IntentContainer.GetChildren().OfType<NIntent>())
+		{
+			item.SetFrozen(isFrozen: true);
+		}
+		Task deathAnimationTask = DeathAnimationTask;
+		if (deathAnimationTask != null && !deathAnimationTask.IsCompleted)
+		{
+			return 0f;
+		}
+		float a = 0f;
+		if (_spineAnimator != null)
+		{
+			MonsterModel? monster = Entity.Monster;
+			if (monster != null && monster.HasDeathSfx)
+			{
+				SfxCmd.PlayDeath(Entity.Monster);
+			}
+			if (Entity.Player != null)
+			{
+				SfxCmd.PlayDeath(Entity.Player);
+			}
+			SetAnimationTrigger("Dead");
+			a = GetCurrentAnimationLength();
+		}
+		DeathAnimationTask = AnimDie(shouldRemove, DeathAnimCancelToken.Token);
+		TaskHelper.RunSafely(DeathAnimationTask);
+		MonsterModel monster2 = Entity.Monster;
+		if (monster2 != null && monster2.HasDeathAnimLengthOverride)
+		{
+			return Entity.Monster.DeathAnimLengthOverride;
+		}
+		return Mathf.Min(a, 30f);
+	}
+
+	public void StartReviveAnim()
+	{
+		CreatureAnimator? spineAnimator = _spineAnimator;
+		if (spineAnimator != null && spineAnimator.HasTrigger("Revive"))
+		{
+			SetAnimationTrigger("Revive");
+		}
+		else if (Entity.IsPlayer)
+		{
+			AnimTempRevive();
+		}
+		if (!_isRemotePlayerOrPet)
+		{
+			AnimEnableUi();
+		}
+		Hitbox.MouseFilter = MouseFilterEnum.Stop;
+	}
+
+	private void AnimTempRevive()
+	{
+		Tween tween = CreateTween();
+		tween.TweenProperty(Visuals, "modulate:a", 0f, 0.2);
+		tween.TweenCallback(Callable.From(ImmediatelySetIdle));
+		tween.TweenProperty(Visuals, "modulate:a", 1f, 0.2);
+	}
+
+	private void ImmediatelySetIdle()
+	{
+		_spineAnimator?.SetTrigger("Idle");
+		using MegaTrackEntry megaTrackEntry = SpineAnimation.GetCurrentTrack();
+		if (megaTrackEntry != null)
+		{
+			megaTrackEntry.SetMixDuration(0f);
+			megaTrackEntry.SetTrackTime(megaTrackEntry.GetAnimationEnd());
+		}
+	}
+
+	private async Task AnimDie(bool shouldRemove, CancellationToken cancelToken)
+	{
+		Tween disableUiTween = AnimDisableUi();
+		if (!RunManager.Instance.IsSingleplayerOrFakeMultiplayer)
+		{
+			OrbManager?.ClearOrbs();
+		}
+		if (shouldRemove)
+		{
+			AnimHideIntent();
+		}
+		if (_spineAnimator != null)
+		{
+			float seconds = Math.Min(GetCurrentAnimationTimeRemaining() + 0.5f, 20f);
+			await Cmd.Wait(seconds, cancelToken, ignoreCombatEnd: true);
+		}
+		else
+		{
+			MonsterModel monster = Entity.Monster;
+			if (monster != null && monster.HasDeathAnimLengthOverride)
+			{
+				await Cmd.Wait(Entity.Monster.DeathAnimLengthOverride, cancelToken, ignoreCombatEnd: true);
+			}
+		}
+		if (cancelToken.IsCancellationRequested)
+		{
+			return;
+		}
+		if (shouldRemove)
+		{
+			Task fadeVfx = null;
+			MonsterModel monster = Entity.Monster;
+			if (monster != null && monster.ShouldFadeAfterDeath && Body.IsVisibleInTree())
+			{
+				NMonsterDeathVfx nMonsterDeathVfx = NMonsterDeathVfx.Create(this, cancelToken);
+				Node parent = GetParent();
+				parent.AddChildSafely(nMonsterDeathVfx);
+				if (nMonsterDeathVfx != null)
+				{
+					parent.MoveChildSafely(nMonsterDeathVfx, GetIndex());
+				}
+				fadeVfx = nMonsterDeathVfx?.PlayVfx();
+			}
+			if (SaveManager.Instance.PrefsSave.FastMode != FastModeType.Instant)
+			{
+				if (disableUiTween.IsValid() && disableUiTween.IsRunning() && !(await disableUiTween.AwaitFinished(this)))
+				{
+					return;
+				}
+				foreach (IDeathDelayer item in this.GetChildrenRecursive<IDeathDelayer>())
+				{
+					await item.GetDelayTask();
+				}
+			}
+			if (fadeVfx != null)
+			{
+				await fadeVfx;
+			}
+			this.QueueFreeSafely();
+		}
+		else if (Entity.Monster is Osty)
+		{
+			OstyScaleToSize(0f, 0.75);
+		}
+	}
+
+	public void AnimHideIntent(double delay = 0.0)
+	{
+		_intentFadeTween?.Kill();
+		_intentFadeTween = CreateTween().SetParallel();
+		PropertyTweener propertyTweener = _intentFadeTween.TweenProperty(IntentContainer, "modulate:a", 0f, 0.5);
+		if (delay > 0.0)
+		{
+			propertyTweener.SetDelay(delay);
+		}
+	}
+
+	public void SetScaleAndHue(float scale, float hue)
+	{
+		Visuals.SetScaleAndHue(scale, hue);
+		UpdateBounds(Visuals);
+	}
+
+	public void ScaleTo(float size, double duration)
+	{
+		if (!Entity.IsMonster || Entity.Monster.CanChangeScale)
+		{
+			_tempScale = size;
+			_scaleTween?.Kill();
+			_scaleTween = CreateTween();
+			_scaleTween.TweenMethod(Callable.From<Vector2>(DoScaleTween), Visuals.Scale, Vector2.One * _tempScale * Visuals.DefaultScale, duration).SetEase(Tween.EaseType.InOut).SetTrans(Tween.TransitionType.Sine);
+		}
+	}
+
+	public void SetDefaultScaleTo(float size, float duration)
+	{
+		if (!Entity.IsMonster || Entity.Monster.CanChangeScale)
+		{
+			Visuals.DefaultScale = size;
+			ScaleTo(_tempScale, duration);
+		}
+	}
+
+	public void OstyScaleToSize(float ostyHealth, double duration)
+	{
+		float num = Mathf.Lerp(Osty.ScaleRange.X, Osty.ScaleRange.Y, Mathf.Clamp(ostyHealth / 150f, 0f, 1f));
+		NCreature nCreature = NCombatRoom.Instance?.GetCreatureNode(Entity.PetOwner.Creature);
+		_scaleTween = CreateTween();
+		Vector2 vector = Vector2.One * num * Visuals.DefaultScale;
+		if (NCombatRoom.Instance != null && !NCombatRoom.Instance.SceneContainer.IsAncestorOf(Visuals))
+		{
+			ICombatState combatState = Entity.CombatState;
+			if (combatState != null && combatState.Encounter != null)
+			{
+				vector *= Entity.CombatState.Encounter.GetCameraScaling();
+			}
+		}
+		_scaleTween.TweenProperty(Visuals, "scale", vector, duration).SetEase(Tween.EaseType.InOut).SetTrans(Tween.TransitionType.Sine);
+		if (LocalContext.IsMe(Entity.PetOwner))
+		{
+			_scaleTween.Parallel().TweenProperty(this, "position", nCreature.Position + GetOstyOffsetFromPlayer(Entity), duration);
+		}
+		_scaleTween.TweenCallback(Callable.From(delegate
+		{
+			UpdateBounds(Visuals);
+		}));
+	}
+
+	public static Vector2 GetOstyOffsetFromPlayer(Creature osty)
+	{
+		NCreature nCreature = NCombatRoom.Instance?.GetCreatureNode(osty.PetOwner.Creature);
+		return Vector2.Right * nCreature.Hitbox.Size.X * 0.5f + Osty.MinOffset.Lerp(Osty.MaxOffset, Mathf.Clamp((float)osty.MaxHp / 150f, 0f, 1f));
+	}
+
+	public void AnimShake()
+	{
+		if (IsInsideTree() && (_shakeTween == null || !_shakeTween.IsRunning()) && !Visuals.IsPlayingHurtAnimation())
+		{
+			Visuals.Position = Vector2.Zero;
+			_shakeTween = CreateTween();
+			_shakeTween.TweenMethod(Callable.From(delegate(float t)
+			{
+				Visuals.Position = Vector2.Right * 10f * Mathf.Sin(t * 4f) * Mathf.Sin(t * 0.5f);
+			}), 0f, (float)Math.PI * 2f, 1.0).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);
+		}
+	}
+
+	private void DoScaleTween(Vector2 scale)
+	{
+		Visuals.Scale = scale;
+		SetOrbManagerPosition();
+	}
+
+	private void SetOrbManagerPosition()
+	{
+		if (OrbManager != null)
+		{
+			OrbManager.Scale = ((Visuals.Scale.X > 1f) ? Vector2.One : Visuals.Scale.Lerp(Vector2.One, 0.5f));
+			OrbManager.Position = Visuals.OrbPosition.Position * Mathf.Min(Visuals.Scale.X, 1.25f);
+			if (!OrbManager.IsLocal)
+			{
+				OrbManager.Position += Vector2.Up * 50f;
+			}
+		}
+	}
+
+	/// <summary>
+	/// Helper function to get the top of this creature's hitbox position.
+	/// Used for spawning vfx or aligning UI elements to a creature's hitbox.
+	/// </summary>
+	public Vector2 GetTopOfHitbox()
+	{
+		return Hitbox.GlobalPosition + new Vector2(Hitbox.Size.X * 0.5f, 0f);
+	}
+
+	/// <summary>
+	/// Helper function to get the top of this creature's hitbox position.
+	/// Used for spawning vfx or aligning UI elements to a creature's hitbox.
+	/// </summary>
+	/// <returns></returns>
+	public Vector2 GetBottomOfHitbox()
+	{
+		return Hitbox.GlobalPosition + new Vector2(Hitbox.Size.X * 0.5f, Hitbox.Size.Y);
+	}
+
+	/// <summary>
+	/// Track the block status of another creature.
+	/// Used for pets who want to show extra UI when their owner has block.
+	/// For example, Osty tracks Necrobinder's block.
+	/// </summary>
+	/// <param name="creature">Extra creature (different from _creature) whose block status we want to track in this UI.</param>
+	public void TrackBlockStatus(Creature creature)
+	{
+		_stateDisplay.TrackBlockStatus(creature);
+	}
+
+	public void ShowMultiselectReticle()
+	{
+		_isInMultiselect = true;
+		ShowSingleSelectReticle();
+	}
+
+	public void HideMultiselectReticle()
+	{
+		_isInMultiselect = false;
+		HideSingleSelectReticle();
+	}
+
+	public void ShowSingleSelectReticle()
+	{
+		_selectionReticle.OnSelect();
+	}
+
+	public void HideSingleSelectReticle()
+	{
+		if (!_isInMultiselect)
+		{
+			_selectionReticle.OnDeselect();
+		}
+	}
+
+	public void SetupForBestiary()
+	{
+		_stateDisplay.Visible = false;
+		IntentContainer.Visible = false;
+		_isInBestiary = true;
+	}
+
+	public void StartSfxLoop(string sfxName)
+	{
+		StartSfxLoop(sfxName, "loop", 1f);
+	}
+
+	public void StartSfxLoop(string sfxName, string loopParam, float loopStopValue)
+	{
+		if (!_sfxLoops.ContainsKey(sfxName))
+		{
+			_sfxLoops.Add(sfxName, (loopParam, loopStopValue));
+			SfxCmd.PlayLoop(sfxName, usesLoopParam: false);
+		}
+	}
+
+	public void StopSfxLoop(string sfxName)
+	{
+		if (_sfxLoops.TryGetValue(sfxName, out (string, float) value))
+		{
+			SfxCmd.SetParam(sfxName, value.Item1, value.Item2);
+			SfxCmd.StopLoop(sfxName);
+			_sfxLoops.Remove(sfxName);
+		}
+	}
+
+	public void StopAllSfxLoops()
+	{
+		List<string> list = _sfxLoops.Keys.ToList();
+		foreach (string item in list)
+		{
+			StopSfxLoop(item);
+		}
+	}
+}

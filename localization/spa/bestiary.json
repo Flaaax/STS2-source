@@ -1,0 +1,19 @@
+{
+  "ACTIONS.header": "Acciones",
+  "ACTION_NAME.attack": "Ataque",
+  "ACTION_NAME.cast": "Hechizo",
+  "ACTION_NAME.die": "Muerte",
+  "ACTION_NAME.hurt": "Dolor",
+  "ACTION_NAME.revive": "Resurreción",
+  "ACTION_NAME.stun": "Aturdimiento",
+  "DESCRIPTION.placeholder": "La información de este monstruo aún no está disponible...",
+  "EVENTS.title": "Eventos",
+  "LOCKED.monsterName": "[lb]Bloqueado[rb]",
+  "LOCKED.monsterTitle": "Bloqueado",
+  "MODE.viewActions": "Ver acciones",
+  "MODE.viewStats": "Ver estadísticas",
+  "QUOTE_PLACEHOLDER": "[red][i](Aún no se ha escrito el diálogo de este personaje)[/i][/red]",
+  "STATS.layout": "Encuentros: [blue]{total}[/blue]\nAsesinatos: [green]{kills}[/green]\nMuertes: [red]{deaths}[/red]\nPorcentaje de victorias: [gold]{winrate} %[/gold]",
+  "UNDER_CONSTRUCTION": "En construcción",
+  "UNSEEN.monsterName": "[lb]Sin datos[rb]"
+}

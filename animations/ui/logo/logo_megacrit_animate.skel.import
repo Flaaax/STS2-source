@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://bwcvhbi4t0lvw"
+path="res://.godot/imported/logo_megacrit_animate.skel-61f0b9e3eee41e62118412090a3c9cb8.spskel"
+
+[deps]
+
+source_file="res://animations/ui/logo/logo_megacrit_animate.skel"
+dest_files=["res://.godot/imported/logo_megacrit_animate.skel-61f0b9e3eee41e62118412090a3c9cb8.spskel"]
+
+[params]
+

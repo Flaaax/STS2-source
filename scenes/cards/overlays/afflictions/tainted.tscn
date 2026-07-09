@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://xaoml3kwbkyx"]
+
+[ext_resource type="PackedScene" uid="uid://bdys67sfrbh3" path="res://scenes/vfx/ui/card/afflictions/tainted/vfx_ui_card_affliction_tainted.tscn" id="1_inf01"]
+
+[node name="Tainted" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="vfx_ui_card_affliction_tainted" parent="." instance=ExtResource("1_inf01")]
+layout_mode = 1

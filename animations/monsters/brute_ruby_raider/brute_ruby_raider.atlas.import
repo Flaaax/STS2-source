@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://yjm8j4x3mtxq"
+path="res://.godot/imported/brute_ruby_raider.atlas-7efd28b8d441de7968f09a090b72c16f.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/brute_ruby_raider/brute_ruby_raider.atlas"
+dest_files=["res://.godot/imported/brute_ruby_raider.atlas-7efd28b8d441de7968f09a090b72c16f.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

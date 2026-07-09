@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://bgjv6yw44hoc5"
+path="res://.godot/imported/infested_prism.skel-62bc15a7f6cb889f9bcb808a4c7baa82.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/infested_prism/infested_prism.skel"
+dest_files=["res://.godot/imported/infested_prism.skel-62bc15a7f6cb889f9bcb808a4c7baa82.spskel"]
+
+[params]
+

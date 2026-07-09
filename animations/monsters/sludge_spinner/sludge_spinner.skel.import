@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://da5bpvtlqehyo"
+path="res://.godot/imported/sludge_spinner.skel-de1a9c5845d837048cb525c5ae9ed378.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/sludge_spinner/sludge_spinner.skel"
+dest_files=["res://.godot/imported/sludge_spinner.skel-de1a9c5845d837048cb525c5ae9ed378.spskel"]
+
+[params]
+

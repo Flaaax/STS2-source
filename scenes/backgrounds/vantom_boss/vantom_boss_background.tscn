@@ -1,0 +1,591 @@
+[gd_scene load_steps=38 format=3 uid="uid://bwx78mmkb3jgs"]
+
+[ext_resource type="Script" uid="uid://cgv6fwxmmkr3h" path="res://src/Core/Nodes/Rooms/NCombatBackground.cs" id="1_dk646"]
+[ext_resource type="Texture2D" uid="uid://qn78bhhjniba" path="res://images/vfx/fog_sheet_1.png" id="2_4ee1w"]
+[ext_resource type="Script" uid="uid://dfvfrv5f1nhp5" path="res://src/Core/Debug/NBgLayerDebug.cs" id="2_exia0"]
+[ext_resource type="Texture2D" uid="uid://clyyxf8brdqjs" path="res://images/vfx/monsters/vantom/oil_vfx.png" id="3_718ih"]
+[ext_resource type="Shader" uid="uid://bin1eefcpe00a" path="res://scenes/backgrounds/vantom_boss/oil.gdshader" id="3_nx3so"]
+[ext_resource type="Texture2D" uid="uid://da3pgs2wbreab" path="res://images/vfx/noise_cloud_seamless.png" id="4_4ee1w"]
+[ext_resource type="Texture2D" uid="uid://bukyhsjanpsnl" path="res://images/vfx/monsters/queen/false_queen_light.png" id="4_lbe3q"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wpyi4"]
+shader = ExtResource("3_nx3so")
+shader_parameter/current_mana = 5.0
+shader_parameter/max_mana = 5.0
+shader_parameter/rank_advance_mana = 1.0
+shader_parameter/inset = 0.8
+shader_parameter/groove_opacity = 0.2
+shader_parameter/groove_speed = 0.01
+shader_parameter/groove_width = 0.075
+shader_parameter/groove_distance = 0.3
+shader_parameter/noise = ExtResource("4_4ee1w")
+shader_parameter/groovy_noise = ExtResource("4_4ee1w")
+shader_parameter/border_color = Color(0.94964486, 0.9077328, 0.6894874, 1)
+shader_parameter/border_width = 0.0
+shader_parameter/border_speed = 0.01
+shader_parameter/glow_strength = 0.5
+shader_parameter/mana_color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_45why"]
+shader = ExtResource("3_nx3so")
+shader_parameter/current_mana = 0.5
+shader_parameter/max_mana = 1.0
+shader_parameter/rank_advance_mana = 1.0
+shader_parameter/inset = 0.8
+shader_parameter/groove_opacity = 0.15
+shader_parameter/groove_speed = 0.01
+shader_parameter/groove_width = 0.075
+shader_parameter/groove_distance = 0.3
+shader_parameter/noise = ExtResource("4_4ee1w")
+shader_parameter/groovy_noise = ExtResource("4_4ee1w")
+shader_parameter/border_color = Color(0, 0, 0, 1)
+shader_parameter/border_width = 0.0
+shader_parameter/border_speed = 0.01
+shader_parameter/glow_strength = 0.5
+shader_parameter/mana_color = Color(0, 0, 0, 0)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_45why"]
+blend_mode = 1
+light_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_wpyi4"]
+offsets = PackedFloat32Array(0, 0.170306, 0.286026, 0.423581, 0.611354, 0.720524, 0.847162, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0.513726, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.513726, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_sbu3o"]
+gradient = SubResource("Gradient_wpyi4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_phdbe"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(0, 0, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_max = 0.5
+color = Color(0.9951708, 0.92016137, 0.6700505, 0.972549)
+color_ramp = SubResource("GradientTexture1D_sbu3o")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_du6od"]
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 3
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_4ee1w"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_4ee1w"]
+curve = SubResource("Curve_4ee1w")
+
+[sub_resource type="Curve" id="Curve_lbe3q"]
+_limits = [-360.0, 360.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.272269, -0.918579), 0.0, 0.0, 0, 0, Vector2(0.998319, 12.3505), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_lbe3q"]
+curve = SubResource("Curve_lbe3q")
+
+[sub_resource type="Gradient" id="Gradient_nx3so"]
+offsets = PackedFloat32Array(0.0084317, 0.288364, 0.527825, 0.9054878, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1, 0.14406255, 0.14406255, 0.14406255, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nx3so"]
+gradient = SubResource("Gradient_nx3so")
+
+[sub_resource type="Curve" id="Curve_45why"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.9633508, 1.8371161), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_6nht5"]
+curve = SubResource("Curve_45why")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_f5tvy"]
+particle_flag_disable_z = true
+angle_curve = SubResource("CurveTexture_lbe3q")
+direction = Vector3(0, 0, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+scale_min = 1.5
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_6nht5")
+color_ramp = SubResource("GradientTexture1D_nx3so")
+alpha_curve = SubResource("CurveTexture_4ee1w")
+anim_offset_max = 1.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wpyi4"]
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 3
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_f5tvy"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_alpha_ParticleProcessMaterial_loiw6"]
+curve = SubResource("Curve_f5tvy")
+
+[sub_resource type="Curve" id="Curve_phdbe"]
+_limits = [-360.0, 360.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.272269, -0.918579), 0.0, 0.0, 0, 0, Vector2(0.998319, 12.3505), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_0x6iu"]
+curve = SubResource("Curve_phdbe")
+
+[sub_resource type="Gradient" id="Gradient_lx8l4"]
+offsets = PackedFloat32Array(0.0084317, 0.5365854, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_we63q"]
+gradient = SubResource("Gradient_lx8l4")
+
+[sub_resource type="Curve" id="Curve_utthv"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.9633508, 1.8371161), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_wpyi4"]
+curve = SubResource("Curve_utthv")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4ee1w"]
+particle_flag_disable_z = true
+angle_curve = SubResource("CurveTexture_0x6iu")
+direction = Vector3(0, 0, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+scale_min = 1.5
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_wpyi4")
+color = Color(0.3833858, 0.4289368, 0.42891145, 1)
+color_ramp = SubResource("GradientTexture1D_we63q")
+alpha_curve = SubResource("CurveTexture_alpha_ParticleProcessMaterial_loiw6")
+anim_offset_max = 1.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_je8bn"]
+particle_flag_disable_z = true
+angle_curve = SubResource("CurveTexture_0x6iu")
+direction = Vector3(0, 0, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+scale_min = 1.5
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_wpyi4")
+color = Color(0.14901961, 0.17254902, 0.17254902, 1)
+color_ramp = SubResource("GradientTexture1D_we63q")
+alpha_curve = SubResource("CurveTexture_alpha_ParticleProcessMaterial_loiw6")
+anim_offset_max = 1.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lbe3q"]
+particle_flag_disable_z = true
+angle_curve = SubResource("CurveTexture_0x6iu")
+direction = Vector3(0, 0, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+scale_min = 1.5
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_wpyi4")
+color = Color(0.39271367, 0.44249862, 0.43138114, 1)
+color_ramp = SubResource("GradientTexture1D_we63q")
+alpha_curve = SubResource("CurveTexture_alpha_ParticleProcessMaterial_loiw6")
+anim_offset_max = 1.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_nx3so"]
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 3
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_6nht5"]
+_data = [Vector2(0.339496, 0.600085), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[node name="OvergrowthBossBackground" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_dk646")
+
+[node name="Layer_00" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+script = ExtResource("2_exia0")
+metadata/_edit_lock_ = true
+
+[node name="oil shader3" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_wpyi4")
+layout_mode = 0
+offset_left = 406.51468
+offset_top = 70.180725
+offset_right = 1874.6055
+offset_bottom = 280.6787
+rotation = 3.1415927
+metadata/_edit_lock_ = true
+
+[node name="oil shader4" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_45why")
+layout_mode = 0
+offset_left = -2862.0
+offset_top = -141.0
+offset_right = 613.0
+offset_bottom = 99.00159
+metadata/_edit_lock_ = true
+
+[node name="oil shader2" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_wpyi4")
+layout_mode = 0
+offset_left = 2182.0
+offset_top = 598.0
+offset_right = 6476.0
+offset_bottom = 1101.0016
+rotation = 3.1415927
+metadata/_edit_lock_ = true
+
+[node name="oil shader" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_45why")
+layout_mode = 0
+offset_left = -2037.0
+offset_top = -20.0
+offset_right = 2257.0
+offset_bottom = 561.0016
+metadata/_edit_lock_ = true
+
+[node name="light_overlay3" type="GPUParticles2D" parent="."]
+z_index = -11
+material = SubResource("CanvasItemMaterial_45why")
+position = Vector2(-763.99994, -486.00006)
+rotation = -1.033235
+scale = Vector2(0.5637691, 0.6187573)
+skew = 0.19388759
+amount = 1
+texture = ExtResource("4_lbe3q")
+lifetime = 10.0
+preprocess = 2.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_phdbe")
+
+[node name="light_overlay5" type="GPUParticles2D" parent="."]
+z_index = -11
+material = SubResource("CanvasItemMaterial_45why")
+position = Vector2(342, -400.99997)
+rotation = -1.033235
+scale = Vector2(0.564, 1.199)
+skew = 0.19388759
+amount = 1
+texture = ExtResource("4_lbe3q")
+lifetime = 10.0
+preprocess = 2.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_phdbe")
+
+[node name="light_overlay6" type="GPUParticles2D" parent="."]
+z_index = -11
+material = SubResource("CanvasItemMaterial_45why")
+position = Vector2(580.00006, -383)
+rotation = -1.033235
+scale = Vector2(0.559, 1.189)
+skew = 0.19388759
+amount = 1
+texture = ExtResource("4_lbe3q")
+lifetime = 10.0
+preprocess = 2.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_phdbe")
+
+[node name="light_overlay4" type="GPUParticles2D" parent="."]
+z_index = -11
+material = SubResource("CanvasItemMaterial_45why")
+position = Vector2(-255.00002, -522)
+rotation = -1.033235
+scale = Vector2(0.5637691, 0.6187573)
+skew = 0.19388759
+amount = 1
+texture = ExtResource("4_lbe3q")
+lifetime = 10.0
+preprocess = 2.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_phdbe")
+
+[node name="light_overlay7" type="GPUParticles2D" parent="."]
+z_index = -11
+material = SubResource("CanvasItemMaterial_45why")
+position = Vector2(-948, -495)
+rotation = -1.033235
+scale = Vector2(0.564, 1.1989999)
+skew = 0.19388759
+amount = 1
+texture = ExtResource("4_lbe3q")
+lifetime = 10.0
+preprocess = 2.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_phdbe")
+
+[node name="oil 1" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_du6od")
+position = Vector2(484, 170)
+scale = Vector2(1, 0.815)
+amount = 3
+texture = ExtResource("3_718ih")
+lifetime = 5.0
+preprocess = 8.0
+fixed_fps = 0
+local_coords = true
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_f5tvy")
+metadata/_edit_lock_ = true
+
+[node name="oil 10" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_wpyi4")
+position = Vector2(-355.99997, 2.9999924)
+scale = Vector2(0.816, 0.405)
+amount = 3
+texture = ExtResource("3_718ih")
+lifetime = 10.0
+preprocess = 8.0
+fixed_fps = 0
+local_coords = true
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_4ee1w")
+
+[node name="oil 9" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_wpyi4")
+position = Vector2(66, -19)
+scale = Vector2(0.539, 0.332)
+amount = 3
+texture = ExtResource("3_718ih")
+lifetime = 10.0
+preprocess = 8.0
+fixed_fps = 0
+local_coords = true
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_je8bn")
+
+[node name="oil 8" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_wpyi4")
+position = Vector2(-972, -50.000004)
+scale = Vector2(0.468, 0.18)
+amount = 3
+texture = ExtResource("3_718ih")
+lifetime = 10.0
+preprocess = 8.0
+fixed_fps = 0
+local_coords = true
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_je8bn")
+
+[node name="oil 7" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_wpyi4")
+position = Vector2(-924.00006, 39.000004)
+scale = Vector2(0.59, 0.264)
+amount = 3
+texture = ExtResource("3_718ih")
+lifetime = 10.0
+preprocess = 8.0
+fixed_fps = 0
+local_coords = true
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_je8bn")
+
+[node name="oil 2" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_wpyi4")
+position = Vector2(157, 61.000004)
+scale = Vector2(1, 0.565)
+amount = 3
+texture = ExtResource("3_718ih")
+lifetime = 10.0
+preprocess = 8.0
+fixed_fps = 0
+local_coords = true
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_je8bn")
+
+[node name="oil 4" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_wpyi4")
+position = Vector2(-993, 97)
+scale = Vector2(1, 0.565)
+amount = 3
+texture = ExtResource("3_718ih")
+lifetime = 10.0
+preprocess = 8.0
+fixed_fps = 0
+local_coords = true
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_je8bn")
+
+[node name="oil 4" type="GPUParticles2D" parent="oil 4"]
+material = SubResource("CanvasItemMaterial_wpyi4")
+position = Vector2(-194, 60.177002)
+scale = Vector2(1, 0.565)
+amount = 3
+texture = ExtResource("3_718ih")
+lifetime = 10.0
+preprocess = 8.0
+fixed_fps = 0
+local_coords = true
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_je8bn")
+
+[node name="oil 5" type="GPUParticles2D" parent="oil 4"]
+material = SubResource("CanvasItemMaterial_wpyi4")
+position = Vector2(-279, 86.72568)
+scale = Vector2(1, 0.565)
+amount = 3
+texture = ExtResource("3_718ih")
+lifetime = 10.0
+preprocess = 8.0
+fixed_fps = 0
+local_coords = true
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_je8bn")
+
+[node name="oil 5" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_wpyi4")
+position = Vector2(-580, -40)
+scale = Vector2(0.62, 0.475)
+amount = 3
+texture = ExtResource("3_718ih")
+lifetime = 10.0
+preprocess = 8.0
+fixed_fps = 0
+local_coords = true
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_lbe3q")
+
+[node name="oil 5" type="GPUParticles2D" parent="oil 5"]
+material = SubResource("CanvasItemMaterial_wpyi4")
+position = Vector2(-238.70975, 21.052635)
+scale = Vector2(0.62, 0.475)
+amount = 3
+texture = ExtResource("3_718ih")
+lifetime = 10.0
+preprocess = 8.0
+fixed_fps = 0
+local_coords = true
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_lbe3q")
+
+[node name="oil 6" type="GPUParticles2D" parent="oil 5"]
+material = SubResource("CanvasItemMaterial_wpyi4")
+position = Vector2(109.67741, 105.26316)
+scale = Vector2(0.62, 0.66)
+amount = 3
+texture = ExtResource("3_718ih")
+lifetime = 10.0
+preprocess = 8.0
+fixed_fps = 0
+local_coords = true
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_lbe3q")
+
+[node name="oil 7" type="GPUParticles2D" parent="oil 5"]
+material = SubResource("CanvasItemMaterial_wpyi4")
+position = Vector2(-293.54834, 98.94737)
+scale = Vector2(0.35, 0.5)
+amount = 3
+texture = ExtResource("3_718ih")
+lifetime = 10.0
+preprocess = 8.0
+fixed_fps = 0
+local_coords = true
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_lbe3q")
+
+[node name="oil 6" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_wpyi4")
+position = Vector2(-480.99997, -127.00001)
+scale = Vector2(0.89, 0.455)
+amount = 3
+texture = ExtResource("3_718ih")
+lifetime = 10.0
+preprocess = 8.0
+fixed_fps = 0
+local_coords = true
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_lbe3q")
+
+[node name="Layer_01" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+script = ExtResource("2_exia0")
+
+[node name="fog5" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_nx3so")
+position = Vector2(-2495, -41)
+scale = Vector2(0.999997, 0.999997)
+amount = 4
+texture = ExtResource("2_4ee1w")
+lifetime = 120.0
+preprocess = 120.0
+local_coords = true
+gravity = Vector2(1, 0)
+scale_amount_min = 0.6
+split_scale = true
+scale_curve_x = null
+scale_curve_y = SubResource("Curve_6nht5")
+color = Color(0, 0, 0, 1)
+anim_offset_max = 1.0
+
+[node name="Layer_02" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 0
+script = ExtResource("2_exia0")
+VisibleLayer = 1
+
+[node name="Layer_03" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 0
+script = ExtResource("2_exia0")
+
+[node name="Layer_04" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 0
+script = ExtResource("2_exia0")
+
+[node name="Foreground" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+script = ExtResource("2_exia0")
+
+[node name="light_overlay8" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_45why")
+position = Vector2(-1140, -291.99997)
+rotation = -1.033235
+scale = Vector2(1, 1.199)
+skew = 0.19388759
+amount = 1
+texture = ExtResource("4_lbe3q")
+lifetime = 10.0
+preprocess = 2.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_phdbe")
+
+[node name="light_overlay9" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_45why")
+position = Vector2(1014, -525.00006)
+rotation = -1.033235
+scale = Vector2(1, 1.199)
+skew = 0.19388759
+amount = 1
+texture = ExtResource("4_lbe3q")
+lifetime = 10.0
+preprocess = 2.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_phdbe")
+
+[node name="oil 3" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_du6od")
+position = Vector2(484, 170)
+scale = Vector2(1, 0.815)
+amount = 3
+texture = ExtResource("3_718ih")
+lifetime = 5.0
+preprocess = 8.0
+fixed_fps = 0
+local_coords = true
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_f5tvy")
+metadata/_edit_lock_ = true

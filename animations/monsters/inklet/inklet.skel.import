@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://c4o4l1314cjch"
+path="res://.godot/imported/inklet.skel-7a63741e790218291cb09d683913c761.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/inklet/inklet.skel"
+dest_files=["res://.godot/imported/inklet.skel-7a63741e790218291cb09d683913c761.spskel"]
+
+[params]
+

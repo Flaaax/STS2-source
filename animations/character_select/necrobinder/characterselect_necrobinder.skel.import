@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://bdj8preq6y3v0"
+path="res://.godot/imported/characterselect_necrobinder.skel-b01d857c048ded92f7890b44645fb982.spskel"
+
+[deps]
+
+source_file="res://animations/character_select/necrobinder/characterselect_necrobinder.skel"
+dest_files=["res://.godot/imported/characterselect_necrobinder.skel-b01d857c048ded92f7890b44645fb982.spskel"]
+
+[params]
+

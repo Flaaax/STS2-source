@@ -1,0 +1,259 @@
+[gd_scene load_steps=25 format=3 uid="uid://u8qi8dt1raw"]
+
+[ext_resource type="Texture2D" uid="uid://ddouphww0r8d6" path="res://images/vfx/ui/ui_card_mask.png" id="1_g61no"]
+[ext_resource type="Texture2D" uid="uid://cnnu2hi8qwc6q" path="res://images/vfx/ui/card/ui_card_border_vignette.png" id="2_yioky"]
+[ext_resource type="Material" uid="uid://d8c3xf8m2k5y" path="res://materials/vfx/ui/card/afflictions/ringing/vfx_ui_card_affliction_ringing_main.tres" id="3_e7ex6"]
+[ext_resource type="Texture2D" uid="uid://du5yp5ax73xt1" path="res://images/vfx/ui/card/afflictions/ringing/ui_card_ringing_main.png" id="4_6lovq"]
+[ext_resource type="Texture2D" uid="uid://cgpaf12xcgk58" path="res://images/vfx/ui/card/ui_card_border_glow.png" id="5_gbw1x"]
+[ext_resource type="PackedScene" uid="uid://chqoe33c4gm6a" path="res://scenes/vfx/common/vfx_common_specks.tscn" id="6_tihjg"]
+[ext_resource type="Texture2D" uid="uid://baeq6hg4ykxrc" path="res://images/vfx/ui/card/afflictions/ringing/ui_card_ringing_beast_frame_horns_only.png" id="7_yioky"]
+[ext_resource type="Texture2D" uid="uid://t5p3xw6yce2w" path="res://images/vfx/ui/card/afflictions/ringing/ui_card_ringing_beast_frame_hornless.png" id="8_e7ex6"]
+[ext_resource type="Texture2D" uid="uid://d0hk3u4gatlmm" path="res://images/vfx/ui/card/afflictions/ringing/ui_card_ringing_beast_frame.png" id="9_6lovq"]
+
+[sub_resource type="Curve" id="Curve_d5rxi"]
+_data = [Vector2(0, 0.50145626), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_b8nia"]
+curve = SubResource("Curve_d5rxi")
+
+[sub_resource type="Curve" id="Curve_71x6u"]
+_data = [Vector2(0, 0), 0.0, 4.30388, 0, 0, Vector2(0.501292, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -5.93081, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_u1lcf"]
+curve = SubResource("Curve_71x6u")
+
+[sub_resource type="Curve" id="Curve_c4gmj"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.8868, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_e8oys"]
+curve = SubResource("Curve_c4gmj")
+
+[sub_resource type="Curve" id="Curve_m0c3s"]
+_data = [Vector2(0, 0), 0.0, 5.0628076, 0, 0, Vector2(0.50391644, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -5.458677, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_1ll8x"]
+curve = SubResource("Curve_m0c3s")
+
+[sub_resource type="Curve" id="Curve_oyuva"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.604607), -1.44846, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_wm1ds"]
+_limits = [0.0, 5.0, 0.0, 1.0]
+_data = [Vector2(0, 0.997601), 0.0, 0.0, 0, 0, Vector2(1, 3.25336), 6.03527, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_ivp5k"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_hjhl6"]
+curve_x = SubResource("Curve_oyuva")
+curve_y = SubResource("Curve_wm1ds")
+curve_z = SubResource("Curve_ivp5k")
+
+[sub_resource type="Curve" id="Curve_pod23"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.49999994), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_twkgf"]
+curve = SubResource("Curve_pod23")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_iejey"]
+lifetime_randomness = 0.5
+particle_flag_align_y = true
+particle_flag_disable_z = true
+particle_flag_damping_as_friction = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 160.0
+emission_ring_inner_radius = 100.0
+emission_ring_cone_angle = 90.0
+direction = Vector3(-1, 0, 0)
+spread = 180.0
+flatness = 1.0
+radial_velocity_min = 19.999977
+radial_velocity_max = 99.99998
+radial_velocity_curve = SubResource("CurveTexture_e8oys")
+gravity = Vector3(0, 0, 0)
+damping_min = 10.0
+damping_max = 30.000002
+damping_curve = SubResource("CurveTexture_u1lcf")
+scale_min = 0.099999994
+scale_max = 0.17
+scale_curve = SubResource("CurveTexture_1ll8x")
+scale_over_velocity_max = 670.71
+scale_over_velocity_curve = SubResource("CurveXYZTexture_hjhl6")
+alpha_curve = SubResource("CurveTexture_b8nia")
+turbulence_enabled = true
+turbulence_noise_strength = 5.0
+turbulence_noise_scale = 10.1
+turbulence_noise_speed = Vector3(0.1, 0.1, 0.1)
+turbulence_noise_speed_random = 1.0
+turbulence_influence_min = 0.3
+turbulence_influence_max = 0.5
+turbulence_initial_displacement_min = 1.49012e-06
+turbulence_initial_displacement_max = 1.49012e-06
+turbulence_influence_over_life = SubResource("CurveTexture_twkgf")
+
+[node name="vfx_ui_card_affliction_ringing" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -211.0
+offset_right = 150.0
+offset_bottom = 211.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="card_mask" type="TextureRect" parent="."]
+clip_children = 1
+custom_minimum_size = Vector2(300, 422)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_g61no")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="card_vignette" type="TextureRect" parent="card_mask"]
+visible = false
+self_modulate = Color(0.055796508, 0, 0.10196078, 0.5019608)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -61.0
+offset_right = 61.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_yioky")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="ringing_main" type="TextureRect" parent="card_mask"]
+material = ExtResource("3_e7ex6")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -61.0
+offset_right = 61.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_6lovq")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="card_glow" type="TextureRect" parent="card_mask"]
+self_modulate = Color(0.6841424, 0.9894211, 1, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_gbw1x")
+expand_mode = 1
+
+[node name="vfx_common_specks" parent="card_mask" instance=ExtResource("6_tihjg")]
+position = Vector2(150, 211)
+emitting = true
+amount = 18
+lifetime = 2.0
+one_shot = false
+explosiveness = 0.25
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_iejey")
+
+[node name="horns_left" type="TextureRect" parent="."]
+self_modulate = Color(1, 1, 1, 0.5019608)
+layout_mode = 0
+offset_left = -250.99998
+offset_top = 147.0
+offset_right = 261.0
+offset_bottom = 275.0
+rotation = -4.712389
+scale = Vector2(0.75, 0.75)
+pivot_offset = Vector2(256, 64)
+texture = ExtResource("7_yioky")
+
+[node name="horns_right" type="TextureRect" parent="."]
+self_modulate = Color(1, 1, 1, 0.5019608)
+layout_mode = 0
+offset_left = 39.000015
+offset_top = 147.0
+offset_right = 551.0
+offset_bottom = 275.0
+rotation = -7.853982
+scale = Vector2(0.75, 0.75)
+pivot_offset = Vector2(256, 64)
+texture = ExtResource("7_yioky")
+
+[node name="horns_top" type="TextureRect" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0.5019608)
+layout_mode = 0
+offset_left = -106.00003
+offset_top = -63.000015
+offset_right = 405.99997
+offset_bottom = 64.999985
+rotation = -6.2831855
+scale = Vector2(0.6, 0.75)
+pivot_offset = Vector2(256, 64)
+texture = ExtResource("7_yioky")
+
+[node name="skull_top_left" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -231.0
+offset_top = -107.0
+offset_right = 281.0
+offset_bottom = 149.0
+rotation = -0.5235988
+scale = Vector2(0.35, 0.35)
+pivot_offset = Vector2(256, 128)
+texture = ExtResource("8_e7ex6")
+
+[node name="skull_top_right" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 19.00003
+offset_top = -107.0
+offset_right = 531.0
+offset_bottom = 149.0
+rotation = 0.5235988
+scale = Vector2(0.35, 0.35)
+pivot_offset = Vector2(256, 128)
+texture = ExtResource("8_e7ex6")
+
+[node name="frame_top" type="TextureRect" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0.76862746)
+layout_mode = 0
+offset_left = -106.000015
+offset_top = -121.0
+offset_right = 406.0
+offset_bottom = 135.0
+scale = Vector2(0.4, 0.4)
+pivot_offset = Vector2(256, 128)
+texture = ExtResource("9_6lovq")

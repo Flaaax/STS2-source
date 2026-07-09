@@ -1,0 +1,26 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://ddioovdvc0dm1"]
+
+[ext_resource type="Shader" uid="uid://bebj5rx7mk646" path="res://shaders/vfx/common/vfx_common_particle_shader.gdshader" id="1_v0cs3"]
+
+[sub_resource type="Curve" id="Curve_neg4c"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.49999994), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_q2bgw"]
+curve = SubResource("Curve_neg4c")
+
+[sub_resource type="Gradient" id="Gradient_06xif"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_a485y"]
+gradient = SubResource("Gradient_06xif")
+
+[resource]
+shader = ExtResource("1_v0cs3")
+shader_parameter/frame_count = 4.0
+shader_parameter/flipbook_size = Vector2(2, 2)
+shader_parameter/lut = SubResource("GradientTexture1D_a485y")
+shader_parameter/pivot_offset = Vector2(0, 0)
+shader_parameter/erosion_curve = SubResource("CurveTexture_q2bgw")
+shader_parameter/erosion_offset = 0.025

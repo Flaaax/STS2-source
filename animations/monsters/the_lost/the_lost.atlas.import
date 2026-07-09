@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://mi130ipxuor8"
+path="res://.godot/imported/the_lost.atlas-a5cc205214c614debf702e329c5d343f.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/the_lost/the_lost.atlas"
+dest_files=["res://.godot/imported/the_lost.atlas-a5cc205214c614debf702e329c5d343f.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

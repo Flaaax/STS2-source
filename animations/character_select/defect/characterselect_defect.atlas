@@ -1,0 +1,42 @@
+characterselect_defect.png
+size:3366,3018
+filter:Linear,Linear
+scale:0.5
+back arm
+bounds:812,27,421,471
+rotate:90
+backgroundbottom
+bounds:3,454,2561,1201
+rotate:90
+backgroundtop
+bounds:1210,454,2561,1201
+rotate:90
+bottom leg
+bounds:2059,201,546,247
+cape back
+bounds:2417,1274,941,724
+fabric
+bounds:3,11,803,437
+hand
+bounds:2417,2004,1011,879
+rotate:90
+head
+bounds:3004,940,359,328
+hips
+bounds:1289,10,328,184
+leg tops
+bounds:1289,200,764,248
+lower arm
+bounds:1623,3,191,138
+rotate:90
+neck tubes
+bounds:3004,698,195,236
+orb
+bounds:2611,59,570,601
+shine
+bounds:2417,666,602,581
+offsets:26,27,655,635
+rotate:90
+sparkle
+bounds:1767,157,35,37
+offsets:0,1,36,39

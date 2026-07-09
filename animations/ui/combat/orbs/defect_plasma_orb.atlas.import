@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://bo4f577c5n61y"
+path="res://.godot/imported/defect_plasma_orb.atlas-780f5cab3efd4ea38af7550d310bc547.spatlas"
+
+[deps]
+
+source_file="res://animations/ui/combat/orbs/defect_plasma_orb.atlas"
+dest_files=["res://.godot/imported/defect_plasma_orb.atlas-780f5cab3efd4ea38af7550d310bc547.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

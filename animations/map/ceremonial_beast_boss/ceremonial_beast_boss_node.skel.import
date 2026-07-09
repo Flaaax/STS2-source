@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://bmod17riognhx"
+path="res://.godot/imported/ceremonial_beast_boss_node.skel-4ab5d3c8d5f69e31114e0ca609ccb5a6.spskel"
+
+[deps]
+
+source_file="res://animations/map/ceremonial_beast_boss/ceremonial_beast_boss_node.skel"
+dest_files=["res://.godot/imported/ceremonial_beast_boss_node.skel-4ab5d3c8d5f69e31114e0ca609ccb5a6.spskel"]
+
+[params]
+

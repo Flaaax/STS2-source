@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://jfxee640ory"
+path="res://.godot/imported/snapping_jaxfruit.skel-b733a355a36280b9315dc1ff552b641e.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/snapping_jaxfruit/snapping_jaxfruit.skel"
+dest_files=["res://.godot/imported/snapping_jaxfruit.skel-b733a355a36280b9315dc1ff552b641e.spskel"]
+
+[params]
+

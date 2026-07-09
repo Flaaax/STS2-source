@@ -1,0 +1,77 @@
+architect_bg_animate.png
+size:5321,1522
+filter:Linear,Linear
+scale:0.66666
+Hue/Saturation/Luminosity 12 Copy
+bounds:3632,297,442,425
+Layer 109
+bounds:4816,918,601,502
+rotate:90
+Layer 129
+bounds:1930,728,2880,791
+Layer 148 Copy
+bounds:3,665,854,1921
+rotate:90
+Layer 154
+bounds:4816,16,379,896
+desk_lamp
+bounds:5201,115,51,78
+offsets:2,2,55,80
+floating rock
+bounds:462,305,354,368
+rotate:90
+floating scroll
+bounds:3632,40,251,307
+rotate:90
+floaty_1
+bounds:5201,31,30,47
+offsets:2,0,35,47
+rotate:90
+floaty_2
+bounds:5258,147,43,46
+offsets:2,2,47,48
+floaty_3
+bounds:5201,67,42,64
+offsets:2,0,45,66
+rotate:90
+heart
+bounds:4080,113,609,284
+offsets:0,3,609,287
+rotate:90
+heart_piece_1
+bounds:452,117,155,277
+rotate:90
+heart_piece_2
+bounds:4658,4,92,243
+metal_tube
+bounds:4511,26,141,696
+robot_1
+bounds:1317,88,149,264
+offsets:0,1,149,265
+robot_2
+bounds:3,278,381,453
+rotate:90
+robot_3
+bounds:1472,217,135,135
+spine top Copy
+bounds:836,33,475,319
+spine_1
+bounds:2859,31,691,767
+rotate:90
+spine_bottom
+bounds:1662,116,543,243
+rotate:90
+top_robots
+bounds:1930,3,923,719
+tube_1
+bounds:5201,199,115,713
+tube_2
+bounds:4370,13,135,709
+tube_3
+bounds:836,358,301,820
+rotate:90
+tube_4
+bounds:3,43,229,443
+rotate:90
+tube_5
+bounds:4658,253,142,469

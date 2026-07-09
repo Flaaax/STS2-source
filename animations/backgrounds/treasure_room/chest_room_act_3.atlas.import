@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://b6vfxtcftceyf"
+path="res://.godot/imported/chest_room_act_3.atlas-2fa20ac99a96b4481b3932d259259004.spatlas"
+
+[deps]
+
+source_file="res://animations/backgrounds/treasure_room/chest_room_act_3.atlas"
+dest_files=["res://.godot/imported/chest_room_act_3.atlas-2fa20ac99a96b4481b3932d259259004.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

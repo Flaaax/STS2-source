@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://beoc5ksn1so8q"
+path="res://.godot/imported/nibbit.atlas-fa0a3c4d2df5efd48e7fd4680e57bf1a.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/nibbit/nibbit.atlas"
+dest_files=["res://.godot/imported/nibbit.atlas-fa0a3c4d2df5efd48e7fd4680e57bf1a.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

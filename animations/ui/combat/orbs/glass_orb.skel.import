@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://d25cpe1h2ats4"
+path="res://.godot/imported/glass_orb.skel-e19b7eac474461b329d5bbda8562fe34.spskel"
+
+[deps]
+
+source_file="res://animations/ui/combat/orbs/glass_orb.skel"
+dest_files=["res://.godot/imported/glass_orb.skel-e19b7eac474461b329d5bbda8562fe34.spskel"]
+
+[params]
+

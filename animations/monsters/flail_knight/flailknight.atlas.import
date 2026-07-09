@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://drdser83yp313"
+path="res://.godot/imported/flailknight.atlas-a0a04bbf9b69371bf52ce173b751815e.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/flail_knight/flailknight.atlas"
+dest_files=["res://.godot/imported/flailknight.atlas-a0a04bbf9b69371bf52ce173b751815e.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://bql4qvmxq3qjx"
+path="res://.godot/imported/tunneler.atlas-9528a65360c5830f6a92d2cc06cdfd33.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/tunneler/tunneler.atlas"
+dest_files=["res://.godot/imported/tunneler.atlas-9528a65360c5830f6a92d2cc06cdfd33.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://cogu3r7u5628b"
+path="res://.godot/imported/false_queen_cages.atlas-499110bb8259ee58d63c49bc9794b68e.spatlas"
+
+[deps]
+
+source_file="res://scenes/backgrounds/queen_boss/false_queen_cages.atlas"
+dest_files=["res://.godot/imported/false_queen_cages.atlas-499110bb8259ee58d63c49bc9794b68e.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

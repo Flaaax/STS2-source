@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cd8dt56rmwp62"]
+
+[ext_resource type="PackedScene" uid="uid://byahdkujcm0en" path="res://scenes/vfx/ui/card/afflictions/hexed/vfx_ui_card_affliction_hexed.tscn" id="1_tuxtc"]
+
+[node name="Hexed" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="vfx_ui_card_hexed" parent="." instance=ExtResource("1_tuxtc")]
+layout_mode = 1

@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://31557cbrc2l4"]
+
+[ext_resource type="Script" uid="uid://bwlt5kld3a3gi" path="res://src/Core/Nodes/Debug/NOrbVfxTester.cs" id="1_dhqas"]
+
+[node name="orb_tester" type="Control" node_paths=PackedStringArray("_orbVfx", "_target", "_combatVfxContainer")]
+show_behind_parent = true
+layout_mode = 3
+anchors_preset = 0
+offset_top = -2900.0002
+offset_bottom = -2900.0002
+scale = Vector2(0.85, 0.85)
+script = ExtResource("1_dhqas")
+_passiveIncrements = 6.0
+_orbVfx = NodePath("")
+_target = NodePath("")
+_combatVfxContainer = NodePath("")
+
+[node name="orb_container" type="Control" parent="."]
+anchors_preset = 0
+scale = Vector2(10, 10)

@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://be21ogcgqlk5w"
+path="res://.godot/imported/dark_orb.skel-8c9612c3042d8a98872cffebc83925d1.spskel"
+
+[deps]
+
+source_file="res://animations/ui/combat/orbs/dark_orb.skel"
+dest_files=["res://.godot/imported/dark_orb.skel-8c9612c3042d8a98872cffebc83925d1.spskel"]
+
+[params]
+

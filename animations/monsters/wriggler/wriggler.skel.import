@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://cwv0hxeml5a01"
+path="res://.godot/imported/wriggler.skel-a48e14857e3d22be185cd625ea4ca1e4.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/wriggler/wriggler.skel"
+dest_files=["res://.godot/imported/wriggler.skel-a48e14857e3d22be185cd625ea4ca1e4.spskel"]
+
+[params]
+

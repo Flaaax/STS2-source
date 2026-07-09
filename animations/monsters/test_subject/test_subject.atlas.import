@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://cnkb6682e3p4m"
+path="res://.godot/imported/test_subject.atlas-72cea21e2bef1fc1aaf9269fe910932b.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/test_subject/test_subject.atlas"
+dest_files=["res://.godot/imported/test_subject.atlas-72cea21e2bef1fc1aaf9269fe910932b.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

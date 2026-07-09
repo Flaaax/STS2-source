@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://fspw3532mrwo"
+path="res://.godot/imported/parafright.atlas-7464b4e082f4e4cb24d0938779ea8d9b.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/parafright/parafright.atlas"
+dest_files=["res://.godot/imported/parafright.atlas-7464b4e082f4e4cb24d0938779ea8d9b.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

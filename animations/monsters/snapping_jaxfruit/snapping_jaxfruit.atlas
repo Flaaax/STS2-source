@@ -1,0 +1,69 @@
+snapping_jaxfruit.png
+size:1490,177
+filter:Linear,Linear
+scale:0.399
+Layer 75
+bounds:92,10,186,165
+add glows
+bounds:650,18,178,157
+offsets:6,11,196,176
+back flower
+bounds:2,5,170,88
+offsets:0,1,170,89
+rotate:90
+chomper 1
+bounds:890,4,23,21
+rotate:90
+chomper 6
+bounds:890,4,23,21
+rotate:90
+chomper 2
+bounds:913,5,22,21
+offsets:1,0,23,21
+rotate:90
+chomper 3
+bounds:936,5,20,22
+chomper 5
+bounds:936,5,20,22
+chomper 4
+bounds:870,3,18,24
+flower top
+bounds:1185,85,217,90
+green leaf 1
+bounds:1063,63,112,55
+rotate:90
+green leaf 2
+bounds:1009,57,118,52
+rotate:90
+ground grass
+bounds:830,19,156,38
+rotate:90
+leaf 1 bottom
+bounds:1056,10,45,40
+offsets:1,0,46,40
+rotate:90
+leaf 1 top
+bounds:1404,87,84,88
+offsets:0,0,85,88
+leaf 2 bottom
+bounds:1009,3,45,52
+leaf 2 top
+bounds:1120,84,91,63
+rotate:90
+orb 1
+bounds:870,29,146,137
+rotate:90
+orb_shine_1
+bounds:1157,5,83,77
+orb_shine_2
+bounds:1098,2,57,59
+purple sac
+bounds:280,10,183,165
+purple_sac_brightness
+bounds:465,10,183,165
+shadow
+bounds:1242,21,239,62
+offsets:1,1,243,64
+tendril1
+bounds:92,2,6,140
+rotate:90

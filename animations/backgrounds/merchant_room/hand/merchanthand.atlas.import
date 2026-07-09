@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://2k4l3xobhc71"
+path="res://.godot/imported/merchanthand.atlas-0b0263c7a3a7ee9850415bc708593ed8.spatlas"
+
+[deps]
+
+source_file="res://animations/backgrounds/merchant_room/hand/merchanthand.atlas"
+dest_files=["res://.godot/imported/merchanthand.atlas-0b0263c7a3a7ee9850415bc708593ed8.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

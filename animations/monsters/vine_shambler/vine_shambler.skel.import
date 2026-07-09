@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://bwrg6tl4sg64o"
+path="res://.godot/imported/vine_shambler.skel-2b2be9fccd52bae0fadaaa906ebb6316.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/vine_shambler/vine_shambler.skel"
+dest_files=["res://.godot/imported/vine_shambler.skel-2b2be9fccd52bae0fadaaa906ebb6316.spskel"]
+
+[params]
+

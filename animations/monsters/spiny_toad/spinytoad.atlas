@@ -1,0 +1,151 @@
+spinytoad.png
+size:2017,557
+filter:Linear,Linear
+scale:0.365
+arm_back_lower_spikes
+bounds:1704,61,121,120
+offsets:0,0,121,126
+arm_back_upper_spikes
+bounds:1851,172,82,131
+arm_front_lower_spikes
+bounds:1084,15,156,133
+arm_front_upper_spikes
+bounds:1127,150,161,209
+offsets:1,0,162,209
+rotate:90
+back arm 1
+bounds:1550,347,168,208
+offsets:0,0,168,209
+back arm 2
+bounds:1720,412,143,229
+offsets:0,0,143,244
+rotate:90
+back arm claws
+bounds:2,17,220,54
+offsets:7,0,228,54
+back_horns
+bounds:1356,6,160,167
+rotate:90
+bod 1
+bounds:355,82,277,384
+bod 1 spike 1
+bounds:1935,223,30,80
+bod 1 spike 2
+bounds:1671,4,31,61
+bod 1 spike 3
+bounds:1967,223,27,49
+bod 1 spike 4
+bounds:1543,171,28,38
+bod 2
+bounds:2,73,351,393
+offsets:0,0,354,393
+eyes
+bounds:1951,363,192,63
+rotate:90
+head
+bounds:634,158,249,308
+head horn 1
+bounds:224,5,66,148
+rotate:90
+head horn 1 small
+bounds:1897,305,48,52
+offsets:0,1,48,53
+rotate:90
+head horn 2
+bounds:568,2,42,78
+offsets:0,0,42,79
+head horn 2 small
+bounds:1878,2,21,32
+offsets:2,0,26,32
+rotate:90
+head horn 3
+bounds:523,2,43,78
+offsets:3,0,46,78
+head horn 3 small
+bounds:1099,492,25,31
+head horn 4
+bounds:374,10,70,147
+offsets:10,4,80,151
+rotate:90
+head horn 4 small
+bounds:1935,172,36,49
+offsets:1,1,37,50
+iris
+bounds:1550,325,173,20
+jaw
+bounds:634,6,197,150
+jaw_horns
+bounds:885,170,216,51
+l_eyelid_1
+bounds:1967,274,52,33
+rotate:90
+l_eyelid_2
+bounds:1768,20,54,39
+puff_seq/spike_burst_anim00
+bounds:1543,211,112,163
+offsets:37,11,183,183
+rotate:90
+puff_seq/spike_burst_anim01
+bounds:833,5,151,63
+offsets:15,115,183,183
+rotate:90
+puff_seq/spike_burst_anim02
+bounds:1525,2,164,55
+offsets:8,124,183,183
+rotate:90
+puff_seq/spike_burst_anim03
+bounds:1827,4,166,49
+offsets:6,132,183,183
+rotate:90
+puff_seq/spike_burst_anim04
+bounds:1725,305,170,48
+offsets:6,133,183,183
+r_eyelid_1
+bounds:1951,328,64,33
+r_eyelid_2
+bounds:1704,22,62,37
+offsets:0,0,62,38
+shadow
+bounds:2,468,675,87
+offsets:1,0,676,87
+spit
+bounds:1973,169,52,25
+rotate:90
+tail
+bounds:1127,313,228,242
+teeth
+bounds:1242,3,145,112
+rotate:90
+top arm 1
+bounds:1357,325,191,230
+top arm 2
+bounds:885,223,240,251
+top arm claws
+bounds:1720,355,214,55
+top leg 1
+bounds:898,12,156,184
+rotate:90
+top leg 1 copy 2
+bounds:1357,168,155,184
+rotate:90
+top leg 2
+bounds:1708,183,120,141
+rotate:90
+top leg 2 copy 2
+bounds:1582,67,120,142
+top leg foot
+bounds:1878,25,145,45
+offsets:0,0,149,45
+rotate:90
+top leg foot copy
+bounds:1925,25,145,44
+offsets:0,0,149,45
+rotate:90
+toungue
+bounds:1582,19,87,46
+offsets:0,0,87,47
+toungue_long
+bounds:679,476,418,47
+toungue_long_open
+bounds:679,525,443,30
+offsets:0,0,443,51

@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://bi8dmgwt8igiy"
+path="res://.godot/imported/mecha_knight_shield.skel-5ec1b6514d98c0744d4a024712e9d29c.spskel"
+
+[deps]
+
+source_file="res://animations/vfx/vfx_mecha_knight_shield/mecha_knight_shield.skel"
+dest_files=["res://.godot/imported/mecha_knight_shield.skel-5ec1b6514d98c0744d4a024712e9d29c.spskel"]
+
+[params]
+

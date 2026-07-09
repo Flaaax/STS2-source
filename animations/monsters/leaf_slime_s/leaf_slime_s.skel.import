@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://dm2e1jivvt0is"
+path="res://.godot/imported/leaf_slime_s.skel-031b13871f853541ca6fadfff7837f47.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/leaf_slime_s/leaf_slime_s.skel"
+dest_files=["res://.godot/imported/leaf_slime_s.skel-031b13871f853541ca6fadfff7837f47.spskel"]
+
+[params]
+

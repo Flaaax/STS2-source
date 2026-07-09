@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bqb4rgf77w8q2"]
+
+[ext_resource type="Shader" uid="uid://cwd5e8sx1en8" path="res://shaders/vfx/grand_finale/vfx_grand_finale_spotlight_add_shader.gdshader" id="1_hqb0p"]
+
+[resource]
+shader = ExtResource("1_hqb0p")
+shader_parameter/source_pos = Vector2(0.5, -3)
+shader_parameter/angle_offset = 0.25
+shader_parameter/invert = 1.0
+shader_parameter/angle_parameters = Vector2(0.5, 0.02)
+shader_parameter/erosion = Vector2(0, 0.35)

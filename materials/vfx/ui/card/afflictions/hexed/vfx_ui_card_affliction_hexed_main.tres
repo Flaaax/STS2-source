@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://d2gfr1phv0mhr"]
+
+[ext_resource type="Shader" uid="uid://cj0aanrfnnitk" path="res://shaders/vfx/ui/card/afflictions/hexed/vfx_ui_card_affliction_hexed_main_shader.gdshader" id="1_kqqtc"]
+
+[resource]
+shader = ExtResource("1_kqqtc")
+shader_parameter/noise_st = Vector4(1, 1, -0.25, 0.1)
+shader_parameter/noise_smoothstep = Vector2(0.5, 0.2)
+shader_parameter/main_color = Color(0.654902, 0.5137255, 0.9490196, 1)
+shader_parameter/bright_color = Color(0.76862746, 0.6745098, 0.9647059, 1)
+shader_parameter/border_color = Color(0.6175565, 0.11198568, 1, 1)

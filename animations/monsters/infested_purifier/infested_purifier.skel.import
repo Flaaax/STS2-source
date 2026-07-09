@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://b3jtvhqxsv32i"
+path="res://.godot/imported/infested_purifier.skel-8717cd9680a7e28095cca3cfce9a9198.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/infested_purifier/infested_purifier.skel"
+dest_files=["res://.godot/imported/infested_purifier.skel-8717cd9680a7e28095cca3cfce9a9198.spskel"]
+
+[params]
+

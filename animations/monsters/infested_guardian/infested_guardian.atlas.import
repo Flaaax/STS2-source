@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://co2bmmcwbsyh3"
+path="res://.godot/imported/infested_guardian.atlas-5e634f35329eedd0f34bdf563563ab80.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/infested_guardian/infested_guardian.atlas"
+dest_files=["res://.godot/imported/infested_guardian.atlas-5e634f35329eedd0f34bdf563563ab80.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

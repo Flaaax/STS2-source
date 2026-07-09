@@ -1,0 +1,10 @@
+sovereign_blade.png
+size:854,417
+filter:Linear,Linear
+scale:0.6
+blade_temp
+bounds:753,166,99,249
+offsets:3,4,108,260
+regent_temp
+bounds:2,2,413,749
+rotate:90

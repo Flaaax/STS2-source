@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://le1swkwbdxri"
+path="res://.godot/imported/fogmog.skel-84f6078b4bde2035866f4e754f631eed.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/fogmog/fogmog.skel"
+dest_files=["res://.godot/imported/fogmog.skel-84f6078b4bde2035866f4e754f631eed.spskel"]
+
+[params]
+

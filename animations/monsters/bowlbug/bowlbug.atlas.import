@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://co1w62mwuyjgc"
+path="res://.godot/imported/bowlbug.atlas-f1c89f855cd1350d72edb5219aa7b3ec.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/bowlbug/bowlbug.atlas"
+dest_files=["res://.godot/imported/bowlbug.atlas-f1c89f855cd1350d72edb5219aa7b3ec.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

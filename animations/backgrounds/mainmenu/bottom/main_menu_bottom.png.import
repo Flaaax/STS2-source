@@ -1,0 +1,37 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://c7p1raagl2c6o"
+path.bptc="res://.godot/imported/main_menu_bottom.png-d7d4537c3ec56f5f30144a17c9b31f7f.bptc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
+}
+
+[deps]
+
+source_file="res://animations/backgrounds/mainmenu/bottom/main_menu_bottom.png"
+dest_files=["res://.godot/imported/main_menu_bottom.png-d7d4537c3ec56f5f30144a17c9b31f7f.bptc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=true
+compress/lossy_quality=1.0
+compress/uastc_level=2
+compress/rdo_quality_loss=0
+compress/hdr_compression=0
+compress/normal_map=2
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=false
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1

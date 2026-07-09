@@ -1,0 +1,19 @@
+{
+  "ACTIONS.header": "Aktionen",
+  "ACTION_NAME.attack": "Angreifen",
+  "ACTION_NAME.cast": "Wirken",
+  "ACTION_NAME.die": "Sterben",
+  "ACTION_NAME.hurt": "Verletzt",
+  "ACTION_NAME.revive": "Wiederbeleben",
+  "ACTION_NAME.stun": "Betäubt",
+  "DESCRIPTION.placeholder": "Informationen zu diesem Monster müssen noch aufgedeckt werden...",
+  "EVENTS.title": "Ereignisse",
+  "LOCKED.monsterName": "[lb]Gesperrt[rb]",
+  "LOCKED.monsterTitle": "Gesperrt",
+  "MODE.viewActions": "Zeige Aktionen",
+  "MODE.viewStats": "Zeige Statistiken",
+  "QUOTE_PLACEHOLDER": "[red][i](Charakterdialog wurde noch nicht geschrieben)[/i][/red]",
+  "STATS.layout": "Begegnungen: [blue]{total}[/blue]\nGetötet: [green]{kills}[/green]\nTode: [red]{deaths}[/red]\nSiegesquote: [gold]{winrate}%[/gold]",
+  "UNDER_CONSTRUCTION": "In Entwicklung",
+  "UNSEEN.monsterName": "[lb]Unbekannt[rb]"
+}

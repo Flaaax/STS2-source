@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://dnw2ceopgwhtw"
+path="res://.godot/imported/slithering_strangler.skel-f02a7ab8456905441b81cdd134503476.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/slithering_strangler/slithering_strangler.skel"
+dest_files=["res://.godot/imported/slithering_strangler.skel-f02a7ab8456905441b81cdd134503476.spskel"]
+
+[params]
+

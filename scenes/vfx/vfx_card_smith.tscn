@@ -1,0 +1,262 @@
+[gd_scene load_steps=22 format=3 uid="uid://yc1hlaee10vf"]
+
+[ext_resource type="Script" uid="uid://b62v25kqsrvs2" path="res://src/Core/Nodes/Vfx/NCardSmithVfx.cs" id="1_weyf7"]
+[ext_resource type="Texture2D" uid="uid://c6mqkxyedx01i" path="res://images/vfx/vfx_smith/hammer_mark.png" id="2_m5nmj"]
+[ext_resource type="Texture2D" uid="uid://dgkcg7d3vtedi" path="res://images/vfx/vfx_smith/impact_circle_smith.png" id="3_flp5w"]
+[ext_resource type="Texture2D" uid="uid://bo1q2skn0b3ym" path="res://images/vfx/vfx_smith/spark_smith.png" id="4_7am7c"]
+[ext_resource type="Material" uid="uid://c4ycqv0gdxvmr" path="res://themes/canvas_item_material_additive_shared.tres" id="shared_additive_mat"]
+
+[sub_resource type="Curve" id="Curve_3r3b0"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.49913642, 0.9917513), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.9323914, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_6lb4u"]
+curve = SubResource("Curve_3r3b0")
+
+[sub_resource type="Gradient" id="Gradient_na7jh"]
+offsets = PackedFloat32Array(0, 0.0201729)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_dnwfu"]
+gradient = SubResource("Gradient_na7jh")
+
+[sub_resource type="Curve" id="Curve_7bva1"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.088, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.933059), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_p5pwv"]
+curve = SubResource("Curve_7bva1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v5els"]
+particle_flag_disable_z = true
+angle_min = -100.0
+angle_max = 100.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_p5pwv")
+color = Color(1.7739213, 1.0804915, 0.907134, 1)
+color_ramp = SubResource("GradientTexture1D_dnwfu")
+alpha_curve = SubResource("CurveTexture_6lb4u")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jlod4"]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 3
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_7n2r2"]
+_data = [Vector2(0, 0.15450513), 0.0, 0.47760123, 0, 0, Vector2(0.098445594, 0.85564727), 2.7291522, 2.7291522, 0, 0, Vector2(0.253886, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.959835), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_dnwfu"]
+curve = SubResource("Curve_7n2r2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_aqhjs"]
+particle_flag_disable_z = true
+angle_min = -237.6
+angle_max = 317.2
+gravity = Vector3(0, 0, 0)
+scale_min = 1.3
+scale_max = 1.3
+scale_curve = SubResource("CurveTexture_dnwfu")
+color = Color(1.7560499, 1.131195, 0.8633998, 1)
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[sub_resource type="Curve" id="Curve_8engd"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.7738288, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -13.412915, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_aqhjs"]
+curve = SubResource("Curve_8engd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_p5pwv"]
+lifetime_randomness = 0.44
+particle_flag_align_y = true
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 421.6
+initial_velocity_max = 1000.0
+gravity = Vector3(0, 1500, 0)
+scale_min = 0.12
+scale_max = 0.25
+scale_curve = SubResource("CurveTexture_aqhjs")
+color = Color(2.0331757, 0.9491716, 0.80600137, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_aujsd"]
+particle_flag_disable_z = true
+angle_min = -237.6
+angle_max = 317.2
+gravity = Vector3(0, 0, 0)
+scale_min = 1.3
+scale_max = 1.3
+scale_curve = SubResource("CurveTexture_dnwfu")
+color = Color(1.7560499, 1.131195, 0.8633998, 1)
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n5tuw"]
+particle_flag_disable_z = true
+angle_min = -237.6
+angle_max = 317.2
+gravity = Vector3(0, 0, 0)
+scale_min = 1.3
+scale_max = 1.3
+scale_curve = SubResource("CurveTexture_dnwfu")
+color = Color(1.7560499, 1.131195, 0.8633998, 1)
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[node name="VfxCardSmith" type="Node2D"]
+script = ExtResource("1_weyf7")
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="CardContainer" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 345
+alignment = 1
+
+[node name="Spark1" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 74.0
+offset_top = -114.0
+offset_right = 74.0
+offset_bottom = -114.0
+
+[node name="Hammer" type="GPUParticles2D" parent="Spark1"]
+material = ExtResource("shared_additive_mat")
+emitting = false
+amount = 1
+texture = ExtResource("2_m5nmj")
+lifetime = 0.5
+one_shot = true
+fixed_fps = 0
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_v5els")
+
+[node name="ImpactCircle" type="GPUParticles2D" parent="Spark1"]
+material = SubResource("CanvasItemMaterial_jlod4")
+emitting = false
+amount = 1
+texture = ExtResource("3_flp5w")
+lifetime = 0.5
+one_shot = true
+fixed_fps = 0
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_aqhjs")
+
+[node name="Sparks" type="GPUParticles2D" parent="Spark1"]
+material = ExtResource("shared_additive_mat")
+emitting = false
+amount = 20
+texture = ExtResource("4_7am7c")
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+randomness = 0.4
+fixed_fps = 0
+draw_order = 0
+trail_enabled = true
+trail_lifetime = 0.05
+trail_section_subdivisions = 14
+process_material = SubResource("ParticleProcessMaterial_p5pwv")
+
+[node name="Spark2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -94.0
+offset_top = 5.0
+offset_right = -94.0
+offset_bottom = 5.0
+
+[node name="Hammer" type="GPUParticles2D" parent="Spark2"]
+material = ExtResource("shared_additive_mat")
+emitting = false
+amount = 1
+texture = ExtResource("2_m5nmj")
+lifetime = 0.5
+one_shot = true
+fixed_fps = 0
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_v5els")
+
+[node name="ImpactCircle" type="GPUParticles2D" parent="Spark2"]
+material = SubResource("CanvasItemMaterial_jlod4")
+emitting = false
+amount = 1
+texture = ExtResource("3_flp5w")
+lifetime = 0.5
+one_shot = true
+fixed_fps = 0
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_aujsd")
+
+[node name="Sparks" type="GPUParticles2D" parent="Spark2"]
+material = ExtResource("shared_additive_mat")
+emitting = false
+amount = 20
+texture = ExtResource("4_7am7c")
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+randomness = 0.4
+fixed_fps = 0
+draw_order = 0
+trail_enabled = true
+trail_lifetime = 0.05
+process_material = SubResource("ParticleProcessMaterial_p5pwv")
+
+[node name="Spark3" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 61.0
+offset_top = 127.0
+offset_right = 61.0
+offset_bottom = 127.0
+
+[node name="Hammer" type="GPUParticles2D" parent="Spark3"]
+material = ExtResource("shared_additive_mat")
+emitting = false
+amount = 1
+texture = ExtResource("2_m5nmj")
+lifetime = 0.5
+one_shot = true
+fixed_fps = 0
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_v5els")
+
+[node name="ImpactCircle" type="GPUParticles2D" parent="Spark3"]
+material = SubResource("CanvasItemMaterial_jlod4")
+emitting = false
+amount = 1
+texture = ExtResource("3_flp5w")
+lifetime = 0.5
+one_shot = true
+fixed_fps = 0
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_n5tuw")
+
+[node name="Sparks" type="GPUParticles2D" parent="Spark3"]
+material = ExtResource("shared_additive_mat")
+emitting = false
+amount = 20
+texture = ExtResource("4_7am7c")
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+randomness = 0.4
+fixed_fps = 0
+draw_order = 0
+trail_enabled = true
+trail_lifetime = 0.05
+process_material = SubResource("ParticleProcessMaterial_p5pwv")

@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://0p6pkoslnlmo"
+path="res://.godot/imported/mawler.skel-2e8c4bbaee7b9a37aa399e272e74f1eb.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/mawler/mawler.skel"
+dest_files=["res://.godot/imported/mawler.skel-2e8c4bbaee7b9a37aa399e272e74f1eb.spskel"]
+
+[params]
+

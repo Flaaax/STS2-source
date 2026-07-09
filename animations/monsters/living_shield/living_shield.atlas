@@ -1,0 +1,142 @@
+living_shield.png
+size:1953,650
+filter:Linear,Linear
+scale:0.199
+Layer 179
+bounds:986,239,421,121
+offsets:1,0,422,122
+bod
+bounds:332,2,182,250
+rotate:90
+bod_dead
+bounds:584,2,182,250
+rotate:90
+dirt_chunk
+bounds:2,9,8,8
+explosion/explode0000
+bounds:1216,6,58,58
+offsets:138,131,344,344
+explosion/explode0001
+bounds:1217,66,171,199
+offsets:91,70,344,344
+rotate:90
+explosion/explode0002
+bounds:836,2,18,17
+offsets:160,153,344,344
+rotate:90
+explosion/explode0003
+bounds:1155,17,59,62
+offsets:140,133,344,344
+explosion/explode0004
+bounds:1653,35,161,142
+offsets:93,99,344,344
+explosion/explode0005
+bounds:1653,179,204,199
+offsets:76,76,344,344
+explosion/explode0006
+bounds:1418,119,233,241
+offsets:58,55,344,344
+explosion/explode0007
+bounds:1599,380,265,268
+offsets:43,35,344,344
+explosion/explode0008
+bounds:1302,362,295,286
+offsets:29,22,344,344
+explosion/explode0009
+bounds:986,362,314,286
+offsets:20,16,344,344
+explosion/explode0010
+bounds:334,344,324,304
+offsets:13,10,344,344
+explosion/explode0011
+bounds:660,345,324,303
+offsets:13,11,344,344
+explosion/explode0012
+bounds:2,333,330,315
+offsets:9,8,344,344
+explosion/explode0013
+bounds:2,19,328,312
+offsets:10,9,344,344
+eyes
+bounds:1816,19,27,49
+rotate:90
+gasket
+bounds:1372,41,44,23
+head
+bounds:836,22,57,118
+rotate:90
+hips
+bounds:1571,15,102,63
+offsets:4,0,115,63
+rotate:90
+l arm 1
+bounds:1866,547,81,101
+l arm 2
+bounds:1816,48,107,129
+offsets:1,0,108,129
+l arm 3
+bounds:828,239,43,66
+rotate:90
+l arm lower
+bounds:1866,379,75,78
+l foot
+bounds:1925,128,49,25
+rotate:90
+l hand
+bounds:1859,294,72,83
+l knee
+bounds:1867,14,32,33
+rotate:90
+l leg 1
+bounds:828,284,59,107
+rotate:90
+l leg 2
+bounds:1069,44,35,84
+rotate:90
+neck cord 1
+bounds:956,2,38,77
+neck cord 2
+bounds:1372,9,30,39
+rotate:90
+pipe
+bounds:1069,2,40,62
+rotate:90
+r arm cord 2
+bounds:1930,268,24,21
+rotate:90
+r arm cord1
+bounds:1276,7,55,57
+r foot
+bounds:937,312,47,31
+r knee
+bounds:937,278,32,33
+rotate:90
+r leg 1
+bounds:1866,459,86,74
+rotate:90
+r leg 2
+bounds:1859,214,69,78
+shield
+bounds:334,186,156,379
+rotate:90
+shield bottom
+bounds:996,23,71,56
+shield_dead
+bounds:836,81,156,379
+rotate:90
+shoulder
+bounds:715,192,111,151
+shoulder bottom
+bounds:1859,179,33,85
+rotate:90
+shoulder_dead
+bounds:1418,6,111,151
+rotate:90
+spring
+bounds:1333,7,37,57
+zzzt1
+bounds:1925,99,27,24
+rotate:90
+zzzt2
+bounds:896,239,43,33
+rotate:90

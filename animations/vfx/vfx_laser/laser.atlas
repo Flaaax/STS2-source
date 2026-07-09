@@ -1,0 +1,7 @@
+laser.png
+size:124,16
+filter:Linear,Linear
+scale:0.6
+simple_beam
+bounds:2,2,120,7
+offsets:0,3,120,13

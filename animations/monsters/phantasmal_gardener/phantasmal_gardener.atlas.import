@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://bx7m3iocic135"
+path="res://.godot/imported/phantasmal_gardener.atlas-aefe51da667da1729d87092c59072dfc.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/phantasmal_gardener/phantasmal_gardener.atlas"
+dest_files=["res://.godot/imported/phantasmal_gardener.atlas-aefe51da667da1729d87092c59072dfc.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

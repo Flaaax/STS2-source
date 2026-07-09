@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://bt1ch1teqv7mn"
+path="res://.godot/imported/terror_eel.skel-11a2e345df143df7cc471e8e6f2bdb86.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/terror_eel/terror_eel.skel"
+dest_files=["res://.godot/imported/terror_eel.skel-11a2e345df143df7cc471e8e6f2bdb86.spskel"]
+
+[params]
+

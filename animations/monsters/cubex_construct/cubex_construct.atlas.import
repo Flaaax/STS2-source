@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://cq036ph5q5you"
+path="res://.godot/imported/cubex_construct.atlas-4478cd830f11a88b685354ae45f34502.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/cubex_construct/cubex_construct.atlas"
+dest_files=["res://.godot/imported/cubex_construct.atlas-4478cd830f11a88b685354ae45f34502.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

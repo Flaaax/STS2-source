@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://3qtmqetypjkv"
+path="res://.godot/imported/soul_fysh.atlas-36704868e59f540898b03e90ed9173be.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/soul_fysh/soul_fysh.atlas"
+dest_files=["res://.godot/imported/soul_fysh.atlas-36704868e59f540898b03e90ed9173be.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

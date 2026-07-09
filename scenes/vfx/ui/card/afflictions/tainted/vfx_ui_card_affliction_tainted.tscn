@@ -1,0 +1,101 @@
+[gd_scene load_steps=6 format=3 uid="uid://bdys67sfrbh3"]
+
+[ext_resource type="Texture2D" uid="uid://ddouphww0r8d6" path="res://images/vfx/ui/ui_card_mask.png" id="1_44321"]
+[ext_resource type="Texture2D" uid="uid://cnnu2hi8qwc6q" path="res://images/vfx/ui/card/ui_card_border_vignette.png" id="2_f610y"]
+[ext_resource type="Texture2D" uid="uid://cgpaf12xcgk58" path="res://images/vfx/ui/card/ui_card_border_glow.png" id="3_5poeo"]
+[ext_resource type="Material" uid="uid://c54i5w1m55b8i" path="res://materials/vfx/ui/card/afflictions/entangled/vfx_ui_card_affliction_entangled_main.tres" id="4_7qvo7"]
+[ext_resource type="Texture2D" uid="uid://c7vreiil83e4r" path="res://images/vfx/ui/card/afflictions/entangled/ui_card_entangled_main.png" id="5_tnayx"]
+
+[node name="vfx_ui_card_affliction_tainted" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -211.0
+offset_right = 150.0
+offset_bottom = 211.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="card_mask" type="TextureRect" parent="."]
+clip_children = 1
+custom_minimum_size = Vector2(300, 422)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_44321")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="card_vignette" type="TextureRect" parent="card_mask"]
+self_modulate = Color(0.2, 0.0, 0.25, 0.6)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -61.0
+offset_right = 61.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_f610y")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="card_glow" type="TextureRect" parent="card_mask"]
+self_modulate = Color(0.7, 0.2, 0.85, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_5poeo")
+expand_mode = 1
+
+[node name="vfx_container" type="TextureRect" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(300, 422)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 300.0
+offset_bottom = 422.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_44321")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="main" type="TextureRect" parent="vfx_container"]
+modulate = Color(0.7, 0.2, 0.85, 1)
+texture_repeat = 2
+material = ExtResource("4_7qvo7")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -253.0
+offset_top = -253.0
+offset_right = -131.0
+offset_bottom = -253.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+mouse_filter = 2
+texture = ExtResource("5_tnayx")
+expand_mode = 1
+stretch_mode = 5

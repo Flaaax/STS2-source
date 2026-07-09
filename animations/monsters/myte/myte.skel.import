@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://ganlqlpvtgnk"
+path="res://.godot/imported/myte.skel-1e7bae1976a7bccc4e10af5b0f048b3e.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/myte/myte.skel"
+dest_files=["res://.godot/imported/myte.skel-1e7bae1976a7bccc4e10af5b0f048b3e.spskel"]
+
+[params]
+

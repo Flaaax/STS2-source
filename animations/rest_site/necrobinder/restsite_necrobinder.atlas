@@ -1,0 +1,92 @@
+restsite_necrobinder.png
+size:1477,540
+filter:Linear,Linear
+scale:1.137
+back shoulder
+bounds:1392,276,55,137
+offsets:1,1,57,139
+belt
+bounds:363,8,88,39
+offsets:1,1,90,41
+rotate:90
+bottom arm
+bounds:435,63,139,230
+offsets:1,1,142,233
+fire_placehlder
+bounds:1177,14,117,116
+offsets:2,1,121,117
+glow
+bounds:2,100,193,198
+offsets:20,17,230,238
+rotate:90
+legs
+bounds:202,98,61,212
+offsets:2,1,65,214
+rotate:90
+legs copy
+bounds:1296,21,109,177
+offsets:2,2,113,181
+rotate:90
+light arm back
+bounds:747,32,96,108
+offsets:2,1,99,111
+rotate:90
+light arm front
+bounds:747,130,47,192
+offsets:2,1,50,194
+rotate:90
+light body
+bounds:950,4,225,534
+offsets:0,0,226,536
+ribcage
+bounds:119,4,92,105
+offsets:3,2,96,108
+rotate:90
+shade arm back
+bounds:202,161,132,231
+offsets:1,2,135,235
+rotate:90
+shade arm front
+bounds:583,179,115,328
+offsets:1,9,118,341
+rotate:90
+shade body
+bounds:2,295,243,579
+offsets:0,1,243,580
+rotate:90
+shade shoulder back
+bounds:404,11,50,137
+offsets:5,1,55,138
+rotate:90
+shade shoulder front
+bounds:226,5,91,135
+offsets:0,399,235,549
+rotate:90
+shadow
+bounds:583,296,365,242
+offsets:1,1,367,244
+skirt
+bounds:1177,249,213,289
+offsets:0,0,215,289
+skirt flap
+bounds:576,62,115,169
+offsets:1,2,118,172
+rotate:90
+skull
+bounds:857,5,123,90
+offsets:2,0,126,90
+rotate:90
+spine
+bounds:913,236,25,58
+offsets:1,1,28,60
+top arm copy
+bounds:1177,132,115,275
+offsets:1,1,125,277
+rotate:90
+top shoulder
+bounds:2,2,96,115
+offsets:2,1,99,117
+rotate:90
+top shoulder back
+bounds:1392,415,83,123
+offsets:1,3,86,127

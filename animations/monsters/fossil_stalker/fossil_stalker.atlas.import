@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://dwsq7aj6y52ia"
+path="res://.godot/imported/fossil_stalker.atlas-337977b03251432999da881fce793b5c.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/fossil_stalker/fossil_stalker.atlas"
+dest_files=["res://.godot/imported/fossil_stalker.atlas-337977b03251432999da881fce793b5c.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

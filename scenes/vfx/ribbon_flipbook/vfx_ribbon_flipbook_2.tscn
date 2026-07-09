@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://2vgogfnmm7u"]
+
+[ext_resource type="Material" uid="uid://pb1cd2sa4jl0" path="res://materials/vfx/ribbon_flipbook/vfx_ribbon_flipbook_1_2_blue.tres" id="1_yfjcb"]
+[ext_resource type="Texture2D" uid="uid://d1b6f6o3ooii0" path="res://images/vfx/ribbon_flipbook/ribbon_flipbook_2.png" id="2_n3atm"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nmb1b"]
+lifetime_randomness = 0.25
+particle_flag_disable_z = true
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+gravity = Vector3(0, 0, 0)
+scale_min = 0.59999996
+scale_max = 0.75
+
+[node name="vfx_ribbon_flipbook_2" type="GPUParticles2D"]
+material = ExtResource("1_yfjcb")
+emitting = false
+amount = 1
+texture = ExtResource("2_n3atm")
+lifetime = 0.4
+one_shot = true
+explosiveness = 0.25
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_nmb1b")

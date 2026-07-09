@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://chaqsfs0s1b7p"
+path="res://.godot/imported/parafright.skel-3a40ae40fdccf2e4adfeb834796f2b87.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/parafright/parafright.skel"
+dest_files=["res://.godot/imported/parafright.skel-3a40ae40fdccf2e4adfeb834796f2b87.spskel"]
+
+[params]
+

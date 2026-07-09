@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://dh2mhhqounmur"
+path="res://.godot/imported/twig_slime_m.skel-f79ddcc605c1062e2e7bf36507a2f630.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/twig_slime_m/twig_slime_m.skel"
+dest_files=["res://.godot/imported/twig_slime_m.skel-f79ddcc605c1062e2e7bf36507a2f630.spskel"]
+
+[params]
+

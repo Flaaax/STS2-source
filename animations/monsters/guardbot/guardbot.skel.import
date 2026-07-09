@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://v3ojdpg32ww4"
+path="res://.godot/imported/guardbot.skel-61503e2200125b3ee172e76354fd289c.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/guardbot/guardbot.skel"
+dest_files=["res://.godot/imported/guardbot.skel-61503e2200125b3ee172e76354fd289c.spskel"]
+
+[params]
+

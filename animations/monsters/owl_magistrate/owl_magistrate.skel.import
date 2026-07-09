@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://cedfawmtw5ugo"
+path="res://.godot/imported/owl_magistrate.skel-a3423bd6cec5e837d1e028cfdcc4f742.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/owl_magistrate/owl_magistrate.skel"
+dest_files=["res://.godot/imported/owl_magistrate.skel-a3423bd6cec5e837d1e028cfdcc4f742.spskel"]
+
+[params]
+

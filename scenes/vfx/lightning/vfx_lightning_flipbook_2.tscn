@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bw4tvf7o6fvp1"]
+
+[ext_resource type="Material" uid="uid://68v3yyw6ng0p" path="res://materials/vfx/lightning/vfx_lightning_flipbook.tres" id="1_pkxvv"]
+[ext_resource type="Texture2D" uid="uid://qqa3g3dd7vsw" path="res://images/vfx/lightning/lightning_flipbook_2.png" id="2_4y0d4"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nwef5"]
+lifetime_randomness = 0.2
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 40.0
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+gravity = Vector3(0, 0, 0)
+scale_min = 0.45
+scale_max = 0.55
+
+[node name="vfx_lightning_flipbook_2" type="GPUParticles2D"]
+self_modulate = Color(0.29612803, 0.7653762, 1, 1)
+material = ExtResource("1_pkxvv")
+emitting = false
+amount = 1
+texture = ExtResource("2_4y0d4")
+lifetime = 0.25
+one_shot = true
+explosiveness = 0.6
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_nwef5")

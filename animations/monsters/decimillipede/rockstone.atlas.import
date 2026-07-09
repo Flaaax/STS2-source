@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://ey07s2pyv8od"
+path="res://.godot/imported/rockstone.atlas-9f475c948cda0fbb4c22395e755ea73c.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/decimillipede/rockstone.atlas"
+dest_files=["res://.godot/imported/rockstone.atlas-9f475c948cda0fbb4c22395e755ea73c.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

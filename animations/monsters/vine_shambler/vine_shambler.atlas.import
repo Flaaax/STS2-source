@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://cvyfqimgi17m0"
+path="res://.godot/imported/vine_shambler.atlas-9819332c3fdfa4062b2d1202fbdc96fb.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/vine_shambler/vine_shambler.atlas"
+dest_files=["res://.godot/imported/vine_shambler.atlas-9819332c3fdfa4062b2d1202fbdc96fb.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

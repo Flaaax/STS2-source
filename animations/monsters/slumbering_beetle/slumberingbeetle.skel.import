@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://y06sjynfjrfr"
+path="res://.godot/imported/slumberingbeetle.skel-f6c06b898037b7e67288429310e010bb.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/slumbering_beetle/slumberingbeetle.skel"
+dest_files=["res://.godot/imported/slumberingbeetle.skel-f6c06b898037b7e67288429310e010bb.spskel"]
+
+[params]
+

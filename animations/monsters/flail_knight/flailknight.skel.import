@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://chpqyr51w8pdy"
+path="res://.godot/imported/flailknight.skel-aa86ce18be0bc296e4ea03556523f711.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/flail_knight/flailknight.skel"
+dest_files=["res://.godot/imported/flailknight.skel-aa86ce18be0bc296e4ea03556523f711.spskel"]
+
+[params]
+

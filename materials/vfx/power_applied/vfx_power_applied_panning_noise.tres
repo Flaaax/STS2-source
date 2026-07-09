@@ -1,0 +1,28 @@
+[gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://ca3kc50xi08kd"]
+
+[ext_resource type="Shader" uid="uid://cunnv8pt5slvg" path="res://shaders/vfx/common/vfx_panning_shader.gdshader" id="1_eda7p"]
+[ext_resource type="Texture2D" uid="uid://du71k7y5v12pw" path="res://images/vfx/power_applied/power_applied_noise_mask.png" id="2_siqtg"]
+
+[sub_resource type="Curve" id="Curve_eda7p"]
+_data = [Vector2(0, 0.20121944), 0.0, 0.0, 0, 1]
+point_count = 1
+
+[sub_resource type="CurveTexture" id="CurveTexture_siqtg"]
+curve = SubResource("Curve_eda7p")
+
+[sub_resource type="Gradient" id="Gradient_eda7p"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_siqtg"]
+gradient = SubResource("Gradient_eda7p")
+
+[resource]
+shader = ExtResource("1_eda7p")
+shader_parameter/pivot_offset = Vector2(0.1, 0)
+shader_parameter/lut = SubResource("GradientTexture1D_siqtg")
+shader_parameter/mask = ExtResource("2_siqtg")
+shader_parameter/erosion_over_lifetime = SubResource("CurveTexture_siqtg")
+shader_parameter/erosion_offset = 0.5
+shader_parameter/energy = 1.0
+shader_parameter/initial_offset_multiplier = Vector2(0, 1)
+shader_parameter/main_st = Vector4(0.4, 1, -2, 0)
+shader_parameter/use_red_channel_as_alpha = 1.0

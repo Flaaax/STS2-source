@@ -1,0 +1,130 @@
+twig_slime_m.png
+size:994,269
+filter:Linear,Linear
+scale:0.665
+Layer 17
+bounds:67,53,214,168
+offsets:0,0,215,168
+rotate:90
+Layer 18
+bounds:368,107,160,138
+rotate:90
+Layer 19
+bounds:237,97,170,129
+rotate:90
+angry_eyes
+bounds:687,32,91,29
+rotate:90
+blink 1 copy
+bounds:658,5,89,24
+offsets:0,1,89,25
+blink 1
+bounds:658,5,89,24
+offsets:0,1,89,25
+blink 2 copy
+bounds:658,31,92,27
+rotate:90
+blink 2
+bounds:658,31,92,27
+rotate:90
+blink 3
+bounds:335,2,93,31
+rotate:90
+drop
+bounds:300,65,31,30
+eyes
+bounds:830,127,140,55
+rotate:90
+eyes blink
+bounds:35,7,14,9
+rotate:90
+eyes blink copy
+bounds:237,54,61,41
+eyes blink copy 10
+bounds:731,126,141,51
+offsets:2,0,143,51
+rotate:90
+eyes blink copy 11
+bounds:784,126,141,44
+offsets:1,0,142,48
+rotate:90
+eyes blink copy 2
+bounds:767,44,80,44
+rotate:90
+eyes blink copy 3
+bounds:368,10,95,46
+offsets:0,0,96,46
+rotate:90
+eyes blink copy 4
+bounds:208,4,125,47
+offsets:1,0,126,47
+eyes blink copy 5
+bounds:67,2,139,49
+offsets:1,0,140,49
+eyes blink copy 6
+bounds:677,125,142,52
+offsets:1,0,143,52
+rotate:90
+eyes blink copy 7
+bounds:508,125,142,55
+offsets:1,0,143,55
+rotate:90
+eyes blink copy 8
+bounds:565,125,142,54
+offsets:1,0,143,54
+rotate:90
+eyes blink copy 9
+bounds:621,125,142,54
+offsets:1,0,143,54
+rotate:90
+projectile
+bounds:850,2,123,55
+offsets:4,4,133,63
+rotate:90
+pupils
+bounds:887,134,133,45
+rotate:90
+shadow
+bounds:2,23,244,63
+offsets:2,1,247,66
+rotate:90
+twig 1
+bounds:525,15,131,108
+offsets:1,0,132,109
+twig 10
+bounds:2,2,31,19
+twig 11
+bounds:749,2,29,23
+offsets:1,0,30,23
+rotate:90
+twig 12
+bounds:718,33,47,90
+twig 13
+bounds:940,41,29,22
+twig 14
+bounds:957,147,65,35
+rotate:90
+twig 2
+bounds:489,13,92,34
+rotate:90
+twig 3
+bounds:774,5,74,37
+twig 4
+bounds:907,65,67,71
+rotate:90
+twig 5
+bounds:416,11,71,94
+twig 6
+bounds:934,142,70,21
+offsets:1,0,71,21
+rotate:90
+twig 7
+bounds:934,214,53,57
+offsets:0,0,54,57
+rotate:90
+twig 8
+bounds:907,20,43,31
+rotate:90
+twig 9
+bounds:813,47,77,21
+rotate:90

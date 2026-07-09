@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://dixto0fpsvmwi"
+path="res://.godot/imported/main_menu_bottom.atlas-54138642c33dc40574ea9657ef158ae7.spatlas"
+
+[deps]
+
+source_file="res://animations/backgrounds/mainmenu/bottom/main_menu_bottom.atlas"
+dest_files=["res://.godot/imported/main_menu_bottom.atlas-54138642c33dc40574ea9657ef158ae7.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://tedgbndcfcuj"
+path="res://.godot/imported/sneaky_gremlin.atlas-7567bc473d5459f2ae4caf7f28620e58.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/sneaky_gremlin/sneaky_gremlin.atlas"
+dest_files=["res://.godot/imported/sneaky_gremlin.atlas-7567bc473d5459f2ae4caf7f28620e58.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

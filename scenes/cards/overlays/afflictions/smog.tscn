@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://duxgqfkqk2b0t"]
+
+[ext_resource type="PackedScene" uid="uid://wen7epu4lu4n" path="res://scenes/vfx/ui/card/afflictions/smog/vfx_ui_card_affliction_smog.tscn" id="1_ruwg3"]
+
+[node name="Smog" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="vfx_ui_card_affliction_smog" parent="." instance=ExtResource("1_ruwg3")]
+layout_mode = 1

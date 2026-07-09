@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://coi4r5bv4daor"
+path="res://.godot/imported/nibbit.skel-ddc5039554708a8040777fb0d60b580f.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/nibbit/nibbit.skel"
+dest_files=["res://.godot/imported/nibbit.skel-ddc5039554708a8040777fb0d60b580f.spskel"]
+
+[params]
+

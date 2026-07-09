@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://cdnknfnxvn62h"
+path="res://.godot/imported/soveriegn_blade.skel-909881bef3f87988b6b4b800dcad1acc.spskel"
+
+[deps]
+
+source_file="res://animations/vfx/vfx_sovereign_blade/soveriegn_blade.skel"
+dest_files=["res://.godot/imported/soveriegn_blade.skel-909881bef3f87988b6b4b800dcad1acc.spskel"]
+
+[params]
+

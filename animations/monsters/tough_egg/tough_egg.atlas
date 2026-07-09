@@ -1,0 +1,67 @@
+tough_egg.png
+size:173,523
+filter:Linear,Linear
+pma:true
+scale:0.332
+back arm
+bounds:77,54,15,40
+offsets:1,0,16,40
+back leg
+bounds:137,49,27,32
+offsets:0,0,29,32
+rotate:90
+base
+bounds:2,96,94,96
+rotate:90
+base b
+bounds:2,192,98,97
+offsets:0,0,99,97
+bod
+bounds:2,291,107,91
+eyes
+bounds:94,59,41,34
+offsets:0,0,42,34
+front arm
+bounds:137,78,15,34
+offsets:1,0,16,34
+rotate:90
+front leg
+bounds:111,340,19,42
+goo_drop_1
+bounds:132,340,21,22
+rotate:90
+iris
+bounds:27,3,28,13
+middle bit
+bounds:102,213,68,71
+offsets:0,0,68,72
+middle bit b
+bounds:2,18,73,75
+open egg
+bounds:2,477,169,44
+pincers
+bounds:2,2,23,14
+shadow
+bounds:2,423,167,52
+offsets:1,0,169,66
+shadow a
+bounds:2,384,128,37
+offsets:0,0,130,37
+shadow b
+bounds:2,384,128,37
+offsets:0,0,130,37
+shine
+bounds:132,363,34,58
+shine b
+bounds:77,7,45,53
+rotate:90
+spots
+bounds:111,286,55,52
+spots b
+bounds:100,95,70,43
+wing
+bounds:102,166,45,64
+rotate:90
+wing back
+bounds:100,140,24,71
+rotate:90

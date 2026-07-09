@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://c6tsmor4n8ker"
+path="res://.godot/imported/axe_ruby_raider.atlas-2fc2e29fef26a4fc0d441a3bc3d43869.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/axe_ruby_raider/axe_ruby_raider.atlas"
+dest_files=["res://.godot/imported/axe_ruby_raider.atlas-2fc2e29fef26a4fc0d441a3bc3d43869.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

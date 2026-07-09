@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://b1a2c0sisnqq0"
+path="res://.godot/imported/turret_operator.skel-6b57a3c52793527e1aaead8c0e669e2c.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/turret_operator/turret_operator.skel"
+dest_files=["res://.godot/imported/turret_operator.skel-6b57a3c52793527e1aaead8c0e669e2c.spskel"]
+
+[params]
+

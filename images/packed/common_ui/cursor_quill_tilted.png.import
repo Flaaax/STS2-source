@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://cxacdys1tptha"
+path="res://.godot/imported/cursor_quill_tilted.png-b99dbeb4a81ad6184373e5cf5a42d8ee.image"
+
+[deps]
+
+source_file="res://images/packed/common_ui/cursor_quill_tilted.png"
+dest_files=["res://.godot/imported/cursor_quill_tilted.png-b99dbeb4a81ad6184373e5cf5a42d8ee.image"]
+
+[params]
+

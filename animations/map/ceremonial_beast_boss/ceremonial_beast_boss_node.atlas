@@ -1,0 +1,87 @@
+boss_node_ceremonial_beast.png
+size:1115,1480
+filter:Linear,Linear
+scale:0.33
+Layer 23
+bounds:3,1098,379,562
+rotate:90
+Layer 39
+bounds:522,44,231,402
+rotate:90
+Layer 42
+bounds:3,18,231,402
+rotate:90
+Layer 44
+bounds:524,281,265,513
+rotate:90
+Layer 46
+bounds:3,255,265,513
+rotate:90
+backdrop
+bounds:571,1122,355,538
+rotate:90
+bead1
+bounds:1043,427,19,56
+bead1 copy
+bounds:1068,386,43,80
+bead2
+bounds:1015,198,22,24
+bead2 copy
+bounds:984,123,46,48
+rotate:90
+bead3
+bounds:1071,707,36,52
+bead3 copy
+bounds:1043,220,60,76
+bead4
+bounds:967,3,23,55
+bead4 copy
+bounds:930,175,47,79
+rotate:90
+bead5
+bounds:1079,32,23,58
+bead5 copy
+bounds:930,228,47,82
+rotate:90
+bead6
+bounds:930,31,26,24
+bead6 copy
+bounds:930,121,48,48
+bead7
+bounds:1071,765,35,54
+bead7 copy
+bounds:1043,302,59,78
+bead8
+bounds:1043,489,21,57
+bead8 copy
+bounds:1043,133,45,81
+eyeshine 1
+bounds:984,64,32,53
+eyeshine 1 copy
+bounds:1071,530,33,53
+eyeshine 1 copy 2
+bounds:1071,648,33,53
+eyeshine 1 copy 3
+bounds:1071,589,33,53
+eyeshine 1 copy 4
+bounds:1070,472,33,52
+eyeshine 1 copy 5
+bounds:1022,59,31,51
+rotate:90
+eyeshine 1 copy 6
+bounds:1038,96,31,55
+rotate:90
+eyeshine 1 copy 7
+bounds:930,61,31,54
+l antler
+bounds:3,526,268,515
+rotate:90
+l antler copy
+bounds:3,800,292,539
+rotate:90
+r antler
+bounds:548,552,267,517
+rotate:90
+r antler copy
+bounds:571,825,291,541
+rotate:90

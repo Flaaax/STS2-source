@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://dajqnrqtfw7rc"
+path="res://.godot/imported/exoskeleton.atlas-8525fe0766f5e16bbbf2f16a31939b5d.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/exoskeleton/exoskeleton.atlas"
+dest_files=["res://.godot/imported/exoskeleton.atlas-8525fe0766f5e16bbbf2f16a31939b5d.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

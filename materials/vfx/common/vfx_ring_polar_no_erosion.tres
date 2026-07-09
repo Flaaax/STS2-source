@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://bxo5uimwtdyx2"]
+
+[ext_resource type="Shader" uid="uid://dwp5hb21ufwn2" path="res://shaders/vfx/common/vfx_ring_polar_shader.gdshader" id="1_u16ml"]
+
+[sub_resource type="Curve" id="Curve_u16ml"]
+_data = [Vector2(1, 0.66985846), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveTexture" id="CurveTexture_38a6q"]
+width = 64
+curve = SubResource("Curve_u16ml")
+
+[resource]
+shader = ExtResource("1_u16ml")
+shader_parameter/erosion_curve = SubResource("CurveTexture_38a6q")
+shader_parameter/erosion_offset = 0.1

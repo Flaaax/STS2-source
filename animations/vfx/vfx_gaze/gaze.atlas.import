@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://bt24ftxpyrhjl"
+path="res://.godot/imported/gaze.atlas-42feb6d0632feee4085b012ef0508c5d.spatlas"
+
+[deps]
+
+source_file="res://animations/vfx/vfx_gaze/gaze.atlas"
+dest_files=["res://.godot/imported/gaze.atlas-42feb6d0632feee4085b012ef0508c5d.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

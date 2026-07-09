@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://dcgjjiwexpujq"
+path="res://.godot/imported/silent_shop.atlas-caa62d54e37e739cae6904bdcb2cadeb.spatlas"
+
+[deps]
+
+source_file="res://animations/merchant/silent/silent_shop.atlas"
+dest_files=["res://.godot/imported/silent_shop.atlas-caa62d54e37e739cae6904bdcb2cadeb.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

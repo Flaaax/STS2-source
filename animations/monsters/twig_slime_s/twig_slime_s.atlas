@@ -1,0 +1,119 @@
+twig_slime_s.png
+size:976,94
+filter:Linear,Linear
+scale:0.365
+blink 1
+bounds:679,8,28,16
+rotate:90
+blink 2
+bounds:697,8,28,16
+rotate:90
+blink 3
+bounds:497,8,29,16
+blink 4
+bounds:596,4,29,16
+rotate:90
+blink 5
+bounds:614,4,29,16
+rotate:90
+blink 6
+bounds:466,4,29,20
+bod
+bounds:41,9,130,83
+bod 2
+bounds:526,35,93,57
+bod shine
+bounds:825,41,101,51
+drop
+bounds:361,3,17,16
+rotate:90
+eye_anger
+bounds:936,3,25,15
+eyes
+bounds:2,8,84,37
+rotate:90
+eyes blink 01
+bounds:422,3,21,20
+rotate:90
+eyes blink 02
+bounds:444,3,21,20
+rotate:90
+eyes blink 03
+bounds:715,9,27,27
+eyes blink 04
+bounds:744,9,27,27
+eyes blink 05
+bounds:563,2,31,31
+eyes blink 06
+bounds:528,2,31,33
+rotate:90
+eyes blink 07
+bounds:456,26,66,33
+rotate:90
+eyes blink 08
+bounds:491,26,66,33
+rotate:90
+eyes blink 09
+bounds:378,26,66,37
+offsets:0,2,66,39
+rotate:90
+eyes blink 10
+bounds:417,26,66,37
+offsets:0,2,66,39
+rotate:90
+eyes blink 11
+bounds:173,9,83,38
+offsets:0,1,83,39
+rotate:90
+eyes blink 12
+bounds:292,18,74,41
+rotate:90
+eyes blink 13
+bounds:213,15,77,41
+rotate:90
+eyes blink 14
+bounds:335,22,70,41
+rotate:90
+eyes blink 15
+bounds:928,48,44,39
+rotate:90
+eyes blink 16
+bounds:844,2,44,37
+offsets:0,1,44,38
+eyes blink 17
+bounds:798,2,44,36
+offsets:0,2,44,38
+eyes blink 18
+bounds:890,3,44,36
+offsets:0,2,44,38
+eyes blink 19
+bounds:773,10,23,26
+eyes blink 20
+bounds:951,22,23,24
+offsets:0,1,23,25
+eyes blink 21
+bounds:290,2,23,12
+offsets:0,3,23,15
+eyes blink 22
+bounds:213,3,20,10
+offsets:1,5,21,15
+pupils
+bounds:256,16,76,34
+rotate:90
+shadow
+bounds:621,38,155,54
+twig 1
+bounds:315,3,44,13
+twig 2
+bounds:778,40,52,45
+rotate:90
+twig 3
+bounds:379,2,22,41
+offsets:0,0,22,42
+rotate:90
+twig 4
+bounds:632,4,45,32
+twig 5
+bounds:936,20,13,26
+twig 6
+bounds:256,2,32,12

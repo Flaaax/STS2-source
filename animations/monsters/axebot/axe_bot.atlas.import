@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://csx6rxbv7251j"
+path="res://.godot/imported/axe_bot.atlas-5d044866c2ef3c33f7fca158ae5c7f39.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/axebot/axe_bot.atlas"
+dest_files=["res://.godot/imported/axe_bot.atlas-5d044866c2ef3c33f7fca158ae5c7f39.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

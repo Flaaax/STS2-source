@@ -1,0 +1,81 @@
+restsite_defect.png
+size:1476,343
+filter:Linear,Linear
+scale:0.5
+bottom foot
+bounds:1390,64,81,83
+offsets:1,1,85,84
+bottom leg
+bounds:1177,85,123,114
+offsets:1,1,124,115
+rotate:90
+cape
+bounds:718,35,234,131
+cape back
+bounds:1032,210,195,131
+cast shadow
+bounds:362,34,307,354
+rotate:90
+eye shine
+bounds:1461,290,13,51
+offsets:1,1,15,53
+glow1
+bounds:402,2,30,30
+offsets:2,2,34,34
+glow2
+bounds:1229,210,27,34
+offsets:2,2,31,38
+rotate:90
+glow3
+bounds:1265,210,27,25
+offsets:2,2,31,29
+rotate:90
+glow4
+bounds:362,4,28,38
+offsets:2,2,32,42
+rotate:90
+head
+bounds:1293,140,97,95
+offsets:0,0,98,95
+rotate:90
+highlight
+bounds:2,2,339,358
+rotate:90
+hips
+bounds:1173,22,89,61
+l arm 1
+bounds:1390,149,62,96
+l arm 2
+bounds:1387,247,94,72
+offsets:1,1,96,74
+rotate:90
+l hand
+bounds:1389,5,57,61
+rotate:90
+neck
+bounds:954,16,150,91
+rotate:90
+orb
+bounds:1047,90,128,118
+offsets:1,1,130,121
+r arm 1
+bounds:1264,6,72,64
+offsets:0,1,73,66
+r arm 2
+bounds:1293,72,66,90
+offsets:0,1,67,92
+rotate:90
+r hand
+bounds:1338,5,65,49
+offsets:1,0,67,50
+rotate:90
+shadow
+bounds:718,168,312,173
+offsets:0,1,312,174
+top foot
+bounds:1047,34,124,54
+offsets:0,1,125,55
+top leg
+bounds:1229,239,102,156
+offsets:2,0,104,156
+rotate:90

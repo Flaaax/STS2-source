@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://cd54jihjw880v"
+path="res://.godot/imported/spectral_knight.skel-5812a76d58113c7a40fbd88e0fb7126e.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/spectral_knight/spectral_knight.skel"
+dest_files=["res://.godot/imported/spectral_knight.skel-5812a76d58113c7a40fbd88e0fb7126e.spskel"]
+
+[params]
+

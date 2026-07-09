@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0mbxbnkmo5b6"]
+
+[ext_resource type="Script" uid="uid://diyg7alw5t1sh" path="res://src/Core/Nodes/Screens/GameOverScreen/NScoreLine.cs" id="1_usoup"]
+[ext_resource type="FontVariation" uid="uid://ciql5khgewwbm" path="res://themes/kreon_bold_glyph_space_two.tres" id="1_wkkb0"]
+[ext_resource type="Texture2D" uid="uid://pr1rqg2t44qx" path="res://images/debug/placeholder_64.png" id="2_dut8n"]
+[ext_resource type="Script" uid="uid://dtfio45agppyj" path="res://addons/mega_text/MegaLabel.cs" id="2_usoup"]
+
+[node name="ScoreLine" type="HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(520, 48)
+offset_right = 520.0
+offset_bottom = 48.0
+theme_override_constants/separation = 8
+script = ExtResource("1_usoup")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="Icon" type="TextureRect" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(36, 42)
+layout_mode = 2
+texture = ExtResource("2_dut8n")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.964706, 0.886275, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.5019608)
+theme_override_fonts/font = ExtResource("1_wkkb0")
+theme_override_font_sizes/font_size = 26
+text = "Floors Climbed: 22"
+vertical_alignment = 1
+script = ExtResource("2_usoup")
+AutoSizeEnabled = false
+MinFontSize = 26
+MaxFontSize = 26
+metadata/_custom_type_script = "uid://dtfio45agppyj"
+
+[node name="Score" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(1, 0.964706, 0.886275, 1)
+theme_override_fonts/font = ExtResource("1_wkkb0")
+theme_override_font_sizes/font_size = 26
+text = "+4,000"
+horizontal_alignment = 2
+vertical_alignment = 1
+script = ExtResource("2_usoup")
+AutoSizeEnabled = false
+MinFontSize = 26
+MaxFontSize = 26
+metadata/_custom_type_script = "uid://dtfio45agppyj"

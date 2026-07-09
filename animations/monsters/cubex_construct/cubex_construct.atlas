@@ -1,0 +1,88 @@
+cubex_construct.png
+size:396,703
+filter:Linear,Linear
+scale:0.438
+base_light
+bounds:241,196,101,25
+offsets:28,3,141,39
+bottom light
+bounds:241,507,132,84
+offsets:0,0,132,85
+circleeye/eye
+bounds:241,83,47,46
+crack
+bounds:241,593,134,108
+crumb1
+bounds:377,673,10,9
+diamondeye/eye
+bounds:241,131,33,55
+rotate:90
+moss1/bottom
+bounds:241,422,132,83
+offsets:0,0,148,86
+moss1/top
+bounds:2,528,173,237
+rotate:90
+moss2/bottom
+bounds:241,337,132,83
+offsets:0,0,148,86
+moss2/top
+bounds:2,353,173,237
+rotate:90
+moss3/bottom
+bounds:241,252,132,83
+offsets:0,0,132,86
+moss3/top
+bounds:2,178,173,237
+rotate:90
+orb
+bounds:241,2,35,35
+orb glow 1
+bounds:290,73,44,44
+offsets:1,1,46,46
+orb glow 2
+bounds:286,30,41,43
+offsets:0,1,42,45
+rotate:90
+orb glow 3
+bounds:241,39,42,43
+offsets:2,2,46,46
+rotate:90
+orb suck 1
+bounds:377,664,7,8
+rotate:90
+orb suck 2
+bounds:302,168,39,26
+orb suck 3
+bounds:375,526,18,30
+orb suck 4
+bounds:302,119,38,47
+orb_glow
+bounds:331,16,35,34
+offsets:1,0,36,35
+orb_glow_shapes
+bounds:368,23,27,26
+offsets:1,1,28,30
+rotate:90
+shadow
+bounds:344,52,169,49
+offsets:0,0,170,50
+rotate:90
+shard1
+bounds:375,558,18,33
+offsets:0,0,18,34
+shard2
+bounds:377,684,17,17
+offsets:1,1,18,18
+shard3
+bounds:372,227,23,20
+offsets:1,0,24,20
+rotate:90
+squareeye/eye
+bounds:241,166,59,28
+top light
+bounds:2,3,173,237
+rotate:90
+weeds
+bounds:241,223,129,27
+offsets:0,0,135,28

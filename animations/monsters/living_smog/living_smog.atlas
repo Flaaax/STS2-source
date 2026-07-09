@@ -1,0 +1,71 @@
+living_smog.png
+size:1978,968
+filter:Linear,Linear
+scale:0.798
+eyes
+bounds:1763,502,133,208
+rotate:90
+head_base
+bounds:1763,800,166,213
+rotate:90
+head_base_back  copy
+bounds:1850,288,49,136
+offsets:0,0,50,136
+head_base_top
+bounds:1763,637,161,213
+rotate:90
+mouth_bottom Copy
+bounds:1763,280,85,144
+sketch_1
+bounds:2,276,1759,690
+offsets:1,0,1760,690
+teeth_bottom
+bounds:1806,211,67,144
+offsets:0,0,67,145
+rotate:90
+teeth_top
+bounds:1806,426,74,146
+offsets:0,1,74,148
+rotate:90
+zap 2-1
+bounds:1625,23,179,251
+offsets:70,23,318,287
+zap 2-2
+bounds:1100,13,174,261
+offsets:71,17,318,287
+zap 2-3
+bounds:1276,13,172,261
+offsets:73,16,318,287
+zap 2-4
+bounds:748,9,175,265
+offsets:73,13,318,287
+zap 2-5
+bounds:925,10,173,264
+offsets:74,14,318,287
+zap1-1
+bounds:1450,17,257,173
+offsets:33,89,318,287
+rotate:90
+zap1-2
+bounds:2,2,272,184
+offsets:21,82,318,287
+rotate:90
+zap1-3
+bounds:563,8,266,183
+offsets:24,82,318,287
+rotate:90
+zap1-4
+bounds:376,6,268,185
+offsets:23,81,318,287
+rotate:90
+zap1-5
+bounds:188,4,270,186
+offsets:22,81,318,287
+rotate:90
+
+living_smog_2.png
+size:95,223
+filter:Linear,Linear
+scale:0.798
+smokeTex/smoke_tex
+bounds:2,2,91,219

@@ -1,0 +1,23 @@
+{
+  "EXTENSION.card.humanizedCardTypes.attack": "Attacco",
+  "EXTENSION.card.humanizedCardTypes.curse": "Maledizione",
+  "EXTENSION.card.humanizedCardTypes.power": "Potere",
+  "EXTENSION.card.humanizedCardTypes.quest": "Missione",
+  "EXTENSION.card.humanizedCardTypes.skill": "Abilità",
+  "EXTENSION.card.humanizedCardTypes.status": "Stato",
+  "EXTENSION.config.activate": "Attiva l'estensione usando il pulsante \"Attiva\" in basso a destra di questa schermata.",
+  "EXTENSION.config.categoryWarning": "Assicurati che la categoria del tuo canale Twitch sia impostata su Slay the Spire 2, altrimenti gli spettatori non vedranno l'estensione!",
+  "EXTENSION.config.inGameConnect": "Vai al menu Impostazioni all'interno del gioco per connetterti e configurare l'integrazione.",
+  "EXTENSION.config.title": "Compagno di Slay the Spire 2",
+  "EXTENSION.piles.clickHint.deck": "Fai clic per vedere il mazzo",
+  "EXTENSION.piles.clickHint.discardPile": "Fai clic per vedere la pila degli scarti",
+  "EXTENSION.piles.clickHint.drawPile": "Fai cli per vedere il mazzo di pesca",
+  "EXTENSION.poll.voteReceived": "Voto ricevuto!",
+  "EXTENSION.tutorial.back": "Indietro",
+  "EXTENSION.tutorial.finish": "Ho capito!",
+  "EXTENSION.tutorial.hoverIndicator": "Passa il cursore del mouse sopra lo streaming per esaminare le carte, le reliquie e le pozioni di {{streamerName}} quando vedi il seguente indicatore:",
+  "EXTENSION.tutorial.next": "Avanti",
+  "EXTENSION.tutorial.title": "Slay the Spire 2",
+  "EXTENSION.tutorial.twitchIntegration": "Integrazione con Twitch",
+  "EXTENSION.tutorial.voting": "Potrai anche votare quali carte {{streamerName}} dovrebbe prendere come ricompensa e quale dovrebbe essere la sua prossima destinazione sulla mappa."
+}

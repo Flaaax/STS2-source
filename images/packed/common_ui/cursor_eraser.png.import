@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://bbahyu1toistm"
+path="res://.godot/imported/cursor_eraser.png-eb41a33d33461d7a758a66d7e7b6a465.image"
+
+[deps]
+
+source_file="res://images/packed/common_ui/cursor_eraser.png"
+dest_files=["res://.godot/imported/cursor_eraser.png-eb41a33d33461d7a758a66d7e7b6a465.image"]
+
+[params]
+

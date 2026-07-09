@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://wnkypnb6hp46"
+path="res://.godot/imported/living_shield.skel-cbd31e6d60c546f038e400d110074ab6.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/living_shield/living_shield.skel"
+dest_files=["res://.godot/imported/living_shield.skel-cbd31e6d60c546f038e400d110074ab6.spskel"]
+
+[params]
+

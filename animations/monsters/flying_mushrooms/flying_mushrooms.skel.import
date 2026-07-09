@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://dm3dw211brl1t"
+path="res://.godot/imported/flying_mushrooms.skel-cacbc238eb8d42c88b4258e1c50c636e.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/flying_mushrooms/flying_mushrooms.skel"
+dest_files=["res://.godot/imported/flying_mushrooms.skel-cacbc238eb8d42c88b4258e1c50c636e.spskel"]
+
+[params]
+

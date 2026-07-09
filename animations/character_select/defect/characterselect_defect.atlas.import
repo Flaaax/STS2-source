@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://b6lqxcmojbyf4"
+path="res://.godot/imported/characterselect_defect.atlas-c4101d6a433cee633b689aa5864ec56c.spatlas"
+
+[deps]
+
+source_file="res://animations/character_select/defect/characterselect_defect.atlas"
+dest_files=["res://.godot/imported/characterselect_defect.atlas-c4101d6a433cee633b689aa5864ec56c.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

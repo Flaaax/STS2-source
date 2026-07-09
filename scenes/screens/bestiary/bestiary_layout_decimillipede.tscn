@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmsnrrhnl3jv8"]
+
+[ext_resource type="Script" uid="uid://brg7wnd6hbh0t" path="res://src/Core/Nodes/Screens/Bestiary/NBestiaryLayoutDecimillipede.cs" id="1_frhkp"]
+[ext_resource type="PackedScene" uid="uid://cd1n3rbm1wil8" path="res://scenes/encounters/decimillipede_elite.tscn" id="2_l5amb"]
+
+[node name="BestiaryLayoutDecimillipede" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_frhkp")
+
+[node name="CreatureContainer" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 88.0
+offset_bottom = 88.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="EncounterSlots" parent="." instance=ExtResource("2_l5amb")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = -459.0
+offset_right = -459.0

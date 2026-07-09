@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://ct4slamxe86om"
+path="res://.godot/imported/living_smog.atlas-351d0437b8ccaccff579dcd341891031.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/living_smog/living_smog.atlas"
+dest_files=["res://.godot/imported/living_smog.atlas-351d0437b8ccaccff579dcd341891031.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

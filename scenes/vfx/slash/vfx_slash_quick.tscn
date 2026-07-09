@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=3 uid="uid://cmypojtbck7f0"]
+
+[ext_resource type="Material" uid="uid://cpead1scng6rx" path="res://materials/vfx/slash/vfx_slash_quick_flat.tres" id="1_eee3e"]
+[ext_resource type="Texture2D" uid="uid://o704c73kixc4" path="res://images/vfx/slash/slash_quick_flat.png" id="2_etc3n"]
+
+[sub_resource type="Curve" id="Curve_4kyv4"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_2l8lo"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.5014031), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_2i77k"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_anhqg"]
+curve_x = SubResource("Curve_4kyv4")
+curve_y = SubResource("Curve_2l8lo")
+curve_z = SubResource("Curve_2i77k")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kymbk"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveXYZTexture_anhqg")
+
+[node name="vfx_slash_quick" type="GPUParticles2D"]
+material = ExtResource("1_eee3e")
+rotation = -0.2617994
+emitting = false
+amount = 1
+texture = ExtResource("2_etc3n")
+lifetime = 0.25
+one_shot = true
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_kymbk")

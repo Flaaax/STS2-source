@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://dhx3yykcklxx2"
+path="res://.godot/imported/eye_with_teeth.atlas-a554a02aa873eca675ac9b9a78a2bb1a.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/eye_with_teeth/eye_with_teeth.atlas"
+dest_files=["res://.godot/imported/eye_with_teeth.atlas-a554a02aa873eca675ac9b9a78a2bb1a.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

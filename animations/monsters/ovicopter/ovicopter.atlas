@@ -1,0 +1,83 @@
+ovicopter.png
+size:523,1032
+filter:Linear,Linear
+scale:0.399
+back leg 1
+bounds:451,192,26,68
+back leg 2
+bounds:451,262,32,67
+bod
+bounds:257,816,264,214
+offsets:0,3,266,217
+burst_sack
+bounds:331,179,138,118
+offsets:0,1,138,119
+rotate:90
+egg sack 1
+bounds:245,5,168,138
+offsets:0,2,168,140
+rotate:90
+egg sack 2
+bounds:385,51,119,126
+offsets:0,0,119,130
+eyes
+bounds:438,421,101,56
+rotate:90
+goo_slap
+bounds:247,175,327,82
+offsets:1,0,328,82
+rotate:90
+iris 1
+bounds:438,319,11,10
+iris 2
+bounds:249,763,6,10
+iris 3
+bounds:435,578,9,13
+iris 4
+bounds:451,179,16,11
+l arm 1
+bounds:485,267,27,62
+l arm 2
+bounds:385,2,47,61
+rotate:90
+pincer 1
+bounds:490,654,26,25
+pincer 2
+bounds:501,789,20,25
+r arm 1
+bounds:490,681,28,62
+r arm 2
+bounds:448,2,47,61
+rotate:90
+shadow
+bounds:257,745,242,69
+offsets:1,0,243,69
+single_egg
+bounds:479,210,50,42
+offsets:3,2,56,46
+rotate:90
+wing 1
+bounds:249,593,196,150
+offsets:0,0,202,150
+wing 1 copy
+bounds:447,524,219,41
+rotate:90
+wing 3
+bounds:331,319,105,183
+offsets:0,0,110,187
+wing 4
+bounds:249,504,184,87
+offsets:0,0,186,89
+wing cover
+bounds:438,331,88,62
+rotate:90
+wing_fl
+bounds:2,518,245,255
+wing_fl_2
+bounds:2,775,253,255
+wing_fr
+bounds:2,5,241,253
+offsets:0,6,241,259
+wing_fr_2
+bounds:2,260,243,256
+offsets:0,3,243,259

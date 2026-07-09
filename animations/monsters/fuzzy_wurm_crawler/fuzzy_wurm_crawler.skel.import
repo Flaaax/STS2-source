@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://dbl686h5m8y4q"
+path="res://.godot/imported/fuzzy_wurm_crawler.skel-8a9317689c3bb98e850957f52b64893a.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/fuzzy_wurm_crawler/fuzzy_wurm_crawler.skel"
+dest_files=["res://.godot/imported/fuzzy_wurm_crawler.skel-8a9317689c3bb98e850957f52b64893a.spskel"]
+
+[params]
+

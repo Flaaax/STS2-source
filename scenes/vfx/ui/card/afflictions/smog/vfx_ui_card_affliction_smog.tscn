@@ -1,0 +1,202 @@
+[gd_scene load_steps=24 format=3 uid="uid://wen7epu4lu4n"]
+
+[ext_resource type="Texture2D" uid="uid://ddouphww0r8d6" path="res://images/vfx/ui/ui_card_mask.png" id="1_dehc5"]
+[ext_resource type="Texture2D" uid="uid://cnnu2hi8qwc6q" path="res://images/vfx/ui/card/ui_card_border_vignette.png" id="2_sy143"]
+[ext_resource type="Material" uid="uid://ce3b7ljxc06n8" path="res://materials/vfx/ui/card/afflictions/smog/vfx_ui_card_affliction_smog_main.tres" id="3_fgdp8"]
+[ext_resource type="Texture2D" uid="uid://b1ejst3q0hxds" path="res://images/vfx/noise/vfx_noise_1.png" id="4_kk14t"]
+[ext_resource type="Texture2D" uid="uid://cgpaf12xcgk58" path="res://images/vfx/ui/card/ui_card_border_glow.png" id="5_c4eov"]
+[ext_resource type="PackedScene" uid="uid://chqoe33c4gm6a" path="res://scenes/vfx/common/vfx_common_specks.tscn" id="6_w57v4"]
+[ext_resource type="Texture2D" uid="uid://cs1ugxc2jmg50" path="res://images/vfx/common/common_speck.png" id="7_iw102"]
+[ext_resource type="Material" uid="uid://c3cgds5cfnren" path="res://materials/vfx/ui/card/afflictions/smog/vfx_ui_card_affliction_smog_main_outer.tres" id="8_sy143"]
+
+[sub_resource type="Curve" id="Curve_2ykcv"]
+_data = [Vector2(0, 0.49514562), 0.0, -1.1448905, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_3netq"]
+curve = SubResource("Curve_2ykcv")
+
+[sub_resource type="Curve" id="Curve_yqfxx"]
+_data = [Vector2(0, 0), 0.0, 4.30388, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveTexture" id="CurveTexture_6xgad"]
+curve = SubResource("Curve_yqfxx")
+
+[sub_resource type="Curve" id="Curve_xivqw"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.8868, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_mxcp1"]
+curve = SubResource("Curve_xivqw")
+
+[sub_resource type="Curve" id="Curve_u74ic"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.59382, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_hhyj2"]
+curve = SubResource("Curve_u74ic")
+
+[sub_resource type="Curve" id="Curve_4ms1i"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.604607), -1.44846, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_t3waw"]
+_limits = [0.0, 5.0, 0.0, 1.0]
+_data = [Vector2(0, 0.997601), 0.0, 0.0, 0, 0, Vector2(1, 3.25336), 6.03527, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_c0d5v"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_mvavk"]
+curve_x = SubResource("Curve_4ms1i")
+curve_y = SubResource("Curve_t3waw")
+curve_z = SubResource("Curve_c0d5v")
+
+[sub_resource type="Curve" id="Curve_6rxrx"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.304878), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_0v6l5"]
+curve = SubResource("Curve_6rxrx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rbnxx"]
+lifetime_randomness = 0.8
+particle_flag_align_y = true
+particle_flag_disable_z = true
+particle_flag_damping_as_friction = true
+emission_shape = 3
+emission_box_extents = Vector3(150, 0, 1)
+direction = Vector3(0, -1, 0)
+spread = 5.0
+initial_velocity_min = 100.0
+initial_velocity_max = 300.0
+radial_velocity_min = -2.2351742e-05
+radial_velocity_max = -2.2351742e-05
+radial_velocity_curve = SubResource("CurveTexture_mxcp1")
+gravity = Vector3(0, 0, 0)
+damping_min = 0.1
+damping_max = 0.3
+damping_curve = SubResource("CurveTexture_6xgad")
+scale_min = 0.099999994
+scale_max = 0.29999998
+scale_curve = SubResource("CurveTexture_hhyj2")
+scale_over_velocity_max = 670.71
+scale_over_velocity_curve = SubResource("CurveXYZTexture_mvavk")
+color = Color(0.93447423, 0.74378836, 0.8901131, 1)
+alpha_curve = SubResource("CurveTexture_3netq")
+turbulence_enabled = true
+turbulence_noise_strength = 5.0
+turbulence_noise_scale = 10.1
+turbulence_noise_speed = Vector3(0.1, 0.1, 0.1)
+turbulence_noise_speed_random = 1.0
+turbulence_influence_min = 0.2
+turbulence_influence_max = 0.4
+turbulence_initial_displacement_min = 1.49012e-06
+turbulence_initial_displacement_max = 1.49012e-06
+turbulence_influence_over_life = SubResource("CurveTexture_0v6l5")
+
+[node name="vfx_ui_card_affliction_smog" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -211.0
+offset_right = 150.0
+offset_bottom = 211.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="card_mask" type="TextureRect" parent="."]
+clip_children = 1
+custom_minimum_size = Vector2(300, 422)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_dehc5")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="card_vignette" type="TextureRect" parent="card_mask"]
+self_modulate = Color(0.05333333, 0, 0.1, 0.2509804)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -61.0
+offset_right = 61.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_sy143")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="smog_main" type="TextureRect" parent="card_mask"]
+texture_repeat = 2
+material = ExtResource("3_fgdp8")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_kk14t")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="card_glow" type="TextureRect" parent="card_mask"]
+self_modulate = Color(0.7912189, 0.47928458, 0.7919124, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_c4eov")
+expand_mode = 1
+
+[node name="vfx_common_specks" parent="card_mask" instance=ExtResource("6_w57v4")]
+visible = false
+position = Vector2(150, 422)
+rotation = 0.0
+emitting = true
+texture = ExtResource("7_iw102")
+lifetime = 3.0
+one_shot = false
+explosiveness = 0.0
+process_material = SubResource("ParticleProcessMaterial_rbnxx")
+
+[node name="smog_main_outer" type="TextureRect" parent="."]
+texture_repeat = 2
+material = ExtResource("8_sy143")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -61.0
+offset_top = -15.0
+offset_right = 61.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 1.333)
+pivot_offset = Vector2(211, 211)
+mouse_filter = 2
+texture = ExtResource("4_kk14t")
+expand_mode = 2
+stretch_mode = 4

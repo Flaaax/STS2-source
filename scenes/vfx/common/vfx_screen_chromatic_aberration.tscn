@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckaxm3k8yc2k8"]
+
+[ext_resource type="Material" uid="uid://biiimrm2xgift" path="res://materials/vfx/common/vfx_screen_chromatic_aberration.tres" id="1_4v3io"]
+[ext_resource type="Texture2D" uid="uid://dltmdulxe1avi" path="res://images/vfx/common/common_glow.png" id="2_0vswh"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cgjur"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+scale_min = 3.0
+scale_max = 3.0
+
+[node name="vfx_screen_chromatic_aberration" type="GPUParticles2D"]
+material = ExtResource("1_4v3io")
+instance_shader_parameters/base_intensity = 0.01
+emitting = false
+amount = 1
+texture = ExtResource("2_0vswh")
+one_shot = true
+explosiveness = 0.5
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_cgjur")

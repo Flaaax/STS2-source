@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://dmx8uf2xdvk8a"
+path="res://.godot/imported/ovicopter.atlas-437f6c5f1502df7601b24622df3fcceb.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/ovicopter/ovicopter.atlas"
+dest_files=["res://.godot/imported/ovicopter.atlas-437f6c5f1502df7601b24622df3fcceb.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

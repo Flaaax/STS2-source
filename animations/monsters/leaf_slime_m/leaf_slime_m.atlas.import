@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://be2ycf80j4lh8"
+path="res://.godot/imported/leaf_slime_m.atlas-149c1f29e48562c392918a285534da02.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/leaf_slime_m/leaf_slime_m.atlas"
+dest_files=["res://.godot/imported/leaf_slime_m.atlas-149c1f29e48562c392918a285534da02.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

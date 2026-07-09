@@ -1,0 +1,36 @@
+main_menu_logo.png
+size:1189,527
+filter:Linear,Linear
+scale:0.66
+fire
+bounds:1048,320,64,96
+offsets:379,318,732,632
+fire copy
+bounds:1122,141,64,88
+offsets:379,318,732,632
+fire copy 2
+bounds:1118,429,64,95
+offsets:379,318,732,632
+fire copy 3
+bounds:1118,331,64,92
+offsets:379,318,732,632
+fire copy 4
+bounds:1048,27,64,90
+offsets:379,318,732,632
+fire copy 5
+bounds:1048,123,68,91
+offsets:379,318,732,632
+fire copy 6
+bounds:1048,422,64,102
+offsets:379,318,732,632
+fire copy 7
+bounds:1118,235,64,90
+offsets:379,318,732,632
+fire copy 8
+bounds:1048,220,64,94
+offsets:379,318,732,632
+fire copy 9
+bounds:1118,33,65,84
+offsets:379,318,732,632
+text
+bounds:3,3,1039,521

@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://d2k2fpuq413y0"
+path="res://.godot/imported/the_insatiable_boss_node.skel-529959bbcd0741919274720f736c2f51.spskel"
+
+[deps]
+
+source_file="res://animations/map/the_insatiable_boss/the_insatiable_boss_node.skel"
+dest_files=["res://.godot/imported/the_insatiable_boss_node.skel-529959bbcd0741919274720f736c2f51.spskel"]
+
+[params]
+

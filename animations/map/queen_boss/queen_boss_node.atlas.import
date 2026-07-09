@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://lyjbroj6t8lw"
+path="res://.godot/imported/queen_boss_node.atlas-90ea2885c54091b333cd00f8eec5ddfe.spatlas"
+
+[deps]
+
+source_file="res://animations/map/queen_boss/queen_boss_node.atlas"
+dest_files=["res://.godot/imported/queen_boss_node.atlas-90ea2885c54091b333cd00f8eec5ddfe.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

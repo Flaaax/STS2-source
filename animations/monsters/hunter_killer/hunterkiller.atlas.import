@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://bmix24anrc2dk"
+path="res://.godot/imported/hunterkiller.atlas-c506293cf6b74dcb98fbc7c2583500e5.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/hunter_killer/hunterkiller.atlas"
+dest_files=["res://.godot/imported/hunterkiller.atlas-c506293cf6b74dcb98fbc7c2583500e5.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

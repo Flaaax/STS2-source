@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://d2gam5q4fifwi"
+path="res://.godot/imported/scratch.atlas-0ebbc07192a4c80202ce593b2ac8245f.spatlas"
+
+[deps]
+
+source_file="res://animations/vfx/vfx_scratch/scratch.atlas"
+dest_files=["res://.godot/imported/scratch.atlas-0ebbc07192a4c80202ce593b2ac8245f.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

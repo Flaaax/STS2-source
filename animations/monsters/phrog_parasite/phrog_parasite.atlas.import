@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://cr4meme2w6nnm"
+path="res://.godot/imported/phrog_parasite.atlas-1206e332dd51fea7f678114e172534f4.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/phrog_parasite/phrog_parasite.atlas"
+dest_files=["res://.godot/imported/phrog_parasite.atlas-1206e332dd51fea7f678114e172534f4.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://cjbuuoja6yvpc"
+path="res://.godot/imported/queen.skel-4440892e33c027e9b55a12fdd26cc0b7.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/queen/queen.skel"
+dest_files=["res://.godot/imported/queen.skel-4440892e33c027e9b55a12fdd26cc0b7.spskel"]
+
+[params]
+

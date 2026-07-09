@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://124atsni5utf"
+path="res://.godot/imported/decimillipede3.skel-f1c6ee586e08e82d66447819d2518b58.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/decimillipede/decimillipede3.skel"
+dest_files=["res://.godot/imported/decimillipede3.skel-f1c6ee586e08e82d66447819d2518b58.spskel"]
+
+[params]
+

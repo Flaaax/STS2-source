@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://cq21010mxe87t"
+path="res://.godot/imported/the_forgotten.skel-8604d709c57c3d778fbc6863e38468be.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/the_forgotten/the_forgotten.skel"
+dest_files=["res://.godot/imported/the_forgotten.skel-8604d709c57c3d778fbc6863e38468be.spskel"]
+
+[params]
+

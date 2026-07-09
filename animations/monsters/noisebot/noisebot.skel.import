@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://bl5ymkb40mjf1"
+path="res://.godot/imported/noisebot.skel-d33e5434c2cfe2ed75ce6c400dacc557.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/noisebot/noisebot.skel"
+dest_files=["res://.godot/imported/noisebot.skel-d33e5434c2cfe2ed75ce6c400dacc557.spskel"]
+
+[params]
+

@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://bvv57jeuj0l5j"
+path="res://.godot/imported/axe_ruby_raider.skel-b9a29fdf94676fcbdfa2591f93abf00e.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/axe_ruby_raider/axe_ruby_raider.skel"
+dest_files=["res://.godot/imported/axe_ruby_raider.skel-b9a29fdf94676fcbdfa2591f93abf00e.spskel"]
+
+[params]
+

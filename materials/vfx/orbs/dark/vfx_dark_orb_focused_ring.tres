@@ -1,0 +1,28 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://cgsw3mrrna0je"]
+
+[ext_resource type="Shader" uid="uid://bq6heurury2na" path="res://shaders/vfx/scream/vfx_scream_squiggly_ring_polar_shader.gdshader" id="1_oxv73"]
+
+[sub_resource type="Curve" id="Curve_5sbck"]
+_data = [Vector2(0, 0.31764704), 0.0, -0.77647024, 0, 0, Vector2(0.49532706, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_orn56"]
+curve = SubResource("Curve_5sbck")
+
+[sub_resource type="Curve" id="Curve_55qq3"]
+_data = [Vector2(0, 1), 0.0, -4.1789684, 0, 0, Vector2(0.24999999, 0.4978541), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_4arkw"]
+curve = SubResource("Curve_55qq3")
+
+[resource]
+shader = ExtResource("1_oxv73")
+shader_parameter/tiling = Vector2(1, 1)
+shader_parameter/x_offsets = Vector2(0.4, -0.1)
+shader_parameter/offset_curve = SubResource("CurveTexture_4arkw")
+shader_parameter/erosion_offset = 0.2
+shader_parameter/erosion_curve = SubResource("CurveTexture_orn56")
+shader_parameter/distortion_strength = 0.2
+shader_parameter/distortion_tiling = Vector2(0.5, 1)
+shader_parameter/distortion_offset_speed = Vector2(-0.35, 0)

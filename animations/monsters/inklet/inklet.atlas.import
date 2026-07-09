@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://ce1dfhoqdhffk"
+path="res://.godot/imported/inklet.atlas-b72026e8f2d2375979dde31ae444d124.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/inklet/inklet.atlas"
+dest_files=["res://.godot/imported/inklet.atlas-b72026e8f2d2375979dde31ae444d124.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

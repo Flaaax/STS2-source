@@ -1,0 +1,58 @@
+[gd_scene load_steps=10 format=3 uid="uid://bwp01tds8rq7b"]
+
+[ext_resource type="Material" uid="uid://ddioovdvc0dm1" path="res://materials/vfx/starry_impact/vfx_starry_impact_constellation_small.tres" id="1_a7f0l"]
+[ext_resource type="Texture2D" uid="uid://dncw2j8cggxn4" path="res://images/vfx/starry_impact/starry_impact_constellation_small.png" id="2_tx1gg"]
+
+[sub_resource type="Curve" id="Curve_ivp5k"]
+_data = [Vector2(0, 0), 0.0, 17.126013, 0, 0, Vector2(0.15404701, 1), 0.0, 0.0, 0, 0, Vector2(0.50391644, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_hjhl6"]
+curve = SubResource("Curve_ivp5k")
+
+[sub_resource type="Gradient" id="Gradient_rv5i7"]
+offsets = PackedFloat32Array(0, 0.31304348)
+colors = PackedColorArray(1.8247963, 1.8247963, 1.8247963, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_gml80"]
+gradient = SubResource("Gradient_rv5i7")
+use_hdr = true
+
+[sub_resource type="Curve" id="Curve_6rxrx"]
+_data = [Vector2(0, 0.6529126), 0.0, 0.34708738, 0, 1, Vector2(1, 1), 0.34708738, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_0v6l5"]
+curve = SubResource("Curve_6rxrx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_doid8"]
+lifetime_randomness = 0.35
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 10.0
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+spread = 180.0
+initial_velocity_min = 15.0
+initial_velocity_max = 30.0
+angular_velocity_min = -20.000015
+angular_velocity_max = 19.999983
+gravity = Vector3(0, 0, 0)
+scale_max = 1.13
+scale_curve = SubResource("CurveTexture_0v6l5")
+color_ramp = SubResource("GradientTexture1D_gml80")
+alpha_curve = SubResource("CurveTexture_hjhl6")
+anim_offset_max = 1.0
+
+[node name="vfx_starry_impact_constellation_small" type="GPUParticles2D"]
+self_modulate = Color(1, 0.793493, 0.42765832, 1)
+material = ExtResource("1_a7f0l")
+emitting = false
+amount = 1
+texture = ExtResource("2_tx1gg")
+lifetime = 0.55
+one_shot = true
+explosiveness = 0.75
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_doid8")

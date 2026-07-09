@@ -1,0 +1,16 @@
+ceremonial_beast_bg_animation_top.png
+size:4708,821
+filter:Linear,Linear
+cutter_glow
+bounds:3,9,3540,809
+offsets:19,11,3569,828
+skull1
+bounds:4168,113,315,537
+rotate:90
+skull2
+bounds:3549,193,613,625
+skull3
+bounds:3549,3,312,184
+skull4
+bounds:4168,434,384,530
+rotate:90

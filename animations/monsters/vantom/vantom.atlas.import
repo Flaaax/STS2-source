@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://t8nldw7u1gpy"
+path="res://.godot/imported/vantom.atlas-5d8edb4cba86121e65c23fca04d78938.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/vantom/vantom.atlas"
+dest_files=["res://.godot/imported/vantom.atlas-5d8edb4cba86121e65c23fca04d78938.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

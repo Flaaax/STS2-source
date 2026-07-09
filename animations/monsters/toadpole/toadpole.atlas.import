@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://b43ufmrvh71is"
+path="res://.godot/imported/toadpole.atlas-6f4400d048f04a81b50fe5e2bb60a091.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/toadpole/toadpole.atlas"
+dest_files=["res://.godot/imported/toadpole.atlas-6f4400d048f04a81b50fe5e2bb60a091.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"
