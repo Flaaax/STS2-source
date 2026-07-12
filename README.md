@@ -2,8 +2,18 @@
 
 这是 [Slay The Spire 2](https://store.steampowered.com/app/2868840/Slay_the_Spire_2/) 的反编译仓库，仅供 mod 开发和学习使用，侵删。
 
-## 版本
+## 仓库运作方式
 
-* 0.108.0
-* 使用 [GDRE Tools](https://github.com/GDRETools/gdsdecomp) 解包
-* 仅包含本地化、代码和文本类美术资源
+- `main` 是仓库的默认入口，指向当前最新的已归档版本。
+- 每个游戏版本使用独立的同名分支保存，例如 `0.108.0` 和 `0.107.1`。
+
+## 收录范围
+
+- 源码由 [GDRE Tools](https://github.com/GDRETools/gdsdecomp) 解包获得。
+- 主要收录代码、本地化、配置、Godot 场景/资源元数据以及其他文本类资源。
+- 二进制美术、音频、字体、模型、编辑器缓存、日志和构建产物不纳入版本控制。
+
+## 已归档版本
+
+- `0.108.0`
+- `0.107.1`
