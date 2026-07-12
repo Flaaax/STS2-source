@@ -1,3 +1,4 @@
+using MegaCrit.Sts2.Core.Entities.Ascension;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.Random;
@@ -42,6 +43,7 @@ public class PotionRewardOdds : AbstractOdds
 	/// Using this will modify the odds of future potion rewards.
 	/// </summary>
 	/// <param name="player">The player who will receive the potential potion reward.</param>
+	/// <param name="ascensionManager">Manager containing ascension level information that affects potion rewards.</param>
 	/// <param name="roomType">Room type for roll, affects bonus chance for potions.</param>
 	/// <returns>Whether or not to give a potion reward.</returns>
 	/// <remarks>
@@ -51,18 +53,15 @@ public class PotionRewardOdds : AbstractOdds
 	/// - Elite rooms provide a 25% bonus chance for potions
 	/// - The HookBus allows for external modification of potion reward odds
 	/// </remarks>
-	public bool Roll(Player player, RoomType roomType)
+	public bool Roll(Player player, AscensionManager ascensionManager, RoomType roomType)
 	{
 		float currentValue = base.CurrentValue;
-		if (Hook.ShouldForcePotionReward(player.RunState, player, roomType))
-		{
-			return true;
-		}
+		bool flag = Hook.ShouldForcePotionReward(player.RunState, player, roomType);
 		float num = ((roomType != RoomType.Elite) ? 0f : 0.25f);
 		float num2 = num;
 		float num3 = currentValue + num2 * 0.5f;
 		float num4 = _rng.NextFloat();
-		if (num4 < num3)
+		if (flag || num4 < num3)
 		{
 			base.CurrentValue -= 0.1f;
 			return true;

@@ -123,20 +123,6 @@ public class EventOption
 		DisableOnChosen = disableOnChosen;
 	}
 
-	public EventOption(EventOption eventOption)
-	{
-		TextKey = eventOption.TextKey;
-		OnChosen = eventOption.OnChosen;
-		Title = eventOption.Title;
-		Description = eventOption.Description;
-		HoverTips = eventOption.HoverTips;
-		IsLocked = eventOption.IsLocked;
-		DisableOnChosen = eventOption.DisableOnChosen;
-		HistoryName = eventOption.HistoryName;
-		IsProceed = eventOption.IsProceed;
-		DisableOnChosen = eventOption.DisableOnChosen;
-	}
-
 	public static EventOption FromRelic(RelicModel relic, EventModel eventModel, Func<Task>? onChosen, string textKey)
 	{
 		LocString title = eventModel.GetOptionTitle(textKey) ?? relic.Title;

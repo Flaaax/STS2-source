@@ -35,19 +35,19 @@ public abstract class ControllerConfig
 		},
 		{
 			"Up",
-			Controller.dPadUp
+			Controller.dPadNorth
 		},
 		{
 			"Down",
-			Controller.dPadDown
+			Controller.dPadSouth
 		},
 		{
 			"Left",
-			Controller.dPadLeft
+			Controller.dPadWest
 		},
 		{
 			"Right",
-			Controller.dPadRight
+			Controller.dPadEast
 		},
 		{
 			"Select",
@@ -83,7 +83,7 @@ public abstract class ControllerConfig
 		},
 		{
 			"Peek",
-			Controller.lStickPress
+			Controller.joystickPress
 		}
 	};
 
@@ -132,39 +132,23 @@ public abstract class ControllerConfig
 		},
 		{
 			MegaInput.peek,
-			Controller.lStickPress
+			Controller.joystickPress
 		},
 		{
 			MegaInput.up,
-			Controller.dPadUp
+			Controller.dPadNorth
 		},
 		{
 			MegaInput.down,
-			Controller.dPadDown
+			Controller.dPadSouth
 		},
 		{
 			MegaInput.left,
-			Controller.dPadLeft
+			Controller.dPadWest
 		},
 		{
 			MegaInput.right,
-			Controller.dPadRight
-		},
-		{
-			MegaInput.altUp,
-			Controller.rStickUp
-		},
-		{
-			MegaInput.altDown,
-			Controller.rStickDown
-		},
-		{
-			MegaInput.altLeft,
-			Controller.rStickLeft
-		},
-		{
-			MegaInput.altRight,
-			Controller.rStickRight
+			Controller.dPadEast
 		},
 		{
 			MegaInput.pauseAndBack,
@@ -203,14 +187,6 @@ public abstract class ControllerConfig
 	private string DPadEast => ImageHelper.GetImagePath(FolderPath + "/right.tres");
 
 	private string Ps4Touchpad => ImageHelper.GetImagePath(FolderPath + "/touchpad.tres");
-
-	private string RightJoystickNorth => ImageHelper.GetImagePath(FolderPath + "/rs_up.tres");
-
-	private string RightJoystickSouth => ImageHelper.GetImagePath(FolderPath + "/rs_down.tres");
-
-	private string RightJoystickEast => ImageHelper.GetImagePath(FolderPath + "/rs_right.tres");
-
-	private string RightJoystickWest => ImageHelper.GetImagePath(FolderPath + "/rs_left.tres");
 
 	private Dictionary<string, string> GlyphMap
 	{
@@ -261,44 +237,28 @@ public abstract class ControllerConfig
 						StartButtonGlyph
 					},
 					{
-						Controller.lStickPress,
+						Controller.joystickPress,
 						JoystickPressGlyph
 					},
 					{
-						Controller.dPadUp,
+						Controller.dPadNorth,
 						DPadNorth
 					},
 					{
-						Controller.dPadDown,
+						Controller.dPadSouth,
 						DPadSouth
 					},
 					{
-						Controller.dPadRight,
+						Controller.dPadEast,
 						DPadEast
 					},
 					{
-						Controller.dPadLeft,
+						Controller.dPadWest,
 						DPadWest
 					},
 					{
 						Controller.ps4Touchpad,
 						Ps4Touchpad
-					},
-					{
-						Controller.rStickUp,
-						RightJoystickNorth
-					},
-					{
-						Controller.rStickDown,
-						RightJoystickSouth
-					},
-					{
-						Controller.rStickLeft,
-						RightJoystickWest
-					},
-					{
-						Controller.rStickRight,
-						RightJoystickEast
 					}
 				};
 			}

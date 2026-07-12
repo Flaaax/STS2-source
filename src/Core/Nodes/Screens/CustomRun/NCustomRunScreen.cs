@@ -25,7 +25,6 @@ using MegaCrit.Sts2.Core.Nodes.Multiplayer;
 using MegaCrit.Sts2.Core.Nodes.Screens.CharacterSelect;
 using MegaCrit.Sts2.Core.Nodes.Screens.MainMenu;
 using MegaCrit.Sts2.Core.Platform;
-using MegaCrit.Sts2.Core.Random;
 using MegaCrit.Sts2.Core.Runs;
 using MegaCrit.Sts2.Core.Saves;
 using MegaCrit.Sts2.Core.TestSupport;
@@ -47,8 +46,6 @@ public partial class NCustomRunScreen : NSubmenu, IStartRunLobbyListener, IChara
 	private NCharacterSelectButton? _selectedButton;
 
 	private Control _charButtonContainer;
-
-	private NCustomRunRandomizeButton _randomizeButton;
 
 	private NConfirmButton _confirmButton;
 
@@ -99,12 +96,10 @@ public partial class NCustomRunScreen : NSubmenu, IStartRunLobbyListener, IChara
 		_readyAndWaitingContainer = GetNode<Control>("%ReadyAndWaitingPanel");
 		_modifiersList = GetNode<NCustomRunModifiersList>("%ModifiersList");
 		_seedInput = GetNode<LineEdit>("%SeedInput");
-		_randomizeButton = GetNode<NCustomRunRandomizeButton>("%CustomRunRandomizeButton");
 		_confirmButton = GetNode<NConfirmButton>("ConfirmButton");
 		_backButton = GetNode<NBackButton>("BackButton");
 		_unreadyButton = GetNode<NBackButton>("UnreadyButton");
 		_modifiersHotkeyIcon = GetNode<TextureRect>("%ModifiersHotkeyIcon");
-		_randomizeButton.Connect(NClickableControl.SignalName.Released, Callable.From<NButton>(OnRandomizePressed));
 		_confirmButton.Connect(NClickableControl.SignalName.Released, Callable.From<NButton>(OnEmbarkPressed));
 		_unreadyButton.Connect(NClickableControl.SignalName.Released, Callable.From<NButton>(OnUnreadyPressed));
 		_ascensionPanel.Connect(NAscensionPanel.SignalName.AscensionLevelChanged, Callable.From(OnAscensionPanelLevelChanged));
@@ -149,7 +144,6 @@ public partial class NCustomRunScreen : NSubmenu, IStartRunLobbyListener, IChara
 		_modifiersList.Initialize(MultiplayerUiMode.Client);
 		_lobby.InitializeFromMessage(message);
 		_seedInput.Editable = false;
-		_randomizeButton.Disable();
 		_uiMode = MultiplayerUiMode.Client;
 		UpdateControllerButton();
 		AfterInitialized();
@@ -258,36 +252,8 @@ public partial class NCustomRunScreen : NSubmenu, IStartRunLobbyListener, IChara
 		NHotkeyManager.Instance.RemoveHotkeyPressedBinding(ModifiersHotkey, TryFocusOnModifiersList);
 	}
 
-	private void OnRandomizePressed(NButton _)
-	{
-		if (_lobby.NetService.Type == NetGameType.Client)
-		{
-			throw new InvalidOperationException("In multiplayer, only the host can randomize custom runs.");
-		}
-		if (_lobby.NetService.Type == NetGameType.Singleplayer)
-		{
-			RandomizeLocalCharacter();
-		}
-		IReadOnlyCollection<ModifierModel> tickedModifiers = ModifierModel.Pick2Good1Bad(Rng.Chaotic, _lobby.Players.Select((LobbyPlayer p) => p.character));
-		_modifiersList.SetTickedModifiers(tickedModifiers);
-	}
-
-	/// <summary>
-	/// Randomly selects one of the unlocked characters for the local player only. Selecting through the button routes
-	/// to <see cref="M:MegaCrit.Sts2.Core.Nodes.Screens.CustomRun.NCustomRunScreen.SelectCharacter(MegaCrit.Sts2.Core.Nodes.Screens.CharacterSelect.NCharacterSelectButton,MegaCrit.Sts2.Core.Models.CharacterModel)" /> -&gt; SetLocalCharacter, so other players in a multiplayer lobby keep their own
-	/// selections.
-	/// </summary>
-	private void RandomizeLocalCharacter()
-	{
-		IEnumerable<NCharacterSelectButton> items = from b in _charButtonContainer.GetChildren().OfType<NCharacterSelectButton>()
-			where b != null && !b.IsLocked && !b.IsRandom
-			select b;
-		Rng.Chaotic.NextItem(items)?.Select();
-	}
-
 	private void OnEmbarkPressed(NButton _)
 	{
-		_randomizeButton.Disable();
 		_confirmButton.Disable();
 		_backButton.Disable();
 		_lobby.SetReady(ready: true);
@@ -304,10 +270,6 @@ public partial class NCustomRunScreen : NSubmenu, IStartRunLobbyListener, IChara
 
 	private void OnUnreadyPressed(NButton _)
 	{
-		if (_lobby.NetService.Type != NetGameType.Client)
-		{
-			_randomizeButton.Enable();
-		}
 		_confirmButton.Enable();
 		_backButton.Enable();
 		_unreadyButton.Disable();

@@ -53,7 +53,7 @@ public sealed class RoundTeaParty : EventModel
 
 	private async Task ContinueFight()
 	{
-		await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), base.Owner.Creature, base.DynamicVars.Damage, null, null, null);
+		await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), base.Owner.Creature, base.DynamicVars.Damage, null, null);
 		await RelicCmd.Obtain(RelicFactory.PullNextRelicFromFront(base.Owner).ToMutable(), base.Owner);
 		SetEventFinished(L10NLookup("ROUND_TEA_PARTY.pages.CONTINUE_FIGHT.description"));
 	}

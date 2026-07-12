@@ -101,12 +101,8 @@ public partial class NMerchantButton : NButton
 		}
 	}
 
-	public NSpeechBubbleVfx? PlayDialogue(LocString? line, double duration = 2.0)
+	public NSpeechBubbleVfx? PlayDialogue(LocString line, double duration = 2.0)
 	{
-		if (line == null)
-		{
-			return null;
-		}
 		NSpeechBubbleVfx nSpeechBubbleVfx = NSpeechBubbleVfx.Create(line.GetFormattedText(), DialogueSide.Right, base.GlobalPosition + base.Size.X * Vector2.Left, duration, VfxColor.Blue);
 		if (nSpeechBubbleVfx != null)
 		{

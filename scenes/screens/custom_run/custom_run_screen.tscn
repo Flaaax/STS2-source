@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://d3nw6pgxsxtis"]
+[gd_scene load_steps=22 format=3 uid="uid://d3nw6pgxsxtis"]
 
 [ext_resource type="Script" uid="uid://pjvpmq1gf4uu" path="res://src/Core/Nodes/Screens/CustomRun/NCustomRunScreen.cs" id="1_5nvxv"]
 [ext_resource type="FontVariation" uid="uid://c6wnuvk3exmk5" path="res://themes/kreon_regular_shared.tres" id="2_cbkga"]
@@ -15,7 +15,6 @@
 [ext_resource type="Shader" uid="uid://c66gb6g7tup3n" path="res://shaders/hsv.gdshader" id="13_fnl74"]
 [ext_resource type="PackedScene" uid="uid://iq6wsnph1mun" path="res://scenes/screens/custom_run/modifiers_list.tscn" id="13_ojakw"]
 [ext_resource type="FontVariation" uid="uid://c71uw4aqpsn1b" path="res://themes/spectral_glphy_space_two.tres" id="13_pxqo1"]
-[ext_resource type="PackedScene" uid="uid://de0uutrlt8i80" path="res://scenes/screens/custom_run/custom_run_randomize_button.tscn" id="14_xa85u"]
 [ext_resource type="Texture2D" uid="uid://b5x513mavmk5v" path="res://images/ui/placeholder_controller_icon.png" id="18_jnqea"]
 [ext_resource type="PackedScene" uid="uid://bl460ab2i4mkx" path="res://scenes/ui/confirm_button.tscn" id="20_6872w"]
 [ext_resource type="PackedScene" uid="uid://bl4mbjqjfffa3" path="res://scenes/ui/back_button.tscn" id="21_b7q7g"]
@@ -26,13 +25,6 @@ shader = ExtResource("13_fnl74")
 shader_parameter/h = 1.0
 shader_parameter/s = 1.0
 shader_parameter/v = 0.8
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jnqea"]
-resource_local_to_scene = true
-shader = ExtResource("13_fnl74")
-shader_parameter/h = 1.0
-shader_parameter/s = 1.0
-shader_parameter/v = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qajol"]
 resource_local_to_scene = true
@@ -199,9 +191,6 @@ offset_top = 43.0
 [node name="Background" parent="LeftContainer/RemotePlayerContainer/Container/InviteButtonContainer/InviteButton" index="0"]
 material = SubResource("ShaderMaterial_u783x")
 
-[node name="ControllerIcon" parent="LeftContainer/RemotePlayerContainer/Container/InviteButtonContainer/InviteButton" index="2"]
-material = SubResource("ShaderMaterial_jnqea")
-
 [node name="RightContainer" type="Control" parent="."]
 unique_name_in_owner = true
 layout_mode = 1
@@ -211,20 +200,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ModifiersList" parent="RightContainer" instance=ExtResource("13_ojakw")]
-unique_name_in_owner = true
-layout_mode = 1
-offset_left = 32.0
-offset_top = 168.0
-offset_right = -242.0
-offset_bottom = -162.0
-
 [node name="HBoxContainer" type="HBoxContainer" parent="RightContainer"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 24.0
-offset_top = 113.0
 offset_right = -91.0
 offset_bottom = 164.0
 grow_horizontal = 2
@@ -260,9 +240,13 @@ texture = ExtResource("18_jnqea")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="CustomRunRandomizeButton" parent="RightContainer/HBoxContainer" instance=ExtResource("14_xa85u")]
+[node name="ModifiersList" parent="RightContainer" instance=ExtResource("13_ojakw")]
 unique_name_in_owner = true
-layout_mode = 2
+layout_mode = 1
+offset_left = 32.0
+offset_top = 168.0
+offset_right = -242.0
+offset_bottom = -162.0
 
 [node name="ReadyAndWaitingPanel" type="Control" parent="."]
 unique_name_in_owner = true

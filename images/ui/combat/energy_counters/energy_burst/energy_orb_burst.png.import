@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c73iimjk4x5qq"
-path.s3tc="res://.godot/imported/energy_orb_burst.png-285e3f9a649c75768e44c585ff3b29f8.s3tc.ctex"
+path="res://.godot/imported/energy_orb_burst.png-285e3f9a649c75768e44c585ff3b29f8.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://images/ui/combat/energy_counters/energy_burst/energy_orb_burst.png"
-dest_files=["res://.godot/imported/energy_orb_burst.png-285e3f9a649c75768e44c585ff3b29f8.s3tc.ctex"]
+dest_files=["res://.godot/imported/energy_orb_burst.png-285e3f9a649c75768e44c585ff3b29f8.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=1.0
 compress/uastc_level=2
@@ -34,4 +33,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

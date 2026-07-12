@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cske71hwcslh8" path="res://images/timeline/epoch_card_back.png" id="1_fjkpv"]
 [ext_resource type="Script" uid="uid://cdfq04befilsx" path="res://src/Core/Nodes/Screens/Timeline/NEpochCard.cs" id="1_frafk"]
-[ext_resource type="Texture2D" uid="uid://cvlc4sh6n6l0r" path="res://images/timeline/epoch_portraits/colorless1_epoch.png" id="6_v37eb"]
+[ext_resource type="Texture2D" uid="uid://6b04ac6ennyh" path="res://images/timeline/epoch_portraits/placeholder/colorless1_epoch.png" id="6_v37eb"]
 [ext_resource type="Texture2D" uid="uid://c4mds13m5buvv" path="res://images/timeline/ui/slot_outline.png" id="6_vu4sn"]
 [ext_resource type="Shader" uid="uid://cmylquha3cjx4" path="res://shaders/dark_blur.gdshader" id="7_p16ti"]
 [ext_resource type="CanvasItemMaterial" uid="uid://c4ycqv0gdxvmr" path="res://themes/canvas_item_material_additive_shared.tres" id="shared_additive_mat"]

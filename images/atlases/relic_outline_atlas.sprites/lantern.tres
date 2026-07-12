@@ -4,5 +4,5 @@
 
 [resource]
 atlas = ExtResource("1")
-region = Rect2(1864, 676, 70, 85)
+region = Rect2(3484, 292, 70, 85)
 margin = Rect2(8, 0, 15, 0)

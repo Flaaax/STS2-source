@@ -64,8 +64,6 @@ public partial class NRestSiteRoom : Control, IScreenContext, IRoomWithProceedBu
 
 	private float _originalDescriptionYPos;
 
-	private bool _roomExiting;
-
 	private Control? _lastFocused;
 
 	public static NRestSiteRoom? Instance => NRun.Instance?.RestSiteRoom;
@@ -206,15 +204,6 @@ public partial class NRestSiteRoom : Control, IScreenContext, IRoomWithProceedBu
 	}
 
 	/// <summary>
-	/// Called before the room exit begins to disable all buttons.
-	/// </summary>
-	public void BeforeExitingRoom()
-	{
-		_roomExiting = true;
-		DisableOptions();
-	}
-
-	/// <summary>
 	/// Grays out options so that they can't be selected while an option is being executed.
 	/// </summary>
 	public void DisableOptions()
@@ -231,10 +220,6 @@ public partial class NRestSiteRoom : Control, IScreenContext, IRoomWithProceedBu
 	/// </summary>
 	public void EnableOptions()
 	{
-		if (_roomExiting)
-		{
-			return;
-		}
 		foreach (NRestSiteButton item in _choicesContainer.GetChildren().OfType<NRestSiteButton>())
 		{
 			item.Enable();

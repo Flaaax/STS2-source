@@ -132,7 +132,7 @@
   "SHOW_HAND_CARD_COUNT_DESCRIPTION": "手札のカードの上に並び順の番号を表示する。",
   "SHOW_HAND_CARD_COUNT_HEADER": "手札の番号を表示",
   "SHOW_MP_DRAWINGS_DESCRIPTION": "マルチプレイ時、他のプレイヤーがマップに描いた内容を表示するかを設定します。\n\n見知らぬプレイヤーと遊ぶ際はオフにしておくことを推奨。",
-  "SHOW_MP_DRAWINGS_HEADER": "マルチプレイ時の描き込みを表示",
+  "SHOW_MP_DRAWINGS_HEADER": "マルチプレイ時の描きこみを表示",
   "SHOW_RUN_TIMER": "プレイ時間を表示",
   "SHOW_RUN_TIMER_DESCRIPTION": "画面上部に常にプレイ時間を表示する。",
   "SHOW_RUN_TIMER_HEADER": "プレイ時間を常に表示",

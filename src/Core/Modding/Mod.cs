@@ -41,23 +41,13 @@ public class Mod
 	public SemanticVersion? version;
 
 	/// <summary>
-	/// The C# assemblies loaded with the mod, if any.
-	/// There are usually only zero or one in the list. Mods can register more assemblies, e.g. in the situation where
-	/// they create dynamic assemblies.
+	/// The C# assembly loaded with the mod, if any.
 	/// </summary>
-	public List<Assembly> assemblies = new List<Assembly>();
+	public Assembly? assembly;
 
 	/// <summary>
 	/// If null, then no errors occurred while loading the mod.
-	/// If this is set, then there was an error loading the mod that should be displayed. That doesn't necessarily mean
-	/// the mod failed to load; see <see cref="F:MegaCrit.Sts2.Core.Modding.Mod.state" /> for that.
+	/// If this is set, then there was an error loading the mod that should be displayed.
 	/// </summary>
 	public List<LocString>? errors;
-
-	/// <summary>
-	/// The ID of the workshop item, if the mod source is Steam Workshop.
-	/// This can be used as the value of a PublishedFileId_t, but we use ulong here so that we don't have to guard this
-	/// with DISABLESTEAMWORKS.
-	/// </summary>
-	public ulong? workshopId;
 }

@@ -13,7 +13,7 @@ namespace MegaCrit.Sts2.Core.Modding;
 /// <summary>
 /// Represents the JSON file which defines mod manifests.
 /// </summary>
-public record ModManifest
+public class ModManifest
 {
 	[JsonPropertyName("id")]
 	public string? id;

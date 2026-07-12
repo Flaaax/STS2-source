@@ -21,10 +21,6 @@ public sealed class GhostSeed : RelicModel
 		{
 			return Task.CompletedTask;
 		}
-		if (card.Owner != base.Owner)
-		{
-			return Task.CompletedTask;
-		}
 		CardCmd.ApplyKeyword(card, CardKeyword.Ethereal);
 		return Task.CompletedTask;
 	}

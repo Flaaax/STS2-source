@@ -30,7 +30,7 @@ public sealed class Dismantle : CardModel
 	{
 		ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
 		int hitCount = ((!cardPlay.Target.HasPower<VulnerablePower>()) ? 1 : 2);
-		await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).WithHitCount(hitCount).FromCard(this, cardPlay)
+		await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).WithHitCount(hitCount).FromCard(this)
 			.Targeting(cardPlay.Target)
 			.WithHitFx("vfx/vfx_attack_blunt", null, "heavy_attack.mp3")
 			.Execute(choiceContext);

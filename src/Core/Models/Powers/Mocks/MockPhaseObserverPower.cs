@@ -16,8 +16,6 @@ namespace MegaCrit.Sts2.Core.Models.Powers.Mocks;
 /// </summary>
 public sealed class MockPhaseObserverPower : PowerModel
 {
-	public override bool IsMock => true;
-
 	public override PowerType Type => PowerType.Buff;
 
 	public override PowerStackType StackType => PowerStackType.Counter;

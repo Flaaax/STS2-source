@@ -35,7 +35,7 @@ public sealed class BeatingRemnant : RelicModel
 	protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DynamicVar("MaxHpLoss", 20m));
 
 	/// <summary>
-	/// Note: We can't use <see cref="M:MegaCrit.Sts2.Core.Models.AbstractModel.ModifyDamageCap(MegaCrit.Sts2.Core.Entities.Creatures.Creature,MegaCrit.Sts2.Core.ValueProps.ValueProp,MegaCrit.Sts2.Core.Entities.Creatures.Creature,MegaCrit.Sts2.Core.Models.CardModel,MegaCrit.Sts2.Core.Entities.Cards.CardPlay)" /> because we may be taking "trample" damage from Osty.
+	/// Note: We can't use <see cref="M:MegaCrit.Sts2.Core.Models.AbstractModel.ModifyDamageCap(MegaCrit.Sts2.Core.Entities.Creatures.Creature,MegaCrit.Sts2.Core.ValueProps.ValueProp,MegaCrit.Sts2.Core.Entities.Creatures.Creature,MegaCrit.Sts2.Core.Models.CardModel)" /> because we may be taking "trample" damage from Osty.
 	/// The ModifyDamageX hooks will have already run for that initial damage to Osty, and we currently can't re-run
 	/// them for the trample damage.
 	/// </summary>

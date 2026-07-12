@@ -48,8 +48,6 @@ public partial class NBestiaryEntry : NButton
 	public override void _Ready()
 	{
 		ConnectSignals();
-		base.FocusNeighborLeft = new NodePath(".");
-		base.FocusNeighborRight = new NodePath(".");
 		_label = GetNode<MegaRichTextLabel>("%Label");
 		_highlight = GetNode<Control>("%Highlight");
 		_underConstructionIcon = GetNode<TextureRect>("%UnderConstructionIcon");

@@ -62,25 +62,18 @@ public static class CardPileCmd
 			card.RemoveFromCurrentPile();
 			if (showPreview && LocalContext.IsMine(card))
 			{
-				NCard cardNode = NCard.Create(card);
-				if (cardNode != null)
+				NCard nCard = NCard.Create(card);
+				if (nCard != null)
 				{
-					NRun.Instance.GlobalUi.CardPreviewContainer.AddChildSafely(cardNode);
-					cardNode.UpdateVisuals(PileType.None, CardPreviewMode.Normal);
-					Tween tween = cardNode.CreateTween();
-					tween.TweenProperty(cardNode, "scale", Vector2.One * 1f, 0.25).From(Vector2.Zero).SetEase(Tween.EaseType.Out)
+					NRun.Instance.GlobalUi.CardPreviewContainer.AddChildSafely(nCard);
+					nCard.UpdateVisuals(PileType.None, CardPreviewMode.Normal);
+					Tween tween = nCard.CreateTween();
+					tween.TweenProperty(nCard, "scale", Vector2.One * 1f, 0.25).From(Vector2.Zero).SetEase(Tween.EaseType.Out)
 						.SetTrans(Tween.TransitionType.Cubic);
-					if (!TestMode.IsOn)
-					{
-						tween.TweenInterval(0.25);
-						tween.TweenCallback(Callable.From(delegate
-						{
-							NCardRemoveVfx child = NCardRemoveVfx.Create(cardNode);
-							NRun.Instance.GlobalUi.AboveTopBarVfxContainer.AddChildSafely(child);
-						}));
-						tween.TweenInterval(0.4000000059604645);
-					}
-					tween.TweenCallback(Callable.From(cardNode.QueueFreeSafely));
+					tween.TweenProperty(nCard, "scale:y", 0, 0.30000001192092896).SetDelay(1.5);
+					tween.Parallel().TweenProperty(nCard, "scale:x", 1.5f, 0.3).SetDelay(1.5);
+					tween.Parallel().TweenProperty(nCard, "modulate", Colors.Black, 0.2).SetDelay(1.5);
+					tween.TweenCallback(Callable.From(nCard.QueueFreeSafely));
 				}
 			}
 			card.RemoveFromState();
@@ -114,7 +107,7 @@ public static class CardPileCmd
 		}
 		ICombatState combatState = cards.First().CombatState;
 		IRunState runState = cards.First().Owner.RunState;
-		List<NCard> list = new List<NCard>();
+		List<NCard> cardNodes = new List<NCard>();
 		Dictionary<CardModel, CardPile> oldPiles = new Dictionary<CardModel, CardPile>();
 		CardPile value;
 		foreach (CardModel card in cards)
@@ -129,104 +122,71 @@ public static class CardPileCmd
 				NCard nCard = NCard.FindOnTable(card);
 				if (nCard != null)
 				{
-					list.Add(nCard);
+					cardNodes.Add(nCard);
 				}
 			}
 			oldPiles.Add(card, card.Pile);
 			card.RemoveFromCurrentPile();
 		}
-		if (list.Count != 0)
+		if (cardNodes.Count != 0)
 		{
-			NPlayerHand nPlayerHand = NCombatRoom.Instance?.Ui.Hand;
-			NCardPlayQueue nCardPlayQueue = NCombatRoom.Instance?.Ui.PlayQueue;
+			NPlayerHand hand = NCombatRoom.Instance.Ui.Hand;
+			NCardPlayQueue playQueue = NCombatRoom.Instance.Ui.PlayQueue;
+			Control playContainer = NCombatRoom.Instance.Ui.PlayContainer;
 			Tween tween = null;
-			for (int i = 0; i < list.Count; i++)
+			for (int i = 0; i < cardNodes.Count; i++)
 			{
-				NCard node = list[i];
+				NCard node = cardNodes[i];
 				Vector2 globalPosition = node.GlobalPosition;
 				CardModel model = node.Model;
 				CardPile cardPile = oldPiles[model];
-				bool isInPlayQueue = nCardPlayQueue?.IsAncestorOf(node) ?? false;
-				if (isInPlayQueue)
+				if (playQueue.IsAncestorOf(node))
 				{
-					nCardPlayQueue.RemoveCardFromQueueForCancellation(node);
+					playQueue.RemoveCardFromQueueForCancellation(node);
 				}
-				if (nPlayerHand != null && nPlayerHand.IsAncestorOf(node))
+				if (cardPile.Type == PileType.Hand && !NodeUtil.IsDescendant(playContainer, node))
 				{
-					nPlayerHand.Remove(model);
+					hand.Remove(model);
 				}
 				else
 				{
 					node.GetParent()?.RemoveChildSafely(node);
 				}
-				NCombatRoom.Instance?.Ui.AddChildSafely(node);
+				NCombatRoom.Instance.Ui.AddChildSafely(node);
 				node.GlobalPosition = globalPosition;
 				if (tween == null)
 				{
-					tween = NCombatRoom.Instance?.CreateTween();
-					tween?.SetParallel();
+					tween = NCombatRoom.Instance.CreateTween();
+					tween.SetParallel();
 				}
 				model.Pile?.InvokeCardAddFinished();
 				if (cardPile.Type != PileType.Hand && cardPile.Type != PileType.Play)
 				{
 					AppendPileLerpTween(tween, node, PileType.Play, cardPile);
 				}
-				tween?.Chain().TweenCallback(Callable.From(delegate
+				tween.Chain().TweenCallback(Callable.From(delegate
 				{
-					NCombatRoom instance = NCombatRoom.Instance;
-					NCardExhaustVfx nCardExhaustVfx = ((instance != null) ? NCardExhaustVfx.Create(node) : null);
-					if (nCardExhaustVfx != null)
-					{
-						instance?.Ui.AddChildSafely(nCardExhaustVfx);
-						NDebugAudioManager.Instance?.Play("card_exhaust.mp3");
-						TaskHelper.RunSafely(nCardExhaustVfx.PlayAnimation());
-					}
-					else if (!isInPlayQueue)
-					{
-						node.QueueFreeSafely();
-					}
+					NCombatRoom.Instance.Ui.AddChildSafely(NExhaustVfx.Create(node));
 				}));
+				tween.Parallel().TweenProperty(node, "modulate", StsColors.exhaustGray, (SaveManager.Instance.PrefsSave.FastMode == FastModeType.Fast) ? 0.2f : 0.3f);
 			}
 			if (tween != null)
 			{
 				tween.Play();
-				if (NCombatRoom.Instance != null)
-				{
-					await tween.AwaitFinished(NCombatRoom.Instance);
-				}
+				await tween.AwaitFinished(NCombatRoom.Instance);
+			}
+			foreach (NCard item in cardNodes)
+			{
+				item.QueueFreeSafely();
 			}
 		}
-		foreach (KeyValuePair<CardModel, CardPile> item in oldPiles)
+		foreach (KeyValuePair<CardModel, CardPile> item2 in oldPiles)
 		{
-			item.Deconstruct(out var key, out value);
+			item2.Deconstruct(out var key, out value);
 			CardModel oldCard = key;
 			CardPile cardPile2 = value;
 			await Hook.AfterCardChangedPiles(runState, combatState, oldCard, cardPile2.Type, null);
 			oldCard.RemoveFromState();
-		}
-	}
-
-	public static async Task GiveToAnotherPlayer(CardModel card, Player player, PileType pileType, CardPilePosition position = CardPilePosition.Bottom, AbstractModel? clonedBy = null)
-	{
-		NCard cardNode = NCard.FindOnTable(card);
-		card.RemoveFromCurrentPile(silent: true);
-		card.GiveToAnotherPlayer(player);
-		bool islocalPlayerTheReceivingPlayer = LocalContext.IsMine(card);
-		await Add(new global::_003C_003Ez__ReadOnlySingleElementList<CardModel>(card), pileType.GetPile(player), position, clonedBy, skipVisuals: true, isChangingOwners: true);
-		if (cardNode != null && cardNode.IsValid())
-		{
-			Node vfxContainer = card.Owner.Creature.GetVfxContainer();
-			cardNode.Reparent(vfxContainer);
-			if (islocalPlayerTheReceivingPlayer)
-			{
-				NCardFlyVfx child = NCardFlyVfx.Create(cardNode, card.Pile.Type, isAddingToPile: true, card.Owner.Character.TrailPath);
-				vfxContainer?.AddChildSafely(child);
-			}
-			else
-			{
-				NCardFlyVfx child2 = NCardFlyVfx.Create(cardNode, player.Creature, card.Owner.Character.TrailPath);
-				vfxContainer?.AddChildSafely(child2);
-			}
 		}
 	}
 
@@ -343,9 +303,7 @@ public static class CardPileCmd
 	/// <param name="position">Optional position in the pile to add the cards to. Defaults to bottom.</param>
 	/// <param name="clonedBy">The model that cloned this card, if applicable. Used to prevent copy effects from recursing.</param>
 	/// <param name="skipVisuals">Skip card pile visuals (tween to/from pile, smoke puff VFX, etc).</param>
-	/// <param name="isChangingOwners">The card is being handed from one player to another. It was already in combat,
-	/// so it must not be treated as newly entering combat (which would re-fire AfterCardEnteredCombat).</param>
-	public static async Task<IReadOnlyList<CardPileAddResult>> Add(IEnumerable<CardModel> cards, CardPile newPile, CardPilePosition position = CardPilePosition.Bottom, AbstractModel? clonedBy = null, bool skipVisuals = false, bool isChangingOwners = false)
+	public static async Task<IReadOnlyList<CardPileAddResult>> Add(IEnumerable<CardModel> cards, CardPile newPile, CardPilePosition position = CardPilePosition.Bottom, AbstractModel? clonedBy = null, bool skipVisuals = false)
 	{
 		if (!cards.Any())
 		{
@@ -556,7 +514,7 @@ public static class CardPileCmd
 				CardPilePosition.Random => card.Owner.RunState.Rng.Shuffle.NextInt(targetPile.Cards.Count + 1), 
 				_ => throw new ArgumentOutOfRangeException("position", position, null), 
 			});
-			if (oldPile == null && targetPile.IsCombatPile && !isChangingOwners)
+			if (oldPile == null && targetPile.IsCombatPile)
 			{
 				await Hook.AfterCardEnteredCombat(card.CombatState, card);
 			}
@@ -572,8 +530,10 @@ public static class CardPileCmd
 		Tween tween = null;
 		if (cardNodes.Count != 0)
 		{
-			NPlayerHand handNode = NCombatRoom.Instance?.Ui.Hand;
-			tween = NCombatRoom.Instance?.CreateTween().SetParallel();
+			NPlayerHand handNode = NCombatRoom.Instance.Ui.Hand;
+			_ = NCombatRoom.Instance.Ui.PlayQueue;
+			_ = NCombatRoom.Instance.Ui.PlayContainer;
+			tween = NCombatRoom.Instance.CreateTween().SetParallel();
 			foreach (NCard cardNode2 in cardNodes)
 			{
 				CardModel card3 = cardNode2.Model;
@@ -589,9 +549,9 @@ public static class CardPileCmd
 				}
 				if (flag8)
 				{
-					tween?.Parallel().TweenProperty(cardNode2, "position", cardNode2.Position + Vector2.Down * 25f, (SaveManager.Instance.PrefsSave.FastMode == FastModeType.Fast) ? 0.2f : 0.3f);
-					tween?.Parallel().TweenProperty(cardNode2, "modulate", StsColors.exhaustGray, (SaveManager.Instance.PrefsSave.FastMode == FastModeType.Fast) ? 0.2f : 0.3f);
-					tween?.Chain().TweenCallback(Callable.From(cardNode2.QueueFreeSafely));
+					tween.Parallel().TweenProperty(cardNode2, "position", cardNode2.Position + Vector2.Down * 25f, (SaveManager.Instance.PrefsSave.FastMode == FastModeType.Fast) ? 0.2f : 0.3f);
+					tween.Parallel().TweenProperty(cardNode2, "modulate", StsColors.exhaustGray, (SaveManager.Instance.PrefsSave.FastMode == FastModeType.Fast) ? 0.2f : 0.3f);
+					tween.Chain().TweenCallback(Callable.From(cardNode2.QueueFreeSafely));
 					continue;
 				}
 				switch (card3.Pile.Type)
@@ -602,58 +562,32 @@ public static class CardPileCmd
 					{
 						AppendPileLerpTween(tween, cardNode2, PileType.Play, oldPile2);
 						FastModeType fastMode = SaveManager.Instance.PrefsSave.FastMode;
-						tween?.Chain().TweenInterval(fastMode switch
+						tween.Chain().TweenInterval(fastMode switch
 						{
 							FastModeType.Instant => 0.01f, 
 							FastModeType.Fast => 0.2f, 
 							_ => 0.5f, 
 						});
 					}
-					if (oldPile2 != null && oldPile2.Type == PileType.Hand)
+					tween.Chain().TweenCallback(Callable.From(delegate
 					{
-						tween?.Chain().TweenCallback(Callable.From(delegate
-						{
-							NCardExhaustQuickVfx nCardExhaustQuickVfx = NCardExhaustQuickVfx.Create(cardNode2);
-							if (nCardExhaustQuickVfx != null)
-							{
-								NDebugAudioManager.Instance?.Play("card_exhaust.mp3");
-								TaskHelper.RunSafely(nCardExhaustQuickVfx.PlayAnimation());
-							}
-							else
-							{
-								cardNode2.QueueFreeSafely();
-							}
-						}));
-						break;
-					}
-					tween?.Chain().TweenCallback(Callable.From(delegate
-					{
-						NCombatRoom instance = NCombatRoom.Instance;
-						NCardExhaustVfx nCardExhaustVfx = ((instance != null) ? NCardExhaustVfx.Create(cardNode2) : null);
-						if (nCardExhaustVfx != null)
-						{
-							instance.Ui.AddChildSafely(nCardExhaustVfx);
-							NDebugAudioManager.Instance?.Play("card_exhaust.mp3");
-							TaskHelper.RunSafely(nCardExhaustVfx.PlayAnimation());
-						}
-						else
-						{
-							cardNode2.QueueFreeSafely();
-						}
+						NCombatRoom.Instance.Ui.AddChildSafely(NExhaustVfx.Create(cardNode2));
 					}));
+					tween.Parallel().TweenProperty(cardNode2, "modulate", StsColors.exhaustGray, (SaveManager.Instance.PrefsSave.FastMode == FastModeType.Fast) ? 0.2f : 0.3f);
+					tween.Chain().TweenCallback(Callable.From(cardNode2.QueueFreeSafely));
 					break;
 				case PileType.Hand:
 					AppendPileLerpTween(tween, cardNode2, card3.Pile.Type, oldPile2);
-					tween?.Parallel().TweenCallback(Callable.From(delegate
+					tween.Parallel().TweenCallback(Callable.From(delegate
 					{
-						handNode?.Add(cardNode2);
+						handNode.Add(cardNode2);
 					}));
 					break;
 				case PileType.Play:
 					AppendPlayPileLerpTween(tween, cardNode2, oldPile2);
 					break;
 				default:
-					tween?.TweenCallback(Callable.From(delegate
+					tween.TweenCallback(Callable.From(delegate
 					{
 						Node node = ((card3.Pile.Type != PileType.Deck) ? card3.Owner.Creature.GetVfxContainer() : NRun.Instance.GlobalUi.TopBar.TrailContainer);
 						cardNode2.Reparent(node);
@@ -804,44 +738,41 @@ public static class CardPileCmd
 		cardNode.PlayPileTween?.FastForwardToCompletion();
 	}
 
-	private static void AppendPlayPileLerpTween(Tween? tween, NCard cardNode, CardPile? oldPile)
+	private static void AppendPlayPileLerpTween(Tween tween, NCard cardNode, CardPile? oldPile)
 	{
 		AppendPileLerpTween(tween, cardNode, cardNode.Model.Pile.Type, oldPile);
-		tween?.Parallel().TweenCallback(Callable.From(delegate
+		tween.Parallel().TweenCallback(Callable.From(delegate
 		{
 			NCombatRoom.Instance.Ui.AddToPlayContainer(cardNode);
 		}));
 	}
 
-	private static void AppendPileLerpTween(Tween? tween, NCard cardNode, PileType typePile, CardPile? oldPile)
+	private static void AppendPileLerpTween(Tween tween, NCard cardNode, PileType typePile, CardPile? oldPile)
 	{
-		if (tween != null)
+		Vector2 targetPosition = typePile.GetTargetPosition(cardNode);
+		float num = SaveManager.Instance.PrefsSave.FastMode switch
 		{
-			Vector2 targetPosition = typePile.GetTargetPosition(cardNode);
-			float num = SaveManager.Instance.PrefsSave.FastMode switch
-			{
-				FastModeType.Instant => 0.01f, 
-				FastModeType.Fast => 0.1f, 
-				_ => 0.25f, 
-			};
-			if (typePile != PileType.Hand)
-			{
-				tween.TweenProperty(cardNode, "position", targetPosition, num).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);
-			}
-			if (typePile == PileType.Play)
-			{
-				tween.TweenProperty(cardNode, "scale", Vector2.One * 0.8f, 0.25).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);
-			}
-			else if (oldPile == null)
-			{
-				tween.TweenProperty(cardNode, "scale", Vector2.One, num).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic)
-					.From(Vector2.Zero);
-			}
-			else
-			{
-				tween.Parallel().TweenProperty(cardNode, "scale", Vector2.One, num).SetEase(Tween.EaseType.Out)
-					.SetTrans(Tween.TransitionType.Cubic);
-			}
+			FastModeType.Instant => 0.01f, 
+			FastModeType.Fast => 0.1f, 
+			_ => 0.25f, 
+		};
+		if (typePile != PileType.Hand)
+		{
+			tween.TweenProperty(cardNode, "position", targetPosition, num).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);
+		}
+		if (typePile == PileType.Play)
+		{
+			tween.TweenProperty(cardNode, "scale", Vector2.One * 0.8f, 0.25).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);
+		}
+		else if (oldPile == null)
+		{
+			tween.TweenProperty(cardNode, "scale", Vector2.One, num).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic)
+				.From(Vector2.Zero);
+		}
+		else
+		{
+			tween.Parallel().TweenProperty(cardNode, "scale", Vector2.One, num).SetEase(Tween.EaseType.Out)
+				.SetTrans(Tween.TransitionType.Cubic);
 		}
 	}
 

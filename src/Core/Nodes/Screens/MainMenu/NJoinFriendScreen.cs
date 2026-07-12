@@ -9,7 +9,6 @@ using MegaCrit.Sts2.Core.Entities.Multiplayer;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Logging;
-using MegaCrit.Sts2.Core.Multiplayer;
 using MegaCrit.Sts2.Core.Multiplayer.Connection;
 using MegaCrit.Sts2.Core.Multiplayer.Game;
 using MegaCrit.Sts2.Core.Nodes.CommonUi;
@@ -196,7 +195,7 @@ public partial class NJoinFriendScreen : NSubmenu
 			return;
 		}
 		_loadingOverlay.Visible = true;
-		_currentJoinFlow = new JoinFlow(new NetClientGameService());
+		_currentJoinFlow = new JoinFlow();
 		try
 		{
 			Log.Info($"Attempting to join game with connection initializer {connInitializer}");

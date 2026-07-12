@@ -22,12 +22,12 @@ public sealed class EchoingSlash : CardModel
 
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
 	{
-		await using AttackContext attackContext = await AttackCommand.CreateContextAsync(base.CombatState, choiceContext, cardPlay);
+		await using AttackContext attackContext = await AttackCommand.CreateContextAsync(base.CombatState, choiceContext, this);
 		int attackCount = 1;
 		while (attackCount > 0)
 		{
 			attackCount--;
-			IEnumerable<DamageResult> enumerable = await CreatureCmd.Damage(choiceContext, base.CombatState?.HittableEnemies, base.DynamicVars.Damage, base.Owner.Creature, this, cardPlay);
+			IEnumerable<DamageResult> enumerable = await CreatureCmd.Damage(choiceContext, base.CombatState.HittableEnemies, base.DynamicVars.Damage, base.Owner.Creature, this);
 			attackContext.AddHit(enumerable);
 			attackCount += enumerable.Count((DamageResult r) => r.WasTargetKilled);
 		}

@@ -19,6 +19,4 @@ public interface IControllerInputStrategy
 	Texture2D? GetHotkeyIcon(string hotkey);
 
 	string GetControllerName();
-
-	Vector2 GetLeftAnalogStickDirection();
 }

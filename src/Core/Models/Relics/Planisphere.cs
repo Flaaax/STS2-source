@@ -20,12 +20,12 @@ public sealed class Planisphere : RelicModel
 		return RelicModel.IsBeforeAct3TreasureChest(runState);
 	}
 
-	public override async Task AfterRoomEntered(AbstractRoom room)
+	public override async Task AfterRoomEntered(AbstractRoom _)
 	{
 		if (!base.Owner.Creature.IsDead)
 		{
 			MapPoint? currentMapPoint = base.Owner.RunState.CurrentMapPoint;
-			if (currentMapPoint != null && currentMapPoint.PointType == MapPointType.Unknown && base.Owner.RunState.CurrentRoomCount <= 1)
+			if (currentMapPoint != null && currentMapPoint.PointType == MapPointType.Unknown)
 			{
 				Flash();
 				await CreatureCmd.Heal(base.Owner.Creature, base.DynamicVars.Heal.BaseValue);

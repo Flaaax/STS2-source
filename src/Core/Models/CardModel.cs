@@ -145,7 +145,7 @@ public abstract class CardModel : AbstractModel
 
 	public static string MissingPortraitPath => ImageHelper.GetImagePath("atlases/card_atlas.sprites/beta.tres");
 
-	protected virtual string PortraitPngPath => ImageHelper.GetImagePath($"packed/card_portraits/{Pool.Title.ToLowerInvariant()}/{base.Id.Entry.ToLowerInvariant()}.png");
+	private string PortraitPngPath => ImageHelper.GetImagePath($"packed/card_portraits/{Pool.Title.ToLowerInvariant()}/{base.Id.Entry.ToLowerInvariant()}.png");
 
 	private string BetaPortraitPngPath => ImageHelper.GetImagePath($"packed/card_portraits/{Pool.Title.ToLowerInvariant()}/beta/{base.Id.Entry.ToLowerInvariant()}.png");
 
@@ -1887,10 +1887,7 @@ public abstract class CardModel : AbstractModel
 		{
 			return;
 		}
-		PileType resultPileType;
-		CardPilePosition resultPilePosition;
-		(resultPileType, resultPilePosition) = GetResultPileTypeAndPositionForCardPlay();
-		(resultPileType, resultPilePosition) = Hook.ModifyCardPlayResultPileTypeAndPosition(combatState, this, isAutoPlay, resources, resultPileType, resultPilePosition, out IEnumerable<AbstractModel> modifiers);
+		var (resultPileType, resultPilePosition) = Hook.ModifyCardPlayResultPileTypeAndPosition(combatState, this, isAutoPlay, resources, GetResultPileTypeForCardPlay(), CardPilePosition.Bottom, out IEnumerable<AbstractModel> modifiers);
 		foreach (AbstractModel item in modifiers)
 		{
 			await item.AfterModifyingCardPlayResultPileOrPosition(this, resultPileType, resultPilePosition);
@@ -1906,10 +1903,6 @@ public abstract class CardModel : AbstractModel
 		{
 			for (int i = 0; i < playCount; i++)
 			{
-				if (CombatManager.Instance.IsOverOrEnding)
-				{
-					break;
-				}
 				CurrentPlayIndex = i;
 				if (Type == CardType.Power)
 				{
@@ -2072,20 +2065,20 @@ public abstract class CardModel : AbstractModel
 	}
 
 	/// <summary>
-	/// Get the pile that this card should be moved to after being played, and the position it should be added to.
+	/// Get the pile that this card should be moved to after being played.
 	/// </summary>
-	protected virtual (PileType, CardPilePosition) GetResultPileTypeAndPositionForCardPlay()
+	protected virtual PileType GetResultPileTypeForCardPlay()
 	{
 		if (IsDupe || Type == CardType.Power)
 		{
-			return (PileType.None, CardPilePosition.Bottom);
+			return PileType.None;
 		}
 		if (ExhaustOnNextPlay || Keywords.Contains(CardKeyword.Exhaust))
 		{
 			ExhaustOnNextPlay = false;
-			return (PileType.Exhaust, CardPilePosition.Bottom);
+			return PileType.Exhaust;
 		}
-		return (PileType.Discard, CardPilePosition.Bottom);
+		return PileType.Discard;
 	}
 
 	/// <summary>
@@ -2183,22 +2176,6 @@ public abstract class CardModel : AbstractModel
 		cardModel._cloneOf = this;
 		cardModel.ExhaustOnNextPlay = false;
 		return cardModel;
-	}
-
-	/// <summary>
-	/// Creates a clone of this card for a given player.
-	/// Required because normally clone cards retain the same player as the original.
-	/// </summary>
-	public CardModel CreateCloneForPlayer(Player player)
-	{
-		CardModel cardModel = CreateClone();
-		cardModel._owner = player;
-		return cardModel;
-	}
-
-	public void GiveToAnotherPlayer(Player player)
-	{
-		_owner = player;
 	}
 
 	/// <summary>

@@ -169,7 +169,7 @@ public sealed class ToughEgg : MonsterModel
 	private async Task Hatch()
 	{
 		await CreatureCmd.TriggerAnim(base.Creature, "Hatch", 0.5f);
-		decimal amount = MegaCrit.Sts2.Core.Entities.Creatures.Creature.ScaleHpForMultiplayer(base.RunRng.Niche.NextInt(HatchlingMinHp, HatchlingMaxHp), base.CombatState.Encounter, base.CombatState.Players.Count, base.CombatState.RunState.CurrentActIndex);
+		decimal amount = MegaCrit.Sts2.Core.Entities.Creatures.Creature.ScaleHpForMultiplayer(base.RunRng.Niche.NextInt(HatchlingMinHp, HatchlingMaxHp), base.CombatState.Encounter, base.Creature.CombatState.Players.Count, base.Creature.CombatState.Players[0].RunState.CurrentActIndex);
 		await CreatureCmd.SetMaxAndCurrentHp(base.Creature, amount);
 	}
 

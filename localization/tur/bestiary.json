@@ -7,13 +7,8 @@
   "ACTION_NAME.revive": "Yeniden Doğma",
   "ACTION_NAME.stun": "Sersemleme",
   "DESCRIPTION.placeholder": "Bu canavar hakkındaki bilgiler henüz açığa çıkmadı...",
-  "EVENTS.title": "Etkinlikler",
   "LOCKED.monsterName": "[lb]Locked[rb]",
   "LOCKED.monsterTitle": "Kilitli",
-  "MODE.viewActions": "Eylemleri Göster",
-  "MODE.viewStats": "İstatistikleri Göster",
-  "QUOTE_PLACEHOLDER": "[red][i](Karaktere ait diyalog henüz oluşturulmamış)[/i][/red]",
-  "STATS.layout": "Karşılaşmalar: [blue]{total}[/blue]\nÖldürülen: [green]{kills}[/green]\nYenilgiler: [red]{deaths}[/red]\nKazanma Oranı: [gold]{winrate}%[/gold]",
   "UNDER_CONSTRUCTION": "Yapım Aşamasında",
   "UNSEEN.monsterName": "[lb]Unknown[rb]"
 }

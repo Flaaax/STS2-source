@@ -89,13 +89,13 @@ public sealed class TheFutureOfPotions : EventModel
 
 	protected override Task BeforeEventStarted(bool isPreFinished)
 	{
-		base.Owner.CanUseOrRemovePotions = false;
+		base.Owner.CanRemovePotions = false;
 		return Task.CompletedTask;
 	}
 
 	protected override void OnEventFinished()
 	{
-		base.Owner.CanUseOrRemovePotions = true;
+		base.Owner.CanRemovePotions = true;
 	}
 
 	protected override IReadOnlyList<EventOption> GenerateInitialOptions()

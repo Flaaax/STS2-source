@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Assets;
+using MegaCrit.Sts2.Core.Events;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.Models;
@@ -54,6 +55,7 @@ public class EventRoom : AbstractRoom
 
 	public override async Task EnterInternal(IRunState? runState, bool isRestoringRoomStackBase)
 	{
+		await PreloadManager.LoadRoomEventAssets(CanonicalEvent, runState ?? NullRunState.Instance);
 		RunManager.Instance.EventSynchronizer.BeginEvent(CanonicalEvent, IsPreFinished, OnStart);
 		foreach (EventModel @event in RunManager.Instance.EventSynchronizer.Events)
 		{
@@ -64,8 +66,10 @@ public class EventRoom : AbstractRoom
 			}
 		}
 		EventModel localEvent = RunManager.Instance.EventSynchronizer.GetLocalEvent();
-		RunManager.Instance.EventSynchronizer.GenerateInternalCombatStateIfNecessary(localEvent);
-		await PreloadManager.LoadRoomEventAssets(CanonicalEvent, runState ?? NullRunState.Instance);
+		if (localEvent.LayoutType == EventLayoutType.Combat)
+		{
+			localEvent.GenerateInternalCombatState(runState ?? NullRunState.Instance);
+		}
 		if (!isRestoringRoomStackBase)
 		{
 			NEventRoom currentRoom = NEventRoom.Create(localEvent, runState, _isPreFinished);
@@ -86,7 +90,10 @@ public class EventRoom : AbstractRoom
 		{
 			RunManager.Instance.ChecksumTracker.GenerateChecksum($"Exiting event room {localEvent.Id}", null);
 		}
-		RunManager.Instance.EventSynchronizer.BeforeExitingRoom();
+		if (localEvent.LayoutType == EventLayoutType.Combat)
+		{
+			localEvent.ResetInternalCombatState();
+		}
 		foreach (EventModel @event in RunManager.Instance.EventSynchronizer.Events)
 		{
 			@event.StateChanged -= OnEventStateChanged;

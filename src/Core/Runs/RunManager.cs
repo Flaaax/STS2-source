@@ -51,23 +51,9 @@ public class RunManager : IRunLobbyListener
 {
 	private long _startTime;
 
-	/// <summary>
-	/// previous session's run time before reload
-	/// </summary>
-	private long _prevSessionRunTime;
+	private long _prevRunTime;
 
-	/// <summary>
-	/// Accumulated run time not spent in the pause menu
-	/// </summary>
-	private long _activeRunTime;
-
-	/// <summary>
-	/// When the current active run time began
-	/// Which is either the start of the session OR the time from when you last closed the pause menu
-	/// </summary>
-	private long _startOfCurrentActiveRunTime;
-
-	private bool _isPaused;
+	private long _sessionStartTime;
 
 	private bool _runHistoryWasUploaded;
 
@@ -130,35 +116,6 @@ public class RunManager : IRunLobbyListener
 
 	public bool IsAbandoned { get; private set; }
 
-	public bool IsPaused
-	{
-		get
-		{
-			return _isPaused;
-		}
-		set
-		{
-			_isPaused = value;
-			RunState state = State;
-			if (state == null)
-			{
-				return;
-			}
-			IReadOnlyList<Player> players = state.Players;
-			if (players != null && players.Count == 1)
-			{
-				if (_isPaused)
-				{
-					_activeRunTime += DateTimeOffset.UtcNow.ToUnixTimeSeconds() - _startOfCurrentActiveRunTime;
-				}
-				else
-				{
-					_startOfCurrentActiveRunTime = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
-				}
-			}
-		}
-	}
-
 	public RunHistory? History { get; set; }
 
 	public INetGameService NetService { get; private set; }
@@ -219,19 +176,7 @@ public class RunManager : IRunLobbyListener
 			{
 				return WinTime;
 			}
-			if (IsPaused)
-			{
-				RunState state = State;
-				if (state != null)
-				{
-					IReadOnlyList<Player> players = state.Players;
-					if (players != null && players.Count == 1)
-					{
-						return _activeRunTime + _prevSessionRunTime;
-					}
-				}
-			}
-			return DateTimeOffset.UtcNow.ToUnixTimeSeconds() - _startOfCurrentActiveRunTime + _activeRunTime + _prevSessionRunTime;
+			return DateTimeOffset.UtcNow.ToUnixTimeSeconds() - _sessionStartTime + _prevRunTime;
 		}
 	}
 
@@ -270,10 +215,6 @@ public class RunManager : IRunLobbyListener
 	public event Action? RoomExited;
 
 	public event Action? ActEntered;
-
-	public event Func<Task>? TestFadeOut;
-
-	public event Func<Task>? TestFadeIn;
 
 	private RunManager()
 	{
@@ -348,7 +289,10 @@ public class RunManager : IRunLobbyListener
 			throw new InvalidOperationException("State is already set.");
 		}
 		State = state;
-		await SaveManager.Instance.IncrementNumReloads(save, NetGameType.Singleplayer);
+		if (TestMode.IsOff)
+		{
+			await SaveManager.Instance.IncrementNumReloads(save, isMultiplayer: false);
+		}
 		INetGameService netService = new NetSingleplayerGameService();
 		InitializeShared(netService, new PeerInputSynchronizer(netService), shouldSave: true, save.DailyTime, save.StartTime, save.RunTime, save.WinTime, save.NumReloads);
 		InitializeRunLobby(netService, state);
@@ -373,7 +317,10 @@ public class RunManager : IRunLobbyListener
 		}
 		State = state;
 		SerializableRun save = lobby.Run;
-		await SaveManager.Instance.IncrementNumReloads(save, lobby.NetService.Type);
+		if (lobby.NetService.Type == NetGameType.Host && TestMode.IsOff)
+		{
+			await SaveManager.Instance.IncrementNumReloads(save, isMultiplayer: true);
+		}
 		InitializeShared(lobby.NetService, lobby.InputSynchronizer, shouldSave: true, save.DailyTime, save.StartTime, save.RunTime, save.WinTime, save.NumReloads);
 		InitializeRunLobby(lobby.NetService, state);
 		InitializeSavedRun(save);
@@ -458,9 +405,10 @@ public class RunManager : IRunLobbyListener
 		PlayerChoiceSynchronizer = new PlayerChoiceSynchronizer(NetService, State);
 		MapSelectionSynchronizer = new MapSelectionSynchronizer(NetService, ActionQueueSynchronizer, State);
 		ActChangeSynchronizer = new ActChangeSynchronizer(State);
-		EventSynchronizer = new EventSynchronizer(RunLocationTargetedBuffer, NetService, State, State, netId, State.Rng.Seed);
+		EventSynchronizer = new EventSynchronizer(RunLocationTargetedBuffer, NetService, State, netId, State.Rng.Seed);
 		RewardSynchronizer = new RewardSynchronizer(RunLocationTargetedBuffer, NetService, State, netId);
 		RewardsSetSynchronizer = new RewardsSetSynchronizer(RunLocationTargetedBuffer, NetService, State, netId);
+		RestSiteSynchronizer = new RestSiteSynchronizer(RunLocationTargetedBuffer, NetService, State, netId);
 		OneOffSynchronizer = new OneOffSynchronizer(RunLocationTargetedBuffer, NetService, State, netId);
 		TreasureRoomRelicSynchronizer = new TreasureRoomRelicSynchronizer(State, netId, ActionQueueSynchronizer, State.SharedRelicGrabBag, State.Rng.TreasureRoomRelics);
 		CombatReplayWriter = new CombatReplayWriter(PlayerChoiceSynchronizer, RewardsSetSynchronizer, ActionQueueSet, ActionQueueSynchronizer, ChecksumTracker);
@@ -473,11 +421,10 @@ public class RunManager : IRunLobbyListener
 		ShouldSave = shouldSave;
 		DailyTime = dailyTime;
 		_startTime = startTime;
-		_prevSessionRunTime = runTime;
-		_activeRunTime = 0L;
+		_prevRunTime = runTime;
 		WinTime = winTime;
 		_numReloads = numReloads;
-		_startOfCurrentActiveRunTime = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+		_sessionStartTime = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
 		InputSynchronizer = inputSynchronizer;
 		HoveredModelTracker = new HoveredModelTracker(InputSynchronizer, State);
 	}
@@ -490,7 +437,6 @@ public class RunManager : IRunLobbyListener
 			RunLobby.RemotePlayerDisconnected += RemotePlayerDisconnected;
 		}
 		CombatStateSynchronizer = new CombatStateSynchronizer(NetService, RunLobby, state);
-		RestSiteSynchronizer = new RestSiteSynchronizer(RunLocationTargetedBuffer, NetService, state, NetService.NetId, RunLobby);
 	}
 
 	/// <summary>
@@ -1010,36 +956,9 @@ public class RunManager : IRunLobbyListener
 	/// </summary>
 	private async Task FadeIn(bool showTransition = true)
 	{
-		if (TestMode.IsOn)
-		{
-			Task task = this.TestFadeIn?.Invoke();
-			if (task != null)
-			{
-				await task;
-			}
-		}
-		else
+		if (!TestMode.IsOn)
 		{
 			await NGame.Instance.Transition.RoomFadeIn(showTransition);
-		}
-	}
-
-	/// <summary>
-	/// Helper to call the universal "exit the room" fade out vfx.
-	/// </summary>
-	private async Task FadeOut()
-	{
-		if (TestMode.IsOn)
-		{
-			Task task = this.TestFadeOut?.Invoke();
-			if (task != null)
-			{
-				await task;
-			}
-		}
-		else
-		{
-			await NGame.Instance.Transition.RoomFadeOut();
 		}
 	}
 
@@ -1072,8 +991,6 @@ public class RunManager : IRunLobbyListener
 	{
 		using (new NetLoadingHandle(NetService))
 		{
-			ClearScreens();
-			await ExitCurrentRooms();
 			CombatStateSynchronizer.StartSync();
 			if (model is EncounterModel encounterModel)
 			{
@@ -1125,6 +1042,7 @@ public class RunManager : IRunLobbyListener
 			{
 				CombatReplayWriter.RecordInitialState(ToSave(null));
 			}
+			ClearScreens();
 			State.AppendToMapPointHistory(pointType, roomType, model?.Id);
 			NRun.Instance?.GlobalUi.TopBar.RoomIcon.DebugSetMapPointTypeOverride(pointType);
 			if (State.Map is MockSinglePointActMap mockSinglePointActMap)
@@ -1267,7 +1185,10 @@ public class RunManager : IRunLobbyListener
 		{
 			if (fadeToBlack)
 			{
-				await FadeOut();
+				if (TestMode.IsOff)
+				{
+					await NGame.Instance.Transition.RoomFadeOut();
+				}
 				ClearScreens();
 			}
 			await CombatStateSynchronizer.WaitForSync();
@@ -1301,7 +1222,10 @@ public class RunManager : IRunLobbyListener
 					await WinRun();
 					return;
 				}
-				await FadeOut();
+				if (TestMode.IsOff)
+				{
+					await NGame.Instance.Transition.RoomFadeOut();
+				}
 				ClearScreens();
 				await EnterRoom(new EventRoom(ModelDb.Event<TheArchitect>()));
 				await FadeIn();
@@ -1330,7 +1254,10 @@ public class RunManager : IRunLobbyListener
 		{
 			return;
 		}
-		await FadeOut();
+		if (TestMode.IsOff)
+		{
+			await NGame.Instance.Transition.RoomFadeOut();
+		}
 		using (new NetLoadingHandle(NetService))
 		{
 			ClearScreens();
@@ -1579,7 +1506,6 @@ public class RunManager : IRunLobbyListener
 			IsCleaningUp = false;
 			LocalContext.NetId = null;
 			State = null;
-			DailyTime = null;
 		}
 	}
 

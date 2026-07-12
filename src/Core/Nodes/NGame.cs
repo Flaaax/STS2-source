@@ -65,8 +65,6 @@ public partial class NGame : Control
 
 	public static readonly Vector2 devResolution = new Vector2(1920f, 1080f);
 
-	private readonly TaskCompletionSource _gameStartupComplete = new TaskCompletionSource();
-
 	private Control _inspectionContainer;
 
 	private NScreenShake _screenShake;
@@ -116,13 +114,6 @@ public partial class NGame : Control
 	public string? DebugSeedOverride { get; set; }
 
 	public bool StartOnMainMenu { get; set; } = true;
-
-	/// <summary>
-	/// Completes when <see cref="M:MegaCrit.Sts2.Core.Nodes.NGame.GameStartup" /> has finished (including <see cref="T:MegaCrit.Sts2.Core.Models.ModelDb" /> initialization), whether
-	/// it succeeded or threw. Used by <see cref="T:MegaCrit.Sts2.Core.Nodes.Debug.NSceneBootstrapper" /> to wait for initialization before starting a
-	/// debug run, since it can create its own NGame and would otherwise race the async startup.
-	/// </summary>
-	public Task GameStartupComplete => _gameStartupComplete.Task;
 
 	public static bool IsTrailerMode { get; private set; }
 
@@ -189,7 +180,6 @@ public partial class NGame : Control
 	{
 		if (!(await InitializePlatform()))
 		{
-			_gameStartupComplete.TrySetResult();
 			return;
 		}
 		TaskHelper.RunSafely(OsDebugInfo.LogSystemInfo());
@@ -197,11 +187,9 @@ public partial class NGame : Control
 		try
 		{
 			await GameStartup();
-			_gameStartupComplete.TrySetResult();
 		}
 		catch
 		{
-			_gameStartupComplete.TrySetResult();
 			TaskHelper.RunSafely(GameStartupError());
 			throw;
 		}
@@ -324,7 +312,6 @@ public partial class NGame : Control
 			await LaunchMainMenu(skipLogo);
 			CheckShowSaveFileError(progressReadResult, prefsReadResult, OneTimeInitialization.SettingsReadResult);
 			CheckShowLocalizationOverrideErrors();
-			CheckShowModdedSaveFilePopup();
 		}
 		ModManager.OnModDetected += OnNewModDetected;
 	}
@@ -981,18 +968,6 @@ public partial class NGame : Control
 	}
 
 	/// <summary>
-	/// If the player launched with mods for the first time, then display a dialog saying their saves were copied.
-	/// </summary>
-	private void CheckShowModdedSaveFilePopup()
-	{
-		if (ModManager.UnmoddedSavesWereCopied)
-		{
-			NErrorPopup modalToCreate = NErrorPopup.Create(new LocString("main_menu_ui", "MODDED_SAVE_COPY_POPUP.title"), new LocString("main_menu_ui", "MODDED_SAVE_COPY_POPUP.body"), null, showReportBugButton: false);
-			NModalContainer.Instance.Add(modalToCreate);
-		}
-	}
-
-	/// <summary>
 	/// Contains platform-specific initialization. This must complete before the game can be allowed to proceed.
 	/// </summary>
 	private async Task<bool> InitializePlatform()
@@ -1017,9 +992,7 @@ public partial class NGame : Control
 				return false;
 			}
 			NModalContainer.Instance.Add(nGenericPopup);
-			LocString locString = new LocString("main_menu_ui", "STEAM_INIT_ERROR.description");
-			locString.Add("details", SteamInitializer.InitErrorMessage ?? "<null>");
-			await nGenericPopup.WaitForConfirmation(locString, new LocString("main_menu_ui", "STEAM_INIT_ERROR.title"), null, new LocString("main_menu_ui", "QUIT"));
+			await nGenericPopup.WaitForConfirmation(new LocString("main_menu_ui", "STEAM_INIT_ERROR.description"), new LocString("main_menu_ui", "STEAM_INIT_ERROR.title"), null, new LocString("main_menu_ui", "QUIT"));
 			GetTree().Quit();
 		}
 		else
@@ -1082,10 +1055,5 @@ public partial class NGame : Control
 			this.MoveChildSafely(FeedbackScreen, Transition.GetIndex() - 1);
 		}
 		return FeedbackScreen;
-	}
-
-	public static string GetGameVersion()
-	{
-		return ReleaseInfoManager.Instance.ReleaseInfo?.Version ?? GitHelper.ShortCommitId ?? "UNKNOWN";
 	}
 }

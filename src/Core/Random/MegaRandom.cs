@@ -62,6 +62,14 @@ public sealed class MegaRandom
 	private ulong _s3;
 
 	/// <summary>
+	/// Initializes a new instance with a seed from the default seed source.
+	/// </summary>
+	public MegaRandom()
+	{
+		Reinitialise(0uL);
+	}
+
+	/// <summary>
 	/// Initializes a new instance with the provided seed.
 	/// </summary>
 	/// <param name="seed">Seed value.</param>

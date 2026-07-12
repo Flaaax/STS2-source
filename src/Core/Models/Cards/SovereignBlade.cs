@@ -123,7 +123,7 @@ public sealed class SovereignBlade : CardModel
 	{
 		string animName = ((base.Owner.Character is Regent) ? "sovereignBladeTrigger" : "Cast");
 		float delay = ((base.Owner.Character is Regent) ? 0.25f : base.Owner.Character.CastAnimDelay);
-		AttackCommand attackCommand = DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this, cardPlay).WithHitCount(base.DynamicVars.Repeat.IntValue)
+		AttackCommand attackCommand = DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).WithHitCount(base.DynamicVars.Repeat.IntValue)
 			.WithAttackerAnim(animName, delay)
 			.WithAttackerFx(null, "event:/sfx/characters/regent/regent_sovereign_blade");
 		if (HasSeekingEdge)

@@ -53,13 +53,6 @@ public class ActionQueueSet
 
 	private bool _isInCombat;
 
-	/// <summary>
-	/// Set to true by <see cref="M:MegaCrit.Sts2.Core.GameActions.Multiplayer.ActionQueueSet.Reset" /> and back to false by <see cref="M:MegaCrit.Sts2.Core.GameActions.Multiplayer.ActionQueueSet.CombatStarted" />.
-	/// This lets <see cref="M:MegaCrit.Sts2.Core.GameActions.Multiplayer.ActionQueueSet.PopAction(MegaCrit.Sts2.Core.GameActions.GameAction)" /> no-op for actions that were orphaned mid-execution when their queue was
-	/// cleared out from under them.
-	/// </summary>
-	private bool _wasReset;
-
 	public bool IsEmpty
 	{
 		get
@@ -395,7 +388,6 @@ public class ActionQueueSet
 	public void CombatStarted()
 	{
 		_logger.Debug("Combat started.");
-		_wasReset = false;
 		_isInCombat = true;
 		foreach (ActionQueue actionQueue in _actionQueues)
 		{
@@ -405,7 +397,6 @@ public class ActionQueueSet
 
 	public void Reset()
 	{
-		_wasReset = true;
 		_actionQueues.Clear();
 		CheckIfQueuesEmpty();
 		this.ActionQueueChanged?.Invoke();
@@ -530,10 +521,6 @@ public class ActionQueueSet
 	/// </summary>
 	private void PopAction(GameAction action)
 	{
-		if (_wasReset)
-		{
-			return;
-		}
 		bool flag = false;
 		foreach (ActionQueue actionQueue in _actionQueues)
 		{

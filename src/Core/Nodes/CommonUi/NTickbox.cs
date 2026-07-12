@@ -75,11 +75,6 @@ public partial class NTickbox : NButton
 	protected override void OnRelease()
 	{
 		base.OnRelease();
-		ForceToggleTick();
-	}
-
-	public void ForceToggleTick()
-	{
 		IsTicked = !IsTicked;
 		if (IsTicked)
 		{

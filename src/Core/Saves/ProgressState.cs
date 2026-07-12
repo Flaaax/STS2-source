@@ -597,10 +597,8 @@ public class ProgressState
 			{
 				ctx.Warn("Null or none enemy ID, skipping");
 				ctx.PopPath();
-				continue;
 			}
-			MonsterModel byIdOrNull = ModelDb.GetByIdOrNull<MonsterModel>(enemyStats.Id);
-			if (byIdOrNull == null)
+			else if (ModelDb.GetByIdOrNull<MonsterModel>(enemyStats.Id) == null)
 			{
 				ctx.Warn($"Unknown enemy ID: {enemyStats.Id}");
 				AddEnemyStats(enemyStats, unknown, ctx);

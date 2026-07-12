@@ -225,7 +225,7 @@ public abstract class DecimillipedeSegment : MonsterModel
 		{
 			return;
 		}
-		IEnumerable<Creature> enumerable = from c in base.CombatState.GetTeammatesOf(base.Creature)
+		IEnumerable<Creature> enumerable = from c in base.Creature.CombatState.GetTeammatesOf(base.Creature)
 			where c.Monster is DecimillipedeSegment
 			select c;
 		foreach (Creature item in enumerable)

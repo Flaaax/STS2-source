@@ -386,9 +386,7 @@ public class CombatManager
 
 	public async Task StartCombatInternal()
 	{
-		RunManager.Instance.ActionExecutor.Unpause();
 		await RunManager.Instance.ActionExecutor.FinishedExecutingActions();
-		RunManager.Instance.ActionExecutor.Pause();
 		if (_state.Encounter.HasBgm)
 		{
 			NRunMusicController.Instance?.PlayCustomMusic(_state.Encounter.CustomBgm);
@@ -398,6 +396,7 @@ public class CombatManager
 			await AfterCreatureAdded(creature);
 			CombatCt.ThrowIfCancellationRequested();
 		}
+		RunManager.Instance.ActionExecutor.Pause();
 		RunManager.Instance.ActionQueueSynchronizer.SetCombatState(ActionSynchronizerCombatState.NotPlayPhase);
 		IsInProgress = true;
 		IsStarting = false;
@@ -615,7 +614,6 @@ public class CombatManager
 	{
 		await setupPlayerTurnTask;
 		player.PlayerCombatState.Phase = PlayerTurnPhase.AutoPrePlay;
-		await CheckForEmptyHand(playerChoiceContext, player);
 		await Hook.AfterAutoPrePlayPhaseEntered(playerChoiceContext, _state, player);
 		player.PlayerCombatState.Phase = PlayerTurnPhase.Play;
 	}
@@ -776,14 +774,12 @@ public class CombatManager
 			Log.Error("Trying to set player ready to begin enemy turn, but combat is over!");
 		}
 		bool flag;
-		bool flag2;
 		using (_playerReadyLock.EnterScope())
 		{
 			_playersReadyToBeginEnemyTurn.Add(player);
-			flag = _state.CurrentSide == CombatSide.Player;
-			flag2 = _playersReadyToBeginEnemyTurn.Count == _state.Players.Count && flag;
+			flag = _playersReadyToBeginEnemyTurn.Count == _state.Players.Count && _state.CurrentSide == CombatSide.Player;
 		}
-		if (flag2 || (flag && RunManager.Instance.NetService.Type == NetGameType.Singleplayer))
+		if (flag || RunManager.Instance.NetService.Type == NetGameType.Singleplayer)
 		{
 			TaskHelper.RunSafely(AfterAllPlayersReadyToBeginEnemyTurn(actionDuringEnemyTurn));
 		}
@@ -818,20 +814,19 @@ public class CombatManager
 		return true;
 	}
 
-	private async Task EndEnemyTurn(CancellationToken? combatCt = null)
+	private async Task EndEnemyTurn()
 	{
 		if (IsInProgress)
 		{
-			CancellationToken ct = combatCt ?? CombatCt;
-			ct.ThrowIfCancellationRequested();
+			CombatCt.ThrowIfCancellationRequested();
 			if (_state.CurrentSide != CombatSide.Enemy)
 			{
 				throw new InvalidOperationException($"EndEnemyTurn called while the current side is {_state.CurrentSide}!");
 			}
 			await WaitForUnpause();
-			ct.ThrowIfCancellationRequested();
+			CombatCt.ThrowIfCancellationRequested();
 			await EndEnemyTurnInternal();
-			ct.ThrowIfCancellationRequested();
+			CombatCt.ThrowIfCancellationRequested();
 			await CheckWinCondition();
 			if (!IsEnding)
 			{
@@ -884,10 +879,8 @@ public class CombatManager
 	///
 	/// So, instead of automatically doing this check every time the hand size changes, we manually check after a card
 	/// is played, and after a potion is used, since these are the two ways a player can manually interact with combat
-	/// state (besides ending turn, which should not trigger an empty hand check). We also check once at the start of
-	/// the play-capable phase (see <see cref="M:MegaCrit.Sts2.Core.Combat.CombatManager.RunAutoPrePlayPhase(MegaCrit.Sts2.Core.GameActions.Multiplayer.HookPlayerChoiceContext,System.Threading.Tasks.Task,MegaCrit.Sts2.Core.Entities.Players.Player)" />), to catch a hand draw that ends empty because
-	/// every card was auto-played as it was drawn. If we ever add more ways, we should add this check in those too,
-	/// and update this comment.
+	/// state (besides ending turn, which should not trigger an empty hand check). If we ever add more ways, we should
+	/// add this check in those too, and update this comment.
 	/// </summary>
 	/// <param name="choiceContext">Object that keeps context of the action this is called from.</param>
 	/// <param name="player">Player whose hand we want to check.</param>
@@ -931,14 +924,14 @@ public class CombatManager
 	{
 		if (IsInProgress)
 		{
-			Log.Info($"Player {player.NetId} died, doing death handling");
-			List<CardModel> list = new List<CardModel>();
-			list.AddRange(player.PlayerCombatState.Hand.Cards);
-			list.AddRange(player.PlayerCombatState.DrawPile.Cards);
-			list.AddRange(player.PlayerCombatState.DiscardPile.Cards);
-			list.AddRange(player.PlayerCombatState.ExhaustPile.Cards);
-			list.AddRange(player.PlayerCombatState.PlayPile.Cards);
-			CardModel[] cards = list.ToArray();
+			CardModel[] cards = new CardPile[5]
+			{
+				player.PlayerCombatState.Hand,
+				player.PlayerCombatState.DrawPile,
+				player.PlayerCombatState.DiscardPile,
+				player.PlayerCombatState.ExhaustPile,
+				player.PlayerCombatState.PlayPile
+			}.SelectMany((CardPile p) => p.Cards).ToArray();
 			await CardPileCmd.RemoveFromCombat(cards);
 			await PlayerCmd.SetEnergy(0m, player);
 			await PlayerCmd.SetStars(0m, player);
@@ -1071,12 +1064,10 @@ public class CombatManager
 		{
 			return;
 		}
-		CancellationToken ct = CombatCt;
-		ct.ThrowIfCancellationRequested();
+		CombatCt.ThrowIfCancellationRequested();
 		if (actionDuringEnemyTurn != null)
 		{
 			await actionDuringEnemyTurn();
-			ct.ThrowIfCancellationRequested();
 		}
 		foreach (Creature enemy in _state.Enemies.ToList())
 		{
@@ -1088,7 +1079,7 @@ public class CombatManager
 					await nCreature.PerformIntent();
 				}
 				await enemy.TakeTurn();
-				ct.ThrowIfCancellationRequested();
+				CombatCt.ThrowIfCancellationRequested();
 				await WaitForUnpause();
 				await CheckWinCondition();
 				if (!IsInProgress)
@@ -1098,7 +1089,7 @@ public class CombatManager
 			}
 		}
 		RunManager.Instance.ChecksumTracker.GenerateChecksum("After enemy turn end", null);
-		await EndEnemyTurn(ct);
+		await EndEnemyTurn();
 	}
 
 	private async Task WaitForActionThenEndTurn(GameAction action, Func<Task>? actionDuringEnemyTurn)
@@ -1185,7 +1176,7 @@ public class CombatManager
 		}
 		if (_state != null)
 		{
-			await Hook.BeforeSideTurnEnd(_state, _state.CurrentSide, playersEndingTurn.Select((Player p) => p.Creature));
+			await Hook.BeforeTurnEnd(_state, _state.CurrentSide, playersEndingTurn.Select((Player p) => p.Creature));
 		}
 		if (await CheckWinCondition())
 		{
@@ -1205,10 +1196,6 @@ public class CombatManager
 		foreach (HookPlayerChoiceContext item2 in playerEndContexts)
 		{
 			await item2.WaitForCompletion();
-		}
-		if (await CheckWinCondition())
-		{
-			return;
 		}
 		if (_state != null)
 		{
@@ -1234,6 +1221,7 @@ public class CombatManager
 			return;
 		}
 		CardPile pile = PileType.Hand.GetPile(player);
+		PileType.Discard.GetPile(player);
 		List<CardModel> turnEndCards = new List<CardModel>();
 		List<CardModel> list = new List<CardModel>();
 		foreach (CardModel card in pile.Cards)
@@ -1260,12 +1248,12 @@ public class CombatManager
 	private async Task EndEnemyTurnInternal()
 	{
 		List<Creature> enemies = _state.CreaturesOnCurrentSide.ToList();
-		await Hook.BeforeSideTurnEnd(_state, _state.CurrentSide, enemies);
+		await Hook.BeforeTurnEnd(_state, _state.CurrentSide, enemies);
 		foreach (Player player in _state.Players)
 		{
 			player.PlayerCombatState.EndOfTurnCleanup();
 		}
-		await Hook.AfterSideTurnEnd(_state, _state.CurrentSide, enemies);
+		await Hook.AfterTurnEnd(_state, _state.CurrentSide, enemies);
 	}
 
 	private async Task AfterAllPlayersReadyToBeginEnemyTurn(Func<Task>? actionDuringEnemyTurn = null)
@@ -1316,7 +1304,7 @@ public class CombatManager
 		}
 		if (_state != null)
 		{
-			await Hook.AfterSideTurnEnd(_state, _state.CurrentSide, playersEndingTurn.Select((Player p) => p.Creature));
+			await Hook.AfterTurnEnd(_state, _state.CurrentSide, playersEndingTurn.Select((Player p) => p.Creature));
 			CombatCt.ThrowIfCancellationRequested();
 		}
 		RunManager.Instance.ChecksumTracker.GenerateChecksum("after player turn phase two end", null);

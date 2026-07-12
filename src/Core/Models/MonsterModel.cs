@@ -21,7 +21,6 @@ using MegaCrit.Sts2.Core.MonsterMoves.MonsterMoveStateMachine;
 using MegaCrit.Sts2.Core.Nodes.Combat;
 using MegaCrit.Sts2.Core.Random;
 using MegaCrit.Sts2.Core.Runs;
-using MegaCrit.Sts2.Core.TestSupport;
 
 namespace MegaCrit.Sts2.Core.Models;
 
@@ -171,8 +170,6 @@ public abstract class MonsterModel : AbstractModel
 
 	public virtual bool ShouldDisappearFromDoom => true;
 
-	public virtual float HurtAnimationTrackOffsetForDoom => 0.1f;
-
 	public virtual bool ShouldShowInCompendium => true;
 
 	/// <summary>
@@ -213,8 +210,10 @@ public abstract class MonsterModel : AbstractModel
 
 	/// <summary>
 	/// The CombatState that this monster's creature exists in.
+	/// Will technically be null on a canonical monster model, but we should never be checking that, so we leave this as
+	/// non-nullable for convenience.
 	/// </summary>
-	public ICombatState CombatState => Creature.CombatState ?? NullCombatState.Instance;
+	public ICombatState CombatState => Creature.CombatState;
 
 	/// <summary>
 	/// Get this monster's move state machine.
@@ -441,10 +440,7 @@ public abstract class MonsterModel : AbstractModel
 			IsPerformingMove = true;
 			MoveState move = NextMove;
 			IReadOnlyList<Creature> targets = combatState.PlayerCreatures;
-			if (TestMode.IsOff)
-			{
-				Log.Info("Monster " + base.Id.Entry + " performing move " + move.Id);
-			}
+			Log.Info("Monster " + base.Id.Entry + " performing move " + move.Id);
 			await move.PerformMove(targets);
 			MoveStateMachine?.OnMovePerformed(move);
 			CombatManager.Instance.History.MonsterPerformedMove(combatState, this, move, targets);

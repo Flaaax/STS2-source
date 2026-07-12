@@ -19,7 +19,7 @@ public sealed class ThornsPower : PowerModel
 		if (target == base.Owner && dealer != null && (props.IsPoweredAttack() || cardSource is Omnislice))
 		{
 			Flash();
-			await CreatureCmd.Damage(choiceContext, dealer, base.Amount, ValueProp.Unpowered | ValueProp.SkipHurtAnim, base.Owner, null, null);
+			await CreatureCmd.Damage(choiceContext, dealer, base.Amount, ValueProp.Unpowered | ValueProp.SkipHurtAnim, base.Owner, null);
 		}
 	}
 }

@@ -208,10 +208,6 @@ public class Rng
 		{
 			throw new ArgumentOutOfRangeException("min", "Minimum must not be higher than maximum.");
 		}
-		if ((mean < 0.0 || mean > 1.0) ? true : false)
-		{
-			throw new ArgumentOutOfRangeException("mean", mean, "Mean must be within [0, 1].");
-		}
 		double num4;
 		do
 		{
@@ -237,14 +233,6 @@ public class Rng
 	/// </summary>
 	public int NextGaussianInt(int mean, int stdDev, int min, int max)
 	{
-		if (min > max)
-		{
-			throw new ArgumentOutOfRangeException("min", "Minimum must not be higher than maximum.");
-		}
-		if (mean < min || mean > max)
-		{
-			throw new ArgumentOutOfRangeException("mean", mean, "Mean must be within [min, max].");
-		}
 		int num3;
 		do
 		{

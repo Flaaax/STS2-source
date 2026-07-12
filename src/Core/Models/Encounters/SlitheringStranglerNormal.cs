@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
-using MegaCrit.Sts2.Core.Entities.Encounters;
 using MegaCrit.Sts2.Core.Models.Monsters;
 using MegaCrit.Sts2.Core.Rooms;
 
@@ -30,12 +29,6 @@ public sealed class SlitheringStranglerNormal : EncounterModel
 	};
 
 	public override RoomType RoomType => RoomType.Monster;
-
-	public override IEnumerable<EncounterTag> Tags => new global::_003C_003Ez__ReadOnlyArray<EncounterTag>(new EncounterTag[2]
-	{
-		EncounterTag.Jaxfruit,
-		EncounterTag.Slimes
-	});
 
 	public override IEnumerable<MonsterModel> AllPossibleMonsters
 	{

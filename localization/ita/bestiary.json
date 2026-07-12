@@ -7,13 +7,8 @@
   "ACTION_NAME.revive": "Rinascita",
   "ACTION_NAME.stun": "Stordimento",
   "DESCRIPTION.placeholder": "Le informazioni su questo mostro devono essere ancora svelate...",
-  "EVENTS.title": "Eventi",
   "LOCKED.monsterName": "[lb]Locked[rb]",
   "LOCKED.monsterTitle": "Da sbloccare",
-  "MODE.viewActions": "Visualizza azioni",
-  "MODE.viewStats": "Visualizza statistiche",
-  "QUOTE_PLACEHOLDER": "[red][i](Il dialogo di questo personaggio non è ancora stato scritto)[/i][/red]",
-  "STATS.layout": "Incontri: [blue]{total}[/blue]\nUccisioni: [green]{kills}[/green]\nMorti: [red]{deaths}[/red]\nPercentuale di vittorie: [gold]{winrate}%[/gold]",
   "UNDER_CONSTRUCTION": "In lavorazione",
   "UNSEEN.monsterName": "[lb]Unknown[rb]"
 }

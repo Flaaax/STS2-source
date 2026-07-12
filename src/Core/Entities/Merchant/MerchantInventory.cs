@@ -140,7 +140,7 @@ public class MerchantInventory
 
 	private void PopulatePotionEntries()
 	{
-		List<PotionModel> list = PotionFactory.CreateRandomPotionsOutOfCombat(Player, 3, Player.PlayerRng.Shops).ToList();
+		List<PotionModel> list = PotionFactory.CreateRandomPotionsOutOfCombat(Player, 3, Player.PlayerRng.Shops);
 		foreach (PotionModel item in list)
 		{
 			_potionEntries.Add(new MerchantPotionEntry(item.ToMutable(), Player));

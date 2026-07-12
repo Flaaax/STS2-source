@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using MegaCrit.Sts2.Core.Entities.Multiplayer;
 using MegaCrit.Sts2.Core.Entities.Players;
-using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Multiplayer.Game;
 using MegaCrit.Sts2.Core.Multiplayer.Messages.Game;
@@ -368,10 +367,10 @@ public class ActionQueueSynchronizer
 		if (action == null)
 		{
 			action = new GenericHookGameAction(id, ownerId, gameActionType);
-			TaskHelper.RunSafely(action.ExecutionStartedTask.ContinueWith(delegate
+			action.ExecutionStartedTask.ContinueWith(delegate
 			{
 				HookActionStarted(action);
-			}));
+			});
 			_hookActions.Add(action);
 		}
 		else

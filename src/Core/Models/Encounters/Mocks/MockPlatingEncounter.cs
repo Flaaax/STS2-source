@@ -8,9 +8,9 @@ public sealed class MockPlatingEncounter : EncounterModel
 {
 	private int _platingAmount = 1;
 
-	public override bool IsMock => true;
-
 	public override RoomType RoomType => RoomType.Monster;
+
+	public override bool IsDebugEncounter => true;
 
 	public int PlatingAmount
 	{

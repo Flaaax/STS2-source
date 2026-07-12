@@ -33,7 +33,7 @@ public partial class MegaRichTextLabel : RichTextLabel
 
 	private Vector2 _lastAdjustedSize;
 
-	private static readonly AbstractMegaRichTextEffect[] _textEffects = new AbstractMegaRichTextEffect[14]
+	private static readonly AbstractMegaRichTextEffect[] _textEffects = new AbstractMegaRichTextEffect[13]
 	{
 		new RichTextAqua(),
 		new RichTextBlue(),
@@ -46,7 +46,6 @@ public partial class MegaRichTextLabel : RichTextLabel
 		new RichTextPink(),
 		new RichTextPurple(),
 		new RichTextRed(),
-		new RichTextScramble(),
 		new RichTextSine(),
 		new RichTextThinkyDots()
 	};

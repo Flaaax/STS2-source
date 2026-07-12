@@ -24,23 +24,10 @@ public sealed class Misery : CardModel
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
 	{
 		ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
-		Dictionary<PowerModel, int> debuffAmounts = (from p in cardPlay.Target.Powers
+		List<PowerModel> originalDebuffs = (from p in cardPlay.Target.Powers
 			where p.TypeForCurrentAmount == PowerType.Debuff
-			select ((PowerModel)p.ClonePreservingMutability(), Amount: p.Amount)).ToDictionary();
-		foreach (KeyValuePair<PowerModel, int> item in debuffAmounts)
-		{
-			PowerModel key = item.Key;
-			ITemporaryPower temporaryPower = key as ITemporaryPower;
-			if (temporaryPower != null)
-			{
-				KeyValuePair<PowerModel, int> keyValuePair = debuffAmounts.FirstOrDefault<KeyValuePair<PowerModel, int>>((KeyValuePair<PowerModel, int> p) => p.Key.Id == temporaryPower.InternallyAppliedPower.Id);
-				if (keyValuePair.Key != null)
-				{
-					debuffAmounts[keyValuePair.Key] += item.Value;
-				}
-			}
-		}
-		await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this, cardPlay).Targeting(cardPlay.Target)
+			select (PowerModel)p.ClonePreservingMutability()).ToList();
+		await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
 			.WithHitFx("vfx/vfx_attack_slash")
 			.Execute(choiceContext);
 		foreach (Creature enemy in base.CombatState.HittableEnemies)
@@ -49,20 +36,29 @@ public sealed class Misery : CardModel
 			{
 				continue;
 			}
-			foreach (KeyValuePair<PowerModel, int> item2 in debuffAmounts)
+			foreach (PowerModel item in originalDebuffs)
 			{
-				if (item2.Value != 0)
+				PowerModel powerModel = PowerCmd.FindExistingInstanceForStacking(item, enemy, item.Applier);
+				if (powerModel != null)
 				{
-					PowerModel powerModel = PowerCmd.FindExistingInstanceForStacking(item2.Key, enemy, item2.Key.Applier);
-					if (powerModel != null)
-					{
-						await PowerCmd.ModifyAmount(choiceContext, powerModel, item2.Value, item2.Key.Applier, this);
-						continue;
-					}
-					PowerModel power = (PowerModel)item2.Key.ClonePreservingMutability();
-					await PowerCmd.Apply(choiceContext, power, enemy, item2.Value, item2.Key.Applier, this);
+					DoHackyThingsForSpecificPowers(powerModel);
+					await PowerCmd.ModifyAmount(choiceContext, powerModel, item.Amount, item.Applier, this);
+				}
+				else
+				{
+					PowerModel power = (PowerModel)item.ClonePreservingMutability();
+					DoHackyThingsForSpecificPowers(power);
+					await PowerCmd.Apply(choiceContext, power, enemy, item.Amount, item.Applier, this);
 				}
 			}
+		}
+	}
+
+	private static void DoHackyThingsForSpecificPowers(PowerModel power)
+	{
+		if (power is ITemporaryPower temporaryPower)
+		{
+			temporaryPower.IgnoreNextInstance();
 		}
 	}
 

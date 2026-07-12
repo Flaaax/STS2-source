@@ -16,8 +16,8 @@ public sealed class Swift : EnchantmentModel
 	{
 		if (base.Status == EnchantmentStatus.Normal)
 		{
-			base.Status = EnchantmentStatus.Disabled;
 			await CardPileCmd.Draw(choiceContext, base.Amount, base.Card.Owner);
+			base.Status = EnchantmentStatus.Disabled;
 		}
 	}
 }

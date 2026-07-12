@@ -37,7 +37,7 @@ public sealed class FiendFire : CardModel
 			await CardCmd.Exhaust(choiceContext, item);
 		}
 		float scale = 0.8f;
-		await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).WithHitCount(cardCount).FromCard(this, cardPlay)
+		await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).WithHitCount(cardCount).FromCard(this)
 			.Targeting(cardPlay.Target)
 			.BeforeDamage(delegate
 			{

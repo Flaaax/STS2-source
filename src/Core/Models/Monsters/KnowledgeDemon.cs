@@ -127,7 +127,7 @@ public sealed class KnowledgeDemon : MonsterModel
 	protected override MonsterMoveStateMachine GenerateMoveStateMachine()
 	{
 		List<MonsterState> list = new List<MonsterState>();
-		MoveState moveState = new MoveState("CURSE_OF_KNOWLEDGE_MOVE", CurseOfKnowledgeMove, new DebuffIntent());
+		MoveState moveState = new MoveState("CURSE_OF_KNOWLEDGE_MOVE", CurseOfKnowledge, new DebuffIntent());
 		MoveState moveState2 = new MoveState("SLAP_MOVE", SlapMove, new SingleAttackIntent(SlapDamage));
 		MoveState moveState3 = new MoveState("KNOWLEDGE_OVERWHELMING_MOVE", KnowledgeOverwhelmingMove, new MultiAttackIntent(KnowledgeOverwhelmingDamage, 3));
 		MoveState moveState4 = new MoveState("PONDER_MOVE", PonderMove, new SingleAttackIntent(PonderDamage), new HealIntent(), new BuffIntent());
@@ -146,7 +146,7 @@ public sealed class KnowledgeDemon : MonsterModel
 		return new MonsterMoveStateMachine(list, moveState);
 	}
 
-	private async Task CurseOfKnowledgeMove(IReadOnlyList<Creature> targets)
+	private async Task CurseOfKnowledge(IReadOnlyList<Creature> targets)
 	{
 		if (CurseOfKnowledgeCounter >= _curseOfKnowledgeSets.Count)
 		{
@@ -161,10 +161,7 @@ public sealed class KnowledgeDemon : MonsterModel
 		}
 		await Task.WhenAll(list);
 		TalkCmd.Play(_curseOfKnowledgeDoneLine, base.Creature, VfxColor.Gold, VfxDuration.Standard);
-		if (base.CombatState.IsLiveCombat())
-		{
-			CurseOfKnowledgeCounter++;
-		}
+		CurseOfKnowledgeCounter++;
 	}
 
 	private async Task ChooseCurse(Creature target)
@@ -217,7 +214,7 @@ public sealed class KnowledgeDemon : MonsterModel
 		IsBurnt = false;
 		await DamageCmd.Attack(PonderDamage).FromMonster(this).WithHitFx("vfx/vfx_attack_blunt", null, "blunt_attack.mp3")
 			.Execute(null);
-		await CreatureCmd.Heal(base.Creature, 30 * base.CombatState.Players.Count);
+		await CreatureCmd.Heal(base.Creature, 30 * base.Creature.CombatState.Players.Count);
 		await PowerCmd.Apply<StrengthPower>(new ThrowingPlayerChoiceContext(), base.Creature, PonderStrength, base.Creature, null);
 	}
 

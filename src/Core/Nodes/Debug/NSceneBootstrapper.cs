@@ -44,7 +44,6 @@ public partial class NSceneBootstrapper : Node
 
 	private async Task StartNewRun()
 	{
-		await _game.GameStartupComplete;
 		Type type = BootstrapSettingsUtil.Get();
 		if (type == null)
 		{

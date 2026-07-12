@@ -70,6 +70,6 @@ public sealed class LivingShield : MonsterModel
 
 	private int GetAllyCount()
 	{
-		return base.CombatState.GetTeammatesOf(base.Creature).Count((Creature c) => c.IsAlive && c != base.Creature);
+		return base.Creature.CombatState.GetTeammatesOf(base.Creature).Count((Creature c) => c.IsAlive && c != base.Creature);
 	}
 }

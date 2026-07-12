@@ -32,7 +32,7 @@ public sealed class BoneShards : CardModel
 	{
 		if (!Osty.CheckMissingWithAnim(base.Owner))
 		{
-			await DamageCmd.Attack(base.DynamicVars.OstyDamage.BaseValue).FromOsty(base.Owner.Osty, this, cardPlay).TargetingAllOpponents(base.CombatState)
+			await DamageCmd.Attack(base.DynamicVars.OstyDamage.BaseValue).FromOsty(base.Owner.Osty, this).TargetingAllOpponents(base.CombatState)
 				.WithHitFx("vfx/vfx_attack_blunt", null, "blunt_attack.mp3")
 				.Execute(choiceContext);
 			await CreatureCmd.GainBlock(base.Owner.Creature, base.DynamicVars.Block, cardPlay);

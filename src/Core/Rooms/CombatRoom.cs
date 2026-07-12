@@ -266,10 +266,9 @@ public class CombatRoom : AbstractRoom, ICombatRoomVisuals
 			List<RewardsSet> list = rewards;
 			list.Add(await RewardsCmd.GenerateForRoomEnd(player, this));
 		}
-		foreach (RewardsSet reward in rewards)
+		foreach (RewardsSet item in rewards)
 		{
-			await Hook.BeforeCombatRewardOffered(reward, CombatState.RunState, this);
-			TaskHelper.RunSafely(reward.Offer());
+			TaskHelper.RunSafely(item.Offer());
 		}
 	}
 }

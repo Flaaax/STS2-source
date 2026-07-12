@@ -39,15 +39,15 @@ public partial class NPotionPopup : Control
 
 	private Tween? _tween;
 
+	public bool IsMarkedForRemoval;
+
 	private Player? _subscribedPlayer;
 
 	private PotionModel? Potion => _holder.Potion?.Model;
 
 	public bool IsUsable => _useButton.IsEnabled;
 
-	public bool IsMarkedForRemoval { get; private set; }
-
-	private static string ScenePath => SceneHelper.GetScenePath("potions/potion_popup");
+	private static string ScenePath => SceneHelper.GetScenePath("/potions/potion_popup");
 
 	public static IEnumerable<string> AssetPaths => new global::_003C_003Ez__ReadOnlySingleElementList<string>(ScenePath);
 
@@ -135,8 +135,8 @@ public partial class NPotionPopup : Control
 				throw new ArgumentOutOfRangeException("Usage");
 			}
 			_subscribedPlayer = Potion.Owner;
-			_subscribedPlayer.CanUseOrRemovePotionsChanged += RefreshButtons;
-			if (!Potion.Owner.CanUseOrRemovePotions)
+			_subscribedPlayer.CanRemovePotionsChanged += RefreshButtons;
+			if (!Potion.Owner.CanRemovePotions)
 			{
 				_useButton.Disable();
 				_discardButton.Disable();
@@ -278,7 +278,7 @@ public partial class NPotionPopup : Control
 		CombatManager.Instance.PlayerUnendedTurn -= OnPlayerEndTurnStatusChanged;
 		if (_subscribedPlayer != null)
 		{
-			_subscribedPlayer.CanUseOrRemovePotionsChanged -= RefreshButtons;
+			_subscribedPlayer.CanRemovePotionsChanged -= RefreshButtons;
 		}
 		if (NOverlayStack.Instance != null)
 		{
@@ -335,7 +335,7 @@ public partial class NPotionPopup : Control
 		if (potion2 != null)
 		{
 			Player owner = potion2.Owner;
-			if (owner != null && !owner.CanUseOrRemovePotions)
+			if (owner != null && !owner.CanRemovePotions)
 			{
 				_useButton.Disable();
 				_discardButton.Disable();

@@ -1,7 +1,6 @@
 using Godot;
 using MegaCrit.Sts2.Core.Assets;
 using MegaCrit.Sts2.Core.ControllerInput;
-using MegaCrit.Sts2.Core.Nodes.CommonUi;
 using MegaCrit.Sts2.Core.Nodes.GodotExtensions;
 using MegaCrit.Sts2.Core.Nodes.Screens.ScreenContext;
 
@@ -70,10 +69,10 @@ public partial class NControllerMapDrawingInput : NMapDrawingInput
 			_cursor.GetNode<TextureRect>("TextureRect").Texture = _cursorTex;
 			_isPressed = false;
 		}
-		_direction = NControllerManager.Instance.GetLeftAnalogStickDirection();
+		_direction = Input.GetVector(Controller.joystickLeft, Controller.joystickRight, Controller.joystickUp, Controller.joystickDown);
 		if (_direction.Length() < 0.1f)
 		{
-			_direction += Input.GetVector(Controller.dPadLeft, Controller.dPadRight, Controller.dPadUp, Controller.dPadDown);
+			_direction += Input.GetVector(Controller.dPadWest, Controller.dPadEast, Controller.dPadNorth, Controller.dPadSouth);
 		}
 		if (_direction.Length() > 0f)
 		{

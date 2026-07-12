@@ -335,18 +335,6 @@ public static class Hook
 	}
 
 	/// <summary>
-	/// See <see cref="M:MegaCrit.Sts2.Core.Models.AbstractModel.BeforeCombatRewardOffered(MegaCrit.Sts2.Core.Rewards.RewardsSet,MegaCrit.Sts2.Core.Rooms.CombatRoom)" />.
-	/// </summary>
-	public static async Task BeforeCombatRewardOffered(RewardsSet rewards, IRunState runState, CombatRoom room)
-	{
-		foreach (AbstractModel model in runState.IterateHookListeners(null))
-		{
-			await model.BeforeCombatRewardOffered(rewards, room);
-			model.InvokeExecutionFinished();
-		}
-	}
-
-	/// <summary>
 	/// See <see cref="M:MegaCrit.Sts2.Core.Models.AbstractModel.AfterCombatVictory(MegaCrit.Sts2.Core.Rooms.CombatRoom)" />.
 	/// </summary>
 	public static async Task AfterCombatVictory(IRunState runState, ICombatState? combatState, CombatRoom room)
@@ -1241,7 +1229,7 @@ public static class Hook
 	/// <summary>
 	/// See <see cref="M:MegaCrit.Sts2.Core.Models.AbstractModel.BeforeSideTurnEnd(MegaCrit.Sts2.Core.GameActions.Multiplayer.PlayerChoiceContext,MegaCrit.Sts2.Core.Combat.CombatSide,System.Collections.Generic.IEnumerable{MegaCrit.Sts2.Core.Entities.Creatures.Creature})" />.
 	/// </summary>
-	public static async Task BeforeSideTurnEnd(ICombatState combatState, CombatSide side, IEnumerable<Creature> participants)
+	public static async Task BeforeTurnEnd(ICombatState combatState, CombatSide side, IEnumerable<Creature> participants)
 	{
 		ulong? netId = LocalContext.NetId;
 		if (!netId.HasValue)
@@ -1276,7 +1264,7 @@ public static class Hook
 	/// <summary>
 	/// See <see cref="M:MegaCrit.Sts2.Core.Models.AbstractModel.AfterSideTurnEnd(MegaCrit.Sts2.Core.GameActions.Multiplayer.PlayerChoiceContext,MegaCrit.Sts2.Core.Combat.CombatSide,System.Collections.Generic.IEnumerable{MegaCrit.Sts2.Core.Entities.Creatures.Creature})" />.
 	/// </summary>
-	public static async Task AfterSideTurnEnd(ICombatState combatState, CombatSide side, IEnumerable<Creature> participants)
+	public static async Task AfterTurnEnd(ICombatState combatState, CombatSide side, IEnumerable<Creature> participants)
 	{
 		ulong? netId = LocalContext.NetId;
 		if (!netId.HasValue)
@@ -1493,9 +1481,9 @@ public static class Hook
 	}
 
 	/// <summary>
-	/// See <see cref="M:MegaCrit.Sts2.Core.Models.AbstractModel.ModifyDamageAdditive(MegaCrit.Sts2.Core.Entities.Creatures.Creature,System.Decimal,MegaCrit.Sts2.Core.ValueProps.ValueProp,MegaCrit.Sts2.Core.Entities.Creatures.Creature,MegaCrit.Sts2.Core.Models.CardModel,MegaCrit.Sts2.Core.Entities.Cards.CardPlay)" />.
+	/// See <see cref="M:MegaCrit.Sts2.Core.Models.AbstractModel.ModifyDamageAdditive(MegaCrit.Sts2.Core.Entities.Creatures.Creature,System.Decimal,MegaCrit.Sts2.Core.ValueProps.ValueProp,MegaCrit.Sts2.Core.Entities.Creatures.Creature,MegaCrit.Sts2.Core.Models.CardModel)" />.
 	/// </summary>
-	public static decimal ModifyDamage(IRunState runState, ICombatState? combatState, Creature? target, Creature? dealer, decimal damage, ValueProp props, CardModel? cardSource, CardPlay? cardPlay, ModifyDamageHookType modifyDamageHookType, CardPreviewMode previewMode, out IEnumerable<AbstractModel> modifiers)
+	public static decimal ModifyDamage(IRunState runState, ICombatState? combatState, Creature? target, Creature? dealer, decimal damage, ValueProp props, CardModel? cardSource, ModifyDamageHookType modifyDamageHookType, CardPreviewMode previewMode, out IEnumerable<AbstractModel> modifiers)
 	{
 		List<AbstractModel> modifiers2 = new List<AbstractModel>();
 		decimal num = damage;
@@ -1546,7 +1534,7 @@ public static class Hook
 			foreach (Creature item in combatState?.HittableEnemies ?? Array.Empty<Creature>())
 			{
 				List<AbstractModel> modifiers3;
-				decimal num3 = ModifyDamageInternal(runState, combatState, item, dealer, num, props, cardSource, cardPlay, modifyDamageHookType, out modifiers3);
+				decimal num3 = ModifyDamageInternal(runState, combatState, item, dealer, num, props, cardSource, modifyDamageHookType, out modifiers3);
 				if (!num2.HasValue)
 				{
 					num2 = num3;
@@ -1571,7 +1559,7 @@ public static class Hook
 		}
 		if (!flag4 || !flag5)
 		{
-			num = ModifyDamageInternal(runState, combatState, target, dealer, num, props, cardSource, cardPlay, modifyDamageHookType, out modifiers2);
+			num = ModifyDamageInternal(runState, combatState, target, dealer, num, props, cardSource, modifyDamageHookType, out modifiers2);
 		}
 		modifiers = modifiers2;
 		return Math.Max(0m, num);
@@ -2520,7 +2508,7 @@ public static class Hook
 		return true;
 	}
 
-	private static decimal ModifyDamageInternal(IRunState runState, ICombatState? combatState, Creature? target, Creature? dealer, decimal damage, ValueProp props, CardModel? cardSource, CardPlay? cardPlay, ModifyDamageHookType modifyDamageHookType, out List<AbstractModel> modifiers)
+	private static decimal ModifyDamageInternal(IRunState runState, ICombatState? combatState, Creature? target, Creature? dealer, decimal damage, ValueProp props, CardModel? cardSource, ModifyDamageHookType modifyDamageHookType, out List<AbstractModel> modifiers)
 	{
 		decimal num = damage;
 		List<AbstractModel> list = new List<AbstractModel>();
@@ -2528,7 +2516,7 @@ public static class Hook
 		{
 			foreach (AbstractModel item in runState.IterateHookListeners(combatState))
 			{
-				decimal num2 = item.ModifyDamageAdditive(target, num, props, dealer, cardSource, cardPlay);
+				decimal num2 = item.ModifyDamageAdditive(target, num, props, dealer, cardSource);
 				num += num2;
 				if (num2 != 0m)
 				{
@@ -2540,7 +2528,7 @@ public static class Hook
 		{
 			foreach (AbstractModel item2 in runState.IterateHookListeners(combatState))
 			{
-				decimal num3 = item2.ModifyDamageMultiplicative(target, num, props, dealer, cardSource, cardPlay);
+				decimal num3 = item2.ModifyDamageMultiplicative(target, num, props, dealer, cardSource);
 				num *= num3;
 				if (num3 != 1m)
 				{
@@ -2553,7 +2541,7 @@ public static class Hook
 			decimal num4 = decimal.MaxValue;
 			foreach (AbstractModel item3 in runState.IterateHookListeners(combatState))
 			{
-				decimal num5 = item3.ModifyDamageCap(target, props, dealer, cardSource, cardPlay);
+				decimal num5 = item3.ModifyDamageCap(target, props, dealer, cardSource);
 				if (num5 < num4)
 				{
 					num4 = num5;

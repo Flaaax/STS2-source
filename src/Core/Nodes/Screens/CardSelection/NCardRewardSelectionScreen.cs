@@ -191,7 +191,7 @@ public partial class NCardRewardSelectionScreen : Control, IOverlayScreen, IScre
 			Task<int?> task = completionSource.Task;
 			if (task != null && !task.IsCompleted)
 			{
-				_completionSource.SetException(new TaskCanceledException());
+				_completionSource.SetResult(null);
 			}
 		}
 		foreach (NGridCardHolder item in _cardRow.GetChildren().OfType<NGridCardHolder>())

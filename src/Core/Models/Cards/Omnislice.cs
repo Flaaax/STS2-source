@@ -24,8 +24,8 @@ public sealed class Omnislice : CardModel
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
 	{
 		ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
-		await using AttackContext context = await AttackCommand.CreateContextAsync(base.CombatState, choiceContext, cardPlay);
-		List<DamageResult> list = (await CreatureCmd.Damage(choiceContext, cardPlay.Target, base.DynamicVars.Damage.BaseValue, ValueProp.Move, this, cardPlay)).ToList();
+		await using AttackContext context = await AttackCommand.CreateContextAsync(base.CombatState, choiceContext, this);
+		List<DamageResult> list = (await CreatureCmd.Damage(choiceContext, cardPlay.Target, base.DynamicVars.Damage.BaseValue, ValueProp.Move, this)).ToList();
 		context.AddHit(list);
 		DamageResult damageResult = list.FirstOrDefault();
 		if (damageResult != null)
@@ -36,7 +36,7 @@ public sealed class Omnislice : CardModel
 			if (list2.Count != 0)
 			{
 				AttackContext attackContext = context;
-				attackContext.AddHit(await CreatureCmd.Damage(choiceContext, list2, damageResult.TotalDamage + damageResult.OverkillDamage, ValueProp.Unpowered | ValueProp.Move, base.Owner.Creature, this, cardPlay));
+				attackContext.AddHit(await CreatureCmd.Damage(choiceContext, list2, damageResult.TotalDamage + damageResult.OverkillDamage, ValueProp.Unpowered | ValueProp.Move, base.Owner.Creature, this));
 			}
 		}
 	}

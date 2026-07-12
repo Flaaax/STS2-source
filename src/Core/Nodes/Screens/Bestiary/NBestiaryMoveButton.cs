@@ -3,6 +3,7 @@ using MegaCrit.Sts2.addons.mega_text;
 using MegaCrit.Sts2.Core.Assets;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Nodes.CommonUi;
 using MegaCrit.Sts2.Core.Nodes.GodotExtensions;
 
 namespace MegaCrit.Sts2.Core.Nodes.Screens.Bestiary;
@@ -23,15 +24,13 @@ public partial class NBestiaryMoveButton : NButton
 
 	private Tween? _clickTween;
 
-	private string[] _hotkeys;
+	private StringName _hotkey;
 
 	protected override string? ClickedSfx => null;
 
 	protected override string? HoveredSfx => null;
 
 	public BestiaryMonsterMove Move { get; private set; }
-
-	protected override string[] Hotkeys => _hotkeys;
 
 	public override void _Ready()
 	{
@@ -43,10 +42,26 @@ public partial class NBestiaryMoveButton : NButton
 		_buttonAnimator.PivotOffset = new Vector2(0f, _buttonAnimator.Size.Y * 0.5f);
 	}
 
+	public override void _UnhandledInput(InputEvent input)
+	{
+		if ((!(NControllerManager.Instance?.IsUsingController)) ?? true)
+		{
+			if (input.IsActionPressed(_hotkey))
+			{
+				OnPress();
+			}
+			else if (input.IsActionReleased(_hotkey))
+			{
+				EmitSignal(NClickableControl.SignalName.Released, this);
+				OnRelease();
+			}
+		}
+	}
+
 	public static NBestiaryMoveButton Create(BestiaryMonsterMove move, StringName setHotkey)
 	{
 		NBestiaryMoveButton nBestiaryMoveButton = PreloadManager.Cache.GetAsset<PackedScene>(_scenePath).Instantiate<NBestiaryMoveButton>(PackedScene.GenEditState.Disabled);
-		nBestiaryMoveButton._hotkeys = new string[1] { setHotkey };
+		nBestiaryMoveButton._hotkey = setHotkey;
 		nBestiaryMoveButton.Move = move;
 		return nBestiaryMoveButton;
 	}

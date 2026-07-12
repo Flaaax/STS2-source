@@ -1,5 +1,7 @@
 {
   "AXEBOTS_NORMAL.loss": "{character}ถูกตัดแยกชิ้นส่วนโดย[gold]{encounter}[/gold]",
+  "BATTLEWORN_DUMMY_EVENT_ENCOUNTER.loss": "{character}ถูก[gold]{encounter}[/gold]สังหารได้ไงก็ไม่รู้???",
+  "BATTLEWORN_DUMMY_EVENT_ENCOUNTER.title": "หุ่นฝึกซ้อมโชกโชน",
   "BOWLBUGS_NORMAL.loss": "{character}ดันไปขวางทาง[gold]{encounter}[/gold]เข้าแล้ว",
   "BOWLBUGS_WEAK.loss": "{character}เข้าไปขวางทางพวก[gold]{encounter}[/gold]แสนวุ่นวาย",
   "BYGONE_EFFIGY_ELITE.loss": "{character}ถูกหั่นครึ่งโดย[gold]{encounter}[/gold]",
@@ -87,7 +89,6 @@
   "SOUL_FYSH_BOSS.title": "ปฬาวิญญาณ",
   "SPINY_TOAD_NORMAL.loss": "{character}ไม่สามารถฝ่าหนามของ[gold]{encounter}[/gold]ไปได้",
   "TEST_SUBJECT_BOSS.loss": "[gold]{encounter}[/gold]ผู้ภักดี ปกป้องเจ้านายให้พ้นจาก{character}",
-  "TEST_SUBJECT_BOSS.title": "ตัวอย่างทดลอง",
   "THE_ARCHITECT_EVENT_ENCOUNTER.loss": "คุณไม่ควรได้เจอสิ่งนี้",
   "THE_ARCHITECT_EVENT_ENCOUNTER.title": "สถาปนิก",
   "THE_INSATIABLE_BOSS.loss": "[gold]{encounter}[/gold]เขมือบ{character}แต่ก็ยังหิวอยู่...",

@@ -2,7 +2,6 @@ using System;
 using Godot;
 using MegaCrit.Sts2.addons.mega_text;
 using MegaCrit.Sts2.Core.Assets;
-using MegaCrit.Sts2.Core.ControllerInput;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Modding;
 using MegaCrit.Sts2.Core.Nodes.CommonUi;
@@ -14,8 +13,6 @@ namespace MegaCrit.Sts2.Core.Nodes.Screens.ModdingScreen;
 
 public partial class NModMenuRow : NClickableControl
 {
-	private TextureRect _controllerIcon;
-
 	private static readonly string _scenePath = SceneHelper.GetScenePath("screens/modding/modding_screen_row");
 
 	private const float _selectedAlpha = 0.25f;
@@ -27,8 +24,6 @@ public partial class NModMenuRow : NClickableControl
 	private NModdingScreen _screen;
 
 	private bool _isSelected;
-
-	private string Hotkey => MegaInput.accept;
 
 	public Mod? Mod { get; private set; }
 
@@ -49,19 +44,17 @@ public partial class NModMenuRow : NClickableControl
 		if (Mod != null)
 		{
 			_selectionHighlight = GetNode<Panel>("SelectionHighlight");
-			_tickbox = GetNode<NTickbox>("Tickbox");
-			MegaRichTextLabel node = GetNode<MegaRichTextLabel>("Title");
-			TextureRect node2 = GetNode<TextureRect>("PlatformIcon");
-			_controllerIcon = GetNode<TextureRect>("ControllerIcon");
-			_tickbox = GetNode<NTickbox>("Tickbox");
+			NTickbox node = GetNode<NTickbox>("Tickbox");
+			MegaRichTextLabel node2 = GetNode<MegaRichTextLabel>("Title");
+			TextureRect node3 = GetNode<TextureRect>("PlatformIcon");
 			Panel selectionHighlight = _selectionHighlight;
 			Color color = _selectionHighlight.Modulate;
 			color.A = 0f;
 			selectionHighlight.Modulate = color;
-			_tickbox.IsTicked = !(SaveManager.Instance.SettingsSave.ModSettings?.IsModDisabled(Mod) ?? false);
-			_tickbox.Connect(NTickbox.SignalName.Toggled, Callable.From<NTickbox>(OnTickboxToggled));
-			node.Text = Mod.manifest?.name ?? Mod.manifest?.id ?? "<null>";
-			node2.Texture = GetPlatformIcon(Mod.modSource);
+			node.IsTicked = !(SaveManager.Instance.SettingsSave.ModSettings?.IsModDisabled(Mod) ?? false);
+			node.Connect(NTickbox.SignalName.Toggled, Callable.From<NTickbox>(OnTickboxToggled));
+			node2.Text = Mod.manifest?.name ?? Mod.manifest?.id ?? "<null>";
+			node3.Texture = GetPlatformIcon(Mod.modSource);
 			ModLoadState state = Mod.state;
 			switch (state)
 			{
@@ -87,22 +80,9 @@ public partial class NModMenuRow : NClickableControl
 				throw new System.Runtime.CompilerServices.SwitchExpressionException(state);
 				break;
 			}
-			Color modulate = (node.Modulate = color);
-			node2.Modulate = modulate;
+			Color modulate = (node2.Modulate = color);
+			node3.Modulate = modulate;
 			ConnectSignals();
-			NControllerManager.Instance.Connect(NControllerManager.SignalName.MouseDetected, Callable.From(UpdateControllerButton));
-			NControllerManager.Instance.Connect(NControllerManager.SignalName.ControllerDetected, Callable.From(UpdateControllerButton));
-			NInputManager.Instance.Connect(NInputManager.SignalName.InputRebound, Callable.From(UpdateControllerButton));
-			UpdateControllerButton();
-		}
-	}
-
-	public override void _GuiInput(InputEvent inputEvent)
-	{
-		base._GuiInput(inputEvent);
-		if (inputEvent.IsActionPressed(Hotkey) && _isSelected)
-		{
-			_tickbox.ForceToggleTick();
 		}
 	}
 
@@ -114,14 +94,7 @@ public partial class NModMenuRow : NClickableControl
 			Color darkBlue = StsColors.darkBlue;
 			darkBlue.A = 0.25f;
 			selectionHighlight.Modulate = darkBlue;
-			UpdateControllerButton();
 		}
-	}
-
-	private void UpdateControllerButton()
-	{
-		_controllerIcon.SetVisible(_isSelected && NControllerManager.Instance.IsUsingController);
-		_controllerIcon.Texture = NInputManager.Instance.GetHotkeyIcon(Hotkey);
 	}
 
 	protected override void OnUnfocus()
@@ -161,7 +134,6 @@ public partial class NModMenuRow : NClickableControl
 				_selectionHighlight.Modulate = Colors.Transparent;
 			}
 		}
-		UpdateControllerButton();
 	}
 
 	private void OnTickboxToggled(NTickbox tickbox)

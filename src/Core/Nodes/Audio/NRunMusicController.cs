@@ -1,5 +1,6 @@
 using System;
 using Godot;
+using Godot.Collections;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Models;
@@ -59,7 +60,7 @@ public partial class NRunMusicController : Node
 
 	private const string _updateCustomTrack = "update_custom_track";
 
-	private const string _loadActBankCallback = "load_act_bank";
+	private const string _loadActBanksCallback = "load_act_banks";
 
 	private const string _unloadActBanksCallback = "unload_act_banks";
 
@@ -72,8 +73,6 @@ public partial class NRunMusicController : Node
 	private string? _currentTrack;
 
 	private string _currentAmbience;
-
-	private string? _failedTrack;
 
 	public static NRunMusicController? Instance => NRun.Instance?.RunMusicController;
 
@@ -148,23 +147,17 @@ public partial class NRunMusicController : Node
 
 	public void UpdateMusic()
 	{
-		if (NonInteractiveMode.IsActive)
+		if (!NonInteractiveMode.IsActive)
 		{
-			return;
-		}
-		MusicSelection? musicSelection = ResolveMusic(_currentTrack, _runState.Act.BgMusicOptions, _runState.Act.MusicBankPaths, _runState.Rng.Seed);
-		if (musicSelection.HasValue && !(musicSelection.Value.Track == _failedTrack))
-		{
-			if (!LoadActBank(musicSelection.Value.BankPath, musicSelection.Value.Track))
+			MusicSelection? musicSelection = ResolveMusic(_currentTrack, _runState.Act.BgMusicOptions, _runState.Act.MusicBankPaths, _runState.Rng.Seed);
+			if (musicSelection.HasValue)
 			{
-				_failedTrack = musicSelection.Value.Track;
-				return;
+				LoadActBank(musicSelection.Value.BankPath);
+				_currentTrack = musicSelection.Value.Track;
+				_proxy.Call("update_music", _currentTrack);
+				_proxy.Call("update_global_parameter", "Progress", 0);
+				UpdateAmbience();
 			}
-			_failedTrack = null;
-			_currentTrack = musicSelection.Value.Track;
-			_proxy.Call("update_music", _currentTrack);
-			_proxy.Call("update_global_parameter", "Progress", 0);
-			UpdateAmbience();
 		}
 	}
 
@@ -284,18 +277,17 @@ public partial class NRunMusicController : Node
 	{
 		if (!NonInteractiveMode.IsActive)
 		{
-			_proxy.Call("update_global_parameter", "Progress", 0);
 			_proxy.Call(_stopMusic);
 			_proxy.Call(_stopAmbience);
 			_currentTrack = null;
-			_failedTrack = null;
 			UnloadActBanks();
 		}
 	}
 
-	private bool LoadActBank(string bankPath, string verifyEvent)
+	private void LoadActBank(string bankPath)
 	{
-		return ActBankLoadRetry.Run(bankPath, () => _proxy.Call("load_act_bank", bankPath, verifyEvent).AsBool());
+		Godot.Collections.Array array = new Godot.Collections.Array { bankPath };
+		_proxy.Call("load_act_banks", array);
 	}
 
 	private void UnloadActBanks()

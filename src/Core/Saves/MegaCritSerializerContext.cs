@@ -3569,7 +3569,7 @@ internal class MegaCritSerializerContext : JsonSerializerContext, IJsonTypeInfoR
 
 	private static JsonPropertyInfo[] PlayerMapPointHistoryEntryPropInit(JsonSerializerOptions options)
 	{
-		JsonPropertyInfo[] array = new JsonPropertyInfo[34];
+		JsonPropertyInfo[] array = new JsonPropertyInfo[33];
 		JsonPropertyInfoValues<ulong> jsonPropertyInfoValues = new JsonPropertyInfoValues<ulong>();
 		jsonPropertyInfoValues.IsProperty = true;
 		jsonPropertyInfoValues.IsPublic = true;
@@ -4254,26 +4254,6 @@ internal class MegaCritSerializerContext : JsonSerializerContext, IJsonTypeInfoR
 		jsonPropertyInfoValues12.IsVirtual = false;
 		jsonPropertyInfoValues12.DeclaringType = typeof(PlayerMapPointHistoryEntry);
 		jsonPropertyInfoValues12.Converter = null;
-		jsonPropertyInfoValues12.Getter = (object obj) => ((PlayerMapPointHistoryEntry)obj).IsAffectedByFurCoat;
-		jsonPropertyInfoValues12.Setter = delegate(object obj, bool value)
-		{
-			((PlayerMapPointHistoryEntry)obj).IsAffectedByFurCoat = value;
-		};
-		jsonPropertyInfoValues12.IgnoreCondition = null;
-		jsonPropertyInfoValues12.HasJsonInclude = false;
-		jsonPropertyInfoValues12.IsExtensionData = false;
-		jsonPropertyInfoValues12.NumberHandling = null;
-		jsonPropertyInfoValues12.PropertyName = "IsAffectedByFurCoat";
-		jsonPropertyInfoValues12.JsonPropertyName = "is_affected_by_fur_coat";
-		jsonPropertyInfoValues12.AttributeProviderFactory = () => typeof(PlayerMapPointHistoryEntry).GetProperty("IsAffectedByFurCoat", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic, null, typeof(bool), Array.Empty<Type>(), null);
-		JsonPropertyInfoValues<bool> propertyInfo33 = jsonPropertyInfoValues12;
-		array[32] = JsonMetadataServices.CreatePropertyInfo(options, propertyInfo33);
-		jsonPropertyInfoValues12 = new JsonPropertyInfoValues<bool>();
-		jsonPropertyInfoValues12.IsProperty = true;
-		jsonPropertyInfoValues12.IsPublic = true;
-		jsonPropertyInfoValues12.IsVirtual = false;
-		jsonPropertyInfoValues12.DeclaringType = typeof(PlayerMapPointHistoryEntry);
-		jsonPropertyInfoValues12.Converter = null;
 		jsonPropertyInfoValues12.Getter = null;
 		jsonPropertyInfoValues12.Setter = null;
 		jsonPropertyInfoValues12.IgnoreCondition = JsonIgnoreCondition.Always;
@@ -4283,8 +4263,8 @@ internal class MegaCritSerializerContext : JsonSerializerContext, IJsonTypeInfoR
 		jsonPropertyInfoValues12.PropertyName = "WasMugged";
 		jsonPropertyInfoValues12.JsonPropertyName = null;
 		jsonPropertyInfoValues12.AttributeProviderFactory = () => typeof(PlayerMapPointHistoryEntry).GetProperty("WasMugged", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic, null, typeof(bool), Array.Empty<Type>(), null);
-		JsonPropertyInfoValues<bool> propertyInfo34 = jsonPropertyInfoValues12;
-		array[33] = JsonMetadataServices.CreatePropertyInfo(options, propertyInfo34);
+		JsonPropertyInfoValues<bool> propertyInfo33 = jsonPropertyInfoValues12;
+		array[32] = JsonMetadataServices.CreatePropertyInfo(options, propertyInfo33);
 		return array;
 	}
 
@@ -6389,7 +6369,7 @@ internal class MegaCritSerializerContext : JsonSerializerContext, IJsonTypeInfoR
 
 	private static JsonPropertyInfo[] PrefsSavePropInit(JsonSerializerOptions options)
 	{
-		JsonPropertyInfo[] array = new JsonPropertyInfo[12];
+		JsonPropertyInfo[] array = new JsonPropertyInfo[11];
 		JsonPropertyInfoValues<int> jsonPropertyInfoValues = new JsonPropertyInfoValues<int>();
 		jsonPropertyInfoValues.IsProperty = true;
 		jsonPropertyInfoValues.IsPublic = true;
@@ -6610,26 +6590,6 @@ internal class MegaCritSerializerContext : JsonSerializerContext, IJsonTypeInfoR
 		jsonPropertyInfoValues3.AttributeProviderFactory = () => typeof(PrefsSave).GetProperty("ShowMultiplayerDrawings", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic, null, typeof(bool), Array.Empty<Type>(), null);
 		JsonPropertyInfoValues<bool> propertyInfo11 = jsonPropertyInfoValues3;
 		array[10] = JsonMetadataServices.CreatePropertyInfo(options, propertyInfo11);
-		jsonPropertyInfoValues3 = new JsonPropertyInfoValues<bool>();
-		jsonPropertyInfoValues3.IsProperty = true;
-		jsonPropertyInfoValues3.IsPublic = true;
-		jsonPropertyInfoValues3.IsVirtual = false;
-		jsonPropertyInfoValues3.DeclaringType = typeof(PrefsSave);
-		jsonPropertyInfoValues3.Converter = null;
-		jsonPropertyInfoValues3.Getter = (object obj) => ((PrefsSave)obj).IsBestiaryActionsPreferred;
-		jsonPropertyInfoValues3.Setter = delegate(object obj, bool value)
-		{
-			((PrefsSave)obj).IsBestiaryActionsPreferred = value;
-		};
-		jsonPropertyInfoValues3.IgnoreCondition = null;
-		jsonPropertyInfoValues3.HasJsonInclude = false;
-		jsonPropertyInfoValues3.IsExtensionData = false;
-		jsonPropertyInfoValues3.NumberHandling = null;
-		jsonPropertyInfoValues3.PropertyName = "IsBestiaryActionsPreferred";
-		jsonPropertyInfoValues3.JsonPropertyName = "bestiary_actions_preferred";
-		jsonPropertyInfoValues3.AttributeProviderFactory = () => typeof(PrefsSave).GetProperty("IsBestiaryActionsPreferred", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic, null, typeof(bool), Array.Empty<Type>(), null);
-		JsonPropertyInfoValues<bool> propertyInfo12 = jsonPropertyInfoValues3;
-		array[11] = JsonMetadataServices.CreatePropertyInfo(options, propertyInfo12);
 		return array;
 	}
 

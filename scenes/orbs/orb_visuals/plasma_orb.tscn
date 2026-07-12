@@ -1,26 +1,13 @@
-[gd_scene load_steps=74 format=3 uid="uid://c5d8t6aupruo6"]
+[gd_scene load_steps=37 format=3 uid="uid://c5d8t6aupruo6"]
 
-[ext_resource type="Script" uid="uid://crn6vnmwhvhlu" path="res://src/Core/Nodes/Orbs/NPlasmaOrbVfx.cs" id="1_2grgj"]
 [ext_resource type="Texture2D" uid="uid://bhrgca2f01djv" path="res://images/vfx/orbs/plasma_orb_particle.png" id="1_kpnm5"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://cwglww5ujsrf7" path="res://animations/ui/combat/orbs/plasma_orb_skel_data.tres" id="2_w84v6"]
 [ext_resource type="Texture2D" uid="uid://drymmfnc8yw4d" path="res://images/vfx/orbs/plasma_orb_particle_no_glow.png" id="3_vkulr"]
-[ext_resource type="PackedScene" uid="uid://dirrpf40uehn0" path="res://scenes/vfx/lightning/vfx_lightning_row_flipbook_1.tscn" id="5_a45vv"]
-[ext_resource type="Script" uid="uid://bd46jtcut2h66" path="res://src/Core/Nodes/Vfx/Utilities/NParticlesContainer.cs" id="5_eh71q"]
-[ext_resource type="PackedScene" uid="uid://cq0m6037hbecy" path="res://scenes/vfx/common/vfx_common_glow.tscn" id="7_poi27"]
-[ext_resource type="PackedScene" uid="uid://17t2n8fbxla5" path="res://scenes/vfx/orbs/plasma/vfx_plasma_orb_goopy_particles.tscn" id="8_qpduu"]
-[ext_resource type="Script" uid="uid://dnm7b0lqxhpqk" path="res://src/Core/Nodes/Vfx/Utilities/NShaker.cs" id="9_0gpj7"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_aepl5"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_a7gox"]
 light_mode = 1
-
-[sub_resource type="Curve" id="Curve_alpha_ParticleProcessMaterial_eb6dp"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.75252527, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -10.08734, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_alpha_ParticleProcessMaterial_eb6dp"]
-curve = SubResource("Curve_alpha_ParticleProcessMaterial_eb6dp")
 
 [sub_resource type="Gradient" id="Gradient_tjiuo"]
 offsets = PackedFloat32Array(0.502793)
@@ -43,6 +30,13 @@ point_count = 4
 [sub_resource type="CurveTexture" id="CurveTexture_vx2da"]
 curve = SubResource("Curve_8mj7q")
 
+[sub_resource type="Curve" id="Curve_alpha_ParticleProcessMaterial_eb6dp"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_alpha_ParticleProcessMaterial_eb6dp"]
+curve = SubResource("Curve_alpha_ParticleProcessMaterial_eb6dp")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_eb6dp"]
 lifetime_randomness = 0.5
 particle_flag_disable_z = true
@@ -64,8 +58,8 @@ scale_min = 0.1
 scale_max = 0.24
 scale_curve = SubResource("CurveTexture_vx2da")
 color_ramp = SubResource("GradientTexture1D_0dlyu")
-color_initial_ramp = SubResource("GradientTexture1D_bfogc")
 alpha_curve = SubResource("CurveTexture_alpha_ParticleProcessMaterial_eb6dp")
+color_initial_ramp = SubResource("GradientTexture1D_bfogc")
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_m8e1b"]
 blend_mode = 1
@@ -101,8 +95,8 @@ particle_flag_disable_z = true
 emission_shape = 6
 emission_ring_axis = Vector3(0, 0, 1)
 emission_ring_height = 8.0
-emission_ring_radius = 10.0
-emission_ring_inner_radius = 3.0
+emission_ring_radius = 8.0
+emission_ring_inner_radius = 5.0
 emission_ring_cone_angle = 90.0
 angle_max = 360.0
 spread = 180.0
@@ -146,8 +140,8 @@ curve = SubResource("Curve_le5gl")
 
 [sub_resource type="Curve" id="Curve_dmb0g"]
 _limits = [-1.0, 2.0, 0.0, 1.0]
-_data = [Vector2(0, 0.06641722), 0.0, 0.0, 0, 0, Vector2(0.7878788, 0.9420018), 0.0, 0.0, 0, 0]
-point_count = 2
+_data = [Vector2(0.005, 0), 0.0, 0.0, 0, 0, Vector2(0.337366, 0), 0.0, 0.0, 0, 0, Vector2(0.346774, 2), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_nhm78"]
 curve = SubResource("Curve_dmb0g")
@@ -185,209 +179,39 @@ spread = 0.0
 angular_velocity_min = -201.46
 angular_velocity_max = 182.8
 gravity = Vector3(0, 0, 0)
-radial_accel_min = -500.0
-radial_accel_max = -500.0
+radial_accel_min = -240.0
+radial_accel_max = -240.0
 radial_accel_curve = SubResource("CurveTexture_nhm78")
 damping_min = 100000.0
 damping_max = 100000.0
 damping_curve = SubResource("CurveTexture_q1q0f")
-scale_min = 0.39999998
-scale_max = 0.65
+scale_min = 0.5
+scale_max = 0.9
 scale_curve = SubResource("CurveXYZTexture_2pfvl")
 color = Color(1, 0.984314, 0.92549, 1)
 color_ramp = SubResource("GradientTexture1D_dxvl2")
-color_initial_ramp = SubResource("GradientTexture1D_gd0on")
 alpha_curve = SubResource("CurveTexture_alpha_ParticleProcessMaterial_eb6dp")
+color_initial_ramp = SubResource("GradientTexture1D_gd0on")
 hue_variation_min = -0.1
 hue_variation_max = 0.05
 
-[sub_resource type="Curve" id="Curve_mg5en"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 1, Vector2(0.27525252, 1), 0.0, -197.99979, 1, 1, Vector2(0.28030303, 0), -197.99979, 0.0, 1, 1, Vector2(0.37878788, 0), 0.0, 98.99989, 1, 1, Vector2(0.3888889, 1), 98.99989, 0.0, 1, 1, Vector2(0.7373737, 1), 0.0, -98.99989, 1, 1, Vector2(0.74747473, 0), -98.99989, 0.0, 1, 1, Vector2(0.8207071, 0), 0.0, 99864.38, 1, 1, Vector2(0.8207171, 1), 99864.38, 0.0, 1, 0]
-point_count = 9
-
-[sub_resource type="CurveTexture" id="CurveTexture_qpduu"]
-curve = SubResource("Curve_mg5en")
-
-[sub_resource type="Curve" id="Curve_eh71q"]
-_data = [Vector2(0, 1), 0.0, -2.287466, 0, 0, Vector2(1, 0.34939188), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_0gpj7"]
-curve = SubResource("Curve_eh71q")
-
-[sub_resource type="Gradient" id="Gradient_poi27"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_b5wx5"]
-gradient = SubResource("Gradient_poi27")
-
-[sub_resource type="Curve" id="Curve_qpduu"]
-_data = [Vector2(0, 0.8966323), 0.0, 0.26968005, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_gll0e"]
-curve = SubResource("Curve_qpduu")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qpduu"]
-lifetime_randomness = 0.25
-particle_flag_disable_z = true
-emission_shape = 1
-emission_sphere_radius = 20.0
-angle_min = 1.0728835e-05
-angle_max = 360.00003
-angular_velocity_min = -30.000015
-angular_velocity_max = 29.999983
-angular_velocity_curve = SubResource("CurveTexture_0gpj7")
-gravity = Vector3(0, 0, 0)
-scale_min = 0.089999996
-scale_max = 0.11
-scale_curve = SubResource("CurveTexture_gll0e")
-color_initial_ramp = SubResource("GradientTexture1D_b5wx5")
-alpha_curve = SubResource("CurveTexture_qpduu")
-anim_offset_max = 1.0
-
-[sub_resource type="Curve" id="Curve_l02co"]
-_data = [Vector2(0, 0.353316), 0.0, -0.753348, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_b5wx5"]
-curve = SubResource("Curve_l02co")
-
-[sub_resource type="Curve" id="Curve_2gmb7"]
-_data = [Vector2(0, 0), 0.0, 11.5422, 0, 0, Vector2(0.203175, 0.842474), 0.0, 0.210613, 0, 0, Vector2(1, 1), 0.197691, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_dgefd"]
-curve = SubResource("Curve_2gmb7")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0gpj7"]
-particle_flag_disable_z = true
-gravity = Vector3(0, 0, 0)
-scale_min = 1.75
-scale_max = 1.75
-scale_curve = SubResource("CurveTexture_dgefd")
-alpha_curve = SubResource("CurveTexture_b5wx5")
-
-[sub_resource type="Curve" id="Curve_b5wx5"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.75252527, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -10.08734, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_kvpmw"]
-curve = SubResource("Curve_b5wx5")
-
-[sub_resource type="Gradient" id="Gradient_wcsnv"]
-offsets = PackedFloat32Array(0.384078)
-colors = PackedColorArray(1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_dgefd"]
-gradient = SubResource("Gradient_wcsnv")
-
-[sub_resource type="Gradient" id="Gradient_oe2s2"]
-offsets = PackedFloat32Array(0.37430167, 1)
-colors = PackedColorArray(1, 0.83137256, 0.6, 1, 0.14901961, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_77sn3"]
-gradient = SubResource("Gradient_oe2s2")
-
-[sub_resource type="Curve" id="Curve_cw3cu"]
-_data = [Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 1
-
-[sub_resource type="CurveTexture" id="CurveTexture_n7fpy"]
-curve = SubResource("Curve_cw3cu")
-
-[sub_resource type="Curve" id="Curve_gll0e"]
-_limits = [-1.0, 2.0, 0.0, 1.0]
-_data = [Vector2(0, 0.06641722), 0.0, 0.0, 0, 0, Vector2(0.7878788, 0.9420018), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_rjyj7"]
-curve = SubResource("Curve_gll0e")
-
-[sub_resource type="Curve" id="Curve_rtruc"]
-_data = [Vector2(0, 1), 0.0, -2.1587706, 0, 0, Vector2(1, 0.2399438), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_2twpo"]
-curve = SubResource("Curve_rtruc")
-
-[sub_resource type="Curve" id="Curve_036nl"]
-_limits = [0.0, 2.0, 0.0, 1.0]
-_data = [Vector2(0, 0), 0.0, 13.13377, 0, 0, Vector2(0.270202, 1.1608979), 0.0, 0.0, 0, 0, Vector2(0.5, 0.8568754), 0.0, 0.0, 0, 0, Vector2(0.75252527, 1.1122543), 0.0, 0.0, 0, 0, Vector2(1, 0), -6.859992, 0.0, 0, 0]
-point_count = 5
-
-[sub_resource type="Curve" id="Curve_qsw7s"]
-_limits = [0.0, 2.0, 0.0, 1.0]
-_data = [Vector2(0, 0), 0.0, 6.3129063, 0, 0, Vector2(0.39141414, 1.1608979), 0.0, 0.0, 0, 0, Vector2(0.69949496, 0.80823183), 0.0, 0.0, 0, 0, Vector2(0.85353535, 1.1122543), 0.0, 0.0, 0, 0, Vector2(1, 0), -15.764275, 0.0, 0, 0]
-point_count = 5
-
-[sub_resource type="Curve" id="Curve_irv78"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_addwa"]
-curve_x = SubResource("Curve_036nl")
-curve_y = SubResource("Curve_qsw7s")
-curve_z = SubResource("Curve_irv78")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dgefd"]
-lifetime_randomness = 0.5
-particle_flag_disable_z = true
-particle_flag_damping_as_friction = true
-emission_shape = 6
-emission_ring_axis = Vector3(0, 0, 1)
-emission_ring_height = 26.0
-emission_ring_radius = 20.0
-emission_ring_inner_radius = 10.0
-emission_ring_cone_angle = 90.0
-direction = Vector3(0, 0, 0)
-spread = 0.0
-angular_velocity_min = -201.46
-angular_velocity_max = 182.8
-radial_velocity_min = 49.999977
-radial_velocity_max = 99.99998
-radial_velocity_curve = SubResource("CurveTexture_2twpo")
-gravity = Vector3(0, 0, 0)
-radial_accel_min = -2.2351742e-06
-radial_accel_max = -2.2351742e-06
-radial_accel_curve = SubResource("CurveTexture_rjyj7")
-damping_min = 10.0
-damping_max = 20.0
-damping_curve = SubResource("CurveTexture_n7fpy")
-scale_min = 0.29999998
-scale_curve = SubResource("CurveXYZTexture_addwa")
-color = Color(1, 0.984314, 0.92549, 1)
-color_ramp = SubResource("GradientTexture1D_77sn3")
-color_initial_ramp = SubResource("GradientTexture1D_dgefd")
-alpha_curve = SubResource("CurveTexture_kvpmw")
-hue_variation_min = -0.1
-hue_variation_max = 0.05
-
-[node name="PlasmaOrb" type="Node2D" node_paths=PackedStringArray("_passiveActivatedParticles", "_spineShaker")]
-script = ExtResource("1_2grgj")
-_projectileOffsetRange = Vector2(2, 5)
-_passiveActivatedParticles = NodePath("passive_activated_particles")
-_spineShaker = NodePath("spine_shaker")
-_evokeVfxSceneName = "plasma/vfx_plasma_orb_evoke"
+[node name="PlasmaOrb" type="Node2D"]
 
 [node name="SpineSkeleton" type="SpineSprite" parent="."]
+scale = Vector2(0.1, 0.1)
 skeleton_data_res = ExtResource("2_w84v6")
 multiply_material = SubResource("CanvasItemMaterial_aepl5")
 preview_skin = "Default"
 preview_animation = "idle_loop"
 preview_frame = false
 preview_time = 0.0
-scale = Vector2(0.1, 0.1)
 
 [node name="SpineSlotNode" type="SpineSlotNode" parent="SpineSkeleton"]
-slot_name = "inner particles attach"
 show_behind_parent = true
-scale = Vector2(0.99999994, 0.99999994)
+scale = Vector2(1, 1)
+slot_name = "inner particles attach"
 
 [node name="InnerDarkParticles" type="GPUParticles2D" parent="SpineSkeleton/SpineSlotNode"]
-self_modulate = Color(1, 1, 1, 0)
 show_behind_parent = true
 material = SubResource("CanvasItemMaterial_a7gox")
 scale = Vector2(10, 10)
@@ -398,7 +222,6 @@ randomness = 0.46
 process_material = SubResource("ParticleProcessMaterial_eb6dp")
 
 [node name="InnerLightParticles" type="GPUParticles2D" parent="SpineSkeleton/SpineSlotNode"]
-self_modulate = Color(0.35, 0.35, 0.35, 1)
 show_behind_parent = true
 material = SubResource("CanvasItemMaterial_m8e1b")
 position = Vector2(1.30859, 0)
@@ -409,40 +232,10 @@ lifetime = 3.0
 randomness = 0.46
 process_material = SubResource("ParticleProcessMaterial_xhjfh")
 
-[node name="idle_particles" type="GPUParticles2D" parent="."]
-self_modulate = Color(1, 1, 1, 0.5019608)
+[node name="OuterGPUParticles2D2" type="GPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_wfoix")
-amount = 4
+amount = 6
 texture = ExtResource("1_kpnm5")
 lifetime = 1.5
 randomness = 0.46
-fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_qvue7")
-
-[node name="passive_activated_particles" type="Node2D" parent="." node_paths=PackedStringArray("_particles")]
-script = ExtResource("5_eh71q")
-_particles = [NodePath("vfx_lightning_row_flipbook_1"), NodePath("vfx_common_glow"), NodePath("vfx_plasma_orb_goopy_particles")]
-
-[node name="vfx_lightning_row_flipbook_1" parent="passive_activated_particles" instance=ExtResource("5_a45vv")]
-self_modulate = Color(0.92687315, 1, 0.2980392, 1)
-lifetime = 0.5
-explosiveness = 0.75
-process_material = SubResource("ParticleProcessMaterial_qpduu")
-
-[node name="vfx_common_glow" parent="passive_activated_particles" instance=ExtResource("7_poi27")]
-self_modulate = Color(1, 0.8745098, 0.56078434, 0.5019608)
-lifetime = 0.75
-process_material = SubResource("ParticleProcessMaterial_0gpj7")
-
-[node name="vfx_plasma_orb_goopy_particles" parent="passive_activated_particles" instance=ExtResource("8_qpduu")]
-amount = 6
-lifetime = 0.85
-explosiveness = 1.0
-process_material = SubResource("ParticleProcessMaterial_dgefd")
-
-[node name="spine_shaker" type="Node" parent="." node_paths=PackedStringArray("_target")]
-script = ExtResource("9_0gpj7")
-_target = NodePath("../SpineSkeleton")
-_maxPosOffset = 10.0
-_maxRotOffset = 5.0
-_frequency = 0.02

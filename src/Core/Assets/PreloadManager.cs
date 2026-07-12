@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.RestSite;
-using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Multiplayer.Game;
 using MegaCrit.Sts2.Core.Nodes;
@@ -174,7 +173,7 @@ public static class PreloadManager
 	private static AssetLoadingSession LoadAssets(IEnumerable<string> assetPaths, string name)
 	{
 		AssetLoadingSession assetLoadingSession = Cache.CreateSession(name, assetPaths);
-		TaskHelper.RunSafely(NAssetLoader.Instance.LoadInTheBackground(assetLoadingSession));
+		NAssetLoader.Instance.LoadInTheBackground(assetLoadingSession);
 		return assetLoadingSession;
 	}
 

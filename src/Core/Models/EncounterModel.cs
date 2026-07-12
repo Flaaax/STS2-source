@@ -106,6 +106,11 @@ public abstract class EncounterModel : AbstractModel
 	/// </summary>
 	public LocString? CustomRewardDescription => LocString.GetIfExists("encounters", base.Id.Entry + ".customRewardDescription");
 
+	/// <summary>
+	/// Is this an encounter that's used for debugging, testing, etc.?
+	/// </summary>
+	public virtual bool IsDebugEncounter => false;
+
 	public virtual IEnumerable<EncounterTag> Tags => Array.Empty<EncounterTag>();
 
 	/// <summary>

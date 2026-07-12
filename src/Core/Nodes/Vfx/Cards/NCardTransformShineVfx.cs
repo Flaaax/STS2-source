@@ -130,7 +130,14 @@ public partial class NCardTransformShineVfx : Control
 		}
 	}
 
-	public async Task PlayUntilCardUpdate(bool shortVersion = false)
+	public float GetEffectiveDuration(bool shortVersion = false)
+	{
+		float num = (shortVersion ? _overlayShowShortDuration : _overlayShowDuration);
+		float num2 = (shortVersion ? _overlayIdleShortDuration : _overlayIdleDuration);
+		return num + num2;
+	}
+
+	public async Task PlayAnimation(bool shortVersion = false)
 	{
 		_overlay.SelfModulate = _whiteClear;
 		_borderGlow.SelfModulate = _whiteClear;
@@ -143,15 +150,9 @@ public partial class NCardTransformShineVfx : Control
 		{
 			_cardNode.Scale = _originalCardScale;
 			this.QueueFreeSafely();
+			return;
 		}
-		else
-		{
-			UpdateCard(_cardNode, _endCard);
-		}
-	}
-
-	public async Task PlayShineAndReveal()
-	{
+		UpdateCard(_cardNode, _endCard);
 		TaskHelper.RunSafely(AnimatingCardScale(_revealScaleCurve, _glowFadeDuration));
 		_borderGlow.SelfModulate = _whiteOpaque;
 		_borderGlow.Scale = Vector2.One;
@@ -185,18 +186,6 @@ public partial class NCardTransformShineVfx : Control
 			_endParticles.Restart();
 			TaskHelper.RunSafely(DelayedFree());
 		}
-	}
-
-	public async Task PlayAnimation(bool shortVersion = false)
-	{
-		await PlayUntilCardUpdate(shortVersion);
-		await PlayShineAndReveal();
-	}
-
-	public async Task PlayAnimationWithoutWaitingForEnd(bool shortVersion = false)
-	{
-		await PlayUntilCardUpdate(shortVersion);
-		TaskHelper.RunSafely(PlayShineAndReveal());
 	}
 
 	private async Task DelayedFree()

@@ -397,7 +397,7 @@ public class PeerInputSynchronizer : IDisposable
 	/// Returns the control-space position of a given player within the given control.
 	/// If the player is using a mouse, then this would be the mouse's position
 	/// If the player is using the controller, then this would be the position of the control node that that player is
-	/// currently focused on.
+	/// currently focused on (this is currently only set up for the treasure room).
 	/// Different resolutions and aspect ratios are all mapped to the same 1920x1080 reference resolution in control-
 	/// space. Essentially, the position returned by this method can be used set the position property on a Control with
 	/// a cursor image as rootControl's child and have it look approximately the same across all peers.

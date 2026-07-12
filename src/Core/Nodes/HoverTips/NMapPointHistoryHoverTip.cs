@@ -8,7 +8,6 @@ using MegaCrit.Sts2.Core.Assets;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Map;
 using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Models.Relics;
 using MegaCrit.Sts2.Core.Rooms;
 using MegaCrit.Sts2.Core.Runs;
 using MegaCrit.Sts2.Core.Runs.History;
@@ -247,134 +246,124 @@ public partial class NMapPointHistoryHoverTip : MarginContainer
 			stringBuilder6.Append(ref handler);
 		}
 		MapPointRoomHistoryEntry mapPointRoomHistoryEntry = _entry.Rooms.FirstOrDefault((MapPointRoomHistoryEntry r) => r.RoomType.IsCombatRoom());
-		if (playerEntry.IsAffectedByFurCoat)
-		{
-			StringBuilder stringBuilder2 = stringBuilder;
-			StringBuilder stringBuilder7 = stringBuilder2;
-			StringBuilder.AppendInterpolatedStringHandler handler = new StringBuilder.AppendInterpolatedStringHandler(2, 1, stringBuilder2);
-			handler.AppendLiteral("\t");
-			handler.AppendFormatted(FurCoat.HistoryEntry.GetFormattedText());
-			handler.AppendLiteral("\n");
-			stringBuilder7.Append(ref handler);
-		}
 		if (playerEntry.MaxHpLost > 0)
 		{
 			_maxHpLost.Add("HP", playerEntry.MaxHpLost);
 			StringBuilder stringBuilder2 = stringBuilder;
-			StringBuilder stringBuilder8 = stringBuilder2;
+			StringBuilder stringBuilder7 = stringBuilder2;
 			StringBuilder.AppendInterpolatedStringHandler handler = new StringBuilder.AppendInterpolatedStringHandler(2, 1, stringBuilder2);
 			handler.AppendLiteral("\t");
 			handler.AppendFormatted(_maxHpLost.GetFormattedText());
 			handler.AppendLiteral("\n");
-			stringBuilder8.Append(ref handler);
+			stringBuilder7.Append(ref handler);
 		}
 		if (playerEntry.DamageTaken > 0 || mapPointRoomHistoryEntry != null)
 		{
 			_damaged.Add("Damage", playerEntry.DamageTaken);
 			StringBuilder stringBuilder2 = stringBuilder;
-			StringBuilder stringBuilder9 = stringBuilder2;
+			StringBuilder stringBuilder8 = stringBuilder2;
 			StringBuilder.AppendInterpolatedStringHandler handler = new StringBuilder.AppendInterpolatedStringHandler(2, 1, stringBuilder2);
 			handler.AppendLiteral("\t");
 			handler.AppendFormatted(_damaged.GetFormattedText());
 			handler.AppendLiteral("\n");
-			stringBuilder9.Append(ref handler);
+			stringBuilder8.Append(ref handler);
 		}
 		if (playerEntry.MaxHpGained > 0)
 		{
 			_maxHpGained.Add("HP", playerEntry.MaxHpGained);
 			StringBuilder stringBuilder2 = stringBuilder;
-			StringBuilder stringBuilder10 = stringBuilder2;
+			StringBuilder stringBuilder9 = stringBuilder2;
 			StringBuilder.AppendInterpolatedStringHandler handler = new StringBuilder.AppendInterpolatedStringHandler(2, 1, stringBuilder2);
 			handler.AppendLiteral("\t");
 			handler.AppendFormatted(_maxHpGained.GetFormattedText());
 			handler.AppendLiteral("\n");
-			stringBuilder10.Append(ref handler);
+			stringBuilder9.Append(ref handler);
 		}
 		if (playerEntry.HpHealed > 0)
 		{
 			_healed.Add("HP", playerEntry.HpHealed);
 			StringBuilder stringBuilder2 = stringBuilder;
-			StringBuilder stringBuilder11 = stringBuilder2;
+			StringBuilder stringBuilder10 = stringBuilder2;
 			StringBuilder.AppendInterpolatedStringHandler handler = new StringBuilder.AppendInterpolatedStringHandler(2, 1, stringBuilder2);
 			handler.AppendLiteral("\t");
 			handler.AppendFormatted(_healed.GetFormattedText());
 			handler.AppendLiteral("\n");
-			stringBuilder11.Append(ref handler);
+			stringBuilder10.Append(ref handler);
 		}
 		if (mapPointRoomHistoryEntry != null)
 		{
 			_turns.Add("Turns", mapPointRoomHistoryEntry.TurnsTaken);
 			StringBuilder stringBuilder2 = stringBuilder;
-			StringBuilder stringBuilder12 = stringBuilder2;
+			StringBuilder stringBuilder11 = stringBuilder2;
 			StringBuilder.AppendInterpolatedStringHandler handler = new StringBuilder.AppendInterpolatedStringHandler(2, 1, stringBuilder2);
 			handler.AppendLiteral("\t");
 			handler.AppendFormatted(_turns.GetFormattedText());
 			handler.AppendLiteral("\n");
-			stringBuilder12.Append(ref handler);
+			stringBuilder11.Append(ref handler);
 		}
 		foreach (ModelId completedQuest in playerEntry.CompletedQuests)
 		{
 			_quests.Add("Quest", SaveUtil.CardOrDeprecated(completedQuest).Title);
 			StringBuilder stringBuilder2 = stringBuilder;
-			StringBuilder stringBuilder13 = stringBuilder2;
+			StringBuilder stringBuilder12 = stringBuilder2;
 			StringBuilder.AppendInterpolatedStringHandler handler = new StringBuilder.AppendInterpolatedStringHandler(2, 1, stringBuilder2);
 			handler.AppendLiteral("\t");
 			handler.AppendFormatted(_quests.GetFormattedText());
 			handler.AppendLiteral("\n");
-			stringBuilder13.Append(ref handler);
+			stringBuilder12.Append(ref handler);
 		}
 		foreach (ModelId item2 in playerEntry.PotionUsed)
 		{
 			_used.Add("Icon", "[img=top]res://images/packed/sprite_fonts/potion_icon.png[/img]");
 			_used.Add("Title", SaveUtil.PotionOrDeprecated(item2).Title);
 			StringBuilder stringBuilder2 = stringBuilder;
-			StringBuilder stringBuilder14 = stringBuilder2;
+			StringBuilder stringBuilder13 = stringBuilder2;
 			StringBuilder.AppendInterpolatedStringHandler handler = new StringBuilder.AppendInterpolatedStringHandler(1, 1, stringBuilder2);
 			handler.AppendFormatted(_used.GetFormattedText());
 			handler.AppendLiteral("\n");
-			stringBuilder14.Append(ref handler);
+			stringBuilder13.Append(ref handler);
 		}
 		foreach (ModelId item3 in playerEntry.PotionDiscarded)
 		{
 			_removed.Add("Icon", "[img=top]res://images/packed/sprite_fonts/potion_icon.png[/img]");
 			_removed.Add("Title", SaveUtil.PotionOrDeprecated(item3).Title);
 			StringBuilder stringBuilder2 = stringBuilder;
-			StringBuilder stringBuilder15 = stringBuilder2;
+			StringBuilder stringBuilder14 = stringBuilder2;
 			StringBuilder.AppendInterpolatedStringHandler handler = new StringBuilder.AppendInterpolatedStringHandler(1, 1, stringBuilder2);
 			handler.AppendFormatted(_removed.GetFormattedText());
 			handler.AppendLiteral("\n");
-			stringBuilder15.Append(ref handler);
+			stringBuilder14.Append(ref handler);
 		}
 		if (playerEntry.GoldSpent > 0)
 		{
 			_goldSpent.Add("Amount", playerEntry.GoldSpent);
 			StringBuilder stringBuilder2 = stringBuilder;
-			StringBuilder stringBuilder16 = stringBuilder2;
+			StringBuilder stringBuilder15 = stringBuilder2;
 			StringBuilder.AppendInterpolatedStringHandler handler = new StringBuilder.AppendInterpolatedStringHandler(1, 1, stringBuilder2);
 			handler.AppendFormatted(_goldSpent.GetFormattedText());
 			handler.AppendLiteral("\n");
-			stringBuilder16.Append(ref handler);
+			stringBuilder15.Append(ref handler);
 		}
 		if (playerEntry.GoldLost > 0)
 		{
 			_goldLost.Add("Amount", playerEntry.GoldLost);
 			StringBuilder stringBuilder2 = stringBuilder;
-			StringBuilder stringBuilder17 = stringBuilder2;
+			StringBuilder stringBuilder16 = stringBuilder2;
 			StringBuilder.AppendInterpolatedStringHandler handler = new StringBuilder.AppendInterpolatedStringHandler(1, 1, stringBuilder2);
 			handler.AppendFormatted(_goldLost.GetFormattedText());
 			handler.AppendLiteral("\n");
-			stringBuilder17.Append(ref handler);
+			stringBuilder16.Append(ref handler);
 		}
 		if (playerEntry.GoldStolen > 0)
 		{
 			_goldStolen.Add("Icon", "[img=top]res://images/packed/sprite_fonts/gold_icon.png[/img]");
 			_goldStolen.Add("Amount", playerEntry.GoldStolen);
 			StringBuilder stringBuilder2 = stringBuilder;
-			StringBuilder stringBuilder18 = stringBuilder2;
+			StringBuilder stringBuilder17 = stringBuilder2;
 			StringBuilder.AppendInterpolatedStringHandler handler = new StringBuilder.AppendInterpolatedStringHandler(1, 1, stringBuilder2);
 			handler.AppendFormatted(_goldStolen.GetFormattedText());
 			handler.AppendLiteral("\n");
-			stringBuilder18.Append(ref handler);
+			stringBuilder17.Append(ref handler);
 		}
 		_actionStats.Text = stringBuilder.ToString().Trim('\n');
 	}

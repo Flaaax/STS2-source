@@ -55,7 +55,7 @@
   "MULTIPLAYER_EXPANDED_STATE.relicHeader": "[gold]レリック[/gold]",
   "MULTIPLAYER_EXPANDED_STATE.title": "[center][blue]{PlayerName}[/blue] [gold]{Character}[/gold][/center]",
   "MULTIPLAYER_WAITING": "他のプレイヤーを待機中……",
-  "PAUSE_MENU.COMPENDIUM": "コレクション",
+  "PAUSE_MENU.COMPENDIUM": "図鑑",
   "PAUSE_MENU.DISCONNECT": "通信切断",
   "PAUSE_MENU.GIVE_UP": "あきらめる",
   "PAUSE_MENU.PAUSED": "一時停止",

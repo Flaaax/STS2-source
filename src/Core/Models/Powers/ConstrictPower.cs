@@ -20,7 +20,7 @@ public sealed class ConstrictPower : PowerModel
 	{
 		if (participants.Contains(base.Owner))
 		{
-			await CreatureCmd.Damage(choiceContext, base.Owner, base.Amount, ValueProp.Unpowered, base.Owner);
+			await CreatureCmd.Damage(choiceContext, base.Owner, base.Amount, ValueProp.Unpowered, base.Owner, null);
 		}
 	}
 

@@ -115,21 +115,21 @@ public sealed class MagiKnight : MonsterModel
 	{
 		if (TestMode.IsOff && base.CombatState.IsLiveCombat())
 		{
-			NCreature nCreature = null;
+			Vector2? vector = null;
 			foreach (Creature target in targets)
 			{
 				NCreature creatureNode = target.GetCreatureNode();
-				if (creatureNode != null && (nCreature == null || nCreature.GlobalPosition.X > creatureNode.GlobalPosition.X))
+				if (!vector.HasValue || vector.Value.X > creatureNode.GlobalPosition.X)
 				{
-					nCreature = creatureNode;
+					vector = creatureNode.GlobalPosition;
 				}
 			}
 			NCreature creatureNode2 = base.Creature.GetCreatureNode();
-			Node2D node2D = creatureNode2?.GetSpecialNode<Node2D>("Visuals/AttackDistanceControl");
-			if (creatureNode2 != null && node2D != null && nCreature != null)
+			Node2D specialNode = creatureNode2.GetSpecialNode<Node2D>("Visuals/AttackDistanceControl");
+			if (specialNode != null && vector.HasValue)
 			{
-				float num = 600f * creatureNode2.Visuals.Scale.X;
-				node2D.GlobalPosition = new Vector2(nCreature.GlobalPosition.X + num, node2D.GlobalPosition.Y);
+				float x = creatureNode2.Visuals.GetCurrentBody().Scale.X;
+				specialNode.Position = Vector2.Left * ((creatureNode2.GlobalPosition.X - vector.Value.X - 600f) / x);
 			}
 		}
 		await DamageCmd.Attack(BombDamage).FromMonster(this).WithAttackerAnim("BombCast", 1.2f)

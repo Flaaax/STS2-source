@@ -1,8 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using MegaCrit.Sts2.Core.Animation;
 using MegaCrit.Sts2.Core.Audio;
-using MegaCrit.Sts2.Core.Bindings.MegaSpine;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Ascension;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -21,10 +19,6 @@ namespace MegaCrit.Sts2.Core.Models.Monsters;
 
 public sealed class Aeonglass : MonsterModel
 {
-	private const string _attackHeavyTrigger = "AttackHeavy";
-
-	private const string _attackDoubleTrigger = "AttackDouble";
-
 	private const string _aeonglassTrackName = "queen_progress";
 
 	private int _additionalStrength;
@@ -81,7 +75,7 @@ public sealed class Aeonglass : MonsterModel
 	{
 		await base.AfterAddedToRoom();
 		NRunMusicController.Instance?.UpdateMusicParameter("queen_progress", 1f);
-		foreach (Creature item in base.CombatState.GetOpponentsOf(base.Creature))
+		foreach (Creature item in base.Creature.CombatState.GetOpponentsOf(base.Creature))
 		{
 			WitheringPresencePower witheringPresencePower = (WitheringPresencePower)ModelDb.Power<WitheringPresencePower>().ToMutable();
 			witheringPresencePower.Target = item;
@@ -117,7 +111,7 @@ public sealed class Aeonglass : MonsterModel
 
 	private async Task EbbMove(IReadOnlyList<Creature> targets)
 	{
-		await DamageCmd.Attack(EbbDamage).FromMonster(this).WithAttackerAnim("AttackHeavy", 0.3f)
+		await DamageCmd.Attack(EbbDamage).FromMonster(this).WithAttackerAnim("Attack", 0.15f)
 			.WithHitFx("vfx/vfx_attack_blunt")
 			.Execute(null);
 		await CreatureCmd.GainBlock(base.Creature, EbbBlock, ValueProp.Move, null);
@@ -126,15 +120,13 @@ public sealed class Aeonglass : MonsterModel
 	private async Task EyeLasersMove(IReadOnlyList<Creature> targets)
 	{
 		await DamageCmd.Attack(EyeLasersDamage).FromMonster(this).WithHitCount(EyeLasersRepeat)
-			.WithAttackerAnim("AttackDouble", 0.4f)
-			.OnlyPlayAnimOnce()
+			.WithAttackerAnim("Attack", 0.15f)
 			.WithHitFx("vfx/vfx_attack_blunt")
 			.Execute(null);
 	}
 
 	private async Task IncreasingIntensityMove(IReadOnlyList<Creature> targets)
 	{
-		await CreatureCmd.TriggerAnim(base.Creature, "Cast", 0.4f);
 		foreach (Creature target in targets)
 		{
 			if (target.Player?.PlayerCombatState == null)
@@ -171,27 +163,5 @@ public sealed class Aeonglass : MonsterModel
 		{
 			wither.FakeUpgrade();
 		}
-	}
-
-	public override CreatureAnimator GenerateAnimator(MegaSprite controller)
-	{
-		AnimState animState = new AnimState("idle_loop", isLooping: true);
-		AnimState animState2 = new AnimState("wither");
-		AnimState animState3 = new AnimState("attack_heavy");
-		AnimState animState4 = new AnimState("attack_double");
-		AnimState animState5 = new AnimState("hurt");
-		AnimState state = new AnimState("die");
-		animState2.NextState = animState;
-		animState3.NextState = animState;
-		animState4.NextState = animState;
-		animState5.NextState = animState;
-		CreatureAnimator creatureAnimator = new CreatureAnimator(animState, controller);
-		creatureAnimator.AddAnyState("Idle", animState);
-		creatureAnimator.AddAnyState("Cast", animState2);
-		creatureAnimator.AddAnyState("AttackHeavy", animState3);
-		creatureAnimator.AddAnyState("AttackDouble", animState4);
-		creatureAnimator.AddAnyState("Dead", state);
-		creatureAnimator.AddAnyState("Hit", animState5);
-		return creatureAnimator;
 	}
 }

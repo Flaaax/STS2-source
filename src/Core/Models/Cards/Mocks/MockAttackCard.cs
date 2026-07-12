@@ -89,7 +89,7 @@ public sealed class MockAttackCard : MockCardModel
 	{
 		if (_mockSelfHpLoss > 0)
 		{
-			await CreatureCmd.Damage(choiceContext, base.Owner.Creature, _mockSelfHpLoss, ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, this, cardPlay);
+			await CreatureCmd.Damage(choiceContext, base.Owner.Creature, _mockSelfHpLoss, ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, this);
 		}
 		if (base.DynamicVars.Block.BaseValue > 0m)
 		{
@@ -97,18 +97,7 @@ public sealed class MockAttackCard : MockCardModel
 		}
 		int hitCount = (base.EnergyCost.CostsX ? ResolveEnergyXValue() : ((!HasStarCostX) ? _hitCount : ResolveStarXValue()));
 		AttackCommand attackCommand = DamageCmd.Attack(_fromOsty ? base.DynamicVars.OstyDamage.BaseValue : base.DynamicVars.Damage.BaseValue).WithHitCount(hitCount);
-		if (_fromOsty)
-		{
-			if (base.Owner.Osty == null)
-			{
-				throw new InvalidOperationException("Must summon Osty before using osty attack!");
-			}
-			attackCommand = attackCommand.FromOsty(base.Owner.Osty, this, cardPlay);
-		}
-		else
-		{
-			attackCommand = attackCommand.FromCard(this, cardPlay);
-		}
+		attackCommand = ((!_fromOsty) ? attackCommand.FromCard(this) : attackCommand.FromOsty(base.Owner.Osty, this));
 		switch (_targetingType)
 		{
 		case TargetType.AnyEnemy:

@@ -53,70 +53,10 @@
           }
         },
         {
-          "filename": "colorless1_epoch.png",
-          "region": {
-            "x": 1,
-            "y": 177,
-            "w": 272,
-            "h": 168
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "colorless2_epoch.png",
-          "region": {
-            "x": 275,
-            "y": 177,
-            "w": 272,
-            "h": 168
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "colorless4_epoch.png",
-          "region": {
-            "x": 549,
-            "y": 177,
-            "w": 272,
-            "h": 168
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "darv_epoch.png",
-          "region": {
-            "x": 1,
-            "y": 347,
-            "w": 272,
-            "h": 168
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
           "filename": "defect1_epoch.png",
           "region": {
-            "x": 275,
-            "y": 347,
+            "x": 1,
+            "y": 177,
             "w": 272,
             "h": 168
           },
@@ -130,8 +70,8 @@
         {
           "filename": "defect3_epoch.png",
           "region": {
-            "x": 549,
-            "y": 347,
+            "x": 275,
+            "y": 177,
             "w": 272,
             "h": 168
           },
@@ -145,38 +85,8 @@
         {
           "filename": "ironclad3_epoch.png",
           "region": {
-            "x": 1,
-            "y": 517,
-            "w": 272,
-            "h": 168
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "ironclad4_epoch.png",
-          "region": {
-            "x": 275,
-            "y": 517,
-            "w": 272,
-            "h": 168
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "ironclad5_epoch.png",
-          "region": {
             "x": 549,
-            "y": 517,
+            "y": 177,
             "w": 272,
             "h": 168
           },
@@ -191,7 +101,7 @@
           "filename": "necrobinder1_epoch.png",
           "region": {
             "x": 1,
-            "y": 687,
+            "y": 347,
             "w": 272,
             "h": 168
           },
@@ -206,22 +116,7 @@
           "filename": "necrobinder2_epoch.png",
           "region": {
             "x": 275,
-            "y": 687,
-            "w": 272,
-            "h": 168
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "necrobinder4_epoch.png",
-          "region": {
-            "x": 549,
-            "y": 687,
+            "y": 347,
             "w": 272,
             "h": 168
           },
@@ -235,8 +130,8 @@
         {
           "filename": "necrobinder5_epoch.png",
           "region": {
-            "x": 1,
-            "y": 857,
+            "x": 549,
+            "y": 347,
             "w": 272,
             "h": 168
           },
@@ -250,8 +145,8 @@
         {
           "filename": "orobas_epoch.png",
           "region": {
-            "x": 275,
-            "y": 857,
+            "x": 1,
+            "y": 517,
             "w": 272,
             "h": 168
           },
@@ -265,8 +160,8 @@
         {
           "filename": "potion2_epoch.png",
           "region": {
-            "x": 549,
-            "y": 857,
+            "x": 275,
+            "y": 517,
             "w": 272,
             "h": 168
           },
@@ -280,8 +175,8 @@
         {
           "filename": "regent1_epoch.png",
           "region": {
-            "x": 1,
-            "y": 1027,
+            "x": 549,
+            "y": 517,
             "w": 272,
             "h": 168
           },
@@ -295,8 +190,8 @@
         {
           "filename": "regent5_epoch.png",
           "region": {
-            "x": 275,
-            "y": 1027,
+            "x": 1,
+            "y": 687,
             "w": 272,
             "h": 168
           },
@@ -310,23 +205,8 @@
         {
           "filename": "relic1_epoch.png",
           "region": {
-            "x": 549,
-            "y": 1027,
-            "w": 272,
-            "h": 168
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "relic5_epoch.png",
-          "region": {
-            "x": 1,
-            "y": 1197,
+            "x": 275,
+            "y": 687,
             "w": 272,
             "h": 168
           },
@@ -340,8 +220,8 @@
         {
           "filename": "silent4_epoch.png",
           "region": {
-            "x": 275,
-            "y": 1197,
+            "x": 549,
+            "y": 687,
             "w": 272,
             "h": 168
           },
@@ -355,8 +235,8 @@
         {
           "filename": "silent5_epoch.png",
           "region": {
-            "x": 549,
-            "y": 1197,
+            "x": 1,
+            "y": 857,
             "w": 272,
             "h": 168
           },
@@ -370,8 +250,8 @@
         {
           "filename": "silent6_epoch.png",
           "region": {
-            "x": 1,
-            "y": 1367,
+            "x": 275,
+            "y": 857,
             "w": 272,
             "h": 168
           },
@@ -385,8 +265,8 @@
         {
           "filename": "silent7_epoch.png",
           "region": {
-            "x": 275,
-            "y": 1367,
+            "x": 549,
+            "y": 857,
             "w": 272,
             "h": 168
           },
@@ -400,8 +280,8 @@
         {
           "filename": "act2_b_epoch.png",
           "region": {
-            "x": 549,
-            "y": 1367,
+            "x": 1,
+            "y": 1027,
             "w": 272,
             "h": 168
           },
@@ -415,8 +295,38 @@
         {
           "filename": "act3_b_epoch.png",
           "region": {
+            "x": 275,
+            "y": 1027,
+            "w": 272,
+            "h": 168
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "colorless1_epoch.png",
+          "region": {
+            "x": 549,
+            "y": 1027,
+            "w": 272,
+            "h": 168
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "colorless2_epoch.png",
+          "region": {
             "x": 1,
-            "y": 1537,
+            "y": 1197,
             "w": 272,
             "h": 168
           },
@@ -431,7 +341,7 @@
           "filename": "colorless3_epoch.png",
           "region": {
             "x": 275,
-            "y": 1537,
+            "y": 1197,
             "w": 272,
             "h": 168
           },
@@ -446,7 +356,7 @@
           "filename": "colorless5_epoch.png",
           "region": {
             "x": 549,
-            "y": 1537,
+            "y": 1197,
             "w": 272,
             "h": 168
           },
@@ -461,7 +371,7 @@
           "filename": "custom_and_seeds_epoch.png",
           "region": {
             "x": 1,
-            "y": 1707,
+            "y": 1367,
             "w": 272,
             "h": 168
           },
@@ -476,7 +386,22 @@
           "filename": "daily_run_epoch.png",
           "region": {
             "x": 275,
-            "y": 1707,
+            "y": 1367,
+            "w": 272,
+            "h": 168
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "darv_epoch.png",
+          "region": {
+            "x": 549,
+            "y": 1367,
             "w": 272,
             "h": 168
           },
@@ -490,8 +415,8 @@
         {
           "filename": "defect2_epoch.png",
           "region": {
-            "x": 549,
-            "y": 1707,
+            "x": 1,
+            "y": 1537,
             "w": 272,
             "h": 168
           },
@@ -505,8 +430,8 @@
         {
           "filename": "defect4_epoch.png",
           "region": {
-            "x": 1,
-            "y": 1877,
+            "x": 275,
+            "y": 1537,
             "w": 272,
             "h": 168
           },
@@ -520,8 +445,8 @@
         {
           "filename": "defect5_epoch.png",
           "region": {
-            "x": 275,
-            "y": 1877,
+            "x": 549,
+            "y": 1537,
             "w": 272,
             "h": 168
           },
@@ -535,8 +460,8 @@
         {
           "filename": "defect6_epoch.png",
           "region": {
-            "x": 549,
-            "y": 1877,
+            "x": 1,
+            "y": 1707,
             "w": 272,
             "h": 168
           },
@@ -550,8 +475,8 @@
         {
           "filename": "defect7_epoch.png",
           "region": {
-            "x": 1,
-            "y": 2047,
+            "x": 275,
+            "y": 1707,
             "w": 272,
             "h": 168
           },
@@ -565,8 +490,8 @@
         {
           "filename": "event1_epoch.png",
           "region": {
-            "x": 275,
-            "y": 2047,
+            "x": 549,
+            "y": 1707,
             "w": 272,
             "h": 168
           },
@@ -580,8 +505,8 @@
         {
           "filename": "event2_epoch.png",
           "region": {
-            "x": 549,
-            "y": 2047,
+            "x": 1,
+            "y": 1877,
             "w": 272,
             "h": 168
           },
@@ -595,8 +520,38 @@
         {
           "filename": "event3_epoch.png",
           "region": {
+            "x": 275,
+            "y": 1877,
+            "w": 272,
+            "h": 168
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "ironclad4_epoch.png",
+          "region": {
+            "x": 549,
+            "y": 1877,
+            "w": 272,
+            "h": 168
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "ironclad5_epoch.png",
+          "region": {
             "x": 1,
-            "y": 2217,
+            "y": 2047,
             "w": 272,
             "h": 168
           },
@@ -611,7 +566,7 @@
           "filename": "ironclad6_epoch.png",
           "region": {
             "x": 275,
-            "y": 2217,
+            "y": 2047,
             "w": 272,
             "h": 168
           },
@@ -626,7 +581,7 @@
           "filename": "ironclad7_epoch.png",
           "region": {
             "x": 549,
-            "y": 2217,
+            "y": 2047,
             "w": 272,
             "h": 168
           },
@@ -641,7 +596,22 @@
           "filename": "necrobinder3_epoch.png",
           "region": {
             "x": 1,
-            "y": 2387,
+            "y": 2217,
+            "w": 272,
+            "h": 168
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "necrobinder4_epoch.png",
+          "region": {
+            "x": 275,
+            "y": 2217,
             "w": 272,
             "h": 168
           },
@@ -655,8 +625,8 @@
         {
           "filename": "necrobinder6_epoch.png",
           "region": {
-            "x": 275,
-            "y": 2387,
+            "x": 549,
+            "y": 2217,
             "w": 272,
             "h": 168
           },
@@ -670,7 +640,7 @@
         {
           "filename": "necrobinder7_epoch.png",
           "region": {
-            "x": 549,
+            "x": 1,
             "y": 2387,
             "w": 272,
             "h": 168
@@ -685,8 +655,8 @@
         {
           "filename": "potion1_epoch.png",
           "region": {
-            "x": 1,
-            "y": 2557,
+            "x": 275,
+            "y": 2387,
             "w": 272,
             "h": 168
           },
@@ -700,8 +670,8 @@
         {
           "filename": "regent2_epoch.png",
           "region": {
-            "x": 275,
-            "y": 2557,
+            "x": 549,
+            "y": 2387,
             "w": 272,
             "h": 168
           },
@@ -715,7 +685,7 @@
         {
           "filename": "regent3_epoch.png",
           "region": {
-            "x": 549,
+            "x": 1,
             "y": 2557,
             "w": 272,
             "h": 168
@@ -730,8 +700,8 @@
         {
           "filename": "regent4_epoch.png",
           "region": {
-            "x": 1,
-            "y": 2727,
+            "x": 275,
+            "y": 2557,
             "w": 272,
             "h": 168
           },
@@ -745,8 +715,8 @@
         {
           "filename": "regent6_epoch.png",
           "region": {
-            "x": 275,
-            "y": 2727,
+            "x": 549,
+            "y": 2557,
             "w": 272,
             "h": 168
           },
@@ -760,7 +730,7 @@
         {
           "filename": "regent7_epoch.png",
           "region": {
-            "x": 549,
+            "x": 1,
             "y": 2727,
             "w": 272,
             "h": 168
@@ -775,8 +745,8 @@
         {
           "filename": "relic2_epoch.png",
           "region": {
-            "x": 1,
-            "y": 2897,
+            "x": 275,
+            "y": 2727,
             "w": 272,
             "h": 168
           },
@@ -790,8 +760,8 @@
         {
           "filename": "relic3_epoch.png",
           "region": {
-            "x": 275,
-            "y": 2897,
+            "x": 549,
+            "y": 2727,
             "w": 272,
             "h": 168
           },
@@ -805,7 +775,22 @@
         {
           "filename": "relic4_epoch.png",
           "region": {
-            "x": 549,
+            "x": 1,
+            "y": 2897,
+            "w": 272,
+            "h": 168
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "relic5_epoch.png",
+          "region": {
+            "x": 275,
             "y": 2897,
             "w": 272,
             "h": 168
@@ -820,8 +805,8 @@
         {
           "filename": "silent2_epoch.png",
           "region": {
-            "x": 1,
-            "y": 3067,
+            "x": 549,
+            "y": 2897,
             "w": 272,
             "h": 168
           },
@@ -835,7 +820,7 @@
         {
           "filename": "silent3_epoch.png",
           "region": {
-            "x": 275,
+            "x": 1,
             "y": 3067,
             "w": 272,
             "h": 168
@@ -850,10 +835,25 @@
         {
           "filename": "underdocks_epoch.png",
           "region": {
-            "x": 549,
+            "x": 275,
             "y": 3067,
             "w": 272,
             "h": 168
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "colorless4_epoch.png",
+          "region": {
+            "x": 549,
+            "y": 3067,
+            "w": 272,
+            "h": 155
           },
           "margin": {
             "x": 0,

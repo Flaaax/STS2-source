@@ -90,7 +90,7 @@ public sealed class SoulFysh : MonsterModel
 
 	public override Task AfterCardChangedPilesLate(CardModel card, PileType oldPileType, AbstractModel? clonedBy)
 	{
-		if (LocalContext.GetMe(base.CombatState) != card.Owner)
+		if (LocalContext.GetMe(base.Creature.CombatState) != card.Owner)
 		{
 			return Task.CompletedTask;
 		}

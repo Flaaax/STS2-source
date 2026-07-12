@@ -36,7 +36,7 @@ public sealed class ThisOrThat : EventModel
 
 	private async Task Plain()
 	{
-		await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), base.Owner.Creature, base.DynamicVars.HpLoss.IntValue, ValueProp.Unblockable | ValueProp.Unpowered, null, null, null);
+		await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), base.Owner.Creature, base.DynamicVars.HpLoss.IntValue, ValueProp.Unblockable | ValueProp.Unpowered, null, null);
 		await PlayerCmd.GainGold(base.DynamicVars.Gold.IntValue, base.Owner);
 		SetEventFinished(L10NLookup("THIS_OR_THAT.pages.PLAIN.description"));
 	}

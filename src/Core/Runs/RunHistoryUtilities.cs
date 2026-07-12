@@ -21,15 +21,14 @@ public static class RunHistoryUtilities
 		MapPointHistoryEntry mapPointHistoryEntry = run.MapPointHistory.LastOrDefault()?.LastOrDefault();
 		if (!victory && mapPointHistoryEntry != null)
 		{
-			MapPointRoomHistoryEntry mapPointRoomHistoryEntry = mapPointHistoryEntry.Rooms.Last();
-			RoomType roomType = mapPointRoomHistoryEntry.RoomType;
+			RoomType roomType = mapPointHistoryEntry.Rooms.First().RoomType;
 			if (roomType.IsCombatRoom())
 			{
-				killedByEncounter = mapPointRoomHistoryEntry.ModelId;
+				killedByEncounter = mapPointHistoryEntry.Rooms.First().ModelId;
 			}
 			else if (roomType == RoomType.Event)
 			{
-				killedByEvent = mapPointRoomHistoryEntry.ModelId;
+				killedByEvent = mapPointHistoryEntry.Rooms.First().ModelId;
 			}
 		}
 		List<RunHistoryPlayer> list = new List<RunHistoryPlayer>();

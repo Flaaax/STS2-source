@@ -3,21 +3,20 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://daapnaj25btfc"
-path.bptc="res://.godot/imported/crystal_sphere_big_gold.png-a20777a546f23a3c2a406617775a77b6.bptc.ctex"
+path="res://.godot/imported/crystal_sphere_big_gold.png-a20777a546f23a3c2a406617775a77b6.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://images/events/crystal_sphere/crystal_sphere_big_gold.png"
-dest_files=["res://.godot/imported/crystal_sphere_big_gold.png-a20777a546f23a3c2a406617775a77b6.bptc.ctex"]
+dest_files=["res://.godot/imported/crystal_sphere_big_gold.png-a20777a546f23a3c2a406617775a77b6.ctex"]
 
 [params]
 
-compress/mode=2
-compress/high_quality=true
+compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=1.0
 compress/uastc_level=2
 compress/rdo_quality_loss=0
@@ -34,4 +33,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

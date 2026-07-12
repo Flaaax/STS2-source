@@ -95,11 +95,6 @@ public partial class NPauseMenu : NSubmenu
 		}
 	}
 
-	public override void _ExitTree()
-	{
-		RunManager.Instance.IsPaused = false;
-	}
-
 	private void RefreshLabels()
 	{
 		_pausedLabel.SetTextAutoSize(_pausedLoc.GetFormattedText());
@@ -189,7 +184,6 @@ public partial class NPauseMenu : NSubmenu
 	public override void OnSubmenuOpened()
 	{
 		base.OnSubmenuOpened();
-		RunManager.Instance.IsPaused = true;
 		NHotkeyManager.Instance.AddBlockingScreen(this);
 	}
 
@@ -197,7 +191,6 @@ public partial class NPauseMenu : NSubmenu
 	{
 		_backButton.Disable();
 		base.Visible = false;
-		RunManager.Instance.IsPaused = false;
 		NHotkeyManager.Instance.RemoveBlockingScreen(this);
 	}
 }

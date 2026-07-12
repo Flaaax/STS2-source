@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Godot;
 using MegaCrit.Sts2.Core.Helpers;
-using MegaCrit.Sts2.Core.Nodes.Screens.Capstones;
 using MegaCrit.Sts2.Core.Nodes.Screens.Map;
 using MegaCrit.Sts2.Core.Nodes.Screens.ScreenContext;
 
@@ -28,19 +27,6 @@ public partial class NOverlayStack : Control
 	public static NOverlayStack? Instance => NRun.Instance?.GlobalUi.Overlays;
 
 	public int ScreenCount => _overlays.Count;
-
-	private static bool StackIsCovered
-	{
-		get
-		{
-			NMapScreen? instance = NMapScreen.Instance;
-			if (instance == null || !instance.IsOpen)
-			{
-				return NCapstoneContainer.Instance?.InUse ?? false;
-			}
-			return true;
-		}
-	}
 
 	public override void _Ready()
 	{
@@ -77,12 +63,7 @@ public partial class NOverlayStack : Control
 		_backstop.MouseFilter = MouseFilterEnum.Stop;
 		_backstopFade?.Kill();
 		this.MoveChildSafely(_backstop, _overlays.IndexOf(screen));
-		bool stackIsCovered = StackIsCovered;
-		if (stackIsCovered)
-		{
-			screen.AfterOverlayHidden();
-		}
-		if (!screen.UseSharedBackstop || stackIsCovered)
+		if (!screen.UseSharedBackstop)
 		{
 			_backstop.Modulate = Colors.Transparent;
 		}

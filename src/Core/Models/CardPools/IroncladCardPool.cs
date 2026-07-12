@@ -23,7 +23,7 @@ public sealed class IroncladCardPool : CardPoolModel
 
 	protected override CardModel[] GenerateAllCards()
 	{
-		return new CardModel[90]
+		return new CardModel[87]
 		{
 			ModelDb.Card<Aggression>(),
 			ModelDb.Card<Anger>(),
@@ -32,7 +32,6 @@ public sealed class IroncladCardPool : CardPoolModel
 			ModelDb.Card<Barricade>(),
 			ModelDb.Card<Bash>(),
 			ModelDb.Card<BattleTrance>(),
-			ModelDb.Card<Blaze>(),
 			ModelDb.Card<BloodWall>(),
 			ModelDb.Card<Bloodletting>(),
 			ModelDb.Card<Bludgeon>(),
@@ -77,12 +76,10 @@ public sealed class IroncladCardPool : CardPoolModel
 			ModelDb.Card<Juggernaut>(),
 			ModelDb.Card<Juggling>(),
 			ModelDb.Card<Mangle>(),
-			ModelDb.Card<Midnight>(),
 			ModelDb.Card<MoltenFist>(),
 			ModelDb.Card<NotYet>(),
 			ModelDb.Card<Offering>(),
 			ModelDb.Card<OneTwoPunch>(),
-			ModelDb.Card<Outrage>(),
 			ModelDb.Card<PactsEnd>(),
 			ModelDb.Card<PerfectedStrike>(),
 			ModelDb.Card<Pillage>(),

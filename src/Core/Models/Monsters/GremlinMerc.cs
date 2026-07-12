@@ -47,7 +47,7 @@ public sealed class GremlinMerc : MonsterModel
 	{
 		await base.AfterAddedToRoom();
 		await PowerCmd.Apply<SurprisePower>(new ThrowingPlayerChoiceContext(), base.Creature, 1m, base.Creature, null);
-		foreach (Player player in base.CombatState.Players)
+		foreach (Player player in base.Creature.CombatState.Players)
 		{
 			ThieveryPower thieveryPower = (ThieveryPower)ModelDb.Power<ThieveryPower>().ToMutable();
 			thieveryPower.Target = player.Creature;

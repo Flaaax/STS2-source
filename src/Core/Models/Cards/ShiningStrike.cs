@@ -27,20 +27,14 @@ public sealed class ShiningStrike : CardModel
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
 	{
 		ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
-		await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this, cardPlay).Targeting(cardPlay.Target)
+		await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
 			.WithHitFx("vfx/vfx_starry_impact")
 			.Execute(choiceContext);
 		await PlayerCmd.GainStars(base.DynamicVars.Stars.BaseValue, base.Owner);
-	}
-
-	protected override (PileType, CardPilePosition) GetResultPileTypeAndPositionForCardPlay()
-	{
-		var (pileType, item) = base.GetResultPileTypeAndPositionForCardPlay();
-		if (pileType == PileType.Discard)
+		if (!base.Keywords.Contains(CardKeyword.Exhaust) && !base.ExhaustOnNextPlay)
 		{
-			return (PileType.Draw, CardPilePosition.Top);
+			await CardPileCmd.Add(this, PileType.Draw, CardPilePosition.Top);
 		}
-		return (pileType, item);
 	}
 
 	protected override void OnUpgrade()

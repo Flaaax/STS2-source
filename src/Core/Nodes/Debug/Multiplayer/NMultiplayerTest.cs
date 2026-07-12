@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
-using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Godot;
@@ -28,6 +27,7 @@ using MegaCrit.Sts2.Core.Multiplayer.Serialization;
 using MegaCrit.Sts2.Core.Nodes.Audio;
 using MegaCrit.Sts2.Core.Nodes.GodotExtensions;
 using MegaCrit.Sts2.Core.Platform;
+using MegaCrit.Sts2.Core.Platform.Steam;
 using MegaCrit.Sts2.Core.Rooms;
 using MegaCrit.Sts2.Core.Runs;
 using MegaCrit.Sts2.Core.Saves;
@@ -81,11 +81,11 @@ public partial class NMultiplayerTest : Control, IStartRunLobbyListener
 		_idField = GetNode<TextEdit>("NameField");
 		_characterPaginator = GetNode<NMultiplayerTestCharacterPaginator>("CharacterChooser");
 		Button node = GetNode<Button>("HostButton");
-		Button node2 = GetNode<Button>("JoinButton");
+		Button node2 = GetNode<Button>("SteamHostButton");
+		Button node3 = GetNode<Button>("JoinButton");
 		_readyButton = GetNode<Button>("ReadyButton");
 		_readyIndicator = GetNode<Control>("ReadyButton/ReadyIndicator");
-		Button node3 = GetNode<Button>("ReplayButton");
-		Button node4 = GetNode<Button>("SaveReplayButton");
+		Button node4 = GetNode<Button>("ReplayButton");
 		Button node5 = GetNode<Button>("DeleteCloudSavesButton");
 		_loadingPanel = GetNode<Control>("LoadingPanel");
 		Control node6 = GetNode<Control>("Characters");
@@ -98,10 +98,10 @@ public partial class NMultiplayerTest : Control, IStartRunLobbyListener
 			});
 		}
 		node.Connect(BaseButton.SignalName.ButtonUp, Callable.From(HostButtonPressed));
-		node2.Connect(BaseButton.SignalName.ButtonUp, Callable.From(JoinButtonPressed));
+		node2.Connect(BaseButton.SignalName.ButtonUp, Callable.From(SteamHostButtonPressed));
+		node3.Connect(BaseButton.SignalName.ButtonUp, Callable.From(JoinButtonPressed));
 		_readyButton.Connect(BaseButton.SignalName.ButtonUp, Callable.From(ReadyButtonPressed));
-		node3.Connect(BaseButton.SignalName.ButtonUp, Callable.From(ChooseReplayToLoad));
-		node4.Connect(BaseButton.SignalName.ButtonUp, Callable.From(ChooseReplayToSave));
+		node4.Connect(BaseButton.SignalName.ButtonUp, Callable.From(ChooseReplayToLoad));
 		node5.Connect(BaseButton.SignalName.ButtonUp, Callable.From(CloudConsoleCmd.DeleteCloudSaves));
 		_characterPaginator.Visible = false;
 		_characterPaginator.CharacterChanged += OnCharacterChanged;
@@ -126,6 +126,10 @@ public partial class NMultiplayerTest : Control, IStartRunLobbyListener
 				PreloadManager.Enabled = _settings.DoPreloading;
 				_game.DebugSeedOverride = _settings.Seed;
 			}
+		}
+		if (!SteamInitializer.Initialized)
+		{
+			SteamInitializer.Initialize(_game);
 		}
 		MegaCrit.Sts2.Core.Logging.Logger.logLevelTypeMap[LogType.Network] = LogLevel.Debug;
 		MegaCrit.Sts2.Core.Logging.Logger.logLevelTypeMap[LogType.Actions] = LogLevel.VeryDebug;
@@ -158,6 +162,11 @@ public partial class NMultiplayerTest : Control, IStartRunLobbyListener
 	private void HostButtonPressed()
 	{
 		TaskHelper.RunSafely(StartHost(steam: false));
+	}
+
+	private void SteamHostButtonPressed()
+	{
+		TaskHelper.RunSafely(StartHost(steam: true));
 	}
 
 	private void JoinButtonPressed()
@@ -278,7 +287,7 @@ public partial class NMultiplayerTest : Control, IStartRunLobbyListener
 	public async Task JoinToHost(IClientConnectionInitializer initializer)
 	{
 		Disconnect(NetError.Quit);
-		JoinFlow joinFlow = new JoinFlow(new NetClientGameService());
+		JoinFlow joinFlow = new JoinFlow();
 		try
 		{
 			JoinResult joinResult = await joinFlow.Begin(initializer, GetTree());
@@ -319,41 +328,15 @@ public partial class NMultiplayerTest : Control, IStartRunLobbyListener
 
 	private void ChooseReplayToLoad()
 	{
-		ChooseReplay(LoadReplay);
-	}
-
-	private void ChooseReplayToSave()
-	{
-		ChooseReplay(WriteReplayAsSave);
-	}
-
-	private void ChooseReplay(Action<string> action)
-	{
 		FileDialog fileDialog = new FileDialog();
 		fileDialog.Filters = new string[1] { "*.mcr" };
 		fileDialog.UseNativeDialog = true;
 		fileDialog.Title = "Choose Replay";
 		fileDialog.Access = FileDialog.AccessEnum.Filesystem;
 		fileDialog.FileMode = FileDialog.FileModeEnum.OpenFile;
-		fileDialog.CurrentDir = ProjectSettings.GlobalizePath("user://");
-		fileDialog.Connect(FileDialog.SignalName.FileSelected, Callable.From(action));
+		fileDialog.Connect(FileDialog.SignalName.FileSelected, Callable.From<string>(LoadReplay));
 		this.AddChildSafely(fileDialog);
 		fileDialog.Show();
-	}
-
-	private bool ValidateReplay(CombatReplay replay)
-	{
-		if (replay.modelIdHash != ModelIdSerializationCache.Hash)
-		{
-			if (!_ignoreReplayModelIdHash)
-			{
-				Log.Error($"Attempting to load replay with Model ID hash {replay.modelIdHash} that does not match ours ({ModelIdSerializationCache.Hash})! The replay will mismatch. If you want to continue anyway, try running the replay again.");
-				_ignoreReplayModelIdHash = true;
-				return false;
-			}
-			Log.Warn("Ignoring model ID hash mismatch in replay.");
-		}
-		return true;
 	}
 
 	private void LoadReplay(string path)
@@ -367,10 +350,17 @@ public partial class NMultiplayerTest : Control, IStartRunLobbyListener
 		packetReader.Reset(memoryStream.ToArray());
 		CombatReplay combatReplay = packetReader.Read<CombatReplay>();
 		Log.Info($"Loaded replay. Game version: {combatReplay.version} Commit: {combatReplay.gitCommit} Model ID hash: {combatReplay.modelIdHash}");
-		if (ValidateReplay(combatReplay))
+		if (combatReplay.modelIdHash != ModelIdSerializationCache.Hash)
 		{
-			TaskHelper.RunSafely(RunReplay(combatReplay, GetTree()));
+			if (!_ignoreReplayModelIdHash)
+			{
+				Log.Error($"Attempting to load replay with Model ID hash {combatReplay.modelIdHash} that does not match ours ({ModelIdSerializationCache.Hash})! The replay will mismatch. If you want to continue anyway, try running the replay again.");
+				_ignoreReplayModelIdHash = true;
+				return;
+			}
+			Log.Warn("Ignoring model ID hash mismatch in replay.");
 		}
+		TaskHelper.RunSafely(RunReplay(combatReplay, GetTree()));
 	}
 
 	private static async Task RunReplay(CombatReplay replay, SceneTree sceneTree)
@@ -445,38 +435,6 @@ public partial class NMultiplayerTest : Control, IStartRunLobbyListener
 				throw new InvalidEnumArgumentException();
 			}
 		}
-	}
-
-	private void WriteReplayAsSave(string path)
-	{
-		using MemoryStream memoryStream = new MemoryStream();
-		using (FileAccessStream fileAccessStream = new FileAccessStream(path, Godot.FileAccess.ModeFlags.Read))
-		{
-			fileAccessStream.CopyTo(memoryStream);
-		}
-		PacketReader packetReader = new PacketReader();
-		packetReader.Reset(memoryStream.ToArray());
-		CombatReplay combatReplay = packetReader.Read<CombatReplay>();
-		if (!ValidateReplay(combatReplay))
-		{
-			return;
-		}
-		SerializableRun serializableRun = combatReplay.serializableRun;
-		string text = JsonSerializer.Serialize(serializableRun, JsonSerializationUtility.GetTypeInfo<SerializableRun>());
-		for (int i = 0; i < serializableRun.Players.Count; i++)
-		{
-			text = text.Replace(serializableRun.Players[i].NetId.ToString(), ((i == 0) ? 1 : (i * 1000)).ToString());
-		}
-		string path2 = ((serializableRun.Players.Count > 1) ? "current_run_mp.save" : "current_run.save");
-		string text2 = Path.Combine(UserDataPathProvider.GetProfileScopedPath(SaveManager.Instance.CurrentProfileId, "saves"), path2);
-		Log.Info(text2);
-		using Godot.FileAccess fileAccess = Godot.FileAccess.Open(text2, Godot.FileAccess.ModeFlags.Write);
-		if (fileAccess == null)
-		{
-			throw new InvalidOperationException($"Couldn't open {text2}: {Godot.FileAccess.GetOpenError()}.");
-		}
-		fileAccess.StoreString(text);
-		Log.Info($"Wrote {text.Length} chars to {text2}");
 	}
 
 	private void OnCharacterChanged(CharacterModel model)

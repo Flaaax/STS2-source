@@ -3,7 +3,6 @@ using System.IO;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
-using Godot;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Multiplayer.Game;
 using MegaCrit.Sts2.Core.Rooms;
@@ -219,8 +218,8 @@ public class RunSaveManager
 		}
 	}
 
-	public static string GetRunSavePath(int profileId, string fileName, bool? forceModState = null)
+	public static string GetRunSavePath(int profileId, string fileName)
 	{
-		return UserDataPathProvider.GetProfileDir(profileId, forceModState).PathJoin(UserDataPathProvider.SavesDir).PathJoin(fileName);
+		return Path.Combine(UserDataPathProvider.GetProfileDir(profileId), UserDataPathProvider.SavesDir, fileName);
 	}
 }

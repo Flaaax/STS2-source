@@ -50,7 +50,7 @@ public sealed class BrainLeech : EventModel
 
 	private async Task Rip()
 	{
-		await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), base.Owner.Creature, (DamageVar)base.DynamicVars["RipHpLoss"], null, null, null);
+		await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), base.Owner.Creature, (DamageVar)base.DynamicVars["RipHpLoss"], null, null);
 		for (int i = 0; i < base.DynamicVars["RewardCount"].IntValue; i++)
 		{
 			CardCreationOptions options = CardCreationOptions.ForNonCombatWithDefaultOdds(new global::_003C_003Ez__ReadOnlySingleElementList<CardPoolModel>(ModelDb.CardPool<ColorlessCardPool>())).WithFlags(CardCreationFlags.NoRarityModification | CardCreationFlags.NoCardPoolModifications);
@@ -67,7 +67,11 @@ public sealed class BrainLeech : EventModel
 		CardSelectorPrefs cardSelectorPrefs = new CardSelectorPrefs(L10NLookup("BRAIN_LEECH.pages.SHARE_KNOWLEDGE.selectionScreenPrompt"), 1);
 		cardSelectorPrefs.Cancelable = false;
 		CardSelectorPrefs prefs = cardSelectorPrefs;
-		await SelectCardsToAddToDeckFromGrid(cards, prefs);
+		CardModel cardModel = (await CardSelectCmd.FromSimpleGridForRewards(new BlockingPlayerChoiceContext(), cards, base.Owner, prefs)).FirstOrDefault();
+		if (cardModel != null)
+		{
+			CardCmd.PreviewCardPileAdd(await CardPileCmd.Add(cardModel, PileType.Deck));
+		}
 		SetEventFinished(L10NLookup("BRAIN_LEECH.pages.SHARE_KNOWLEDGE.description"));
 	}
 }

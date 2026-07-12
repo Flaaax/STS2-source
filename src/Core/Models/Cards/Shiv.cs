@@ -57,7 +57,7 @@ public sealed class Shiv : CardModel
 
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
 	{
-		AttackCommand attackCommand = DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this, cardPlay);
+		AttackCommand attackCommand = DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this);
 		if (HasFanOfKnives)
 		{
 			Creature lastEnemy = base.CombatState.HittableEnemies.LastOrDefault();

@@ -26,7 +26,7 @@ public class DarkOrb : OrbModel
 
 	public override async Task BeforeTurnEndOrbTrigger(PlayerChoiceContext choiceContext)
 	{
-		await TriggerPassive(choiceContext, null);
+		await Passive(choiceContext, null);
 	}
 
 	public override Task Passive(PlayerChoiceContext choiceContext, Creature? target)
@@ -35,7 +35,7 @@ public class DarkOrb : OrbModel
 		{
 			throw new InvalidOperationException("Dark orbs cannot target creatures.");
 		}
-		ActivatePassive();
+		Trigger();
 		_evokeVal += PassiveVal;
 		NCombatRoom.Instance?.GetCreatureNode(base.Owner.Creature)?.OrbManager?.UpdateVisuals(OrbEvokeType.None);
 		return Task.CompletedTask;
@@ -50,7 +50,6 @@ public class DarkOrb : OrbModel
 		}
 		PlayEvokeSfx();
 		Creature weakestEnemy = hittableEnemies.MinBy((Creature c) => c.CurrentHp);
-		ActivateEvoke(new Creature[1] { weakestEnemy });
 		await CreatureCmd.Damage(playerChoiceContext, weakestEnemy, EvokeVal, ValueProp.Unpowered, base.Owner.Creature);
 		return new global::_003C_003Ez__ReadOnlySingleElementList<Creature>(weakestEnemy);
 	}

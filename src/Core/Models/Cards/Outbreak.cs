@@ -13,7 +13,11 @@ public sealed class Outbreak : CardModel
 {
 	protected override IEnumerable<IHoverTip> ExtraHoverTips => new global::_003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromPower<PoisonPower>());
 
-	protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new PowerVar<OutbreakPower>(3m));
+	protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlyArray<DynamicVar>(new DynamicVar[2]
+	{
+		new PowerVar<OutbreakPower>(11m),
+		new RepeatVar(3)
+	});
 
 	public Outbreak()
 		: base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
@@ -28,6 +32,6 @@ public sealed class Outbreak : CardModel
 
 	protected override void OnUpgrade()
 	{
-		base.DynamicVars["OutbreakPower"].UpgradeValueBy(1m);
+		base.DynamicVars["OutbreakPower"].UpgradeValueBy(4m);
 	}
 }

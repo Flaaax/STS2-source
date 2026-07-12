@@ -380,7 +380,6 @@
   "VAKUU.epithet": "Первый демон",
   "VAKUU.loss": "{character} {characterGender:choose(neutral|masculine|feminine):заключил|заключил|заключила} неудачную сделку с [gold]Вакуу[/gold].",
   "VAKUU.talk.ANY.0-0r.ancient": "Покоритель Шпиля в поисках величия? Хочу тебе кое-что предложить.",
-  "VAKUU.talk.ANY.1-0r.ancient": "{Visits}-й раз. Ты поднимаешься сюда уже в {Visits}-й раз.",
   "VAKUU.talk.ANY.2-0r.ancient": "Ты же понимаешь, это [sine]никогда[/sine] не кончится?",
   "VAKUU.talk.DEFECT.0-0.ancient": "Ты сломан… Позволь тебя [sine]усовершенствовать[/sine].",
   "VAKUU.talk.DEFECT.1-0r.ancient": "Ты не находишь странным, что другие агрегаты хотят тебя уничтожить?",

@@ -9,9 +9,6 @@ var _currentAmbience
 
 var _bank_loader: FmodBankLoader
 
-
-var _loaded_bank_path: String = ""
-
 func update_music(track):
     _currentTrack = track
     stop_music()
@@ -63,27 +60,17 @@ func stop_ambience():
         _ambienceEv.release()
         _ambienceEv = null
 
-
-
-
-
-
-func load_act_bank(bank_path: String, verify_event: String) -> bool:
-    if _loaded_bank_path == bank_path and FmodServer.check_event_path(verify_event):
-        return true
+func load_act_banks(bank_paths: Array):
+    if _bank_loader and _bank_loader.bank_paths == bank_paths:
+        return
     unload_act_banks()
-    if not FileAccess.file_exists(bank_path):
-        printerr("music bank not found: " + bank_path)
-        return false
+    for path in bank_paths:
+        if not FileAccess.file_exists(path):
+            printerr("music bank not found: " + path)
+            return
     _bank_loader = FmodBankLoader.new()
-    _bank_loader.bank_paths = [bank_path]
+    _bank_loader.bank_paths = bank_paths
     add_child(_bank_loader)
-    if not FmodServer.check_event_path(verify_event):
-        printerr("music bank failed to load: " + bank_path)
-        unload_act_banks()
-        return false
-    _loaded_bank_path = bank_path
-    return true
 
 func unload_act_banks():
     if _bank_loader:
@@ -98,4 +85,3 @@ func unload_act_banks():
 
         _bank_loader.free()
         _bank_loader = null
-    _loaded_bank_path = ""

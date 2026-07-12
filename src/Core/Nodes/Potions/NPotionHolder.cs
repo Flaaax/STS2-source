@@ -34,8 +34,6 @@ public partial class NPotionHolder : NClickableControl
 
 	private TextureRect _emptyIcon;
 
-	private NSelectionReticle _selectionReticle;
-
 	private NPotionPopup? _popup;
 
 	private bool _potionTargeting;
@@ -81,7 +79,6 @@ public partial class NPotionHolder : NClickableControl
 	public override void _Ready()
 	{
 		_emptyIcon = GetNode<TextureRect>("%EmptyIcon");
-		_selectionReticle = GetNode<NSelectionReticle>("%SelectionReticle");
 		ConnectSignals();
 	}
 
@@ -117,10 +114,6 @@ public partial class NPotionHolder : NClickableControl
 			nHoverTipSet?.SetGlobalPosition(base.GlobalPosition + Vector2.Down * base.Size.Y * Mathf.Max(1.5f, base.Scale.Y));
 			nHoverTipSet?.SetAlignment(this, HoverTipAlignment.Center);
 		}
-		if (NControllerManager.Instance.IsUsingController)
-		{
-			_selectionReticle.OnSelect();
-		}
 	}
 
 	protected override void OnUnfocus()
@@ -141,7 +134,6 @@ public partial class NPotionHolder : NClickableControl
 			_hoverTween = CreateTween().SetParallel();
 			_hoverTween.TweenProperty(_emptyIcon, "scale", _potionScale, 0.5).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Expo);
 		}
-		_selectionReticle.OnDeselect();
 	}
 
 	protected override void OnPress()

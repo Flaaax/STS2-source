@@ -380,7 +380,6 @@
   "VAKUU.epithet": "O Primeiro Demônio",
   "VAKUU.loss": "{character} fechou um péssimo acordo com [gold]Vakuu[/gold].",
   "VAKUU.talk.ANY.0-0r.ancient": "Buscando alcançar glória no Pináculo, não é mesmo? Eu tenho algumas propostas que podem lhe interessar...",
-  "VAKUU.talk.ANY.1-0r.ancient": "{Visits}. Você esteve aqui {Visits} {Visits:plural:vez|vezes}.",
   "VAKUU.talk.ANY.2-0r.ancient": "Você entende que isto [sine]nunca[/sine] termina?",
   "VAKUU.talk.DEFECT.0-0.ancient": "Você que está quebrado, deixe-me [sine]aperfeiçoa-lo[/sine].",
   "VAKUU.talk.DEFECT.1-0r.ancient": "Não acha estranho que seus companheiros constructos queiram te destruir?",

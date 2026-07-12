@@ -120,11 +120,14 @@ public partial class NFakeMerchant : Control, ICustomEventNode, IScreenContext
 
 	public async Task FoulPotionThrown()
 	{
-		MerchantButton.Disable();
-		NSpeechBubbleVfx nSpeechBubbleVfx = MerchantButton.PlayDialogue(Rng.Chaotic.NextItem(_dialogue.FoulPotionLines));
-		if (nSpeechBubbleVfx != null)
+		LocString locString = Rng.Chaotic.NextItem(_dialogue.FoulPotionLines);
+		if (locString != null)
 		{
-			await Cmd.Wait((float)nSpeechBubbleVfx.SecondsToDisplay - 1f, _cts.Token);
+			NSpeechBubbleVfx nSpeechBubbleVfx = MerchantButton.PlayDialogue(locString);
+			if (nSpeechBubbleVfx != null)
+			{
+				await Cmd.Wait((float)nSpeechBubbleVfx.SecondsToDisplay - 1f, _cts.Token);
+			}
 		}
 	}
 
@@ -179,8 +182,7 @@ public partial class NFakeMerchant : Control, ICustomEventNode, IScreenContext
 
 	private void StartCharacterAnimation(NCreatureVisuals visuals)
 	{
-		visuals.SpineAnimation.SetAnimation("relaxed_loop");
-		using MegaTrackEntry megaTrackEntry = visuals.SpineAnimation.GetCurrentTrack();
+		MegaTrackEntry megaTrackEntry = visuals.SpineAnimation.SetAnimation("relaxed_loop");
 		if (megaTrackEntry != null)
 		{
 			megaTrackEntry.SetLoop(loop: true);

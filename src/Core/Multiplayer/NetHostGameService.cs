@@ -119,15 +119,17 @@ public class NetHostGameService : INetHostHandler, INetHandler, INetHostGameServ
 
 	public void OnPacketReceived(ulong senderId, byte[] packetBytes, NetTransferMode mode, int channel)
 	{
-		if (_messageBus.TryDeserializeMessage(packetBytes, out INetMessage message, out ulong? overrideSenderId))
+		if (!_messageBus.TryDeserializeMessage(packetBytes, out INetMessage message, out ulong? overrideSenderId))
 		{
-			if (message.ShouldBroadcast)
-			{
-				BroadcastMessage(message, senderId, channel, overrideSenderId.Value);
-			}
-			senderId = overrideSenderId ?? senderId;
-			_messageBus.SendMessageToAllHandlers(message, senderId);
+			Log.Error($"Tried to deserialize packet of size {packetBytes.Length} as message, but we were not able to!");
+			return;
 		}
+		if (message.ShouldBroadcast)
+		{
+			BroadcastMessage(message, senderId, channel, overrideSenderId.Value);
+		}
+		senderId = overrideSenderId ?? senderId;
+		_messageBus.SendMessageToAllHandlers(message, senderId);
 	}
 
 	private void BroadcastMessage<T>(T message, ulong excludePeerId, int channel, ulong overrideSenderId) where T : INetMessage

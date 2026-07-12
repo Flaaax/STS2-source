@@ -29,9 +29,9 @@ public sealed class TorchHeadAmalgam : MonsterModel
 
 	public override int MaxInitialHp => MinInitialHp;
 
-	private int TackleDamage => AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies, 22, 18);
+	private int TackleDamage => AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies, 19, 18);
 
-	private int WeakTackleDamage => AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies, 16, 14);
+	private int WeakTackleDamage => AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies, 15, 14);
 
 	private int SoulBeamDamage => AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies, 8, 8);
 
@@ -105,13 +105,12 @@ public sealed class TorchHeadAmalgam : MonsterModel
 				NCreature creatureNode2 = targets[0].GetCreatureNode();
 				if (creatureNode2 != null)
 				{
-					float num = 400f * creatureNode.Visuals.Scale.X;
-					node2D.GlobalPosition = new Vector2(creatureNode2.GlobalPosition.X + num, node2D.GlobalPosition.Y);
+					node2D.Position += Vector2.Left * (creatureNode2.GlobalPosition.X - creatureNode.GlobalPosition.X + 3000f);
 				}
 			}
 			else
 			{
-				node2D.Position = Vector2.Left * 3000f;
+				node2D.Position += Vector2.Left * 3000f;
 			}
 		}
 		await DamageCmd.Attack(SoulBeamDamage).WithHitCount(3).FromMonster(this)

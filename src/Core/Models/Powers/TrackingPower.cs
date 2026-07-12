@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.HoverTips;
@@ -16,7 +15,7 @@ public sealed class TrackingPower : PowerModel
 
 	protected override IEnumerable<IHoverTip> ExtraHoverTips => new global::_003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromPower<WeakPower>());
 
-	public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource, CardPlay? cardPlay)
+	public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
 	{
 		if (!props.IsPoweredAttack())
 		{
@@ -34,6 +33,6 @@ public sealed class TrackingPower : PowerModel
 		{
 			return 1m;
 		}
-		return 1m + (decimal)base.Amount / 100m;
+		return base.Amount;
 	}
 }

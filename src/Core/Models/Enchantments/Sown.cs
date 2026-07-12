@@ -14,8 +14,8 @@ public sealed class Sown : EnchantmentModel
 	{
 		if (base.Status == EnchantmentStatus.Normal)
 		{
-			base.Status = EnchantmentStatus.Disabled;
 			await PlayerCmd.GainEnergy(base.Amount, base.Card.Owner);
+			base.Status = EnchantmentStatus.Disabled;
 		}
 	}
 }

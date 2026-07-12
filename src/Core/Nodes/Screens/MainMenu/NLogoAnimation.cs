@@ -87,12 +87,8 @@ public partial class NLogoAnimation : Control, IScreenContext
 		await this.AwaitProcessFrame();
 		while (true)
 		{
-			bool flag;
-			using (MegaTrackEntry megaTrackEntry = _spineSprite.GetAnimationState().GetCurrent(0))
-			{
-				flag = megaTrackEntry != null && !megaTrackEntry.IsComplete();
-			}
-			if (!flag)
+			MegaTrackEntry? current = _spineSprite.GetAnimationState().GetCurrent(0);
+			if (current == null || current.IsComplete())
 			{
 				break;
 			}

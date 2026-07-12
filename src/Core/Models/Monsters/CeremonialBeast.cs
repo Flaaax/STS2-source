@@ -181,7 +181,7 @@ public sealed class CeremonialBeast : MonsterModel
 		InMidCharge = true;
 		await CreatureCmd.TriggerAnim(base.Creature, "Plow", 0f);
 		await Cmd.Wait(0.5f);
-		base.Creature.GetVfxContainer()?.AddChildSafely(NHorizontalLinesVfx.Create(new Color("BFFFC880"), 1.2, movingRightwards: false));
+		base.Creature.GetVfxContainer()?.AddChildSafely(NHorizontalLinesVfx.Create(new Color("BFFFC880"), 1.2000000476837158, movingRightwards: false));
 		await Cmd.Wait(0.5f);
 		NCombatRoom.Instance?.RadialBlur(VfxPosition.Left);
 		VfxCmd.PlayOnCreatureCenters(targets, "vfx/vfx_attack_blunt");
@@ -314,11 +314,6 @@ public sealed class CeremonialBeast : MonsterModel
 	public override List<BestiaryMonsterMove> GenerateBestiaryMoveList(NCreatureVisuals? creatureVisuals)
 	{
 		List<BestiaryMonsterMove> list = base.GenerateBestiaryMoveList(creatureVisuals);
-		list.RemoveAll(delegate(BestiaryMonsterMove m)
-		{
-			string stateId = m.stateId;
-			return (stateId == "STAMP_MOVE" || stateId == "CRUSH_MOVE") ? true : false;
-		});
 		list.Insert(2, BestiaryMonsterMove.FromStun(SetStunned));
 		return list;
 	}

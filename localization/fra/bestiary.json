@@ -7,13 +7,8 @@
   "ACTION_NAME.revive": "Ressuscité",
   "ACTION_NAME.stun": "Étourdi",
   "DESCRIPTION.placeholder": "Les informations concernant ce monstre restent à découvrir...",
-  "EVENTS.title": "Événements",
   "LOCKED.monsterName": "[lb]Verrouillé[rb]",
   "LOCKED.monsterTitle": "Verrouillé",
-  "MODE.viewActions": "Voir les actions",
-  "MODE.viewStats": "Voir les statistiques",
-  "QUOTE_PLACEHOLDER": "[red][i](Le dialogue pour ce personnage n'a pas encore été écrit)[/i][/red]",
-  "STATS.layout": "Rencontrés : [blue]{total}[/blue]\nTués : [green]{kills}[/green]\nMorts : [red]{deaths}[/red]\nTaux de victoire : [gold]{winrate} %[/gold]",
   "UNDER_CONSTRUCTION": "En construction",
   "UNSEEN.monsterName": "[lb]Inconnu[rb]"
 }

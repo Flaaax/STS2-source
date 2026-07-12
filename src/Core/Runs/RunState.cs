@@ -611,17 +611,17 @@ public class RunState : IRunState, ICardScope, IPlayerCollection
 		{
 			_players.Add(player);
 		}
-		player.RunState = this;
 		player.InitializeSeed(Rng.StringSeed);
 		foreach (CardModel card in player.Deck.Cards)
 		{
 			card.AfterCreated();
 		}
+		player.RunState = this;
 		foreach (CardModel card2 in player.Deck.Cards)
 		{
 			AddCard(card2, player);
 		}
-		CurrentMapPointHistoryEntry?.PlayerStats.Add(new PlayerMapPointHistoryEntry
+		CurrentMapPointHistoryEntry.PlayerStats.Add(new PlayerMapPointHistoryEntry
 		{
 			PlayerId = player.NetId
 		});

@@ -13,8 +13,6 @@ public sealed class Deprived : CharacterModel
 {
 	private MockCardPool? _mockCardPool;
 
-	public override bool IsMock => true;
-
 	public override bool IsPlayable => false;
 
 	public override Color NameColor => StsColors.gold;
@@ -29,17 +27,7 @@ public sealed class Deprived : CharacterModel
 
 	public override int MaxEnergy => 100;
 
-	public override CardPoolModel CardPool
-	{
-		get
-		{
-			if (_mockCardPool != null)
-			{
-				return _mockCardPool;
-			}
-			return ModelDb.CardPool<DeprivedCardPool>();
-		}
-	}
+	public override CardPoolModel CardPool => _mockCardPool ?? ModelDb.CardPool<MockCardPool>();
 
 	public override RelicPoolModel RelicPool => ModelDb.RelicPool<IroncladRelicPool>();
 
@@ -65,16 +53,13 @@ public sealed class Deprived : CharacterModel
 		_mockCardPool = null;
 	}
 
-	public void SetMockCardPool(IEnumerable<CardModel> cards)
+	public void AddToPool(CardModel card)
 	{
-		if (_mockCardPool != null)
+		card.AssertCanonical();
+		if (_mockCardPool == null)
 		{
-			throw new InvalidOperationException("Mock card pool already initialized");
+			_mockCardPool = (MockCardPool)ModelDb.CardPool<MockCardPool>().ToMutable();
 		}
-		_mockCardPool = (MockCardPool)ModelDb.CardPool<MockCardPool>().ToMutable();
-		foreach (CardModel card in cards)
-		{
-			_mockCardPool.Add(card);
-		}
+		_mockCardPool.Add(card);
 	}
 }

@@ -14,7 +14,7 @@ namespace MegaCrit.Sts2.Core.ControllerInput;
 
 public class SteamControllerInputStrategy : IControllerInputStrategy
 {
-	private readonly Dictionary<EInputActionOrigin, StringName> _steamInputsToMegaInputs = new Dictionary<EInputActionOrigin, StringName>
+	private Dictionary<EInputActionOrigin, StringName> _steamInputsToMegaInputs = new Dictionary<EInputActionOrigin, StringName>
 	{
 		{
 			EInputActionOrigin.k_EInputActionOrigin_SteamController_A,
@@ -58,23 +58,23 @@ public class SteamControllerInputStrategy : IControllerInputStrategy
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_SteamController_LeftStick_DPadNorth,
-			Controller.lStickUp
+			Controller.joystickUp
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_SteamController_LeftStick_DPadSouth,
-			Controller.lStickDown
+			Controller.joystickDown
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_SteamController_LeftStick_DPadWest,
-			Controller.lStickLeft
+			Controller.joystickLeft
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_SteamController_LeftStick_DPadEast,
-			Controller.lStickRight
+			Controller.joystickRight
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_SteamController_LeftStick_Click,
-			Controller.lStickPress
+			Controller.joystickPress
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_SteamController_Start,
@@ -126,39 +126,39 @@ public class SteamControllerInputStrategy : IControllerInputStrategy
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_PS4_DPad_North,
-			Controller.dPadUp
+			Controller.dPadNorth
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_PS4_DPad_South,
-			Controller.dPadDown
+			Controller.dPadSouth
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_PS4_DPad_West,
-			Controller.dPadLeft
+			Controller.dPadWest
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_PS4_DPad_East,
-			Controller.dPadRight
+			Controller.dPadEast
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_PS4_LeftStick_DPadNorth,
-			Controller.lStickUp
+			Controller.joystickUp
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_PS4_LeftStick_DPadSouth,
-			Controller.lStickDown
+			Controller.joystickDown
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_PS4_LeftStick_DPadWest,
-			Controller.lStickLeft
+			Controller.joystickLeft
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_PS4_LeftStick_DPadEast,
-			Controller.lStickRight
+			Controller.joystickRight
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_PS4_LeftStick_Click,
-			Controller.lStickPress
+			Controller.joystickPress
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_PS4_Options,
@@ -222,39 +222,39 @@ public class SteamControllerInputStrategy : IControllerInputStrategy
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_PS5_DPad_North,
-			Controller.dPadUp
+			Controller.dPadNorth
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_PS5_DPad_South,
-			Controller.dPadDown
+			Controller.dPadSouth
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_PS5_DPad_West,
-			Controller.dPadLeft
+			Controller.dPadWest
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_PS5_DPad_East,
-			Controller.dPadRight
+			Controller.dPadEast
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_PS5_LeftStick_DPadNorth,
-			Controller.lStickUp
+			Controller.joystickUp
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_PS5_LeftStick_DPadSouth,
-			Controller.lStickDown
+			Controller.joystickDown
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_PS5_LeftStick_DPadWest,
-			Controller.lStickLeft
+			Controller.joystickLeft
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_PS5_LeftStick_DPadEast,
-			Controller.lStickRight
+			Controller.joystickRight
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_PS5_LeftStick_Click,
-			Controller.lStickPress
+			Controller.joystickPress
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_PS5_Option,
@@ -318,39 +318,39 @@ public class SteamControllerInputStrategy : IControllerInputStrategy
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_XBoxOne_DPad_North,
-			Controller.dPadUp
+			Controller.dPadNorth
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_XBoxOne_DPad_South,
-			Controller.dPadDown
+			Controller.dPadSouth
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_XBoxOne_DPad_West,
-			Controller.dPadLeft
+			Controller.dPadWest
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_XBoxOne_DPad_East,
-			Controller.dPadRight
+			Controller.dPadEast
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_XBoxOne_LeftStick_DPadNorth,
-			Controller.lStickUp
+			Controller.joystickUp
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_XBoxOne_LeftStick_DPadSouth,
-			Controller.lStickDown
+			Controller.joystickDown
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_XBoxOne_LeftStick_DPadWest,
-			Controller.lStickLeft
+			Controller.joystickLeft
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_XBoxOne_LeftStick_DPadEast,
-			Controller.lStickRight
+			Controller.joystickRight
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_XBoxOne_LeftStick_Click,
-			Controller.lStickPress
+			Controller.joystickPress
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_XBoxOne_Menu,
@@ -402,19 +402,19 @@ public class SteamControllerInputStrategy : IControllerInputStrategy
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_XBox360_DPad_North,
-			Controller.dPadUp
+			Controller.dPadNorth
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_XBox360_DPad_South,
-			Controller.dPadDown
+			Controller.dPadSouth
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_XBox360_DPad_West,
-			Controller.dPadLeft
+			Controller.dPadWest
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_XBox360_DPad_East,
-			Controller.dPadRight
+			Controller.dPadEast
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_XBox360_Start,
@@ -450,19 +450,19 @@ public class SteamControllerInputStrategy : IControllerInputStrategy
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_Switch_DPad_North,
-			Controller.dPadUp
+			Controller.dPadNorth
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_Switch_DPad_South,
-			Controller.dPadDown
+			Controller.dPadSouth
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_Switch_DPad_West,
-			Controller.dPadLeft
+			Controller.dPadWest
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_Switch_DPad_East,
-			Controller.dPadRight
+			Controller.dPadEast
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_Switch_Plus,
@@ -506,27 +506,27 @@ public class SteamControllerInputStrategy : IControllerInputStrategy
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_SteamDeck_L3,
-			Controller.lStickPress
+			Controller.joystickPress
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_SteamDeck_R3,
-			Controller.lStickPress
+			Controller.joystickPress
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_SteamDeck_DPad_North,
-			Controller.dPadUp
+			Controller.dPadNorth
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_SteamDeck_DPad_South,
-			Controller.dPadDown
+			Controller.dPadSouth
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_SteamDeck_DPad_West,
-			Controller.dPadLeft
+			Controller.dPadWest
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_SteamDeck_DPad_East,
-			Controller.dPadRight
+			Controller.dPadEast
 		},
 		{
 			EInputActionOrigin.k_EInputActionOrigin_SteamDeck_Menu,
@@ -556,13 +556,11 @@ public class SteamControllerInputStrategy : IControllerInputStrategy
 
 	private readonly Dictionary<StringName, InputDigitalActionHandle_t> _digitalActionHandleCache = new Dictionary<StringName, InputDigitalActionHandle_t>();
 
-	private bool _attemptedHandleCacheRebuild;
-
 	private Dictionary<EInputActionOrigin, Texture2D> _fallbackSteamGlyphs = new Dictionary<EInputActionOrigin, Texture2D>();
 
 	private InputAnalogActionHandle_t _joystickActionHandle;
 
-	private Vector2 _lStickPosition;
+	private Vector2 _joystickPosition;
 
 	private InputEventJoypadMotion _joystickXAxis;
 
@@ -677,11 +675,6 @@ public class SteamControllerInputStrategy : IControllerInputStrategy
 		{
 			return;
 		}
-		if (_digitalActionHandleCache.Count == 0 && !_attemptedHandleCacheRebuild)
-		{
-			_attemptedHandleCacheRebuild = true;
-			UpdateInputMap();
-		}
 		foreach (KeyValuePair<string, StringName> item in _controllerConfig.SteamInputControllerMap)
 		{
 			if (!_digitalActionHandleCache.TryGetValue(item.Key, out var value))
@@ -717,73 +710,73 @@ public class SteamControllerInputStrategy : IControllerInputStrategy
 	private void ProcessAnalogInputs()
 	{
 		InputAnalogActionData_t analogActionData = SteamInput.GetAnalogActionData(_currentControllerHandle.Value, _joystickActionHandle);
-		Vector2 lStickPosition = new Vector2(analogActionData.x, analogActionData.y);
-		if (lStickPosition.DistanceTo(_lStickPosition) > 0.05f)
+		Vector2 joystickPosition = new Vector2(analogActionData.x, analogActionData.y);
+		if (joystickPosition.DistanceTo(_joystickPosition) > 0.05f)
 		{
 			InputEventJoypadMotion joystickXAxis = _joystickXAxis;
-			joystickXAxis.AxisValue = lStickPosition.X;
+			joystickXAxis.AxisValue = joystickPosition.X;
 			InputEventJoypadMotion joystickYAxis = _joystickYAxis;
-			joystickYAxis.AxisValue = 0f - lStickPosition.Y;
+			joystickYAxis.AxisValue = 0f - joystickPosition.Y;
 			Input.ParseInputEvent(joystickXAxis);
 			Input.ParseInputEvent(joystickYAxis);
 		}
-		if (lStickPosition.Y >= 0.5f && !_pressedInputs.Contains("Joy_Up"))
+		if (joystickPosition.Y >= 0.5f && !_pressedInputs.Contains("Joy_Up"))
 		{
 			InputEventAction inputEventAction = _inputEvents[_up];
 			inputEventAction.Pressed = true;
 			Input.ParseInputEvent(inputEventAction);
 			_pressedInputs.Add("Joy_Up");
 		}
-		else if (lStickPosition.Y < 0.5f && _pressedInputs.Contains("Joy_Up"))
+		else if (joystickPosition.Y < 0.5f && _pressedInputs.Contains("Joy_Up"))
 		{
 			InputEventAction inputEventAction2 = _inputEvents[_up];
 			inputEventAction2.Pressed = false;
 			Input.ParseInputEvent(inputEventAction2);
 			_pressedInputs.Remove("Joy_Up");
 		}
-		if (lStickPosition.Y <= -0.5f && !_pressedInputs.Contains("Joy_Down"))
+		if (joystickPosition.Y <= -0.5f && !_pressedInputs.Contains("Joy_Down"))
 		{
 			InputEventAction inputEventAction3 = _inputEvents[_down];
 			inputEventAction3.Pressed = true;
 			Input.ParseInputEvent(inputEventAction3);
 			_pressedInputs.Add("Joy_Down");
 		}
-		else if (lStickPosition.Y > -0.5f && _pressedInputs.Contains("Joy_Down"))
+		else if (joystickPosition.Y > -0.5f && _pressedInputs.Contains("Joy_Down"))
 		{
 			InputEventAction inputEventAction4 = _inputEvents[_down];
 			inputEventAction4.Pressed = false;
 			Input.ParseInputEvent(inputEventAction4);
 			_pressedInputs.Remove("Joy_Down");
 		}
-		if (lStickPosition.X <= -0.5f && !_pressedInputs.Contains("Joy_Left"))
+		if (joystickPosition.X <= -0.5f && !_pressedInputs.Contains("Joy_Left"))
 		{
 			InputEventAction inputEventAction5 = _inputEvents[_left];
 			inputEventAction5.Pressed = true;
 			Input.ParseInputEvent(inputEventAction5);
 			_pressedInputs.Add("Joy_Left");
 		}
-		else if (lStickPosition.X > -0.5f && _pressedInputs.Contains("Joy_Left"))
+		else if (joystickPosition.X > -0.5f && _pressedInputs.Contains("Joy_Left"))
 		{
 			InputEventAction inputEventAction6 = _inputEvents[_left];
 			inputEventAction6.Pressed = false;
 			Input.ParseInputEvent(inputEventAction6);
 			_pressedInputs.Remove("Joy_Left");
 		}
-		if (lStickPosition.X >= 0.5f && !_pressedInputs.Contains("Joy_Right"))
+		if (joystickPosition.X >= 0.5f && !_pressedInputs.Contains("Joy_Right"))
 		{
 			InputEventAction inputEventAction7 = _inputEvents[_right];
 			inputEventAction7.Pressed = true;
 			Input.ParseInputEvent(inputEventAction7);
 			_pressedInputs.Add("Joy_Right");
 		}
-		else if (lStickPosition.X < 0.5f && _pressedInputs.Contains("Joy_Right"))
+		else if (joystickPosition.X < 0.5f && _pressedInputs.Contains("Joy_Right"))
 		{
 			InputEventAction inputEventAction8 = _inputEvents[_right];
 			inputEventAction8.Pressed = false;
 			Input.ParseInputEvent(inputEventAction8);
 			_pressedInputs.Remove("Joy_Right");
 		}
-		_lStickPosition = lStickPosition;
+		_joystickPosition = joystickPosition;
 	}
 
 	private void UpdateControllerConnections()
@@ -801,13 +794,16 @@ public class SteamControllerInputStrategy : IControllerInputStrategy
 				}
 				return;
 			}
-			_currentControllerHandle = array[0];
-			ESteamInputType inputTypeForHandle = SteamInput.GetInputTypeForHandle(_currentControllerHandle.Value);
-			if (_currentInputType != inputTypeForHandle || _controllerConfig == null)
+			ESteamInputType eSteamInputType = ESteamInputType.k_ESteamInputType_Unknown;
+			if (_currentControllerHandle.HasValue)
 			{
-				_currentInputType = inputTypeForHandle;
-				_attemptedHandleCacheRebuild = false;
-				UpdateControllerConfig(inputTypeForHandle);
+				eSteamInputType = SteamInput.GetInputTypeForHandle(_currentControllerHandle.Value);
+			}
+			_currentControllerHandle = array[0];
+			_currentInputType = SteamInput.GetInputTypeForHandle(_currentControllerHandle.Value);
+			if (eSteamInputType != _currentInputType)
+			{
+				UpdateControllerConfig(_currentInputType.Value);
 				UpdateInputMap();
 			}
 			_currentActionSetHandle = SteamInput.GetActionSetHandle("Controls");
@@ -926,14 +922,5 @@ public class SteamControllerInputStrategy : IControllerInputStrategy
 			return _fallbackSteamGlyphs[eInputActionOrigin];
 		}
 		return ControllerConfig?.GetButtonIcon(hotkey);
-	}
-
-	public Vector2 GetLeftAnalogStickDirection()
-	{
-		if (SteamInitializer.Initialized)
-		{
-			return new Vector2(_lStickPosition.X, 0f - _lStickPosition.Y);
-		}
-		return _fallbackStrategy.GetLeftAnalogStickDirection();
 	}
 }

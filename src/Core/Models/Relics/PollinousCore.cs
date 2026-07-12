@@ -1,7 +1,9 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -85,9 +87,9 @@ public sealed class PollinousCore : RelicModel
 		InvokeDisplayAmountChanged();
 	}
 
-	public override Task BeforeHandDraw(Player player, PlayerChoiceContext choiceContext, ICombatState combatState)
+	public override Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, IReadOnlyList<Creature> participants, ICombatState combatState)
 	{
-		if (player != base.Owner)
+		if (!participants.Contains(base.Owner.Creature))
 		{
 			return Task.CompletedTask;
 		}
@@ -107,7 +109,7 @@ public sealed class PollinousCore : RelicModel
 		{
 			return count;
 		}
-		if (TurnsSeen < base.DynamicVars["Turns"].IntValue)
+		if (TurnsSeen != base.DynamicVars["Turns"].IntValue)
 		{
 			return count;
 		}

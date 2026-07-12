@@ -24,7 +24,7 @@ public sealed class MagicBombPower : PowerModel
 		{
 			Flash();
 			await Cmd.Wait(0.25f);
-			await CreatureCmd.Damage(choiceContext, base.Owner, base.Amount, ValueProp.Unpowered, base.Owner);
+			await CreatureCmd.Damage(choiceContext, base.Owner, base.Amount, ValueProp.Unpowered, base.Owner, null);
 			await PowerCmd.Remove(this);
 		}
 	}

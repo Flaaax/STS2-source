@@ -14,28 +14,22 @@ public partial class NVfxParticleSystem : Node2D
 
 	public override void _Ready()
 	{
-		TryPlayParticles(this);
-		SceneTreeTimer sceneTreeTimer = GetTree().CreateTimer(_lifetime);
-		sceneTreeTimer.Connect(SceneTreeTimer.SignalName.Timeout, Callable.From(AfterExpired));
-	}
-
-	private void TryPlayParticles(Node node)
-	{
-		if (!(node is CpuParticles2D cpuParticles2D))
+		foreach (Node child in GetChildren())
 		{
-			if (node is GpuParticles2D gpuParticles2D)
+			if (!(child is CpuParticles2D cpuParticles2D))
 			{
-				gpuParticles2D.Emitting = true;
+				if (child is GpuParticles2D gpuParticles2D)
+				{
+					gpuParticles2D.Emitting = true;
+				}
+			}
+			else
+			{
+				cpuParticles2D.Emitting = true;
 			}
 		}
-		else
-		{
-			cpuParticles2D.Emitting = true;
-		}
-		foreach (Node child in node.GetChildren())
-		{
-			TryPlayParticles(child);
-		}
+		SceneTreeTimer sceneTreeTimer = GetTree().CreateTimer(_lifetime);
+		sceneTreeTimer.Connect(SceneTreeTimer.SignalName.Timeout, Callable.From(AfterExpired));
 	}
 
 	private void AfterExpired()

@@ -90,14 +90,12 @@ public sealed class MusicBox : RelicModel
 			return Task.CompletedTask;
 		}
 		WasUsedThisTurn = false;
-		CardBeingPlayed = null;
 		return Task.CompletedTask;
 	}
 
 	public override Task AfterCombatEnd(CombatRoom _)
 	{
 		WasUsedThisTurn = false;
-		CardBeingPlayed = null;
 		return Task.CompletedTask;
 	}
 }

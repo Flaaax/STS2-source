@@ -313,7 +313,6 @@
   "FUR_COAT.description": "Bu kalıntıyı aldığında rastgele [blue]{Combats}[/blue] savaşı işaretle. Bu odadaki düşmanlar [blue]1[/blue] CP'ye sahip olur.",
   "FUR_COAT.eventDescription": "Rastgele [blue]{Combats}[/blue] savaşı işaretle. Bu odadaki düşmanlar [blue]1[/blue] CP'ye sahip olur.",
   "FUR_COAT.flavor": "[red]Bu kalıntının detayları ileride ortaya çıkacak...[/red]",
-  "FUR_COAT.historyEntry": "Düşmanlar {Title} ile etkilendi.",
   "FUR_COAT.title": "Kürk Palto",
   "GALACTIC_DUST.description": "Harcadığın her [blue]{Stars}[/blue] {singleStarIcon} için [blue]{Block}[/blue] [gold]Blok[/gold] elde et.",
   "GALACTIC_DUST.flavor": "[red]Bu kalıntının detayları ileride ortaya çıkacak...[/red]",

@@ -1,4 +1,4 @@
-using Godot;
+using System.IO;
 using MegaCrit.Sts2.Core.Saves.Migrations;
 
 namespace MegaCrit.Sts2.Core.Saves.Managers;
@@ -27,9 +27,9 @@ public class PrefsSaveManager
 		_profileIdProvider = profileIdProvider;
 	}
 
-	public static string GetPrefsPath(int profileId, bool? forceModState = null)
+	public static string GetPrefsPath(int profileId)
 	{
-		return UserDataPathProvider.GetProfileDir(profileId, forceModState).PathJoin(UserDataPathProvider.SavesDir).PathJoin("prefs.save");
+		return Path.Combine(UserDataPathProvider.GetProfileDir(profileId), UserDataPathProvider.SavesDir, "prefs.save");
 	}
 
 	public void SavePrefs()

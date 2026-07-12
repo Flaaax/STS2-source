@@ -103,8 +103,7 @@ public partial class NRestSiteCharacter : Node2D
 			MegaSprite sprite = new MegaSprite(childSpineNode);
 			this.RunWhenSpineReady(sprite, delegate(MegaAnimationState animState)
 			{
-				animState.SetAnimation(animName);
-				using MegaTrackEntry megaTrackEntry = animState.GetCurrent(0);
+				MegaTrackEntry megaTrackEntry = animState.SetAnimation(animName);
 				megaTrackEntry?.SetTrackTime(megaTrackEntry.GetAnimationEnd() * Rng.Chaotic.NextFloat());
 			});
 		}
@@ -243,10 +242,7 @@ public partial class NRestSiteCharacter : Node2D
 
 	public void ShowSelectedRestSiteOption(RestSiteOption option)
 	{
-		if (_thoughtBubbleVfx != null)
-		{
-			TaskHelper.RunSafely(_thoughtBubbleVfx.GoAway());
-		}
+		_thoughtBubbleVfx?.GoAway();
 		_thoughtBubbleVfx = null;
 		_selectedOptionConfirmation = PreloadManager.Cache.GetScene(_multiplayerConfirmationScenePath).Instantiate<Control>(PackedScene.GenEditState.Disabled);
 		_selectedOptionConfirmation.GetNode<TextureRect>("%Icon").Texture = option.Icon;
@@ -290,10 +286,7 @@ public partial class NRestSiteCharacter : Node2D
 		await Cmd.Wait(0.5f, _thoughtBubbleGoAwayCancellation.Token);
 		if (!_thoughtBubbleGoAwayCancellation.IsCancellationRequested)
 		{
-			if (_thoughtBubbleVfx != null)
-			{
-				TaskHelper.RunSafely(_thoughtBubbleVfx.GoAway());
-			}
+			_thoughtBubbleVfx?.GoAway();
 			_thoughtBubbleVfx = null;
 		}
 	}

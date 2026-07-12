@@ -195,7 +195,7 @@ public sealed class MadScience : CardModel
 		switch (TinkerTimeType)
 		{
 		case CardType.Attack:
-			await ExecuteAttack(choiceContext, cardPlay.Target, cardPlay);
+			await ExecuteAttack(choiceContext, cardPlay.Target);
 			break;
 		case CardType.Skill:
 			await ExecuteSkill(cardPlay);
@@ -213,13 +213,15 @@ public sealed class MadScience : CardModel
 		}
 	}
 
-	private async Task ExecuteAttack(PlayerChoiceContext choiceContext, Creature target, CardPlay cardPlay)
+	private async Task ExecuteAttack(PlayerChoiceContext choiceContext, Creature target)
 	{
-		int hitCount = ((TinkerTimeRider != TinkerTime.RiderEffect.Violence) ? 1 : base.DynamicVars["ViolenceHits"].IntValue);
-		await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).WithHitCount(hitCount).FromCard(this, cardPlay)
-			.Targeting(target)
-			.WithHitFx("vfx/vfx_attack_slash")
-			.Execute(choiceContext);
+		int hits = ((TinkerTimeRider != TinkerTime.RiderEffect.Violence) ? 1 : base.DynamicVars["ViolenceHits"].IntValue);
+		for (int i = 0; i < hits; i++)
+		{
+			await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).Targeting(target)
+				.WithHitFx("vfx/vfx_attack_slash")
+				.Execute(choiceContext);
+		}
 	}
 
 	private async Task ExecuteSkill(CardPlay cardPlay)
@@ -283,7 +285,7 @@ public sealed class MadScience : CardModel
 		{
 			CardModel cardModel = ((MockedChaosCard == null) ? CardFactory.GetDistinctForCombat(base.Owner, base.Owner.Character.CardPool.GetUnlockedCards(base.Owner.UnlockState, base.Owner.RunState.CardMultiplayerConstraint), 1, base.Owner.RunState.Rng.CombatCardGeneration).First() : MockedChaosCard);
 			cardModel.SetToFreeThisTurn();
-			await CardPileCmd.AddGeneratedCardToCombat(cardModel, PileType.Hand, base.Owner);
+			await CardPileCmd.Add(cardModel, PileType.Hand);
 			break;
 		}
 		default:

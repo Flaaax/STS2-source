@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Entities.Multiplayer;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Map;
 using MegaCrit.Sts2.Core.Nodes.Screens.Map;
 using MegaCrit.Sts2.Core.Runs;
@@ -31,7 +32,13 @@ public class MoveToMapCoordAction : GameAction
 		_destination = destination;
 	}
 
-	protected override async Task ExecuteAction()
+	protected override Task ExecuteAction()
+	{
+		TaskHelper.RunSafely(GoToMapCoord());
+		return Task.CompletedTask;
+	}
+
+	private async Task GoToMapCoord()
 	{
 		if (TestMode.IsOn)
 		{

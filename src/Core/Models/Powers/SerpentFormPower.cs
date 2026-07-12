@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Commands;
@@ -46,7 +45,7 @@ public sealed class SerpentFormPower : PowerModel
 		if (cardPlay.Card.Owner == base.Owner.Player && GetInternalData<Data>().amountsForPlayedCards.Remove(cardPlay.Card, out var damage) && damage > 0)
 		{
 			await Cmd.CustomScaledWait(0.1f, 0.2f);
-			Creature creature = base.Owner.Player.RunState.Rng.CombatTargets.NextItem(base.Owner.CombatState?.HittableEnemies ?? Array.Empty<Creature>());
+			Creature creature = base.Owner.Player.RunState.Rng.CombatTargets.NextItem(base.Owner.CombatState.HittableEnemies);
 			if (creature != null)
 			{
 				VfxCmd.PlayOnCreatureCenter(creature, "vfx/vfx_attack_blunt");

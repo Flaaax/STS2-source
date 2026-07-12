@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cij4nlmt4b1di"]
+[gd_scene load_steps=14 format=3 uid="uid://cij4nlmt4b1di"]
 
 [ext_resource type="Script" uid="uid://s3hkv8x1gcxt" path="res://src/Core/Nodes/Screens/Bestiary/NBestiary.cs" id="1_41s1u"]
 [ext_resource type="FontVariation" uid="uid://b8ce4a71ref23" path="res://themes/spectral_bold_shared.tres" id="2_he457"]
@@ -8,26 +8,11 @@
 [ext_resource type="FontVariation" uid="uid://bhyxo1pcdm73o" path="res://themes/bitter_medium_italic_glyph_space_one.tres" id="5_bi3eu"]
 [ext_resource type="PackedScene" uid="uid://bl4mbjqjfffa3" path="res://scenes/ui/back_button.tscn" id="5_ff2un"]
 [ext_resource type="Texture2D" uid="uid://c2t6imcljdo55" path="res://images/packed/common_ui/bestiary_pointer.png" id="7_bi3eu"]
-[ext_resource type="Texture2D" uid="uid://pr1rqg2t44qx" path="res://images/debug/placeholder_64.png" id="7_nt0cb"]
 [ext_resource type="Script" uid="uid://cv2mvg7qmvhjt" path="res://src/Core/Nodes/GodotExtensions/NScrollableContainer.cs" id="7_u4et4"]
-[ext_resource type="FontVariation" uid="uid://cfurftqxyn4mn" path="res://themes/kreon_regular_glyph_space_one.tres" id="8_3ho1i"]
 [ext_resource type="PackedScene" uid="uid://b6nko387cwp7n" path="res://scenes/ui/scrollbar.tscn" id="8_45oiu"]
-[ext_resource type="Texture2D" uid="uid://b6vija0dly5pt" path="res://images/ui/thought_tail.png" id="8_nt0cb"]
 [ext_resource type="FontVariation" uid="uid://ux4d708e7mk6" path="res://themes/kreon_bold_glyph_space_one.tres" id="8_w1gfe"]
-[ext_resource type="Shader" uid="uid://c66gb6g7tup3n" path="res://shaders/hsv.gdshader" id="10_ik5ss"]
-[ext_resource type="Texture2D" uid="uid://dq7iib8cadxmf" path="res://images/ui/dialogue_nine_patch.png" id="11_x8jeb"]
 [ext_resource type="Texture2D" uid="uid://q86di1eocspv" path="res://images/ancients/under_construction.png" id="12_w1gfe"]
 [ext_resource type="FontVariation" uid="uid://ciql5khgewwbm" path="res://themes/kreon_bold_glyph_space_two.tres" id="13_lxch6"]
-[ext_resource type="Script" uid="uid://dl5chpinpvnjk" path="res://src/Core/Nodes/Screens/Bestiary/NBestiaryModeButton.cs" id="19_1l8mc"]
-[ext_resource type="Texture2D" uid="uid://cyruikkcbbm0f" path="res://images/ui/reward_screen/reward_skip_button.png" id="23_ik5ss"]
-[ext_resource type="Texture2D" uid="uid://b5x513mavmk5v" path="res://images/ui/placeholder_controller_icon.png" id="24_p8for"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_p8for"]
-resource_local_to_scene = true
-shader = ExtResource("10_ik5ss")
-shader_parameter/h = 1.0
-shader_parameter/s = 1.0
-shader_parameter/v = 1.0
 
 [node name="Bestiary" type="Control"]
 layout_mode = 3
@@ -39,35 +24,6 @@ grow_vertical = 2
 script = ExtResource("1_41s1u")
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
-
-[node name="BackVfxContainer" type="Control" parent="."]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="LayoutContainer" type="Control" parent="."]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VfxContainer" type="Control" parent="."]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
 
 [node name="MonsterName" type="RichTextLabel" parent="."]
 unique_name_in_owner = true
@@ -132,183 +88,73 @@ MinFontSize = 24
 MaxFontSize = 24
 metadata/_custom_type_script = "uid://dtfio45agppyj"
 
-[node name="DialogueLine" type="HBoxContainer" parent="."]
-unique_name_in_owner = true
-modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(800, 68)
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -400.0
-offset_top = -134.0
-offset_right = 400.0
-offset_bottom = -56.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="CharacterIcon" type="Control" parent="DialogueLine"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(56, 56)
-layout_mode = 2
-mouse_filter = 2
-
-[node name="Icon" type="TextureRect" parent="DialogueLine/CharacterIcon"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("7_nt0cb")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Outline" type="TextureRect" parent="DialogueLine/CharacterIcon/Icon"]
-unique_name_in_owner = true
-modulate = Color(0, 0, 0, 0.5019608)
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("7_nt0cb")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="DialogueContainer" type="MarginContainer" parent="DialogueLine"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(672, 0)
-layout_mode = 2
-size_flags_vertical = 4
-mouse_filter = 2
-theme_override_constants/margin_left = 0
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="DialogueLine/DialogueContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-theme_override_constants/separation = -12
-
-[node name="DialogueTail" type="TextureRect" parent="DialogueLine/DialogueContainer/HBoxContainer"]
-unique_name_in_owner = true
-self_modulate = Color(0.156863, 0.270588, 0.309804, 1)
-custom_minimum_size = Vector2(28, 0)
-layout_mode = 2
-mouse_filter = 2
-texture = ExtResource("8_nt0cb")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="DialogueTailShadow" type="TextureRect" parent="DialogueLine/DialogueContainer/HBoxContainer/DialogueTail"]
-unique_name_in_owner = true
-self_modulate = Color(0, 0, 0, 0.25098)
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 2.0
-offset_top = 5.0
-offset_right = 2.0
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("8_nt0cb")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Bubble" type="NinePatchRect" parent="DialogueLine/DialogueContainer/HBoxContainer"]
-unique_name_in_owner = true
-self_modulate = Color(0.1581, 0.272025, 0.31, 1)
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("11_x8jeb")
-region_rect = Rect2(0, 0, 116, 85)
-patch_margin_left = 27
-patch_margin_top = 28
-patch_margin_right = 27
-patch_margin_bottom = 28
-axis_stretch_horizontal = 1
-axis_stretch_vertical = 1
-
-[node name="Shadow" type="NinePatchRect" parent="DialogueLine/DialogueContainer/HBoxContainer/Bubble"]
-self_modulate = Color(0, 0, 0, 0.25098)
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 2.0
-offset_top = 5.0
-offset_right = 2.0
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(-64, -196)
-size_flags_horizontal = 3
-texture = ExtResource("11_x8jeb")
-region_rect = Rect2(0, 0, 116, 85)
-patch_margin_left = 27
-patch_margin_top = 28
-patch_margin_right = 27
-patch_margin_bottom = 28
-axis_stretch_horizontal = 1
-axis_stretch_vertical = 1
-
-[node name="TextContainer" type="MarginContainer" parent="DialogueLine/DialogueContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/margin_left = 40
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 18
-theme_override_constants/margin_bottom = 12
-
-[node name="DialogueText" type="RichTextLabel" parent="DialogueLine/DialogueContainer/TextContainer"]
+[node name="Description" type="RichTextLabel" parent="."]
 unique_name_in_owner = true
 clip_contents = false
-custom_minimum_size = Vector2(634, 34)
-layout_mode = 2
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 481.0
+offset_top = -186.0
+offset_right = -481.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 0
 mouse_filter = 2
-theme_override_colors/default_color = Color(1, 0.964706, 0.886275, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
-theme_override_constants/line_separation = -2
-theme_override_constants/shadow_offset_x = 3
-theme_override_constants/shadow_offset_y = 2
-theme_override_fonts/normal_font = ExtResource("8_3ho1i")
-theme_override_fonts/bold_font = ExtResource("8_w1gfe")
-theme_override_fonts/italics_font = ExtResource("5_bi3eu")
-theme_override_font_sizes/normal_font_size = 24
-theme_override_font_sizes/bold_font_size = 24
-theme_override_font_sizes/bold_italics_font_size = 24
-theme_override_font_sizes/italics_font_size = 24
-theme_override_font_sizes/mono_font_size = 24
+theme_override_colors/default_color = Color(1, 0.33333334, 0.33333334, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.501961)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/normal_font = ExtResource("5_bi3eu")
+theme_override_font_sizes/normal_font_size = 28
+theme_override_font_sizes/bold_font_size = 28
+theme_override_font_sizes/bold_italics_font_size = 28
+theme_override_font_sizes/italics_font_size = 28
+theme_override_font_sizes/mono_font_size = 28
 bbcode_enabled = true
-text = "[i]Disgusting creature... kill with poisoned flechettes.[/i]"
-fit_content = true
+text = "A mercenary who was once a fencer, a common pursuit for those from the Capital."
 scroll_active = false
+horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("4_h1koc")
 AutoSizeEnabled = false
-MinFontSize = 24
-MaxFontSize = 24
-metadata/_custom_type_script = "uid://c2oywrx8xbqfx"
+MinFontSize = 28
+MaxFontSize = 28
+
+[node name="BackVfxContainer" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="LayoutContainer" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VfxContainer" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="MoveContainer" type="MarginContainer" parent="."]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -349,116 +195,6 @@ layout_mode = 2
 theme_override_constants/separation = 0
 alignment = 2
 
-[node name="StatsContainer" type="MarginContainer" parent="."]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 250.0
-offset_top = -83.0
-offset_right = 429.0
-offset_bottom = 83.0
-grow_vertical = 2
-theme_override_constants/margin_left = 24
-theme_override_constants/margin_bottom = -4
-
-[node name="VBoxContainer" type="VBoxContainer" parent="StatsContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="StatsHeader" type="Label" parent="StatsContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_colors/font_color = Color(0.937255, 0.784314, 0.317647, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.501961)
-theme_override_constants/shadow_offset_x = 3
-theme_override_constants/shadow_offset_y = 2
-theme_override_fonts/font = ExtResource("8_w1gfe")
-theme_override_font_sizes/font_size = 28
-text = "Stats"
-vertical_alignment = 2
-script = ExtResource("5_45oiu")
-AutoSizeEnabled = false
-MinFontSize = 32
-MaxFontSize = 32
-metadata/_custom_type_script = "uid://dtfio45agppyj"
-
-[node name="PageLeftIcon" type="TextureRect" parent="StatsContainer/VBoxContainer/StatsHeader"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = -56.0
-offset_top = 32.208336
-offset_right = -8.0
-offset_bottom = 80.208336
-grow_vertical = 2
-pivot_offset = Vector2(24, 24)
-texture = ExtResource("24_p8for")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="PageRightIcon" type="TextureRect" parent="StatsContainer/VBoxContainer/StatsHeader"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 8.0
-offset_top = 32.208336
-offset_right = 56.0
-offset_bottom = 80.208336
-grow_horizontal = 0
-grow_vertical = 2
-pivot_offset = Vector2(24, 24)
-texture = ExtResource("24_p8for")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="PoolFilters" type="GridContainer" parent="StatsContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_constants/h_separation = 0
-theme_override_constants/v_separation = 0
-columns = 3
-
-[node name="MarginContainer" type="MarginContainer" parent="StatsContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 0
-
-[node name="StatisticsFull" type="RichTextLabel" parent="StatsContainer/VBoxContainer/MarginContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_colors/default_color = Color(1, 0.9647059, 0.8862745, 1)
-theme_override_fonts/normal_font = ExtResource("8_3ho1i")
-theme_override_font_sizes/normal_font_size = 28
-theme_override_font_sizes/bold_font_size = 28
-theme_override_font_sizes/bold_italics_font_size = 28
-theme_override_font_sizes/italics_font_size = 28
-theme_override_font_sizes/mono_font_size = 28
-bbcode_enabled = true
-text = "Encountered: 113
-Kills: 12
-Deaths: 101
-Winrate: 12.4%"
-fit_content = true
-autowrap_mode = 0
-script = ExtResource("4_h1koc")
-AutoSizeEnabled = false
-MinFontSize = 28
-MaxFontSize = 28
-IsVerticallyBound = false
-metadata/_custom_type_script = "uid://c2oywrx8xbqfx"
-
 [node name="Sidebar" type="Control" parent="."]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(400, 0)
@@ -487,7 +223,7 @@ theme_override_constants/margin_bottom = 120
 [node name="SelectionArrow" type="TextureRect" parent="Sidebar/Content"]
 unique_name_in_owner = true
 modulate = Color(0.9372549, 0.78431374, 0.31764707, 0)
-custom_minimum_size = Vector2(36, 36)
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -572,75 +308,3 @@ vertical_alignment = 1
 script = ExtResource("4_h1koc")
 MaxFontSize = 24
 metadata/_custom_type_script = "uid://c2oywrx8xbqfx"
-
-[node name="ModeButton" type="Control" parent="."]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 94.0
-offset_top = -124.0
-offset_right = 354.0
-offset_bottom = -66.0
-grow_vertical = 0
-pivot_offset = Vector2(130, 29)
-script = ExtResource("19_1l8mc")
-
-[node name="Image" type="TextureRect" parent="ModeButton"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(130, 29)
-mouse_filter = 2
-texture = ExtResource("23_ik5ss")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="ModeLabel" type="Label" parent="ModeButton"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.91, 0.86359, 0.7462, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
-theme_override_colors/font_outline_color = Color(0.115875, 0.25976, 0.288407, 1)
-theme_override_constants/shadow_offset_x = 5
-theme_override_constants/shadow_offset_y = 4
-theme_override_constants/outline_size = 12
-theme_override_constants/shadow_outline_size = 0
-theme_override_fonts/font = ExtResource("13_lxch6")
-theme_override_font_sizes/font_size = 28
-text = "View Stats"
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("5_45oiu")
-AutoSizeEnabled = false
-
-[node name="ControllerIcon" type="TextureRect" parent="ModeButton"]
-unique_name_in_owner = true
-material = SubResource("ShaderMaterial_p8for")
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -314.0
-offset_top = -94.0
-offset_right = -70.0
-offset_bottom = 28.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(256, 128)
-mouse_filter = 2
-texture = ExtResource("24_p8for")
-expand_mode = 1
-stretch_mode = 5

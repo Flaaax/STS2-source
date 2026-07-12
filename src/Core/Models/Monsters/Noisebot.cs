@@ -28,14 +28,15 @@ public sealed class Noisebot : MonsterModel
 
 	public override DamageSfxType TakeDamageSfxType => DamageSfxType.Armor;
 
-	public override async Task AfterAddedToRoom()
+	public override Task AfterAddedToRoom()
 	{
-		await base.AfterAddedToRoom();
+		base.AfterAddedToRoom();
 		if (TestMode.IsOff)
 		{
 			NCreature creatureNode = NCombatRoom.Instance.GetCreatureNode(base.Creature);
 			FabricatorNormal.SetBotFallPosition(creatureNode);
 		}
+		return Task.CompletedTask;
 	}
 
 	protected override MonsterMoveStateMachine GenerateMoveStateMachine()

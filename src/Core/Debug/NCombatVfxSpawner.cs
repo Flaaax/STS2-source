@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using Godot;
+using Godot.Collections;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Nodes.Vfx;
@@ -81,7 +82,8 @@ public partial class NCombatVfxSpawner : Control
 
 	private void TestFunctionA(bool shiftPressed)
 	{
-		TestProjectileHandler();
+		NSweepingBeamVfx child = NSweepingBeamVfx.Create(_defectEyePosition.GlobalPosition, new Array<Vector2> { _enemyPosition.GlobalPosition });
+		_combatVfxContainer.AddChildSafely(child);
 	}
 
 	private void TestFunctionB(bool shiftPressed)
@@ -92,12 +94,6 @@ public partial class NCombatVfxSpawner : Control
 	private void TestFunctionC(bool shiftPressed)
 	{
 		NWormyImpactVfx child = NWormyImpactVfx.Create(_playerGroundPosition.GlobalPosition, _playerPosition.GlobalPosition);
-		_combatVfxContainer.AddChildSafely(child);
-	}
-
-	private void TestProjectileHandler()
-	{
-		NVfxProjectileHandler child = NVfxProjectileHandler.Create("debug/vfx/vfx_test_projectile_handler", "debug/vfx/vfx_test_projectile", _playerPosition.GlobalPosition, _enemyPosition.GlobalPosition, default(Callable));
 		_combatVfxContainer.AddChildSafely(child);
 	}
 

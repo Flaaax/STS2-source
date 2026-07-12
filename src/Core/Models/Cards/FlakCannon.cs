@@ -39,7 +39,7 @@ public sealed class FlakCannon : CardModel
 		{
 			await CardCmd.Exhaust(choiceContext, item);
 		}
-		await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).WithHitCount(statusCount).FromCard(this, cardPlay)
+		await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).WithHitCount(statusCount).FromCard(this)
 			.TargetingRandomOpponents(base.CombatState)
 			.WithHitFx("vfx/vfx_attack_blunt", null, "blunt_attack.mp3")
 			.Execute(choiceContext);

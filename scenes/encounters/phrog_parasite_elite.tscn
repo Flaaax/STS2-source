@@ -13,13 +13,13 @@ mouse_filter = 2
 position = Vector2(1366, 694)
 
 [node name="wriggler1" type="Marker2D" parent="."]
-position = Vector2(1049, 684)
+position = Vector2(1115, 685)
 
 [node name="wriggler2" type="Marker2D" parent="."]
-position = Vector2(1270, 705)
+position = Vector2(1336, 706)
 
 [node name="wriggler3" type="Marker2D" parent="."]
-position = Vector2(1511, 713)
+position = Vector2(1577, 714)
 
 [node name="wriggler4" type="Marker2D" parent="."]
-position = Vector2(1736, 689)
+position = Vector2(1802, 690)

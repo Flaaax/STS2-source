@@ -4,6 +4,7 @@ using Godot;
 using MegaCrit.Sts2.Core.Animation;
 using MegaCrit.Sts2.Core.Bindings.MegaSpine;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Context;
 using MegaCrit.Sts2.Core.Entities.Ascension;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -12,8 +13,8 @@ using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.MonsterMoves.Intents;
 using MegaCrit.Sts2.Core.MonsterMoves.MonsterMoveStateMachine;
 using MegaCrit.Sts2.Core.Nodes.Combat;
+using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.Nodes.Vfx;
-using MegaCrit.Sts2.Core.TestSupport;
 
 namespace MegaCrit.Sts2.Core.Models.Monsters;
 
@@ -128,23 +129,14 @@ public sealed class SlumberingBeetle : MonsterModel
 
 	private async Task RolloutMove(IReadOnlyList<Creature> targets)
 	{
-		if (TestMode.IsOff)
+		NCreature nCreature = NCombatRoom.Instance?.GetCreatureNode(base.Creature);
+		if (nCreature != null)
 		{
-			NCreature nCreature = null;
-			foreach (Creature target in targets)
+			NCreature nCreature2 = LocalContext.GetMe(base.CombatState)?.Creature.GetCreatureNode();
+			Node2D specialNode = nCreature.GetSpecialNode<Node2D>("Visuals/SpineBoneNode");
+			if (specialNode != null && nCreature2 != null)
 			{
-				NCreature creatureNode = target.GetCreatureNode();
-				if (creatureNode != null && (nCreature == null || nCreature.GlobalPosition.X > creatureNode.GlobalPosition.X))
-				{
-					nCreature = creatureNode;
-				}
-			}
-			NCreature creatureNode2 = base.Creature.GetCreatureNode();
-			Node2D node2D = creatureNode2?.GetSpecialNode<Node2D>("Visuals/SpineBoneNode");
-			if (creatureNode2 != null && node2D != null && nCreature != null)
-			{
-				float num = 750f * creatureNode2.Visuals.Scale.X;
-				node2D.GlobalPosition = new Vector2(nCreature.GlobalPosition.X + num, node2D.GlobalPosition.Y);
+				specialNode.Position = Vector2.Left * (nCreature.GlobalPosition.X - nCreature2.GlobalPosition.X);
 			}
 		}
 		await DamageCmd.Attack(RolloutDamage).FromMonster(this).WithAttackerAnim("Rollout", 0.5f)

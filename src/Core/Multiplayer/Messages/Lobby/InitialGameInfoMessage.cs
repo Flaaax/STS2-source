@@ -1,11 +1,10 @@
 using System.Collections.Generic;
+using MegaCrit.Sts2.Core.Debug;
 using MegaCrit.Sts2.Core.Entities.Multiplayer;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Modding;
 using MegaCrit.Sts2.Core.Multiplayer.Serialization;
 using MegaCrit.Sts2.Core.Multiplayer.Transport;
-using MegaCrit.Sts2.Core.Nodes;
-using MegaCrit.Sts2.Core.Platform;
 using MegaCrit.Sts2.Core.Runs;
 
 namespace MegaCrit.Sts2.Core.Multiplayer.Messages.Lobby;
@@ -19,13 +18,6 @@ public struct InitialGameInfoMessage : INetMessage, IPacketSerializable
 	/// The version of the game the host is running.
 	/// </summary>
 	public string version;
-
-	/// <summary>
-	/// The steam branch that the host is playing on.
-	/// DO NOT compare this to the client's when joining to check versions. The same game version might be on different
-	/// steam branches. Only compare <see cref="F:MegaCrit.Sts2.Core.Multiplayer.Messages.Lobby.InitialGameInfoMessage.version" /> and only use this for diagnostic purposes.
-	/// </summary>
-	public PlatformBranch branch;
 
 	/// <summary>
 	/// A hash of all the IDs in the model database.
@@ -72,8 +64,7 @@ public struct InitialGameInfoMessage : INetMessage, IPacketSerializable
 	{
 		return new InitialGameInfoMessage
 		{
-			version = NGame.GetGameVersion(),
-			branch = PlatformUtil.GetPlatformBranch(),
+			version = (ReleaseInfoManager.Instance.ReleaseInfo?.Version ?? GitHelper.ShortCommitId ?? "UNKNOWN"),
 			idDatabaseHash = ModelIdSerializationCache.Hash,
 			gameplayAffectingMods = ModManager.GetGameplayRelevantModNameList(),
 			otherMods = ModManager.GetNonGameplayRelevantModNameList()
@@ -83,7 +74,6 @@ public struct InitialGameInfoMessage : INetMessage, IPacketSerializable
 	public void Serialize(PacketWriter writer)
 	{
 		writer.WriteString(version);
-		writer.WriteEnum(branch);
 		writer.WriteUInt(idDatabaseHash);
 		writer.WriteEnum(gameMode);
 		writer.WriteEnum(sessionState);
@@ -116,7 +106,6 @@ public struct InitialGameInfoMessage : INetMessage, IPacketSerializable
 	public void Deserialize(PacketReader reader)
 	{
 		version = reader.ReadString();
-		branch = reader.ReadEnum<PlatformBranch>();
 		idDatabaseHash = reader.ReadUInt();
 		gameMode = reader.ReadEnum<GameMode>();
 		sessionState = reader.ReadEnum<RunSessionState>();

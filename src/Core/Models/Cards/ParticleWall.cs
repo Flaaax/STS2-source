@@ -27,14 +27,14 @@ public sealed class ParticleWall : CardModel
 		await Cmd.Wait(0.25f);
 	}
 
-	protected override (PileType, CardPilePosition) GetResultPileTypeAndPositionForCardPlay()
+	protected override PileType GetResultPileTypeForCardPlay()
 	{
-		var (pileType, item) = base.GetResultPileTypeAndPositionForCardPlay();
-		if (pileType == PileType.Discard)
+		PileType resultPileTypeForCardPlay = base.GetResultPileTypeForCardPlay();
+		if (resultPileTypeForCardPlay != PileType.Discard)
 		{
-			return (PileType.Hand, CardPilePosition.Bottom);
+			return resultPileTypeForCardPlay;
 		}
-		return (pileType, item);
+		return PileType.Hand;
 	}
 
 	protected override void OnUpgrade()

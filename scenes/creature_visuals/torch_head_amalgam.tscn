@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cb8ho4cssh01" path="res://images/vfx/monsters/amalgam/amalgam_death_particles.png" id="4_phv38"]
 [ext_resource type="Texture2D" uid="uid://c67idrcto5vwj" path="res://images/vfx/vfx_constant_fire/fire_texture_2.png" id="5_qycwo"]
 [ext_resource type="Texture2D" uid="uid://cdvuntnhy8ca8" path="res://images/vfx/vfx_constant_fire/fire_spark.png" id="6_1r7qa"]
-[ext_resource type="Texture2D" uid="uid://54aqwjijquem" path="res://images/vfx/tiny_spark_particle.png" id="9_prxbt"]
+[ext_resource type="Texture2D" uid="uid://54aqwjijquem" path="res://images/vfx/monsters/amalgam/amalgam_spark_particles.png" id="9_prxbt"]
 [ext_resource type="Shader" uid="uid://w8px2vgxsa4x" path="res://shaders/vfx/monsters/amalgam_glare_shader.tres" id="10_7yqi0"]
 [ext_resource type="Texture2D" uid="uid://br85yq7mtu6sf" path="res://images/vfx/monsters/amalgam/amalgam_glare_particle.png" id="11_0louj"]
 [ext_resource type="Texture2D" uid="uid://r6owulkqusc3" path="res://images/vfx/monsters/amalgam/amalgam_hit_particle.png" id="12_j87ms"]

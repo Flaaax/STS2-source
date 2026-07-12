@@ -37,7 +37,7 @@ public class Player
 
 	private int _gold;
 
-	private bool _canUseOrRemovePotions = true;
+	private bool _canRemovePotions = true;
 
 	public int MaxPotionCount => _potionSlots.Count;
 
@@ -165,20 +165,16 @@ public class Player
 
 	public bool HasOpenPotionSlots => _potionSlots.Any((PotionModel p) => p == null);
 
-	/// <summary>
-	/// Can this player use or remove potions?
-	/// Usually true, but set to false during some sensitive timing spots.
-	/// </summary>
-	public bool CanUseOrRemovePotions
+	public bool CanRemovePotions
 	{
 		get
 		{
-			return _canUseOrRemovePotions;
+			return _canRemovePotions;
 		}
 		set
 		{
-			_canUseOrRemovePotions = value;
-			this.CanUseOrRemovePotionsChanged?.Invoke();
+			_canRemovePotions = value;
+			this.CanRemovePotionsChanged?.Invoke();
 		}
 	}
 
@@ -243,7 +239,7 @@ public class Player
 
 	public event Action? GoldChanged;
 
-	public event Action? CanUseOrRemovePotionsChanged;
+	public event Action? CanRemovePotionsChanged;
 
 	public bool HasEventPet()
 	{

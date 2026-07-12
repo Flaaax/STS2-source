@@ -207,7 +207,7 @@ public class SteamRemoteSaveStore : ICloudSaveStore, ISaveStore
 	{
 		path = CanonicalizePath(path);
 		long fileTimestamp = SteamRemoteStorage.GetFileTimestamp(path);
-		return SaveTimestamps.FromUnixTimeSecondsOrEpoch(fileTimestamp, path);
+		return DateTimeOffset.FromUnixTimeSeconds(fileTimestamp);
 	}
 
 	public int GetFileSize(string path)

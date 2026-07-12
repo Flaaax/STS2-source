@@ -27,7 +27,7 @@ public sealed class DaggerSpray : CardModel
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
 	{
 		SfxCmd.Play("event:/sfx/characters/silent/silent_dagger_spray");
-		await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).WithHitCount(2).FromCard(this, cardPlay)
+		await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).WithHitCount(2).FromCard(this)
 			.TargetingAllOpponents(base.CombatState)
 			.WithAttackerFx(() => NDaggerSprayFlurryVfx.Create(base.Owner.Creature, new Color("#b1ccca"), goingRight: true))
 			.BeforeDamage(delegate

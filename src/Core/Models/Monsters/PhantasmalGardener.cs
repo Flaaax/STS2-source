@@ -12,7 +12,6 @@ using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.MonsterMoves.Intents;
 using MegaCrit.Sts2.Core.MonsterMoves.MonsterMoveStateMachine;
-using MegaCrit.Sts2.Core.Nodes.Combat;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 
 namespace MegaCrit.Sts2.Core.Models.Monsters;
@@ -185,12 +184,5 @@ public sealed class PhantasmalGardener : MonsterModel
 		creatureAnimator.AddAnyState("BlockStart", animState7);
 		creatureAnimator.AddAnyState("BlockEnd", animState8);
 		return creatureAnimator;
-	}
-
-	public override List<BestiaryMonsterMove> GenerateBestiaryMoveList(NCreatureVisuals? creatureVisuals)
-	{
-		List<BestiaryMonsterMove> list = base.GenerateBestiaryMoveList(creatureVisuals);
-		list.RemoveAll((BestiaryMonsterMove m) => m.stateId == "LASH_MOVE");
-		return list;
 	}
 }

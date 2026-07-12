@@ -69,7 +69,7 @@ public partial class NBestiaryLayoutDecimillipede : NBestiaryLayout
 			item.SetUpForCombat();
 			Creature creature = new Creature(item, CombatSide.Enemy, item2)
 			{
-				CombatState = NullCombatState.Instance
+				CombatState = new NullCombatState()
 			};
 			NCreature nCreature = NCreature.Create(creature);
 			_creatureContainer.AddChildSafely(nCreature);

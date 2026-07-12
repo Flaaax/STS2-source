@@ -59,8 +59,6 @@ public static class SentryService
 
 	private static bool _isGameInitialized = false;
 
-	private static volatile bool _suppressAllEvents = false;
-
 	private static readonly string _sessionId = Guid.NewGuid().ToString();
 
 	private static Node? _sentryInit;
@@ -76,21 +74,16 @@ public static class SentryService
 	public static string SessionId => _sessionId;
 
 	/// <summary>
-	/// Suppresses all Sentry event capture when mods are detected. Called right after
-	/// ModManager.Initialize so mod errors during the rest of startup are never reported,
-	/// before AfterGameInit shuts things down.
-	///
-	/// Both SDKs get the same treatment. The native GDExtension SDK is set to reject every event
-	/// rather than closed, since it stays running until the app shuts down. The managed SDK is
-	/// suppressed with a flag read as the first line of FilterEvent. That flag is a plain bool, so
-	/// unlike the sampler it cannot throw during early startup and fail open (Sentry sends the
-	/// event when BeforeSend throws).
+	/// Disables GDExtension Sentry event capture when mods are detected.
+	/// Called right after ModManager.Initialize to prevent mod errors from being reported
+	/// through the GDExtension before AfterGameInit has a chance to shut everything down.
+	/// Sets the sample callable to always return false instead of calling close(), because
+	/// the native SDK should not be closed until the application is shutting down.
 	/// </summary>
-	public static void DisableSentryIfModded()
+	public static void DisableGdExtensionIfModded()
 	{
 		if (ModManager.IsRunningModded())
 		{
-			_suppressAllEvents = true;
 			((Engine.GetMainLoop() is SceneTree sceneTree) ? sceneTree.Root.GetNodeOrNull("SentryInit") : null)?.Call(_setShouldSampleEventMethod, Callable.From((Func<bool>)AlwaysRejectEvent));
 		}
 	}
@@ -123,7 +116,7 @@ public static class SentryService
 			return;
 		}
 		ReleaseInfo releaseInfo = ReleaseInfoManager.Instance.ReleaseInfo;
-		string environment = "unknown";
+		string environment = "development";
 		string release = releaseInfo?.Version ?? "dev";
 		_sentryInstance = SentrySdk.Init(delegate(SentryOptions options)
 		{
@@ -134,7 +127,14 @@ public static class SentryService
 			options.AutoSessionTracking = true;
 			options.IsGlobalModeEnabled = true;
 			options.SendDefaultPii = false;
-			options.SetBeforeSend((SentryEvent sentryEvent, SentryHint hint) => FilterEvent(sentryEvent));
+			options.SetBeforeSend(delegate(SentryEvent sentryEvent, SentryHint hint)
+			{
+				if (sentryEvent.Exception is AutoSlayTimeoutException)
+				{
+					return (SentryEvent?)null;
+				}
+				return (!ShouldSampleEvent()) ? null : sentryEvent;
+			});
 		});
 		IsEnabled = SentrySdk.IsEnabled;
 		if (!IsEnabled)
@@ -556,28 +556,6 @@ public static class SentryService
 		}
 	}
 
-	/// <summary>
-	/// The BeforeSend filter. Suppression (set for modded sessions) is checked first and is a
-	/// plain bool read, so it cannot throw and cannot be defeated by an exception in the sampler
-	/// below it (Sentry sends the event if BeforeSend throws).
-	/// </summary>
-	private static SentryEvent? FilterEvent(SentryEvent sentryEvent)
-	{
-		if (_suppressAllEvents)
-		{
-			return null;
-		}
-		if (sentryEvent.Exception is AutoSlayTimeoutException)
-		{
-			return null;
-		}
-		if (!ShouldSampleEvent())
-		{
-			return null;
-		}
-		return sentryEvent;
-	}
-
 	private static bool ShouldSampleEvent()
 	{
 		if (System.Random.Shared.NextDouble() >= (double)_sampleRate)
@@ -646,8 +624,7 @@ public static class SentryService
 			}
 			return false;
 		}
-		LocManager instance = LocManager.Instance;
-		if (instance != null && instance.OverridesActive)
+		if (LocManager.Instance.OverridesActive)
 		{
 			if (shouldLog)
 			{

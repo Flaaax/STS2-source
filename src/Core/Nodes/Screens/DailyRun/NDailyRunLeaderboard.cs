@@ -47,7 +47,7 @@ public partial class NDailyRunLeaderboard : Control
 
 	private DateTimeOffset _todaysDailyTime;
 
-	private DateTimeOffset? _leaderboardTime;
+	private DateTimeOffset _leaderboardTime;
 
 	private readonly List<ulong> _playersInRun = new List<ulong>();
 
@@ -95,13 +95,8 @@ public partial class NDailyRunLeaderboard : Control
 	{
 		if (tickbox.IsTicked)
 		{
-			DateTimeOffset? leaderboardTime = _leaderboardTime;
-			if (leaderboardTime.HasValue)
-			{
-				DateTimeOffset valueOrDefault = leaderboardTime.GetValueOrDefault();
-				_currentIndex = -4;
-				TaskHelper.RunSafely(LoadLeaderboard(valueOrDefault, _currentPage, LeaderboardQueryType.AroundUser));
-			}
+			_currentIndex = -4;
+			TaskHelper.RunSafely(LoadLeaderboard(_leaderboardTime, _currentPage, LeaderboardQueryType.AroundUser));
 		}
 		else
 		{
@@ -128,7 +123,6 @@ public partial class NDailyRunLeaderboard : Control
 		_paginator.Visible = false;
 		_globalTickbox.Visible = false;
 		_currentIndex = -4;
-		_leaderboardTime = null;
 		if (_noScoreUploadIndicator != null)
 		{
 			_noScoreUploadIndicator.Visible = false;
@@ -162,7 +156,7 @@ public partial class NDailyRunLeaderboard : Control
 		}
 		else
 		{
-			TaskHelper.RunSafely(LoadLeaderboard(dateTime, _currentPage, LeaderboardQueryType.AroundUser));
+			TaskHelper.RunSafely(LoadLeaderboard(_leaderboardTime, _currentPage, LeaderboardQueryType.AroundUser));
 		}
 	}
 
@@ -173,13 +167,8 @@ public partial class NDailyRunLeaderboard : Control
 
 	private void SetPage(int page)
 	{
-		DateTimeOffset? leaderboardTime = _leaderboardTime;
-		if (leaderboardTime.HasValue)
-		{
-			DateTimeOffset valueOrDefault = leaderboardTime.GetValueOrDefault();
-			_currentPage = page;
-			TaskHelper.RunSafely(LoadLeaderboard(valueOrDefault, _currentPage, LeaderboardQueryType.FriendsOnly));
-		}
+		_currentPage = page;
+		TaskHelper.RunSafely(LoadLeaderboard(_leaderboardTime, _currentPage, LeaderboardQueryType.FriendsOnly));
 	}
 
 	/// <summary>
@@ -188,12 +177,7 @@ public partial class NDailyRunLeaderboard : Control
 	/// </summary>
 	private void NavigateGlobalRank()
 	{
-		DateTimeOffset? leaderboardTime = _leaderboardTime;
-		if (leaderboardTime.HasValue)
-		{
-			DateTimeOffset valueOrDefault = leaderboardTime.GetValueOrDefault();
-			TaskHelper.RunSafely(LoadLeaderboard(valueOrDefault, _currentPage, LeaderboardQueryType.AroundUser));
-		}
+		TaskHelper.RunSafely(LoadLeaderboard(_leaderboardTime, _currentPage, LeaderboardQueryType.AroundUser));
 	}
 
 	private async Task LoadLeaderboard(DateTimeOffset dateTime, int page, LeaderboardQueryType queryType)
@@ -216,31 +200,11 @@ public partial class NDailyRunLeaderboard : Control
 		try
 		{
 			string leaderboardName = DailyRunUtility.GetLeaderboardName(dateTime, _playersInRun.Count);
-			DateTimeOffset? dateTimeOffset = DailyRunUtility.AddLeaderboardDays(dateTime, -1);
-			DateTimeOffset? rightLeaderboardTime = DailyRunUtility.AddLeaderboardDays(dateTime, 1);
+			DateTimeOffset dateTime2 = dateTime - TimeSpan.FromDays(1);
+			DateTimeOffset rightLeaderboardTime = dateTime + TimeSpan.FromDays(1);
 			Task<ILeaderboardHandle?> mainTask = LeaderboardManager.GetLeaderboard(leaderboardName, ct);
-			Task<ILeaderboardHandle> task;
-			if (dateTimeOffset.HasValue)
-			{
-				DateTimeOffset valueOrDefault = dateTimeOffset.GetValueOrDefault();
-				task = LeaderboardManager.GetLeaderboard(DailyRunUtility.GetLeaderboardName(valueOrDefault, _playersInRun.Count), ct);
-			}
-			else
-			{
-				task = Task.FromResult<ILeaderboardHandle>(null);
-			}
-			Task<ILeaderboardHandle?> leftTask = task;
-			Task<ILeaderboardHandle> task2;
-			if (rightLeaderboardTime.HasValue)
-			{
-				DateTimeOffset valueOrDefault2 = rightLeaderboardTime.GetValueOrDefault();
-				task2 = LeaderboardManager.GetLeaderboard(DailyRunUtility.GetLeaderboardName(valueOrDefault2, _playersInRun.Count), ct);
-			}
-			else
-			{
-				task2 = Task.FromResult<ILeaderboardHandle>(null);
-			}
-			Task<ILeaderboardHandle?> rightTask = task2;
+			Task<ILeaderboardHandle?> leftTask = LeaderboardManager.GetLeaderboard(DailyRunUtility.GetLeaderboardName(dateTime2, _playersInRun.Count), ct);
+			Task<ILeaderboardHandle?> rightTask = LeaderboardManager.GetLeaderboard(DailyRunUtility.GetLeaderboardName(rightLeaderboardTime, _playersInRun.Count), ct);
 			global::_003C_003Ey__InlineArray3<Task<ILeaderboardHandle>> buffer = default(global::_003C_003Ey__InlineArray3<Task<ILeaderboardHandle>>);
 			global::_003CPrivateImplementationDetails_003E.InlineArrayElementRef<global::_003C_003Ey__InlineArray3<Task<ILeaderboardHandle>>, Task<ILeaderboardHandle>>(ref buffer, 0) = mainTask;
 			global::_003CPrivateImplementationDetails_003E.InlineArrayElementRef<global::_003C_003Ey__InlineArray3<Task<ILeaderboardHandle>>, Task<ILeaderboardHandle>>(ref buffer, 1) = leftTask;

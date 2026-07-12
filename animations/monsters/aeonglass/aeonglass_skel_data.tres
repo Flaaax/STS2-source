@@ -1,8 +1,0 @@
-[gd_resource type="SpineSkeletonDataResource" load_steps=3 format=3 uid="uid://dt0ajsrs13552"]
-
-[ext_resource type="SpineAtlasResource" uid="uid://bvngs6i6hx4ji" path="res://animations/monsters/aeonglass/aeonglass.atlas" id="1_fu3lo"]
-[ext_resource type="SpineSkeletonFileResource" uid="uid://cap7apm5qdd42" path="res://animations/monsters/aeonglass/aeonglass.skel" id="2_rcje1"]
-
-[resource]
-atlas_res = ExtResource("1_fu3lo")
-skeleton_file_res = ExtResource("2_rcje1")

@@ -42,7 +42,7 @@ public sealed class Thrash : CardModel
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
 	{
 		ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
-		await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).WithHitCount(2).FromCard(this, cardPlay)
+		await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).WithHitCount(2).FromCard(this)
 			.Targeting(cardPlay.Target)
 			.WithHitFx("vfx/vfx_thrash")
 			.Execute(choiceContext);
@@ -67,7 +67,7 @@ public sealed class Thrash : CardModel
 			{
 				Log.Warn(base.Id.Entry + " exhausted attack card " + cardModel.Id.Entry + " that did not have an appropriate damage var!");
 			}
-			damage = Hook.ModifyDamage(base.Owner.RunState, base.Owner.Creature.CombatState, null, base.Owner.Creature, damage, ValueProp.Move, cardModel, null, ModifyDamageHookType.All, CardPreviewMode.None, out IEnumerable<AbstractModel> _);
+			damage = Hook.ModifyDamage(base.Owner.RunState, base.Owner.Creature.CombatState, null, base.Owner.Creature, damage, ValueProp.Move, cardModel, ModifyDamageHookType.All, CardPreviewMode.None, out IEnumerable<AbstractModel> _);
 			base.DynamicVars.Damage.BaseValue += damage;
 			ExtraDamage += damage;
 			await CardCmd.Exhaust(choiceContext, cardModel);

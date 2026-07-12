@@ -89,13 +89,6 @@ public class MockGodotFileIo : ISaveStore
 	public bool DoSteamSpecificError;
 
 	/// <summary>
-	/// Per-file raw Unix-seconds timestamps. When set for a path, GetLastModifiedTime routes the raw value through
-	/// the real <see cref="T:MegaCrit.Sts2.Core.Saves.SaveTimestamps" /> guard, exactly as SteamRemoteSaveStore/GodotFileIo do, so tests can
-	/// exercise the out-of-range path (PRG-7045) end to end. Set via <see cref="M:MegaCrit.Sts2.Core.Saves.Test.MockGodotFileIo.SetRawTimestampSeconds(System.String,System.Int64)" />.
-	/// </summary>
-	protected readonly ConcurrentDictionary<string, long> _rawTimestampSeconds = new ConcurrentDictionary<string, long>();
-
-	/// <summary>
 	/// Tracks all method calls for verification in tests
 	/// </summary>
 	public List<(string Method, object[] Args)> Calls { get; } = new List<(string, object[])>();
@@ -116,32 +109,18 @@ public class MockGodotFileIo : ISaveStore
 		CreateDirectory(_saveDir);
 	}
 
-	/// <summary>
-	/// Makes GetLastModifiedTime for the given path return the guarded conversion of a raw Unix-seconds value,
-	/// mirroring how the real stores read timestamps from Steam/the OS.
-	/// </summary>
-	public void SetRawTimestampSeconds(string path, long seconds)
-	{
-		CanonicalizePath(ref path);
-		_rawTimestampSeconds[path] = seconds;
-	}
-
 	public DateTimeOffset GetLastModifiedTime(string path)
 	{
 		CanonicalizePath(ref path);
-		if (_rawTimestampSeconds.TryGetValue(path, out var value))
-		{
-			return SaveTimestamps.FromUnixTimeSecondsOrEpoch(value, path);
-		}
-		if (!_files.TryGetValue(path, out File value2))
+		if (!_files.TryGetValue(path, out File value))
 		{
 			throw new InvalidOperationException("No file at " + path + "!");
 		}
-		if (!value2.lastModifiedTime.HasValue)
+		if (!value.lastModifiedTime.HasValue)
 		{
 			throw new InvalidOperationException("getCurrentTime was not set when file " + path + " was created!");
 		}
-		return value2.lastModifiedTime.Value;
+		return value.lastModifiedTime.Value;
 	}
 
 	public int GetFileSize(string path)

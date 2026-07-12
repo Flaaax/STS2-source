@@ -3,7 +3,6 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Models.Monsters;
 
 namespace MegaCrit.Sts2.Core.Models.Powers;
@@ -18,20 +17,12 @@ public sealed class StockPower : PowerModel
 	{
 		if (!wasRemovalPrevented && target == base.Owner && base.Amount > 0)
 		{
+			await Cmd.CustomScaledWait(deathAnimLength, deathAnimLength);
 			Axebot axebot = (Axebot)ModelDb.Monster<Axebot>().ToMutable();
 			axebot.ShouldPlaySpawnAnimation = true;
 			axebot.StockAmount = base.Amount - 1;
-			Creature creature = await CreatureCmd.Add(axebot, base.CombatState, base.Owner.Side, base.Owner.SlotName);
-			creature.SetNodeVisible(visible: false);
-			TaskHelper.RunSafely(RevealReplacementAfterDeathAnim(creature, deathAnimLength));
+			await CreatureCmd.TriggerAnim(await CreatureCmd.Add(axebot, base.CombatState, base.Owner.Side, base.Owner.SlotName), "respawn", 0f);
 		}
-	}
-
-	private static async Task RevealReplacementAfterDeathAnim(Creature creature, float deathAnimLength)
-	{
-		await Cmd.CustomScaledWait(deathAnimLength, deathAnimLength);
-		creature.SetNodeVisible(visible: true);
-		await CreatureCmd.TriggerAnim(creature, "respawn", 0f);
 	}
 
 	public override bool ShouldStopCombatFromEnding()

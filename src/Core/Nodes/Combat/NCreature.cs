@@ -185,8 +185,8 @@ public partial class NCreature : Control
 			if (Entity.IsDead)
 			{
 				SetAnimationTrigger("Dead");
-				using MegaTrackEntry megaTrackEntry = SpineAnimation.GetCurrentTrack();
-				megaTrackEntry?.SetTrackTime(megaTrackEntry.GetAnimationEnd());
+				MegaTrackEntry currentTrack = SpineAnimation.GetCurrentTrack();
+				currentTrack?.SetTrackTime(currentTrack.GetAnimationEnd());
 			}
 		}
 		SetOrbManagerPosition();
@@ -547,12 +547,12 @@ public partial class NCreature : Control
 
 	public float GetCurrentAnimationTimeRemaining()
 	{
-		using MegaTrackEntry megaTrackEntry = SpineAnimation.GetCurrentTrack();
-		if (megaTrackEntry == null)
+		MegaTrackEntry currentTrack = SpineAnimation.GetCurrentTrack();
+		if (currentTrack == null)
 		{
 			return 0f;
 		}
-		return megaTrackEntry.GetTrackComplete() - megaTrackEntry.GetTrackTime();
+		return currentTrack.GetTrackComplete() - currentTrack.GetTrackTime();
 	}
 
 	public void ToggleIsInteractable(bool on)
@@ -560,17 +560,6 @@ public partial class NCreature : Control
 		IsInteractable = on;
 		_stateDisplay.Visible = !NCombatUi.IsDebugHidingHpBar && on;
 		Hitbox.MouseFilter = (MouseFilterEnum)(on ? 0 : 2);
-		Hitbox.FocusMode = (FocusModeEnum)(on ? 2 : 0);
-	}
-
-	public void DisableInteractionForDeath()
-	{
-		if (Hitbox.HasFocus())
-		{
-			ActiveScreenContext.Instance.FocusOnDefaultControl();
-		}
-		Hitbox.FocusMode = FocusModeEnum.None;
-		Hitbox.MouseFilter = MouseFilterEnum.Ignore;
 	}
 
 	public Tween AnimDisableUi()
@@ -596,7 +585,11 @@ public partial class NCreature : Control
 
 	public float StartDeathAnim(bool shouldRemove)
 	{
-		DisableInteractionForDeath();
+		if (Hitbox.HasFocus())
+		{
+			ActiveScreenContext.Instance.FocusOnDefaultControl();
+		}
+		Hitbox.FocusMode = FocusModeEnum.None;
 		foreach (NIntent item in IntentContainer.GetChildren().OfType<NIntent>())
 		{
 			item.SetFrozen(isFrozen: true);
@@ -660,17 +653,18 @@ public partial class NCreature : Control
 	private void ImmediatelySetIdle()
 	{
 		_spineAnimator?.SetTrigger("Idle");
-		using MegaTrackEntry megaTrackEntry = SpineAnimation.GetCurrentTrack();
-		if (megaTrackEntry != null)
+		MegaTrackEntry currentTrack = SpineAnimation.GetCurrentTrack();
+		if (currentTrack != null)
 		{
-			megaTrackEntry.SetMixDuration(0f);
-			megaTrackEntry.SetTrackTime(megaTrackEntry.GetAnimationEnd());
+			currentTrack.SetMixDuration(0f);
+			currentTrack.SetTrackTime(currentTrack.GetAnimationEnd());
 		}
 	}
 
 	private async Task AnimDie(bool shouldRemove, CancellationToken cancelToken)
 	{
 		Tween disableUiTween = AnimDisableUi();
+		Hitbox.MouseFilter = MouseFilterEnum.Ignore;
 		if (!RunManager.Instance.IsSingleplayerOrFakeMultiplayer)
 		{
 			OrbManager?.ClearOrbs();
@@ -776,16 +770,7 @@ public partial class NCreature : Control
 		float num = Mathf.Lerp(Osty.ScaleRange.X, Osty.ScaleRange.Y, Mathf.Clamp(ostyHealth / 150f, 0f, 1f));
 		NCreature nCreature = NCombatRoom.Instance?.GetCreatureNode(Entity.PetOwner.Creature);
 		_scaleTween = CreateTween();
-		Vector2 vector = Vector2.One * num * Visuals.DefaultScale;
-		if (NCombatRoom.Instance != null && !NCombatRoom.Instance.SceneContainer.IsAncestorOf(Visuals))
-		{
-			ICombatState combatState = Entity.CombatState;
-			if (combatState != null && combatState.Encounter != null)
-			{
-				vector *= Entity.CombatState.Encounter.GetCameraScaling();
-			}
-		}
-		_scaleTween.TweenProperty(Visuals, "scale", vector, duration).SetEase(Tween.EaseType.InOut).SetTrans(Tween.TransitionType.Sine);
+		_scaleTween.TweenProperty(Visuals, "scale", Vector2.One * num * Visuals.DefaultScale, duration).SetEase(Tween.EaseType.InOut).SetTrans(Tween.TransitionType.Sine);
 		if (LocalContext.IsMe(Entity.PetOwner))
 		{
 			_scaleTween.Parallel().TweenProperty(this, "position", nCreature.Position + GetOstyOffsetFromPlayer(Entity), duration);

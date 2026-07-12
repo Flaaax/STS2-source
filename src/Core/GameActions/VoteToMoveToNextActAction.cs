@@ -18,38 +18,28 @@ public class VoteToMoveToNextActAction : GameAction
 	/// </summary>
 	private readonly Player _player;
 
-	/// <summary>
-	/// The current act index.
-	/// If the current act is not this or we are already transitioning from this act, then this action is ignored.
-	/// </summary>
-	public int CurrentActIndex { get; }
-
 	public override ulong OwnerId => _player.NetId;
 
 	public override GameActionType ActionType => GameActionType.NonCombat;
 
-	public VoteToMoveToNextActAction(Player player, int currentActIndex)
+	public VoteToMoveToNextActAction(Player player)
 	{
 		_player = player;
-		CurrentActIndex = currentActIndex;
 	}
 
 	protected override Task ExecuteAction()
 	{
-		RunManager.Instance.ActChangeSynchronizer.OnPlayerReady(_player, CurrentActIndex);
+		RunManager.Instance.ActChangeSynchronizer.OnPlayerReady(_player);
 		return Task.CompletedTask;
 	}
 
 	public override INetAction ToNetAction()
 	{
-		return new NetVoteToMoveToNextActAction
-		{
-			currentActIndex = CurrentActIndex
-		};
+		return default(NetVoteToMoveToNextActAction);
 	}
 
 	public override string ToString()
 	{
-		return $"{"VoteToMoveToNextActAction"} {_player.NetId} act {CurrentActIndex}";
+		return $"{"VoteForMapCoordAction"} {_player.NetId}";
 	}
 }

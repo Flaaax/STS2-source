@@ -13,7 +13,6 @@ using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.MonsterMoves.Intents;
 using MegaCrit.Sts2.Core.MonsterMoves.MonsterMoveStateMachine;
 using MegaCrit.Sts2.Core.Nodes.Audio;
-using MegaCrit.Sts2.Core.Nodes.Combat;
 using MegaCrit.Sts2.Core.TestSupport;
 
 namespace MegaCrit.Sts2.Core.Models.Monsters;
@@ -265,7 +264,7 @@ public sealed class WaterfallGiant : MonsterModel
 	{
 		SfxCmd.Play("event:/sfx/enemy/enemy_attacks/waterfall_giant/waterfall_giant_eruption");
 		await CreatureCmd.TriggerAnim(base.Creature, "Heal", 0.8f);
-		await CreatureCmd.Heal(base.Creature, SiphonHeal * base.CombatState.Players.Count);
+		await CreatureCmd.Heal(base.Creature, SiphonHeal * base.Creature.CombatState.Players.Count);
 		await PowerCmd.Apply<SteamEruptionPower>(new ThrowingPlayerChoiceContext(), base.Creature, 3m, base.Creature, null);
 		IncrementBuildUpAnimationTrack();
 	}
@@ -363,16 +362,5 @@ public sealed class WaterfallGiant : MonsterModel
 	protected override bool ShouldShowMoveInBestiary(string moveStateId)
 	{
 		return moveStateId != "SIPHON_MOVE";
-	}
-
-	public override List<BestiaryMonsterMove> GenerateBestiaryMoveList(NCreatureVisuals? creatureVisuals)
-	{
-		List<BestiaryMonsterMove> list = base.GenerateBestiaryMoveList(creatureVisuals);
-		list.RemoveAll(delegate(BestiaryMonsterMove m)
-		{
-			string stateId = m.stateId;
-			return (stateId == "PRESSURE_UP_MOVE" || stateId == "PRESSURE_GUN_MOVE") ? true : false;
-		});
-		return list;
 	}
 }

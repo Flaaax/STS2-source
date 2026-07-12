@@ -3,8 +3,8 @@
     {
       "image": "relic_atlas.png",
       "size": {
-        "w": 2760,
-        "h": 952
+        "w": 4096,
+        "h": 680
       },
       "sprites": [
         {
@@ -475,8 +475,8 @@
         {
           "filename": "juzu_bracelet.png",
           "region": {
-            "x": 4,
-            "y": 96,
+            "x": 2684,
+            "y": 4,
             "w": 81,
             "h": 81
           },
@@ -490,8 +490,8 @@
         {
           "filename": "kunai.png",
           "region": {
-            "x": 96,
-            "y": 96,
+            "x": 2776,
+            "y": 4,
             "w": 81,
             "h": 81
           },
@@ -505,8 +505,8 @@
         {
           "filename": "lords_parasol.png",
           "region": {
-            "x": 188,
-            "y": 96,
+            "x": 2868,
+            "y": 4,
             "w": 81,
             "h": 81
           },
@@ -520,8 +520,8 @@
         {
           "filename": "music_box.png",
           "region": {
-            "x": 280,
-            "y": 96,
+            "x": 2960,
+            "y": 4,
             "w": 81,
             "h": 81
           },
@@ -535,8 +535,8 @@
         {
           "filename": "parrying_shield.png",
           "region": {
-            "x": 372,
-            "y": 96,
+            "x": 3052,
+            "y": 4,
             "w": 81,
             "h": 81
           },
@@ -550,8 +550,8 @@
         {
           "filename": "precarious_shears.png",
           "region": {
-            "x": 464,
-            "y": 96,
+            "x": 3144,
+            "y": 4,
             "w": 81,
             "h": 81
           },
@@ -565,8 +565,8 @@
         {
           "filename": "ring_of_the_snake.png",
           "region": {
-            "x": 556,
-            "y": 96,
+            "x": 3236,
+            "y": 4,
             "w": 81,
             "h": 81
           },
@@ -580,8 +580,8 @@
         {
           "filename": "vitruvian_minion.png",
           "region": {
-            "x": 648,
-            "y": 96,
+            "x": 3328,
+            "y": 4,
             "w": 81,
             "h": 81
           },
@@ -595,8 +595,8 @@
         {
           "filename": "whispering_earring.png",
           "region": {
-            "x": 740,
-            "y": 96,
+            "x": 3420,
+            "y": 4,
             "w": 81,
             "h": 81
           },
@@ -610,8 +610,8 @@
         {
           "filename": "dingy_rug.png",
           "region": {
-            "x": 832,
-            "y": 96,
+            "x": 3512,
+            "y": 4,
             "w": 80,
             "h": 81
           },
@@ -625,8 +625,8 @@
         {
           "filename": "fake_blood_vial.png",
           "region": {
-            "x": 920,
-            "y": 96,
+            "x": 3600,
+            "y": 4,
             "w": 80,
             "h": 81
           },
@@ -640,8 +640,8 @@
         {
           "filename": "fake_snecko_eye.png",
           "region": {
-            "x": 1008,
-            "y": 96,
+            "x": 3688,
+            "y": 4,
             "w": 80,
             "h": 81
           },
@@ -655,8 +655,8 @@
         {
           "filename": "fiddle.png",
           "region": {
-            "x": 1096,
-            "y": 96,
+            "x": 3776,
+            "y": 4,
             "w": 80,
             "h": 81
           },
@@ -670,8 +670,8 @@
         {
           "filename": "letter_opener.png",
           "region": {
-            "x": 1184,
-            "y": 96,
+            "x": 3864,
+            "y": 4,
             "w": 80,
             "h": 81
           },
@@ -685,8 +685,8 @@
         {
           "filename": "nunchaku.png",
           "region": {
-            "x": 1272,
-            "y": 96,
+            "x": 3952,
+            "y": 4,
             "w": 80,
             "h": 81
           },
@@ -700,7 +700,7 @@
         {
           "filename": "ringing_triangle.png",
           "region": {
-            "x": 1360,
+            "x": 4,
             "y": 96,
             "w": 80,
             "h": 81
@@ -715,7 +715,7 @@
         {
           "filename": "shovel.png",
           "region": {
-            "x": 1448,
+            "x": 92,
             "y": 96,
             "w": 80,
             "h": 81
@@ -730,7 +730,7 @@
         {
           "filename": "tanxs_whistle.png",
           "region": {
-            "x": 1536,
+            "x": 180,
             "y": 96,
             "w": 80,
             "h": 81
@@ -745,7 +745,7 @@
         {
           "filename": "the_courier.png",
           "region": {
-            "x": 1624,
+            "x": 268,
             "y": 96,
             "w": 80,
             "h": 81
@@ -760,7 +760,7 @@
         {
           "filename": "bug_buddy.png",
           "region": {
-            "x": 1712,
+            "x": 356,
             "y": 96,
             "w": 79,
             "h": 81
@@ -775,22 +775,7 @@
         {
           "filename": "chandelier.png",
           "region": {
-            "x": 1800,
-            "y": 96,
-            "w": 79,
-            "h": 81
-          },
-          "margin": {
-            "x": 3,
-            "y": 2,
-            "w": 6,
-            "h": 4
-          }
-        },
-        {
-          "filename": "fishing_rod.png",
-          "region": {
-            "x": 1888,
+            "x": 444,
             "y": 96,
             "w": 79,
             "h": 81
@@ -805,7 +790,7 @@
         {
           "filename": "fyshing_float.png",
           "region": {
-            "x": 1976,
+            "x": 532,
             "y": 96,
             "w": 79,
             "h": 81
@@ -820,7 +805,7 @@
         {
           "filename": "planisphere.png",
           "region": {
-            "x": 2064,
+            "x": 620,
             "y": 96,
             "w": 79,
             "h": 81
@@ -835,7 +820,7 @@
         {
           "filename": "beating_remnant.png",
           "region": {
-            "x": 2152,
+            "x": 708,
             "y": 96,
             "w": 78,
             "h": 81
@@ -850,7 +835,7 @@
         {
           "filename": "bellows.png",
           "region": {
-            "x": 2240,
+            "x": 796,
             "y": 96,
             "w": 78,
             "h": 81
@@ -865,7 +850,7 @@
         {
           "filename": "darkstone_periapt.png",
           "region": {
-            "x": 2328,
+            "x": 884,
             "y": 96,
             "w": 78,
             "h": 81
@@ -880,7 +865,7 @@
         {
           "filename": "intimidating_helmet.png",
           "region": {
-            "x": 2416,
+            "x": 972,
             "y": 96,
             "w": 78,
             "h": 81
@@ -895,7 +880,7 @@
         {
           "filename": "mr_struggles.png",
           "region": {
-            "x": 2504,
+            "x": 1060,
             "y": 96,
             "w": 78,
             "h": 81
@@ -910,7 +895,7 @@
         {
           "filename": "razor_tooth.png",
           "region": {
-            "x": 2592,
+            "x": 1148,
             "y": 96,
             "w": 78,
             "h": 81
@@ -925,8 +910,8 @@
         {
           "filename": "sai.png",
           "region": {
-            "x": 4,
-            "y": 188,
+            "x": 1236,
+            "y": 96,
             "w": 78,
             "h": 81
           },
@@ -940,8 +925,8 @@
         {
           "filename": "tri_boomerang.png",
           "region": {
-            "x": 92,
-            "y": 188,
+            "x": 1324,
+            "y": 96,
             "w": 78,
             "h": 81
           },
@@ -955,8 +940,8 @@
         {
           "filename": "dollys_mirror.png",
           "region": {
-            "x": 180,
-            "y": 188,
+            "x": 1412,
+            "y": 96,
             "w": 77,
             "h": 81
           },
@@ -970,8 +955,8 @@
         {
           "filename": "inaccurate_ephemeris.png",
           "region": {
-            "x": 268,
-            "y": 188,
+            "x": 1500,
+            "y": 96,
             "w": 77,
             "h": 81
           },
@@ -985,7 +970,7 @@
         {
           "filename": "paels_growth.png",
           "region": {
-            "x": 2680,
+            "x": 1588,
             "y": 96,
             "w": 76,
             "h": 81
@@ -1000,8 +985,8 @@
         {
           "filename": "red_skull.png",
           "region": {
-            "x": 356,
-            "y": 188,
+            "x": 1672,
+            "y": 96,
             "w": 76,
             "h": 81
           },
@@ -1015,8 +1000,8 @@
         {
           "filename": "daughter_of_the_wind.png",
           "region": {
-            "x": 440,
-            "y": 188,
+            "x": 1756,
+            "y": 96,
             "w": 75,
             "h": 81
           },
@@ -1030,8 +1015,8 @@
         {
           "filename": "lunar_pastry.png",
           "region": {
-            "x": 524,
-            "y": 188,
+            "x": 1840,
+            "y": 96,
             "w": 75,
             "h": 81
           },
@@ -1045,8 +1030,8 @@
         {
           "filename": "paels_claw.png",
           "region": {
-            "x": 608,
-            "y": 188,
+            "x": 1924,
+            "y": 96,
             "w": 75,
             "h": 81
           },
@@ -1060,8 +1045,8 @@
         {
           "filename": "permafrost.png",
           "region": {
-            "x": 692,
-            "y": 188,
+            "x": 2008,
+            "y": 96,
             "w": 75,
             "h": 81
           },
@@ -1075,8 +1060,8 @@
         {
           "filename": "fake_anchor.png",
           "region": {
-            "x": 776,
-            "y": 188,
+            "x": 2092,
+            "y": 96,
             "w": 74,
             "h": 81
           },
@@ -1090,8 +1075,8 @@
         {
           "filename": "burning_blood.png",
           "region": {
-            "x": 2684,
-            "y": 4,
+            "x": 2176,
+            "y": 96,
             "w": 71,
             "h": 81
           },
@@ -1105,8 +1090,8 @@
         {
           "filename": "divine_destiny.png",
           "region": {
-            "x": 860,
-            "y": 188,
+            "x": 2256,
+            "y": 96,
             "w": 71,
             "h": 81
           },
@@ -1120,8 +1105,8 @@
         {
           "filename": "divine_right.png",
           "region": {
-            "x": 940,
-            "y": 188,
+            "x": 2336,
+            "y": 96,
             "w": 71,
             "h": 81
           },
@@ -1135,8 +1120,8 @@
         {
           "filename": "preserved_fog.png",
           "region": {
-            "x": 1020,
-            "y": 188,
+            "x": 2416,
+            "y": 96,
             "w": 69,
             "h": 81
           },
@@ -1150,8 +1135,8 @@
         {
           "filename": "pointed_hat.png",
           "region": {
-            "x": 1100,
-            "y": 188,
+            "x": 2496,
+            "y": 96,
             "w": 66,
             "h": 81
           },
@@ -1165,8 +1150,8 @@
         {
           "filename": "power_cell.png",
           "region": {
-            "x": 1176,
-            "y": 188,
+            "x": 2572,
+            "y": 96,
             "w": 66,
             "h": 81
           },
@@ -1180,8 +1165,8 @@
         {
           "filename": "toxic_egg.png",
           "region": {
-            "x": 1252,
-            "y": 188,
+            "x": 2648,
+            "y": 96,
             "w": 66,
             "h": 81
           },
@@ -1195,8 +1180,8 @@
         {
           "filename": "mercury_hourglass.png",
           "region": {
-            "x": 1328,
-            "y": 188,
+            "x": 2724,
+            "y": 96,
             "w": 65,
             "h": 81
           },
@@ -1210,8 +1195,8 @@
         {
           "filename": "metronome.png",
           "region": {
-            "x": 1404,
-            "y": 188,
+            "x": 2800,
+            "y": 96,
             "w": 63,
             "h": 81
           },
@@ -1225,8 +1210,8 @@
         {
           "filename": "pear.png",
           "region": {
-            "x": 1476,
-            "y": 188,
+            "x": 2872,
+            "y": 96,
             "w": 62,
             "h": 81
           },
@@ -1240,8 +1225,8 @@
         {
           "filename": "game_piece.png",
           "region": {
-            "x": 1548,
-            "y": 188,
+            "x": 2944,
+            "y": 96,
             "w": 60,
             "h": 81
           },
@@ -1255,8 +1240,8 @@
         {
           "filename": "ivory_tile.png",
           "region": {
-            "x": 1616,
-            "y": 188,
+            "x": 3012,
+            "y": 96,
             "w": 58,
             "h": 81
           },
@@ -1270,8 +1255,8 @@
         {
           "filename": "prayer_wheel.png",
           "region": {
-            "x": 1684,
-            "y": 188,
+            "x": 3080,
+            "y": 96,
             "w": 57,
             "h": 81
           },
@@ -1285,8 +1270,8 @@
         {
           "filename": "fake_happy_flower.png",
           "region": {
-            "x": 1752,
-            "y": 188,
+            "x": 3148,
+            "y": 96,
             "w": 54,
             "h": 81
           },
@@ -1300,8 +1285,8 @@
         {
           "filename": "everburning_effigy.png",
           "region": {
-            "x": 1816,
-            "y": 188,
+            "x": 4040,
+            "y": 4,
             "w": 46,
             "h": 81
           },
@@ -1315,8 +1300,8 @@
         {
           "filename": "meat_cleaver.png",
           "region": {
-            "x": 1872,
-            "y": 188,
+            "x": 3212,
+            "y": 96,
             "w": 82,
             "h": 80
           },
@@ -1330,8 +1315,8 @@
         {
           "filename": "fake_strike_dummy.png",
           "region": {
-            "x": 1964,
-            "y": 188,
+            "x": 3304,
+            "y": 96,
             "w": 81,
             "h": 80
           },
@@ -1345,8 +1330,8 @@
         {
           "filename": "fur_coat.png",
           "region": {
-            "x": 2056,
-            "y": 188,
+            "x": 3396,
+            "y": 96,
             "w": 81,
             "h": 80
           },
@@ -1360,8 +1345,8 @@
         {
           "filename": "glitter.png",
           "region": {
-            "x": 2148,
-            "y": 188,
+            "x": 3488,
+            "y": 96,
             "w": 81,
             "h": 80
           },
@@ -1375,8 +1360,8 @@
         {
           "filename": "hand_drill.png",
           "region": {
-            "x": 2240,
-            "y": 188,
+            "x": 3580,
+            "y": 96,
             "w": 81,
             "h": 80
           },
@@ -1390,8 +1375,8 @@
         {
           "filename": "neows_lament.png",
           "region": {
-            "x": 2332,
-            "y": 188,
+            "x": 3672,
+            "y": 96,
             "w": 81,
             "h": 80
           },
@@ -1405,8 +1390,8 @@
         {
           "filename": "orrery.png",
           "region": {
-            "x": 2424,
-            "y": 188,
+            "x": 3764,
+            "y": 96,
             "w": 81,
             "h": 80
           },
@@ -1420,8 +1405,8 @@
         {
           "filename": "runic_cube.png",
           "region": {
-            "x": 2516,
-            "y": 188,
+            "x": 3856,
+            "y": 96,
             "w": 81,
             "h": 80
           },
@@ -1435,8 +1420,8 @@
         {
           "filename": "self_forming_clay.png",
           "region": {
-            "x": 2608,
-            "y": 188,
+            "x": 3948,
+            "y": 96,
             "w": 81,
             "h": 80
           },
@@ -1450,8 +1435,8 @@
         {
           "filename": "snecko_eye.png",
           "region": {
-            "x": 1872,
-            "y": 276,
+            "x": 3212,
+            "y": 184,
             "w": 81,
             "h": 80
           },
@@ -1465,8 +1450,8 @@
         {
           "filename": "vakuus_cape.png",
           "region": {
-            "x": 1964,
-            "y": 276,
+            "x": 3304,
+            "y": 184,
             "w": 81,
             "h": 80
           },
@@ -1480,8 +1465,8 @@
         {
           "filename": "very_hot_cocoa.png",
           "region": {
-            "x": 2056,
-            "y": 276,
+            "x": 3396,
+            "y": 184,
             "w": 81,
             "h": 80
           },
@@ -1495,8 +1480,8 @@
         {
           "filename": "wongos_mystery_ticket.png",
           "region": {
-            "x": 2148,
-            "y": 276,
+            "x": 3488,
+            "y": 184,
             "w": 81,
             "h": 80
           },
@@ -1510,8 +1495,8 @@
         {
           "filename": "alchemical_coffer.png",
           "region": {
-            "x": 2240,
-            "y": 276,
+            "x": 3580,
+            "y": 184,
             "w": 80,
             "h": 80
           },
@@ -1525,8 +1510,8 @@
         {
           "filename": "blood_vial.png",
           "region": {
-            "x": 2328,
-            "y": 276,
+            "x": 3668,
+            "y": 184,
             "w": 80,
             "h": 80
           },
@@ -1540,8 +1525,8 @@
         {
           "filename": "burning_sticks.png",
           "region": {
-            "x": 2416,
-            "y": 276,
+            "x": 3756,
+            "y": 184,
             "w": 80,
             "h": 80
           },
@@ -1555,8 +1540,8 @@
         {
           "filename": "distinguished_cape.png",
           "region": {
-            "x": 2504,
-            "y": 276,
+            "x": 3844,
+            "y": 184,
             "w": 80,
             "h": 80
           },
@@ -1570,8 +1555,8 @@
         {
           "filename": "miniature_cannon.png",
           "region": {
-            "x": 2592,
-            "y": 276,
+            "x": 3932,
+            "y": 184,
             "w": 80,
             "h": 80
           },
@@ -1586,7 +1571,7 @@
           "filename": "neows_bones.png",
           "region": {
             "x": 4,
-            "y": 280,
+            "y": 188,
             "w": 80,
             "h": 80
           },
@@ -1601,7 +1586,7 @@
           "filename": "scroll_boxes.png",
           "region": {
             "x": 92,
-            "y": 280,
+            "y": 188,
             "w": 80,
             "h": 80
           },
@@ -1616,7 +1601,7 @@
           "filename": "unsettling_lamp.png",
           "region": {
             "x": 180,
-            "y": 280,
+            "y": 188,
             "w": 80,
             "h": 80
           },
@@ -1631,7 +1616,7 @@
           "filename": "festive_popper.png",
           "region": {
             "x": 268,
-            "y": 280,
+            "y": 188,
             "w": 79,
             "h": 80
           },
@@ -1646,7 +1631,7 @@
           "filename": "festive_popper_open.png",
           "region": {
             "x": 356,
-            "y": 280,
+            "y": 188,
             "w": 79,
             "h": 80
           },
@@ -1661,7 +1646,7 @@
           "filename": "hefty_tablet.png",
           "region": {
             "x": 444,
-            "y": 280,
+            "y": 188,
             "w": 79,
             "h": 80
           },
@@ -1676,7 +1661,7 @@
           "filename": "helical_dart.png",
           "region": {
             "x": 532,
-            "y": 280,
+            "y": 188,
             "w": 79,
             "h": 80
           },
@@ -1691,7 +1676,7 @@
           "filename": "lasting_candy.png",
           "region": {
             "x": 620,
-            "y": 280,
+            "y": 188,
             "w": 79,
             "h": 80
           },
@@ -1706,7 +1691,7 @@
           "filename": "punch_dagger.png",
           "region": {
             "x": 708,
-            "y": 280,
+            "y": 188,
             "w": 79,
             "h": 80
           },
@@ -1721,7 +1706,7 @@
           "filename": "runic_capacitor.png",
           "region": {
             "x": 796,
-            "y": 280,
+            "y": 188,
             "w": 79,
             "h": 80
           },
@@ -1736,7 +1721,7 @@
           "filename": "thread_and_needle.png",
           "region": {
             "x": 884,
-            "y": 280,
+            "y": 188,
             "w": 79,
             "h": 80
           },
@@ -1751,7 +1736,7 @@
           "filename": "calling_bell.png",
           "region": {
             "x": 972,
-            "y": 280,
+            "y": 188,
             "w": 78,
             "h": 80
           },
@@ -1766,7 +1751,7 @@
           "filename": "ring_of_the_drake.png",
           "region": {
             "x": 1060,
-            "y": 280,
+            "y": 188,
             "w": 78,
             "h": 80
           },
@@ -1781,7 +1766,7 @@
           "filename": "venerable_tea_set.png",
           "region": {
             "x": 1148,
-            "y": 280,
+            "y": 188,
             "w": 78,
             "h": 80
           },
@@ -1796,7 +1781,7 @@
           "filename": "blessed_antler.png",
           "region": {
             "x": 1236,
-            "y": 280,
+            "y": 188,
             "w": 77,
             "h": 80
           },
@@ -1811,7 +1796,7 @@
           "filename": "phial_holster.png",
           "region": {
             "x": 1324,
-            "y": 280,
+            "y": 188,
             "w": 77,
             "h": 80
           },
@@ -1826,7 +1811,7 @@
           "filename": "sparkling_rouge.png",
           "region": {
             "x": 1412,
-            "y": 280,
+            "y": 188,
             "w": 77,
             "h": 80
           },
@@ -1841,7 +1826,7 @@
           "filename": "winged_boots.png",
           "region": {
             "x": 1500,
-            "y": 280,
+            "y": 188,
             "w": 77,
             "h": 80
           },
@@ -1855,8 +1840,8 @@
         {
           "filename": "matryoshka.png",
           "region": {
-            "x": 2680,
-            "y": 276,
+            "x": 1588,
+            "y": 188,
             "w": 76,
             "h": 80
           },
@@ -1870,8 +1855,8 @@
         {
           "filename": "phylactery_unbound.png",
           "region": {
-            "x": 1588,
-            "y": 280,
+            "x": 1672,
+            "y": 188,
             "w": 76,
             "h": 80
           },
@@ -1885,8 +1870,8 @@
         {
           "filename": "strawberry.png",
           "region": {
-            "x": 1672,
-            "y": 280,
+            "x": 1756,
+            "y": 188,
             "w": 76,
             "h": 80
           },
@@ -1900,8 +1885,8 @@
         {
           "filename": "claws.png",
           "region": {
-            "x": 1756,
-            "y": 280,
+            "x": 1840,
+            "y": 188,
             "w": 75,
             "h": 80
           },
@@ -1915,8 +1900,8 @@
         {
           "filename": "lost_soul.png",
           "region": {
-            "x": 1840,
-            "y": 364,
+            "x": 1924,
+            "y": 188,
             "w": 75,
             "h": 80
           },
@@ -1930,8 +1915,8 @@
         {
           "filename": "spiked_gauntlets.png",
           "region": {
-            "x": 1924,
-            "y": 364,
+            "x": 2008,
+            "y": 188,
             "w": 75,
             "h": 80
           },
@@ -1945,8 +1930,8 @@
         {
           "filename": "unceasing_top.png",
           "region": {
-            "x": 2008,
-            "y": 364,
+            "x": 2092,
+            "y": 188,
             "w": 75,
             "h": 80
           },
@@ -1960,8 +1945,8 @@
         {
           "filename": "oversized_watch.png",
           "region": {
-            "x": 2092,
-            "y": 364,
+            "x": 2176,
+            "y": 188,
             "w": 74,
             "h": 80
           },
@@ -1975,8 +1960,8 @@
         {
           "filename": "blood_soaked_rose.png",
           "region": {
-            "x": 2176,
-            "y": 364,
+            "x": 2260,
+            "y": 188,
             "w": 73,
             "h": 80
           },
@@ -1990,8 +1975,8 @@
         {
           "filename": "pomander.png",
           "region": {
-            "x": 2260,
-            "y": 364,
+            "x": 4020,
+            "y": 184,
             "w": 72,
             "h": 80
           },
@@ -2005,8 +1990,8 @@
         {
           "filename": "sword_of_jade.png",
           "region": {
-            "x": 2340,
-            "y": 364,
+            "x": 2344,
+            "y": 188,
             "w": 72,
             "h": 80
           },
@@ -2020,8 +2005,8 @@
         {
           "filename": "sword_of_stone.png",
           "region": {
-            "x": 2420,
-            "y": 364,
+            "x": 2424,
+            "y": 188,
             "w": 72,
             "h": 80
           },
@@ -2035,8 +2020,8 @@
         {
           "filename": "girya.png",
           "region": {
-            "x": 2500,
-            "y": 364,
+            "x": 2504,
+            "y": 188,
             "w": 66,
             "h": 80
           },
@@ -2050,8 +2035,8 @@
         {
           "filename": "frozen_egg.png",
           "region": {
-            "x": 2576,
-            "y": 364,
+            "x": 2580,
+            "y": 188,
             "w": 65,
             "h": 80
           },
@@ -2065,8 +2050,8 @@
         {
           "filename": "lantern.png",
           "region": {
-            "x": 2652,
-            "y": 364,
+            "x": 2656,
+            "y": 188,
             "w": 64,
             "h": 80
           },
@@ -2080,8 +2065,8 @@
         {
           "filename": "signet_ring.png",
           "region": {
-            "x": 4,
-            "y": 368,
+            "x": 2728,
+            "y": 188,
             "w": 63,
             "h": 80
           },
@@ -2095,8 +2080,8 @@
         {
           "filename": "lava_lamp.png",
           "region": {
-            "x": 76,
-            "y": 368,
+            "x": 2800,
+            "y": 188,
             "w": 62,
             "h": 80
           },
@@ -2110,8 +2095,8 @@
         {
           "filename": "fencing_manual.png",
           "region": {
-            "x": 148,
-            "y": 368,
+            "x": 2872,
+            "y": 188,
             "w": 59,
             "h": 80
           },
@@ -2125,8 +2110,8 @@
         {
           "filename": "royal_stamp.png",
           "region": {
-            "x": 216,
-            "y": 368,
+            "x": 2940,
+            "y": 188,
             "w": 59,
             "h": 80
           },
@@ -2140,7 +2125,7 @@
         {
           "filename": "blue_candle.png",
           "region": {
-            "x": 2700,
+            "x": 3008,
             "y": 188,
             "w": 53,
             "h": 80
@@ -2155,8 +2140,8 @@
         {
           "filename": "fake_venerable_tea_set.png",
           "region": {
-            "x": 284,
-            "y": 368,
+            "x": 3072,
+            "y": 188,
             "w": 81,
             "h": 79
           },
@@ -2170,8 +2155,8 @@
         {
           "filename": "gremlin_horn.png",
           "region": {
-            "x": 376,
-            "y": 368,
+            "x": 3164,
+            "y": 272,
             "w": 81,
             "h": 79
           },
@@ -2185,8 +2170,8 @@
         {
           "filename": "kusarigama.png",
           "region": {
-            "x": 468,
-            "y": 368,
+            "x": 3256,
+            "y": 272,
             "w": 81,
             "h": 79
           },
@@ -2200,8 +2185,8 @@
         {
           "filename": "lees_waffle.png",
           "region": {
-            "x": 560,
-            "y": 368,
+            "x": 3348,
+            "y": 272,
             "w": 81,
             "h": 79
           },
@@ -2215,8 +2200,8 @@
         {
           "filename": "looming_fruit.png",
           "region": {
-            "x": 652,
-            "y": 368,
+            "x": 3440,
+            "y": 272,
             "w": 81,
             "h": 79
           },
@@ -2230,8 +2215,8 @@
         {
           "filename": "preserved_insect.png",
           "region": {
-            "x": 744,
-            "y": 368,
+            "x": 3532,
+            "y": 272,
             "w": 81,
             "h": 79
           },
@@ -2245,8 +2230,8 @@
         {
           "filename": "sere_talon.png",
           "region": {
-            "x": 836,
-            "y": 368,
+            "x": 3624,
+            "y": 272,
             "w": 81,
             "h": 79
           },
@@ -2260,8 +2245,8 @@
         {
           "filename": "strike_dummy.png",
           "region": {
-            "x": 928,
-            "y": 368,
+            "x": 3716,
+            "y": 272,
             "w": 81,
             "h": 79
           },
@@ -2275,8 +2260,8 @@
         {
           "filename": "white_star.png",
           "region": {
-            "x": 1020,
-            "y": 368,
+            "x": 3808,
+            "y": 272,
             "w": 81,
             "h": 79
           },
@@ -2290,8 +2275,8 @@
         {
           "filename": "arcane_scroll.png",
           "region": {
-            "x": 1112,
-            "y": 368,
+            "x": 3900,
+            "y": 272,
             "w": 80,
             "h": 79
           },
@@ -2305,8 +2290,8 @@
         {
           "filename": "charons_ashes.png",
           "region": {
-            "x": 1200,
-            "y": 368,
+            "x": 3988,
+            "y": 272,
             "w": 80,
             "h": 79
           },
@@ -2320,8 +2305,8 @@
         {
           "filename": "medicinal_pouch.png",
           "region": {
-            "x": 1288,
-            "y": 368,
+            "x": 4,
+            "y": 276,
             "w": 80,
             "h": 79
           },
@@ -2335,8 +2320,8 @@
         {
           "filename": "neows_torment.png",
           "region": {
-            "x": 1376,
-            "y": 368,
+            "x": 92,
+            "y": 276,
             "w": 80,
             "h": 79
           },
@@ -2350,8 +2335,8 @@
         {
           "filename": "parrying_dagger.png",
           "region": {
-            "x": 1464,
-            "y": 368,
+            "x": 180,
+            "y": 276,
             "w": 80,
             "h": 79
           },
@@ -2365,8 +2350,8 @@
         {
           "filename": "pendulum.png",
           "region": {
-            "x": 1552,
-            "y": 368,
+            "x": 268,
+            "y": 276,
             "w": 80,
             "h": 79
           },
@@ -2378,25 +2363,10 @@
           }
         },
         {
-          "filename": "silken_tress.png",
-          "region": {
-            "x": 1640,
-            "y": 368,
-            "w": 80,
-            "h": 79
-          },
-          "margin": {
-            "x": 3,
-            "y": 4,
-            "w": 5,
-            "h": 6
-          }
-        },
-        {
           "filename": "symbiotic_virus.png",
           "region": {
-            "x": 1728,
-            "y": 368,
+            "x": 356,
+            "y": 276,
             "w": 80,
             "h": 79
           },
@@ -2410,8 +2380,8 @@
         {
           "filename": "throwing_axe.png",
           "region": {
-            "x": 1816,
-            "y": 452,
+            "x": 444,
+            "y": 276,
             "w": 80,
             "h": 79
           },
@@ -2425,8 +2395,8 @@
         {
           "filename": "biiig_hug.png",
           "region": {
-            "x": 1904,
-            "y": 452,
+            "x": 532,
+            "y": 276,
             "w": 79,
             "h": 79
           },
@@ -2440,8 +2410,8 @@
         {
           "filename": "booming_conch.png",
           "region": {
-            "x": 1992,
-            "y": 452,
+            "x": 620,
+            "y": 276,
             "w": 79,
             "h": 79
           },
@@ -2455,8 +2425,8 @@
         {
           "filename": "brilliant_scarf.png",
           "region": {
-            "x": 2080,
-            "y": 452,
+            "x": 708,
+            "y": 276,
             "w": 79,
             "h": 79
           },
@@ -2470,8 +2440,8 @@
         {
           "filename": "demon_tongue.png",
           "region": {
-            "x": 2168,
-            "y": 452,
+            "x": 796,
+            "y": 276,
             "w": 79,
             "h": 79
           },
@@ -2485,8 +2455,8 @@
         {
           "filename": "large_capsule.png",
           "region": {
-            "x": 2256,
-            "y": 452,
+            "x": 884,
+            "y": 276,
             "w": 79,
             "h": 79
           },
@@ -2500,8 +2470,8 @@
         {
           "filename": "lava_rock.png",
           "region": {
-            "x": 2344,
-            "y": 452,
+            "x": 972,
+            "y": 276,
             "w": 79,
             "h": 79
           },
@@ -2515,8 +2485,8 @@
         {
           "filename": "leafy_poultice.png",
           "region": {
-            "x": 2432,
-            "y": 452,
+            "x": 1060,
+            "y": 276,
             "w": 79,
             "h": 79
           },
@@ -2530,8 +2500,8 @@
         {
           "filename": "pandoras_box.png",
           "region": {
-            "x": 2520,
-            "y": 452,
+            "x": 1148,
+            "y": 276,
             "w": 79,
             "h": 79
           },
@@ -2545,8 +2515,8 @@
         {
           "filename": "sand_castle.png",
           "region": {
-            "x": 2608,
-            "y": 452,
+            "x": 1236,
+            "y": 276,
             "w": 79,
             "h": 79
           },
@@ -2560,23 +2530,8 @@
         {
           "filename": "golden_pearl.png",
           "region": {
-            "x": 4,
-            "y": 456,
-            "w": 78,
-            "h": 79
-          },
-          "margin": {
-            "x": 3,
-            "y": 3,
-            "w": 7,
-            "h": 6
-          }
-        },
-        {
-          "filename": "kaleidoscope.png",
-          "region": {
-            "x": 92,
-            "y": 456,
+            "x": 1324,
+            "y": 276,
             "w": 78,
             "h": 79
           },
@@ -2590,8 +2545,8 @@
         {
           "filename": "ninja_scroll.png",
           "region": {
-            "x": 180,
-            "y": 456,
+            "x": 1412,
+            "y": 276,
             "w": 78,
             "h": 79
           },
@@ -2605,8 +2560,8 @@
         {
           "filename": "sturdy_clamp.png",
           "region": {
-            "x": 268,
-            "y": 456,
+            "x": 1500,
+            "y": 276,
             "w": 77,
             "h": 79
           },
@@ -2620,8 +2575,8 @@
         {
           "filename": "vambrace.png",
           "region": {
-            "x": 356,
-            "y": 456,
+            "x": 1588,
+            "y": 276,
             "w": 77,
             "h": 79
           },
@@ -2635,8 +2590,8 @@
         {
           "filename": "driftwood.png",
           "region": {
-            "x": 444,
-            "y": 456,
+            "x": 1676,
+            "y": 276,
             "w": 76,
             "h": 79
           },
@@ -2650,8 +2605,8 @@
         {
           "filename": "paels_tears.png",
           "region": {
-            "x": 528,
-            "y": 456,
+            "x": 1760,
+            "y": 276,
             "w": 76,
             "h": 79
           },
@@ -2665,8 +2620,8 @@
         {
           "filename": "sozu.png",
           "region": {
-            "x": 612,
-            "y": 456,
+            "x": 1844,
+            "y": 276,
             "w": 76,
             "h": 79
           },
@@ -2680,8 +2635,8 @@
         {
           "filename": "bookmark.png",
           "region": {
-            "x": 696,
-            "y": 456,
+            "x": 1928,
+            "y": 276,
             "w": 75,
             "h": 79
           },
@@ -2695,8 +2650,8 @@
         {
           "filename": "silver_crucible.png",
           "region": {
-            "x": 780,
-            "y": 456,
+            "x": 2012,
+            "y": 276,
             "w": 74,
             "h": 79
           },
@@ -2710,8 +2665,8 @@
         {
           "filename": "red_mask.png",
           "region": {
-            "x": 864,
-            "y": 456,
+            "x": 2096,
+            "y": 276,
             "w": 73,
             "h": 79
           },
@@ -2725,8 +2680,8 @@
         {
           "filename": "paels_tooth.png",
           "region": {
-            "x": 948,
-            "y": 456,
+            "x": 2180,
+            "y": 276,
             "w": 69,
             "h": 79
           },
@@ -2740,8 +2695,8 @@
         {
           "filename": "neows_talisman.png",
           "region": {
-            "x": 1028,
-            "y": 456,
+            "x": 2260,
+            "y": 276,
             "w": 68,
             "h": 79
           },
@@ -2755,8 +2710,8 @@
         {
           "filename": "black_blood.png",
           "region": {
-            "x": 1104,
-            "y": 456,
+            "x": 2336,
+            "y": 276,
             "w": 66,
             "h": 79
           },
@@ -2770,8 +2725,8 @@
         {
           "filename": "mini_regent.png",
           "region": {
-            "x": 1180,
-            "y": 456,
+            "x": 2412,
+            "y": 276,
             "w": 66,
             "h": 79
           },
@@ -2785,8 +2740,8 @@
         {
           "filename": "molten_egg.png",
           "region": {
-            "x": 1256,
-            "y": 456,
+            "x": 2488,
+            "y": 276,
             "w": 65,
             "h": 79
           },
@@ -2800,8 +2755,8 @@
         {
           "filename": "screaming_flagon.png",
           "region": {
-            "x": 1332,
-            "y": 456,
+            "x": 2564,
+            "y": 276,
             "w": 64,
             "h": 79
           },
@@ -2815,8 +2770,8 @@
         {
           "filename": "empty_cage.png",
           "region": {
-            "x": 1404,
-            "y": 456,
+            "x": 2636,
+            "y": 276,
             "w": 62,
             "h": 79
           },
@@ -2830,8 +2785,8 @@
         {
           "filename": "lost_wisp.png",
           "region": {
-            "x": 2696,
-            "y": 452,
+            "x": 2708,
+            "y": 276,
             "w": 55,
             "h": 79
           },
@@ -2845,8 +2800,8 @@
         {
           "filename": "paels_wing.png",
           "region": {
-            "x": 1476,
-            "y": 456,
+            "x": 2772,
+            "y": 276,
             "w": 83,
             "h": 78
           },
@@ -2860,8 +2815,8 @@
         {
           "filename": "big_mushroom.png",
           "region": {
-            "x": 1568,
-            "y": 456,
+            "x": 2864,
+            "y": 276,
             "w": 82,
             "h": 78
           },
@@ -2875,8 +2830,8 @@
         {
           "filename": "centennial_puzzle.png",
           "region": {
-            "x": 1660,
-            "y": 456,
+            "x": 2956,
+            "y": 276,
             "w": 82,
             "h": 78
           },
@@ -2890,8 +2845,8 @@
         {
           "filename": "mysterious_cocoon.png",
           "region": {
-            "x": 1752,
-            "y": 540,
+            "x": 3048,
+            "y": 276,
             "w": 82,
             "h": 78
           },
@@ -2905,8 +2860,8 @@
         {
           "filename": "toy_box.png",
           "region": {
-            "x": 1844,
-            "y": 540,
+            "x": 3140,
+            "y": 360,
             "w": 82,
             "h": 78
           },
@@ -2920,8 +2875,8 @@
         {
           "filename": "archaic_tooth.png",
           "region": {
-            "x": 1936,
-            "y": 540,
+            "x": 3232,
+            "y": 360,
             "w": 81,
             "h": 78
           },
@@ -2935,8 +2890,8 @@
         {
           "filename": "bone_flute.png",
           "region": {
-            "x": 2028,
-            "y": 540,
+            "x": 3324,
+            "y": 360,
             "w": 81,
             "h": 78
           },
@@ -2950,8 +2905,8 @@
         {
           "filename": "fake_merchants_rug.png",
           "region": {
-            "x": 2120,
-            "y": 540,
+            "x": 3416,
+            "y": 360,
             "w": 81,
             "h": 78
           },
@@ -2965,8 +2920,8 @@
         {
           "filename": "massive_scroll.png",
           "region": {
-            "x": 2212,
-            "y": 540,
+            "x": 3508,
+            "y": 360,
             "w": 81,
             "h": 78
           },
@@ -2980,8 +2935,8 @@
         {
           "filename": "meat_on_the_bone.png",
           "region": {
-            "x": 2304,
-            "y": 540,
+            "x": 3600,
+            "y": 360,
             "w": 81,
             "h": 78
           },
@@ -2995,8 +2950,8 @@
         {
           "filename": "potion_belt.png",
           "region": {
-            "x": 2396,
-            "y": 540,
+            "x": 3692,
+            "y": 360,
             "w": 81,
             "h": 78
           },
@@ -3010,8 +2965,8 @@
         {
           "filename": "infused_core.png",
           "region": {
-            "x": 2488,
-            "y": 540,
+            "x": 3784,
+            "y": 360,
             "w": 80,
             "h": 78
           },
@@ -3025,8 +2980,8 @@
         {
           "filename": "looming_fruit_2.png",
           "region": {
-            "x": 2576,
-            "y": 540,
+            "x": 3872,
+            "y": 360,
             "w": 80,
             "h": 78
           },
@@ -3040,8 +2995,8 @@
         {
           "filename": "tough_bandages.png",
           "region": {
-            "x": 2664,
-            "y": 540,
+            "x": 3960,
+            "y": 360,
             "w": 80,
             "h": 78
           },
@@ -3056,7 +3011,7 @@
           "filename": "war_hammer.png",
           "region": {
             "x": 4,
-            "y": 544,
+            "y": 364,
             "w": 80,
             "h": 78
           },
@@ -3071,7 +3026,7 @@
           "filename": "beautiful_bracelet.png",
           "region": {
             "x": 92,
-            "y": 544,
+            "y": 364,
             "w": 79,
             "h": 78
           },
@@ -3086,7 +3041,7 @@
           "filename": "cracked_core.png",
           "region": {
             "x": 180,
-            "y": 544,
+            "y": 364,
             "w": 79,
             "h": 78
           },
@@ -3101,7 +3056,7 @@
           "filename": "eternal_feather.png",
           "region": {
             "x": 268,
-            "y": 544,
+            "y": 364,
             "w": 79,
             "h": 78
           },
@@ -3116,7 +3071,7 @@
           "filename": "nutritious_oyster.png",
           "region": {
             "x": 356,
-            "y": 544,
+            "y": 364,
             "w": 79,
             "h": 78
           },
@@ -3131,7 +3086,7 @@
           "filename": "vajra.png",
           "region": {
             "x": 444,
-            "y": 544,
+            "y": 364,
             "w": 79,
             "h": 78
           },
@@ -3146,7 +3101,7 @@
           "filename": "astrolabe.png",
           "region": {
             "x": 532,
-            "y": 544,
+            "y": 364,
             "w": 78,
             "h": 78
           },
@@ -3161,7 +3116,7 @@
           "filename": "pollinous_core.png",
           "region": {
             "x": 620,
-            "y": 544,
+            "y": 364,
             "w": 78,
             "h": 78
           },
@@ -3176,7 +3131,7 @@
           "filename": "bing_bong.png",
           "region": {
             "x": 708,
-            "y": 544,
+            "y": 364,
             "w": 77,
             "h": 78
           },
@@ -3191,7 +3146,7 @@
           "filename": "reptile_trinket.png",
           "region": {
             "x": 796,
-            "y": 544,
+            "y": 364,
             "w": 77,
             "h": 78
           },
@@ -3206,7 +3161,7 @@
           "filename": "seal_of_gold.png",
           "region": {
             "x": 884,
-            "y": 544,
+            "y": 364,
             "w": 77,
             "h": 78
           },
@@ -3221,7 +3176,7 @@
           "filename": "symbiote.png",
           "region": {
             "x": 972,
-            "y": 544,
+            "y": 364,
             "w": 77,
             "h": 78
           },
@@ -3236,7 +3191,7 @@
           "filename": "yummy_cookie_defect.png",
           "region": {
             "x": 1060,
-            "y": 544,
+            "y": 364,
             "w": 77,
             "h": 78
           },
@@ -3251,7 +3206,7 @@
           "filename": "new_leaf.png",
           "region": {
             "x": 1148,
-            "y": 544,
+            "y": 364,
             "w": 76,
             "h": 78
           },
@@ -3266,7 +3221,7 @@
           "filename": "paper_krane.png",
           "region": {
             "x": 1232,
-            "y": 544,
+            "y": 364,
             "w": 76,
             "h": 78
           },
@@ -3281,7 +3236,7 @@
           "filename": "yummy_cookie_necro.png",
           "region": {
             "x": 1316,
-            "y": 544,
+            "y": 364,
             "w": 76,
             "h": 78
           },
@@ -3296,7 +3251,7 @@
           "filename": "mystic_lighter.png",
           "region": {
             "x": 1400,
-            "y": 544,
+            "y": 364,
             "w": 72,
             "h": 78
           },
@@ -3311,7 +3266,7 @@
           "filename": "ghost_seed.png",
           "region": {
             "x": 1480,
-            "y": 544,
+            "y": 364,
             "w": 71,
             "h": 78
           },
@@ -3326,7 +3281,7 @@
           "filename": "ruined_helmet.png",
           "region": {
             "x": 1560,
-            "y": 544,
+            "y": 364,
             "w": 67,
             "h": 78
           },
@@ -3341,7 +3296,7 @@
           "filename": "chemical_x.png",
           "region": {
             "x": 1636,
-            "y": 544,
+            "y": 364,
             "w": 63,
             "h": 78
           },
@@ -3356,7 +3311,7 @@
           "filename": "amethyst_aubergine.png",
           "region": {
             "x": 1708,
-            "y": 628,
+            "y": 364,
             "w": 81,
             "h": 77
           },
@@ -3371,7 +3326,7 @@
           "filename": "fake_mango.png",
           "region": {
             "x": 1800,
-            "y": 628,
+            "y": 364,
             "w": 81,
             "h": 77
           },
@@ -3386,7 +3341,7 @@
           "filename": "meal_ticket.png",
           "region": {
             "x": 1892,
-            "y": 628,
+            "y": 364,
             "w": 81,
             "h": 77
           },
@@ -3401,7 +3356,7 @@
           "filename": "paels_blood.png",
           "region": {
             "x": 1984,
-            "y": 628,
+            "y": 364,
             "w": 81,
             "h": 77
           },
@@ -3416,7 +3371,7 @@
           "filename": "singing_bowl.png",
           "region": {
             "x": 2076,
-            "y": 628,
+            "y": 364,
             "w": 81,
             "h": 77
           },
@@ -3431,7 +3386,7 @@
           "filename": "sling_of_courage.png",
           "region": {
             "x": 2168,
-            "y": 628,
+            "y": 364,
             "w": 81,
             "h": 77
           },
@@ -3446,7 +3401,7 @@
           "filename": "toasty_mittens.png",
           "region": {
             "x": 2260,
-            "y": 628,
+            "y": 364,
             "w": 81,
             "h": 77
           },
@@ -3461,7 +3416,7 @@
           "filename": "undulating_mass.png",
           "region": {
             "x": 2352,
-            "y": 628,
+            "y": 364,
             "w": 81,
             "h": 77
           },
@@ -3476,7 +3431,7 @@
           "filename": "bronze_scales.png",
           "region": {
             "x": 2444,
-            "y": 628,
+            "y": 364,
             "w": 80,
             "h": 77
           },
@@ -3491,7 +3446,7 @@
           "filename": "cursed_pearl.png",
           "region": {
             "x": 2532,
-            "y": 628,
+            "y": 364,
             "w": 80,
             "h": 77
           },
@@ -3506,7 +3461,7 @@
           "filename": "pen_nib.png",
           "region": {
             "x": 2620,
-            "y": 628,
+            "y": 364,
             "w": 80,
             "h": 77
           },
@@ -3520,8 +3475,8 @@
         {
           "filename": "delicate_frond.png",
           "region": {
-            "x": 4,
-            "y": 632,
+            "x": 2708,
+            "y": 364,
             "w": 79,
             "h": 77
           },
@@ -3535,8 +3490,8 @@
         {
           "filename": "stone_humidifier.png",
           "region": {
-            "x": 92,
-            "y": 632,
+            "x": 2796,
+            "y": 364,
             "w": 79,
             "h": 77
           },
@@ -3550,8 +3505,8 @@
         {
           "filename": "cloak_clasp.png",
           "region": {
-            "x": 180,
-            "y": 632,
+            "x": 2884,
+            "y": 364,
             "w": 78,
             "h": 77
           },
@@ -3565,8 +3520,8 @@
         {
           "filename": "electric_shrymp.png",
           "region": {
-            "x": 268,
-            "y": 632,
+            "x": 2972,
+            "y": 364,
             "w": 77,
             "h": 77
           },
@@ -3580,8 +3535,8 @@
         {
           "filename": "lapis_lazuli.png",
           "region": {
-            "x": 356,
-            "y": 632,
+            "x": 3060,
+            "y": 448,
             "w": 77,
             "h": 77
           },
@@ -3595,8 +3550,8 @@
         {
           "filename": "radiant_pearl.png",
           "region": {
-            "x": 444,
-            "y": 632,
+            "x": 3148,
+            "y": 448,
             "w": 74,
             "h": 77
           },
@@ -3610,8 +3565,8 @@
         {
           "filename": "kifuda.png",
           "region": {
-            "x": 528,
-            "y": 632,
+            "x": 3232,
+            "y": 448,
             "w": 73,
             "h": 77
           },
@@ -3625,8 +3580,8 @@
         {
           "filename": "storybook.png",
           "region": {
-            "x": 612,
-            "y": 632,
+            "x": 3316,
+            "y": 448,
             "w": 73,
             "h": 77
           },
@@ -3640,8 +3595,8 @@
         {
           "filename": "cursed_kettle.png",
           "region": {
-            "x": 696,
-            "y": 632,
+            "x": 3400,
+            "y": 448,
             "w": 82,
             "h": 76
           },
@@ -3655,8 +3610,8 @@
         {
           "filename": "gambling_chip.png",
           "region": {
-            "x": 788,
-            "y": 632,
+            "x": 3492,
+            "y": 448,
             "w": 81,
             "h": 76
           },
@@ -3670,8 +3625,8 @@
         {
           "filename": "miniature_tent.png",
           "region": {
-            "x": 880,
-            "y": 632,
+            "x": 3584,
+            "y": 448,
             "w": 81,
             "h": 76
           },
@@ -3685,8 +3640,8 @@
         {
           "filename": "precise_scissors.png",
           "region": {
-            "x": 972,
-            "y": 632,
+            "x": 3676,
+            "y": 448,
             "w": 81,
             "h": 76
           },
@@ -3700,8 +3655,8 @@
         {
           "filename": "pumpkin_candle.png",
           "region": {
-            "x": 1064,
-            "y": 632,
+            "x": 3768,
+            "y": 448,
             "w": 81,
             "h": 76
           },
@@ -3715,8 +3670,8 @@
         {
           "filename": "tuning_fork.png",
           "region": {
-            "x": 1156,
-            "y": 632,
+            "x": 3860,
+            "y": 448,
             "w": 81,
             "h": 76
           },
@@ -3730,8 +3685,8 @@
         {
           "filename": "white_beast_statue.png",
           "region": {
-            "x": 1248,
-            "y": 632,
+            "x": 3952,
+            "y": 448,
             "w": 81,
             "h": 76
           },
@@ -3745,8 +3700,8 @@
         {
           "filename": "data_disk.png",
           "region": {
-            "x": 1340,
-            "y": 632,
+            "x": 4,
+            "y": 452,
             "w": 80,
             "h": 76
           },
@@ -3760,8 +3715,8 @@
         {
           "filename": "dusty_tome.png",
           "region": {
-            "x": 1428,
-            "y": 632,
+            "x": 92,
+            "y": 452,
             "w": 80,
             "h": 76
           },
@@ -3775,8 +3730,8 @@
         {
           "filename": "mango.png",
           "region": {
-            "x": 1516,
-            "y": 632,
+            "x": 180,
+            "y": 452,
             "w": 80,
             "h": 76
           },
@@ -3790,8 +3745,8 @@
         {
           "filename": "book_repair_knife.png",
           "region": {
-            "x": 1604,
-            "y": 632,
+            "x": 268,
+            "y": 452,
             "w": 79,
             "h": 76
           },
@@ -3805,8 +3760,8 @@
         {
           "filename": "royal_scepter.png",
           "region": {
-            "x": 696,
-            "y": 716,
+            "x": 356,
+            "y": 452,
             "w": 79,
             "h": 76
           },
@@ -3820,8 +3775,8 @@
         {
           "filename": "wing_charm.png",
           "region": {
-            "x": 784,
-            "y": 716,
+            "x": 444,
+            "y": 452,
             "w": 76,
             "h": 76
           },
@@ -3835,8 +3790,8 @@
         {
           "filename": "stone_cracker.png",
           "region": {
-            "x": 868,
-            "y": 716,
+            "x": 528,
+            "y": 452,
             "w": 74,
             "h": 76
           },
@@ -3850,8 +3805,8 @@
         {
           "filename": "yummy_cookie_silent.png",
           "region": {
-            "x": 952,
-            "y": 716,
+            "x": 612,
+            "y": 452,
             "w": 74,
             "h": 76
           },
@@ -3865,8 +3820,8 @@
         {
           "filename": "pantograph.png",
           "region": {
-            "x": 1036,
-            "y": 716,
+            "x": 696,
+            "y": 452,
             "w": 81,
             "h": 75
           },
@@ -3880,8 +3835,8 @@
         {
           "filename": "tungsten_rod.png",
           "region": {
-            "x": 1128,
-            "y": 716,
+            "x": 788,
+            "y": 452,
             "w": 80,
             "h": 75
           },
@@ -3895,8 +3850,8 @@
         {
           "filename": "turnip.png",
           "region": {
-            "x": 1216,
-            "y": 716,
+            "x": 876,
+            "y": 452,
             "w": 79,
             "h": 75
           },
@@ -3910,8 +3865,8 @@
         {
           "filename": "undying_sigil.png",
           "region": {
-            "x": 1304,
-            "y": 716,
+            "x": 964,
+            "y": 452,
             "w": 78,
             "h": 75
           },
@@ -3925,8 +3880,8 @@
         {
           "filename": "ostys_devotion.png",
           "region": {
-            "x": 1392,
-            "y": 716,
+            "x": 1052,
+            "y": 452,
             "w": 77,
             "h": 75
           },
@@ -3940,8 +3895,8 @@
         {
           "filename": "dragon_fruit.png",
           "region": {
-            "x": 1480,
-            "y": 716,
+            "x": 1140,
+            "y": 452,
             "w": 74,
             "h": 75
           },
@@ -3955,8 +3910,8 @@
         {
           "filename": "yummy_cookie_regent.png",
           "region": {
-            "x": 1564,
-            "y": 716,
+            "x": 3060,
+            "y": 364,
             "w": 71,
             "h": 75
           },
@@ -3970,8 +3925,8 @@
         {
           "filename": "battle_horn.png",
           "region": {
-            "x": 1644,
-            "y": 716,
+            "x": 1224,
+            "y": 452,
             "w": 82,
             "h": 74
           },
@@ -3985,8 +3940,8 @@
         {
           "filename": "medical_kit.png",
           "region": {
-            "x": 1736,
-            "y": 716,
+            "x": 1316,
+            "y": 452,
             "w": 82,
             "h": 74
           },
@@ -4000,8 +3955,8 @@
         {
           "filename": "paels_blob.png",
           "region": {
-            "x": 1828,
-            "y": 716,
+            "x": 1408,
+            "y": 452,
             "w": 82,
             "h": 74
           },
@@ -4015,8 +3970,8 @@
         {
           "filename": "bag_of_preparation.png",
           "region": {
-            "x": 1920,
-            "y": 716,
+            "x": 1500,
+            "y": 452,
             "w": 81,
             "h": 74
           },
@@ -4030,8 +3985,8 @@
         {
           "filename": "bagh_nakh.png",
           "region": {
-            "x": 2012,
-            "y": 716,
+            "x": 1592,
+            "y": 452,
             "w": 81,
             "h": 74
           },
@@ -4045,8 +4000,8 @@
         {
           "filename": "petrified_toad.png",
           "region": {
-            "x": 2104,
-            "y": 716,
+            "x": 1684,
+            "y": 452,
             "w": 81,
             "h": 74
           },
@@ -4060,8 +4015,8 @@
         {
           "filename": "royal_poison.png",
           "region": {
-            "x": 2196,
-            "y": 716,
+            "x": 1776,
+            "y": 452,
             "w": 81,
             "h": 74
           },
@@ -4075,8 +4030,8 @@
         {
           "filename": "stone_calendar.png",
           "region": {
-            "x": 2288,
-            "y": 716,
+            "x": 1868,
+            "y": 452,
             "w": 81,
             "h": 74
           },
@@ -4090,8 +4045,8 @@
         {
           "filename": "regal_pillow.png",
           "region": {
-            "x": 2380,
-            "y": 716,
+            "x": 1960,
+            "y": 452,
             "w": 80,
             "h": 74
           },
@@ -4105,8 +4060,8 @@
         {
           "filename": "soup_recipe.png",
           "region": {
-            "x": 2468,
-            "y": 716,
+            "x": 2048,
+            "y": 452,
             "w": 79,
             "h": 74
           },
@@ -4120,8 +4075,8 @@
         {
           "filename": "yummy_cookie_ironclad.png",
           "region": {
-            "x": 2556,
-            "y": 716,
+            "x": 2136,
+            "y": 452,
             "w": 79,
             "h": 74
           },
@@ -4135,8 +4090,8 @@
         {
           "filename": "philosophers_stone.png",
           "region": {
-            "x": 2644,
-            "y": 716,
+            "x": 2224,
+            "y": 452,
             "w": 78,
             "h": 74
           },
@@ -4150,8 +4105,8 @@
         {
           "filename": "velvet_choker.png",
           "region": {
-            "x": 4,
-            "y": 720,
+            "x": 2312,
+            "y": 452,
             "w": 75,
             "h": 74
           },
@@ -4165,8 +4120,8 @@
         {
           "filename": "touch_of_orobas.png",
           "region": {
-            "x": 88,
-            "y": 720,
+            "x": 2396,
+            "y": 452,
             "w": 69,
             "h": 74
           },
@@ -4180,8 +4135,8 @@
         {
           "filename": "chosen_cheese.png",
           "region": {
-            "x": 168,
-            "y": 720,
+            "x": 2476,
+            "y": 452,
             "w": 81,
             "h": 73
           },
@@ -4195,8 +4150,8 @@
         {
           "filename": "jeweled_mask.png",
           "region": {
-            "x": 260,
-            "y": 720,
+            "x": 2568,
+            "y": 452,
             "w": 80,
             "h": 73
           },
@@ -4210,8 +4165,8 @@
         {
           "filename": "nutritious_soup.png",
           "region": {
-            "x": 348,
-            "y": 720,
+            "x": 2656,
+            "y": 452,
             "w": 80,
             "h": 73
           },
@@ -4225,8 +4180,8 @@
         {
           "filename": "snecko_skull.png",
           "region": {
-            "x": 436,
-            "y": 720,
+            "x": 2744,
+            "y": 452,
             "w": 80,
             "h": 73
           },
@@ -4240,8 +4195,8 @@
         {
           "filename": "golden_compass.png",
           "region": {
-            "x": 524,
-            "y": 720,
+            "x": 2832,
+            "y": 452,
             "w": 78,
             "h": 73
           },
@@ -4255,8 +4210,8 @@
         {
           "filename": "gold_plated_cables.png",
           "region": {
-            "x": 612,
-            "y": 720,
+            "x": 2920,
+            "y": 452,
             "w": 74,
             "h": 73
           },
@@ -4270,8 +4225,8 @@
         {
           "filename": "paels_eye.png",
           "region": {
-            "x": 696,
-            "y": 800,
+            "x": 3400,
+            "y": 532,
             "w": 73,
             "h": 73
           },
@@ -4285,8 +4240,8 @@
         {
           "filename": "small_capsule.png",
           "region": {
-            "x": 780,
-            "y": 800,
+            "x": 3484,
+            "y": 532,
             "w": 66,
             "h": 73
           },
@@ -4300,8 +4255,8 @@
         {
           "filename": "byrdpip.png",
           "region": {
-            "x": 856,
-            "y": 800,
+            "x": 3560,
+            "y": 532,
             "w": 81,
             "h": 72
           },
@@ -4315,8 +4270,8 @@
         {
           "filename": "runic_pyramid.png",
           "region": {
-            "x": 948,
-            "y": 800,
+            "x": 3652,
+            "y": 532,
             "w": 81,
             "h": 72
           },
@@ -4330,8 +4285,8 @@
         {
           "filename": "tiny_mailbox.png",
           "region": {
-            "x": 1040,
-            "y": 800,
+            "x": 3744,
+            "y": 532,
             "w": 81,
             "h": 72
           },
@@ -4345,8 +4300,8 @@
         {
           "filename": "wongo_customer_appreciation_badge.png",
           "region": {
-            "x": 1132,
-            "y": 800,
+            "x": 3836,
+            "y": 532,
             "w": 81,
             "h": 72
           },
@@ -4360,8 +4315,8 @@
         {
           "filename": "big_hat.png",
           "region": {
-            "x": 1224,
-            "y": 800,
+            "x": 3928,
+            "y": 532,
             "w": 80,
             "h": 72
           },
@@ -4375,8 +4330,8 @@
         {
           "filename": "cauldron.png",
           "region": {
-            "x": 1312,
-            "y": 800,
+            "x": 4,
+            "y": 536,
             "w": 80,
             "h": 72
           },
@@ -4390,8 +4345,8 @@
         {
           "filename": "brimstone.png",
           "region": {
-            "x": 1400,
-            "y": 800,
+            "x": 92,
+            "y": 536,
             "w": 79,
             "h": 72
           },
@@ -4405,8 +4360,8 @@
         {
           "filename": "lost_coffer.png",
           "region": {
-            "x": 1488,
-            "y": 800,
+            "x": 180,
+            "y": 536,
             "w": 79,
             "h": 72
           },
@@ -4420,8 +4375,8 @@
         {
           "filename": "orange_dough.png",
           "region": {
-            "x": 1576,
-            "y": 800,
+            "x": 268,
+            "y": 536,
             "w": 78,
             "h": 72
           },
@@ -4435,8 +4390,8 @@
         {
           "filename": "regalite.png",
           "region": {
-            "x": 1664,
-            "y": 800,
+            "x": 356,
+            "y": 536,
             "w": 78,
             "h": 72
           },
@@ -4450,8 +4405,8 @@
         {
           "filename": "tingsha.png",
           "region": {
-            "x": 1752,
-            "y": 800,
+            "x": 444,
+            "y": 536,
             "w": 77,
             "h": 72
           },
@@ -4465,8 +4420,8 @@
         {
           "filename": "paels_legion.png",
           "region": {
-            "x": 1840,
-            "y": 800,
+            "x": 532,
+            "y": 536,
             "w": 81,
             "h": 71
           },
@@ -4480,8 +4435,8 @@
         {
           "filename": "pocketwatch.png",
           "region": {
-            "x": 1932,
-            "y": 800,
+            "x": 624,
+            "y": 536,
             "w": 81,
             "h": 71
           },
@@ -4495,8 +4450,8 @@
         {
           "filename": "prismatic_gem.png",
           "region": {
-            "x": 2024,
-            "y": 800,
+            "x": 716,
+            "y": 536,
             "w": 81,
             "h": 71
           },
@@ -4510,8 +4465,8 @@
         {
           "filename": "twisted_funnel.png",
           "region": {
-            "x": 2116,
-            "y": 800,
+            "x": 808,
+            "y": 536,
             "w": 80,
             "h": 71
           },
@@ -4525,8 +4480,8 @@
         {
           "filename": "ember_tea.png",
           "region": {
-            "x": 2204,
-            "y": 800,
+            "x": 896,
+            "y": 536,
             "w": 77,
             "h": 71
           },
@@ -4540,8 +4495,8 @@
         {
           "filename": "glass_eye.png",
           "region": {
-            "x": 2292,
-            "y": 800,
+            "x": 4016,
+            "y": 532,
             "w": 71,
             "h": 71
           },
@@ -4555,8 +4510,8 @@
         {
           "filename": "ornamental_fan.png",
           "region": {
-            "x": 2372,
-            "y": 800,
+            "x": 984,
+            "y": 536,
             "w": 81,
             "h": 70
           },
@@ -4570,8 +4525,8 @@
         {
           "filename": "paels_horn.png",
           "region": {
-            "x": 2464,
-            "y": 800,
+            "x": 1076,
+            "y": 536,
             "w": 81,
             "h": 70
           },
@@ -4585,8 +4540,8 @@
         {
           "filename": "toolbox.png",
           "region": {
-            "x": 2556,
-            "y": 800,
+            "x": 1168,
+            "y": 536,
             "w": 81,
             "h": 70
           },
@@ -4600,8 +4555,8 @@
         {
           "filename": "torii.png",
           "region": {
-            "x": 2648,
-            "y": 800,
+            "x": 1260,
+            "y": 536,
             "w": 81,
             "h": 70
           },
@@ -4615,8 +4570,8 @@
         {
           "filename": "gorget.png",
           "region": {
-            "x": 4,
-            "y": 804,
+            "x": 1352,
+            "y": 536,
             "w": 79,
             "h": 70
           },
@@ -4630,8 +4585,8 @@
         {
           "filename": "funerary_mask.png",
           "region": {
-            "x": 92,
-            "y": 804,
+            "x": 1440,
+            "y": 536,
             "w": 75,
             "h": 70
           },
@@ -4645,8 +4600,8 @@
         {
           "filename": "toric_satisfaction.png",
           "region": {
-            "x": 176,
-            "y": 804,
+            "x": 1524,
+            "y": 536,
             "w": 82,
             "h": 69
           },
@@ -4660,8 +4615,8 @@
         {
           "filename": "akabeko.png",
           "region": {
-            "x": 268,
-            "y": 804,
+            "x": 1616,
+            "y": 536,
             "w": 81,
             "h": 69
           },
@@ -4675,8 +4630,8 @@
         {
           "filename": "membership_card.png",
           "region": {
-            "x": 360,
-            "y": 804,
+            "x": 1708,
+            "y": 536,
             "w": 81,
             "h": 69
           },
@@ -4690,8 +4645,8 @@
         {
           "filename": "paper_phrog.png",
           "region": {
-            "x": 452,
-            "y": 804,
+            "x": 1800,
+            "y": 536,
             "w": 81,
             "h": 69
           },
@@ -4705,8 +4660,8 @@
         {
           "filename": "jewelry_box.png",
           "region": {
-            "x": 544,
-            "y": 804,
+            "x": 1892,
+            "y": 536,
             "w": 79,
             "h": 68
           },
@@ -4720,8 +4675,8 @@
         {
           "filename": "the_boot.png",
           "region": {
-            "x": 544,
-            "y": 880,
+            "x": 1980,
+            "y": 536,
             "w": 81,
             "h": 67
           },
@@ -4735,8 +4690,8 @@
         {
           "filename": "sea_glass.png",
           "region": {
-            "x": 856,
-            "y": 880,
+            "x": 2072,
+            "y": 536,
             "w": 79,
             "h": 67
           },
@@ -4750,8 +4705,8 @@
         {
           "filename": "whetstone.png",
           "region": {
-            "x": 944,
-            "y": 880,
+            "x": 2160,
+            "y": 536,
             "w": 78,
             "h": 67
           },
@@ -4765,8 +4720,8 @@
         {
           "filename": "history_course.png",
           "region": {
-            "x": 1032,
-            "y": 880,
+            "x": 2248,
+            "y": 536,
             "w": 81,
             "h": 66
           },
@@ -4780,8 +4735,8 @@
         {
           "filename": "oddly_smooth_stone.png",
           "region": {
-            "x": 1124,
-            "y": 880,
+            "x": 2340,
+            "y": 536,
             "w": 81,
             "h": 66
           },
@@ -4795,8 +4750,8 @@
         {
           "filename": "paper_lotus.png",
           "region": {
-            "x": 1216,
-            "y": 880,
+            "x": 2432,
+            "y": 536,
             "w": 81,
             "h": 66
           },
@@ -4810,8 +4765,8 @@
         {
           "filename": "fake_orichalcum.png",
           "region": {
-            "x": 1308,
-            "y": 880,
+            "x": 2524,
+            "y": 536,
             "w": 82,
             "h": 65
           },
@@ -4825,8 +4780,8 @@
         {
           "filename": "mangled_tiara.png",
           "region": {
-            "x": 1400,
-            "y": 880,
+            "x": 2616,
+            "y": 536,
             "w": 82,
             "h": 65
           },
@@ -4840,8 +4795,8 @@
         {
           "filename": "bowler_hat.png",
           "region": {
-            "x": 1492,
-            "y": 880,
+            "x": 2708,
+            "y": 536,
             "w": 81,
             "h": 65
           },
@@ -4855,8 +4810,8 @@
         {
           "filename": "orichalcum.png",
           "region": {
-            "x": 1584,
-            "y": 880,
+            "x": 2800,
+            "y": 536,
             "w": 81,
             "h": 65
           },
@@ -4870,8 +4825,8 @@
         {
           "filename": "the_abacus.png",
           "region": {
-            "x": 1676,
-            "y": 880,
+            "x": 2892,
+            "y": 536,
             "w": 80,
             "h": 65
           },
@@ -4885,8 +4840,8 @@
         {
           "filename": "emotion_chip.png",
           "region": {
-            "x": 1764,
-            "y": 880,
+            "x": 2980,
+            "y": 536,
             "w": 78,
             "h": 65
           },
@@ -4900,8 +4855,8 @@
         {
           "filename": "maw_bank.png",
           "region": {
-            "x": 1852,
-            "y": 880,
+            "x": 3068,
+            "y": 536,
             "w": 83,
             "h": 64
           },
@@ -4915,8 +4870,8 @@
         {
           "filename": "lead_paperweight.png",
           "region": {
-            "x": 1944,
-            "y": 880,
+            "x": 3160,
+            "y": 536,
             "w": 79,
             "h": 64
           },
@@ -4930,8 +4885,8 @@
         {
           "filename": "stone_ring.png",
           "region": {
-            "x": 2032,
-            "y": 880,
+            "x": 3248,
+            "y": 536,
             "w": 80,
             "h": 63
           },
@@ -4945,8 +4900,8 @@
         {
           "filename": "belt_buckle.png",
           "region": {
-            "x": 2120,
-            "y": 880,
+            "x": 3068,
+            "y": 608,
             "w": 77,
             "h": 63
           },
@@ -4960,8 +4915,8 @@
         {
           "filename": "diamond_diadem.png",
           "region": {
-            "x": 2208,
-            "y": 880,
+            "x": 3156,
+            "y": 608,
             "w": 77,
             "h": 63
           },
@@ -4975,8 +4930,8 @@
         {
           "filename": "ectoplasm.png",
           "region": {
-            "x": 2296,
-            "y": 880,
+            "x": 3244,
+            "y": 608,
             "w": 77,
             "h": 63
           },
@@ -4990,8 +4945,8 @@
         {
           "filename": "crossbow.png",
           "region": {
-            "x": 2384,
-            "y": 880,
+            "x": 1892,
+            "y": 612,
             "w": 81,
             "h": 62
           },
@@ -5005,8 +4960,8 @@
         {
           "filename": "bag_of_marbles.png",
           "region": {
-            "x": 2476,
-            "y": 880,
+            "x": 1984,
+            "y": 612,
             "w": 80,
             "h": 60
           },
@@ -5020,8 +4975,8 @@
         {
           "filename": "bread.png",
           "region": {
-            "x": 2564,
-            "y": 880,
+            "x": 2072,
+            "y": 612,
             "w": 80,
             "h": 60
           },
@@ -5035,8 +4990,8 @@
         {
           "filename": "gnarled_hammer.png",
           "region": {
-            "x": 2652,
-            "y": 880,
+            "x": 2160,
+            "y": 612,
             "w": 78,
             "h": 58
           },
@@ -5050,8 +5005,8 @@
         {
           "filename": "nectar_tea.png",
           "region": {
-            "x": 4,
-            "y": 884,
+            "x": 2248,
+            "y": 612,
             "w": 77,
             "h": 58
           },
@@ -5065,8 +5020,8 @@
         {
           "filename": "art_of_war.png",
           "region": {
-            "x": 92,
-            "y": 884,
+            "x": 2336,
+            "y": 612,
             "w": 81,
             "h": 57
           },
@@ -5080,8 +5035,8 @@
         {
           "filename": "ripple_basin.png",
           "region": {
-            "x": 184,
-            "y": 884,
+            "x": 2428,
+            "y": 612,
             "w": 81,
             "h": 56
           },
@@ -5095,8 +5050,8 @@
         {
           "filename": "bone_tea.png",
           "region": {
-            "x": 276,
-            "y": 884,
+            "x": 2520,
+            "y": 612,
             "w": 77,
             "h": 56
           },
@@ -5110,8 +5065,8 @@
         {
           "filename": "tea_of_discourtesy.png",
           "region": {
-            "x": 364,
-            "y": 884,
+            "x": 2608,
+            "y": 612,
             "w": 77,
             "h": 56
           },
@@ -5125,8 +5080,8 @@
         {
           "filename": "circlet.png",
           "region": {
-            "x": 452,
-            "y": 884,
+            "x": 2696,
+            "y": 612,
             "w": 82,
             "h": 53
           },
@@ -5140,8 +5095,8 @@
         {
           "filename": "war_paint.png",
           "region": {
-            "x": 636,
-            "y": 884,
+            "x": 2788,
+            "y": 612,
             "w": 80,
             "h": 53
           },
@@ -5155,8 +5110,8 @@
         {
           "filename": "horn_cleat.png",
           "region": {
-            "x": 724,
-            "y": 884,
+            "x": 2876,
+            "y": 612,
             "w": 81,
             "h": 51
           },

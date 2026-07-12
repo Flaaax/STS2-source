@@ -62,22 +62,4 @@ public static class DailyRunUtility
 		}
 		return $"{dateTime.Year}_{dateTime.Month:D2}_{dateTime.Day:D2}_{playerCount}p_BETA";
 	}
-
-	/// <summary>
-	/// Returns the leaderboard day <paramref name="days" /> away from <paramref name="day" />, or null if that day
-	/// falls outside the representable <see cref="T:System.DateTimeOffset" /> range (e.g. the day before
-	/// <see cref="F:System.DateTimeOffset.MinValue" />). The daily leaderboard probes its neighbouring days and is paged one
-	/// day at a time, so the boundary arithmetic must not throw <see cref="T:System.ArgumentOutOfRangeException" />.
-	/// </summary>
-	public static DateTimeOffset? AddLeaderboardDays(DateTimeOffset day, int days)
-	{
-		try
-		{
-			return day + TimeSpan.FromDays(days);
-		}
-		catch (ArgumentOutOfRangeException)
-		{
-			return null;
-		}
-	}
 }

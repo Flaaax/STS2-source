@@ -15,7 +15,6 @@ using MegaCrit.Sts2.Core.Models.Relics;
 using MegaCrit.Sts2.Core.Nodes.Events.Custom;
 using MegaCrit.Sts2.Core.Rewards;
 using MegaCrit.Sts2.Core.Runs;
-using MegaCrit.Sts2.Core.Runs.History;
 
 namespace MegaCrit.Sts2.Core.Models.Events;
 
@@ -124,26 +123,6 @@ public sealed class FakeMerchant : EventModel
 		return Task.CompletedTask;
 	}
 
-	protected override void OnEventFinished()
-	{
-		if (StartedFight)
-		{
-			return;
-		}
-		PlayerMapPointHistoryEntry playerMapPointHistoryEntry = base.Owner.RunState?.CurrentMapPointHistoryEntry?.GetEntry(base.Owner.NetId);
-		if (playerMapPointHistoryEntry == null)
-		{
-			return;
-		}
-		foreach (MerchantRelicEntry relicEntry in Inventory.RelicEntries)
-		{
-			if (relicEntry.IsStocked)
-			{
-				playerMapPointHistoryEntry.RelicChoices.Add(new ModelChoiceHistoryEntry(relicEntry.Model.Id, wasPicked: false));
-			}
-		}
-	}
-
 	public async Task FoulPotionThrown(FoulPotion potion)
 	{
 		if (LocalContext.IsMine(this) && base.Node is NFakeMerchant nFakeMerchant)
@@ -152,13 +131,16 @@ public sealed class FakeMerchant : EventModel
 		}
 		StartedFight = true;
 		List<Reward> list = new List<Reward>();
-		list.Add(new RelicReward(ModelDb.Relic<FakeMerchantsRug>().ToMutable(), base.Owner));
-		FakeMerchant fakeMerchant = (FakeMerchant)RunManager.Instance.EventSynchronizer.GetEventForPlayer(base.Owner);
-		foreach (MerchantRelicEntry relicEntry in fakeMerchant.Inventory.RelicEntries)
+		foreach (Player player in base.Owner.RunState.Players)
 		{
-			if (relicEntry.IsStocked || base.Owner.RunState.Players.Count > 1)
+			list.Add(new RelicReward(ModelDb.Relic<FakeMerchantsRug>().ToMutable(), player));
+			FakeMerchant fakeMerchant = (FakeMerchant)RunManager.Instance.EventSynchronizer.GetEventForPlayer(player);
+			foreach (MerchantRelicEntry relicEntry in fakeMerchant.Inventory.RelicEntries)
 			{
-				list.Add(new RelicReward(relicEntry.Model, base.Owner));
+				if (relicEntry.IsStocked || base.Owner.RunState.Players.Count > 1)
+				{
+					list.Add(new RelicReward(relicEntry.Model, player));
+				}
 			}
 		}
 		EnterCombatWithoutExitingEvent<FakeMerchantEventEncounter>(list, shouldResumeAfterCombat: false);

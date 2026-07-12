@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Godot;
 using MegaCrit.Sts2.Core.Audio.Debug;
 using MegaCrit.Sts2.Core.Combat;
-using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -114,11 +113,6 @@ public class AttackCommand
 	/// </summary>
 	public AbstractModel? ModelSource { get; private set; }
 
-	/// <summary>
-	/// The card play that this attack comes from, if any.
-	/// </summary>
-	public CardPlay? CardPlay { get; private set; }
-
 	public CombatSide TargetSide { get; private set; }
 
 	/// <summary>
@@ -210,8 +204,7 @@ public class AttackCommand
 	/// owner's defaults.
 	/// </summary>
 	/// <param name="card">Card that the attack came from.</param>
-	/// <param name="cardPlay"></param>
-	public AttackCommand FromCard(CardModel card, CardPlay? cardPlay)
+	public AttackCommand FromCard(CardModel card)
 	{
 		if (Attacker != null)
 		{
@@ -221,21 +214,16 @@ public class AttackCommand
 		{
 			throw new InvalidOperationException("ModelSource has already been set.");
 		}
-		if (cardPlay != null && CardPlay != null)
-		{
-			throw new InvalidOperationException("CardPlay has already been set.");
-		}
 		Player owner = card.Owner;
 		Attacker = owner.Creature;
 		_attackerAnimName = "Attack";
 		_attackerAnimDelay = owner.Character.AttackAnimDelay;
 		ModelSource = card;
-		CardPlay = cardPlay;
 		_sourceType = SourceType.Card;
 		return this;
 	}
 
-	public AttackCommand FromOsty(Creature osty, CardModel card, CardPlay? cardPlay)
+	public AttackCommand FromOsty(Creature osty, CardModel card)
 	{
 		if (!(osty.Monster is Osty))
 		{
@@ -243,7 +231,6 @@ public class AttackCommand
 		}
 		Attacker = osty;
 		ModelSource = card;
-		CardPlay = cardPlay;
 		_attackerAnimName = "Attack";
 		_attackerAnimDelay = 0.3f;
 		_sourceType = SourceType.Card;
@@ -508,11 +495,11 @@ public class AttackCommand
 	/// </summary>
 	/// <param name="combatState">The current combat state</param>
 	/// <param name="choiceContext">The context that is signalled in the event of a player choice.</param>
-	/// <param name="cardPlay">The card play that is the source of this attack</param>
+	/// <param name="cardSource">The card that is the source of this attack</param>
 	/// <returns>An AttackContext ready for use with await using</returns>
-	public static async Task<AttackContext> CreateContextAsync(ICombatState combatState, PlayerChoiceContext choiceContext, CardPlay cardPlay)
+	public static async Task<AttackContext> CreateContextAsync(ICombatState combatState, PlayerChoiceContext choiceContext, CardModel cardSource)
 	{
-		return await AttackContext.CreateAsync(combatState, choiceContext, cardPlay);
+		return await AttackContext.CreateAsync(combatState, choiceContext, cardSource);
 	}
 
 	/// <summary>
@@ -588,16 +575,13 @@ public class AttackCommand
 					await _afterAttackerAnim();
 				}
 			}
-			if (validTargets.Count > 0)
+			if (HitSfx != null)
 			{
-				if (HitSfx != null)
-				{
-					SfxCmd.Play(HitSfx);
-				}
-				else if (TmpHitSfx != null)
-				{
-					NDebugAudioManager.Instance?.Play(TmpHitSfx);
-				}
+				SfxCmd.Play(HitSfx);
+			}
+			else if (TmpHitSfx != null)
+			{
+				NDebugAudioManager.Instance?.Play(TmpHitSfx);
 			}
 			Creature singleTarget;
 			if (!IsRandomlyTargeted)
@@ -666,7 +650,7 @@ public class AttackCommand
 			{
 				await _beforeDamage();
 			}
-			AddResultsInternal(await CreatureCmd.Damage(amount: (_calculatedDamageVar == null) ? _damagePerHit : _calculatedDamageVar.Calculate(singleTarget), choiceContext: choiceContext ?? new BlockingPlayerChoiceContext(), targets: (singleTarget != null) ? ((IEnumerable<Creature>?)new List<Creature>(1) { singleTarget }) : ((IEnumerable<Creature>?)validTargets), props: DamageProps, dealer: Attacker, cardSource: ModelSource as CardModel, cardPlay: CardPlay));
+			AddResultsInternal(await CreatureCmd.Damage(amount: (_calculatedDamageVar == null) ? _damagePerHit : _calculatedDamageVar.Calculate(singleTarget), choiceContext: choiceContext ?? new BlockingPlayerChoiceContext(), targets: (singleTarget != null) ? ((IEnumerable<Creature>)new List<Creature>(1) { singleTarget }) : ((IEnumerable<Creature>)validTargets), props: DamageProps, dealer: Attacker, cardSource: ModelSource as CardModel));
 		}
 		CombatManager.Instance.History.CreatureAttacked(combatState, Attacker, _results.SelectMany((List<DamageResult> r) => r).ToList());
 		await Hook.AfterAttack(combatState, choiceContext ?? new BlockingPlayerChoiceContext(), this);

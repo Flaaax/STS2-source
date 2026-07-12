@@ -98,10 +98,6 @@ public sealed class ToyBox : RelicModel
 
 	public override async Task AfterCombatEnd(CombatRoom __)
 	{
-		if (IsUsedUp)
-		{
-			return;
-		}
 		CombatsSeen++;
 		if (CombatsSeen % base.DynamicVars["Combats"].IntValue == 0)
 		{

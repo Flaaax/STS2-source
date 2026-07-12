@@ -21,19 +21,19 @@ public class Ps4Config : ControllerConfig
 		},
 		{
 			"Up",
-			Controller.dPadUp
+			Controller.dPadNorth
 		},
 		{
 			"Down",
-			Controller.dPadDown
+			Controller.dPadSouth
 		},
 		{
 			"Left",
-			Controller.dPadLeft
+			Controller.dPadWest
 		},
 		{
 			"Right",
-			Controller.dPadRight
+			Controller.dPadEast
 		},
 		{
 			"Select",
@@ -69,7 +69,7 @@ public class Ps4Config : ControllerConfig
 		},
 		{
 			"Peek",
-			Controller.lStickPress
+			Controller.joystickPress
 		}
 	};
 
@@ -113,39 +113,23 @@ public class Ps4Config : ControllerConfig
 		},
 		{
 			MegaInput.peek,
-			Controller.lStickPress
+			Controller.joystickPress
 		},
 		{
 			MegaInput.up,
-			Controller.dPadUp
+			Controller.dPadNorth
 		},
 		{
 			MegaInput.down,
-			Controller.dPadDown
+			Controller.dPadSouth
 		},
 		{
 			MegaInput.left,
-			Controller.dPadLeft
+			Controller.dPadWest
 		},
 		{
 			MegaInput.right,
-			Controller.dPadRight
-		},
-		{
-			MegaInput.altUp,
-			Controller.rStickUp
-		},
-		{
-			MegaInput.altDown,
-			Controller.rStickDown
-		},
-		{
-			MegaInput.altLeft,
-			Controller.rStickLeft
-		},
-		{
-			MegaInput.altRight,
-			Controller.rStickRight
+			Controller.dPadEast
 		},
 		{
 			MegaInput.pauseAndBack,

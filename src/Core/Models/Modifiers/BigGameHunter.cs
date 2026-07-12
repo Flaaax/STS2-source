@@ -33,28 +33,23 @@ public class BigGameHunter : ModifierModel
 
 	public override CardCreationOptions ModifyCardRewardCreationOptions(Player player, CardCreationOptions options)
 	{
-		if (options.Source != CardCreationSource.Encounter)
+		if (options.Source != CardCreationSource.Encounter || options.RarityOdds != CardRarityOddsType.EliteEncounter)
 		{
 			return options;
 		}
-		if (options.RarityOdds != CardRarityOddsType.EliteEncounter)
+		if (options.Flags.HasFlag(CardCreationFlags.NoCardPoolModifications) || options.Flags.HasFlag(CardCreationFlags.NoRarityModification))
 		{
 			return options;
 		}
-		if (options.Flags.HasFlag(CardCreationFlags.NoCardPoolModifications))
-		{
-			return options;
-		}
-		if (options.Flags.HasFlag(CardCreationFlags.NoRarityModification))
-		{
-			return options;
-		}
-		options = options.WithRarityOdds(CardRarityOddsType.Uniform).WithFilter((CardModel c) => c.Rarity == CardRarity.Rare);
-		List<CardModel> list = options.GetPossibleCards(player).ToList();
+		List<CardModel> list = (from c in options.GetPossibleCards(player)
+			where c.Rarity == CardRarity.Rare
+			select c).ToList();
 		if (list.Count <= 0)
 		{
-			options = options.WithCardPools(new global::_003C_003Ez__ReadOnlySingleElementList<CardPoolModel>(player.Character.CardPool));
+			list = (from c in player.Character.CardPool.GetUnlockedCards(player.UnlockState, player.RunState.CardMultiplayerConstraint)
+				where c.Rarity == CardRarity.Rare
+				select c).ToList();
 		}
-		return options;
+		return options.WithCustomPool(list, CardRarityOddsType.Uniform);
 	}
 }

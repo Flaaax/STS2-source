@@ -34,7 +34,7 @@ public sealed class Radiate : CardModel
 
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
 	{
-		await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).WithHitCount((int)((CalculatedVar)base.DynamicVars["CalculatedHits"]).Calculate(cardPlay.Target)).FromCard(this, cardPlay)
+		await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).WithHitCount((int)((CalculatedVar)base.DynamicVars["CalculatedHits"]).Calculate(cardPlay.Target)).FromCard(this)
 			.TargetingAllOpponents(base.CombatState)
 			.WithHitFx("vfx/vfx_starry_impact", null, "slash_attack.mp3")
 			.SpawningHitVfxOnEachCreature()

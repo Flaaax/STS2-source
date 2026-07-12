@@ -31,8 +31,6 @@ public partial class NTreasureRoomRelicCollection : Control, IScreenContext
 {
 	private const ulong _noSelectionTimeMsec = 200uL;
 
-	private Control _relicContainer;
-
 	private Control _fightBackstop;
 
 	private MegaLabel _fightLabel;
@@ -75,9 +73,9 @@ public partial class NTreasureRoomRelicCollection : Control, IScreenContext
 	{
 		_fightBackstop = GetNode<Control>("%FightBackstop");
 		_hands = GetNode<NHandImageCollection>("%HandsContainer");
-		_relicContainer = GetNode<Control>("Container");
-		SingleplayerRelicHolder = _relicContainer.GetNode<NTreasureRoomRelicHolder>("%SingleplayerRelicHolder");
-		foreach (NTreasureRoomRelicHolder item in _relicContainer.GetChildren().OfType<NTreasureRoomRelicHolder>())
+		Control node = GetNode<Control>("Container");
+		SingleplayerRelicHolder = node.GetNode<NTreasureRoomRelicHolder>("%SingleplayerRelicHolder");
+		foreach (NTreasureRoomRelicHolder item in node.GetChildren().OfType<NTreasureRoomRelicHolder>())
 		{
 			if (item != SingleplayerRelicHolder)
 			{
@@ -350,9 +348,7 @@ public partial class NTreasureRoomRelicCollection : Control, IScreenContext
 			}
 			if (result.type == RelicPickingResultType.FoughtOver)
 			{
-				Node parent = _fightBackstop.GetParent();
-				holder.Reparent(parent);
-				parent.MoveChildSafely(holder, _fightBackstop.GetIndex() + 1);
+				holder.ZIndex = 1;
 				_fightBackstop.Visible = true;
 				Tween tween = CreateTween();
 				tween.TweenProperty(holder, "global_position", (_fightBackstop.Size - holder.Size) * 0.5f, 0.25).SetTrans(Tween.TransitionType.Back).SetEase(Tween.EaseType.In);
@@ -365,6 +361,7 @@ public partial class NTreasureRoomRelicCollection : Control, IScreenContext
 				tween.TweenProperty(_fightBackstop, "modulate:a", 0f, 0.25);
 				await tween.AwaitFinished(_cts.Token);
 				_fightBackstop.Visible = false;
+				holder.ZIndex = 0;
 			}
 			else if (result.type != RelicPickingResultType.Skipped)
 			{

@@ -66,7 +66,7 @@ public class RunLobby
 			_connectedPlayerIds.Add(connectedPlayerId);
 		}
 		_netService.Disconnected += OnDisconnected;
-		if (_netService.Type == NetGameType.Host && netService is INetHostGameService netHostGameService)
+		if (_netService.Type == NetGameType.Host && netService is NetHostGameService netHostGameService)
 		{
 			netHostGameService.ClientConnected += OnConnectedToClientAsHost;
 			netHostGameService.ClientDisconnected += OnDisconnectedFromClientAsHost;
@@ -85,7 +85,7 @@ public class RunLobby
 		_netService.UnregisterMessageHandler<PlayerLeftMessage>(HandlePlayerLeftMessage);
 		_netService.UnregisterMessageHandler<RunAbandonedMessage>(HandleRunAbandonedMessage);
 		_netService.Disconnected -= OnDisconnected;
-		if (_netService.Type == NetGameType.Host && _netService is INetHostGameService netHostGameService)
+		if (_netService.Type == NetGameType.Host && _netService is NetHostGameService netHostGameService)
 		{
 			netHostGameService.ClientConnected -= OnConnectedToClientAsHost;
 			netHostGameService.ClientDisconnected -= OnDisconnectedFromClientAsHost;

@@ -48,10 +48,6 @@ public sealed class FeralPower : PowerModel
 		{
 			return (pileType, position);
 		}
-		if (card.IsDupe)
-		{
-			return (pileType, position);
-		}
 		if (GetInternalData<Data>().zeroCostAttacksPlayed >= base.Amount)
 		{
 			return (pileType, position);

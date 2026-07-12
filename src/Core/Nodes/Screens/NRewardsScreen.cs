@@ -65,12 +65,6 @@ public partial class NRewardsScreen : Control, IOverlayScreen, IScreenContext
 	private RewardsSet _rewardsSet;
 
 	/// <summary>
-	/// The proceed button is often disabled temporarily. Set this flag if it should never be re-enabled.
-	/// This is used when proceed is hit after a boss fight - the player shouldn't be able to re-press it.
-	/// </summary>
-	private bool _disableProceedForever;
-
-	/// <summary>
 	/// Whether this screen is the last thing you'll see in the current room.
 	///
 	/// See <see cref="M:MegaCrit.Sts2.Core.Runs.RunManager.ProceedFromTerminalRewardsScreen" /> for more info.
@@ -250,7 +244,7 @@ public partial class NRewardsScreen : Control, IOverlayScreen, IScreenContext
 		if (_rewardButtons.Count > 0 || _isTerminal)
 		{
 			TryEnableProceedButton();
-			if (_proceedButton.IsEnabled && !_rewardButtons.Except(_skippedRewardButtons).Any())
+			if (!_rewardButtons.Except(_skippedRewardButtons).Any())
 			{
 				_proceedButton.SetPulseState(isPulsing: true);
 			}
@@ -335,7 +329,6 @@ public partial class NRewardsScreen : Control, IOverlayScreen, IScreenContext
 				return;
 			}
 			_proceedButton.Disable();
-			_disableProceedForever = true;
 			if (RunManager.Instance.ActChangeSynchronizer.IsWaitingForOtherPlayers())
 			{
 				_waitingForOtherPlayersOverlay.Visible = true;
@@ -369,36 +362,19 @@ public partial class NRewardsScreen : Control, IOverlayScreen, IScreenContext
 		}
 	}
 
-	/// <summary>
-	/// Called when RewardsSetSynchronizer skips all rewards just before we exit the room.
-	/// If we're still showing rewards at that time, we must hide all rewards to prevent the player from clicking them
-	/// just before the transition blocks input.
-	/// </summary>
-	private void BeforeRoomExit()
-	{
-		_rewardButtons.Clear();
-		UpdateScreenState();
-		if (this.IsValid())
-		{
-			_proceedButton.Disable();
-		}
-	}
-
 	public void AfterOverlayOpened()
 	{
-		RunManager.Instance.RewardsSetSynchronizer.RewardsSkippedDuringRoomExit += BeforeRoomExit;
 	}
 
 	public void AfterOverlayClosed()
 	{
 		_proceedButton.Disable();
-		RunManager.Instance.RewardsSetSynchronizer.RewardsSkippedDuringRoomExit -= BeforeRoomExit;
 		this.QueueFreeSafely();
 	}
 
 	private void TryEnableProceedButton()
 	{
-		if (!_disableProceedForever && (!_skipDisallowed || !_proceedButton.IsSkip) && Hook.ShouldProceedToNextMapPoint(_runState) && !_proceedButton.IsEnabled)
+		if ((!_skipDisallowed || !_proceedButton.IsSkip) && Hook.ShouldProceedToNextMapPoint(_runState) && !_proceedButton.IsEnabled)
 		{
 			if (_isTerminal && _rewardButtons.Count == 0)
 			{

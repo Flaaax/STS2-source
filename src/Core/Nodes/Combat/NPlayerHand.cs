@@ -631,10 +631,6 @@ public partial class NPlayerHand : Control
 		UpdateSelectModeCardVisibility();
 		RefreshSelectModeConfirmButton();
 		IEnumerable<CardModel> result = await _selectionCompletionSource.Task;
-		if (!IsInsideTree())
-		{
-			return result;
-		}
 		tween.Kill();
 		AfterCardsSelected(source);
 		if (wasDisabled)

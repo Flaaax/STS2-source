@@ -20,8 +20,9 @@ metadata/_edit_lock_ = true
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="ControllerIcon" type="TextureRect" parent="ButtonIconHolder"]
+[node name="ButtonIcon" type="TextureRect" parent="ButtonIconHolder"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -36,7 +37,6 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(32, 32)
 size_flags_horizontal = 0
-mouse_filter = 2
 texture = ExtResource("2_cybex")
 expand_mode = 1
 stretch_mode = 5

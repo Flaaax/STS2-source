@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Godot;
@@ -38,7 +39,7 @@ public class CrystalSpherePotion : CrystalSphereItem
 
 	public override Reward? ToReward(Player owner, Rng rng)
 	{
-		IEnumerable<PotionModel> items = from p in PotionFactory.GetPotionOptions(owner)
+		IEnumerable<PotionModel> items = from p in PotionFactory.GetPotionOptions(owner, Array.Empty<PotionModel>())
 			where p.Rarity == _rarity
 			select p;
 		PotionModel potion = rng.NextItem(items).ToMutable();

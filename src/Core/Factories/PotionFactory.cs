@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using MegaCrit.Sts2.Core.Entities.Players;
@@ -29,7 +30,7 @@ public static class PotionFactory
 	/// <returns>Newly-created potion.</returns>
 	public static PotionModel CreateRandomPotionOutOfCombat(Player player, Rng rng, IEnumerable<PotionModel>? blacklist = null)
 	{
-		return CreateRandomPotionsOutOfCombat(player, 1, rng, blacklist).First();
+		return CreateRandomPotion(GetPotionOptions(player, blacklist ?? Array.Empty<PotionModel>()), 1, rng).First();
 	}
 
 	/// <summary>
@@ -41,15 +42,10 @@ public static class PotionFactory
 	/// <param name="count">How many potions you want to generate.</param>
 	/// <param name="rng">RNG to use to determine what potion to create.</param>
 	/// <param name="blacklist">Canonical potions that should be blocked from being generated.</param>
-	/// <returns>Newly-created potions.</returns>
-	public static IEnumerable<PotionModel> CreateRandomPotionsOutOfCombat(Player player, int count, Rng rng, IEnumerable<PotionModel>? blacklist = null)
+	/// <returns>Newly-created potion.</returns>
+	public static List<PotionModel> CreateRandomPotionsOutOfCombat(Player player, int count, Rng rng, IEnumerable<PotionModel>? blacklist = null)
 	{
-		IEnumerable<PotionModel> enumerable = GetPotionOptions(player);
-		if (blacklist != null)
-		{
-			enumerable = enumerable.Except(blacklist);
-		}
-		return CreateRandomPotions(enumerable, count, rng);
+		return CreateRandomPotion(GetPotionOptions(player, blacklist ?? Array.Empty<PotionModel>()), count, rng);
 	}
 
 	/// <summary>
@@ -63,17 +59,12 @@ public static class PotionFactory
 	/// <returns>Newly-created potion.</returns>
 	public static PotionModel CreateRandomPotionInCombat(Player player, Rng rng, IEnumerable<PotionModel>? blacklist = null)
 	{
-		IEnumerable<PotionModel> enumerable = from p in GetPotionOptions(player)
+		return CreateRandomPotion(from p in GetPotionOptions(player, blacklist ?? Array.Empty<PotionModel>())
 			where p.CanBeGeneratedInCombat
-			select p;
-		if (blacklist != null)
-		{
-			enumerable = enumerable.Except(blacklist);
-		}
-		return CreateRandomPotions(enumerable, 1, rng).First();
+			select p, 1, rng).First();
 	}
 
-	private static IEnumerable<PotionModel> CreateRandomPotions(IEnumerable<PotionModel> options, int count, Rng rng)
+	private static List<PotionModel> CreateRandomPotion(IEnumerable<PotionModel> options, int count, Rng rng)
 	{
 		List<PotionModel> list = options.ToList();
 		List<PotionModel> list2 = new List<PotionModel>();
@@ -89,8 +80,10 @@ public static class PotionFactory
 		return list2;
 	}
 
-	public static IEnumerable<PotionModel> GetPotionOptions(Player player)
+	public static IEnumerable<PotionModel> GetPotionOptions(Player player, IEnumerable<PotionModel> blacklist)
 	{
-		return player.Character.PotionPool.GetUnlockedPotions(player.UnlockState).Concat(ModelDb.PotionPool<SharedPotionPool>().GetUnlockedPotions(player.UnlockState));
+		return from p in player.Character.PotionPool.GetUnlockedPotions(player.UnlockState).Concat(ModelDb.PotionPool<SharedPotionPool>().GetUnlockedPotions(player.UnlockState))
+			where !blacklist.Contains(p)
+			select p;
 	}
 }

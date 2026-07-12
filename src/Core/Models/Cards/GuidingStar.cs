@@ -43,7 +43,7 @@ public sealed class GuidingStar : CardModel
 			NCombatRoom.Instance.CombatVfxContainer.AddChildSafely(nSmallMagicMissileVfx);
 			await Cmd.Wait(nSmallMagicMissileVfx.WaitTime);
 		}
-		await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).WithNoAttackerAnim().FromCard(this, cardPlay)
+		await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).WithNoAttackerAnim().FromCard(this)
 			.Targeting(cardPlay.Target)
 			.Execute(choiceContext);
 		await CardPileCmd.Draw(choiceContext, base.DynamicVars.Cards.BaseValue, base.Owner);

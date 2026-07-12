@@ -128,7 +128,6 @@ public partial class NTreasureRoom : Control, IScreenContext, IRoomWithProceedBu
 		_chestButton.Connect(Control.SignalName.MouseEntered, Callable.From(OnMouseEntered));
 		_chestButton.Connect(Control.SignalName.MouseExited, Callable.From(OnMouseExited));
 		_chestButton.Connect(NClickableControl.SignalName.Released, Callable.From<NButton>(OnChestButtonReleased));
-		NGame.Instance.SetScreenShakeTarget(this);
 	}
 
 	public override void _EnterTree()
@@ -143,7 +142,6 @@ public partial class NTreasureRoom : Control, IScreenContext, IRoomWithProceedBu
 		_cts.Cancel();
 		ActiveScreenContext.Instance.Updated -= OnActiveScreenChanged;
 		RunManager.Instance.TreasureRoomRelicSynchronizer.VotesChanged -= RefreshVotes;
-		NGame.Instance.ClearScreenShakeTarget();
 	}
 
 	private void OnProceedButtonPressed(NButton _)

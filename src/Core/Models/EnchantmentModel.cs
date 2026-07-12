@@ -423,7 +423,7 @@ public abstract class EnchantmentModel : AbstractModel
 	/// <summary>
 	/// Add to the amount of damage that this enchantment's card does.
 	/// This hook runs BEFORE all other damage modification hooks.
-	/// Enchantments MUST use this hook instead of <see cref="M:MegaCrit.Sts2.Core.Models.AbstractModel.ModifyDamageAdditive(MegaCrit.Sts2.Core.Entities.Creatures.Creature,System.Decimal,MegaCrit.Sts2.Core.ValueProps.ValueProp,MegaCrit.Sts2.Core.Entities.Creatures.Creature,MegaCrit.Sts2.Core.Models.CardModel,MegaCrit.Sts2.Core.Entities.Cards.CardPlay)" />.
+	/// Enchantments MUST use this hook instead of <see cref="M:MegaCrit.Sts2.Core.Models.AbstractModel.ModifyDamageAdditive(MegaCrit.Sts2.Core.Entities.Creatures.Creature,System.Decimal,MegaCrit.Sts2.Core.ValueProps.ValueProp,MegaCrit.Sts2.Core.Entities.Creatures.Creature,MegaCrit.Sts2.Core.Models.CardModel)" />.
 	/// </summary>
 	/// <param name="originalDamage">The amount of damage that would be dealt.</param>
 	/// <param name="props">ValueProp for damage.</param>
@@ -436,7 +436,7 @@ public abstract class EnchantmentModel : AbstractModel
 	/// <summary>
 	/// Multiply the amount of damage that this enchantment's card does.
 	/// This hook runs BEFORE all other damage modification hooks.
-	/// Enchantments MUST use this hook instead of <see cref="M:MegaCrit.Sts2.Core.Models.AbstractModel.ModifyDamageMultiplicative(MegaCrit.Sts2.Core.Entities.Creatures.Creature,System.Decimal,MegaCrit.Sts2.Core.ValueProps.ValueProp,MegaCrit.Sts2.Core.Entities.Creatures.Creature,MegaCrit.Sts2.Core.Models.CardModel,MegaCrit.Sts2.Core.Entities.Cards.CardPlay)" />.
+	/// Enchantments MUST use this hook instead of <see cref="M:MegaCrit.Sts2.Core.Models.AbstractModel.ModifyDamageMultiplicative(MegaCrit.Sts2.Core.Entities.Creatures.Creature,System.Decimal,MegaCrit.Sts2.Core.ValueProps.ValueProp,MegaCrit.Sts2.Core.Entities.Creatures.Creature,MegaCrit.Sts2.Core.Models.CardModel)" />.
 	/// </summary>
 	/// <param name="originalDamage">The amount of damage that would be dealt.</param>
 	/// <param name="props">ValueProp for damage.</param>

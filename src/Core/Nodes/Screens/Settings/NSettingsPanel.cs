@@ -29,12 +29,15 @@ public partial class NSettingsPanel : Control
 		GetViewport().Connect(Viewport.SignalName.SizeChanged, Callable.From(RefreshSize));
 		RefreshSize();
 		List<Control> list = new List<Control>();
-		GetSettingsOptionsRecursive(Content, list, includeInvisibleSettings: true);
-		foreach (Control item in list)
+		GetSettingsOptionsRecursive(Content, list);
+		for (int i = 0; i < list.Count; i++)
 		{
-			item.Connect(CanvasItem.SignalName.VisibilityChanged, Callable.From(UpdateNavigation));
+			list[i].FocusNeighborLeft = list[i].GetPath();
+			list[i].FocusNeighborRight = list[i].GetPath();
+			list[i].FocusNeighborTop = ((i > 0) ? list[i - 1].GetPath() : list[i].GetPath());
+			list[i].FocusNeighborBottom = ((i < list.Count - 1) ? list[i + 1].GetPath() : list[i].GetPath());
 		}
-		UpdateNavigation();
+		_firstControl = list.First();
 	}
 
 	private void RefreshSize()
@@ -62,29 +65,15 @@ public partial class NSettingsPanel : Control
 		}
 	}
 
-	protected virtual void UpdateNavigation()
-	{
-		List<Control> list = new List<Control>();
-		GetSettingsOptionsRecursive(Content, list);
-		for (int i = 0; i < list.Count; i++)
-		{
-			list[i].FocusNeighborLeft = list[i].GetPath();
-			list[i].FocusNeighborRight = list[i].GetPath();
-			list[i].FocusNeighborTop = ((i > 0) ? list[i - 1].GetPath() : list[i].GetPath());
-			list[i].FocusNeighborBottom = ((i < list.Count - 1) ? list[i + 1].GetPath() : list[i].GetPath());
-		}
-		_firstControl = list.FirstOrDefault();
-	}
-
-	private void GetSettingsOptionsRecursive(Control parent, List<Control> ancestors, bool includeInvisibleSettings = false)
+	private void GetSettingsOptionsRecursive(Control parent, List<Control> ancestors)
 	{
 		foreach (Control item in parent.GetChildren().OfType<Control>())
 		{
 			if (!IsSettingsOption(item))
 			{
-				GetSettingsOptionsRecursive(item, ancestors, includeInvisibleSettings);
+				GetSettingsOptionsRecursive(item, ancestors);
 			}
-			else if ((item.GetParent<Control>().IsVisible() || includeInvisibleSettings) && item.FocusMode == FocusModeEnum.All)
+			else if (item.GetParent<Control>().IsVisible() && item.FocusMode == FocusModeEnum.All)
 			{
 				ancestors.Add(item);
 			}

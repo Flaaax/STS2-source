@@ -17,14 +17,10 @@ public partial class NMerchantCharacter : Node2D
 
 	public void PlayAnimation(string anim, bool loop = false)
 	{
-		MegaAnimationState animationState = new MegaSprite(GetChild(0)).GetAnimationState();
-		animationState.SetAnimation(anim, loop);
+		MegaTrackEntry megaTrackEntry = new MegaSprite(GetChild(0)).GetAnimationState().SetAnimation(anim, loop);
 		if (loop)
 		{
-			using (MegaTrackEntry megaTrackEntry = animationState.GetCurrent(0))
-			{
-				megaTrackEntry?.SetTrackTime(megaTrackEntry.GetAnimationEnd() * Rng.Chaotic.NextFloat());
-			}
+			megaTrackEntry?.SetTrackTime(megaTrackEntry.GetAnimationEnd() * Rng.Chaotic.NextFloat());
 		}
 	}
 }

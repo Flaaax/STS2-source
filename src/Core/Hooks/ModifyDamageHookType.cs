@@ -11,7 +11,7 @@ public enum ModifyDamageHookType
 	None = 0,
 	/// <summary>
 	/// Additive damage hooks from effects like <see cref="T:MegaCrit.Sts2.Core.Models.Powers.StrengthPower" />.
-	/// Including this will cause <see cref="M:MegaCrit.Sts2.Core.Models.AbstractModel.ModifyDamageAdditive(MegaCrit.Sts2.Core.Entities.Creatures.Creature,System.Decimal,MegaCrit.Sts2.Core.ValueProps.ValueProp,MegaCrit.Sts2.Core.Entities.Creatures.Creature,MegaCrit.Sts2.Core.Models.CardModel,MegaCrit.Sts2.Core.Entities.Cards.CardPlay)" /> and
+	/// Including this will cause <see cref="M:MegaCrit.Sts2.Core.Models.AbstractModel.ModifyDamageAdditive(MegaCrit.Sts2.Core.Entities.Creatures.Creature,System.Decimal,MegaCrit.Sts2.Core.ValueProps.ValueProp,MegaCrit.Sts2.Core.Entities.Creatures.Creature,MegaCrit.Sts2.Core.Models.CardModel)" /> and
 	/// <see cref="M:MegaCrit.Sts2.Core.Models.EnchantmentModel.EnchantDamageAdditive(System.Decimal,MegaCrit.Sts2.Core.ValueProps.ValueProp)" /> to be called.
 	/// At the time of this writing (5/15/2026), we never use this type alone.
 	/// If that changes, please update this comment.
@@ -19,7 +19,7 @@ public enum ModifyDamageHookType
 	Additive = 2,
 	/// <summary>
 	/// Multiplicative damage hooks from effects like <see cref="T:MegaCrit.Sts2.Core.Models.Powers.VulnerablePower" />.
-	/// Including this will cause <see cref="M:MegaCrit.Sts2.Core.Models.AbstractModel.ModifyDamageMultiplicative(MegaCrit.Sts2.Core.Entities.Creatures.Creature,System.Decimal,MegaCrit.Sts2.Core.ValueProps.ValueProp,MegaCrit.Sts2.Core.Entities.Creatures.Creature,MegaCrit.Sts2.Core.Models.CardModel,MegaCrit.Sts2.Core.Entities.Cards.CardPlay)" /> and
+	/// Including this will cause <see cref="M:MegaCrit.Sts2.Core.Models.AbstractModel.ModifyDamageMultiplicative(MegaCrit.Sts2.Core.Entities.Creatures.Creature,System.Decimal,MegaCrit.Sts2.Core.ValueProps.ValueProp,MegaCrit.Sts2.Core.Entities.Creatures.Creature,MegaCrit.Sts2.Core.Models.CardModel)" /> and
 	/// <see cref="M:MegaCrit.Sts2.Core.Models.EnchantmentModel.EnchantDamageMultiplicative(System.Decimal,MegaCrit.Sts2.Core.ValueProps.ValueProp)" /> to be called.
 	/// At the time of this writing (5/15/2026), we never use this type alone.
 	/// If that changes, please update this comment.
@@ -27,7 +27,7 @@ public enum ModifyDamageHookType
 	Multiplicative = 4,
 	/// <summary>
 	/// Damage-capping hooks from effects like <see cref="T:MegaCrit.Sts2.Core.Models.Powers.IntangiblePower" />.
-	/// Including this will cause <see cref="M:MegaCrit.Sts2.Core.Models.AbstractModel.ModifyDamageCap(MegaCrit.Sts2.Core.Entities.Creatures.Creature,MegaCrit.Sts2.Core.ValueProps.ValueProp,MegaCrit.Sts2.Core.Entities.Creatures.Creature,MegaCrit.Sts2.Core.Models.CardModel,MegaCrit.Sts2.Core.Entities.Cards.CardPlay)" /> to be called.
+	/// Including this will cause <see cref="M:MegaCrit.Sts2.Core.Models.AbstractModel.ModifyDamageCap(MegaCrit.Sts2.Core.Entities.Creatures.Creature,MegaCrit.Sts2.Core.ValueProps.ValueProp,MegaCrit.Sts2.Core.Entities.Creatures.Creature,MegaCrit.Sts2.Core.Models.CardModel)" /> to be called.
 	/// At the time of this writing (5/15/2026), we never use this type alone.
 	/// If that changes, please update this comment.
 	/// </summary>

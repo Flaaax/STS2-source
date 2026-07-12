@@ -221,9 +221,4 @@ public partial class NControllerManager : Node
 	{
 		return _inputStrategy?.GetHotkeyIcon(hotkey);
 	}
-
-	public Vector2 GetLeftAnalogStickDirection()
-	{
-		return _inputStrategy?.GetLeftAnalogStickDirection() ?? Vector2.Zero;
-	}
 }

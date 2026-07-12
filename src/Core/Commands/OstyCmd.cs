@@ -12,6 +12,7 @@ using MegaCrit.Sts2.Core.Models.Monsters;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Nodes.Combat;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
+using MegaCrit.Sts2.Core.TestSupport;
 
 namespace MegaCrit.Sts2.Core.Commands;
 
@@ -81,9 +82,10 @@ public static class OstyCmd
 				await Hook.AfterOstyRevived(combatState, osty);
 			}
 		}
-		if (osty != null)
+		if (TestMode.IsOff)
 		{
-			NCombatRoom.Instance?.GetCreatureNode(osty)?.OstyScaleToSize(osty.MaxHp, 0.75);
+			NCreature nCreature = NCombatRoom.Instance?.GetCreatureNode(osty);
+			nCreature.OstyScaleToSize(osty.MaxHp, 0.75);
 		}
 		CombatManager.Instance.History.Summoned(combatState, (int)amount, summoner);
 		await Hook.AfterSummon(combatState, choiceContext, summoner, amount);

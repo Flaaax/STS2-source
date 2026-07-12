@@ -18,8 +18,6 @@ namespace MegaCrit.Sts2.Core.Models.Cards;
 
 public sealed class Nightmare : CardModel
 {
-	public override bool CanBeGeneratedInCombat => false;
-
 	public override IEnumerable<CardKeyword> CanonicalKeywords => new global::_003C_003Ez__ReadOnlySingleElementList<CardKeyword>(CardKeyword.Exhaust);
 
 	protected override IEnumerable<string> ExtraRunAssetPaths => NNightmareHandsVfx.AssetPaths;

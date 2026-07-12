@@ -128,15 +128,14 @@ public partial class NEpochInspectScreen : NClickableControl, IScreenContext
 	}
 
 	/// <summary>
-	/// If the Epoch was revealed, we go through a slightly different UX flow (more dramatic opening of screen, queue up
-	/// unlocks, etc)
+	/// If the Epoch was revealed, we go through a slightly different UX flow (more dramatic opening of screen, queue up unlocks, etc)
 	/// </summary>
 	public async Task Open(NEpochSlot slot, EpochModel epoch, bool wasRevealed)
 	{
 		_buttonTween?.FastForwardToCompletion();
 		_wasRevealed = wasRevealed;
 		_epoch = epoch;
-		if (!_epoch.HasRealPortrait)
+		if (_epoch.IsArtPlaceholder)
 		{
 			_placeholderLabel.Visible = true;
 			_placeholderLabel.Text = _placeholderLoc.GetRawText();
@@ -158,8 +157,6 @@ public partial class NEpochInspectScreen : NClickableControl, IScreenContext
 			_chapterLoc.Add("ChapterName", epoch.Title);
 			_chapterLabel.SetTextAutoSize(_chapterLoc.GetFormattedText());
 			_chapterLabel.VerticalAlignment = VerticalAlignment.Center;
-			_nextChapterButton.Enable();
-			_prevChapterButton.Enable();
 		}
 		else
 		{
@@ -224,8 +221,8 @@ public partial class NEpochInspectScreen : NClickableControl, IScreenContext
 	private void HidePaginators()
 	{
 		_hasStory = false;
-		_nextChapterButton.Disable();
-		_prevChapterButton.Disable();
+		_nextChapterButton.Visible = false;
+		_prevChapterButton.Visible = false;
 	}
 
 	/// <summary>
@@ -240,15 +237,6 @@ public partial class NEpochInspectScreen : NClickableControl, IScreenContext
 		_hasStory = epoch.StoryTitle != null;
 		_storyLabel.Modulate = Colors.White;
 		_chapterLabel.Modulate = Colors.White;
-		if (!_epoch.HasRealPortrait)
-		{
-			_placeholderLabel.Visible = true;
-			_placeholderLabel.Text = _placeholderLoc.GetRawText();
-		}
-		else
-		{
-			_placeholderLabel.Visible = false;
-		}
 		if (_hasStory)
 		{
 			_storyLabel.SetTextAutoSize(epoch.StoryTitle ?? string.Empty);
@@ -256,16 +244,16 @@ public partial class NEpochInspectScreen : NClickableControl, IScreenContext
 			_chapterLoc.Add("ChapterName", epoch.Title);
 			_chapterLabel.SetTextAutoSize(_chapterLoc.GetFormattedText());
 			_chapterLabel.VerticalAlignment = VerticalAlignment.Center;
-			_nextChapterButton.Enable();
-			_prevChapterButton.Enable();
+			_nextChapterButton.Modulate = Colors.White;
+			_prevChapterButton.Modulate = Colors.White;
 		}
 		else
 		{
 			_storyLabel.SetTextAutoSize(string.Empty);
 			_chapterLabel.SetTextAutoSize(epoch.Title.GetFormattedText());
 			_chapterLabel.VerticalAlignment = VerticalAlignment.Bottom;
-			_nextChapterButton.Disable();
-			_prevChapterButton.Disable();
+			_nextChapterButton.Visible = false;
+			_prevChapterButton.Visible = false;
 		}
 		_fancyText.Modulate = StsColors.transparentWhite;
 		NTimelineScreen.Instance.ShowBackstopAndHideUi();

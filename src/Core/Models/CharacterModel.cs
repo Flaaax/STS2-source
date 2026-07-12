@@ -61,18 +61,6 @@ public abstract class CharacterModel : AbstractModel
 	/// </summary>
 	protected abstract CharacterModel? UnlocksAfterRunAs { get; }
 
-	/// <summary>
-	/// Quote to display in the Bestiary Stats screen when a character has encountered a monster but has never killed it.
-	/// The quote is unique per character and is the same quote for all monsters.
-	/// </summary>
-	public LocString BestiarySeenQuote => new LocString("characters", base.Id.Entry + ".bestiaryQuote");
-
-	/// <summary>
-	/// Unique Character x Monster quote. There are a lot of these. If this quote is missing, we display a placeholder quote
-	/// from bestiary.json -&gt; "QUOTE_PLACEHOLDER"
-	/// </summary>
-	public LocString? BestiaryKillQuote => LocString.GetIfExists("characters", base.Id.Entry + ".bestiaryKillQuote");
-
 	public LocString PronounObject => new LocString("characters", base.Id.Entry + ".pronounObject");
 
 	public LocString PossessiveAdjective => new LocString("characters", base.Id.Entry + ".possessiveAdjective");

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c0m1cvr0fqfdr"]
+[gd_scene load_steps=19 format=3 uid="uid://c0m1cvr0fqfdr"]
 
 [ext_resource type="Script" uid="uid://bnkleqlq4mo43" path="res://src/Core/Nodes/Screens/ModdingScreen/NModdingScreen.cs" id="1_lridw"]
 [ext_resource type="PackedScene" uid="uid://bl4mbjqjfffa3" path="res://scenes/ui/back_button.tscn" id="2_r4xx8"]
@@ -10,6 +10,7 @@
 [ext_resource type="FontVariation" uid="uid://bg85h22rkxs6g" path="res://themes/kreon_bold_shared.tres" id="8_bqqqu"]
 [ext_resource type="Script" uid="uid://dtfio45agppyj" path="res://addons/mega_text/MegaLabel.cs" id="9_p55vp"]
 [ext_resource type="Script" uid="uid://cv2mvg7qmvhjt" path="res://src/Core/Nodes/GodotExtensions/NScrollableContainer.cs" id="10_wkym0"]
+[ext_resource type="PackedScene" uid="uid://dk02ucetk63ke" path="res://scenes/screens/modding/modding_screen_row.tscn" id="11_qy042"]
 [ext_resource type="PackedScene" uid="uid://b6nko387cwp7n" path="res://scenes/ui/scrollbar.tscn" id="12_8cw4e"]
 [ext_resource type="Script" uid="uid://ctkun6nv1hfsw" path="res://src/Core/Nodes/Screens/ModdingScreen/NModInfoContainer.cs" id="13_plcea"]
 [ext_resource type="Texture2D" uid="uid://b08u3k37ki577" path="res://images/packed/card_portraits/ironclad/strike_ironclad.png" id="14_td1pv"]
@@ -244,6 +245,9 @@ anchor_right = 1.0
 offset_bottom = 72.0
 grow_horizontal = 2
 theme_override_constants/separation = 16
+
+[node name="ModRow" parent="ModsBorder/ModsScrollContainer/Mask/Content" instance=ExtResource("11_qy042")]
+layout_mode = 2
 
 [node name="Scrollbar" parent="ModsBorder/ModsScrollContainer" instance=ExtResource("12_8cw4e")]
 custom_minimum_size = Vector2(48, 0)

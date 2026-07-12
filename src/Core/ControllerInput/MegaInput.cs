@@ -12,14 +12,6 @@ public static class MegaInput
 
 	public static readonly StringName right = "ui_right";
 
-	public static readonly StringName altUp = "ui_alt_up";
-
-	public static readonly StringName altDown = "ui_alt_down";
-
-	public static readonly StringName altLeft = "ui_alt_left";
-
-	public static readonly StringName altRight = "ui_alt_right";
-
 	public static readonly StringName accept = "ui_accept";
 
 	public static readonly StringName select = "ui_select";
@@ -66,9 +58,9 @@ public static class MegaInput
 
 	public static readonly StringName peek = "mega_peek";
 
-	public static string[] AllInputs => new string[19]
+	public static string[] AllInputs => new string[15]
 	{
-		up, down, left, right, altUp, altDown, altLeft, altRight, select, cancel,
-		accept, topPanel, viewDeckAndTabLeft, viewExhaustPileAndTabRight, viewDiscardPile, viewDrawPile, pauseAndBack, viewMap, peek
+		accept, cancel, down, left, pauseAndBack, peek, right, select, topPanel, up,
+		viewDeckAndTabLeft, viewDiscardPile, viewDrawPile, viewExhaustPileAndTabRight, viewMap
 	};
 }

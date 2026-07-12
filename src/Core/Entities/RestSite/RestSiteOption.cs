@@ -9,7 +9,6 @@ using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.Localization;
-using MegaCrit.Sts2.Core.TestSupport;
 
 namespace MegaCrit.Sts2.Core.Entities.RestSite;
 
@@ -18,8 +17,6 @@ namespace MegaCrit.Sts2.Core.Entities.RestSite;
 /// </summary>
 public abstract class RestSiteOption
 {
-	public static Func<Player, List<RestSiteOption>>? generateForTests;
-
 	public abstract string OptionId { get; }
 
 	protected Player Owner { get; }
@@ -52,10 +49,6 @@ public abstract class RestSiteOption
 	/// <returns>List of rest site options.</returns>
 	public static List<RestSiteOption> Generate(Player player)
 	{
-		if (TestMode.IsOn && generateForTests != null)
-		{
-			return generateForTests(player);
-		}
 		int num = 2;
 		List<RestSiteOption> list = new List<RestSiteOption>(num);
 		CollectionsMarshal.SetCount(list, num);

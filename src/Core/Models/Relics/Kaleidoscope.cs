@@ -33,7 +33,7 @@ public sealed class Kaleidoscope : RelicModel
 	public override async Task AfterObtained()
 	{
 		List<Reward> list = new List<Reward>();
-		CardCreationOptions rerollOptions = CardCreationOptions.ForNonCombatWithDefaultOdds(Array.Empty<CardPoolModel>());
+		CardCreationOptions rerollOptions = CardCreationOptions.ForNonCombatWithDefaultOdds(Array.Empty<CardModel>());
 		for (int i = 0; i < base.DynamicVars.Cards.IntValue; i++)
 		{
 			List<CardModel> list2 = new List<CardModel>();

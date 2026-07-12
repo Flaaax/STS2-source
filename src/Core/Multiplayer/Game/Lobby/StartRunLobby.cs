@@ -663,7 +663,7 @@ public class StartRunLobby
 	/// effect. The seed is synced to the clients for display use, but the final seed that is used is sent in the
 	/// <see cref="T:MegaCrit.Sts2.Core.Multiplayer.Messages.Lobby.LobbyBeginRunMessage" />.
 	/// </summary>
-	public void SetModifiers(IReadOnlyCollection<ModifierModel> modifiers)
+	public void SetModifiers(List<ModifierModel> modifiers)
 	{
 		NetGameType type = NetService.Type;
 		if ((uint)(type - 1) > 1u)

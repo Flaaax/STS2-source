@@ -20,7 +20,6 @@
   "DRAW_PILE.description": "Her turun başında\nburadan [blue]5[/blue] kart çekilir.\n\nKarışık sırayla dizilmiş çekme desteni göstermek için tıkla.",
   "DRAW_PILE.title": "Çekme Destesi {Hotkey:choose(None):| ({})}",
   "END_TURN.description": "Bu tuşa basmak turunu bitirir.\n\nElindeki kartları atarsın, düşmanlar kendi turunu oynar, ardından [blue]5[/blue] kart çekersin ve sıra tekrar sana gelir.",
-  "END_TURN.title": "Turunu Bitir {Hotkey:choose(None):| ({})}",
   "ENERGY.description": "Enerji, [gold]El[/gold]'indeki kartları oynamak için kullanılır.",
   "ENERGY.title": "Enerji",
   "ENERGY_COUNT.description": "Mevcut Enerji ({energyPrefix:energyIcons(1)}) adedin. {energyPrefix:energyIcons(1)}, kartları oynamak için gereklidir ve kartların sol üst köşesinde gösterilir.",

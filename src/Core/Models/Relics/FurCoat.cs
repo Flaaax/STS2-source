@@ -7,12 +7,10 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.Extensions;
-using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Map;
 using MegaCrit.Sts2.Core.Random;
 using MegaCrit.Sts2.Core.Runs;
-using MegaCrit.Sts2.Core.Runs.History;
 using MegaCrit.Sts2.Core.Saves.Runs;
 
 namespace MegaCrit.Sts2.Core.Models.Relics;
@@ -22,17 +20,6 @@ public sealed class FurCoat : RelicModel
 	private const string _combatsKey = "Combats";
 
 	private int _furCoatActIndex = -1;
-
-	public static LocString HistoryEntry
-	{
-		get
-		{
-			FurCoat furCoat = ModelDb.Relic<FurCoat>();
-			LocString locString = new LocString("relics", furCoat.Id.Entry + ".historyEntry");
-			locString.Add("Title", furCoat.Title);
-			return locString;
-		}
-	}
 
 	public override RelicRarity Rarity => RelicRarity.Ancient;
 
@@ -130,11 +117,6 @@ public sealed class FurCoat : RelicModel
 		if (markedCoords == null || !markedCoords.Contains(base.Owner.RunState.CurrentMapPoint.coord))
 		{
 			return;
-		}
-		MapPointHistoryEntry currentMapPointHistoryEntry = base.Owner.RunState.CurrentMapPointHistoryEntry;
-		if (currentMapPointHistoryEntry != null)
-		{
-			currentMapPointHistoryEntry.GetEntry(base.Owner.NetId).IsAffectedByFurCoat = true;
 		}
 		Flash();
 		IReadOnlyList<Creature> hittableEnemies = base.Owner.Creature.CombatState.HittableEnemies;

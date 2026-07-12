@@ -11,8 +11,6 @@ namespace MegaCrit.Sts2.Core.Combat;
 
 public class NullCombatState : ICombatState
 {
-	public static NullCombatState Instance { get; } = new NullCombatState();
-
 	public IRunState RunState => NullRunState.Instance;
 
 	public IReadOnlyList<Creature> Allies { get; } = Array.Empty<Creature>();

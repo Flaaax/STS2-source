@@ -33,7 +33,7 @@ public sealed class KinFollower : MonsterModel
 
 	private const string _quickSlashSfx = "event:/sfx/enemy/enemy_attacks/the_kin_minion/the_kin_minion_quick_slash";
 
-	private const string _boomerangSfx = "event:/sfx/enemy/enemy_attacks/the_kin_minion/the_kin_minion_boomerang_slash";
+	private const string _boomerangSfx = "event:/sfx/enemy/enemy_attacks/the_kin_minion/the_kin_minion_boomerang_slashh";
 
 	private const string _buffSfx = "event:/sfx/enemy/enemy_attacks/the_kin_minion/the_kin_minion_buff";
 
@@ -136,26 +136,25 @@ public sealed class KinFollower : MonsterModel
 	{
 		if (TestMode.IsOff)
 		{
-			NCreature nCreature = null;
+			Vector2? vector = null;
 			foreach (Creature target in targets)
 			{
 				NCreature creatureNode = target.GetCreatureNode();
-				if (creatureNode != null && (nCreature == null || nCreature.GlobalPosition.X > creatureNode.GlobalPosition.X))
+				if (!vector.HasValue || vector.Value.X > creatureNode.GlobalPosition.X)
 				{
-					nCreature = creatureNode;
+					vector = creatureNode.GlobalPosition;
 				}
 			}
 			NCreature creatureNode2 = base.Creature.GetCreatureNode();
-			Node2D node2D = creatureNode2?.GetSpecialNode<Node2D>("Visuals/AttackDistanceControl");
-			if (creatureNode2 != null && node2D != null && nCreature != null)
+			Node2D specialNode = creatureNode2.GetSpecialNode<Node2D>("Visuals/AttackDistanceControl");
+			if (specialNode != null && vector.HasValue)
 			{
-				float num = 400f * creatureNode2.Visuals.Scale.X;
-				node2D.GlobalPosition = new Vector2(nCreature.GlobalPosition.X + num, node2D.GlobalPosition.Y);
+				specialNode.Position = Vector2.Left * (creatureNode2.GlobalPosition.X - vector.Value.X) / creatureNode2.Body.Scale;
 			}
 		}
 		await DamageCmd.Attack(BoomerangDamage).WithHitCount(2).FromMonster(this)
 			.WithAttackerAnim("BoomerangTrigger", 0.2f)
-			.WithAttackerFx(null, "event:/sfx/enemy/enemy_attacks/the_kin_minion/the_kin_minion_boomerang_slash")
+			.WithAttackerFx(null, "event:/sfx/enemy/enemy_attacks/the_kin_minion/the_kin_minion_boomerang_slashh")
 			.WithHitFx("vfx/vfx_attack_slash")
 			.OnlyPlayAnimOnce()
 			.Execute(null);

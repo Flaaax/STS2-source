@@ -39,10 +39,15 @@ public sealed class PrismaticGem : RelicModel
 		{
 			return options;
 		}
+		if (options.CustomCardPool != null)
+		{
+			return options;
+		}
 		if (options.CardPools.All((CardPoolModel p) => p.IsColorless))
 		{
 			return options;
 		}
-		return options.WithCardPools(player.UnlockState.CharacterCardPools.Union(options.CardPools));
+		IEnumerable<CardPoolModel> pools = player.UnlockState.CharacterCardPools.Union(options.CardPools);
+		return options.WithCardPools(pools, options.CardPoolFilter);
 	}
 }

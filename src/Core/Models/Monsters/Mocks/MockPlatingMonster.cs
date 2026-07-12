@@ -15,8 +15,6 @@ public sealed class MockPlatingMonster : MonsterModel
 {
 	private int _platingAmount;
 
-	public override bool IsMock => true;
-
 	public override LocString Title => MonsterModel.L10NMonsterLookup("BIG_DUMMY.name");
 
 	protected override string VisualsPath => SceneHelper.GetScenePath("creature_visuals/defect");

@@ -60,7 +60,7 @@ public partial class NBestiaryLayoutKaiserCrab : NBestiaryLayout
 		monsterModel.SetUpForCombat();
 		Creature entity = new Creature(monsterModel, CombatSide.Enemy, null)
 		{
-			CombatState = NullCombatState.Instance
+			CombatState = new NullCombatState()
 		};
 		_creature = NCreature.Create(entity);
 		this.AddChildSafely(_creature);

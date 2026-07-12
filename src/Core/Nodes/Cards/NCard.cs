@@ -423,7 +423,6 @@ public partial class NCard : Control, IPoolable
 		}
 		DisplayingPile = pileType;
 		Creature target = _previewTarget ?? Model.CurrentTarget;
-		UpdatePortrait();
 		UpdateTitleLabel();
 		UpdateEnergyCostVisuals(pileType);
 		UpdateStarCostVisuals(pileType);
@@ -747,6 +746,7 @@ public partial class NCard : Control, IPoolable
 		_ancientBanner.Visible = flag;
 		_banner.Visible = !flag;
 		_lock.Visible = Visibility == ModelVisibility.Locked;
+		Texture2D portrait = Model.Portrait;
 		if (Visibility != ModelVisibility.Visible)
 		{
 			if (_portraitBlurMaterial == null)
@@ -789,33 +789,24 @@ public partial class NCard : Control, IPoolable
 			_portrait.Material = null;
 			_ancientPortrait.Material = null;
 		}
-		UpdatePortrait();
+		if (Model.Rarity != CardRarity.Ancient)
+		{
+			_portrait.Texture = portrait;
+			_portraitBorder.Texture = Model.PortraitBorder;
+			_portraitBorder.Material = Model.BannerMaterial;
+			_frame.Texture = Model.Frame;
+			_banner.Material = Model.BannerMaterial;
+			_banner.Texture = Model.BannerTexture;
+		}
+		else
+		{
+			_ancientBorder.Texture = Model.AncientBorder;
+			_ancientTextBg.Texture = Model.AncientTextBg;
+			_ancientPortrait.Texture = portrait;
+			_banner.Material = null;
+		}
 		_frame.Material = Model.FrameMaterial;
 		ReloadOverlay();
-	}
-
-	private void UpdatePortrait()
-	{
-		if (Model != null)
-		{
-			Texture2D portrait = Model.Portrait;
-			if (Model.Rarity != CardRarity.Ancient)
-			{
-				_portrait.Texture = portrait;
-				_portraitBorder.Texture = Model.PortraitBorder;
-				_portraitBorder.Material = Model.BannerMaterial;
-				_frame.Texture = Model.Frame;
-				_banner.Material = Model.BannerMaterial;
-				_banner.Texture = Model.BannerTexture;
-			}
-			else
-			{
-				_ancientBorder.Texture = Model.AncientBorder;
-				_ancientTextBg.Texture = Model.AncientTextBg;
-				_ancientPortrait.Texture = portrait;
-				_banner.Material = null;
-			}
-		}
 	}
 
 	private void UpdateTypePlaque()

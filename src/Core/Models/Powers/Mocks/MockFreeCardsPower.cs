@@ -4,8 +4,6 @@ namespace MegaCrit.Sts2.Core.Models.Powers.Mocks;
 
 public sealed class MockFreeCardsPower : PowerModel
 {
-	public override bool IsMock => true;
-
 	public override PowerType Type => PowerType.Buff;
 
 	public override PowerStackType StackType => PowerStackType.Single;

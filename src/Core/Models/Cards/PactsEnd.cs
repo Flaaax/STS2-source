@@ -31,7 +31,7 @@ public sealed class PactsEnd : CardModel
 	{
 		if (CanDealDamage)
 		{
-			await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this, cardPlay).TargetingAllOpponents(base.CombatState)
+			await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(base.CombatState)
 				.WithAttackerAnim(Ironclad.GetHeavyAnimIfApplicable(base.Owner.Character), Ironclad.GetHeavyAttackDelayIfApplicable(base.Owner.Character))
 				.WithHitFx("vfx/vfx_heavy_blunt", null, "heavy_attack.mp3")
 				.WithHitVfxSpawnedAtBase()

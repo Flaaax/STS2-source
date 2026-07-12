@@ -3,8 +3,8 @@
     {
       "image": "power_atlas.png",
       "size": {
-        "w": 2508,
-        "h": 462
+        "w": 1914,
+        "h": 594
       },
       "sprites": [
         {
@@ -445,8 +445,8 @@
         {
           "filename": "corrosive_wave_power.png",
           "region": {
-            "x": 1915,
-            "y": 1,
+            "x": 1,
+            "y": 67,
             "w": 64,
             "h": 64
           },
@@ -460,8 +460,8 @@
         {
           "filename": "corruption_power.png",
           "region": {
-            "x": 1981,
-            "y": 1,
+            "x": 67,
+            "y": 67,
             "w": 64,
             "h": 64
           },
@@ -475,8 +475,8 @@
         {
           "filename": "covered_power.png",
           "region": {
-            "x": 2047,
-            "y": 1,
+            "x": 133,
+            "y": 67,
             "w": 64,
             "h": 64
           },
@@ -490,8 +490,8 @@
         {
           "filename": "crab_rage_power.png",
           "region": {
-            "x": 2113,
-            "y": 1,
+            "x": 199,
+            "y": 67,
             "w": 64,
             "h": 64
           },
@@ -505,8 +505,8 @@
         {
           "filename": "creative_ai_power.png",
           "region": {
-            "x": 2179,
-            "y": 1,
+            "x": 265,
+            "y": 67,
             "w": 64,
             "h": 64
           },
@@ -520,8 +520,8 @@
         {
           "filename": "crush_under_power.png",
           "region": {
-            "x": 2245,
-            "y": 1,
+            "x": 331,
+            "y": 67,
             "w": 64,
             "h": 64
           },
@@ -535,8 +535,8 @@
         {
           "filename": "curl_up_power.png",
           "region": {
-            "x": 2311,
-            "y": 1,
+            "x": 397,
+            "y": 67,
             "w": 64,
             "h": 64
           },
@@ -550,8 +550,8 @@
         {
           "filename": "danse_macabre_power.png",
           "region": {
-            "x": 2377,
-            "y": 1,
+            "x": 463,
+            "y": 67,
             "w": 64,
             "h": 64
           },
@@ -565,8 +565,8 @@
         {
           "filename": "dark_embrace_power.png",
           "region": {
-            "x": 2443,
-            "y": 1,
+            "x": 529,
+            "y": 67,
             "w": 64,
             "h": 64
           },
@@ -580,7 +580,7 @@
         {
           "filename": "dark_shackles_power.png",
           "region": {
-            "x": 1,
+            "x": 595,
             "y": 67,
             "w": 64,
             "h": 64
@@ -595,7 +595,7 @@
         {
           "filename": "debilitate_power.png",
           "region": {
-            "x": 67,
+            "x": 661,
             "y": 67,
             "w": 64,
             "h": 64
@@ -610,7 +610,7 @@
         {
           "filename": "demise_power.png",
           "region": {
-            "x": 133,
+            "x": 727,
             "y": 67,
             "w": 64,
             "h": 64
@@ -625,7 +625,7 @@
         {
           "filename": "demon_form_power.png",
           "region": {
-            "x": 199,
+            "x": 793,
             "y": 67,
             "w": 64,
             "h": 64
@@ -640,7 +640,7 @@
         {
           "filename": "devour_life_power.png",
           "region": {
-            "x": 265,
+            "x": 859,
             "y": 67,
             "w": 64,
             "h": 64
@@ -655,7 +655,7 @@
         {
           "filename": "disintegration_power.png",
           "region": {
-            "x": 331,
+            "x": 925,
             "y": 67,
             "w": 64,
             "h": 64
@@ -670,7 +670,7 @@
         {
           "filename": "double_damage_power.png",
           "region": {
-            "x": 397,
+            "x": 991,
             "y": 67,
             "w": 64,
             "h": 64
@@ -685,7 +685,7 @@
         {
           "filename": "dying_star_power.png",
           "region": {
-            "x": 463,
+            "x": 1057,
             "y": 67,
             "w": 64,
             "h": 64
@@ -700,7 +700,7 @@
         {
           "filename": "enfeebling_touch_power.png",
           "region": {
-            "x": 529,
+            "x": 1123,
             "y": 67,
             "w": 64,
             "h": 64
@@ -715,7 +715,7 @@
         {
           "filename": "enrage_power.png",
           "region": {
-            "x": 595,
+            "x": 1189,
             "y": 67,
             "w": 64,
             "h": 64
@@ -730,7 +730,7 @@
         {
           "filename": "entropy_power.png",
           "region": {
-            "x": 661,
+            "x": 1255,
             "y": 67,
             "w": 64,
             "h": 64
@@ -745,7 +745,7 @@
         {
           "filename": "fasten_power.png",
           "region": {
-            "x": 727,
+            "x": 1321,
             "y": 67,
             "w": 64,
             "h": 64
@@ -760,7 +760,7 @@
         {
           "filename": "feel_no_pain_power.png",
           "region": {
-            "x": 793,
+            "x": 1387,
             "y": 67,
             "w": 64,
             "h": 64
@@ -775,7 +775,7 @@
         {
           "filename": "feral_power.png",
           "region": {
-            "x": 859,
+            "x": 1453,
             "y": 67,
             "w": 64,
             "h": 64
@@ -790,7 +790,7 @@
         {
           "filename": "flame_barrier_power.png",
           "region": {
-            "x": 925,
+            "x": 1519,
             "y": 67,
             "w": 64,
             "h": 64
@@ -805,7 +805,7 @@
         {
           "filename": "flanking_power.png",
           "region": {
-            "x": 991,
+            "x": 1585,
             "y": 67,
             "w": 64,
             "h": 64
@@ -820,7 +820,7 @@
         {
           "filename": "flex_potion_power.png",
           "region": {
-            "x": 1057,
+            "x": 1651,
             "y": 67,
             "w": 64,
             "h": 64
@@ -835,7 +835,7 @@
         {
           "filename": "focused_strike_power.png",
           "region": {
-            "x": 1123,
+            "x": 1717,
             "y": 67,
             "w": 64,
             "h": 64
@@ -850,7 +850,7 @@
         {
           "filename": "forbidden_grimoire_power.png",
           "region": {
-            "x": 1189,
+            "x": 1783,
             "y": 67,
             "w": 64,
             "h": 64
@@ -865,7 +865,7 @@
         {
           "filename": "foregone_conclusion_power.png",
           "region": {
-            "x": 1255,
+            "x": 1849,
             "y": 67,
             "w": 64,
             "h": 64
@@ -880,8 +880,8 @@
         {
           "filename": "furnace_power.png",
           "region": {
-            "x": 1321,
-            "y": 67,
+            "x": 1,
+            "y": 133,
             "w": 64,
             "h": 64
           },
@@ -895,8 +895,8 @@
         {
           "filename": "galvanic_power.png",
           "region": {
-            "x": 1387,
-            "y": 67,
+            "x": 67,
+            "y": 133,
             "w": 64,
             "h": 64
           },
@@ -910,8 +910,8 @@
         {
           "filename": "gigantification_power.png",
           "region": {
-            "x": 1453,
-            "y": 67,
+            "x": 133,
+            "y": 133,
             "w": 64,
             "h": 64
           },
@@ -925,8 +925,8 @@
         {
           "filename": "guarded_power.png",
           "region": {
-            "x": 1519,
-            "y": 67,
+            "x": 199,
+            "y": 133,
             "w": 64,
             "h": 64
           },
@@ -940,8 +940,8 @@
         {
           "filename": "hailstorm_power.png",
           "region": {
-            "x": 1585,
-            "y": 67,
+            "x": 265,
+            "y": 133,
             "w": 64,
             "h": 64
           },
@@ -955,8 +955,8 @@
         {
           "filename": "hammer_time_power.png",
           "region": {
-            "x": 1651,
-            "y": 67,
+            "x": 331,
+            "y": 133,
             "w": 64,
             "h": 64
           },
@@ -970,8 +970,8 @@
         {
           "filename": "hang_power.png",
           "region": {
-            "x": 1717,
-            "y": 67,
+            "x": 397,
+            "y": 133,
             "w": 64,
             "h": 64
           },
@@ -985,8 +985,8 @@
         {
           "filename": "hardened_shell_power.png",
           "region": {
-            "x": 1783,
-            "y": 67,
+            "x": 463,
+            "y": 133,
             "w": 64,
             "h": 64
           },
@@ -1000,8 +1000,8 @@
         {
           "filename": "haunt_power.png",
           "region": {
-            "x": 1849,
-            "y": 67,
+            "x": 529,
+            "y": 133,
             "w": 64,
             "h": 64
           },
@@ -1015,8 +1015,8 @@
         {
           "filename": "heist_power.png",
           "region": {
-            "x": 1915,
-            "y": 67,
+            "x": 595,
+            "y": 133,
             "w": 64,
             "h": 64
           },
@@ -1030,8 +1030,8 @@
         {
           "filename": "helical_dart_power.png",
           "region": {
-            "x": 1981,
-            "y": 67,
+            "x": 661,
+            "y": 133,
             "w": 64,
             "h": 64
           },
@@ -1045,8 +1045,8 @@
         {
           "filename": "hello_world_power.png",
           "region": {
-            "x": 2047,
-            "y": 67,
+            "x": 727,
+            "y": 133,
             "w": 64,
             "h": 64
           },
@@ -1060,8 +1060,8 @@
         {
           "filename": "hellraiser_power.png",
           "region": {
-            "x": 2113,
-            "y": 67,
+            "x": 793,
+            "y": 133,
             "w": 64,
             "h": 64
           },
@@ -1075,8 +1075,8 @@
         {
           "filename": "hex_power.png",
           "region": {
-            "x": 2179,
-            "y": 67,
+            "x": 859,
+            "y": 133,
             "w": 64,
             "h": 64
           },
@@ -1090,8 +1090,8 @@
         {
           "filename": "high_voltage_power.png",
           "region": {
-            "x": 2245,
-            "y": 67,
+            "x": 925,
+            "y": 133,
             "w": 64,
             "h": 64
           },
@@ -1105,8 +1105,8 @@
         {
           "filename": "hotfix_power.png",
           "region": {
-            "x": 2311,
-            "y": 67,
+            "x": 991,
+            "y": 133,
             "w": 64,
             "h": 64
           },
@@ -1120,8 +1120,8 @@
         {
           "filename": "illusion_power.png",
           "region": {
-            "x": 2377,
-            "y": 67,
+            "x": 1057,
+            "y": 133,
             "w": 64,
             "h": 64
           },
@@ -1135,8 +1135,8 @@
         {
           "filename": "imbalanced_power.png",
           "region": {
-            "x": 2443,
-            "y": 67,
+            "x": 1123,
+            "y": 133,
             "w": 64,
             "h": 64
           },
@@ -1150,7 +1150,7 @@
         {
           "filename": "improvement_power.png",
           "region": {
-            "x": 1,
+            "x": 1189,
             "y": 133,
             "w": 64,
             "h": 64
@@ -1165,7 +1165,7 @@
         {
           "filename": "inferno_power.png",
           "region": {
-            "x": 67,
+            "x": 1255,
             "y": 133,
             "w": 64,
             "h": 64
@@ -1180,7 +1180,7 @@
         {
           "filename": "infinite_blades_plus_power.png",
           "region": {
-            "x": 133,
+            "x": 1321,
             "y": 133,
             "w": 64,
             "h": 64
@@ -1195,7 +1195,7 @@
         {
           "filename": "intangible_power.png",
           "region": {
-            "x": 199,
+            "x": 1387,
             "y": 133,
             "w": 64,
             "h": 64
@@ -1210,7 +1210,7 @@
         {
           "filename": "intercept_power.png",
           "region": {
-            "x": 265,
+            "x": 1453,
             "y": 133,
             "w": 64,
             "h": 64
@@ -1225,7 +1225,7 @@
         {
           "filename": "iteration_power.png",
           "region": {
-            "x": 331,
+            "x": 1519,
             "y": 133,
             "w": 64,
             "h": 64
@@ -1240,7 +1240,7 @@
         {
           "filename": "juggling_power.png",
           "region": {
-            "x": 397,
+            "x": 1585,
             "y": 133,
             "w": 64,
             "h": 64
@@ -1255,7 +1255,7 @@
         {
           "filename": "knockdown_power.png",
           "region": {
-            "x": 463,
+            "x": 1651,
             "y": 133,
             "w": 64,
             "h": 64
@@ -1270,7 +1270,7 @@
         {
           "filename": "lethality_power.png",
           "region": {
-            "x": 529,
+            "x": 1717,
             "y": 133,
             "w": 64,
             "h": 64
@@ -1285,7 +1285,7 @@
         {
           "filename": "lightning_rod_power.png",
           "region": {
-            "x": 595,
+            "x": 1783,
             "y": 133,
             "w": 64,
             "h": 64
@@ -1300,7 +1300,7 @@
         {
           "filename": "loop_power.png",
           "region": {
-            "x": 661,
+            "x": 1849,
             "y": 133,
             "w": 64,
             "h": 64
@@ -1315,8 +1315,8 @@
         {
           "filename": "magic_bomb_power.png",
           "region": {
-            "x": 727,
-            "y": 133,
+            "x": 1,
+            "y": 199,
             "w": 64,
             "h": 64
           },
@@ -1330,8 +1330,8 @@
         {
           "filename": "mangle_power.png",
           "region": {
-            "x": 793,
-            "y": 133,
+            "x": 67,
+            "y": 199,
             "w": 64,
             "h": 64
           },
@@ -1345,8 +1345,8 @@
         {
           "filename": "master_planner_power.png",
           "region": {
-            "x": 859,
-            "y": 133,
+            "x": 133,
+            "y": 199,
             "w": 64,
             "h": 64
           },
@@ -1360,8 +1360,8 @@
         {
           "filename": "mayhem_power.png",
           "region": {
-            "x": 925,
-            "y": 133,
+            "x": 199,
+            "y": 199,
             "w": 64,
             "h": 64
           },
@@ -1375,8 +1375,8 @@
         {
           "filename": "mind_rot_power.png",
           "region": {
-            "x": 991,
-            "y": 133,
+            "x": 265,
+            "y": 199,
             "w": 64,
             "h": 64
           },
@@ -1390,8 +1390,8 @@
         {
           "filename": "missing_power.png",
           "region": {
-            "x": 1057,
-            "y": 133,
+            "x": 331,
+            "y": 199,
             "w": 64,
             "h": 64
           },
@@ -1405,8 +1405,8 @@
         {
           "filename": "monarchs_gaze_power.png",
           "region": {
-            "x": 1123,
-            "y": 133,
+            "x": 397,
+            "y": 199,
             "w": 64,
             "h": 64
           },
@@ -1420,8 +1420,8 @@
         {
           "filename": "monologue_power.png",
           "region": {
-            "x": 1189,
-            "y": 133,
+            "x": 463,
+            "y": 199,
             "w": 64,
             "h": 64
           },
@@ -1435,8 +1435,8 @@
         {
           "filename": "nemesis_power.png",
           "region": {
-            "x": 1255,
-            "y": 133,
+            "x": 529,
+            "y": 199,
             "w": 64,
             "h": 64
           },
@@ -1450,8 +1450,8 @@
         {
           "filename": "nightmare_power.png",
           "region": {
-            "x": 1321,
-            "y": 133,
+            "x": 595,
+            "y": 199,
             "w": 64,
             "h": 64
           },
@@ -1465,8 +1465,8 @@
         {
           "filename": "no_energy_gain_power.png",
           "region": {
-            "x": 1387,
-            "y": 133,
+            "x": 661,
+            "y": 199,
             "w": 64,
             "h": 64
           },
@@ -1480,8 +1480,8 @@
         {
           "filename": "nostalgia_power.png",
           "region": {
-            "x": 1453,
-            "y": 133,
+            "x": 727,
+            "y": 199,
             "w": 64,
             "h": 64
           },
@@ -1495,8 +1495,8 @@
         {
           "filename": "noxious_fumes_power.png",
           "region": {
-            "x": 1519,
-            "y": 133,
+            "x": 793,
+            "y": 199,
             "w": 64,
             "h": 64
           },
@@ -1510,8 +1510,8 @@
         {
           "filename": "oblivion_power.png",
           "region": {
-            "x": 1585,
-            "y": 133,
+            "x": 859,
+            "y": 199,
             "w": 64,
             "h": 64
           },
@@ -1525,8 +1525,8 @@
         {
           "filename": "one_two_punch_power.png",
           "region": {
-            "x": 1651,
-            "y": 133,
+            "x": 925,
+            "y": 199,
             "w": 64,
             "h": 64
           },
@@ -1540,8 +1540,8 @@
         {
           "filename": "orbit_power.png",
           "region": {
-            "x": 1717,
-            "y": 133,
+            "x": 991,
+            "y": 199,
             "w": 64,
             "h": 64
           },
@@ -1555,8 +1555,8 @@
         {
           "filename": "outbreak_power.png",
           "region": {
-            "x": 1783,
-            "y": 133,
+            "x": 1057,
+            "y": 199,
             "w": 64,
             "h": 64
           },
@@ -1570,8 +1570,8 @@
         {
           "filename": "pagestorm_power.png",
           "region": {
-            "x": 1849,
-            "y": 133,
+            "x": 1123,
+            "y": 199,
             "w": 64,
             "h": 64
           },
@@ -1585,8 +1585,8 @@
         {
           "filename": "painful_stabs_power.png",
           "region": {
-            "x": 1915,
-            "y": 133,
+            "x": 1189,
+            "y": 199,
             "w": 64,
             "h": 64
           },
@@ -1600,8 +1600,8 @@
         {
           "filename": "paper_cuts_power.png",
           "region": {
-            "x": 1981,
-            "y": 133,
+            "x": 1255,
+            "y": 199,
             "w": 64,
             "h": 64
           },
@@ -1615,8 +1615,8 @@
         {
           "filename": "parry_power.png",
           "region": {
-            "x": 2047,
-            "y": 133,
+            "x": 1321,
+            "y": 199,
             "w": 64,
             "h": 64
           },
@@ -1630,8 +1630,8 @@
         {
           "filename": "phantom_blades_power.png",
           "region": {
-            "x": 2113,
-            "y": 133,
+            "x": 1387,
+            "y": 199,
             "w": 64,
             "h": 64
           },
@@ -1645,8 +1645,8 @@
         {
           "filename": "piercing_wail_power.png",
           "region": {
-            "x": 2179,
-            "y": 133,
+            "x": 1453,
+            "y": 199,
             "w": 64,
             "h": 64
           },
@@ -1660,8 +1660,8 @@
         {
           "filename": "pillar_of_creation_power.png",
           "region": {
-            "x": 2245,
-            "y": 133,
+            "x": 1519,
+            "y": 199,
             "w": 64,
             "h": 64
           },
@@ -1675,8 +1675,8 @@
         {
           "filename": "plating_power.png",
           "region": {
-            "x": 2311,
-            "y": 133,
+            "x": 1585,
+            "y": 199,
             "w": 64,
             "h": 64
           },
@@ -1690,8 +1690,8 @@
         {
           "filename": "plow_power.png",
           "region": {
-            "x": 2377,
-            "y": 133,
+            "x": 1651,
+            "y": 199,
             "w": 64,
             "h": 64
           },
@@ -1705,8 +1705,8 @@
         {
           "filename": "poison_power.png",
           "region": {
-            "x": 2443,
-            "y": 133,
+            "x": 1717,
+            "y": 199,
             "w": 64,
             "h": 64
           },
@@ -1720,7 +1720,7 @@
         {
           "filename": "possess_speed_power.png",
           "region": {
-            "x": 1,
+            "x": 1783,
             "y": 199,
             "w": 64,
             "h": 64
@@ -1735,7 +1735,7 @@
         {
           "filename": "pyre_power.png",
           "region": {
-            "x": 67,
+            "x": 1849,
             "y": 199,
             "w": 64,
             "h": 64
@@ -1750,8 +1750,8 @@
         {
           "filename": "radiance_power.png",
           "region": {
-            "x": 133,
-            "y": 199,
+            "x": 1,
+            "y": 265,
             "w": 64,
             "h": 64
           },
@@ -1765,8 +1765,8 @@
         {
           "filename": "rage_power.png",
           "region": {
-            "x": 199,
-            "y": 199,
+            "x": 67,
+            "y": 265,
             "w": 64,
             "h": 64
           },
@@ -1780,8 +1780,8 @@
         {
           "filename": "ravenous_power.png",
           "region": {
-            "x": 265,
-            "y": 199,
+            "x": 133,
+            "y": 265,
             "w": 64,
             "h": 64
           },
@@ -1795,546 +1795,6 @@
         {
           "filename": "reaper_form_power.png",
           "region": {
-            "x": 331,
-            "y": 199,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "reattach_power.png",
-          "region": {
-            "x": 397,
-            "y": 199,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "rebound_power.png",
-          "region": {
-            "x": 463,
-            "y": 199,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "regen_power.png",
-          "region": {
-            "x": 529,
-            "y": 199,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "reptile_trinket_power.png",
-          "region": {
-            "x": 595,
-            "y": 199,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "retain_hand_power.png",
-          "region": {
-            "x": 661,
-            "y": 199,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "ringing_power.png",
-          "region": {
-            "x": 727,
-            "y": 199,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "ritual_power.png",
-          "region": {
-            "x": 793,
-            "y": 199,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "rolling_boulder_power.png",
-          "region": {
-            "x": 859,
-            "y": 199,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "royalties_power.png",
-          "region": {
-            "x": 925,
-            "y": 199,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "rupture_power.png",
-          "region": {
-            "x": 991,
-            "y": 199,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "sandpit_power.png",
-          "region": {
-            "x": 1057,
-            "y": 199,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "self_forming_clay_power.png",
-          "region": {
-            "x": 1123,
-            "y": 199,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "sentry_mode_power.png",
-          "region": {
-            "x": 1189,
-            "y": 199,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "serpent_form_power.png",
-          "region": {
-            "x": 1255,
-            "y": 199,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "setup_strike_power.png",
-          "region": {
-            "x": 1321,
-            "y": 199,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "shackling_potion_power.png",
-          "region": {
-            "x": 1387,
-            "y": 199,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "shadow_step_power.png",
-          "region": {
-            "x": 1453,
-            "y": 199,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "shriek_power.png",
-          "region": {
-            "x": 1519,
-            "y": 199,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "shrink_power.png",
-          "region": {
-            "x": 1585,
-            "y": 199,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "shroud_power.png",
-          "region": {
-            "x": 1651,
-            "y": 199,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "signal_boost_power.png",
-          "region": {
-            "x": 1717,
-            "y": 199,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "sleight_of_flesh_power.png",
-          "region": {
-            "x": 1783,
-            "y": 199,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "slippery_power.png",
-          "region": {
-            "x": 1849,
-            "y": 199,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "sloth_power.png",
-          "region": {
-            "x": 1915,
-            "y": 199,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "slumber_power.png",
-          "region": {
-            "x": 1981,
-            "y": 199,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "smoggy_power.png",
-          "region": {
-            "x": 2047,
-            "y": 199,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "smokestack_power.png",
-          "region": {
-            "x": 2113,
-            "y": 199,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "sneaky_power.png",
-          "region": {
-            "x": 2179,
-            "y": 199,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "soar_power.png",
-          "region": {
-            "x": 2245,
-            "y": 199,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "spectrum_shift_plus_power.png",
-          "region": {
-            "x": 2311,
-            "y": 199,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "spectrum_shift_power.png",
-          "region": {
-            "x": 2377,
-            "y": 199,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "speed_potion_power.png",
-          "region": {
-            "x": 2443,
-            "y": 199,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "spinner_power.png",
-          "region": {
-            "x": 1,
-            "y": 265,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "spirit_of_ash_power.png",
-          "region": {
-            "x": 67,
-            "y": 265,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "stampede_power.png",
-          "region": {
-            "x": 133,
-            "y": 265,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "steam_eruption_power.png",
-          "region": {
             "x": 199,
             "y": 265,
             "w": 64,
@@ -2348,7 +1808,7 @@
           }
         },
         {
-          "filename": "stock_power.png",
+          "filename": "reattach_power.png",
           "region": {
             "x": 265,
             "y": 265,
@@ -2363,7 +1823,7 @@
           }
         },
         {
-          "filename": "storm_power.png",
+          "filename": "rebound_power.png",
           "region": {
             "x": 331,
             "y": 265,
@@ -2378,7 +1838,7 @@
           }
         },
         {
-          "filename": "strangle_power.png",
+          "filename": "regen_power.png",
           "region": {
             "x": 397,
             "y": 265,
@@ -2393,7 +1853,7 @@
           }
         },
         {
-          "filename": "strength_power.png",
+          "filename": "reptile_trinket_power.png",
           "region": {
             "x": 463,
             "y": 265,
@@ -2408,7 +1868,7 @@
           }
         },
         {
-          "filename": "subroutine_power.png",
+          "filename": "retain_hand_power.png",
           "region": {
             "x": 529,
             "y": 265,
@@ -2423,7 +1883,7 @@
           }
         },
         {
-          "filename": "suck_power.png",
+          "filename": "ringing_power.png",
           "region": {
             "x": 595,
             "y": 265,
@@ -2438,7 +1898,7 @@
           }
         },
         {
-          "filename": "summon_next_turn_power.png",
+          "filename": "ritual_power.png",
           "region": {
             "x": 661,
             "y": 265,
@@ -2453,7 +1913,7 @@
           }
         },
         {
-          "filename": "surprise_power.png",
+          "filename": "rolling_boulder_power.png",
           "region": {
             "x": 727,
             "y": 265,
@@ -2468,7 +1928,7 @@
           }
         },
         {
-          "filename": "swipe_power.png",
+          "filename": "royalties_power.png",
           "region": {
             "x": 793,
             "y": 265,
@@ -2483,7 +1943,7 @@
           }
         },
         {
-          "filename": "sword_sage_power.png",
+          "filename": "rupture_power.png",
           "region": {
             "x": 859,
             "y": 265,
@@ -2498,7 +1958,7 @@
           }
         },
         {
-          "filename": "synchronize_power.png",
+          "filename": "sandpit_power.png",
           "region": {
             "x": 925,
             "y": 265,
@@ -2513,7 +1973,7 @@
           }
         },
         {
-          "filename": "tag_team_power.png",
+          "filename": "self_forming_clay_power.png",
           "region": {
             "x": 991,
             "y": 265,
@@ -2528,7 +1988,7 @@
           }
         },
         {
-          "filename": "tangled_power.png",
+          "filename": "sentry_mode_power.png",
           "region": {
             "x": 1057,
             "y": 265,
@@ -2543,7 +2003,7 @@
           }
         },
         {
-          "filename": "tank_power.png",
+          "filename": "serpent_form_power.png",
           "region": {
             "x": 1123,
             "y": 265,
@@ -2558,7 +2018,7 @@
           }
         },
         {
-          "filename": "territorial_power.png",
+          "filename": "setup_strike_power.png",
           "region": {
             "x": 1189,
             "y": 265,
@@ -2573,7 +2033,7 @@
           }
         },
         {
-          "filename": "the_bomb_power.png",
+          "filename": "shackling_potion_power.png",
           "region": {
             "x": 1255,
             "y": 265,
@@ -2588,7 +2048,7 @@
           }
         },
         {
-          "filename": "the_hunt_power.png",
+          "filename": "shadow_step_power.png",
           "region": {
             "x": 1321,
             "y": 265,
@@ -2603,7 +2063,7 @@
           }
         },
         {
-          "filename": "the_sealed_throne_power.png",
+          "filename": "shriek_power.png",
           "region": {
             "x": 1387,
             "y": 265,
@@ -2618,7 +2078,7 @@
           }
         },
         {
-          "filename": "thievery_power.png",
+          "filename": "shrink_power.png",
           "region": {
             "x": 1453,
             "y": 265,
@@ -2633,7 +2093,7 @@
           }
         },
         {
-          "filename": "thorns_power.png",
+          "filename": "shroud_power.png",
           "region": {
             "x": 1519,
             "y": 265,
@@ -2648,7 +2108,7 @@
           }
         },
         {
-          "filename": "thunder_power.png",
+          "filename": "signal_boost_power.png",
           "region": {
             "x": 1585,
             "y": 265,
@@ -2663,7 +2123,7 @@
           }
         },
         {
-          "filename": "tools_of_the_trade_power.png",
+          "filename": "sleight_of_flesh_power.png",
           "region": {
             "x": 1651,
             "y": 265,
@@ -2678,7 +2138,7 @@
           }
         },
         {
-          "filename": "toric_toughness_power.png",
+          "filename": "slippery_power.png",
           "region": {
             "x": 1717,
             "y": 265,
@@ -2693,7 +2153,7 @@
           }
         },
         {
-          "filename": "tracking_power.png",
+          "filename": "sloth_power.png",
           "region": {
             "x": 1783,
             "y": 265,
@@ -2708,7 +2168,7 @@
           }
         },
         {
-          "filename": "trash_to_treasure_power.png",
+          "filename": "slumber_power.png",
           "region": {
             "x": 1849,
             "y": 265,
@@ -2723,142 +2183,7 @@
           }
         },
         {
-          "filename": "tyranny_power.png",
-          "region": {
-            "x": 1915,
-            "y": 265,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "unmovable_power.png",
-          "region": {
-            "x": 1981,
-            "y": 265,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "unrelenting_power.png",
-          "region": {
-            "x": 2047,
-            "y": 265,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "veilpiercer_power.png",
-          "region": {
-            "x": 2113,
-            "y": 265,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "vigor_power.png",
-          "region": {
-            "x": 2179,
-            "y": 265,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "vital_spark_power.png",
-          "region": {
-            "x": 2245,
-            "y": 265,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "void_form_power.png",
-          "region": {
-            "x": 2311,
-            "y": 265,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "vulnerable_power.png",
-          "region": {
-            "x": 2377,
-            "y": 265,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "waste_away_power.png",
-          "region": {
-            "x": 2443,
-            "y": 265,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "weak_power.png",
+          "filename": "smoggy_power.png",
           "region": {
             "x": 1,
             "y": 331,
@@ -2873,7 +2198,7 @@
           }
         },
         {
-          "filename": "withering_presence_power.png",
+          "filename": "smokestack_power.png",
           "region": {
             "x": 67,
             "y": 331,
@@ -2888,7 +2213,7 @@
           }
         },
         {
-          "filename": "wraith_form_power.png",
+          "filename": "sneaky_power.png",
           "region": {
             "x": 133,
             "y": 331,
@@ -2903,10 +2228,685 @@
           }
         },
         {
-          "filename": "battleworn_dummy_time_limit_power.png",
+          "filename": "soar_power.png",
           "region": {
             "x": 199,
             "y": 331,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "spectrum_shift_plus_power.png",
+          "region": {
+            "x": 265,
+            "y": 331,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "spectrum_shift_power.png",
+          "region": {
+            "x": 331,
+            "y": 331,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "speed_potion_power.png",
+          "region": {
+            "x": 397,
+            "y": 331,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "spinner_power.png",
+          "region": {
+            "x": 463,
+            "y": 331,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "spirit_of_ash_power.png",
+          "region": {
+            "x": 529,
+            "y": 331,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "stampede_power.png",
+          "region": {
+            "x": 595,
+            "y": 331,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "steam_eruption_power.png",
+          "region": {
+            "x": 661,
+            "y": 331,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "stock_power.png",
+          "region": {
+            "x": 727,
+            "y": 331,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "storm_power.png",
+          "region": {
+            "x": 793,
+            "y": 331,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "strangle_power.png",
+          "region": {
+            "x": 859,
+            "y": 331,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "strength_power.png",
+          "region": {
+            "x": 925,
+            "y": 331,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "subroutine_power.png",
+          "region": {
+            "x": 991,
+            "y": 331,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "suck_power.png",
+          "region": {
+            "x": 1057,
+            "y": 331,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "summon_next_turn_power.png",
+          "region": {
+            "x": 1123,
+            "y": 331,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "surprise_power.png",
+          "region": {
+            "x": 1189,
+            "y": 331,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "swipe_power.png",
+          "region": {
+            "x": 1255,
+            "y": 331,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "sword_sage_power.png",
+          "region": {
+            "x": 1321,
+            "y": 331,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "synchronize_power.png",
+          "region": {
+            "x": 1387,
+            "y": 331,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "tag_team_power.png",
+          "region": {
+            "x": 1453,
+            "y": 331,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "tangled_power.png",
+          "region": {
+            "x": 1519,
+            "y": 331,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "tank_power.png",
+          "region": {
+            "x": 1585,
+            "y": 331,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "territorial_power.png",
+          "region": {
+            "x": 1651,
+            "y": 331,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "the_bomb_power.png",
+          "region": {
+            "x": 1717,
+            "y": 331,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "the_hunt_power.png",
+          "region": {
+            "x": 1783,
+            "y": 331,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "the_sealed_throne_power.png",
+          "region": {
+            "x": 1849,
+            "y": 331,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "thievery_power.png",
+          "region": {
+            "x": 1,
+            "y": 397,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "thorns_power.png",
+          "region": {
+            "x": 67,
+            "y": 397,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "thunder_power.png",
+          "region": {
+            "x": 133,
+            "y": 397,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "tools_of_the_trade_power.png",
+          "region": {
+            "x": 199,
+            "y": 397,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "toric_toughness_power.png",
+          "region": {
+            "x": 265,
+            "y": 397,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "tracking_power.png",
+          "region": {
+            "x": 331,
+            "y": 397,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "trash_to_treasure_power.png",
+          "region": {
+            "x": 397,
+            "y": 397,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "tyranny_power.png",
+          "region": {
+            "x": 463,
+            "y": 397,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "unmovable_power.png",
+          "region": {
+            "x": 529,
+            "y": 397,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "unrelenting_power.png",
+          "region": {
+            "x": 595,
+            "y": 397,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "veilpiercer_power.png",
+          "region": {
+            "x": 661,
+            "y": 397,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "vigor_power.png",
+          "region": {
+            "x": 727,
+            "y": 397,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "vital_spark_power.png",
+          "region": {
+            "x": 793,
+            "y": 397,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "void_form_power.png",
+          "region": {
+            "x": 859,
+            "y": 397,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "vulnerable_power.png",
+          "region": {
+            "x": 925,
+            "y": 397,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "waste_away_power.png",
+          "region": {
+            "x": 991,
+            "y": 397,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "weak_power.png",
+          "region": {
+            "x": 1057,
+            "y": 397,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "withering_presence_power.png",
+          "region": {
+            "x": 1123,
+            "y": 397,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "wraith_form_power.png",
+          "region": {
+            "x": 1189,
+            "y": 397,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "filename": "battleworn_dummy_time_limit_power.png",
+          "region": {
+            "x": 1255,
+            "y": 397,
             "w": 63,
             "h": 64
           },
@@ -2920,8 +2920,8 @@
         {
           "filename": "dexterity_down_power.png",
           "region": {
-            "x": 264,
-            "y": 331,
+            "x": 1320,
+            "y": 397,
             "w": 63,
             "h": 64
           },
@@ -2935,8 +2935,8 @@
         {
           "filename": "dexterity_power.png",
           "region": {
-            "x": 329,
-            "y": 331,
+            "x": 1385,
+            "y": 397,
             "w": 63,
             "h": 64
           },
@@ -2950,8 +2950,8 @@
         {
           "filename": "escape_artist_power.png",
           "region": {
-            "x": 394,
-            "y": 331,
+            "x": 1450,
+            "y": 397,
             "w": 63,
             "h": 64
           },
@@ -2965,8 +2965,8 @@
         {
           "filename": "frail_power.png",
           "region": {
-            "x": 459,
-            "y": 331,
+            "x": 1515,
+            "y": 397,
             "w": 63,
             "h": 64
           },
@@ -2980,8 +2980,8 @@
         {
           "filename": "no_block_power.png",
           "region": {
-            "x": 524,
-            "y": 331,
+            "x": 1580,
+            "y": 397,
             "w": 63,
             "h": 64
           },
@@ -2995,8 +2995,8 @@
         {
           "filename": "tainted_power.png",
           "region": {
-            "x": 589,
-            "y": 331,
+            "x": 1645,
+            "y": 397,
             "w": 63,
             "h": 64
           },
@@ -3010,8 +3010,8 @@
         {
           "filename": "burst_power.png",
           "region": {
-            "x": 654,
-            "y": 331,
+            "x": 1710,
+            "y": 397,
             "w": 62,
             "h": 64
           },
@@ -3025,8 +3025,8 @@
         {
           "filename": "consuming_shadow_power.png",
           "region": {
-            "x": 718,
-            "y": 331,
+            "x": 1774,
+            "y": 397,
             "w": 62,
             "h": 64
           },
@@ -3040,8 +3040,8 @@
         {
           "filename": "doom_power.png",
           "region": {
-            "x": 782,
-            "y": 331,
+            "x": 1838,
+            "y": 397,
             "w": 62,
             "h": 64
           },
@@ -3055,8 +3055,8 @@
         {
           "filename": "genesis_power.png",
           "region": {
-            "x": 846,
-            "y": 331,
+            "x": 1,
+            "y": 463,
             "w": 62,
             "h": 64
           },
@@ -3070,8 +3070,8 @@
         {
           "filename": "hard_to_kill_power.png",
           "region": {
-            "x": 910,
-            "y": 331,
+            "x": 65,
+            "y": 463,
             "w": 62,
             "h": 64
           },
@@ -3083,25 +3083,10 @@
           }
         },
         {
-          "filename": "imitation_learning_power.png",
-          "region": {
-            "x": 974,
-            "y": 331,
-            "w": 62,
-            "h": 64
-          },
-          "margin": {
-            "x": 2,
-            "y": 0,
-            "w": 2,
-            "h": 0
-          }
-        },
-        {
           "filename": "minion_power.png",
           "region": {
-            "x": 1038,
-            "y": 331,
+            "x": 129,
+            "y": 463,
             "w": 62,
             "h": 64
           },
@@ -3115,8 +3100,8 @@
         {
           "filename": "pale_blue_dot_power.png",
           "region": {
-            "x": 1102,
-            "y": 331,
+            "x": 193,
+            "y": 463,
             "w": 62,
             "h": 64
           },
@@ -3130,8 +3115,8 @@
         {
           "filename": "well_laid_plans_power.png",
           "region": {
-            "x": 1166,
-            "y": 331,
+            "x": 257,
+            "y": 463,
             "w": 62,
             "h": 64
           },
@@ -3145,8 +3130,8 @@
         {
           "filename": "fan_of_knives_power.png",
           "region": {
-            "x": 1230,
-            "y": 331,
+            "x": 321,
+            "y": 463,
             "w": 61,
             "h": 64
           },
@@ -3160,8 +3145,8 @@
         {
           "filename": "focus_power.png",
           "region": {
-            "x": 1293,
-            "y": 331,
+            "x": 384,
+            "y": 463,
             "w": 61,
             "h": 64
           },
@@ -3175,8 +3160,8 @@
         {
           "filename": "free_attack_power.png",
           "region": {
-            "x": 1356,
-            "y": 331,
+            "x": 447,
+            "y": 463,
             "w": 61,
             "h": 64
           },
@@ -3190,8 +3175,8 @@
         {
           "filename": "free_skill_power.png",
           "region": {
-            "x": 1419,
-            "y": 331,
+            "x": 510,
+            "y": 463,
             "w": 61,
             "h": 64
           },
@@ -3205,8 +3190,8 @@
         {
           "filename": "gravity_power.png",
           "region": {
-            "x": 1482,
-            "y": 331,
+            "x": 573,
+            "y": 463,
             "w": 61,
             "h": 64
           },
@@ -3220,8 +3205,8 @@
         {
           "filename": "possess_strength_power.png",
           "region": {
-            "x": 1545,
-            "y": 331,
+            "x": 636,
+            "y": 463,
             "w": 61,
             "h": 64
           },
@@ -3235,8 +3220,8 @@
         {
           "filename": "reflect_plus_power.png",
           "region": {
-            "x": 1608,
-            "y": 331,
+            "x": 699,
+            "y": 463,
             "w": 61,
             "h": 64
           },
@@ -3250,8 +3235,8 @@
         {
           "filename": "coordinate_power.png",
           "region": {
-            "x": 1671,
-            "y": 331,
+            "x": 762,
+            "y": 463,
             "w": 60,
             "h": 64
           },
@@ -3265,8 +3250,8 @@
         {
           "filename": "die_for_you_power.png",
           "region": {
-            "x": 1733,
-            "y": 331,
+            "x": 824,
+            "y": 463,
             "w": 60,
             "h": 64
           },
@@ -3280,8 +3265,8 @@
         {
           "filename": "personal_hive_power.png",
           "region": {
-            "x": 1795,
-            "y": 331,
+            "x": 886,
+            "y": 463,
             "w": 60,
             "h": 64
           },
@@ -3295,8 +3280,8 @@
         {
           "filename": "rampart_power.png",
           "region": {
-            "x": 1857,
-            "y": 331,
+            "x": 948,
+            "y": 463,
             "w": 60,
             "h": 64
           },
@@ -3310,8 +3295,8 @@
         {
           "filename": "free_power_power.png",
           "region": {
-            "x": 1919,
-            "y": 331,
+            "x": 1010,
+            "y": 463,
             "w": 59,
             "h": 64
           },
@@ -3325,8 +3310,8 @@
         {
           "filename": "necro_mastery_power.png",
           "region": {
-            "x": 1980,
-            "y": 331,
+            "x": 1071,
+            "y": 463,
             "w": 59,
             "h": 64
           },
@@ -3340,8 +3325,8 @@
         {
           "filename": "tender_power.png",
           "region": {
-            "x": 2041,
-            "y": 331,
+            "x": 1132,
+            "y": 463,
             "w": 59,
             "h": 64
           },
@@ -3355,8 +3340,8 @@
         {
           "filename": "dampen_power.png",
           "region": {
-            "x": 2102,
-            "y": 331,
+            "x": 1193,
+            "y": 463,
             "w": 58,
             "h": 64
           },
@@ -3370,8 +3355,8 @@
         {
           "filename": "draw_cards_next_turn_power.png",
           "region": {
-            "x": 2162,
-            "y": 331,
+            "x": 1253,
+            "y": 463,
             "w": 58,
             "h": 64
           },
@@ -3385,8 +3370,8 @@
         {
           "filename": "machine_learning_power.png",
           "region": {
-            "x": 2222,
-            "y": 331,
+            "x": 1313,
+            "y": 463,
             "w": 58,
             "h": 64
           },
@@ -3400,8 +3385,8 @@
         {
           "filename": "no_draw_power.png",
           "region": {
-            "x": 2282,
-            "y": 331,
+            "x": 1373,
+            "y": 463,
             "w": 58,
             "h": 64
           },
@@ -3415,8 +3400,8 @@
         {
           "filename": "curious_power.png",
           "region": {
-            "x": 2342,
-            "y": 331,
+            "x": 1433,
+            "y": 463,
             "w": 57,
             "h": 64
           },
@@ -3430,8 +3415,8 @@
         {
           "filename": "juggernaut_power.png",
           "region": {
-            "x": 2401,
-            "y": 331,
+            "x": 1492,
+            "y": 463,
             "w": 57,
             "h": 64
           },
@@ -3445,8 +3430,8 @@
         {
           "filename": "reflect_power.png",
           "region": {
-            "x": 1,
-            "y": 397,
+            "x": 1551,
+            "y": 463,
             "w": 57,
             "h": 64
           },
@@ -3460,8 +3445,8 @@
         {
           "filename": "stratagem_power.png",
           "region": {
-            "x": 60,
-            "y": 397,
+            "x": 1610,
+            "y": 463,
             "w": 57,
             "h": 64
           },
@@ -3475,8 +3460,8 @@
         {
           "filename": "accelerant_power.png",
           "region": {
-            "x": 119,
-            "y": 397,
+            "x": 1669,
+            "y": 463,
             "w": 56,
             "h": 64
           },
@@ -3490,8 +3475,8 @@
         {
           "filename": "countdown_power.png",
           "region": {
-            "x": 177,
-            "y": 397,
+            "x": 1727,
+            "y": 463,
             "w": 56,
             "h": 64
           },
@@ -3503,25 +3488,10 @@
           }
         },
         {
-          "filename": "concoct_power.png",
-          "region": {
-            "x": 235,
-            "y": 397,
-            "w": 55,
-            "h": 64
-          },
-          "margin": {
-            "x": 4,
-            "y": 0,
-            "w": 9,
-            "h": 0
-          }
-        },
-        {
           "filename": "panache_power.png",
           "region": {
-            "x": 292,
-            "y": 397,
+            "x": 1785,
+            "y": 463,
             "w": 55,
             "h": 64
           },
@@ -3535,8 +3505,8 @@
         {
           "filename": "skittish_power.png",
           "region": {
-            "x": 349,
-            "y": 397,
+            "x": 1842,
+            "y": 463,
             "w": 54,
             "h": 64
           },
@@ -3550,8 +3520,8 @@
         {
           "filename": "envenom_power.png",
           "region": {
-            "x": 405,
-            "y": 397,
+            "x": 1,
+            "y": 529,
             "w": 52,
             "h": 64
           },
@@ -3565,8 +3535,8 @@
         {
           "filename": "shadowmeld_power.png",
           "region": {
-            "x": 459,
-            "y": 397,
+            "x": 55,
+            "y": 529,
             "w": 52,
             "h": 64
           },
@@ -3580,8 +3550,8 @@
         {
           "filename": "the_gambit_power.png",
           "region": {
-            "x": 513,
-            "y": 397,
+            "x": 109,
+            "y": 529,
             "w": 49,
             "h": 64
           },
@@ -3595,8 +3565,8 @@
         {
           "filename": "star_next_turn_power.png",
           "region": {
-            "x": 564,
-            "y": 397,
+            "x": 160,
+            "y": 529,
             "w": 48,
             "h": 64
           },
@@ -3610,8 +3580,8 @@
         {
           "filename": "energy_next_turn_power.png",
           "region": {
-            "x": 2460,
-            "y": 331,
+            "x": 210,
+            "y": 529,
             "w": 43,
             "h": 64
           },
@@ -3625,8 +3595,8 @@
         {
           "filename": "demesne_power.png",
           "region": {
-            "x": 614,
-            "y": 397,
+            "x": 255,
+            "y": 529,
             "w": 64,
             "h": 63
           },
@@ -3640,8 +3610,8 @@
         {
           "filename": "infinite_blades_power.png",
           "region": {
-            "x": 680,
-            "y": 397,
+            "x": 321,
+            "y": 529,
             "w": 64,
             "h": 63
           },
@@ -3655,8 +3625,8 @@
         {
           "filename": "prep_time_power.png",
           "region": {
-            "x": 746,
-            "y": 397,
+            "x": 387,
+            "y": 529,
             "w": 64,
             "h": 63
           },
@@ -3670,8 +3640,8 @@
         {
           "filename": "seeking_edge_power.png",
           "region": {
-            "x": 812,
-            "y": 397,
+            "x": 453,
+            "y": 529,
             "w": 64,
             "h": 63
           },
@@ -3685,8 +3655,8 @@
         {
           "filename": "sic_em_power.png",
           "region": {
-            "x": 878,
-            "y": 397,
+            "x": 519,
+            "y": 529,
             "w": 64,
             "h": 63
           },
@@ -3700,8 +3670,8 @@
         {
           "filename": "slow_power.png",
           "region": {
-            "x": 944,
-            "y": 397,
+            "x": 585,
+            "y": 529,
             "w": 64,
             "h": 63
           },
@@ -3715,8 +3685,8 @@
         {
           "filename": "hatch_power.png",
           "region": {
-            "x": 1010,
-            "y": 397,
+            "x": 651,
+            "y": 529,
             "w": 53,
             "h": 63
           },
@@ -3730,8 +3700,8 @@
         {
           "filename": "diamond_diadem_power.png",
           "region": {
-            "x": 1065,
-            "y": 397,
+            "x": 706,
+            "y": 529,
             "w": 64,
             "h": 62
           },
@@ -3745,8 +3715,8 @@
         {
           "filename": "feeding_frenzy_power.png",
           "region": {
-            "x": 1131,
-            "y": 397,
+            "x": 772,
+            "y": 529,
             "w": 64,
             "h": 62
           },
@@ -3760,8 +3730,8 @@
         {
           "filename": "vicious_power.png",
           "region": {
-            "x": 1197,
-            "y": 397,
+            "x": 838,
+            "y": 529,
             "w": 64,
             "h": 62
           },
@@ -3775,8 +3745,8 @@
         {
           "filename": "echo_form_power.png",
           "region": {
-            "x": 1263,
-            "y": 397,
+            "x": 904,
+            "y": 529,
             "w": 62,
             "h": 62
           },
@@ -3790,8 +3760,8 @@
         {
           "filename": "crimson_mantle_power.png",
           "region": {
-            "x": 1327,
-            "y": 397,
+            "x": 968,
+            "y": 529,
             "w": 64,
             "h": 61
           },
@@ -3805,8 +3775,8 @@
         {
           "filename": "flutter_power.png",
           "region": {
-            "x": 1393,
-            "y": 397,
+            "x": 1034,
+            "y": 529,
             "w": 64,
             "h": 61
           },
@@ -3820,8 +3790,8 @@
         {
           "filename": "leadership_power.png",
           "region": {
-            "x": 1459,
-            "y": 397,
+            "x": 1100,
+            "y": 529,
             "w": 64,
             "h": 61
           },
@@ -3835,8 +3805,8 @@
         {
           "filename": "neurosurge_power.png",
           "region": {
-            "x": 1525,
-            "y": 397,
+            "x": 1166,
+            "y": 529,
             "w": 64,
             "h": 61
           },
@@ -3850,8 +3820,8 @@
         {
           "filename": "duplication_power.png",
           "region": {
-            "x": 1591,
-            "y": 397,
+            "x": 1232,
+            "y": 529,
             "w": 62,
             "h": 61
           },
@@ -3865,8 +3835,8 @@
         {
           "filename": "barricade_power.png",
           "region": {
-            "x": 1655,
-            "y": 397,
+            "x": 1296,
+            "y": 529,
             "w": 64,
             "h": 60
           },
@@ -3880,8 +3850,8 @@
         {
           "filename": "cruelty_power.png",
           "region": {
-            "x": 1721,
-            "y": 397,
+            "x": 1362,
+            "y": 529,
             "w": 64,
             "h": 60
           },
@@ -3895,8 +3865,8 @@
         {
           "filename": "borrowed_time_power.png",
           "region": {
-            "x": 1787,
-            "y": 397,
+            "x": 1428,
+            "y": 529,
             "w": 59,
             "h": 60
           },
@@ -3908,10 +3878,25 @@
           }
         },
         {
+          "filename": "ebb_power.png",
+          "region": {
+            "x": 1489,
+            "y": 529,
+            "w": 63,
+            "h": 59
+          },
+          "margin": {
+            "x": 1,
+            "y": 1,
+            "w": 1,
+            "h": 5
+          }
+        },
+        {
           "filename": "speedster_power.png",
           "region": {
-            "x": 1848,
-            "y": 397,
+            "x": 1554,
+            "y": 529,
             "w": 64,
             "h": 58
           },
@@ -3925,8 +3910,8 @@
         {
           "filename": "surrounded_power.png",
           "region": {
-            "x": 1914,
-            "y": 397,
+            "x": 1620,
+            "y": 529,
             "w": 64,
             "h": 56
           },
@@ -3938,70 +3923,10 @@
           }
         },
         {
-          "filename": "hibernate_power.png",
-          "region": {
-            "x": 1980,
-            "y": 397,
-            "w": 60,
-            "h": 56
-          },
-          "margin": {
-            "x": 3,
-            "y": 2,
-            "w": 4,
-            "h": 8
-          }
-        },
-        {
-          "filename": "one_for_all_power.png",
-          "region": {
-            "x": 2042,
-            "y": 397,
-            "w": 52,
-            "h": 56
-          },
-          "margin": {
-            "x": 7,
-            "y": 0,
-            "w": 12,
-            "h": 8
-          }
-        },
-        {
-          "filename": "soulbound_power.png",
-          "region": {
-            "x": 2096,
-            "y": 397,
-            "w": 63,
-            "h": 55
-          },
-          "margin": {
-            "x": 1,
-            "y": 1,
-            "w": 1,
-            "h": 9
-          }
-        },
-        {
-          "filename": "cacophony_power.png",
-          "region": {
-            "x": 2161,
-            "y": 397,
-            "w": 54,
-            "h": 54
-          },
-          "margin": {
-            "x": 4,
-            "y": 4,
-            "w": 10,
-            "h": 10
-          }
-        },
-        {
           "filename": "infested_power.png",
           "region": {
-            "x": 2217,
-            "y": 397,
+            "x": 1686,
+            "y": 529,
             "w": 64,
             "h": 50
           },
@@ -4015,8 +3940,8 @@
         {
           "filename": "monarchs_gaze_strength_down_power.png",
           "region": {
-            "x": 2283,
-            "y": 397,
+            "x": 1752,
+            "y": 529,
             "w": 57,
             "h": 48
           },
@@ -4030,8 +3955,8 @@
         {
           "filename": "friendship_power.png",
           "region": {
-            "x": 2342,
-            "y": 397,
+            "x": 1811,
+            "y": 529,
             "w": 64,
             "h": 47
           },
@@ -4040,21 +3965,6 @@
             "y": 8,
             "w": 0,
             "h": 17
-          }
-        },
-        {
-          "filename": "fade_power.png",
-          "region": {
-            "x": 2408,
-            "y": 397,
-            "w": 45,
-            "h": 43
-          },
-          "margin": {
-            "x": 7,
-            "y": 11,
-            "w": 19,
-            "h": 21
           }
         }
       ]

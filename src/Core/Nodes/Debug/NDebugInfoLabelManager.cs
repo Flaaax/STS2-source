@@ -105,7 +105,7 @@ public partial class NDebugInfoLabelManager : Node
 					if (obj == null)
 					{
 						ModManifest? manifest = m.manifest;
-						if ((object)manifest == null)
+						if (manifest == null)
 						{
 							return (string)null;
 						}

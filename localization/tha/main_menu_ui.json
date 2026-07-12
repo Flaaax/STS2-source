@@ -158,7 +158,7 @@
   "NETWORK_ERROR.TIMEOUT.body": "การเชื่อมต่อหมดเวลา",
   "NETWORK_ERROR.TRY_AGAIN_LATER.body": "พบข้อผิดพลาดขณะเชื่อมต่อ โปรดรอสักครู๋แล้วจึงลองใหม่อีกครั้ง\n\nข้อมูลเพิ่มเติม: {info}",
   "NETWORK_ERROR.UNKNOWN_ERROR.body": "เกิดข้อผิดพลาดปริศนา\n\nข้อมูลเพิ่มเติม: {info}",
-  "NETWORK_ERROR.VERSION_MISMATCH.body": "ผู้เล่นที่พยายามเข้าร่วมนั้นมีเวอร์ชัน STS2 ไม่ตรงกับของคุณ\n\n{info}",
+  "NETWORK_ERROR.VERSION_MISMATCH.body": "ผู้เล่นที่พยายามเข้าร่วมนั้นมีเวอร์ชัน STS2 ไม่ตรงกับของคุณ",
   "NETWORK_ERROR.header": "ถูกตัดการเชื่อมต่อ",
   "NETWORK_ERROR.report_bug": "รายงานข้อผิดพลาด",
   "OPEN_PROFILE_SCREEN.description": "คลิกเพื่อแก้ไข",

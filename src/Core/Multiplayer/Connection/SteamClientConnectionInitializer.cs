@@ -2,7 +2,6 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Entities.Multiplayer;
-using MegaCrit.Sts2.Core.Multiplayer.Game;
 using MegaCrit.Sts2.Core.Multiplayer.Transport.Steam;
 using MegaCrit.Sts2.Core.Platform;
 
@@ -30,7 +29,7 @@ public class SteamClientConnectionInitializer : IClientConnectionInitializer
 		};
 	}
 
-	public async Task<NetErrorInfo?> Connect(INetClientGameService gameService, CancellationToken cancelToken = default(CancellationToken))
+	public async Task<NetErrorInfo?> Connect(NetClientGameService gameService, CancellationToken cancelToken = default(CancellationToken))
 	{
 		if (gameService.IsConnected)
 		{

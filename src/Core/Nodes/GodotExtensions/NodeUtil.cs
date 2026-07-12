@@ -73,12 +73,8 @@ public static class NodeUtil
 	/// <summary>
 	/// Returns true if candidate is located within parent's subtree.
 	/// </summary>
-	public static bool IsDescendant(Node? parent, Node candidate)
+	public static bool IsDescendant(Node parent, Node candidate)
 	{
-		if (parent == null)
-		{
-			return false;
-		}
 		for (Node parent2 = candidate.GetParent(); parent2 != null; parent2 = parent2.GetParent())
 		{
 			if (parent2 == parent)

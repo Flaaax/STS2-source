@@ -29,9 +29,9 @@ public partial class NOrb : NClickableControl
 
 	private Control _bounds;
 
-	private NSelectionReticle _selectionReticle;
+	private CpuParticles2D _flashParticle;
 
-	private NOrbVfx? _orbVfx;
+	private NSelectionReticle _selectionReticle;
 
 	private bool _isLocal;
 
@@ -66,6 +66,7 @@ public partial class NOrb : NClickableControl
 		_visualContainer = GetNode<Control>("%VisualContainer");
 		_passiveLabel = GetNode<MegaLabel>("%PassiveAmount");
 		_evokeLabel = GetNode<MegaLabel>("%EvokeAmount");
+		_flashParticle = GetNode<CpuParticles2D>("%Flash");
 		_bounds = GetNode<Control>("Bounds");
 		_labelContainer = GetNode<Control>("%LabelContainer");
 		_selectionReticle = GetNode<NSelectionReticle>("%SelectionReticle");
@@ -78,6 +79,24 @@ public partial class NOrb : NClickableControl
 			base.Scale *= 0.85f;
 		}
 		UpdateVisuals(isEvoking: false);
+	}
+
+	public override void _EnterTree()
+	{
+		base._EnterTree();
+		if (Model != null)
+		{
+			Model.Triggered += Flash;
+		}
+	}
+
+	public override void _ExitTree()
+	{
+		base._ExitTree();
+		if (Model != null)
+		{
+			Model.Triggered -= Flash;
+		}
 	}
 
 	public void ReplaceOrb(OrbModel model)
@@ -100,6 +119,7 @@ public partial class NOrb : NClickableControl
 			_passiveLabel.Visible = false;
 			_evokeLabel.Visible = false;
 			_outline.Visible = _isLocal;
+			_flashParticle.Visible = false;
 			return;
 		}
 		if (_sprite == null)
@@ -111,17 +131,14 @@ public partial class NOrb : NClickableControl
 			{
 				animState.SetAnimation("idle_loop");
 			});
-			_orbVfx = _sprite as NOrbVfx;
-			if (_orbVfx != null)
-			{
-				_orbVfx.Initialize(Model);
-			}
 			_curTween?.Kill();
 			_curTween = CreateTween();
 			_curTween.TweenProperty(_sprite, "scale", Vector2.One, 0.5).From(Vector2.Zero).SetTrans(Tween.TransitionType.Back)
 				.SetEase(Tween.EaseType.Out);
 		}
 		_outline.Visible = false;
+		_flashParticle.Visible = true;
+		_flashParticle.Texture = Model.Icon;
 		_labelContainer.Visible = _isLocal;
 		if (!_isLocal)
 		{
@@ -161,6 +178,11 @@ public partial class NOrb : NClickableControl
 			_passiveLabel.Visible = false;
 			_evokeLabel.Visible = false;
 		}
+	}
+
+	private void Flash()
+	{
+		_flashParticle.Emitting = true;
 	}
 
 	protected override void OnFocus()

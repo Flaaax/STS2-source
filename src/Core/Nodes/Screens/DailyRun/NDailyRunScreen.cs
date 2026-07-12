@@ -9,10 +9,12 @@ using MegaCrit.Sts2.Core.Assets;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Daily;
 using MegaCrit.Sts2.Core.Entities.Multiplayer;
+using MegaCrit.Sts2.Core.Extensions;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Modifiers;
 using MegaCrit.Sts2.Core.Multiplayer;
 using MegaCrit.Sts2.Core.Multiplayer.Game;
 using MegaCrit.Sts2.Core.Multiplayer.Game.Lobby;
@@ -292,7 +294,7 @@ public partial class NDailyRunScreen : NSubmenu, IStartRunLobbyListener
 			}
 		}
 		int num = rng3.NextInt(0, 11);
-		IReadOnlyCollection<ModifierModel> readOnlyCollection = ModifierModel.Pick2Good1Bad(rng4, _lobby.Players.Select((LobbyPlayer p) => p.character));
+		List<ModifierModel> list = RollModifiers(rng4);
 		NetGameType type = lobby.NetService.Type;
 		if ((uint)(type - 1) <= 1u)
 		{
@@ -304,9 +306,9 @@ public partial class NDailyRunScreen : NSubmenu, IStartRunLobbyListener
 			{
 				lobby.SyncAscensionChange(num);
 			}
-			if (readOnlyCollection.Any((ModifierModel m) => lobby.Modifiers.FirstOrDefault(m.IsEquivalent) == null))
+			if (list.Any((ModifierModel m) => lobby.Modifiers.FirstOrDefault(m.IsEquivalent) == null))
 			{
-				lobby.SetModifiers(readOnlyCollection);
+				lobby.SetModifiers(list);
 			}
 		}
 		if (lobby.LocalPlayer.character != characterModel)
@@ -333,6 +335,39 @@ public partial class NDailyRunScreen : NSubmenu, IStartRunLobbyListener
 		{
 			_modifierContainers[i].Fill(_lobby.Modifiers[i]);
 		}
+	}
+
+	private List<ModifierModel> RollModifiers(Rng rng)
+	{
+		List<ModifierModel> list = new List<ModifierModel>();
+		List<ModifierModel> list2 = ModelDb.GoodModifiers.ToList().StableShuffle(rng);
+		for (int i = 0; i < 2; i++)
+		{
+			ModifierModel canonicalModifier = rng.NextItem(list2);
+			if (canonicalModifier == null)
+			{
+				throw new InvalidOperationException("There were not enough good modifiers to fill the daily!");
+			}
+			ModifierModel modifierModel = canonicalModifier.ToMutable();
+			if (modifierModel is CharacterCards characterCards)
+			{
+				IEnumerable<CharacterModel> second = _lobby.Players.Select((LobbyPlayer p) => p.character);
+				characterCards.CharacterModel = rng.NextItem(ModelDb.AllCharacters.Except(second)).Id;
+			}
+			list.Add(modifierModel);
+			list2.Remove(canonicalModifier);
+			IReadOnlySet<ModifierModel> readOnlySet = ModelDb.MutuallyExclusiveModifiers.FirstOrDefault((IReadOnlySet<ModifierModel> s) => s.Contains(canonicalModifier));
+			if (readOnlySet == null)
+			{
+				continue;
+			}
+			foreach (ModifierModel item in readOnlySet)
+			{
+				list2.Remove(item);
+			}
+		}
+		list.Add(rng.NextItem(ModelDb.BadModifiers).ToMutable());
+		return list;
 	}
 
 	private void SetIsLoading(bool isLoading)

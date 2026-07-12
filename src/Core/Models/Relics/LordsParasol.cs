@@ -9,7 +9,6 @@ using MegaCrit.Sts2.Core.Nodes.GodotExtensions;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.Nodes.Screens.Map;
 using MegaCrit.Sts2.Core.Rooms;
-using MegaCrit.Sts2.Core.Runs;
 using MegaCrit.Sts2.Core.TestSupport;
 
 namespace MegaCrit.Sts2.Core.Models.Relics;
@@ -39,17 +38,14 @@ public sealed class LordsParasol : RelicModel
 		{
 			if (TestMode.IsOff)
 			{
-				NRun.Instance?.GlobalUi.TopBar.Map.Disable();
-				NRun.Instance?.GlobalUi.TopBar.Deck.Disable();
-				NMapScreen.Instance?.SetTravelEnabled(enabled: false);
-				if (NRun.Instance != null)
-				{
-					await NRun.Instance.AwaitProcessFrame();
-				}
+				NRun.Instance.GlobalUi.TopBar.Map.Disable();
+				NRun.Instance.GlobalUi.TopBar.Deck.Disable();
+				NMapScreen.Instance.SetTravelEnabled(enabled: false);
+				await NRun.Instance.AwaitProcessFrame();
 				uiBlocked = true;
-				NMerchantRoom.Instance?.Inventory.BlockInput();
+				NMerchantRoom.Instance.Inventory.BlockInput();
 				await Cmd.Wait(0.75f);
-				NMerchantRoom.Instance?.Inventory.Open();
+				NMerchantRoom.Instance.Inventory.Open();
 				await Cmd.Wait(1f);
 			}
 			foreach (MerchantCardEntry characterCardEntry in inventory.CharacterCardEntries)
@@ -80,11 +76,11 @@ public sealed class LordsParasol : RelicModel
 			}
 			foreach (MerchantRelicEntry relicEntry in inventory.RelicEntries)
 			{
-				NRun.Instance?.GlobalUi.TopBar.Map.Enable();
-				NRun.Instance?.GlobalUi.TopBar.Deck.Enable();
+				NRun.Instance.GlobalUi.TopBar.Map.Enable();
+				NRun.Instance.GlobalUi.TopBar.Deck.Enable();
 				await relicEntry.OnTryPurchaseWrapper(inventory, ignoreCost: true);
-				NRun.Instance?.GlobalUi.TopBar.Deck.Disable();
-				NRun.Instance?.GlobalUi.TopBar.Map.Disable();
+				NRun.Instance.GlobalUi.TopBar.Deck.Disable();
+				NRun.Instance.GlobalUi.TopBar.Map.Disable();
 				await Cmd.Wait(0.25f);
 			}
 			foreach (MerchantPotionEntry potionEntry in inventory.PotionEntries)
@@ -97,17 +93,17 @@ public sealed class LordsParasol : RelicModel
 		{
 			if (uiBlocked)
 			{
-				NMerchantRoom.Instance?.Inventory.UnblockInput();
-				NRun.Instance?.GlobalUi.TopBar.Map.Enable();
-				NRun.Instance?.GlobalUi.TopBar.Deck.Enable();
-				NMapScreen.Instance?.SetTravelEnabled(enabled: true);
+				NMerchantRoom.Instance.Inventory.UnblockInput();
+				NRun.Instance.GlobalUi.TopBar.Map.Enable();
+				NRun.Instance.GlobalUi.TopBar.Deck.Enable();
+				NMapScreen.Instance.SetTravelEnabled(enabled: true);
 			}
 		}
-		if (inventory.CardRemovalEntry != null && RunManager.Instance.IsInProgress)
+		if (inventory.CardRemovalEntry != null)
 		{
-			NMapScreen.Instance?.SetTravelEnabled(enabled: false);
+			NMapScreen.Instance.SetTravelEnabled(enabled: false);
 			await inventory.CardRemovalEntry.OnTryPurchaseWrapper(inventory, ignoreCost: true, cancelable: false);
-			NMapScreen.Instance?.SetTravelEnabled(enabled: true);
+			NMapScreen.Instance.SetTravelEnabled(enabled: true);
 		}
 	}
 }

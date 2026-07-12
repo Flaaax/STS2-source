@@ -2,7 +2,6 @@ using System;
 using Godot;
 using MegaCrit.Sts2.addons.mega_text;
 using MegaCrit.Sts2.Core.ControllerInput;
-using MegaCrit.Sts2.Core.Daily;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Nodes.Combat;
 using MegaCrit.Sts2.Core.Nodes.CommonUi;
@@ -74,24 +73,14 @@ public partial class NLeaderboardDayPaginator : Control
 
 	private void PageLeft()
 	{
-		DateTimeOffset? dateTimeOffset = DailyRunUtility.AddLeaderboardDays(_currentDay, -1);
-		if (dateTimeOffset.HasValue)
-		{
-			DateTimeOffset valueOrDefault = dateTimeOffset.GetValueOrDefault();
-			_currentDay = valueOrDefault;
-			DayChangeHelper(pagedLeft: true);
-		}
+		_currentDay -= TimeSpan.FromDays(1);
+		DayChangeHelper(pagedLeft: true);
 	}
 
 	private void PageRight()
 	{
-		DateTimeOffset? dateTimeOffset = DailyRunUtility.AddLeaderboardDays(_currentDay, 1);
-		if (dateTimeOffset.HasValue)
-		{
-			DateTimeOffset valueOrDefault = dateTimeOffset.GetValueOrDefault();
-			_currentDay = valueOrDefault;
-			DayChangeHelper(pagedLeft: false);
-		}
+		_currentDay += TimeSpan.FromDays(1);
+		DayChangeHelper(pagedLeft: false);
 	}
 
 	private void DayChangeHelper(bool pagedLeft)

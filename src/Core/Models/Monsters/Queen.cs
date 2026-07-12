@@ -184,7 +184,7 @@ public sealed class Queen : MonsterModel
 		SfxCmd.Play("event:/sfx/enemy/enemy_attacks/queen/queen_cast");
 		await CreatureCmd.TriggerAnim(base.Creature, "Cast", 0.8f);
 		int strengthAmount = AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies, 1, 1);
-		List<Creature> source = base.CombatState.GetTeammatesOf(base.Creature).ToList();
+		List<Creature> source = base.Creature.CombatState.GetTeammatesOf(base.Creature).ToList();
 		foreach (Creature item in source.Where((Creature teammate) => teammate != base.Creature))
 		{
 			await PowerCmd.Apply<StrengthPower>(new ThrowingPlayerChoiceContext(), item, strengthAmount, base.Creature, null);

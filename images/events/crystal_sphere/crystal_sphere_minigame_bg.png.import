@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://deroqsearxm2d"
-path.bptc="res://.godot/imported/crystal_sphere_minigame_bg.png-0890fe0b008907879b5f986188e70a1c.bptc.ctex"
+path.s3tc="res://.godot/imported/crystal_sphere_minigame_bg.png-0890fe0b008907879b5f986188e70a1c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,12 +12,12 @@ metadata={
 [deps]
 
 source_file="res://images/events/crystal_sphere/crystal_sphere_minigame_bg.png"
-dest_files=["res://.godot/imported/crystal_sphere_minigame_bg.png-0890fe0b008907879b5f986188e70a1c.bptc.ctex"]
+dest_files=["res://.godot/imported/crystal_sphere_minigame_bg.png-0890fe0b008907879b5f986188e70a1c.s3tc.ctex"]
 
 [params]
 
 compress/mode=2
-compress/high_quality=true
+compress/high_quality=false
 compress/lossy_quality=1.0
 compress/uastc_level=2
 compress/rdo_quality_loss=0

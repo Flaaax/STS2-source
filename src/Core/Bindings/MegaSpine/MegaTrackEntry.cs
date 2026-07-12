@@ -19,8 +19,7 @@ public class MegaTrackEntry : MegaSpineBinding
 
 	private MegaAnimation GetAnimation()
 	{
-		using Variant native = Call("get_animation");
-		return new MegaAnimation(native);
+		return new MegaAnimation(Call("get_animation"));
 	}
 
 	/// <summary>
@@ -30,8 +29,7 @@ public class MegaTrackEntry : MegaSpineBinding
 	/// </summary>
 	public string GetAnimationName()
 	{
-		using MegaAnimation megaAnimation = GetAnimation();
-		return megaAnimation.GetName();
+		return GetAnimation().GetName();
 	}
 
 	/// <summary>
@@ -39,8 +37,7 @@ public class MegaTrackEntry : MegaSpineBinding
 	/// </summary>
 	public float GetAnimationDuration()
 	{
-		using MegaAnimation megaAnimation = GetAnimation();
-		return megaAnimation.GetDuration();
+		return GetAnimation().GetDuration();
 	}
 
 	public float GetAnimationEnd()

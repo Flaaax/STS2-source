@@ -43,7 +43,7 @@ public partial class NBestiaryLayoutDefault : NBestiaryLayout
 		monsterModel.SetUpForCombat();
 		Creature entity = new Creature(monsterModel, CombatSide.Enemy, null)
 		{
-			CombatState = NullCombatState.Instance
+			CombatState = new NullCombatState()
 		};
 		_creature = NCreature.Create(entity);
 		_creatureContainer.AddChildSafely(_creature);

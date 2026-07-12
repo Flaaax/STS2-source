@@ -13,9 +13,7 @@ public class MockEventModel : EventModel
 
 	public int? optionChosen;
 
-	public Func<EventModel, IReadOnlyList<EventOption>>? generateInitialOptions;
-
-	public override bool IsMock => true;
+	public List<EventOption>? initialOptions;
 
 	public override bool IsShared => isShared;
 
@@ -47,12 +45,7 @@ public class MockEventModel : EventModel
 
 	protected override IReadOnlyList<EventOption> GenerateInitialOptions()
 	{
-		List<EventOption> list = new List<EventOption>();
-		foreach (EventOption item in generateInitialOptions?.Invoke(this) ?? DefaultInitialOptions)
-		{
-			list.Add(new EventOption(item));
-		}
-		return list;
+		return initialOptions ?? DefaultInitialOptions;
 	}
 
 	public new void EnterCombatWithoutExitingEvent<T>(IReadOnlyList<Reward> extraRewards, bool shouldResumeAfterCombat) where T : EncounterModel

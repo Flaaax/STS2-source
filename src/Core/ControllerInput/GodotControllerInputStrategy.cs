@@ -8,94 +8,31 @@ namespace MegaCrit.Sts2.Core.ControllerInput;
 
 public class GodotControllerInputStrategy : IControllerInputStrategy
 {
-	private static readonly StringName _rStickLeftRaw = "raw_r_stick_left";
-
-	private static readonly StringName _rStickRightRaw = "raw_r_stick_right";
-
-	private static readonly StringName _rStickUpRaw = "raw_r_stick_up";
-
-	private static readonly StringName _rStickDownRaw = "raw_r_stick_down";
-
-	private static readonly StringName _lStickLeftRaw = "raw_l_stick_left";
-
-	private static readonly StringName _lStickRightRaw = "raw_l_stick_right";
-
-	private static readonly StringName _lStickUpRaw = "raw_l_stick_up";
-
-	private static readonly StringName _lStickDownRaw = "raw_l_stick_down";
-
-	private static readonly StringName _leftTriggerRaw = "raw_left_trigger";
-
-	private static readonly StringName _rightTriggerRaw = "raw_right_trigger";
-
-	/// <summary>
-	/// Maps analog inputs with pressure sensitive input values (i.e. stick axis being a value between 0.0 and 1.0)
-	/// and flattens it out to "isPressed" and "isReleased". This is important multiple events do not fire
-	/// as that analog value changes.
-	/// </summary>
-	private readonly Dictionary<StringName, StringName[]> _analogToDigitalInput = new Dictionary<StringName, StringName[]>
+	private readonly Dictionary<StringName, StringName> _megaInputMap = new Dictionary<StringName, StringName>
 	{
 		{
-			_rStickUpRaw,
-			new StringName[1] { Controller.rStickUp }
+			Controller.joystickUp,
+			Controller.dPadNorth
 		},
 		{
-			_rStickDownRaw,
-			new StringName[1] { Controller.rStickDown }
+			Controller.joystickDown,
+			Controller.dPadSouth
 		},
 		{
-			_rStickLeftRaw,
-			new StringName[1] { Controller.rStickLeft }
+			Controller.joystickLeft,
+			Controller.dPadWest
 		},
 		{
-			_rStickRightRaw,
-			new StringName[1] { Controller.rStickRight }
-		},
-		{
-			_leftTriggerRaw,
-			new StringName[1] { Controller.leftTrigger }
-		},
-		{
-			_rightTriggerRaw,
-			new StringName[1] { Controller.rightTrigger }
-		},
-		{
-			_lStickUpRaw,
-			new StringName[2]
-			{
-				Controller.dPadUp,
-				Controller.lStickUp
-			}
-		},
-		{
-			_lStickDownRaw,
-			new StringName[2]
-			{
-				Controller.dPadDown,
-				Controller.lStickDown
-			}
-		},
-		{
-			_lStickLeftRaw,
-			new StringName[2]
-			{
-				Controller.dPadLeft,
-				Controller.lStickLeft
-			}
-		},
-		{
-			_lStickRightRaw,
-			new StringName[2]
-			{
-				Controller.dPadRight,
-				Controller.lStickRight
-			}
+			Controller.joystickRight,
+			Controller.dPadEast
 		}
 	};
 
 	private string? _currentControllerType;
 
 	private ControllerConfig? _controllerConfig;
+
+	private readonly InputEventAction _reusableEvent = new InputEventAction();
 
 	public ControllerConfig? ControllerConfig
 	{
@@ -139,33 +76,19 @@ public class GodotControllerInputStrategy : IControllerInputStrategy
 				UpdateControllerConfig();
 			}
 		}
-		foreach (KeyValuePair<StringName, StringName[]> item in _analogToDigitalInput)
+		foreach (KeyValuePair<StringName, StringName> item in _megaInputMap)
 		{
 			if (Input.IsActionJustPressed(item.Key))
 			{
-				StringName[] value = item.Value;
-				foreach (StringName action2 in value)
-				{
-					InputEventAction inputEventAction = new InputEventAction
-					{
-						Action = action2,
-						Pressed = true
-					};
-					Input.ParseInputEvent(inputEventAction);
-				}
+				_reusableEvent.Action = item.Value;
+				_reusableEvent.Pressed = true;
+				Input.ParseInputEvent(_reusableEvent);
 			}
 			else if (Input.IsActionJustReleased(item.Key))
 			{
-				StringName[] value2 = item.Value;
-				foreach (StringName action3 in value2)
-				{
-					InputEventAction inputEventAction2 = new InputEventAction
-					{
-						Action = action3,
-						Pressed = false
-					};
-					Input.ParseInputEvent(inputEventAction2);
-				}
+				_reusableEvent.Action = item.Value;
+				_reusableEvent.Pressed = false;
+				Input.ParseInputEvent(_reusableEvent);
 			}
 		}
 	}
@@ -225,10 +148,5 @@ public class GodotControllerInputStrategy : IControllerInputStrategy
 			return "NONE";
 		}
 		return Input.GetJoyName(0);
-	}
-
-	public Vector2 GetLeftAnalogStickDirection()
-	{
-		return Input.GetVector(_lStickLeftRaw, _lStickRightRaw, _lStickUpRaw, _lStickDownRaw);
 	}
 }

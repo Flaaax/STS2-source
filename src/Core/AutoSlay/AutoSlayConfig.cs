@@ -28,14 +28,6 @@ public static class AutoSlayConfig
 	/// <summary>Timeout for waiting for map screen.</summary>
 	public static readonly TimeSpan mapScreenTimeout = TimeSpan.FromSeconds(10L);
 
-	/// <summary>
-	/// Timeout for a map point to become travelable. On a post-boss act transition the new act's
-	/// map opens via a fire-and-forget act change, so travel can be enabled several seconds after
-	/// the run state reports the act switch. Sized to match <see cref="F:MegaCrit.Sts2.Core.AutoSlay.AutoSlayConfig.watchdogTimeout" /> so the
-	/// watchdog stays the single hard backstop for genuine hangs.
-	/// </summary>
-	public static readonly TimeSpan mapPointEnabledTimeout = TimeSpan.FromSeconds(30L);
-
 	/// <summary>Polling interval for condition checks.</summary>
 	public static readonly TimeSpan pollingInterval = TimeSpan.FromMilliseconds(100L, 0L);
 

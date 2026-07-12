@@ -1,10 +1,8 @@
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Models.Encounters;
 using MegaCrit.Sts2.Core.Models.Monsters;
 using MegaCrit.Sts2.Core.Nodes.Audio;
@@ -22,29 +20,17 @@ public sealed class InfestedPower : PowerModel
 	{
 		if (!wasRemovalPrevented && base.Owner == target)
 		{
-			List<Creature> wrigglers = new List<Creature>();
+			await Cmd.CustomScaledWait(deathAnimLength, deathAnimLength);
+			if (TestMode.IsOff)
+			{
+				NRunMusicController.Instance.TriggerEliteSecondPhase();
+			}
 			for (int i = 0; i < 4; i++)
 			{
 				Wriggler wriggler = (Wriggler)ModelDb.Monster<Wriggler>().ToMutable();
 				wriggler.StartStunned = true;
-				Creature creature = await CreatureCmd.Add(wriggler, base.CombatState, base.Owner.Side, PhrogParasiteElite.GetWrigglerSlotName(i));
-				creature.SetNodeVisible(visible: false);
-				wrigglers.Add(creature);
+				await CreatureCmd.Add(wriggler, base.CombatState, base.Owner.Side, PhrogParasiteElite.GetWrigglerSlotName(i));
 			}
-			TaskHelper.RunSafely(RevealWrigglersAfterDeathAnim(wrigglers, deathAnimLength));
-		}
-	}
-
-	private static async Task RevealWrigglersAfterDeathAnim(List<Creature> wrigglers, float deathAnimLength)
-	{
-		await Cmd.CustomScaledWait(deathAnimLength, deathAnimLength);
-		if (TestMode.IsOff)
-		{
-			NRunMusicController.Instance.TriggerEliteSecondPhase();
-		}
-		foreach (Creature wriggler in wrigglers)
-		{
-			wriggler.SetNodeVisible(visible: true);
 		}
 	}
 

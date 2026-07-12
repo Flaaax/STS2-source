@@ -189,12 +189,15 @@ public partial class NControllerCardPlay : NCardPlay
 			NCombatRoom.Instance.EnableControllerNavigation();
 			TryPlayCard(null);
 		}));
-		Connect(SignalName.Canceled, Callable.From(base.CancelPlayCard));
+		Connect(SignalName.Canceled, Callable.From(delegate
+		{
+			NCombatRoom.Instance.EnableControllerNavigation();
+			CancelPlayCard();
+		}));
 	}
 
 	protected override void OnCancelPlayCard()
 	{
-		NCombatRoom.Instance.EnableControllerNavigation();
 		base.Holder.TryGrabFocus();
 	}
 

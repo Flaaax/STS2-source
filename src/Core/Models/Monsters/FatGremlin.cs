@@ -8,7 +8,6 @@ using MegaCrit.Sts2.Core.Entities.Ascension;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Localization;
-using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.MonsterMoves.Intents;
 using MegaCrit.Sts2.Core.MonsterMoves.MonsterMoveStateMachine;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
@@ -78,15 +77,14 @@ public sealed class FatGremlin : MonsterModel
 
 	public override CreatureAnimator GenerateAnimator(MegaSprite controller)
 	{
-		string text = ((base.Creature.HasPower<HeistPower>() || !base.CombatState.IsLiveCombat()) ? string.Empty : "_no_bag/");
-		AnimState animState = new AnimState(text + "awake_loop", isLooping: true);
-		AnimState animState2 = new AnimState(text + "spawn");
-		AnimState state = new AnimState(text + "flee");
-		AnimState nextState = new AnimState(text + "stunned_loop", isLooping: true);
-		AnimState animState3 = new AnimState(text + "wake_up");
-		AnimState animState4 = new AnimState(text + "hurt_stunned");
-		AnimState animState5 = new AnimState(text + "hurt_awake");
-		AnimState state2 = new AnimState(text + "die");
+		AnimState animState = new AnimState("awake_loop", isLooping: true);
+		AnimState animState2 = new AnimState("spawn");
+		AnimState state = new AnimState("flee");
+		AnimState nextState = new AnimState("stunned_loop", isLooping: true);
+		AnimState animState3 = new AnimState("wake_up");
+		AnimState animState4 = new AnimState("hurt_stunned");
+		AnimState animState5 = new AnimState("hurt_awake");
+		AnimState state2 = new AnimState("die");
 		animState2.NextState = nextState;
 		animState4.NextState = nextState;
 		animState5.NextState = animState;

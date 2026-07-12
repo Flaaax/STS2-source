@@ -380,7 +380,6 @@
   "VAKUU.epithet": "El primer demonio",
   "VAKUU.loss": "{character} no leyó la letra pequeña del contrato de [gold]Vakuu[/gold].",
   "VAKUU.talk.ANY.0-0r.ancient": "Así que buscas la gloria en la Torre, ¿eh? Tengo algo que proponerte...",
-  "VAKUU.talk.ANY.1-0r.ancient": "{Visits}. Has estado aquí {Visits} {Visits:plural:vez|veces}.",
   "VAKUU.talk.ANY.2-0r.ancient": "¿Te das cuenta de que esto [sine]nunca[/sine] acaba?",
   "VAKUU.talk.DEFECT.0-0.ancient": "Oh, quebrantado, deja que te [sine]ponga a punto[/sine].",
   "VAKUU.talk.DEFECT.1-0r.ancient": "¿No te resulta extraño que tus compañeros constructos quieran matarte?",

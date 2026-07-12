@@ -7,13 +7,8 @@
   "ACTION_NAME.revive": "Reanimación",
   "ACTION_NAME.stun": "Aturdimiento",
   "DESCRIPTION.placeholder": "Aún falta revelar la información de este monstruo…",
-  "EVENTS.title": "Eventos",
   "LOCKED.monsterName": "[lb]Sin desbloquear[rb]",
   "LOCKED.monsterTitle": "Sin desbloquear",
-  "MODE.viewActions": "Ver acciones",
-  "MODE.viewStats": "Ver estadísticas",
-  "QUOTE_PLACEHOLDER": "[red][i](El diálogo de este personaje aún no está escrito).[/i][/red]",
-  "STATS.layout": "Encuentros: [blue]{total}[/blue]\nAsesinatos: [green]{kills}[/green]\nMuertes: [red]{deaths}[/red]\nPorcentaje de victorias: [gold]{winrate} %[/gold]",
   "UNDER_CONSTRUCTION": "En construcción",
   "UNSEEN.monsterName": "[lb]Sin datos[rb]"
 }

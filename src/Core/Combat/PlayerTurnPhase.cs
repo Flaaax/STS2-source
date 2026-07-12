@@ -52,10 +52,10 @@ public enum PlayerTurnPhase
 	/// playing until combat switches over to the enemy's turn.
 	///
 	/// This encompasses many things, including:
-	/// - <see cref="M:MegaCrit.Sts2.Core.Hooks.Hook.BeforeSideTurnEnd(MegaCrit.Sts2.Core.Combat.ICombatState,MegaCrit.Sts2.Core.Combat.CombatSide,System.Collections.Generic.IEnumerable{MegaCrit.Sts2.Core.Entities.Creatures.Creature})" />
+	/// - <see cref="M:MegaCrit.Sts2.Core.Hooks.Hook.BeforeTurnEnd(MegaCrit.Sts2.Core.Combat.ICombatState,MegaCrit.Sts2.Core.Combat.CombatSide,System.Collections.Generic.IEnumerable{MegaCrit.Sts2.Core.Entities.Creatures.Creature})" />
 	/// - End-of-turn orb passive triggers
 	/// - Hand flush
-	/// - <see cref="M:MegaCrit.Sts2.Core.Hooks.Hook.AfterSideTurnEnd(MegaCrit.Sts2.Core.Combat.ICombatState,MegaCrit.Sts2.Core.Combat.CombatSide,System.Collections.Generic.IEnumerable{MegaCrit.Sts2.Core.Entities.Creatures.Creature})" />
+	/// - <see cref="M:MegaCrit.Sts2.Core.Hooks.Hook.AfterTurnEnd(MegaCrit.Sts2.Core.Combat.ICombatState,MegaCrit.Sts2.Core.Combat.CombatSide,System.Collections.Generic.IEnumerable{MegaCrit.Sts2.Core.Entities.Creatures.Creature})" />
 	/// </summary>
 	End
 }

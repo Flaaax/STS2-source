@@ -450,7 +450,7 @@ public static class CardCmd
 			replacement2.AfterTransformedTo();
 			results.Add(result);
 		}
-		List<Task> vfxTasks = new List<Task>();
+		float num = 0f;
 		for (int j = 0; j < results.Count; j++)
 		{
 			CardModel original2 = transformationsWithOriginalData[j].Item1.Original;
@@ -478,8 +478,8 @@ public static class CardCmd
 					NCardTransformShineVfx nCardTransformShineVfx = NCardTransformShineVfx.Create(nCard, cardAdded2, Array.Empty<RelicModel>());
 					if (nCardTransformShineVfx != null)
 					{
-						vfxTasks.Add(nCardTransformShineVfx.PlayAnimationWithoutWaitingForEnd());
-						await Cmd.CustomScaledWait(0.1f, 0.25f);
+						num += nCardTransformShineVfx.GetEffectiveDuration(shortVersion: true);
+						TaskHelper.RunSafely(nCardTransformShineVfx.PlayAnimation(shortVersion: true));
 					}
 				}
 			}
@@ -495,15 +495,15 @@ public static class CardCmd
 				}))?.AddChildSafely(NCardTransformVfx.Create(original2, cardAdded2, results[j].modifyingModels?.OfType<RelicModel>()));
 			}
 		}
-		await Task.WhenAll(vfxTasks);
-		for (int j = 0; j < results.Count; j++)
+		await Cmd.Wait(num);
+		for (int k = 0; k < results.Count; k++)
 		{
-			CardPileAddResult cardPileAddResult = results[j];
+			CardPileAddResult cardPileAddResult = results[k];
 			if (cardPileAddResult.success && cardPileAddResult.cardAdded.Pile.Type.IsCombatPile())
 			{
 				await Hook.AfterCardGeneratedForCombat(cardPileAddResult.cardAdded.CombatState, cardPileAddResult.cardAdded, cardPileAddResult.cardAdded.Owner);
 			}
-			transformationsWithOriginalData[j].Item1.Original.RemoveFromState();
+			transformationsWithOriginalData[k].Item1.Original.RemoveFromState();
 		}
 		return results;
 	}
@@ -840,10 +840,10 @@ public static class CardCmd
 			if (nCardFlyVfx != null && node2 != null)
 			{
 				node2.AddChildSafely(nCardFlyVfx);
-				TaskHelper.RunSafely(nCardFlyVfx.SwooshAwayCompletion.Task.ContinueWith(delegate
+				nCardFlyVfx.SwooshAwayCompletion.Task.ContinueWith(delegate
 				{
 					source.SetResult();
-				}));
+				});
 			}
 			else
 			{

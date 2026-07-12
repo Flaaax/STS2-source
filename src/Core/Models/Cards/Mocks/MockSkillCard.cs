@@ -158,7 +158,7 @@ public sealed class MockSkillCard : MockCardModel
 	{
 		if (_mockSelfHpLoss > 0)
 		{
-			await CreatureCmd.Damage(choiceContext, base.Owner.Creature, _mockSelfHpLoss, ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, this, cardPlay);
+			await CreatureCmd.Damage(choiceContext, base.Owner.Creature, _mockSelfHpLoss, ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, this);
 		}
 		for (int i = 0; i < _blockCount; i++)
 		{

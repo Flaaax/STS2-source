@@ -5,32 +5,30 @@ using System.Linq;
 using System.Reflection;
 using Godot;
 using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Multiplayer.Serialization;
 
 namespace MegaCrit.Sts2.Core.Saves.Runs;
 
 public static class SavedPropertiesTypeCache
 {
-	private static readonly Dictionary<Type, List<PropertyInfo>> _cache = new Dictionary<Type, List<PropertyInfo>>();
+	private static readonly Dictionary<Type, List<PropertyInfo>> _cache;
 
 	/// For serializing over the network, to save space, we map the string names statically to integers
-	private static readonly Dictionary<string, int> _propertyNameToNetIdMap = new Dictionary<string, int>();
+	private static readonly Dictionary<string, int> _propertyNameToNetIdMap;
 
-	private static readonly List<string> _netIdToPropertyNameMap = new List<string>();
-
-	private static bool _initialized;
+	private static readonly List<string> _netIdToPropertyNameMap;
 
 	public static int NetIdBitSize { get; private set; }
 
-	public static void Init()
+	static SavedPropertiesTypeCache()
 	{
-		List<ContentSorter<ModelId>.Item> list = ContentSorter<ModelId>.Sort(ModelDb.All.Select((AbstractModel m) => m.GetType()), ModelDb.GetId);
-		foreach (ContentSorter<ModelId>.Item item in list)
+		_cache = new Dictionary<Type, List<PropertyInfo>>();
+		_propertyNameToNetIdMap = new Dictionary<string, int>();
+		_netIdToPropertyNameMap = new List<string>();
+		for (int i = 0; i < AbstractModelSubtypes.Count; i++)
 		{
-			CachePropertiesForType(item.type);
+			CachePropertiesForType(AbstractModelSubtypes.Get(i));
 		}
 		NetIdBitSize = Mathf.CeilToInt(Math.Log2(_netIdToPropertyNameMap.Count));
-		_initialized = true;
 	}
 
 	private static void CachePropertiesForType([DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicProperties | DynamicallyAccessedMemberTypes.NonPublicProperties)] Type type)
@@ -66,10 +64,6 @@ public static class SavedPropertiesTypeCache
 
 	public static int GetNetIdForPropertyName(string propertyName)
 	{
-		if (!_initialized)
-		{
-			throw new InvalidOperationException("SavedPropertiesTypeCache used before it was initialized!");
-		}
 		if (!_propertyNameToNetIdMap.TryGetValue(propertyName, out var value))
 		{
 			throw new ArgumentException("SavedProperty name " + propertyName + " could not be mapped to any net ID!");
@@ -79,10 +73,6 @@ public static class SavedPropertiesTypeCache
 
 	public static string GetPropertyNameForNetId(int netId)
 	{
-		if (!_initialized)
-		{
-			throw new InvalidOperationException("SavedPropertiesTypeCache used before it was initialized!");
-		}
 		if (netId < 0 || netId >= _netIdToPropertyNameMap.Count)
 		{
 			throw new ArgumentOutOfRangeException($"SavedProperty net ID {netId} is out of range! We have {_netIdToPropertyNameMap.Count} property names");
@@ -92,10 +82,6 @@ public static class SavedPropertiesTypeCache
 
 	public static List<PropertyInfo>? GetJsonPropertiesForType(Type t)
 	{
-		if (!_initialized)
-		{
-			throw new InvalidOperationException("SavedPropertiesTypeCache used before it was initialized!");
-		}
 		if (_cache.TryGetValue(t, out List<PropertyInfo> value))
 		{
 			return value;

@@ -41,27 +41,36 @@ placeholder_text = "1000"
 
 [node name="HostButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 354.0
+offset_left = 298.0
 offset_top = 772.0
-offset_right = 429.0
+offset_right = 373.0
 offset_bottom = 815.0
 theme_override_fonts/font = ExtResource("3_jbxpj")
 text = "Host"
 
 [node name="JoinButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 458.0
+offset_left = 402.0
 offset_top = 771.0
-offset_right = 545.0
+offset_right = 489.0
 offset_bottom = 814.0
 theme_override_fonts/font = ExtResource("3_jbxpj")
 text = "Join"
 
+[node name="SteamHostButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 515.0
+offset_top = 771.0
+offset_right = 606.0
+offset_bottom = 814.0
+theme_override_fonts/font = ExtResource("3_jbxpj")
+text = "SteamHost"
+
 [node name="ReadyButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 354.0
+offset_left = 298.0
 offset_top = 842.0
-offset_right = 548.0
+offset_right = 608.0
 offset_bottom = 885.0
 theme_override_fonts/font = ExtResource("3_jbxpj")
 text = "Ready"
@@ -80,21 +89,12 @@ stretch_mode = 5
 
 [node name="ReplayButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 304.0
+offset_left = 337.0
 offset_top = 950.0
-offset_right = 436.0
+offset_right = 572.0
 offset_bottom = 993.0
 theme_override_fonts/font = ExtResource("3_jbxpj")
 text = "Load Replay"
-
-[node name="SaveReplayButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 478.0
-offset_top = 950.0
-offset_right = 618.0
-offset_bottom = 993.0
-theme_override_fonts/font = ExtResource("3_jbxpj")
-text = "Save From Replay"
 
 [node name="DeleteCloudSavesButton" type="Button" parent="."]
 layout_mode = 0

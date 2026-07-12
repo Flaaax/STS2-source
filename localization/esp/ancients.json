@@ -380,7 +380,7 @@
   "VAKUU.epithet": "Demonio primigenio",
   "VAKUU.loss": "{character} hizo un mal trato con [gold]Vakuu[/gold].",
   "VAKUU.talk.ANY.0-0r.ancient": "¿Acaso buscas la gloria dentro de la Torre? Tengo algunas cosas que proponerte...",
-  "VAKUU.talk.ANY.1-0r.ancient": "{Visits}. Ya estuviste aquí {Visits} {Visits:plural:vez|veces}.",
+  "VAKUU.talk.ANY.1-0r.ancient": "{Visits}. Ya has estado aquí {Visits} {Visits:plural:vez|veces}",
   "VAKUU.talk.ANY.2-0r.ancient": "¿Te das cuenta de que esto [sine]nunca[/sine] termina?",
   "VAKUU.talk.DEFECT.0-0.ancient": "Deja que [sine]perfeccione[/sine] tu ser, Defectuoso.",
   "VAKUU.talk.DEFECT.1-0r.ancient": "¿No te parece extraño que tus camaradas constructos quieran matarte?",

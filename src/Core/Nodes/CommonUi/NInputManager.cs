@@ -312,31 +312,18 @@ public partial class NInputManager : Node
 		}
 		if (settingsSave.ControllerMapping.Count > 0 && settingsSave.ControllerMappingType == ControllerManager.ControllerMappingType)
 		{
-			_controllerInputMap = MergeSavedControllerBindings(ControllerManager.GetDefaultControllerInputMap, settingsSave.ControllerMapping);
-			return;
+			Dictionary<StringName, StringName> getDefaultControllerInputMap = ControllerManager.GetDefaultControllerInputMap;
+			_controllerInputMap = new Dictionary<StringName, StringName>(getDefaultControllerInputMap);
+			{
+				foreach (KeyValuePair<string, string> item2 in settingsSave.ControllerMapping)
+				{
+					_controllerInputMap[item2.Key] = item2.Value;
+				}
+				return;
+			}
 		}
 		_controllerInputMap = ControllerManager.GetDefaultControllerInputMap;
 		SaveControllerInputMapping();
-	}
-
-	/// <summary>
-	/// Overlays a saved controller mapping onto the defaults, ignoring any saved binding whose
-	/// value is not a registered InputMap action. A binding can point at a missing action when a
-	/// save was migrated forward by a newer build and then loaded by an older one, or when a save
-	/// was hand-edited. Applying it would make <see cref="M:MegaCrit.Sts2.Core.Nodes.CommonUi.NInputManager._UnhandledInput(Godot.InputEvent)" /> call
-	/// <c>IsActionPressed</c> on a nonexistent action and spam errors, so the default is kept.
-	/// </summary>
-	public static Dictionary<StringName, StringName> MergeSavedControllerBindings(Dictionary<StringName, StringName> defaults, Dictionary<string, string> savedMapping)
-	{
-		Dictionary<StringName, StringName> dictionary = new Dictionary<StringName, StringName>(defaults);
-		foreach (KeyValuePair<string, string> item in savedMapping)
-		{
-			if (InputMap.HasAction(item.Value))
-			{
-				dictionary[item.Key] = item.Value;
-			}
-		}
-		return dictionary;
 	}
 
 	public override void _UnhandledKeyInput(InputEvent inputEvent)
@@ -347,12 +334,7 @@ public partial class NInputManager : Node
 
 	private void ProcessDebugKeyInput(InputEvent inputEvent)
 	{
-		if (!(inputEvent is InputEventKey inputEventKey) || PlatformUtil.IsPlatformOverlayOpen() || !DisplayServer.WindowIsFocused())
-		{
-			return;
-		}
-		NDevConsole instance = NDevConsole.Instance;
-		if ((instance != null && instance.Visible) || !NGame.IsTrailerMode)
+		if (!(inputEvent is InputEventKey inputEventKey) || PlatformUtil.IsPlatformOverlayOpen() || !DisplayServer.WindowIsFocused() || NDevConsole.Instance.Visible || !NGame.IsTrailerMode)
 		{
 			return;
 		}

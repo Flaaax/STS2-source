@@ -5,10 +5,9 @@ namespace MegaCrit.Sts2.Core.Nodes.Vfx;
 
 public partial class NBezierTrail : Line2D
 {
-	[Export(PropertyHint.None, "")]
-	private float _pointDuration = 0.5f;
-
 	private Node2D _target;
+
+	private float _pointDuration = 0.5f;
 
 	private readonly List<float> _pointAge = new List<float>();
 

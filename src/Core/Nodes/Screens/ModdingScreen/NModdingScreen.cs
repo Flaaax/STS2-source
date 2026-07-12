@@ -20,13 +20,11 @@ public partial class NModdingScreen : NSubmenu
 
 	private NModInfoContainer _modInfoContainer;
 
-	private NScrollableContainer _scrollableContainer;
-
 	private Control _modRowContainer;
 
 	private Control _pendingChangesWarning;
 
-	protected override Control? InitialFocusedControl => _modRowContainer.GetChildren().OfType<NModMenuRow>().FirstOrDefault();
+	protected override Control? InitialFocusedControl => null;
 
 	public static string[] AssetPaths => new string[1] { _scenePath };
 
@@ -42,8 +40,7 @@ public partial class NModdingScreen : NSubmenu
 	public override void _Ready()
 	{
 		_modInfoContainer = GetNode<NModInfoContainer>("%ModInfoContainer");
-		_scrollableContainer = GetNode<NScrollableContainer>("%ModsScrollContainer");
-		_modRowContainer = _scrollableContainer.GetNode<Control>("Mask/Content");
+		_modRowContainer = GetNode<Control>("%ModsScrollContainer/Mask/Content");
 		_pendingChangesWarning = GetNode<Control>("%PendingChangesLabel");
 		NButton node = GetNode<NButton>("%GetModsButton");
 		NButton node2 = GetNode<NButton>("%MakeModsButton");
@@ -61,6 +58,8 @@ public partial class NModdingScreen : NSubmenu
 		node2.GetNode<MegaLabel>("Visuals/Label").SetTextAutoSize(new LocString("settings_ui", "MODDING_SCREEN.MAKE_MODS_BUTTON").GetFormattedText());
 		GetNode<MegaRichTextLabel>("%InstalledModsTitle").SetTextAutoSize(new LocString("settings_ui", "MODDING_SCREEN.INSTALLED_MODS_TITLE").GetFormattedText());
 		GetNode<MegaRichTextLabel>("%PendingChangesLabel").SetTextAutoSize(new LocString("settings_ui", "MODDING_SCREEN.PENDING_CHANGES_WARNING").GetFormattedText());
+		node2.Visible = false;
+		node.Visible = false;
 		_pendingChangesWarning.Visible = false;
 		ModManager.OnModDetected += OnNewModDetected;
 		ConnectSignals();
@@ -74,16 +73,6 @@ public partial class NModdingScreen : NSubmenu
 		}
 	}
 
-	public override void OnSubmenuClosed()
-	{
-		base.OnSubmenuClosed();
-		foreach (NModMenuRow item in _modRowContainer.GetChildren().OfType<NModMenuRow>())
-		{
-			item.SetSelected(isSelected: false);
-		}
-		_modInfoContainer.Clear();
-	}
-
 	private void OnGetModsPressed(NButton _)
 	{
 		PlatformUtil.OpenUrl("https://steamcommunity.com/app/2868840/workshop/");
@@ -91,7 +80,7 @@ public partial class NModdingScreen : NSubmenu
 
 	private void OnMakeModsPressed(NButton _)
 	{
-		PlatformUtil.OpenUrl("https://github.com/Alchyr/ModTemplate-StS2");
+		PlatformUtil.OpenUrl("https://gitlab.com/megacrit/sts2/example-mod/-/wikis/home");
 	}
 
 	public void OnRowSelected(NModMenuRow row)
@@ -115,7 +104,6 @@ public partial class NModdingScreen : NSubmenu
 		NModMenuRow child = NModMenuRow.Create(this, mod);
 		_modRowContainer.AddChildSafely(child);
 		OnModEnabledOrDisabled();
-		_scrollableContainer.DisableScrollingIfContentFits();
 	}
 
 	public void OnModEnabledOrDisabled()

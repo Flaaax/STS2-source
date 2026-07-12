@@ -346,6 +346,17 @@ explosiveness = 0.98
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_0okix")
 
+[node name="HandsContainer" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("8_i6sm7")
+
 [node name="FightBackstop" type="ColorRect" parent="."]
 unique_name_in_owner = true
 visible = false
@@ -375,17 +386,6 @@ theme_override_fonts/font = ExtResource("9_y0lmc")
 theme_override_font_sizes/font_size = 77
 text = "FIGHT!!!"
 script = ExtResource("10_y7qma")
-
-[node name="HandsContainer" type="Control" parent="."]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-script = ExtResource("8_i6sm7")
 
 [node name="ControllerIcon" type="TextureRect" parent="."]
 unique_name_in_owner = true

@@ -26,13 +26,6 @@ public partial class NModInfoContainer : Control
 		_description.Text = "";
 	}
 
-	public void Clear()
-	{
-		_image.Texture = null;
-		_title.Text = "";
-		_description.Text = "";
-	}
-
 	public void Fill(Mod mod)
 	{
 		_title.Text = mod.manifest?.name ?? "<No Name>";

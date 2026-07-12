@@ -7,13 +7,8 @@
   "ACTION_NAME.revive": "Odrodzenie",
   "ACTION_NAME.stun": "Ogłuszenie",
   "DESCRIPTION.placeholder": "Jeszcze nie odkryto informacji o tym potworze...",
-  "EVENTS.title": "Wydarzenia",
   "LOCKED.monsterName": "[lb]Locked[rb]",
   "LOCKED.monsterTitle": "Zablokowane",
-  "MODE.viewActions": "Wyświetl akcje",
-  "MODE.viewStats": "Wyświetl statystyki",
-  "QUOTE_PLACEHOLDER": "[red][i](Dialog postaci nie został jeszcze napisany)[/i][/red]",
-  "STATS.layout": "Walki: [blue]{total}[/blue]\nZwycięstwa: [green]{kills}[/green]\nPorażki: [red]{deaths}[/red]\nWspółczynnik zwycięstw: [gold]{winrate}%[/gold]",
   "UNDER_CONSTRUCTION": "W trakcie tworzenia",
   "UNSEEN.monsterName": "[lb]Unknown[rb]"
 }

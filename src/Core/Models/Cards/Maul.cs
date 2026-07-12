@@ -45,7 +45,7 @@ public sealed class Maul : CardModel
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
 	{
 		ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
-		await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).WithHitCount(2).FromCard(this, cardPlay)
+		await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).WithHitCount(2).FromCard(this)
 			.Targeting(cardPlay.Target)
 			.WithHitVfxNode((Creature t) => NScratchVfx.Create(t, goingRight: true))
 			.Execute(choiceContext);

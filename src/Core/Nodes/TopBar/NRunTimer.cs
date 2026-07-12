@@ -28,11 +28,7 @@ public partial class NRunTimer : Control
 		_timer = new Timer();
 		_timer.WaitTime = 1.0;
 		_timer.Autostart = false;
-		_timer.Connect(Timer.SignalName.Timeout, Callable.From(delegate
-		{
-			RefreshVisibility();
-			OnTimerTimeout();
-		}));
+		_timer.Connect(Timer.SignalName.Timeout, Callable.From(OnTimerTimeout));
 		this.AddChildSafely(_timer);
 		_timer.Start();
 	}

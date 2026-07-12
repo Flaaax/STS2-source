@@ -85,7 +85,7 @@ public static class AssetSets
 		list2.AddRange(NTransition.AssetPaths);
 		list2.AddRange(NLogoAnimation.AssetPaths);
 		IntroLogoAssets = new HashSet<string>(new _003C_003Ez__ReadOnlyList<string>(list2));
-		CommonAssets = new HashSet<string>(new IEnumerable<string>[99]
+		CommonAssets = new HashSet<string>(new IEnumerable<string>[100]
 		{
 			NActBanner.AssetPaths,
 			NActHistoryEntry.AssetPaths,
@@ -148,6 +148,7 @@ public static class AssetSets
 			NBlockSparkVfx.AssetPaths,
 			NCardBundle.AssetPaths,
 			NHorizontalLinesVfx.AssetPaths,
+			NExhaustVfx.AssetPaths,
 			NCardFlyPowerVfx.AssetPaths,
 			NCardFlyShuffleVfx.AssetPaths,
 			NCardFlyVfx.AssetPaths,

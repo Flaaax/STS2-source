@@ -9,7 +9,6 @@ using MegaCrit.Sts2.Core.Debug;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Multiplayer.Game;
 using MegaCrit.Sts2.Core.Nodes;
 using MegaCrit.Sts2.Core.Platform.Steam;
 using MegaCrit.Sts2.Core.Rooms;
@@ -315,20 +314,8 @@ public class SaveManager : IProfileIdProvider
 	/// <summary>
 	/// Increments and saves the NumReloads field of a save file.
 	/// </summary>
-	public async Task IncrementNumReloads(SerializableRun save, NetGameType type, bool forceInTest = false)
+	public async Task IncrementNumReloads(SerializableRun save, bool isMultiplayer)
 	{
-		save.NumReloads++;
-		bool flag = forceInTest || TestMode.IsOff;
-		bool flag2 = flag;
-		if (flag2)
-		{
-			bool flag3 = (uint)(type - 1) <= 1u;
-			flag2 = flag3;
-		}
-		if (!flag2)
-		{
-			return;
-		}
 		if (CurrentRunSaveTask != null)
 		{
 			await CurrentRunSaveTask;
@@ -338,7 +325,8 @@ public class SaveManager : IProfileIdProvider
 			_ = 1;
 			try
 			{
-				CurrentRunSaveTask = _runSaveManager.SaveRun(save, type.IsMultiplayer());
+				save.NumReloads++;
+				CurrentRunSaveTask = _runSaveManager.SaveRun(save, isMultiplayer);
 				await CurrentRunSaveTask;
 			}
 			finally
@@ -543,7 +531,7 @@ public class SaveManager : IProfileIdProvider
 
 	private IEnumerable<Task> EnumerateCloudSyncTasks(CloudSaveStore cloudStore)
 	{
-		yield return cloudStore.SyncCloudToLocal(ProfileSaveManager.GetProfileSavePath());
+		yield return cloudStore.SyncCloudToLocal(ProfileSaveManager.ProfilePath);
 		for (int i = 1; i <= 3; i++)
 		{
 			yield return cloudStore.SyncCloudToLocal(ProgressSaveManager.GetProgressPathForProfile(i));
@@ -693,7 +681,7 @@ public class SaveManager : IProfileIdProvider
 		{
 			return true;
 		}
-		if (!_saveStore.FileExists(ProfileSaveManager.GetProfileSavePath()))
+		if (!_saveStore.FileExists(ProfileSaveManager.ProfilePath))
 		{
 			return false;
 		}
@@ -735,7 +723,7 @@ public class SaveManager : IProfileIdProvider
 
 	private IEnumerable<Task> EnumerateOverwriteCloudWithLocalTasks(CloudSaveStore cloudStore)
 	{
-		yield return cloudStore.OverwriteCloudWithLocal(ProfileSaveManager.GetProfileSavePath());
+		yield return cloudStore.OverwriteCloudWithLocal(ProfileSaveManager.ProfilePath);
 		for (int i = 1; i <= 3; i++)
 		{
 			yield return cloudStore.OverwriteCloudWithLocal(ProgressSaveManager.GetProgressPathForProfile(i));

@@ -48,7 +48,7 @@ public sealed class PhantomBladesPower : PowerModel
 		return Task.CompletedTask;
 	}
 
-	public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource, CardPlay? cardPlay)
+	public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
 	{
 		if (!props.IsPoweredAttack())
 		{

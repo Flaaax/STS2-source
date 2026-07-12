@@ -21,7 +21,7 @@ public sealed class AstralPulse : CardModel
 
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
 	{
-		await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this, cardPlay).TargetingAllOpponents(base.CombatState)
+		await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(base.CombatState)
 			.WithHitCount(2)
 			.WithHitFx("vfx/vfx_starry_impact")
 			.SpawningHitVfxOnEachCreature()

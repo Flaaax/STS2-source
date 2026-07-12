@@ -10,8 +10,6 @@ namespace MegaCrit.Sts2.Core.Models.Monsters.Mocks;
 
 public sealed class MockAttackMonster : MonsterModel
 {
-	public override bool IsMock => true;
-
 	protected override string VisualsPath => SceneHelper.GetScenePath("creature_visuals/defect");
 
 	public override int MinInitialHp => 9999;

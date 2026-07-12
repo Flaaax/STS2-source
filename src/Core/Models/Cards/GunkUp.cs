@@ -29,7 +29,7 @@ public sealed class GunkUp : CardModel
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
 	{
 		ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
-		await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).WithHitCount(base.DynamicVars.Repeat.IntValue).FromCard(this, cardPlay)
+		await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).WithHitCount(base.DynamicVars.Repeat.IntValue).FromCard(this)
 			.Targeting(cardPlay.Target)
 			.WithHitFx(null, null, "blunt_attack.mp3")
 			.WithHitVfxNode(NGoopyImpactVfx.Create)

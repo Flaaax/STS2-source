@@ -24,7 +24,7 @@ public sealed class RipAndTear : CardModel
 
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
 	{
-		await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).WithHitCount(2).FromCard(this, cardPlay)
+		await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).WithHitCount(2).FromCard(this)
 			.TargetingRandomOpponents(base.CombatState)
 			.WithHitVfxNode((Creature t) => NScratchVfx.Create(t, goingRight: true))
 			.Execute(choiceContext);

@@ -39,7 +39,7 @@ public sealed class CrushUnder : CardModel
 		{
 			NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(NSpikeSplashVfx.Create(item));
 		}
-		await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this, cardPlay).TargetingAllOpponents(base.CombatState)
+		await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(base.CombatState)
 			.WithHitFx("vfx/vfx_heavy_blunt", null, "blunt_attack.mp3")
 			.WithHitVfxSpawnedAtBase()
 			.Execute(choiceContext);

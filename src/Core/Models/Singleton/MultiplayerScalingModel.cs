@@ -60,9 +60,9 @@ public class MultiplayerScalingModel : SingletonModel
 			return 1m;
 		}
 		int count = _runState.Players.Count;
-		if (count <= 2)
+		if (count == 1)
 		{
-			return count;
+			return 1m;
 		}
 		return (decimal)count * GetMultiplayerScaling(_combatState.Encounter, _runState.CurrentActIndex);
 	}

@@ -6,9 +6,9 @@ namespace MegaCrit.Sts2.Core.Models.Encounters.Mocks;
 
 public sealed class MockAttackAndSummonEncounter : EncounterModel
 {
-	public override bool IsMock => true;
-
 	public override RoomType RoomType => RoomType.Monster;
+
+	public override bool IsDebugEncounter => true;
 
 	public override IEnumerable<MonsterModel> AllPossibleMonsters => new global::_003C_003Ez__ReadOnlySingleElementList<MonsterModel>(ModelDb.Monster<MockAttackAndSummonMinionMonster>());
 

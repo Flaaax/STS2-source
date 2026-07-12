@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text.Json;
-using Godot;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Context;
 using MegaCrit.Sts2.Core.Debug;
@@ -56,9 +56,9 @@ public class ProgressSaveManager
 		_profileIdProvider = profileIdProvider;
 	}
 
-	public static string GetProgressPathForProfile(int profileId, bool? forceModState = null)
+	public static string GetProgressPathForProfile(int profileId)
 	{
-		return UserDataPathProvider.GetProfileDir(profileId, forceModState).PathJoin(UserDataPathProvider.SavesDir).PathJoin("progress.save");
+		return Path.Combine(UserDataPathProvider.GetProfileDir(profileId), UserDataPathProvider.SavesDir, "progress.save");
 	}
 
 	public void SaveProgress()

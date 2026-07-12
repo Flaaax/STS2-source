@@ -10,7 +10,7 @@ namespace MegaCrit.Sts2.Core.Nodes.Screens.CardLibrary;
 
 /// <summary>
 /// The current pool the player is viewing in the Card Library.
-/// Unlike the other tickboxes, this one is a radio-button style.
+/// Unlike the other tickboxes, this one is a radio-buttion style.
 /// Clicking on a pool filter will deselect the others. If this filter
 /// is already active, then you can't click on it.
 /// </summary>

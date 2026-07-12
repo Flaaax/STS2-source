@@ -56,7 +56,19 @@ public partial class NInputSettingsPanel : NSettingsPanel
 			base.Content.AddChildSafely(entry);
 			list.Add(entry);
 		}
-		UpdateNavigation();
+		for (int num = 0; num < list.Count; num++)
+		{
+			list[num].FocusNeighborLeft = list[num].GetPath();
+			list[num].FocusNeighborRight = list[num].GetPath();
+			list[num].FocusNeighborTop = ((num > 0) ? list[num - 1].GetPath() : list[num].GetPath());
+			list[num].FocusNeighborBottom = ((num < list.Count - 1) ? list[num + 1].GetPath() : list[num].GetPath());
+		}
+		_resetToDefaultButton.FocusNeighborLeft = _resetToDefaultButton.GetPath();
+		_resetToDefaultButton.FocusNeighborRight = _resetToDefaultButton.GetPath();
+		_resetToDefaultButton.FocusNeighborTop = _resetToDefaultButton.GetPath();
+		_resetToDefaultButton.FocusNeighborBottom = list[0].GetPath();
+		list[0].FocusNeighborTop = _resetToDefaultButton.GetPath();
+		_firstControl = base.Content.GetChildren().OfType<NInputSettingsEntry>().First();
 	}
 
 	private async Task RefreshSize()
