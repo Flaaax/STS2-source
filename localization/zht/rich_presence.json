@@ -1,0 +1,8 @@
+{
+  "CUSTOM_MP_LOBBY": "自訂遊戲大廳",
+  "DAILY_MP_LOBBY": "每日挑戰大廳",
+  "IN_RUN": "{#%Character%_title}－{#%Act%_title} 晉階 %Ascension%",
+  "LOADING_MP_LOBBY": "存檔遊戲大廳",
+  "MAIN_MENU": "主選單",
+  "STANDARD_MP_LOBBY": "多人遊戲大廳"
+}

@@ -1,4 +1,6 @@
 {
+  "AMBERGRIS.description": "최대 체력의 [green]{HealPercent}%[/green]를 회복합니다. 전투 중에 사용했다면, 추가 턴을 진행합니다.",
+  "AMBERGRIS.title": "용연향",
   "ASHWATER.description": "[gold]손[/gold]에 있는 카드를 원하는 만큼 [gold]소멸[/gold]시킵니다.",
   "ASHWATER.selectionScreenPrompt": "[gold]소멸[/gold]시킬 카드를 원하는 만큼 선택하세요.",
   "ASHWATER.title": "잿물",

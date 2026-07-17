@@ -14,6 +14,11 @@ namespace MegaCrit.Sts2.Core.Models.Powers;
 
 public sealed class ImitationLearningPower : PowerModel
 {
+	private class Data
+	{
+		public readonly Dictionary<CardModel, CardModel> cardsAndClones = new Dictionary<CardModel, CardModel>();
+	}
+
 	private const string _targetPlayerKey = "TargetPlayer";
 
 	private Player? _playerTarget;
@@ -46,18 +51,37 @@ public sealed class ImitationLearningPower : PowerModel
 
 	protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new StringVar("TargetPlayer"));
 
-	public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+	protected override object InitInternalData()
+	{
+		return new Data();
+	}
+
+	public override Task BeforeCardPlayed(CardPlay cardPlay)
 	{
 		if (_playerTarget == null)
 		{
 			throw new InvalidOperationException("ImitationLearningPower applied without a player target!");
 		}
-		if (cardPlay.Card.Owner == _playerTarget && cardPlay.Card.Type == CardType.Power)
+		if (cardPlay.Card.Owner != _playerTarget)
+		{
+			return Task.CompletedTask;
+		}
+		if (cardPlay.Card.Type != CardType.Power)
+		{
+			return Task.CompletedTask;
+		}
+		CardModel value = cardPlay.Card.CreateCloneForPlayer(base.Owner.Player);
+		GetInternalData<Data>().cardsAndClones.Add(cardPlay.Card, value);
+		return Task.CompletedTask;
+	}
+
+	public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+	{
+		if (GetInternalData<Data>().cardsAndClones.TryGetValue(cardPlay.Card, out CardModel clone))
 		{
 			Flash();
-			CardModel card = cardPlay.Card.CreateCloneForPlayer(base.Owner.Player);
 			await PowerCmd.Decrement(this);
-			await CardCmd.AutoPlay(choiceContext, card, null);
+			await CardCmd.AutoPlay(choiceContext, clone, null);
 		}
 	}
 }

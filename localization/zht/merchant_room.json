@@ -1,0 +1,20 @@
+{
+  "MERCHANT.cardRemovalService.description": "從你的牌組中移除一張牌。本局中，此後這項服務的費用會提高 [blue]{Amount}[/blue] 枚金幣。",
+  "MERCHANT.cardRemovalService.title": "卡牌移除服務",
+  "MERCHANT.talk.foulPotion.line1": "沒錯，就是這味！",
+  "MERCHANT.talk.foulPotion.line2": "再來點！",
+  "MERCHANT.talk.foulPotion.line3": "啊——，真舒爽……",
+  "MERCHANT.talk.playerDead.line1": "PLACEHOLDER: 我可不和屍體做生意。",
+  "MERCHANT.talk.playerDead.line2": "PLACEHOLDER: 沒命，恕不服務。",
+  "MERCHANT.talk.purchaseFailureForbidden.line1": "看來你不能這麼做。",
+  "MERCHANT.talk.purchaseFailureForbidden.line2": "有什麼事嗎？",
+  "MERCHANT.talk.purchaseFailureGold.line1": "你需要更多金幣。",
+  "MERCHANT.talk.purchaseFailureGold.line2": "[sine]我可不是做慈善的。[/sine]",
+  "MERCHANT.talk.purchaseFailureGold.line3": "等你[jitter]更有錢[/jitter]的時候再來吧。",
+  "MERCHANT.talk.purchaseFailureGold.line4": "我不接受[jitter]賒帳[/jitter]。",
+  "MERCHANT.talk.purchaseFailureSpace.line1": "你可裝不下我強大的藥水啊！",
+  "MERCHANT.talk.purchaseFailureSpace.line2": "抱歉，看來你已經騰不出手了……",
+  "MERCHANT.talk.purchaseSuccess.line1": "支持在地商家。",
+  "MERCHANT.talk.purchaseSuccess.line2": "感謝惠顧。",
+  "MERCHANT.talk.purchaseSuccess.line3": "祝你使用愉快。"
+}

@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Godot;
 using MegaCrit.Sts2.Core.Combat;
+using MegaCrit.Sts2.Core.Extensions;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Nodes;
 using MegaCrit.Sts2.Core.Saves;
@@ -42,23 +43,9 @@ public static class Cmd
 		}
 	}
 
-	private static Task WaitInternal(SceneTreeTimer timer, CancellationToken cancellationToken)
+	private static async Task WaitInternal(SceneTreeTimer timer, CancellationToken cancellationToken)
 	{
-		TaskCompletionSource tcs = new TaskCompletionSource();
-		timer.Timeout += Receive;
-		if (cancellationToken.CanBeCanceled)
-		{
-			cancellationToken.Register(delegate
-			{
-				tcs.TrySetCanceled(cancellationToken);
-			});
-		}
-		return tcs.Task;
-		void Receive()
-		{
-			tcs.TrySetResult();
-			timer.Timeout -= Receive;
-		}
+		await timer.ToSignal(timer, SceneTreeTimer.SignalName.Timeout).ToTask().WaitAsync(cancellationToken);
 	}
 
 	/// <summary>

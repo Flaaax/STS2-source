@@ -8,7 +8,7 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.TestSupport;
 
-namespace MegaCrit.Sts2.Core.Nodes.Vfx;
+namespace MegaCrit.Sts2.Core.Nodes.Vfx.Ui;
 
 public partial class NPowerAppliedDebuffVfx : Node2D
 {
@@ -20,11 +20,6 @@ public partial class NPowerAppliedDebuffVfx : Node2D
 	private CancellationTokenSource? _cts;
 
 	public static IEnumerable<string> AssetPaths => new global::_003C_003Ez__ReadOnlySingleElementList<string>(scenePath);
-
-	public override void _ExitTree()
-	{
-		_cts?.Cancel();
-	}
 
 	public static NPowerAppliedDebuffVfx? Create(Vector2 globalPosition)
 	{
@@ -45,11 +40,16 @@ public partial class NPowerAppliedDebuffVfx : Node2D
 	private async Task PlaySequence()
 	{
 		_cts = new CancellationTokenSource();
-		for (int i = 0; i < _particles.Count; i++)
+		foreach (GpuParticles2D particle in _particles)
 		{
-			_particles[i].Restart();
+			particle.Restart();
 		}
 		await Cmd.Wait(2f, _cts.Token);
 		this.QueueFreeSafely();
+	}
+
+	public override void _ExitTree()
+	{
+		_cts?.Cancel();
 	}
 }

@@ -29,5 +29,5 @@ script = ExtResource("1_vyen0")
 _pathHeightOffsets = [SubResource("Curve_gr4tq"), SubResource("Curve_lmqav"), SubResource("Curve_ygmvl"), SubResource("Curve_msrtq")]
 _heightOffsetRange = Vector2(75, 200)
 _movementCurves = [SubResource("Curve_ddle5")]
-travelTimeRange = Vector2(0.125, 0.125)
+_travelTimeRange = Vector2(0.125, 0.125)
 _impactParticlesScenePath = "vfx/orbs/dark/vfx_dark_orb_evoke_projectile_impact"

@@ -1,4 +1,6 @@
 {
+  "AMBERGRIS.description": "最大HPの[green]{HealPercent}%[/green]を回復する。戦闘中に使用した場合、追加のターンを得る。",
+  "AMBERGRIS.title": "龍涎香",
   "ASHWATER.description": "[gold]手札[/gold]から任意の枚数のカードを[gold]廃棄[/gold]する。",
   "ASHWATER.selectionScreenPrompt": "[gold]廃棄[/gold]するカードを任意の枚数選ぶ。",
   "ASHWATER.title": "アッシュウォーター",

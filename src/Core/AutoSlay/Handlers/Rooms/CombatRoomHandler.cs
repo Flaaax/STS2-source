@@ -58,6 +58,10 @@ public class CombatRoomHandler : IRoomHandler, IHandler
 				break;
 			}
 			AutoSlayer.CurrentWatchdog?.Reset($"Combat turn {turnCount}");
+			if (turnCount >= 3)
+			{
+				await PowerCmd.Apply<StrengthPower>(new ThrowingPlayerChoiceContext(), playerCreature, 200m, playerCreature, null);
+			}
 			AutoSlayLog.Action($"Turn {turnCount}: playing cards");
 			await UseAllPotions(player, random, ct);
 			int cardsPlayed = 0;

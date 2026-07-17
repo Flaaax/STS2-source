@@ -9,7 +9,7 @@
   "CHANNELING.title": "Canalizar",
   "COMPENDIUM.description": "Exibe todas as cartas, poções e relíquias que você encontrou pelo Pináculo.",
   "COMPENDIUM.title": "Compêndio",
-  "COOK.description": "[gold]Remova[/gold] [blue]2[/blue] cartas do seu [gold]Baralho[/gold] e receba [green]9[/green] PV Máximos em um [gold]Local de Descanso[/gold].",
+  "COOK.description": "[gold]Remova[/gold] [blue]2[/blue] cartas do seu [gold]Baralho[/gold] e receba [green]5[/green] PV Máximos em um [gold]Local de Descanso[/gold].",
   "COOK.title": "Cozinhar",
   "DECK.description": "Exibe todas as cartas no seu baralho.",
   "DECK.title": "Baralho {Hotkey:choose(None):| ({})}",

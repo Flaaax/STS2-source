@@ -29,7 +29,7 @@ public sealed class JugglingPower : PowerModel
 
 	public override Task AfterApplied(Creature? applier, CardModel? cardSource)
 	{
-		GetInternalData<Data>().attacksPlayedThisTurn = CombatManager.Instance.History.CardPlaysStarted.Count((CardPlayStartedEntry e) => e.CardPlay.Card.Type == CardType.Attack && e.CardPlay.Card.Owner.Creature == base.Owner && e.HappenedThisTurn(base.CombatState));
+		GetInternalData<Data>().attacksPlayedThisTurn = CombatManager.Instance.History.CardPlaysStarted.Count((CardPlayStartedEntry e) => e.CardPlay.Card.Type == CardType.Attack && e.CardPlay.Player == base.Owner.Player && e.HappenedThisTurn(base.CombatState));
 		return Task.CompletedTask;
 	}
 

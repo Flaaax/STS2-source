@@ -1,4 +1,4 @@
-[gd_resource type="SpineSkeletonDataResource" load_steps=8 format=3 uid="uid://d3eeu1pwiwg3m"]
+[gd_resource type="SpineSkeletonDataResource" load_steps=10 format=3 uid="uid://d3eeu1pwiwg3m"]
 
 [ext_resource type="SpineAtlasResource" uid="uid://bbs52gnsvabjd" path="res://animations/monsters/fabricator/fabricator.atlas" id="1_3xoye"]
 [ext_resource type="SpineSkeletonFileResource" uid="uid://cir4unc6ue0yx" path="res://animations/monsters/fabricator/fabricator.skel" id="2_71ft4"]
@@ -25,8 +25,18 @@ to = "hurt"
 from = "hurt"
 to = "die"
 
+[sub_resource type="SpineAnimationMix" id="SpineAnimationMix_wjk43"]
+from = "fabricate"
+to = "idle_loop"
+mix = 0.05
+
+[sub_resource type="SpineAnimationMix" id="SpineAnimationMix_8kjqc"]
+from = "attack"
+to = "idle_loop"
+mix = 0.05
+
 [resource]
 atlas_res = ExtResource("1_3xoye")
 skeleton_file_res = ExtResource("2_71ft4")
-default_mix = 0.5
-animation_mixes = [SubResource("SpineAnimationMix_t13xg"), SubResource("SpineAnimationMix_vek3g"), SubResource("SpineAnimationMix_7htaq"), SubResource("SpineAnimationMix_3728y"), SubResource("SpineAnimationMix_yduk8")]
+default_mix = 0.02
+animation_mixes = [SubResource("SpineAnimationMix_t13xg"), SubResource("SpineAnimationMix_vek3g"), SubResource("SpineAnimationMix_7htaq"), SubResource("SpineAnimationMix_3728y"), SubResource("SpineAnimationMix_yduk8"), SubResource("SpineAnimationMix_wjk43"), SubResource("SpineAnimationMix_8kjqc")]

@@ -37,6 +37,8 @@ public interface IBootstrapSettings
 
 	string? Language => null;
 
+	int? ReplayPlayerIndex => null;
+
 	MapPointType MapPointType
 	{
 		get

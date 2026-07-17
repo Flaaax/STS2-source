@@ -1,4 +1,6 @@
 {
+  "AMBERGRIS.description": "Maksimum CP'nin [green]%{HealPercent}[/green] kadarını iyileştir. Savaş esnasında kullanılırsa fazladan bir tur elde edersin.",
+  "AMBERGRIS.title": "Akamber",
   "ASHWATER.description": "[gold]El[/gold]'indeki istediğin sayıda kartı [gold]Tüket[/gold].",
   "ASHWATER.selectionScreenPrompt": "[gold]Tüketmek[/gold] için herhangi bir sayıda kart seç.",
   "ASHWATER.title": "Küllü Su",

@@ -1,0 +1,8 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://dl4bsxubfe8id"]
+
+[ext_resource type="FontFile" uid="uid://c23b37jt6rxkw" path="res://fonts/zht/SourceHanSerifTC-Bold.otf" id="1_hbd7y"]
+
+[resource]
+base_font = ExtResource("1_hbd7y")
+variation_transform = Transform2D(0.95, 0, 0, 0.95, 0, 0)
+baseline_offset = -0.05

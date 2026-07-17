@@ -43,7 +43,7 @@
 [ext_resource type="PackedScene" uid="uid://b4yd32ieheum6" path="res://scenes/vfx/distortions/vfx_outward_screen_distortion.tscn" id="25_tsq07"]
 [ext_resource type="Script" uid="uid://dkb7lfoaycd8q" path="res://src/gdscript/testing/vfx_playground_camera_tester.gd" id="27_a1fhn"]
 [ext_resource type="Script" uid="uid://cuutgh70cd7c4" path="res://src/gdscript/testing/potion_throw_tester.gd" id="30_rmxs2"]
-[ext_resource type="Texture2D" uid="uid://xut0h5godj6w" path="res://images/potions/weak_potion.png" id="31_tsq07"]
+[ext_resource type="Texture2D" uid="uid://ddrnstkn2bxm7" path="res://images/potions/missing_potion.png" id="31_tsq07"]
 [ext_resource type="Material" uid="uid://dhtfl3vwg84xd" path="res://materials/vfx/potion/potion_splash.tres" id="32_gj0ch"]
 [ext_resource type="Texture2D" uid="uid://d34u7tc7xm6pc" path="res://images/vfx/potion/potion_splash.png" id="32_y0ba4"]
 [ext_resource type="Texture2D" uid="uid://7oloccuqi8de" path="res://images/vfx/potion/potion_droplet.png" id="34_lthr7"]

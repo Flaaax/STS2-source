@@ -190,7 +190,7 @@ public partial class NJoinFriendScreen : NSubmenu
 
 	public async Task JoinGameAsync(IClientConnectionInitializer connInitializer)
 	{
-		if (_currentJoinFlow?.NetService?.IsConnected == true)
+		if (_currentJoinFlow?.NetService.IsConnected ?? false)
 		{
 			Log.Warn($"Tried to join game with connection {connInitializer} while we were already joining a game! Ignoring this attempt");
 			return;
@@ -253,7 +253,7 @@ public partial class NJoinFriendScreen : NSubmenu
 				{
 					NModalContainer.Instance.Add(nErrorPopup);
 				}
-				_currentJoinFlow.NetService?.Disconnect(NetError.RunInProgress);
+				_currentJoinFlow.NetService.Disconnect(NetError.RunInProgress);
 			}
 		}
 		catch (ClientConnectionFailedException ex)
@@ -264,7 +264,7 @@ public partial class NJoinFriendScreen : NSubmenu
 			{
 				NModalContainer.Instance.Add(nErrorPopup2);
 			}
-			_currentJoinFlow.NetService?.Disconnect(ex.info.GetReason());
+			_currentJoinFlow.NetService.Disconnect(ex.info.GetReason());
 		}
 		catch (OperationCanceledException)
 		{
@@ -278,7 +278,7 @@ public partial class NJoinFriendScreen : NSubmenu
 			{
 				NModalContainer.Instance.Add(nErrorPopup3);
 			}
-			_currentJoinFlow.NetService?.Disconnect(NetError.InternalError);
+			_currentJoinFlow.NetService.Disconnect(NetError.InternalError);
 			throw;
 		}
 		finally

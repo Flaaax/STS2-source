@@ -33,9 +33,9 @@ public static class ActBankLoadRetry
 	/// <summary>The result of a load: whether it ultimately loaded, and how many attempts it took.</summary>
 	public readonly record struct LoadOutcome(bool Loaded, int Attempts);
 
-	public const int MaxAttempts = 3;
+	public const int maxAttempts = 3;
 
-	public const int RetryDelayMs = 50;
+	public const int retryDelayMs = 50;
 
 	/// <summary>
 	/// Runs <paramref name="loadAttempt" />, retrying while it reports failure (false). Returns true

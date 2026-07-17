@@ -40,6 +40,7 @@ using MegaCrit.Sts2.Core.Nodes.Screens.StatsScreen;
 using MegaCrit.Sts2.Core.Nodes.Screens.Timeline;
 using MegaCrit.Sts2.Core.Nodes.Vfx;
 using MegaCrit.Sts2.Core.Nodes.Vfx.Cards;
+using MegaCrit.Sts2.Core.Nodes.Vfx.Ui;
 using MegaCrit.Sts2.Core.Rewards;
 
 namespace MegaCrit.Sts2.Core.Assets;
@@ -185,7 +186,7 @@ public static class AssetSets
 			PlayerFullscreenHealVfx.AssetPaths,
 			NFireSmokePuffVfx.AssetPaths,
 			NThinSliceVfx.AssetPaths,
-			new string[1] { "res://materials/vfx/hsv.tres" }
+			new global::_003C_003Ez__ReadOnlySingleElementList<string>("res://materials/vfx/hsv.tres")
 		}.SelectMany((IEnumerable<string> s) => s).Concat(CardMaterialPaths));
 		MainMenuSet = new HashSet<string>(new IEnumerable<string>[23]
 		{

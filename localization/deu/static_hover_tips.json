@@ -9,7 +9,7 @@
   "CHANNELING.title": "Erschaffen",
   "COMPENDIUM.description": "Sieh dir all die Karten, Tränke und Relikte an, denen du überall im Spire begegnet bist.",
   "COMPENDIUM.title": "Kompendium",
-  "COOK.description": "[gold]Entferne[/gold] an einem [gold]Lagerfeuer[/gold] [blue]2[/blue] Karten aus deinem [gold]Deck[/gold] und erhalte [green]9[/green] max. TP.",
+  "COOK.description": "[gold]Entferne[/gold] an einem [gold]Lagerfeuer[/gold] [blue]2[/blue] Karten aus deinem [gold]Deck[/gold] und erhalte [green]5[/green] max. TP.",
   "COOK.title": "Kochen",
   "DECK.description": "Sieh alle Karten in deinem Deck an.",
   "DECK.title": "Deck {Hotkey:choose(None):| ({})}",

@@ -25,18 +25,18 @@ public class Orobas : AncientEventModel
 		new global::_003C_003Ez__ReadOnlySingleElementList<EventOption>(PrismaticGemOption)
 	}.SelectMany((IEnumerable<EventOption> x) => x);
 
-	private IEnumerable<EventOption> OptionPool1 => new global::_003C_003Ez__ReadOnlyArray<EventOption>(new EventOption[3]
+	private IEnumerable<EventOption> OptionPool1 => new global::_003C_003Ez__ReadOnlyArray<EventOption>(new EventOption[2]
 	{
 		RelicOption<ElectricShrymp>(),
-		RelicOption<GlassEye>(),
-		RelicOption<SandCastle>()
+		RelicOption<GlassEye>()
 	});
 
-	private IEnumerable<EventOption> OptionPool2 => new global::_003C_003Ez__ReadOnlyArray<EventOption>(new EventOption[3]
+	private IEnumerable<EventOption> OptionPool2 => new global::_003C_003Ez__ReadOnlyArray<EventOption>(new EventOption[4]
 	{
 		RelicOption<AlchemicalCoffer>(),
 		RelicOption<Driftwood>(),
-		RelicOption<RadiantPearl>()
+		RelicOption<RadiantPearl>(),
+		RelicOption<SandCastle>()
 	});
 
 	private IEnumerable<EventOption> SeaGlassOptions

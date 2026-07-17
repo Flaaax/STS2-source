@@ -197,10 +197,4 @@ public partial class NControllerCardPlay : NCardPlay
 		NCombatRoom.Instance.EnableControllerNavigation();
 		base.Holder.TryGrabFocus();
 	}
-
-	protected override void Cleanup(bool isFinished)
-	{
-		base.Cleanup(isFinished);
-		NCombatRoom.Instance.Ui.Hand.DefaultFocusedControl.TryGrabFocus();
-	}
 }

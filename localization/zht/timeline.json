@@ -1,0 +1,23 @@
+{
+  "ACKNOWLEDGE_BUTTON": "繼續",
+  "EPOCH_INSPECT.chapterFormat": "第 {ChapterIndex} 章－{ChapterName}",
+  "EPOCH_INSPECT.closeButton": "關閉",
+  "EPOCH_INSPECT.continueButton": "繼續",
+  "EPOCH_INSPECT.unlockButton": "解鎖",
+  "PLACEHOLDER_PORTRAIT": "Placeholder",
+  "REMINDER_TEXT": "{RevealableEpochCount} 個紀元正等待揭示……",
+  "REVEAL_TIP_HEADER": "條件",
+  "TUTORIAL_TEXT": "在[blue]時間軸[/blue]中揭示[gold]紀元[/gold]，即可解鎖卡牌、遺物等豐富內容……",
+  "UNLOCK_ANCIENT": "已解鎖遠古之民：達弗，人稱「囤積者」。他將在你今後的遊戲中現身……",
+  "UNLOCK_CARDS": "今後的遊戲中將會出現以下卡牌。",
+  "UNLOCK_CARDS_BANNER": "卡牌已解鎖！",
+  "UNLOCK_CONFIRM": "確認",
+  "UNLOCK_EPOCHS": "時間軸擴展了……",
+  "UNLOCK_POTIONS": "今後的遊戲中將會出現以下藥水。",
+  "UNLOCK_POTIONS_BANNER": "藥水已解鎖！",
+  "UNLOCK_RELICS": "今後的遊戲中將會出現以下遺物。",
+  "UNLOCK_RELICS_BANNER": "遺物已解鎖！",
+  "UNLOCK_TEXT.cards": "已解鎖卡牌：{Card1}、{Card2} 與 {Card3}。",
+  "UNLOCK_TEXT.potions": "已解鎖藥水：{Potion1}、{Potion2} 與 {Potion3}。",
+  "UNLOCK_TEXT.relics": "已解鎖遺物：{Relic1}、{Relic2} 與 {Relic3}。"
+}

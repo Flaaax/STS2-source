@@ -95,7 +95,7 @@ public class NullRunState : IRunState, ICardScope, IPlayerCollection
 
 	public RunRngSet Rng => new RunRngSet(string.Empty);
 
-	public RunOddsSet Odds => new RunOddsSet(new Rng());
+	public RunOddsSet Odds => new RunOddsSet(new Rng(0uL));
 
 	public RelicGrabBag SharedRelicGrabBag => new RelicGrabBag(refreshAllowed: false);
 

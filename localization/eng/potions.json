@@ -1,4 +1,6 @@
 {
+  "AMBERGRIS.description": "Heal for [green]{HealPercent}%[/green] of your Max HP. If used in combat, take an extra turn.",
+  "AMBERGRIS.title": "Ambergris",
   "ASHWATER.description": "[gold]Exhaust[/gold] any number of cards in your [gold]Hand[/gold].",
   "ASHWATER.selectionScreenPrompt": "Choose any number of cards to [gold]Exhaust[/gold].",
   "ASHWATER.title": "Ashwater",

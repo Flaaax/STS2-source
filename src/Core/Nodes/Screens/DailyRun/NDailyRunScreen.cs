@@ -278,10 +278,10 @@ public partial class NDailyRunScreen : NSubmenu, IStartRunLobbyListener
 		DateTimeOffset serverRelativeTime = GetServerRelativeTime();
 		string str = SeedHelper.CanonicalizeSeed(serverRelativeTime.ToString("dd_MM_yyyy"));
 		string text = SeedHelper.CanonicalizeSeed(serverRelativeTime.ToString($"dd_MM_yyyy_{lobby.Players.Count}p"));
-		Rng rng = new Rng((uint)StringHelper.GetDeterministicHashCode(str));
-		Rng rng2 = new Rng(rng.NextUnsignedInt());
-		Rng rng3 = new Rng(rng.NextUnsignedInt());
-		Rng rng4 = new Rng(rng.NextUnsignedInt());
+		Rng rng = new Rng(StringHelper.GetDeterministicHashCode(str));
+		Rng rng2 = new Rng(rng.NextUnsignedLong());
+		Rng rng3 = new Rng(rng.NextUnsignedLong());
+		Rng rng4 = new Rng(rng.NextUnsignedLong());
 		CharacterModel characterModel = null;
 		foreach (LobbyPlayer player in lobby.Players)
 		{

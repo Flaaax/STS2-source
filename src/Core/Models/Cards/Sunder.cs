@@ -16,7 +16,7 @@ public sealed class Sunder : CardModel
 {
 	protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlyArray<DynamicVar>(new DynamicVar[2]
 	{
-		new DamageVar(24m, ValueProp.Move),
+		new DamageVar(26m, ValueProp.Move),
 		new EnergyVar(3)
 	});
 

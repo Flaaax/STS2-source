@@ -39,4 +39,4 @@ script = ExtResource("1_6e0ib")
 _pathHeightOffsets = [SubResource("Curve_6e0ib"), SubResource("Curve_s0b7x"), SubResource("Curve_gr4tq"), SubResource("Curve_lmqav"), SubResource("Curve_ygmvl"), SubResource("Curve_msrtq")]
 _heightOffsetRange = Vector2(50, 200)
 _movementCurves = [SubResource("Curve_ddle5")]
-travelTimeRange = Vector2(0.15, 0.2)
+_travelTimeRange = Vector2(0.15, 0.2)

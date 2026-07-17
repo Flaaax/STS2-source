@@ -2,6 +2,10 @@ aeonglass.png
 size:1909,745
 filter:Linear,Linear
 scale:0.2
+attack_slash
+bounds:376,8,19,40
+offsets:7,0,40,40
+rotate:90
 charge_blast
 bounds:512,3,54,37
 offsets:1,1,56,39
@@ -61,7 +65,7 @@ ring_1_break_fills
 bounds:567,3,37,40
 rotate:90
 ring_1_shard_a
-bounds:376,9,18,16
+bounds:417,9,18,16
 rotate:90
 ring_1_shard_b
 bounds:1,1,15,13
@@ -99,7 +103,7 @@ shard_1
 bounds:608,12,28,50
 rotate:90
 shard_2
-bounds:393,10,45,17
+bounds:434,10,45,17
 offsets:0,0,46,17
 shard_3
 bounds:17,2,50,12

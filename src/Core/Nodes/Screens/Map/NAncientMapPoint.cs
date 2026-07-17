@@ -110,11 +110,8 @@ public partial class NAncientMapPoint : NMapPoint
 	protected override void OnUnfocus()
 	{
 		base.OnUnfocus();
-		if (IsInputAllowed())
-		{
-			AnimUnhover();
-			_controllerSelectionReticle.OnDeselect();
-		}
+		AnimUnhover();
+		_controllerSelectionReticle.OnDeselect();
 	}
 
 	protected override void OnPress()

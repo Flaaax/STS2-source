@@ -241,7 +241,7 @@ public class CombatState : ICombatState, ICardScope
 			creature.ScaleMonsterHpForMultiplayer(Encounter, Players.Count, RunState.CurrentActIndex);
 		}
 		AttachCreature(creature);
-		monster.Rng = new Rng((uint)((RunState.Rng.Seed + RunState.CurrentMapCoord?.col) ?? ((long?)RunState.CurrentMapCoord?.row) ?? (RunState.CurrentActIndex + creature.CombatId.Value)));
+		monster.Rng = new Rng((ulong)((long)RunState.Rng.Seed + (long)(RunState.CurrentMapCoord?.col ?? 0) + (RunState.CurrentMapCoord?.row ?? 0) + RunState.CurrentActIndex + creature.CombatId.Value));
 		_encounter?.OnCreatureSpawned(creature);
 		return creature;
 	}

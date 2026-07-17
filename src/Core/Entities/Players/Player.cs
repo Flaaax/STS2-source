@@ -266,7 +266,7 @@ public class Player
 		BaseOrbSlotCount = orbSlotCount;
 		RelicGrabBag = sharedRelicGrabBag;
 		UnlockState = unlockState;
-		PlayerRng = new PlayerRngSet(0u);
+		PlayerRng = new PlayerRngSet(0uL);
 		PlayerOdds = new PlayerOddsSet(PlayerRng);
 		DiscoveredCards = discoveredCards ?? new List<ModelId>();
 		DiscoveredEnemies = discoveredEnemies ?? new List<ModelId>();
@@ -327,7 +327,7 @@ public class Player
 
 	public void InitializeSeed(string seed)
 	{
-		PlayerRng = new PlayerRngSet((uint)(StringHelper.GetDeterministicHashCode(seed) + _runState.GetPlayerSlotIndex(this)));
+		PlayerRng = new PlayerRngSet(StringHelper.GetDeterministicHashCode(seed) + (ulong)_runState.GetPlayerSlotIndex(this));
 		PlayerOdds = new PlayerOddsSet(PlayerRng);
 	}
 

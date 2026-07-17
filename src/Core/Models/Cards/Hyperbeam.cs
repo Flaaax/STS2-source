@@ -19,7 +19,7 @@ public sealed class Hyperbeam : CardModel
 {
 	protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlyArray<DynamicVar>(new DynamicVar[2]
 	{
-		new DamageVar(28m, ValueProp.Move),
+		new DamageVar(30m, ValueProp.Move),
 		new PowerVar<FocusPower>(3m)
 	});
 

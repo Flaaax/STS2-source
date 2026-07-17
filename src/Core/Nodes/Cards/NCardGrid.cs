@@ -449,8 +449,10 @@ public partial class NCardGrid : Control
 		float num = _scrollContainer.Position.Y;
 		if (Math.Abs(num - _targetDrag) > 0.1f)
 		{
+			float a = Mathf.Sign(num - _targetDrag);
 			num = Mathf.Lerp(num, _targetDrag, Mathf.Clamp((float)delta * 15f, 0f, 1f));
-			if (Mathf.Abs(num - _targetDrag) < 0.5f)
+			float b = Mathf.Sign(num - _targetDrag);
+			if (Math.Abs(num - _targetDrag) < 0.5f || !Mathf.IsEqualApprox(a, b))
 			{
 				num = _targetDrag;
 			}

@@ -29,6 +29,8 @@ public sealed class TorchHeadAmalgam : MonsterModel
 
 	public override int MaxInitialHp => MinInitialHp;
 
+	private int StrongTackleDamage => AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies, 32, 26);
+
 	private int TackleDamage => AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies, 22, 18);
 
 	private int WeakTackleDamage => AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies, 16, 14);
@@ -46,7 +48,7 @@ public sealed class TorchHeadAmalgam : MonsterModel
 	protected override MonsterMoveStateMachine GenerateMoveStateMachine()
 	{
 		List<MonsterState> list = new List<MonsterState>();
-		MoveState moveState = new MoveState("TACKLE_MOVE", TackleMove, new SingleAttackIntent(TackleDamage));
+		MoveState moveState = new MoveState("STRONG_TACKLE_MOVE", StrongTackleMove, new SingleAttackIntent(StrongTackleDamage));
 		MoveState moveState2 = new MoveState("TACKLE_2_MOVE", TackleMove, new SingleAttackIntent(TackleDamage));
 		MoveState moveState3 = new MoveState("BEAM_MOVE", SoulBeamMove, new MultiAttackIntent(SoulBeamDamage, 3));
 		MoveState moveState4 = new MoveState("TACKLE_3_MOVE", WeakTackleMove, new SingleAttackIntent(WeakTackleDamage));
@@ -76,6 +78,14 @@ public sealed class TorchHeadAmalgam : MonsterModel
 				creatureNode.GetSpecialNode<Node2D>("Visuals/torch3Slot/fire3_small_green/light_small")?.SetVisible(visible: false);
 			}
 		}
+	}
+
+	private async Task StrongTackleMove(IReadOnlyList<Creature> targets)
+	{
+		await DamageCmd.Attack(StrongTackleDamage).FromMonster(this).WithAttackerAnim("Attack", 0.6f)
+			.WithAttackerFx(null, AttackSfx)
+			.WithHitFx("vfx/vfx_attack_blunt")
+			.Execute(null);
 	}
 
 	private async Task TackleMove(IReadOnlyList<Creature> targets)

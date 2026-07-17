@@ -1,6 +1,11 @@
 {
   "BLOCKED": "Geblockt",
   "EPOCH_GAIN": "Epoche entdeckt",
+  "FAILED_JOIN_FULL": "{UserName} konnte nicht beitreten. (Lobby voll)",
+  "FAILED_JOIN_MOD_MISMATCH": "{UserName} konnte nicht beitreten. (Unterschiedliche Mods)",
+  "FAILED_JOIN_PROGRESS": "{UserName} konnte nicht beitreten. (Run läuft gerade)",
+  "FAILED_JOIN_SAVE": "{UserName} konnte nicht beitreten. (Nicht zusammen aufgebrochen)",
+  "FAILED_JOIN_VERSION": "{UserName} konnte nicht beitreten. (Unterschiedliche Spielversion)",
   "POWER_WEARS_OFF": "endet",
   "STUNNED": "Betäubt!"
 }

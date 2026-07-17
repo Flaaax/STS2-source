@@ -1,0 +1,23 @@
+{
+  "OPTION_CLONE.description": "複製所有附魔為[gold]{EnchantmentName}[/gold]的卡牌。",
+  "OPTION_CLONE.name": "再製",
+  "OPTION_COOK.description": "[gold]移除[/gold]你[gold]牌組[/gold]中的 [blue]{Cards}[/blue] 張牌，並獲得 [green]{MaxHp}[/green] 點最大生命。",
+  "OPTION_COOK.descriptionDisabled": "[red]你的牌組中至少需要 2 張可移除的牌。[/red]",
+  "OPTION_COOK.name": "烹飪",
+  "OPTION_DIG.description": "挖掘一件[gold]遺物[/gold]。",
+  "OPTION_DIG.name": "挖掘",
+  "OPTION_HATCH.description": "孵化你的[green]異鳥成鳥之蛋[/green]。",
+  "OPTION_HATCH.name": "孵化",
+  "OPTION_HEAL.description": "恢復相當於最大生命 30% 的生命（{Heal}）。{ExtraText}",
+  "OPTION_HEAL.name": "休息",
+  "OPTION_KINDLE.description": "為[gold]{RelicName}[/gold]增加 {RekindleAmount} 層充能。",
+  "OPTION_KINDLE.name": "重新點燃",
+  "OPTION_LIFT.description": "每場戰鬥開始時，獲得 +1 層力量。（剩餘 {LiftsLeft} 次）",
+  "OPTION_LIFT.name": "鍛鍊",
+  "OPTION_MEND.description": "使 {HasTarget:{Name}|其他人} 恢復相當於其最大生命 30% 的生命{HasTarget:（{Heal}）|}。",
+  "OPTION_MEND.name": "療傷",
+  "OPTION_SMITH.description": "[gold]升級[/gold]你[gold]牌組[/gold]中的 {Count:plural:一|{} }張牌。",
+  "OPTION_SMITH.descriptionDisabled": "[red]你沒有可供升級的牌。[/red]",
+  "OPTION_SMITH.name": "鍛造",
+  "PROMPT": "我該做什麼？"
+}

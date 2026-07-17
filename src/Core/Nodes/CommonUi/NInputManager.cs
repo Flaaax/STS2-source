@@ -347,12 +347,7 @@ public partial class NInputManager : Node
 
 	private void ProcessDebugKeyInput(InputEvent inputEvent)
 	{
-		if (!(inputEvent is InputEventKey inputEventKey) || PlatformUtil.IsPlatformOverlayOpen() || !DisplayServer.WindowIsFocused())
-		{
-			return;
-		}
-		NDevConsole instance = NDevConsole.Instance;
-		if ((instance != null && instance.Visible) || !NGame.IsTrailerMode)
+		if (!(inputEvent is InputEventKey inputEventKey) || PlatformUtil.IsPlatformOverlayOpen() || !DisplayServer.WindowIsFocused() || NDevConsole.IsConsoleVisible || !NGame.IsTrailerMode)
 		{
 			return;
 		}

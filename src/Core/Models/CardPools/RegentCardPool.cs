@@ -23,7 +23,7 @@ public sealed class RegentCardPool : CardPoolModel
 
 	protected override CardModel[] GenerateAllCards()
 	{
-		return new CardModel[90]
+		return new CardModel[91]
 		{
 			ModelDb.Card<Alignment>(),
 			ModelDb.Card<Arsenal>(),
@@ -111,6 +111,7 @@ public sealed class RegentCardPool : CardPoolModel
 			ModelDb.Card<Terraforming>(),
 			ModelDb.Card<TheSealedThrone>(),
 			ModelDb.Card<TheSmith>(),
+			ModelDb.Card<Tutor>(),
 			ModelDb.Card<Tyranny>(),
 			ModelDb.Card<Venerate>(),
 			ModelDb.Card<VoidForm>(),

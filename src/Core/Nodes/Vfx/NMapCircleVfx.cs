@@ -4,8 +4,10 @@ using System.Threading.Tasks;
 using Godot;
 using MegaCrit.Sts2.Core.Assets;
 using MegaCrit.Sts2.Core.Helpers;
+using MegaCrit.Sts2.Core.Map;
 using MegaCrit.Sts2.Core.Nodes.GodotExtensions;
 using MegaCrit.Sts2.Core.Random;
+using MegaCrit.Sts2.Core.Runs;
 using MegaCrit.Sts2.Core.TestSupport;
 
 namespace MegaCrit.Sts2.Core.Nodes.Vfx;
@@ -22,14 +24,19 @@ public partial class NMapCircleVfx : Control
 
 	private bool _playAnim;
 
+	private MapCoord _mapCoord;
+
+	private IRunState _runState;
+
 	public static IEnumerable<string> AssetPaths => _textures.Append("res://scenes/vfx/map_circle_vfx.tscn");
 
 	public override void _Ready()
 	{
 		_image = GetNode<TextureRect>("TextureRect");
 		_image.Texture = PreloadManager.Cache.GetTexture2D(_textures[0]);
-		base.RotationDegrees = Rng.Chaotic.NextFloat(360f);
-		Vector2 vector = Vector2.One * Rng.Chaotic.NextFloat(0.85f, 0.9f);
+		Rng rng = new Rng((ulong)((long)_runState.Rng.Seed + (long)_mapCoord.row + 131L * (long)_mapCoord.row));
+		base.RotationDegrees = rng.NextFloat(360f);
+		Vector2 vector = Vector2.One * rng.NextFloat(0.85f, 0.9f);
 		if (_playAnim)
 		{
 			Tween tween = CreateTween().SetParallel();
@@ -59,7 +66,7 @@ public partial class NMapCircleVfx : Control
 		}
 	}
 
-	public static NMapCircleVfx? Create(bool playAnim)
+	public static NMapCircleVfx? Create(IRunState runState, MapCoord mapCoord, bool playAnim)
 	{
 		if (TestMode.IsOn)
 		{
@@ -67,6 +74,8 @@ public partial class NMapCircleVfx : Control
 		}
 		NMapCircleVfx nMapCircleVfx = PreloadManager.Cache.GetScene("res://scenes/vfx/map_circle_vfx.tscn").Instantiate<NMapCircleVfx>(PackedScene.GenEditState.Disabled);
 		nMapCircleVfx._playAnim = playAnim;
+		nMapCircleVfx._mapCoord = mapCoord;
+		nMapCircleVfx._runState = runState;
 		return nMapCircleVfx;
 	}
 }

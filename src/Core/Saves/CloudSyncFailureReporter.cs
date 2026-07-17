@@ -24,7 +24,7 @@ public class CloudSyncFailureReporter
 	/// The number of sync failures of a given exception type reported to Sentry before the rest of that type's
 	/// failures are suppressed for the session.
 	/// </summary>
-	public const int MaxReportsPerSessionPerType = 5;
+	public const int maxReportsPerSessionPerType = 5;
 
 	private readonly Dictionary<Type, int> _reportedCountsByType = new Dictionary<Type, int>();
 

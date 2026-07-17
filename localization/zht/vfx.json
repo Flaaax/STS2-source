@@ -1,0 +1,11 @@
+{
+  "BLOCKED": "格擋",
+  "EPOCH_GAIN": "發現紀元",
+  "FAILED_JOIN_FULL": "{UserName} 無法加入。（大廳已滿）",
+  "FAILED_JOIN_MOD_MISMATCH": "{UserName} 無法加入。（模組不一致）",
+  "FAILED_JOIN_PROGRESS": "{UserName} 無法加入。（遊戲已開始）",
+  "FAILED_JOIN_SAVE": "{UserName} 無法加入。（未一同開始遊戲）",
+  "FAILED_JOIN_VERSION": "{UserName} 無法加入。（遊戲版本不一致）",
+  "POWER_WEARS_OFF": "效果消退",
+  "STUNNED": "擊暈！"
+}

@@ -99,16 +99,16 @@ public static class Hook
 	}
 
 	/// <summary>
-	/// See <see cref="M:MegaCrit.Sts2.Core.Models.AbstractModel.AfterBlockBroken(MegaCrit.Sts2.Core.Entities.Creatures.Creature)" />.
+	/// See <see cref="M:MegaCrit.Sts2.Core.Models.AbstractModel.AfterBlockBroken(MegaCrit.Sts2.Core.GameActions.Multiplayer.PlayerChoiceContext,MegaCrit.Sts2.Core.Entities.Creatures.Creature,MegaCrit.Sts2.Core.Entities.Creatures.Creature)" />.
 	///
 	/// Dispatched directly, not through the IterateCombatHookListeners guard: it fires from the same
 	/// damage event that ends combat (the killing hit), so it must still resolve for that hit.
 	/// </summary>
-	public static async Task AfterBlockBroken(ICombatState combatState, Creature creature)
+	public static async Task AfterBlockBroken(ICombatState combatState, PlayerChoiceContext choiceContext, Creature target, Creature? breaker)
 	{
 		foreach (AbstractModel model in combatState.IterateHookListeners())
 		{
-			await model.AfterBlockBroken(creature);
+			await model.AfterBlockBroken(choiceContext, target, breaker);
 			model.InvokeExecutionFinished();
 		}
 	}
@@ -468,7 +468,7 @@ public static class Hook
 		}
 		foreach (AbstractModel model in runState.IterateHookListeners(combatState))
 		{
-			HookPlayerChoiceContext hookPlayerChoiceContext = new HookPlayerChoiceContext(model, netId.Value, creature.CombatState, GameActionType.Combat);
+			HookPlayerChoiceContext hookPlayerChoiceContext = new HookPlayerChoiceContext(model, netId.Value, combatState, (combatState != null) ? GameActionType.Combat : GameActionType.NonCombat);
 			Task task = model.AfterDeath(hookPlayerChoiceContext, creature, wasRemovalPrevented, deathAnimLength);
 			await hookPlayerChoiceContext.AssignTaskAndWaitForPauseOrCompletion(task);
 			model.InvokeExecutionFinished();
@@ -551,14 +551,14 @@ public static class Hook
 		List<Task> tasksToAwait = new List<Task>();
 		foreach (AbstractModel item in IterateCombatHookListeners(combatState))
 		{
-			HookPlayerChoiceContext playerChoiceContext = new HookPlayerChoiceContext(item, netId.Value, player.Creature.CombatState, GameActionType.Combat);
+			HookPlayerChoiceContext playerChoiceContext = new HookPlayerChoiceContext(item, netId.Value, combatState, GameActionType.Combat);
 			Task task = item.BeforeFlush(playerChoiceContext, player);
 			await playerChoiceContext.AssignTaskAndWaitForPauseOrCompletion(task);
 			tasksToAwait.Add(playerChoiceContext.WaitForCompletion());
 		}
 		foreach (AbstractModel item2 in IterateCombatHookListeners(combatState))
 		{
-			HookPlayerChoiceContext playerChoiceContext = new HookPlayerChoiceContext(item2, netId.Value, player.Creature.CombatState, GameActionType.Combat);
+			HookPlayerChoiceContext playerChoiceContext = new HookPlayerChoiceContext(item2, netId.Value, combatState, GameActionType.Combat);
 			Task task2 = item2.BeforeFlushLate(playerChoiceContext, player);
 			await playerChoiceContext.AssignTaskAndWaitForPauseOrCompletion(task2);
 			tasksToAwait.Add(playerChoiceContext.WaitForCompletion());
@@ -1398,25 +1398,22 @@ public static class Hook
 	}
 
 	/// <summary>
-	/// See <see cref="M:MegaCrit.Sts2.Core.Models.AbstractModel.ModifyCardPlayResultPileTypeAndPosition(MegaCrit.Sts2.Core.Models.CardModel,System.Boolean,MegaCrit.Sts2.Core.Entities.Cards.ResourceInfo,MegaCrit.Sts2.Core.Entities.Cards.PileType,MegaCrit.Sts2.Core.Entities.Cards.CardPilePosition)" />.
+	/// See <see cref="M:MegaCrit.Sts2.Core.Models.AbstractModel.ModifyCardPlayResultLocation(MegaCrit.Sts2.Core.Models.CardModel,System.Boolean,MegaCrit.Sts2.Core.Entities.Cards.ResourceInfo,MegaCrit.Sts2.Core.Entities.Cards.CardLocation)" />.
 	/// </summary>
-	public static (PileType, CardPilePosition) ModifyCardPlayResultPileTypeAndPosition(ICombatState combatState, CardModel card, bool isAutoPlay, ResourceInfo resources, PileType pileType, CardPilePosition position, out IEnumerable<AbstractModel> modifiers)
+	public static CardLocation ModifyCardPlayResultLocation(ICombatState combatState, CardModel card, bool isAutoPlay, ResourceInfo resources, CardLocation cardLocation, out IEnumerable<AbstractModel> modifiers)
 	{
-		PileType pileType2 = pileType;
-		CardPilePosition cardPilePosition = position;
 		List<AbstractModel> list = new List<AbstractModel>();
 		foreach (AbstractModel item in IterateCombatHookListeners(combatState))
 		{
-			PileType pileType3 = pileType2;
-			CardPilePosition cardPilePosition2 = cardPilePosition;
-			(pileType2, cardPilePosition) = item.ModifyCardPlayResultPileTypeAndPosition(card, isAutoPlay, resources, pileType2, cardPilePosition);
-			if (pileType3 != pileType2 || cardPilePosition2 != cardPilePosition)
+			CardLocation cardLocation2 = cardLocation;
+			cardLocation = item.ModifyCardPlayResultLocation(card, isAutoPlay, resources, cardLocation);
+			if (cardLocation2 != cardLocation)
 			{
 				list.Add(item);
 			}
 		}
 		modifiers = list;
-		return (pileType2, cardPilePosition);
+		return cardLocation;
 	}
 
 	/// <summary>

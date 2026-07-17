@@ -20,7 +20,7 @@ public sealed class Bloodletting : CardModel
 	protected override IEnumerable<IHoverTip> ExtraHoverTips => new global::_003C_003Ez__ReadOnlySingleElementList<IHoverTip>(base.EnergyHoverTip);
 
 	public Bloodletting()
-		: base(0, CardType.Skill, CardRarity.Common, TargetType.Self)
+		: base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 	{
 	}
 

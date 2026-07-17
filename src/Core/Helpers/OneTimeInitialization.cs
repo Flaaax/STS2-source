@@ -11,7 +11,6 @@ using MegaCrit.Sts2.Core.Modding;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Multiplayer.Serialization;
 using MegaCrit.Sts2.Core.Saves;
-using MegaCrit.Sts2.Core.Saves.Runs;
 using MegaCrit.Sts2.Core.TestSupport;
 using SmartFormat.Extensions;
 
@@ -81,7 +80,6 @@ public static class OneTimeInitialization
 		AssemblyInfo.Init();
 		ModelDb.Init();
 		ModelIdSerializationCache.Init();
-		SavedPropertiesTypeCache.Init();
 		ModelDb.InitIds();
 		MessageTypes.Initialize();
 		ActionTypes.Initialize();

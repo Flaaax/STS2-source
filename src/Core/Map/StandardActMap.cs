@@ -178,7 +178,7 @@ public sealed class StandardActMap : ActMap
 				};
 			}
 		}
-		throw new InvalidOperationException($"Cannot find next node: seed={_rng.Seed}");
+		throw new InvalidOperationException("Cannot find next node");
 	}
 
 	private bool HasInvalidCrossover(MapPoint current, int targetX)

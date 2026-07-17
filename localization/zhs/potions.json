@@ -1,4 +1,6 @@
 {
+  "AMBERGRIS.description": "回复你最大生命值的[green]{HealPercent}%[/green]。在战斗中使用时，额外进行一个回合。",
+  "AMBERGRIS.title": "龙涎香",
   "ASHWATER.description": "[gold]消耗[/gold]你[gold]手牌[/gold]中的任意张牌。",
   "ASHWATER.selectionScreenPrompt": "选择任意张牌[gold]消耗[/gold]。",
   "ASHWATER.title": "灰水",

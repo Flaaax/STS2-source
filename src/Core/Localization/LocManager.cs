@@ -69,7 +69,8 @@ public class LocManager
 		{ "ru", "rus" },
 		{ "th", "tha" },
 		{ "tr", "tur" },
-		{ "zh_Hans", "zhs" }
+		{ "zh_Hans", "zhs" },
+		{ "zh_Hant", "zht" }
 	};
 
 	/// <summary>
@@ -611,7 +612,7 @@ public class LocManager
 
 	static LocManager()
 	{
-		int num = 14;
+		int num = 15;
 		List<string> list = new List<string>(num);
 		CollectionsMarshal.SetCount(list, num);
 		Span<string> span = CollectionsMarshal.AsSpan(list);
@@ -619,6 +620,8 @@ public class LocManager
 		span[num2] = "eng";
 		num2++;
 		span[num2] = "zhs";
+		num2++;
+		span[num2] = "zht";
 		num2++;
 		span[num2] = "deu";
 		num2++;

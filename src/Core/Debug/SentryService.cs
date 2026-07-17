@@ -57,9 +57,9 @@ public static class SentryService
 
 	private static float _sampleRate = 1f;
 
-	private static bool _isGameInitialized = false;
+	private static bool _isGameInitialized;
 
-	private static volatile bool _suppressAllEvents = false;
+	private static volatile bool _suppressAllEvents;
 
 	private static readonly string _sessionId = Guid.NewGuid().ToString();
 

@@ -29,7 +29,7 @@
   "SEALED_DECK.title": "실드 덱",
   "SPECIALIZED.description": "단일 카드의 복사본 [blue]5[/blue]장을 지닌 채로 시작합니다.",
   "SPECIALIZED.title": "전문화",
-  "TERMINAL.description": "새로운 방에 입장할 때마다 최대 체력을 [red]1[/red] 잃습니다. 매 전투 시작 시 [gold]판금[/gold]을 [blue]5[/blue] 얻습니다.",
+  "TERMINAL.description": "새로운 방에 진입할 때마다 최대 체력을 [red]1[/red] 잃습니다. 매 전투 시작 시 [gold]판금[/gold]을 [blue]5[/blue] 얻습니다.",
   "TERMINAL.title": "불치병",
   "VINTAGE.description": "일반 적의 보상으로 카드가 아닌 유물을 받습니다.",
   "VINTAGE.title": "고전적"

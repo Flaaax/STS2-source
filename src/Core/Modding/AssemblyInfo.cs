@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 
@@ -15,6 +16,8 @@ public class AssemblyInfo
 	/// </summary>
 	public static Assembly? BaseGame { get; private set; }
 
+	public static Dictionary<Type, (Mod?, bool)>? MockTypes { get; set; }
+
 	public static void Init()
 	{
 		BaseGame = Assembly.GetExecutingAssembly();
@@ -30,6 +33,23 @@ public class AssemblyInfo
 				ModMap[assembly] = mod;
 			}
 		}
+	}
+
+	public static Mod? ModForType(Type type, out bool isBaseGame)
+	{
+		if (MockTypes != null && MockTypes.TryGetValue(type, out (Mod, bool) value))
+		{
+			isBaseGame = value.Item2;
+			return value.Item1;
+		}
+		if (ModMap == null)
+		{
+			throw new InvalidOperationException();
+		}
+		Assembly assembly = type.Assembly;
+		ModMap.TryGetValue(assembly, out Mod value2);
+		isBaseGame = BaseGame == assembly;
+		return value2;
 	}
 
 	/// <summary>

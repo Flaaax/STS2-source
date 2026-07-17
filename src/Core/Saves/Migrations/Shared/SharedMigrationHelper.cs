@@ -9,7 +9,7 @@ public static class SharedMigrationHelper
 	/// <summary>
 	/// Renames used by SerializableRun V15-&gt;V16 and RunHistory V8-&gt;V9.
 	/// </summary>
-	public static readonly IReadOnlyDictionary<string, string> V100Renames = new Dictionary<string, string>
+	public static readonly IReadOnlyDictionary<string, string> v100Renames = new Dictionary<string, string>
 	{
 		["CARD.PREPARE"] = "CARD.PREPARED",
 		["ENCOUNTER.TOADPOLES_NORMAL"] = "ENCOUNTER.SEAPUNK_NORMAL",

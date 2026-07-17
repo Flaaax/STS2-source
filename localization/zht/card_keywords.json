@@ -1,0 +1,17 @@
+{
+  "ETERNAL.description": "無法從你的[gold]牌組[/gold]中移除或轉化。",
+  "ETERNAL.title": "永恆",
+  "ETHEREAL.description": "若本回合結束時這張牌仍在你的[gold]手牌[/gold]中，便將其[gold]消耗[/gold]。",
+  "ETHEREAL.title": "虛無",
+  "EXHAUST.description": "戰鬥結束前會維持移除狀態。",
+  "EXHAUST.title": "消耗",
+  "INNATE.description": "每場戰鬥開始時這張牌會出現在你的[gold]手牌[/gold]。",
+  "INNATE.title": "固有",
+  "PERIOD": "。",
+  "RETAIN.description": "保留的牌不會在回合結束時被丟棄。",
+  "RETAIN.title": "保留",
+  "SLY.description": "若在你的回合結束前從[gold]手牌[/gold]中丟棄這張牌，便會免費將其打出。",
+  "SLY.title": "奇巧",
+  "UNPLAYABLE.description": "具有「無法打出」的牌不能打出。",
+  "UNPLAYABLE.title": "無法打出"
+}

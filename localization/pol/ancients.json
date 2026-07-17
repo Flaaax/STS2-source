@@ -380,7 +380,7 @@
   "VAKUU.epithet": "Pierwszy Demon",
   "VAKUU.loss": "{character} {characterGender:choose(masculine|feminine|neutral): nie przeczytał|nie przeczytała|nie przeczytał} warunków umowy [gold]Vakuu[/gold].",
   "VAKUU.talk.ANY.0-0r.ancient": "Kolejny poszukiwacz chwały w Iglicy? Mam dla ciebie pewne propozycje...",
-  "VAKUU.talk.ANY.1-0r.ancient": "{Visits}. Przychodzisz do mnie już {Visits} {Visits:plural:raz|raz|raz}.",
+  "VAKUU.talk.ANY.1-0r.ancient": "{Visits}. Przychodzisz do mnie już {Visits}. {Visits:plural:raz|raz|raz}.",
   "VAKUU.talk.ANY.2-0r.ancient": "Zdajesz sobie sprawę, że to [sine]nigdy[/sine] się nie kończy?",
   "VAKUU.talk.DEFECT.0-0.ancient": "Pomogę ci osiągnąć [sine]perfekcję[/sine].",
   "VAKUU.talk.DEFECT.1-0r.ancient": "Nie dziwi cię, że inne konstrukty chcą cię zabić?",

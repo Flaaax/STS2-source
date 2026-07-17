@@ -695,6 +695,7 @@ alpha_curve = SubResource("CurveTexture_pv2b1")
 [node name="vfx_card_remove" type="Control" node_paths=PackedStringArray("_anticipationParticles", "_slashStartParticles", "_slashEndParticles", "_cardParticles")]
 layout_mode = 3
 anchors_preset = 0
+mouse_filter = 2
 script = ExtResource("1_m5b2m")
 _anticipationParticles = NodePath("anticipation_particles")
 _slashStartParticles = NodePath("slash_particles/slash_start")

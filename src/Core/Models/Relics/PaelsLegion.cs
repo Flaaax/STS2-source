@@ -119,7 +119,7 @@ public sealed class PaelsLegion : RelicModel
 
 	public override async Task AfterObtained()
 	{
-		Skin = new Rng(base.Owner, base.Id).NextItem(SkinOptions);
+		Skin = new Rng(base.Owner, base.Id, 0uL).NextItem(SkinOptions);
 		if (CombatManager.Instance.IsInProgress)
 		{
 			await SummonPet();

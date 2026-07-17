@@ -87,7 +87,7 @@ public sealed class FurCoat : RelicModel
 		}
 		if (flag)
 		{
-			Rng rng = new Rng(base.Owner, base.Id);
+			Rng rng = new Rng(base.Owner, base.Id, 0uL);
 			List<MapPoint> list = map.GetAllMapPoints().Where(delegate(MapPoint p)
 			{
 				MapPointType pointType = p.PointType;

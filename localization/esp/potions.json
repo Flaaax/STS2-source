@@ -1,4 +1,6 @@
 {
+  "AMBERGRIS.description": "Recupera un [green]{HealPercent}%[/green] de tu PV Máx. Si se usa en combate, juega un turno extra.",
+  "AMBERGRIS.title": "Ámbar gris",
   "ASHWATER.description": "[gold]Agotas[/gold] cualquier cantidad de cartas en tu [gold]mano[/gold].",
   "ASHWATER.selectionScreenPrompt": "Eliges cualquier cantidad de cartas para [gold]agotar[/gold].",
   "ASHWATER.title": "Agua acenizada",

@@ -24,6 +24,8 @@ using MegaCrit.Sts2.Core.Nodes.Screens.CharacterSelect;
 using MegaCrit.Sts2.Core.Nodes.Screens.GameOverScreen;
 using MegaCrit.Sts2.Core.Nodes.Screens.Map;
 using MegaCrit.Sts2.Core.Nodes.Screens.Overlays;
+using MegaCrit.Sts2.Core.Nodes.Screens.PauseMenu;
+using MegaCrit.Sts2.Core.Nodes.TopBar;
 using MegaCrit.Sts2.Core.Random;
 using MegaCrit.Sts2.Core.Rooms;
 using MegaCrit.Sts2.Core.Runs;
@@ -163,7 +165,7 @@ public class AutoSlayer
 		SaveManager.Instance.ObtainEpochOverride(EpochModel.GetId<Regent1Epoch>(), EpochState.Revealed);
 		SaveManager.Instance.ObtainEpochOverride(EpochModel.GetId<Defect1Epoch>(), EpochState.Revealed);
 		SaveManager.Instance.ObtainEpochOverride(EpochModel.GetId<Necrobinder1Epoch>(), EpochState.Revealed);
-		_random = new Rng((uint)StringHelper.GetDeterministicHashCode(seed));
+		_random = new Rng(StringHelper.GetDeterministicHashCode(seed));
 		_cardSelectorScope = CardSelectCmd.UseSelector(new AutoSlayCardSelector(_random));
 		_watchdog = new Watchdog();
 		CurrentWatchdog = _watchdog;
@@ -220,7 +222,7 @@ public class AutoSlayer
 					_watchdog.Reset($"Entering {postBossRoomType} room (Act {runState.CurrentActIndex + 1}, Floor {runState.ActFloor})");
 					AutoSlayLog.EnterRoom(postBossRoomType, runState.CurrentActIndex, runState.ActFloor);
 					await HandleRoomAsync(postBossRoomType, ct);
-					await Task.Delay(500, ct);
+					await WaitForGameOverScreenAsync(ct);
 					await DrainOverlayScreensAsync(ct);
 					_watchdog.Reset("Waiting for main menu after victory");
 					await WaitForMainMenuAsync(ct);
@@ -360,6 +362,12 @@ public class AutoSlayer
 		await WaitHelper.Until(() => NOverlayStack.Instance?.Peek() is NRewardsScreen || (NMapScreen.Instance?.IsOpen ?? false), ct, TimeSpan.FromSeconds(10L), "Rewards screen did not appear after combat");
 	}
 
+	private async Task WaitForGameOverScreenAsync(CancellationToken ct)
+	{
+		AutoSlayLog.Action("Waiting for game over screen");
+		await WaitHelper.Until(() => NOverlayStack.Instance?.Peek() is NGameOverScreen, ct, TimeSpan.FromSeconds(10L), "Game over screen did not appear");
+	}
+
 	private async Task WaitForMainMenuAsync(CancellationToken ct)
 	{
 		AutoSlayLog.Action("Waiting for main menu");
@@ -433,9 +441,18 @@ public class AutoSlayer
 	{
 		Node root = ((SceneTree)Engine.GetMainLoop()).Root;
 		await Task.Delay(1000, ct);
-		await UiHelper.Click(await WaitHelper.ForNode<NButton>(root, "/root/Game/RootSceneContainer/Run/GlobalUi/TopBar/RightAlignedStuff/Options", ct));
-		await UiHelper.Click(await WaitHelper.ForNode<NButton>(root, "/root/Game/RootSceneContainer/Run/GlobalUi/CapstoneScreenContainer/OptionsScreen/AbandonRunButton", ct));
-		await UiHelper.Click(await WaitHelper.ForNode<NButton>(root, "/root/Game/RootSceneContainer/Run/GlobalUi/OverlayScreensContainer/GameOverScreen/UI/ProceedButton", ct));
+		await UiHelper.Click(await WaitHelper.ForNode<NTopBarPauseButton>(root, "/root/Game/RootSceneContainer/Run/GlobalUi/TopBar/RightAlignedStuff/PauseButton", ct));
+		NPauseMenu pauseMenu = null;
+		await WaitHelper.Until(() => (pauseMenu = UiHelper.FindFirst<NPauseMenu>(root)) != null && pauseMenu.IsVisibleInTree(), ct, null, "Pause menu did not open");
+		NPauseMenuButton node = pauseMenu.GetNode<Control>("%ButtonContainer").GetNode<NPauseMenuButton>("GiveUp");
+		await UiHelper.Click(node);
+		NAbandonRunConfirmPopup confirmPopup = null;
+		await WaitHelper.Until(() => (confirmPopup = UiHelper.FindFirst<NAbandonRunConfirmPopup>(root)) != null, ct, null, "Abandon confirm popup did not appear");
+		NVerticalPopup node2 = confirmPopup.GetNode<NVerticalPopup>("VerticalPopup");
+		await UiHelper.Click(node2.YesButton);
+		await WaitForGameOverScreenAsync(ct);
+		await DrainOverlayScreensAsync(ct);
+		await WaitForMainMenuAsync(ct);
 	}
 
 	private static void QuitGame(int exitCode)

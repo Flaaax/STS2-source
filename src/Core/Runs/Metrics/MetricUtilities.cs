@@ -36,6 +36,11 @@ public static class MetricUtilities
 
 	private const int _runLengthThreshold = 5;
 
+	private static readonly System.Net.Http.HttpClient _httpClient = new System.Net.Http.HttpClient
+	{
+		Timeout = TimeSpan.FromSeconds(15L)
+	};
+
 	/// <summary>
 	/// Uploads run history to the metrics server.
 	/// DO NOT UPLOAD WHEN:
@@ -275,16 +280,12 @@ public static class MetricUtilities
 	private static async Task PutRequest(string url, string json, string context)
 	{
 		byte[] bytes = Encoding.UTF8.GetBytes(json);
-		using System.Net.Http.HttpClient client = new System.Net.Http.HttpClient
-		{
-			Timeout = TimeSpan.FromSeconds(15L)
-		};
 		ByteArrayContent byteArrayContent = new ByteArrayContent(bytes);
 		byteArrayContent.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
 		HttpResponseMessage response;
 		try
 		{
-			response = await client.PutAsync(url, byteArrayContent);
+			response = await _httpClient.PutAsync(url, byteArrayContent);
 		}
 		catch (Exception ex) when (((ex is HttpRequestException || ex is TaskCanceledException) ? 1 : 0) != 0)
 		{

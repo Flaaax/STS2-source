@@ -1,5 +1,9 @@
 {
   "DAILY_RUN_EPOCH.unlock": "ต่อไปนี้คุณสามารถเล่นการท้าทายแบบสุ่มที่มีวันละครั้งได้แล้ว",
+  "DARV_EPOCH.title": "ดาร์ฟ",
+  "DARV_EPOCH.unlock": "เทพโบราณที่ถูกปลดล็อก: [purple]ดาร์ฟ[/purple] ผู้กักตุน จะปรากฏในการเดินทางในอนาคต...",
+  "DARV_EPOCH.unlockInfo": "พบเจอ[gold]เทพโบราณ[/gold]ตนอื่นทั้งหมด{IsRevealed:เรียบร้อยแล้ว|เพื่อเปิดเผยศักราชนี้}",
+  "DARV_EPOCH.unlockText": "เทพโบราณที่ถูกปลดล้อก: [purple]ดาร์ฟ[/purple]",
   "DEFECT1_EPOCH.unlockInfo": "เล่นการเดินทางด้วย[pink]นักปลุกผีผูกจิต[/pink]{IsRevealed:เรียบร้อยแล้ว|เพื่อเปิดเผยศักราชนี้}",
   "NECROBINDER1_EPOCH.unlockInfo": "เล่นการเดินทางด้วย[orange]นักษัตรประโคมฤกษ์[/orange]{IsRevealed:เรียบร้อยแล้ว|เพื่อเปิดเผยศักราชนี้}",
   "NECROBINDER1_EPOCH.unlockText": "ปลดล็อกตัวละคร[pink]นักปลุกผีผูกจิต[/pink]",

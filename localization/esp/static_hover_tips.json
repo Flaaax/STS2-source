@@ -9,7 +9,7 @@
   "CHANNELING.title": "Canalización",
   "COMPENDIUM.description": "Muestra todas las cartas, pociones y reliquias que encontraste a lo largo de la Torre.",
   "COMPENDIUM.title": "Compendio",
-  "COOK.description": "[gold]Quitas[/gold] [blue]2[/blue] cartas del [gold]mazo[/gold] y obtienes [green]9[/green] PV máx. en un [gold]punto de descanso[/gold].",
+  "COOK.description": "[gold]Quitas[/gold] [blue]2[/blue] cartas del [gold]mazo[/gold] y obtienes [green]5[/green] PV máx. en un [gold]punto de descanso[/gold].",
   "COOK.title": "Cocinar",
   "DECK.description": "Muestra todas las cartas del mazo.",
   "DECK.title": "Mazo {Hotkey:choose(None):| ({})}",

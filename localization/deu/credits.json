@@ -6,7 +6,7 @@
   "COMPOSER.header": "Komponist & Sounddesigner",
   "COMPOSER.names": "Clark Aboud",
   "CONSULTANTS.header": "Beratung",
-  "CONSULTANTS.names": "David Von Derau\nTony “kiooeht” Moore\nAnita Sarkeesian",
+  "CONSULTANTS.names": "David Von Derau\nTony „kiooeht“ Moore\nAnita Sarkeesian",
   "EXIT_MESSAGE": "[green]Danke, dass du Slay the Spire 2 im Early Access spielst![/green]\nKlicke irgendwo zum Verlassen\n(oder B auf dem Controller)",
   "FMOD": "Erstellt mit FMOD Studio von Firelight Technologies Pty Ltd.",
   "GODOT": "Erstellt mit der Godot Engine",
@@ -30,7 +30,7 @@
   "LOC_PTB.header": "Brasilianisches Portugiesisch",
   "LOC_PTB.names": "Igor Canova",
   "LOC_RUS.header": "Russisch",
-  "LOC_RUS.names": "Übersetzung||Shield “GremlinTsundere” Gremlin\nÜbersetzung||Dmitry “Regallion” Zhiryakov\nÜbersetzung/ Korrekturleser||Alexander Skazchenko",
+  "LOC_RUS.names": "Übersetzung||Shield „GremlinTsundere“ Gremlin\nÜbersetzung||Dmitry „Regallion“ Zhiryakov\nÜbersetzung/ Korrekturleser||Alexander Skazchenko",
   "LOC_SPA.header": "Spanisch (Kastilisch)",
   "LOC_SPA.names": "Lucas Rubio Alonso",
   "LOC_THA.header": "Thai",
@@ -45,9 +45,9 @@
   "MEGA_CRIT.names": "Casey Yano\nAnthony Giovannetti\nDanielle Jenkins",
   "MEGA_CRIT_TEAM.names": "Ingenieur||Jose Pacio\nKünstlerische Leiterin||Marlowe Dobbe\nLeitender Ingenieur||Jake Card\nAnimateur||Chris Gortz\nKunst & Illustration||Anailis Dorta\nCommunity-Manager||Demi Montes\nIngenieur||Ed Lu",
   "MODDING_SUPPORT.header": "Modding-Unterstützung",
-  "MODDING_SUPPORT.names": "kiooeht||(Gk) Erasels||Alchyr||Autumn “Mooncat” Turner||Blake “Cany0udance” Kern||Edan Uccetta||Grayson “BlankTheEvil” Gullion||Mindbomber",
+  "MODDING_SUPPORT.names": "kiooeht||(Gk) Erasels||Alchyr||Autumn „Mooncat“ Turner||Blake „Cany0udance“ Kern||Edan Uccetta||Grayson „BlankTheEvil“ Gullion||Mindbomber",
   "PLAYTESTERS.header": "Spieltester*innen",
-  "PLAYTESTERS.names": "(Gk) Erasels||Adam Theodorovits (DuckOfDamnation)||Ahmed Elgoni||Andy “Ursagames” Brown||Arjun Krishna||Autumn “Mooncat” Turner||Becca Howell (Mariina)||Beef Noodles||Ben Kirzhner||Blake “Cany0udance” Kern||Brad Meine||Brian D. Bower||Britt Henderson (Bleggaman)||Carter “Diency” Staley||Chris Dougherty||Chris “BIGHONKINBURGER” Grant||CJ Rhone||Colin Vandervort||Conlan McNamee||Daniel Chipman||Davey Wreden||David Damschen (CyberShark)||David Withington (divadus)||Devin M. (devook)||Dragzell Frantz||Ebby Wahman||Edan Uccetta||Eddie Cai (Axolotl)||Fanchen Yang (lightsentry)||Gary Dworetsky||Genevieve Green||Gian Calvi||Grayson “BlankTheEvil” Gullion||Ianara Natividad (Imachinate)||IrisRaphael||Jacob Neil||Jaiden Gerig||James Dimmick||Jared “Jimmoman” Morris||Jason “wyrm” Deng||Jessica Card||Johnathan Tang||Jonas Trodler||Joseph Lubars||Josh D||Justin Yu (Yudoart)||Kloir||Kyle James (Bluebird503)||Lapis Bluegirl (Eiko)||Madison Goodyear||Mars Orach||Mason Burnheart||Matej Rabek||Maurice Boothe Jr.||Max Silverman||Maximillian Davis||Mike Gorman||Mindbomber||Nicholas “Sent” Gussie||Noelle Devonshire||Ocean Amos||Olive Wesley||Paul Nguyen||Penny Feldman||Peter Havran||Regimade||Robert Ackley||Rowan :)||Roy Rojas Jamhouri||Sabrina Dobbe||Sam Long (Xythas)||Scott Lin||Simon Xia (Dakenon)||Sound of Mystery||Sunwoo Hong (Fissh)||TheBytemaster||Tim Bunn||Tom “Velociraptom” Butler||Tony Clay||Tyler Glaiel||Valentine Hume||Wyatt Chapman (NotExplosive)||Wyatt “Wygore” Grodzins||yumao ren||Zac Bauermeister||aaaaa||jeeahn||modargo",
+  "PLAYTESTERS.names": "(Gk) Erasels||Adam Theodorovits (DuckOfDamnation)||Ahmed Elgoni||Andy „Ursagames“ Brown||Arjun Krishna||Autumn „Mooncat“ Turner||Becca Howell (Mariina)||Beef Noodles||Ben Kirzhner||Blake „Cany0udance“ Kern||Brad Meine||Brian D. Bower||Britt Henderson (Bleggaman)||Carter „Diency“ Staley||Chris Dougherty||Chris „BIGHONKINBURGER“ Grant||CJ Rhone||Colin Vandervort||Conlan McNamee||Daniel Chipman||Davey Wreden||David Damschen (CyberShark)||David Withington (divadus)||Devin M. (devook)||Dragzell Frantz||Ebby Wahman||Edan Uccetta||Eddie Cai (Axolotl)||Fanchen Yang (lightsentry)||Gary Dworetsky||Genevieve Green||Gian Calvi||Grayson „BlankTheEvil“ Gullion||Ianara Natividad (Imachinate)||IrisRaphael||Jacob Neil||Jaiden Gerig||James Dimmick||Jared „Jimmoman“ Morris||Jason „wyrm“ Deng||Jessica Card||Johnathan Tang||Jonas Trodler||Joseph Lubars||Josh D||Justin Yu (Yudoart)||Kloir||Kyle James (Bluebird503)||Lapis Bluegirl (Eiko)||Madison Goodyear||Mars Orach||Mason Burnheart||Matej Rabek||Maurice Boothe Jr.||Max Silverman||Maximillian Davis||Mike Gorman||Mindbomber||Nicholas „Sent“ Gussie||Noelle Devonshire||Ocean Amos||Olive Wesley||Paul Nguyen||Penny Feldman||Peter Havran||Regimade||Robert Ackley||Rowan :)||Roy Rojas Jamhouri||Sabrina Dobbe||Sam Long (Xythas)||Scott Lin||Simon Xia (Dakenon)||Sound of Mystery||Sunwoo Hong (Fissh)||TheBytemaster||Tim Bunn||Tom „Velociraptom“ Butler||Tony Clay||Tyler Glaiel||Valentine Hume||Wyatt Chapman (NotExplosive)||Wyatt „Wygore“ Grodzins||yumao ren||Zac Bauermeister||aaaaa||jeeahn||modargo",
   "SPINE": "Animationen laufen mit Spine\n© Esoteric Software LLC",
   "TRAILER.header": "Trailer",
   "TRAILER_ANIMATION.header": "Trailer-Animation",
@@ -58,5 +58,5 @@
   "TWITCH.header": "Twitch-Einbindung",
   "TWITCH.names": "Streaming-Werkzeugmacher||Thomas Tuts",
   "VOICES.header": "Stimmen (Unvollständig)",
-  "VOICES.names": "Neow, Händler (Echter und Falscher), Tanx, Verkalkter Kultist, Schwummschwamm, Nibbit, Seelenfysch, Geschütz-Operateur, Froschritter||Will Lewis\nRegent||Mark Ota\nNonupeipe||Demi Montes\nDarv||Phillip Corrado\nDie Sippe||Chris Gortz\nVerkalkte Kultistin||Marlowe Dobbe\nFabrikateur||Genevieve Green\nTintchen||Lil Chan\nMagus-Ritter||Ed Lu\nMecha-Ritter||Jose Pacio\nBestienplünderer||CJ Rhone\nArmbrustplünderer||Carter “Diency” Staley\nFährtenplünderer||Peter “Raven” Havran\nMeerespunk||Galen Drew\nSchleimiger Berserker||Ben Brode\nDiebischer Hüpfer||Jaiden Gerig\nZweischwänzige Ratten||Mars Orach"
+  "VOICES.names": "Neow, Händler (Echter und Falscher), Tanx, Verkalkter Kultist, Schwummschwamm, Nibbit, Seelenfysch, Geschütz-Operateur, Froschritter||Will Lewis\nRegent||Mark Ota\nNonupeipe||Demi Montes\nDarv||Phillip Corrado\nDie Sippe||Chris Gortz\nVerkalkte Kultistin||Marlowe Dobbe\nFabrikateur||Genevieve Green\nTintchen||Lil Chan\nMagus-Ritter||Ed Lu\nMecha-Ritter||Jose Pacio\nBestienplünderer||CJ Rhone\nArmbrustplünderer||Carter „Diency“ Staley\nFährtenplünderer||Peter „Raven“ Havran\nMeerespunk||Galen Drew\nSchleimiger Berserker||Ben Brode\nDiebischer Hüpfer||Jaiden Gerig\nZweischwänzige Ratten||Mars Orach"
 }

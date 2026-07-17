@@ -1,4 +1,6 @@
 {
+  "AMBERGRIS.description": "Cure [green]{HealPercent}%[/green] de seus PV Máximos. Se usada em combate, realize um turno extra.",
+  "AMBERGRIS.title": "Âmbar Cinzento",
   "ASHWATER.description": "[gold]Exaure[/gold] qualquer quantidade de cartas na sua [gold]Mão[/gold].",
   "ASHWATER.selectionScreenPrompt": "Escolha qualquer quantidade de cartas para [gold]Exaurir[/gold].",
   "ASHWATER.title": "Água de Rescaldo",

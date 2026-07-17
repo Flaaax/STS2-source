@@ -1,4 +1,6 @@
 {
+  "AMBERGRIS.description": "Przywróć [green]{HealPercent}%[/green] swoich maks. PŻ. Rozegraj dodatkową turę w walce.",
+  "AMBERGRIS.title": "Ambra",
   "ASHWATER.description": "[gold]Wyczerp[/gold] dowolną liczbę kart z [gold]ręki[/gold].",
   "ASHWATER.selectionScreenPrompt": "Wybierz dowolną liczbę kart do [gold]Wyczerpania[/gold].",
   "ASHWATER.title": "Eliksir z popiołu",

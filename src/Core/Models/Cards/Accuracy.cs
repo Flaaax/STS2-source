@@ -5,13 +5,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models.Events;
-using MegaCrit.Sts2.Core.Models.Monsters;
-using MegaCrit.Sts2.Core.Models.Potions;
 using MegaCrit.Sts2.Core.Models.Powers;
-using MegaCrit.Sts2.Core.Models.RelicPools;
-using MegaCrit.Sts2.Core.Models.Relics;
-using Byrdpip = MegaCrit.Sts2.Core.Models.Relics.Byrdpip;
 
 namespace MegaCrit.Sts2.Core.Models.Cards;
 
@@ -34,7 +28,6 @@ public sealed class Accuracy : CardModel
 
 	protected override void OnUpgrade()
 	{
-		Byrdpip
 		base.DynamicVars["AccuracyPower"].UpgradeValueBy(2m);
 	}
 }

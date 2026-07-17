@@ -1,3 +1,4 @@
+using System;
 using Godot;
 using MegaCrit.Sts2.Core.Helpers;
 
@@ -114,8 +115,10 @@ public partial class NDropdownContainer : Control
 		}
 		if (_dropdownItems.Position != _targetDragPos)
 		{
+			float a = Mathf.Sign(_dropdownItems.Position.Y - _targetDragPos.Y);
 			_dropdownItems.Position = _dropdownItems.Position.Lerp(_targetDragPos, (float)delta * 15f);
-			if (_dropdownItems.Position.DistanceTo(_targetDragPos) < 0.5f)
+			float b = Mathf.Sign(_dropdownItems.Position.Y - _targetDragPos.Y);
+			if (Math.Abs(_dropdownItems.Position.Y - _targetDragPos.Y) < 0.5f || !Mathf.IsEqualApprox(a, b))
 			{
 				_dropdownItems.Position = _targetDragPos;
 			}

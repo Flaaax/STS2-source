@@ -1,6 +1,11 @@
 {
   "BLOCKED": "Bloqueado",
   "EPOCH_GAIN": "Época descubierta",
+  "FAILED_JOIN_FULL": "{UserName} no pudo unirse (sala completa).",
+  "FAILED_JOIN_MOD_MISMATCH": "{UserName} no pudo unirse (mods incompatibles).",
+  "FAILED_JOIN_PROGRESS": "{UserName} no pudo unirse (partida en progreso).",
+  "FAILED_JOIN_SAVE": "{UserName} no pudo unirse (no empezasteis la partida juntos).",
+  "FAILED_JOIN_VERSION": "{UserName} no pudo unirse (versiones del juego distintas).",
   "POWER_WEARS_OFF": "Desapareció",
   "STUNNED": "¡Aturdimiento!"
 }

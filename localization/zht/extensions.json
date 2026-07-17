@@ -1,0 +1,23 @@
+{
+  "EXTENSION.card.humanizedCardTypes.attack": "攻擊",
+  "EXTENSION.card.humanizedCardTypes.curse": "詛咒",
+  "EXTENSION.card.humanizedCardTypes.power": "能力",
+  "EXTENSION.card.humanizedCardTypes.quest": "任務",
+  "EXTENSION.card.humanizedCardTypes.skill": "技能",
+  "EXTENSION.card.humanizedCardTypes.status": "狀態",
+  "EXTENSION.config.activate": "請使用此畫面右下角的「啟用」按鈕啟用擴充功能。",
+  "EXTENSION.config.categoryWarning": "請確認你的 Twitch 實況分類已設為 Slay the Spire 2，否則觀眾將看不到此擴充功能！",
+  "EXTENSION.config.inGameConnect": "請前往遊戲內的設定選單，連線並設定整合功能。",
+  "EXTENSION.config.title": "Slay the Spire 2 幫手",
+  "EXTENSION.piles.clickHint.deck": "點選以檢視牌組",
+  "EXTENSION.piles.clickHint.discardPile": "點選以檢視棄牌堆",
+  "EXTENSION.piles.clickHint.drawPile": "點選以檢視抽牌堆",
+  "EXTENSION.poll.voteReceived": "投票已送出！",
+  "EXTENSION.tutorial.back": "返回",
+  "EXTENSION.tutorial.finish": "知道了！",
+  "EXTENSION.tutorial.hoverIndicator": "看到此指示圖示時，將游標停在直播畫面上，即可檢視 {{streamerName}} 的卡牌、遺物和藥水：",
+  "EXTENSION.tutorial.next": "下一步",
+  "EXTENSION.tutorial.title": "Slay the Spire 2",
+  "EXTENSION.tutorial.twitchIntegration": "Twitch 整合",
+  "EXTENSION.tutorial.voting": "你也能投票決定 {{streamerName}} 該選哪張卡牌作為獎勵，以及接下來該前往地圖上的哪個位置。"
+}

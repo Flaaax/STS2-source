@@ -9,7 +9,7 @@
   "CHANNELING.title": "Invocar",
   "COMPENDIUM.description": "Consulta todas las cartas, pociones y reliquias que hayas encontrado en la Torre.",
   "COMPENDIUM.title": "Compendio",
-  "COOK.description": "[gold]Elimina[/gold] [blue]2[/blue] cartas de tu [gold]Mazo[/gold] y gana [green]9[/green] PV máx. en los [gold]Lugares de descanso[/gold].",
+  "COOK.description": "[gold]Elimina[/gold] [blue]2[/blue] cartas de tu [gold]Mazo[/gold] y gana [green]5[/green] PV máx. en los [gold]Lugares de descanso[/gold].",
   "COOK.title": "Cocinar",
   "DECK.description": "Consulta todas las cartas de tu mazo.",
   "DECK.title": "Mazo {Hotkey:choose(None):| ({})}",

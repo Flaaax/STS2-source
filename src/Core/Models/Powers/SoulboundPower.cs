@@ -38,7 +38,7 @@ public sealed class SoulboundPower : PowerModel
 		{
 			IsAddingSoul = true;
 			Flash();
-			CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(Soul.Create(base.Owner.Player, base.Amount, base.CombatState), PileType.Draw, base.Owner.Player));
+			CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(Soul.Create(base.Owner.Player, base.Amount, base.CombatState), PileType.Draw, base.Owner.Player, CardPilePosition.Random));
 			IsAddingSoul = false;
 		}
 	}

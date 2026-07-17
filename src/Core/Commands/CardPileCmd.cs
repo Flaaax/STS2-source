@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Context;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Entities.Multiplayer;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Extensions;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -206,6 +207,20 @@ public static class CardPileCmd
 		}
 	}
 
+	/// <summary>
+	/// Change the owner of the card, placing it in <paramref name="player" />'s card pile.
+	/// In most cases, you DO NOT want to call this directly. Calling this method during <see cref="M:MegaCrit.Sts2.Core.Models.CardModel.OnPlay(MegaCrit.Sts2.Core.GameActions.Multiplayer.PlayerChoiceContext,MegaCrit.Sts2.Core.Entities.Cards.CardPlay)" />
+	/// will cause post-play hooks like <see cref="M:MegaCrit.Sts2.Core.Models.AbstractModel.AfterCardPlayed(MegaCrit.Sts2.Core.GameActions.Multiplayer.PlayerChoiceContext,MegaCrit.Sts2.Core.Entities.Cards.CardPlay)" /> to trigger on the receiving player,
+	/// not the owning player. Instead, override <see cref="M:MegaCrit.Sts2.Core.Models.CardModel.GetResultLocationForCardPlay" /> or use the hook
+	/// <see cref="M:MegaCrit.Sts2.Core.Hooks.Hook.ModifyCardPlayResultLocation(MegaCrit.Sts2.Core.Combat.ICombatState,MegaCrit.Sts2.Core.Models.CardModel,System.Boolean,MegaCrit.Sts2.Core.Entities.Cards.ResourceInfo,MegaCrit.Sts2.Core.Entities.Cards.CardLocation,System.Collections.Generic.IEnumerable{MegaCrit.Sts2.Core.Models.AbstractModel}@)" /> to change the result player, which will call this after the
+	/// card play is fully complete.
+	/// </summary>
+	/// <param name="card">The card to change owners.</param>
+	/// <param name="player">The new owner of the card.</param>
+	/// <param name="pileType">The new pile where the card will be placed.</param>
+	/// <param name="position">The position within the new pile where the card will be placed.</param>
+	/// <param name="clonedBy">The model that cloned this card, if applicable. Used to prevent copy effects from
+	/// recursing. TODO is this necessary?</param>
 	public static async Task GiveToAnotherPlayer(CardModel card, Player player, PileType pileType, CardPilePosition position = CardPilePosition.Bottom, AbstractModel? clonedBy = null)
 	{
 		NCard cardNode = NCard.FindOnTable(card);
@@ -219,7 +234,7 @@ public static class CardPileCmd
 			cardNode.Reparent(vfxContainer);
 			if (islocalPlayerTheReceivingPlayer)
 			{
-				NCardFlyVfx child = NCardFlyVfx.Create(cardNode, card.Pile.Type, isAddingToPile: true, card.Owner.Character.TrailPath);
+				NCardFlyVfx child = NCardFlyVfx.Create(cardNode, card.Pile?.Type ?? pileType, isAddingToPile: true, card.Owner.Character.TrailPath);
 				vfxContainer?.AddChildSafely(child);
 			}
 			else
@@ -251,7 +266,7 @@ public static class CardPileCmd
 	/// </summary>
 	/// <param name="cards">Cards to add.</param>
 	/// <param name="newPileType">Type of pile to add the card to.</param>
-	/// <param name="creator">Player that created this card if ther is one</param>
+	/// <param name="creator">Player that created this card if there is one</param>
 	/// <param name="position">Optional position in the pile to add the cards to. Defaults to bottom.</param>
 	public static async Task<IReadOnlyList<CardPileAddResult>> AddGeneratedCardsToCombat(IEnumerable<CardModel> cards, PileType newPileType, Player? creator, CardPilePosition position = CardPilePosition.Bottom)
 	{
@@ -864,7 +879,31 @@ public static class CardPileCmd
 	/// <param name="player">Player who the hand and draw pile belongs to.</param>
 	/// <param name="fromHandDraw">If this draw happened as part of the initial card draws at the start of your turn.</param>
 	/// <returns>Cards that were drawn.</returns>
-	public static async Task<IEnumerable<CardModel>> Draw(PlayerChoiceContext choiceContext, decimal count, Player player, bool fromHandDraw = false)
+	public static Task<IEnumerable<CardModel>> Draw(PlayerChoiceContext choiceContext, decimal count, Player player, bool fromHandDraw = false)
+	{
+		return DrawInternal(choiceContext, count, player, fromHandDraw);
+	}
+
+	/// <summary>
+	/// Draw cards without needing to know the result.
+	/// This can be used as a shortcut when the target of the draw may be different than the owner of the action which
+	/// caused the draw, and you do not wish the draw to block the originating action.
+	/// If you must know the results of the draw, then you need to construct your own DelegatingPlayerChoiceContext and
+	/// pass it the full task of the draw + modifications.
+	/// </summary>
+	/// <param name="choiceContext">The context with which to handle player choices.</param>
+	/// <param name="count">Number of cards to draw.</param>
+	/// <param name="player">Player who the hand and draw pile belongs to.</param>
+	/// <param name="fromHandDraw">If this draw happened as part of the initial card draws at the start of your turn.</param>
+	/// <returns>Cards that were drawn.</returns>
+	public static Task DrawWithoutBlockingOnOtherPlayers(PlayerChoiceContext choiceContext, decimal count, Player player, bool fromHandDraw = false)
+	{
+		BranchingPlayerChoiceContext branchingPlayerChoiceContext = new BranchingPlayerChoiceContext(LocalContext.NetId.Value, GameActionType.Combat, choiceContext);
+		Task<IEnumerable<CardModel>> task = Draw(branchingPlayerChoiceContext, count, player, fromHandDraw);
+		return branchingPlayerChoiceContext.AssignTaskAndWaitForPauseOrCompletion(task);
+	}
+
+	private static async Task<IEnumerable<CardModel>> DrawInternal(PlayerChoiceContext choiceContext, decimal count, Player player, bool fromHandDraw = false)
 	{
 		if (CombatManager.Instance.IsOverOrEnding)
 		{

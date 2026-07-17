@@ -48,10 +48,15 @@ public class AssetCache
 		{
 			throw new AssetLoadException("Asset previously failed to load: " + path + ". The game installation may be corrupted.");
 		}
+		Resource resource = ResourceLoader.Load<Resource>(path, null, ResourceLoader.CacheMode.Reuse);
+		if (resource is AtlasTexture)
+		{
+			return resource;
+		}
 		_missedCacheAssets.Add(path);
 		Log.Warn("Asset not cached: " + path);
-		_cache[path] = ResourceLoader.Load<Resource>(path, null, ResourceLoader.CacheMode.Reuse);
-		return _cache[path];
+		_cache[path] = resource;
+		return resource;
 	}
 
 	/// <summary>

@@ -25,6 +25,10 @@ public sealed class OneForAllPower : PowerModel
 		{
 			return 0m;
 		}
+		if (cardPlay?.Card.EnergyCost.CostsX ?? cardSource.EnergyCost.CostsX)
+		{
+			return 0m;
+		}
 		if (cardPlay != null && cardPlay.Resources.EnergySpent != 0)
 		{
 			return 0m;

@@ -11,7 +11,7 @@ public partial class NIroncladVfx : Node
 
 	private ShaderMaterial? _slashShaderMat;
 
-	private Tween _tween;
+	private Tween? _tween;
 
 	private Node2D _parent;
 

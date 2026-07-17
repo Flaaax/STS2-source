@@ -389,7 +389,8 @@ public class RunManager : IRunLobbyListener
 	/// The replay also contains the serialized version of the run. This may contain extra data that's not part of the
 	/// deserialized RunState.
 	/// </param>
-	public void SetUpReplay(RunState state, CombatReplay replay)
+	/// <param name="playerIdToLoad">The player ID to pretend that we are. UI will be displayed for this player.</param>
+	public void SetUpReplay(RunState state, CombatReplay replay, ulong playerIdToLoad)
 	{
 		if (State != null)
 		{
@@ -397,8 +398,7 @@ public class RunManager : IRunLobbyListener
 		}
 		State = state;
 		SerializableRun serializableRun = replay.serializableRun;
-		ulong netId = serializableRun.Players[0].NetId;
-		NetReplayGameService netService = new NetReplayGameService(netId);
+		NetReplayGameService netService = new NetReplayGameService(playerIdToLoad);
 		InitializeShared(netService, new PeerInputSynchronizer(netService), shouldSave: true, serializableRun.DailyTime, serializableRun.StartTime, serializableRun.RunTime, serializableRun.WinTime, serializableRun.NumReloads);
 		InitializeRunLobby(netService, state);
 		InitializeSavedRun(serializableRun);
@@ -440,16 +440,7 @@ public class RunManager : IRunLobbyListener
 		NetService = netService;
 		ulong netId = NetService.NetId;
 		ChecksumTracker = new ChecksumTracker(NetService, State);
-		ChecksumTracker checksumTracker = ChecksumTracker;
-		bool flag = !TestMode.IsOn;
-		bool flag2 = flag;
-		if (flag2)
-		{
-			NetGameType type = NetService.Type;
-			bool flag3 = (uint)(type - 2) <= 2u;
-			flag2 = flag3;
-		}
-		checksumTracker.IsEnabled = flag2;
+		ChecksumTracker.IsEnabled = !TestMode.IsOn;
 		RunLocationTargetedBuffer = new RunLocationTargetedMessageBuffer(NetService);
 		FlavorSynchronizer = new FlavorSynchronizer(NetService, State, netId);
 		ActionQueueSet = new ActionQueueSet(State.Players);
@@ -914,7 +905,6 @@ public class RunManager : IRunLobbyListener
 				NRun.Instance.GlobalUi.MapScreen.IsTraveling = false;
 			}
 			AfterMapLocationChanged();
-			await FadeIn();
 		}
 	}
 
@@ -1008,7 +998,7 @@ public class RunManager : IRunLobbyListener
 	/// <summary>
 	/// Helper to call the universal "enter the room" fade in vfx.
 	/// </summary>
-	private async Task FadeIn(bool showTransition = true)
+	public async Task FadeIn(bool showTransition = true)
 	{
 		if (TestMode.IsOn)
 		{
@@ -1027,7 +1017,7 @@ public class RunManager : IRunLobbyListener
 	/// <summary>
 	/// Helper to call the universal "exit the room" fade out vfx.
 	/// </summary>
-	private async Task FadeOut()
+	public async Task FadeOut()
 	{
 		if (TestMode.IsOn)
 		{
@@ -1349,8 +1339,8 @@ public class RunManager : IRunLobbyListener
 			{
 				await EnterRoomInternal(new MapRoom());
 				this.ActEntered?.Invoke();
-				await FadeIn(doTransition);
 			}
+			await FadeIn(doTransition);
 			await Hook.AfterActEntered(State);
 		}
 	}

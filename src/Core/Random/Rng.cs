@@ -4,6 +4,7 @@ using System.Linq;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Saves;
 
 namespace MegaCrit.Sts2.Core.Random;
 
@@ -12,6 +13,8 @@ namespace MegaCrit.Sts2.Core.Random;
 /// </summary>
 public class Rng
 {
+	private int _counter;
+
 	private readonly MegaRandom _random;
 
 	/// <summary>
@@ -19,18 +22,17 @@ public class Rng
 	/// Good for when we need to randomize things that don't impact gameplay.
 	/// We use this instead of the GD.Rand functions because they're extremely slow when called from C#.
 	/// </summary>
-	public static Rng Chaotic { get; } = new Rng((uint)DateTimeOffset.Now.ToUnixTimeSeconds());
+	public static Rng Chaotic { get; } = new Rng((ulong)DateTimeOffset.Now.ToUnixTimeSeconds());
 
-	public int Counter { get; private set; }
-
-	public uint Seed { get; }
-
-	public Rng(uint seed = 0u, int counter = 0)
+	public Rng(ulong seed = 0uL)
 	{
-		Counter = 0;
-		Seed = seed;
 		_random = new MegaRandom(seed);
-		FastForwardCounter(counter);
+	}
+
+	public Rng(SerializableRng serializable)
+	{
+		_counter = serializable.counter;
+		_random = new MegaRandom(serializable);
 	}
 
 	/// <summary>
@@ -44,32 +46,24 @@ public class Rng
 	/// Because it only uses the three things above, if the player sees the same piece of content again this run, the
 	/// RNG will return the same results. If that is a possibility, pass in a <paramref name="mixin" />.
 	/// </summary>
-	public Rng(Player player, ModelId id, uint mixin = 0u, int counter = 0)
-		: this((uint)((int)player.RunState.Rng.Seed + player.RunState.GetPlayerSlotIndex(player) + StringHelper.GetDeterministicHashCode(id.Entry)) + mixin, counter)
+	public Rng(Player player, ModelId id, ulong mixin = 0uL)
+		: this((ulong)((long)player.RunState.Rng.Seed + (long)player.RunState.GetPlayerSlotIndex(player) + (long)StringHelper.GetDeterministicHashCode(id.Entry)) + mixin)
 	{
 	}
 
-	public Rng(uint seed, string name)
-		: this(seed + (uint)StringHelper.GetDeterministicHashCode(name))
+	public Rng(ulong seed, string name)
+		: this(seed + StringHelper.GetDeterministicHashCode(name))
 	{
 	}
 
 	/// <summary>
-	/// Fast-forwards the counter of this Rng.
-	/// The counter is the number of times this Rng has generated a number.
+	/// Load RNG state from serializable.
+	/// Use this when you need to keep the old instance's references intact.
 	/// </summary>
-	/// <param name="targetCount">Count to fast-forward to.</param>
-	public void FastForwardCounter(int targetCount)
+	public void LoadFromSerializable(SerializableRng serializable)
 	{
-		if (Counter > targetCount)
-		{
-			throw new InvalidOperationException($"Cannot fast-forward an Rng counter to a lower number (current = {Counter}, target = {targetCount})");
-		}
-		while (Counter < targetCount)
-		{
-			Counter++;
-			_random.NextInt();
-		}
+		_counter = serializable.counter;
+		_random.Reinitialise(serializable);
 	}
 
 	/// <summary>
@@ -77,7 +71,7 @@ public class Rng
 	/// </summary>
 	public bool NextBool()
 	{
-		Counter++;
+		_counter++;
 		return _random.Next(2) == 0;
 	}
 
@@ -88,7 +82,7 @@ public class Rng
 	/// <returns>Random integer.</returns>
 	public int NextInt(int maxExclusive = int.MaxValue)
 	{
-		Counter++;
+		_counter++;
 		return _random.Next(maxExclusive);
 	}
 
@@ -104,7 +98,7 @@ public class Rng
 		{
 			throw new ArgumentOutOfRangeException("minInclusive", "Minimum must be lower than maximum.");
 		}
-		Counter++;
+		_counter++;
 		return _random.Next(minInclusive, maxExclusive);
 	}
 
@@ -130,10 +124,38 @@ public class Rng
 		{
 			throw new ArgumentOutOfRangeException("minInclusive", "Minimum must be lower than maximum.");
 		}
-		Counter++;
+		_counter++;
 		double num = _random.NextDouble();
 		double num2 = maxExclusive - minInclusive;
 		uint num3 = (uint)(num * num2);
+		return minInclusive + num3;
+	}
+
+	public ulong NextUnsignedLong()
+	{
+		_counter++;
+		return _random.NextULong();
+	}
+
+	public ulong NextUnsignedLong(ulong maxExclusive = ulong.MaxValue)
+	{
+		if (maxExclusive == ulong.MaxValue)
+		{
+			return NextUnsignedLong();
+		}
+		return NextUnsignedLong(0uL, maxExclusive);
+	}
+
+	public ulong NextUnsignedLong(ulong minInclusive, ulong maxExclusive)
+	{
+		if (minInclusive >= maxExclusive)
+		{
+			throw new ArgumentOutOfRangeException("minInclusive", "Minimum must be lower than maximum.");
+		}
+		_counter++;
+		double num = _random.NextDouble();
+		double num2 = maxExclusive - minInclusive;
+		ulong num3 = (ulong)(num * num2);
 		return minInclusive + num3;
 	}
 
@@ -159,7 +181,7 @@ public class Rng
 		{
 			throw new ArgumentOutOfRangeException("min", "Minimum must not be higher than maximum.");
 		}
-		Counter++;
+		_counter++;
 		return (float)(_random.NextDouble() * (double)(max - min) + (double)min);
 	}
 
@@ -169,7 +191,7 @@ public class Rng
 	/// <returns>Random double.</returns>
 	public double NextDouble()
 	{
-		Counter++;
+		_counter++;
 		return _random.NextDouble();
 	}
 
@@ -183,7 +205,7 @@ public class Rng
 		{
 			throw new ArgumentOutOfRangeException("min", "Minimum must not be higher than maximum.");
 		}
-		Counter++;
+		_counter++;
 		return _random.NextDouble() * (max - min) + min;
 	}
 
@@ -329,5 +351,15 @@ public class Rng
 			list[index] = value;
 			list[index2] = value2;
 		}
+	}
+
+	public SerializableRng ToSerializable()
+	{
+		SerializableRng serializableRng = new SerializableRng
+		{
+			counter = _counter
+		};
+		_random.FillSerializableState(serializableRng);
+		return serializableRng;
 	}
 }

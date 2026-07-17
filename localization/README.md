@@ -18,6 +18,7 @@ localization/
   tha/          # Thai
   tur/          # Turkish
   zhs/          # Chinese (Simplified)
+  zht/          # Chinese (Traditional)
 ```
 
 Each language folder contains JSON files with key-value translations.

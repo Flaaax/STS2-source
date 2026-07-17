@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Godot;
 using MegaCrit.Sts2.Core.Nodes.CommonUi;
@@ -124,7 +125,13 @@ public partial class NSlotsContainer : Control
 
 	public override void _Process(double delta)
 	{
+		float a = Mathf.Sign(_whatsMoved.Position.X - _targetPosition.X);
 		_whatsMoved.Position = _whatsMoved.Position.Lerp(_targetPosition, (float)delta * 20f);
+		float b = Mathf.Sign(_whatsMoved.Position.X - _targetPosition.X);
+		if (Math.Abs(_whatsMoved.Position.X - _targetPosition.X) < 0.5f || !Mathf.IsEqualApprox(a, b))
+		{
+			_whatsMoved.Position = _targetPosition;
+		}
 		if (!_isDragging)
 		{
 			float num = _targetPosition.X;

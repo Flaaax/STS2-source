@@ -9,7 +9,7 @@
   "CHANNELING.title": "Channel",
   "COMPENDIUM.description": "View all of the cards, potions, and relics you have encountered throughout the Spire.",
   "COMPENDIUM.title": "Compendium",
-  "COOK.description": "[gold]Remove[/gold] [blue]2[/blue] cards from your [gold]Deck[/gold] and gain [green]9[/green] Max HP at a [gold]Rest Site[/gold].",
+  "COOK.description": "[gold]Remove[/gold] [blue]2[/blue] cards from your [gold]Deck[/gold] and gain [green]5[/green] Max HP at a [gold]Rest Site[/gold].",
   "COOK.title": "Cook",
   "DECK.description": "View all of the cards in your deck.",
   "DECK.title": "Deck {Hotkey:choose(None):| ({})}",

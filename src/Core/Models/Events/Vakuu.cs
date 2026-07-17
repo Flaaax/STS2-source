@@ -34,8 +34,8 @@ public class Vakuu : AncientEventModel
 	private IEnumerable<EventOption> Pool2 => new global::_003C_003Ez__ReadOnlyArray<EventOption>(new EventOption[3]
 	{
 		RelicOption<PreservedFog>(),
-		RelicOption<SereTalon>(),
-		RelicOption<DistinguishedCape>().ThatDecreasesMaxHp(9m)
+		RelicOption<SereTalon>().ThatDecreasesMaxHp(9m),
+		RelicOption<DistinguishedCape>()
 	});
 
 	private IEnumerable<EventOption> Pool3 => new global::_003C_003Ez__ReadOnlyArray<EventOption>(new EventOption[4]

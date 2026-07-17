@@ -161,7 +161,7 @@ public partial class NInspectRelicScreen : Control, IScreenContext
 
 	public override void _Input(InputEvent inputEvent)
 	{
-		if (!IsVisibleInTree() || NDevConsole.Instance.Visible)
+		if (!IsVisibleInTree() || NDevConsole.IsConsoleVisible)
 		{
 			return;
 		}

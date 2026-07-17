@@ -53,6 +53,13 @@ public partial class NDevConsole : Panel
 
 	public static NDevConsole Instance => _instance ?? throw new InvalidOperationException("Dev console used before being created.");
 
+	/// <summary>
+	/// True if the dev console exists and is currently shown. Safe to call before the console is
+	/// created (e.g. hotkeys pressed very early in initialization, or in TestMode where the console
+	/// is never instantiated), unlike <see cref="P:MegaCrit.Sts2.Core.Nodes.Debug.NDevConsole.Instance" /> which throws when absent.
+	/// </summary>
+	public static bool IsConsoleVisible => _instance?.Visible ?? false;
+
 	public static CanvasLayer? Create()
 	{
 		if (TestMode.IsOn)
@@ -423,20 +430,10 @@ public partial class NDevConsole : Panel
 			return;
 		}
 		CompletionResult completionResults = _devConsole.GetCompletionResults(text);
-		if (completionResults.Candidates.Count == 1 && !string.IsNullOrEmpty(completionResults.CommonPrefix))
+		string text2 = MegaCrit.Sts2.Core.DevConsole.DevConsole.CalculateGhostText(text, completionResults);
+		if (text2 != null)
 		{
-			string commonPrefix = completionResults.CommonPrefix;
-			if (!commonPrefix.StartsWith(text, StringComparison.OrdinalIgnoreCase))
-			{
-				GD.PushError($"BUG: CommonPrefix '{commonPrefix}' doesn't start with input '{text}'");
-				HideGhostText();
-			}
-			else
-			{
-				string text2 = commonPrefix.Substring(text.Length);
-				string text3 = new string(' ', text.Length);
-				ShowGhostText(text3 + text2);
-			}
+			ShowGhostText(text2);
 		}
 		else
 		{

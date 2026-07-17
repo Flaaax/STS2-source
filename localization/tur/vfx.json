@@ -1,6 +1,11 @@
 {
   "BLOCKED": "Bloklandı",
   "EPOCH_GAIN": "Çağ Keşfedildi",
+  "FAILED_JOIN_FULL": "{UserName} katılamadı. (Oda Dolu)",
+  "FAILED_JOIN_MOD_MISMATCH": "{UserName} katılamadı. (Mod Uyuşmazlığı)",
+  "FAILED_JOIN_PROGRESS": "{UserName} katılamadı. (Oyun Devam Ediyor)",
+  "FAILED_JOIN_SAVE": "{UserName} katılamadı. (Oyuna Beraber Başlanmadı)",
+  "FAILED_JOIN_VERSION": "{UserName} katılamadı. (Oyun Versiyonu Uyuşmuyor)",
   "POWER_WEARS_OFF": "Etkisi Kalktı",
   "STUNNED": "Sersemledi!"
 }

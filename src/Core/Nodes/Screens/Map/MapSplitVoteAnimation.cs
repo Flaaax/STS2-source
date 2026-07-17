@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -65,7 +64,7 @@ public class MapSplitVoteAnimation
 		}
 		if (!flag)
 		{
-			Rng rng = new Rng((uint)HashCode.Combine(_runState.Rng.Seed, _runState.ActFloor));
+			Rng rng = new Rng(_runState.Rng.Seed + (ulong)_runState.ActFloor);
 			_ticks = rng.NextInt(12, 18);
 			float num = rng.NextFloat(0.05f, 0.3f);
 			_winner = rng.NextItem(list);

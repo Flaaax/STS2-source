@@ -235,7 +235,7 @@ public partial class NMapScreen : Control, IScreenContext, INetCursorPositionTra
 	/// <param name="map">The new map to set.</param>
 	/// <param name="seed">The seed to use for the visual jitter on the map node positions.</param>
 	/// <param name="clearDrawings">True if map drawings should be cleared.</param>
-	public void SetMap(ActMap map, uint seed, bool clearDrawings)
+	public void SetMap(ActMap map, ulong seed, bool clearDrawings)
 	{
 		_map = map;
 		_mapPointDictionary.Clear();
@@ -543,9 +543,10 @@ public partial class NMapScreen : Control, IScreenContext, INetCursorPositionTra
 		SfxCmd.Play("event:/sfx/ui/map/map_select");
 		node.AddChildSafely(nMapNodeSelectVfx);
 		nMapNodeSelectVfx.Position += node.PivotOffset;
+		node.MoveChildSafely(nMapNodeSelectVfx, node.VoteContainer.GetIndex());
 		IReadOnlyList<MapCoord> visitedMapCoords = _runState.VisitedMapCoords;
 		SfxCmd.Play("event:/sfx/ui/wipe_map");
-		Task fadeOutTask = TaskHelper.RunSafely(NGame.Instance.Transition.RoomFadeOut());
+		Task fadeOutTask = TaskHelper.RunSafely(RunManager.Instance.FadeOut());
 		if (visitedMapCoords.Any())
 		{
 			if (_paths.TryGetValue((visitedMapCoords[visitedMapCoords.Count - 1], node.Point.coord), out IReadOnlyList<TextureRect> value))
@@ -569,6 +570,7 @@ public partial class NMapScreen : Control, IScreenContext, INetCursorPositionTra
 		_marker.SetMapPoint(node);
 		await fadeOutTask;
 		await RunManager.Instance.EnterMapCoord(coord);
+		TaskHelper.RunSafely(RunManager.Instance.FadeIn());
 		RefreshAllPointVisuals();
 		PlayerVoteDictionary.Clear();
 		RefreshAllMapPointVotes();
@@ -634,8 +636,10 @@ public partial class NMapScreen : Control, IScreenContext, INetCursorPositionTra
 	{
 		if (_mapContainer.Position != _targetDragPos)
 		{
+			float a = Mathf.Sign(_mapContainer.Position.Y - _targetDragPos.Y);
 			_mapContainer.Position = _mapContainer.Position.Lerp(_targetDragPos, (float)delta * 15f);
-			if (_mapContainer.Position.DistanceTo(_targetDragPos) < 0.5f)
+			float b = Mathf.Sign(_mapContainer.Position.Y - _targetDragPos.Y);
+			if (Math.Abs(_mapContainer.Position.Y - _targetDragPos.Y) < 0.5f || !Mathf.IsEqualApprox(a, b))
 			{
 				_mapContainer.Position = _targetDragPos;
 			}

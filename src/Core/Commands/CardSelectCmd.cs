@@ -268,7 +268,7 @@ public static class CardSelectCmd
 		else
 		{
 			uint choiceId = RunManager.Instance.PlayerChoiceSynchronizer.ReserveChoiceId(player);
-			await context.SignalPlayerChoiceBegun(PlayerChoiceOptions.None);
+			await context.SignalPlayerChoiceBegun(player, PlayerChoiceOptions.None);
 			if (ShouldSelectLocalCard(player))
 			{
 				if (LocalSelector != null)
@@ -339,7 +339,7 @@ public static class CardSelectCmd
 		else
 		{
 			uint choiceId = RunManager.Instance.PlayerChoiceSynchronizer.ReserveChoiceId(player);
-			await context.SignalPlayerChoiceBegun(PlayerChoiceOptions.None);
+			await context.SignalPlayerChoiceBegun(player, PlayerChoiceOptions.None);
 			if (ShouldSelectLocalCard(player))
 			{
 				if (LocalSelector != null)
@@ -402,7 +402,7 @@ public static class CardSelectCmd
 		else
 		{
 			uint choiceId = RunManager.Instance.PlayerChoiceSynchronizer.ReserveChoiceId(player);
-			await context.SignalPlayerChoiceBegun(PlayerChoiceOptions.None);
+			await context.SignalPlayerChoiceBegun(player, PlayerChoiceOptions.None);
 			if (ShouldSelectLocalCard(player))
 			{
 				if (LocalSelector != null)
@@ -435,7 +435,7 @@ public static class CardSelectCmd
 		return await FromCombatPile(context, pile, player, prefs, (CardModel _) => true);
 	}
 
-	public static async Task<IEnumerable<CardModel>> FromCombatPile(PlayerChoiceContext context, CardPile pile, Player player, CardSelectorPrefs prefs, Func<CardModel, bool> filter)
+	public static async Task<IEnumerable<CardModel>> FromCombatPile(PlayerChoiceContext context, CardPile pile, Player player, CardSelectorPrefs prefs, Func<CardModel, bool>? filter)
 	{
 		if (CombatManager.Instance.IsEnding)
 		{
@@ -445,7 +445,18 @@ public static class CardSelectCmd
 		{
 			throw new InvalidOperationException("Cannot perform on a non combat pile");
 		}
-		int num = pile.Cards.Where(filter).Count();
+		IReadOnlyList<CardModel> readOnlyList;
+		if (filter == null)
+		{
+			readOnlyList = pile.Cards;
+		}
+		else
+		{
+			IReadOnlyList<CardModel> readOnlyList2 = pile.Cards.Where(filter).ToList();
+			readOnlyList = readOnlyList2;
+		}
+		IEnumerable<CardModel> filtered = readOnlyList;
+		int num = filtered.Count();
 		if (num == 0)
 		{
 			return Array.Empty<CardModel>();
@@ -453,35 +464,33 @@ public static class CardSelectCmd
 		IEnumerable<CardModel> result;
 		if (!prefs.RequireManualConfirmation && num <= prefs.MinSelect)
 		{
-			result = pile.Cards.Where(filter).ToList();
+			result = filtered;
 		}
 		else if (Selector != null)
 		{
-			List<CardModel> list = pile.Cards.Where(filter).ToList();
 			if (pile.Type == PileType.Draw)
 			{
-				list = (from c in list
+				filtered = from c in filtered
 					orderby c.Rarity, c.Id
-					select c).ToList();
+					select c;
 			}
-			result = (await Selector.GetSelectedCards(list, prefs.MinSelect, prefs.MaxSelect)).ToList();
+			result = (await Selector.GetSelectedCards(filtered, prefs.MinSelect, prefs.MaxSelect)).ToList();
 		}
 		else
 		{
 			uint choiceId = RunManager.Instance.PlayerChoiceSynchronizer.ReserveChoiceId(player);
-			await context.SignalPlayerChoiceBegun(PlayerChoiceOptions.None);
+			await context.SignalPlayerChoiceBegun(player, PlayerChoiceOptions.None);
 			if (ShouldSelectLocalCard(player))
 			{
 				if (LocalSelector != null)
 				{
-					List<CardModel> list2 = pile.Cards.Where(filter).ToList();
 					if (pile.Type == PileType.Draw)
 					{
-						list2 = (from c in list2
+						filtered = from c in filtered
 							orderby c.Rarity, c.Id
-							select c).ToList();
+							select c;
 					}
-					result = (await LocalSelector.GetSelectedCards(list2, prefs.MinSelect, prefs.MaxSelect)).ToList();
+					result = (await LocalSelector.GetSelectedCards(filtered, prefs.MinSelect, prefs.MaxSelect)).ToList();
 				}
 				else
 				{
@@ -816,7 +825,7 @@ public static class CardSelectCmd
 		else
 		{
 			uint choiceId = RunManager.Instance.PlayerChoiceSynchronizer.ReserveChoiceId(player);
-			await context.SignalPlayerChoiceBegun(PlayerChoiceOptions.CancelPlayCardActions);
+			await context.SignalPlayerChoiceBegun(player, PlayerChoiceOptions.CancelPlayCardActions);
 			if (ShouldSelectLocalCard(player))
 			{
 				if (LocalSelector != null)
@@ -898,7 +907,7 @@ public static class CardSelectCmd
 		else
 		{
 			uint choiceId = RunManager.Instance.PlayerChoiceSynchronizer.ReserveChoiceId(player);
-			await context.SignalPlayerChoiceBegun(PlayerChoiceOptions.CancelPlayCardActions);
+			await context.SignalPlayerChoiceBegun(player, PlayerChoiceOptions.CancelPlayCardActions);
 			if (ShouldSelectLocalCard(player))
 			{
 				if (LocalSelector != null)

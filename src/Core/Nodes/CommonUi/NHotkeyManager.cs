@@ -129,7 +129,7 @@ public partial class NHotkeyManager : Node
 
 	public override void _UnhandledInput(InputEvent inputEvent)
 	{
-		if (!NGame.IsGameFocusedWindow() || NDevConsole.Instance.Visible)
+		if (!NGame.IsGameFocusedWindow() || NDevConsole.IsConsoleVisible)
 		{
 			return;
 		}

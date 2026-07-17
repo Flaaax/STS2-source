@@ -32,7 +32,7 @@ public sealed class PaleBlueDotPower : PowerModel
 
 	protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DynamicVar("CardPlay", 5m));
 
-	private int AttacksPlayedThisTurn => CombatManager.Instance.History.CardPlaysFinished.Count((CardPlayFinishedEntry c) => c.HappenedThisTurn(base.Owner.CombatState) && c.CardPlay.Card.Owner == base.Owner.Player);
+	private int AttacksPlayedThisTurn => CombatManager.Instance.History.CardPlaysFinished.Count((CardPlayFinishedEntry c) => c.HappenedThisTurn(base.Owner.CombatState) && c.CardPlay.Player == base.Owner.Player);
 
 	protected override object InitInternalData()
 	{

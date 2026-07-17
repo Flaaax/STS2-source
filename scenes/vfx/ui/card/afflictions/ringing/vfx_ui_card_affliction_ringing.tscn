@@ -195,6 +195,7 @@ offset_bottom = 275.0
 rotation = -4.712389
 scale = Vector2(0.75, 0.75)
 pivot_offset = Vector2(256, 64)
+mouse_filter = 2
 texture = ExtResource("7_yioky")
 
 [node name="horns_right" type="TextureRect" parent="."]
@@ -207,6 +208,7 @@ offset_bottom = 275.0
 rotation = -7.853982
 scale = Vector2(0.75, 0.75)
 pivot_offset = Vector2(256, 64)
+mouse_filter = 2
 texture = ExtResource("7_yioky")
 
 [node name="horns_top" type="TextureRect" parent="."]
@@ -220,6 +222,7 @@ offset_bottom = 64.999985
 rotation = -6.2831855
 scale = Vector2(0.6, 0.75)
 pivot_offset = Vector2(256, 64)
+mouse_filter = 2
 texture = ExtResource("7_yioky")
 
 [node name="skull_top_left" type="TextureRect" parent="."]
@@ -232,6 +235,7 @@ offset_bottom = 149.0
 rotation = -0.5235988
 scale = Vector2(0.35, 0.35)
 pivot_offset = Vector2(256, 128)
+mouse_filter = 2
 texture = ExtResource("8_e7ex6")
 
 [node name="skull_top_right" type="TextureRect" parent="."]
@@ -244,6 +248,7 @@ offset_bottom = 149.0
 rotation = 0.5235988
 scale = Vector2(0.35, 0.35)
 pivot_offset = Vector2(256, 128)
+mouse_filter = 2
 texture = ExtResource("8_e7ex6")
 
 [node name="frame_top" type="TextureRect" parent="."]
@@ -256,4 +261,5 @@ offset_right = 406.0
 offset_bottom = 135.0
 scale = Vector2(0.4, 0.4)
 pivot_offset = Vector2(256, 128)
+mouse_filter = 2
 texture = ExtResource("9_6lovq")

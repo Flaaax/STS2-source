@@ -85,9 +85,17 @@ public class ActionQueueSynchronizer
 		}
 		ActionSynchronizerCombatState combatState2 = CombatState;
 		CombatState = combatState;
-		if (combatState2 == ActionSynchronizerCombatState.NotInCombat)
+		bool flag = (uint)combatState2 <= 1u;
+		bool flag2 = flag;
+		bool flag3 = flag2;
+		if (flag3)
 		{
-			_logger.Debug($"Combat state was previously {combatState2}. Signaling queues that combat has begun");
+			bool flag4 = (uint)(combatState - 2) <= 2u;
+			flag3 = flag4;
+		}
+		if (flag3)
+		{
+			_logger.Debug($"Combat becomes {combatState} from {combatState2}. Signaling queues that combat has begun");
 			_actionQueueSet.CombatStarted();
 		}
 		switch (combatState)
@@ -101,6 +109,13 @@ public class ActionQueueSynchronizer
 				item.Cancel();
 			}
 			_requestedActionsWaitingForPlayerTurn.Clear();
+			break;
+		case ActionSynchronizerCombatState.PreCombatSetup:
+			if (combatState2 == ActionSynchronizerCombatState.NotInCombat)
+			{
+				_logger.Debug($"Combat state becomes {combatState}. Allowing non-combat actions to execute, but not combat actions.");
+				_actionQueueSet.SetUpForCombat();
+			}
 			break;
 		case ActionSynchronizerCombatState.PlayPhase:
 			_logger.Debug($"Combat state becomes {combatState}. Requesting {_requestedActionsWaitingForPlayerTurn.Count} actions and unpausing action queues");

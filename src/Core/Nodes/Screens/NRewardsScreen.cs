@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -472,8 +473,10 @@ public partial class NRewardsScreen : Control, IOverlayScreen, IScreenContext
 	{
 		if (!_rewardsContainer.Position.IsEqualApprox(_targetDragPos))
 		{
+			float a = Mathf.Sign(_rewardsContainer.Position.Y - _targetDragPos.Y);
 			_rewardsContainer.Position = _rewardsContainer.Position.Lerp(_targetDragPos, Mathf.Clamp((float)delta * 15f, 0f, 1f));
-			if (_rewardsContainer.Position.DistanceTo(_targetDragPos) < 0.5f)
+			float b = Mathf.Sign(_rewardsContainer.Position.Y - _targetDragPos.Y);
+			if (Math.Abs(_rewardsContainer.Position.Y - _targetDragPos.Y) < 0.5f || !Mathf.IsEqualApprox(a, b))
 			{
 				_rewardsContainer.Position = _targetDragPos;
 			}

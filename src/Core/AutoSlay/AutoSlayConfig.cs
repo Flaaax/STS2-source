@@ -45,6 +45,21 @@ public static class AutoSlayConfig
 	/// <summary>Maximum floor to play to (floor 49 is the final boss).</summary>
 	public const int maxFloor = 49;
 
+	/// <summary>
+	/// Turn at which AutoSlay starts ramping up Strength. Fights that end before this play out with
+	/// no offensive buff so real combat is exercised; only dragging fights (bosses, and DPS-check
+	/// encounters like The Insatiable, whose <c>SandpitPower</c> counter hard-kills the player when
+	/// it expires) get forced toward a kill. Kept low so the ramp closes the fight out before such a
+	/// counter runs down: in local runs The Insatiable dies around turn 4, well ahead of its kill.
+	/// </summary>
+	public const int combatStrengthRampStartTurn = 3;
+
+	/// <summary>
+	/// Strength added each turn once the ramp starts. Stacks additively, so a dragging fight ends
+	/// within a turn or two of the ramp beginning, staying ahead of instakill counters and the turn cap.
+	/// </summary>
+	public const int combatStrengthRampPerTurn = 200;
+
 	/// <summary>Watchdog timeout. If no progress for this long, dump state and fail.</summary>
 	public static readonly TimeSpan watchdogTimeout = TimeSpan.FromSeconds(30L);
 

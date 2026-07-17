@@ -15,5 +15,5 @@ script = ExtResource("1_fbpdl")
 _pathHeightOffsets = [SubResource("Curve_fwv3g")]
 _heightOffsetRange = Vector2(10, 30)
 _movementCurves = [SubResource("Curve_twba3")]
-travelTimeRange = Vector2(0.175, 0.2)
+_travelTimeRange = Vector2(0.175, 0.2)
 _impactParticlesScenePath = "vfx/orbs/plasma/vfx_plasma_orb_projectile_impact"

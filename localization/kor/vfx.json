@@ -1,6 +1,11 @@
 {
   "BLOCKED": "방어됨",
   "EPOCH_GAIN": "역사 발견",
+  "FAILED_JOIN_FULL": "{UserName}님이 참여하지 못했습니다. (로비 가득 참)",
+  "FAILED_JOIN_MOD_MISMATCH": "{UserName}님이 참여하지 못했습니다. (모드 불일치)",
+  "FAILED_JOIN_PROGRESS": "{UserName}님이 참여하지 못했습니다. (도전 진행 중)",
+  "FAILED_JOIN_SAVE": "{UserName}님이 참여하지 못했습니다. (함께 시작하지 않음)",
+  "FAILED_JOIN_VERSION": "{UserName}님이 참여하지 못했습니다. (게임 버전 불일치)",
   "POWER_WEARS_OFF": "효과 끝남",
   "STUNNED": "기절함!"
 }

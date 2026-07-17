@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Commands;
@@ -10,7 +9,7 @@ namespace MegaCrit.Sts2.Core.Models.Cards;
 
 public sealed class Expertise : CardModel
 {
-	protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new CardsVar(6));
+	protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new CardsVar(2));
 
 	public Expertise()
 		: base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
@@ -19,10 +18,10 @@ public sealed class Expertise : CardModel
 
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
 	{
-		decimal baseValue = base.DynamicVars.Cards.BaseValue;
-		int count = base.Owner.PlayerCombatState.Hand.Cards.Count;
-		decimal count2 = Math.Max(0m, baseValue - (decimal)count);
-		await CardPileCmd.Draw(choiceContext, count2, base.Owner);
+		foreach (CardModel item in await CardPileCmd.Draw(choiceContext, base.DynamicVars.Cards.IntValue, base.Owner))
+		{
+			CardCmd.ApplySingleTurnRetain(item);
+		}
 	}
 
 	protected override void OnUpgrade()

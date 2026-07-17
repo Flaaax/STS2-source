@@ -9,7 +9,7 @@
   "CHANNELING.title": "영창",
   "COMPENDIUM.description": "지금까지 발견한 첨탑에 존재하는 모든 카드와 포션, 유물을 확인합니다.",
   "COMPENDIUM.title": "백과사전",
-  "COOK.description": "[gold]휴식 장소[/gold]에서 [gold]덱[/gold]에서 카드를 [blue]2[/blue]장 [gold]제거[/gold]하고 최대 체력을 [green]9[/green] 얻습니다.",
+  "COOK.description": "[gold]휴식 장소[/gold]에서 [gold]덱[/gold]에서 카드를 [blue]2[/blue]장 [gold]제거[/gold]하고 최대 체력을 [green]5[/green] 얻습니다.",
   "COOK.title": "요리",
   "DECK.description": "덱에 있는 모든 카드를 확인합니다.",
   "DECK.title": "덱 {Hotkey:choose(None):| ({})}",

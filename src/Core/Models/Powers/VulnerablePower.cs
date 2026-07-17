@@ -43,16 +43,16 @@ public sealed class VulnerablePower : PowerModel
 			{
 				num = paperPhrog.ModifyVulnerableMultiplier(target, num, props, dealer, cardSource);
 			}
-			CrueltyPower power = dealer.GetPower<CrueltyPower>();
-			if (power != null)
+			CrueltyPower crueltyPower = dealer.GetPower<CrueltyPower>() ?? dealer.PetOwner?.Creature.GetPower<CrueltyPower>();
+			if (crueltyPower != null)
 			{
-				num = power.ModifyVulnerableMultiplier(target, num, props, dealer, cardSource);
+				num = crueltyPower.ModifyVulnerableMultiplier(target, num, props, dealer, cardSource);
 			}
 		}
-		DebilitatePower power2 = target.GetPower<DebilitatePower>();
-		if (power2 != null)
+		DebilitatePower power = target.GetPower<DebilitatePower>();
+		if (power != null)
 		{
-			num = power2.ModifyVulnerableMultiplier(target, num, props, dealer, cardSource);
+			num = power.ModifyVulnerableMultiplier(target, num, props, dealer, cardSource);
 		}
 		return num;
 	}

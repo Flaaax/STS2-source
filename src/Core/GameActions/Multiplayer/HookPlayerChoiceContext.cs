@@ -11,9 +11,15 @@ using MegaCrit.Sts2.Core.Runs;
 namespace MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 /// <summary>
-/// A player choice context for use in hooks that do not run as part of a GameAction.
-/// When player choice is required, a new game action is created and enqueued directly to the player's action queue. From
-/// there, flow proceeds like a normal game action. No game action is created if player choice is not requested.
+/// A player choice context for use when a separate GameAction is required upon player choice.
+///
+/// When player choice is required, a new game action is created and enqueued directly to the player's action queue.
+/// From there, flow proceeds like a normal game action. This is necessary to synchronize execution, so that the
+/// post-player-choice effects are deterministically executed across all peers. No new game action is created if player
+/// choice is not requested.
+///
+/// Note that this is also used outside of hooks, in the <see cref="T:MegaCrit.Sts2.Core.GameActions.Multiplayer.BranchingPlayerChoiceContext" />. It's likely that
+/// we should change the name of this class, but I'm not really sure what the new name should be yet.
 /// </summary>
 public class HookPlayerChoiceContext : PlayerChoiceContext
 {
@@ -58,6 +64,8 @@ public class HookPlayerChoiceContext : PlayerChoiceContext
 
 	public Player? Owner { get; }
 
+	public override ulong? OwnerId => Owner?.NetId;
+
 	public GenericHookGameAction? GameAction => _gameAction;
 
 	public HookPlayerChoiceContext(Player owner, ulong localPlayerId, GameActionType gameActionType)
@@ -67,25 +75,24 @@ public class HookPlayerChoiceContext : PlayerChoiceContext
 		Owner = owner;
 	}
 
-	public HookPlayerChoiceContext(AbstractModel source, ulong localPlayerId, ICombatState combatState, GameActionType gameActionType)
+	public HookPlayerChoiceContext(AbstractModel source, ulong localPlayerId, ICombatState? combatState, GameActionType gameActionType)
 	{
 		_localPlayerId = localPlayerId;
 		Source = source;
-		AbstractModel source2 = Source;
-		Owner = ((source2 is CardModel cardModel) ? cardModel.Owner : ((source2 is RelicModel relicModel) ? relicModel.Owner : ((source2 is PotionModel potionModel) ? potionModel.Owner : ((source2 is AfflictionModel afflictionModel) ? afflictionModel.Card.Owner : ((!(source2 is EnchantmentModel enchantmentModel)) ? null : enchantmentModel.Card.Owner)))));
-		if (Source is PowerModel powerModel)
-		{
-			if (powerModel.Owner.IsPlayer)
-			{
-				Owner = powerModel.Owner.Player;
-			}
-			else
-			{
-				Owner = combatState.Players[0];
-			}
-		}
+		Owner = GetOwner(source, combatState);
 		PushModel(Source);
 		_gameActionType = gameActionType;
+	}
+
+	public static Player? GetOwner(AbstractModel source, ICombatState? combatState)
+	{
+		Player player = ((source is CardModel cardModel) ? cardModel.Owner : ((source is RelicModel relicModel) ? relicModel.Owner : ((source is PotionModel potionModel) ? potionModel.Owner : ((source is AfflictionModel afflictionModel) ? afflictionModel.Card.Owner : ((source is EnchantmentModel enchantmentModel) ? enchantmentModel.Card.Owner : ((!(source is PowerModel powerModel)) ? null : powerModel.Owner.Player))))));
+		Player player2 = player;
+		if (player2 == null)
+		{
+			player2 = combatState?.Players[0];
+		}
+		return player2;
 	}
 
 	public void MockDependenciesForTest(ActionQueueSynchronizer? actionQueueSynchronizer, ActionQueueSet? actionQueueSet, ActionExecutor? actionExecutor)
@@ -143,11 +150,15 @@ public class HookPlayerChoiceContext : PlayerChoiceContext
 		Source?.InvokeExecutionFinished();
 	}
 
-	public override async Task SignalPlayerChoiceBegun(PlayerChoiceOptions options)
+	public override async Task SignalPlayerChoiceBegun(Player chooser, PlayerChoiceOptions options)
 	{
+		if (chooser.NetId != OwnerId)
+		{
+			Log.Warn($"{"HookPlayerChoiceContext"} is executing player choice owned by {chooser.NetId}, but the player choice began with owner {OwnerId}! This will work, but will likely result in some weird-looking user experience. See {"BlockingPlayerChoiceContext"} for a resolution.");
+		}
 		if (_gameAction != null)
 		{
-			if (ActionExecutor.CurrentlyRunningAction != _gameAction)
+			if (ActionExecutor != null && ActionExecutor.CurrentlyRunningAction != _gameAction)
 			{
 				Log.Error($"Tried to interrupt action {_gameAction} but the currently running action is {ActionExecutor.CurrentlyRunningAction}!");
 				return;
@@ -159,7 +170,7 @@ public class HookPlayerChoiceContext : PlayerChoiceContext
 			{
 				throw new InvalidOperationException($"HookPlayerChoiceContext is assigned a model {Source} with no owner, but the model has requested a player choice! This is not supported");
 			}
-			_gameAction = ActionQueueSynchronizer.GenerateHookAction(Owner.NetId, _gameActionType);
+			_gameAction = ActionQueueSynchronizer.GenerateHookAction(chooser.NetId, _gameActionType);
 			_pausedBeforeTaskAssignedCompletionSource.SetResult();
 			if (Task == null)
 			{

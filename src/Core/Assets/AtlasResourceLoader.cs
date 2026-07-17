@@ -247,7 +247,20 @@ public partial class AtlasResourceLoader : ResourceFormatLoader
 
 	private static Variant GetMissingTexture(string atlasName)
 	{
-		string text = ((!(atlasName == "card_atlas")) ? "res://images/powers/missing_power.png" : "res://images/packed/card_portraits/beta.png");
+		string text;
+		switch (atlasName)
+		{
+		case "card_atlas":
+			text = "res://images/packed/card_portraits/beta.png";
+			break;
+		case "potion_atlas":
+		case "potion_outline_atlas":
+			text = "res://images/potions/missing_potion.png";
+			break;
+		default:
+			text = "res://images/powers/missing_power.png";
+			break;
+		}
 		string path = text;
 		if (ResourceLoader.Exists(path))
 		{

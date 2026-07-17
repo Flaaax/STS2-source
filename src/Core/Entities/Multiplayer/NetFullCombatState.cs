@@ -436,8 +436,8 @@ public class NetFullCombatState : IPacketSerializable
 				rngSet = player.PlayerRng.ToSerializable(),
 				relicGrabBag = player.RelicGrabBag.ToSerializable()
 			};
-			item2.rngSet.Counters.Remove(PlayerRngType.Rewards);
-			item2.rngSet.Counters.Remove(PlayerRngType.Shops);
+			item2.rngSet.Rngs.Remove(PlayerRngType.Rewards);
+			item2.rngSet.Rngs.Remove(PlayerRngType.Shops);
 			if (playerCombatState != null && CombatManager.Instance.IsInProgress)
 			{
 				item2.piles.Add(CombatPileState.From(playerCombatState.Hand));
@@ -729,7 +729,7 @@ public class NetFullCombatState : IPacketSerializable
 			PlayerRngType[] values = Enum.GetValues<PlayerRngType>();
 			foreach (PlayerRngType playerRngType in values)
 			{
-				if (player.rngSet.Counters.TryGetValue(playerRngType, out var value))
+				if (player.rngSet.Rngs.TryGetValue(playerRngType, out SerializableRng value))
 				{
 					stringBuilder2 = stringBuilder;
 					StringBuilder stringBuilder23 = stringBuilder2;
@@ -767,7 +767,7 @@ public class NetFullCombatState : IPacketSerializable
 		RunRngType[] values3 = Enum.GetValues<RunRngType>();
 		foreach (RunRngType runRngType in values3)
 		{
-			if (Rng.Counters.TryGetValue(runRngType, out var value3))
+			if (Rng.Rngs.TryGetValue(runRngType, out SerializableRng value3))
 			{
 				stringBuilder2 = stringBuilder;
 				StringBuilder stringBuilder26 = stringBuilder2;

@@ -62,7 +62,7 @@ public sealed class PhantomBladesPower : PowerModel
 		{
 			return 0m;
 		}
-		int num = CombatManager.Instance.History.CardPlaysFinished.Count((CardPlayFinishedEntry e) => e.HappenedThisTurn(base.CombatState) && e.CardPlay.Card.Tags.Contains(CardTag.Shiv) && e.CardPlay.Card.Owner.Creature == base.Owner);
+		int num = CombatManager.Instance.History.CardPlaysFinished.Count((CardPlayFinishedEntry e) => e.HappenedThisTurn(base.CombatState) && e.CardPlay.Card.Tags.Contains(CardTag.Shiv) && e.CardPlay.Player == base.Owner.Player);
 		if (num > 0)
 		{
 			return 0m;

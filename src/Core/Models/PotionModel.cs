@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 using Godot;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Context;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Entities.Multiplayer;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Potions;
 using MegaCrit.Sts2.Core.GameActions;
@@ -93,6 +95,10 @@ public abstract class PotionModel : AbstractModel
 			return ResourceLoader.Load<Texture2D>(OutlinePath, null, ResourceLoader.CacheMode.Reuse);
 		}
 	}
+
+	public string LargeImagePath => ImageHelper.GetImagePath("potions/large/" + base.Id.Entry.ToLowerInvariant() + ".png");
+
+	public Texture2D LargeImage => ResourceLoader.Load<Texture2D>(ResourceLoader.Exists(LargeImagePath) ? LargeImagePath : ImageHelper.GetImagePath("potions/missing_potion.png"), null, ResourceLoader.CacheMode.Reuse);
 
 	public abstract PotionRarity Rarity { get; }
 
@@ -324,21 +330,27 @@ public abstract class PotionModel : AbstractModel
 		CombatManager.Instance.BeginCardOrPotionEffect(Owner);
 		try
 		{
-			await OnUse(choiceContext, target);
+			BranchingPlayerChoiceContext branchingPlayerChoiceContext = new BranchingPlayerChoiceContext(LocalContext.NetId.Value, GameActionType.Combat, choiceContext);
+			branchingPlayerChoiceContext.PushModel(this);
+			Task task = OnUse(branchingPlayerChoiceContext, target);
+			await branchingPlayerChoiceContext.AssignTaskAndWaitForPauseOrCompletion(task);
 		}
 		finally
 		{
-			CombatManager.Instance.EndCardOrPotionEffect(Owner);
+			await CombatManager.Instance.EndCardOrPotionEffect(Owner);
 		}
-		InvokeExecutionFinished();
-		if (combatState != null && CombatManager.Instance.IsInProgress)
+		if (!Owner.Creature.IsDead)
 		{
-			CombatManager.Instance.History.PotionUsed(combatState, this, target);
+			InvokeExecutionFinished();
+			if (combatState != null && CombatManager.Instance.IsInProgress)
+			{
+				CombatManager.Instance.History.PotionUsed(combatState, this, target);
+			}
+			await Hook.AfterPotionUsed(Owner.RunState, combatState, this, target);
+			Owner.RunState.CurrentMapPointHistoryEntry?.GetEntry(Owner.NetId).PotionUsed.Add(base.Id);
+			await CombatManager.Instance.CheckForEmptyHand(choiceContext, Owner);
+			choiceContext.PopModel(this);
 		}
-		await Hook.AfterPotionUsed(Owner.RunState, combatState, this, target);
-		Owner.RunState.CurrentMapPointHistoryEntry?.GetEntry(Owner.NetId).PotionUsed.Add(base.Id);
-		await CombatManager.Instance.CheckForEmptyHand(choiceContext, Owner);
-		choiceContext.PopModel(this);
 	}
 
 	public void AfterUsageCanceled()

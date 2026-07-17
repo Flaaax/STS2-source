@@ -9,7 +9,7 @@
   "CHANNELING.title": "生成",
   "COMPENDIUM.description": "查看你在高塔中遇到过的所有卡牌、药水和遗物。",
   "COMPENDIUM.title": "百科大全",
-  "COOK.description": "在[gold]休息处[/gold]从你的[gold]牌组[/gold]中[gold]移除[/gold][blue]2[/blue]张牌并获得[green]9[/green]点最大生命。",
+  "COOK.description": "在[gold]休息处[/gold]从你的[gold]牌组[/gold]中[gold]移除[/gold][blue]2[/blue]张牌并获得[green]5[/green]点最大生命。",
   "COOK.title": "烹饪",
   "DECK.description": "查看你牌组中的所有卡牌。",
   "DECK.title": "牌组{Hotkey:choose(None):|（{}）}",

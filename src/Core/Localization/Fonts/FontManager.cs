@@ -23,7 +23,8 @@ public static class FontManager
 		["pol"] = _russian,
 		["rus"] = _russian,
 		["tha"] = new ThaFontPathSet(),
-		["zhs"] = new ZhsFontPathSet()
+		["zhs"] = new ZhsFontPathSet(),
+		["zht"] = new ZhtFontPathSet()
 	};
 
 	/// <summary>

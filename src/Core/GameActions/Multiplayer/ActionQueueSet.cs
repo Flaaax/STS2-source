@@ -200,6 +200,19 @@ public class ActionQueueSet
 				_logger.VeryDebug($"We are currently in combat and candidate action {gameAction2} has type {gameAction2.ActionType}");
 				continue;
 			}
+			bool flag = !_isInCombat;
+			bool flag2 = flag;
+			if (flag2)
+			{
+				GameActionType actionType = gameAction2.ActionType;
+				bool flag3 = (uint)(actionType - 1) <= 1u;
+				flag2 = flag3;
+			}
+			if (flag2)
+			{
+				_logger.VeryDebug($"We are currently not in combat and candidate action {gameAction2} has type {gameAction2.ActionType}");
+				continue;
+			}
 			if (actionQueue.isPaused && gameAction2.ActionType == GameActionType.CombatPlayPhaseOnly)
 			{
 				_logger.VeryDebug($"Queue for player {actionQueue.ownerId} is paused and candidate action {gameAction2} has type {gameAction2.ActionType}");
@@ -390,13 +403,27 @@ public class ActionQueueSet
 	}
 
 	/// <summary>
-	/// Allows combat actions to be added to player queues.
+	/// Allows combat actions to be added to player queues, but not be executed.
+	/// </summary>
+	public void SetUpForCombat()
+	{
+		_logger.Debug("Setting up for combat.");
+		_wasReset = false;
+		_isInCombat = false;
+		foreach (ActionQueue actionQueue in _actionQueues)
+		{
+			actionQueue.isCancellingCombatActions = false;
+		}
+	}
+
+	/// <summary>
+	/// Allows combat actions to start executing.
 	/// </summary>
 	public void CombatStarted()
 	{
 		_logger.Debug("Combat started.");
-		_wasReset = false;
 		_isInCombat = true;
+		_wasReset = false;
 		foreach (ActionQueue actionQueue in _actionQueues)
 		{
 			actionQueue.isCancellingCombatActions = false;

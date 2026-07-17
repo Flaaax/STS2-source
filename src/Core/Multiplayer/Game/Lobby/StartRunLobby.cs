@@ -460,7 +460,7 @@ public class StartRunLobby
 
 	private void BeginRunLocally(string seed, List<ModifierModel> modifiers)
 	{
-		Rng rng = new Rng((uint)StringHelper.GetDeterministicHashCode(seed), "act_selection");
+		Rng rng = new Rng(StringHelper.GetDeterministicHashCode(seed), "act_selection");
 		List<ActModel> list = ActModel.GetRandomList(rng, GetUnlockState(), NetService.Type.IsMultiplayer()).ToList();
 		list[0] = GetAct(Act1) ?? list[0];
 		for (int i = 0; i < Players.Count; i++)

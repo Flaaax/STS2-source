@@ -73,7 +73,7 @@ public partial class NDropdown : NClickableControl
 
 	public override void _Input(InputEvent inputEvent)
 	{
-		if (!IsVisibleInTree() || !_isEnabled || NDevConsole.Instance.Visible)
+		if (!IsVisibleInTree() || !_isEnabled || NDevConsole.IsConsoleVisible)
 		{
 			return;
 		}

@@ -11,7 +11,7 @@ namespace MegaCrit.Sts2.Core.Models.Cards;
 
 public sealed class GiantRock : CardModel
 {
-	protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(16m, ValueProp.Move));
+	protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(20m, ValueProp.Move));
 
 	public GiantRock()
 		: base(1, CardType.Attack, CardRarity.Token, TargetType.AnyEnemy)

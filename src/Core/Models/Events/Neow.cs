@@ -93,13 +93,15 @@ public class Neow : AncientEventModel
 
 	private EventOption StoneHumidifierOption => RelicOption<StoneHumidifier>("INITIAL", "NEOW.pages.DONE.POSITIVE.description");
 
-	private IEnumerable<EventOption> CurseOptions => new global::_003C_003Ez__ReadOnlyArray<EventOption>(new EventOption[8]
+	private IEnumerable<EventOption> CurseOptions => new global::_003C_003Ez__ReadOnlyArray<EventOption>(new EventOption[10]
 	{
 		RelicOption<CursedPearl>("INITIAL", "NEOW.pages.DONE.CURSED.description"),
+		RelicOption<DowsingRod>("INITIAL", "NEOW.pages.DONE.CURSED.description"),
 		RelicOption<HeftyTablet>("INITIAL", "NEOW.pages.DONE.CURSED.description"),
 		RelicOption<LargeCapsule>("INITIAL", "NEOW.pages.DONE.CURSED.description"),
 		RelicOption<LeafyPoultice>("INITIAL", "NEOW.pages.DONE.CURSED.description"),
 		RelicOption<NeowsBones>("INITIAL", "NEOW.pages.DONE.POSITIVE.description"),
+		RelicOption<NeowsSacrifice>("INITIAL", "NEOW.pages.DONE.CURSED.description"),
 		RelicOption<PrecariousShears>("INITIAL", "NEOW.pages.DONE.CURSED.description"),
 		RelicOption<SilkenTress>("INITIAL", "NEOW.pages.DONE.CURSED.description"),
 		RelicOption<SilverCrucible>("INITIAL", "NEOW.pages.DONE.CURSED.description")
@@ -238,6 +240,11 @@ public class Neow : AncientEventModel
 			if (eventOption.Relic is PrecariousShears)
 			{
 				list2.RemoveAll((EventOption o) => o.Relic is PreciseScissors);
+			}
+			if (eventOption.Relic is NeowsSacrifice)
+			{
+				list2.RemoveAll((EventOption o) => o.Relic is PhialHolster);
+				list2.RemoveAll((EventOption o) => o.Relic is LostCoffer);
 			}
 			if (!(eventOption.Relic is LargeCapsule))
 			{

@@ -52,6 +52,7 @@
   "MAWLER_NORMAL.loss": "{character}กลายเป็นอาหารอันโอชะของ[gold]{encounter}[/gold]",
   "MECHA_KNIGHT_ELITE.loss": "{character}ถูก[gold]{encounter}[/gold]เผาเสียบไม้",
   "MYSTERIOUS_KNIGHT_EVENT_ENCOUNTER.loss": "{character}พยายามชิงกุญแจของ[gold]{encounter}[/gold]",
+  "MYSTERIOUS_KNIGHT_EVENT_ENCOUNTER.title": "อัศวินปริศนา",
   "MYTES_NORMAL.loss": "{character}ถูก[gold]{encounter}[/gold]รุม",
   "NIBBITS_NORMAL.loss": "[gold]{encounter}[/gold]ซัด{character}จนน่วม",
   "NIBBITS_WEAK.loss": "[gold]{encounter}[/gold]ซัด{character}จนน่วม",

@@ -8,7 +8,7 @@ namespace MegaCrit.Sts2.Core.Saves.Migrations.SettingsSaves;
 [Migration(typeof(SettingsSave), 5, 6)]
 public class SettingsSaveV5ToV6 : MigrationBase<SettingsSave>
 {
-	private readonly Dictionary<string, string> oldToNewMappings = new Dictionary<string, string>
+	private readonly Dictionary<string, string> _oldToNewMappings = new Dictionary<string, string>
 	{
 		{
 			"controller_d_pad_north",
@@ -114,7 +114,7 @@ public class SettingsSaveV5ToV6 : MigrationBase<SettingsSave>
 				continue;
 			}
 			string value = jsonObject[item].GetValue<string>();
-			foreach (KeyValuePair<string, string> oldToNewMapping in oldToNewMappings)
+			foreach (KeyValuePair<string, string> oldToNewMapping in _oldToNewMappings)
 			{
 				if (oldToNewMapping.Key == value)
 				{

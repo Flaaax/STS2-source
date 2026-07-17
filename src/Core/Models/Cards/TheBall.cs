@@ -38,7 +38,7 @@ public sealed class TheBall : CardModel
 	protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlyArray<DynamicVar>(new DynamicVar[2]
 	{
 		new DamageVar(10m, ValueProp.Move),
-		new DynamicVar("Increase", 15m)
+		new DynamicVar("Increase", 10m)
 	});
 
 	public TheBall()
@@ -54,26 +54,29 @@ public sealed class TheBall : CardModel
 			.Execute(choiceContext);
 		base.DynamicVars.Damage.BaseValue += base.DynamicVars["Increase"].BaseValue;
 		ExtraDamageFromPlays += base.DynamicVars["Increase"].BaseValue;
-		if (base.CombatState != null && cardPlay.IsLastInSeries)
-		{
-			IEnumerable<Creature> enumerable = from c in base.CombatState.GetTeammatesOf(base.Owner.Creature)
-				where c != null && c.IsAlive && c.IsPlayer && c.Player != base.Owner
-				select c;
-			if (enumerable.Count() != 0)
-			{
-				await CardPileCmd.GiveToAnotherPlayer(this, base.Owner.RunState.Rng.CombatTargets.NextItem(enumerable).Player, PileType.Draw, CardPilePosition.Random);
-			}
-		}
 	}
 
-	protected override (PileType, CardPilePosition) GetResultPileTypeAndPositionForCardPlay()
+	protected override CardLocation GetResultLocationForCardPlay()
 	{
-		var (pileType, item) = base.GetResultPileTypeAndPositionForCardPlay();
-		if (pileType == PileType.Discard)
+		CardLocation resultLocationForCardPlay = base.GetResultLocationForCardPlay();
+		if (base.CombatState == null)
 		{
-			return (PileType.Draw, CardPilePosition.Random);
+			return resultLocationForCardPlay;
 		}
-		return (pileType, item);
+		List<Creature> list = (from c in base.CombatState.GetTeammatesOf(base.Owner.Creature)
+			where c != null && c.IsAlive && c.IsPlayer && c.Player != base.Owner
+			select c).ToList();
+		if (list.Count == 0)
+		{
+			return resultLocationForCardPlay;
+		}
+		resultLocationForCardPlay.player = base.Owner.RunState.Rng.CombatTargets.NextItem(list).Player;
+		if (resultLocationForCardPlay.pileType == PileType.Discard)
+		{
+			resultLocationForCardPlay.pileType = PileType.Draw;
+			resultLocationForCardPlay.position = CardPilePosition.Random;
+		}
+		return resultLocationForCardPlay;
 	}
 
 	protected override void AfterDowngraded()
@@ -84,6 +87,6 @@ public sealed class TheBall : CardModel
 
 	protected override void OnUpgrade()
 	{
-		base.DynamicVars["Increase"].UpgradeValueBy(10m);
+		base.DynamicVars["Increase"].UpgradeValueBy(5m);
 	}
 }

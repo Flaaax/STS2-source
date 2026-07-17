@@ -130,7 +130,7 @@ public sealed class FakeMerchant : EventModel
 		{
 			return;
 		}
-		PlayerMapPointHistoryEntry playerMapPointHistoryEntry = base.Owner.RunState?.CurrentMapPointHistoryEntry?.GetEntry(base.Owner.NetId);
+		PlayerMapPointHistoryEntry playerMapPointHistoryEntry = base.Owner.RunState.CurrentMapPointHistoryEntry?.GetEntry(base.Owner.NetId);
 		if (playerMapPointHistoryEntry == null)
 		{
 			return;

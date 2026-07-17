@@ -131,7 +131,7 @@ public partial class NRunMusicController : Node
 	/// a no-op instead of stopping and recreating the FMOD event, which restarts the track from
 	/// the top. Two such calls fire on run start, from NRun._Ready and the act-entry path.
 	/// </summary>
-	public static MusicSelection? ResolveMusic(string? currentTrack, string[] options, string[] bankPaths, uint seed)
+	public static MusicSelection? ResolveMusic(string? currentTrack, string[] options, string[] bankPaths, ulong seed)
 	{
 		if (options.Length == 0)
 		{

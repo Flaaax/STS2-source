@@ -1,6 +1,11 @@
 {
   "BLOCKED": "Bloqueado",
   "EPOCH_GAIN": "Época Descoberta",
+  "FAILED_JOIN_FULL": "{UserName} não conseguiu ingressar. (Sala Cheia)",
+  "FAILED_JOIN_MOD_MISMATCH": "{UserName} não conseguiu ingressar. (Incompatibilidade de mod)",
+  "FAILED_JOIN_PROGRESS": "{UserName} não conseguiu ingressar. (Partida em Progresso)",
+  "FAILED_JOIN_SAVE": "{UserName} couldn't join. (Não faz parte do Grupo Original)",
+  "FAILED_JOIN_VERSION": "{UserName} couldn't join. (Incompatibilidade de Versão de Jogo)",
   "POWER_WEARS_OFF": "Acabou",
   "STUNNED": "Atordoamento!"
 }

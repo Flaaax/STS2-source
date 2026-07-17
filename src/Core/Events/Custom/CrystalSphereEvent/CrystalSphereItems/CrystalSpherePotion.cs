@@ -36,7 +36,7 @@ public class CrystalSpherePotion : CrystalSphereItem
 		_rarity = rarity;
 	}
 
-	public override Reward? ToReward(Player owner, Rng rng)
+	public override Reward ToReward(Player owner, Rng rng)
 	{
 		IEnumerable<PotionModel> items = from p in PotionFactory.GetPotionOptions(owner)
 			where p.Rarity == _rarity

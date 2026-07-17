@@ -1,7 +1,7 @@
 {
   "ALL_STAR.description": "Zaczynasz z [blue]5[/blue] [gold]bezbarwnymi[/gold] kartami.",
   "ALL_STAR.title": "Gwiazdor",
-  "BIG_GAME_HUNTER.description": "W Iglicy roi się od Elitarnych przeciwników, którzy upuszczają [gold]rzadsze[/gold] nagrody.",
+  "BIG_GAME_HUNTER.description": "W Iglicy roi się od Elitarnych przeciwników, którzy upuszczają [gold]rzadkie[/gold] karty.",
   "BIG_GAME_HUNTER.title": "Gruba zwierzyna",
   "BINARY.description": "W łupach dostępne są tylko [blue]2[/blue] karty do wyboru.",
   "BINARY.title": "Zero-jedynkowe łupy",
@@ -9,7 +9,7 @@
   "CURSED_RUN.title": "Przeklęta wyprawa",
   "DEADLY_EVENTS.description": "W nieznanych pokojach mogą przebywać Elitarni przeciwnicy, ale masz też większą szansę na znalezienie skarbów.",
   "DEADLY_EVENTS.title": "Zabójcze wydarzenia",
-  "DRAFT.description": "Wybierz karty spośród [blue]10[/blue] łupów, które zastąpią twoją talię startową.",
+  "DRAFT.description": "Wybierz [blue]10[/blue] kart i zastąp nimi swoją talię startową.",
   "DRAFT.title": "Plan",
   "FLIGHT.description": "Możesz ignorować ścieżki w podróży po Iglicy.",
   "FLIGHT.title": "Lot",

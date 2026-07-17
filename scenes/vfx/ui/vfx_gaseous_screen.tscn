@@ -31,6 +31,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 stretch_mode = 3
 script = ExtResource("1_vws27")
 _gfx = NodePath("gaseous_screen_gfx")
@@ -44,3 +45,4 @@ _noiseBOffsetCurve = SubResource("Curve_eu02e")
 [node name="gaseous_screen_gfx" type="ColorRect" parent="."]
 material = ExtResource("2_00r0l")
 layout_mode = 2
+mouse_filter = 2

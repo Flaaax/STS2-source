@@ -1,6 +1,11 @@
 {
   "BLOCKED": "ถูกบล็อก",
   "EPOCH_GAIN": "ค้นพบศักราช",
+  "FAILED_JOIN_FULL": "{UserName} ไม่สามารถเข้าร่วมได้ (ห้องเต็ม)",
+  "FAILED_JOIN_MOD_MISMATCH": "{UserName} ไม่สามารถเข้าร่วมได้ (ม็อดไม่ตรงกัน)",
+  "FAILED_JOIN_PROGRESS": "{UserName} ไม่สามารถเข้าร่วมได้ (การเดินทางดำเนินไปแล้ว)",
+  "FAILED_JOIN_SAVE": "{UserName} ไม่สามารถเข้าร่วมได้ (ไม่ได้เริ่มต้นด้วยกัน)",
+  "FAILED_JOIN_VERSION": "{UserName} ไม่สามารถเข้าร่วมได้ (เวอร์ชันตัวเกมไม่ตรงกัน)",
   "POWER_WEARS_OFF": "หมดพลัง",
   "STUNNED": "สตัน!"
 }

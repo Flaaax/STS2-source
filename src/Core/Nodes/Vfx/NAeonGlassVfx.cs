@@ -10,10 +10,6 @@ public partial class NAeonGlassVfx : Node
 
 	private string? _curAnimName;
 
-	private static readonly StringName _progressString = new StringName("Progress");
-
-	private ShaderMaterial? _rayShaderMat;
-
 	private static readonly StringName _scrollSpeedString = new StringName("ScrollSpeed");
 
 	private ShaderMaterial? _liquidShaderMat;
@@ -36,11 +32,14 @@ public partial class NAeonGlassVfx : Node
 
 	private GpuParticles2D _bottomSparkParticles;
 
+	private GpuParticles2D _groundDustParticles;
+
+	private GpuParticles2D _groundChunkParticles;
+
 	public override void _Ready()
 	{
 		_parent = GetParent<Node2D>();
 		_animController = new MegaSprite(_parent);
-		_rayShaderMat = new MegaSlotNode(_parent.GetNode("RaySlot")).GetNormalMaterial() as ShaderMaterial;
 		_liquidShaderMat = new MegaSlotNode(_parent.GetNode("LiquidSlot")).GetNormalMaterial() as ShaderMaterial;
 		if (_liquidShaderMat != null)
 		{
@@ -52,6 +51,8 @@ public partial class NAeonGlassVfx : Node
 		_dumpParticles = _parent.GetNode<GpuParticles2D>("GlassCenterSlot/DumpParticles");
 		_topSparkParticles = _parent.GetNode<GpuParticles2D>("TopSparksSlot/TopSparkParticles");
 		_bottomSparkParticles = _parent.GetNode<GpuParticles2D>("BottomSparksSlot/BottomSparkParticles");
+		_groundDustParticles = _parent.GetNode<GpuParticles2D>("GroundPlowSlot/DustParticles");
+		_groundChunkParticles = _parent.GetNode<GpuParticles2D>("GroundPlowSlot/ChunkParticles");
 		_bottomSparkParticles.OneShot = true;
 		_topSparkParticles.OneShot = true;
 		_witherParticles.OneShot = true;
@@ -68,25 +69,59 @@ public partial class NAeonGlassVfx : Node
 
 	private void OnAnimationEvent(GodotObject _, GodotObject __, GodotObject ___, GodotObject spineEvent)
 	{
-		switch (new MegaEvent(spineEvent).GetData().GetEventName())
+		string eventName = new MegaEvent(spineEvent).GetData().GetEventName();
+		if (eventName == null)
 		{
-		case "fire_ray":
-			FireRay();
+			return;
+		}
+		switch (eventName.Length)
+		{
+		case 12:
+			switch (eventName[6])
+			{
+			case 'w':
+				if (eventName == "start_wither")
+				{
+					StartWither();
+				}
+				break;
+			case 's':
+				if (eventName == "start_sparks")
+				{
+					StartSparks();
+				}
+				break;
+			}
 			break;
-		case "start_wither":
-			StartWither();
+		case 10:
+			if (eventName == "end_wither")
+			{
+				EndWither();
+			}
 			break;
-		case "end_wither":
-			EndWither();
+		case 9:
+			if (eventName == "start_die")
+			{
+				StartDie();
+			}
 			break;
-		case "start_die":
-			StartDie();
+		case 7:
+			if (eventName == "end_die")
+			{
+				EndDie();
+			}
 			break;
-		case "end_die":
-			EndDie();
+		case 19:
+			if (eventName == "start_ground_scrape")
+			{
+				StartScrape();
+			}
 			break;
-		case "start_sparks":
-			StartSparks();
+		case 17:
+			if (eventName == "end_ground_scrape")
+			{
+				EndScrape();
+			}
 			break;
 		}
 	}
@@ -132,15 +167,6 @@ public partial class NAeonGlassVfx : Node
 		}
 	}
 
-	private void FireRay()
-	{
-		_rayShaderMat?.SetShaderParameter(_progressString, 0.4f);
-		Tween tween = CreateTween();
-		tween.SetEase(Tween.EaseType.InOut);
-		tween.SetTrans(Tween.TransitionType.Quad);
-		tween.TweenProperty(_rayShaderMat, "shader_parameter/Progress", -0.8f, 0.6000000238418579);
-	}
-
 	private void StartWither()
 	{
 		_witherParticles.Restart();
@@ -170,9 +196,20 @@ public partial class NAeonGlassVfx : Node
 		_bottomSparkParticles.Restart();
 	}
 
+	private void StartScrape()
+	{
+		_groundChunkParticles.Restart();
+		_groundDustParticles.Restart();
+	}
+
+	private void EndScrape()
+	{
+		_groundChunkParticles.Emitting = false;
+		_groundDustParticles.Emitting = false;
+	}
+
 	private void ResetVfx()
 	{
-		_rayShaderMat?.SetShaderParameter(_progressString, 1f);
 		_liquidShaderMat?.SetShaderParameter(_scrollSpeedString, _baseScrollSpeed);
 		_witherParticles.Restart();
 		_witherParticles.Emitting = false;
@@ -183,5 +220,7 @@ public partial class NAeonGlassVfx : Node
 		_dumpParticles.Emitting = false;
 		_topSparkParticles.Emitting = false;
 		_bottomSparkParticles.Emitting = false;
+		_groundChunkParticles.Emitting = false;
+		_groundDustParticles.Emitting = false;
 	}
 }

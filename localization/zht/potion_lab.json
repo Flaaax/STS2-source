@@ -1,0 +1,6 @@
+{
+  "COMMON": "[gold][font_size=28][b]普通：[/b][/font_size][/gold]尖塔中最常見的藥水。",
+  "RARE": "[gold][font_size=28][b]稀有：[/b][/font_size][/gold]獨特而強大，但極少出現的藥水。",
+  "SPECIAL": "[gold][font_size=28][b]特殊：[/b][/font_size][/gold]透過事件或其他方式獲得的藥水。",
+  "UNCOMMON": "[gold][font_size=28][b]罕見：[/b][/font_size][/gold]比普通藥水更強，但出現頻率也較低。"
+}

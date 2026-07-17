@@ -31,6 +31,8 @@ public abstract class EpochModel
 
 	private static List<string>? _allEpochIds;
 
+	private static HashSet<string>? _epochIdsHashSet;
+
 	private string? _resolvedPortraitPath;
 
 	private static readonly Dictionary<string, Type> _epochTypeDictionary;
@@ -40,6 +42,8 @@ public abstract class EpochModel
 	public static IReadOnlyList<Type> AllEpochs => _allEpochs;
 
 	public static IReadOnlyList<string> AllEpochIds => _allEpochIds ?? (_allEpochIds = _allEpochs.Select(GetId).ToList());
+
+	public static IReadOnlySet<string> EpochIdsHashSet => _epochIdsHashSet ?? (_epochIdsHashSet = AllEpochIds.ToHashSet());
 
 	public abstract string Id { get; }
 
@@ -303,7 +307,7 @@ public abstract class EpochModel
 
 	public static bool IsValid(string id)
 	{
-		return AllEpochIds.Any((string epoch) => epoch.Equals(id));
+		return EpochIdsHashSet.Contains(id);
 	}
 
 	public static EpochModel Get(string id)

@@ -19,7 +19,7 @@ public sealed class BladeSymphony : CardModel
 	protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new CardsVar(2));
 
 	public BladeSymphony()
-		: base(1, CardType.Skill, CardRarity.Uncommon, TargetType.AllAllies)
+		: base(2, CardType.Skill, CardRarity.Uncommon, TargetType.AllAllies)
 	{
 	}
 
@@ -45,6 +45,6 @@ public sealed class BladeSymphony : CardModel
 
 	protected override void OnUpgrade()
 	{
-		base.DynamicVars.Cards.UpgradeValueBy(1m);
+		base.EnergyCost.UpgradeBy(-1);
 	}
 }

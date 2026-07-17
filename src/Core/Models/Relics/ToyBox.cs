@@ -80,7 +80,7 @@ public sealed class ToyBox : RelicModel
 
 	protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlyArray<DynamicVar>(new DynamicVar[2]
 	{
-		new DynamicVar("Relics", 4m),
+		new DynamicVar("Relics", 5m),
 		new DynamicVar("Combats", 3m)
 	});
 

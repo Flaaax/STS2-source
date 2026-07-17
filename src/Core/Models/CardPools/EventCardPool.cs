@@ -17,8 +17,9 @@ public sealed class EventCardPool : CardPoolModel
 
 	protected override CardModel[] GenerateAllCards()
 	{
-		return new CardModel[27]
+		return new CardModel[28]
 		{
+			ModelDb.Card<Abundance>(),
 			ModelDb.Card<Apotheosis>(),
 			ModelDb.Card<Apparition>(),
 			ModelDb.Card<BrightestFlame>(),

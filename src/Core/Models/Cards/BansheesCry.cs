@@ -49,7 +49,7 @@ public sealed class BansheesCry : CardModel
 		{
 			return Task.CompletedTask;
 		}
-		int num = CombatManager.Instance.History.CardPlaysFinished.Count((CardPlayFinishedEntry e) => e.WasEthereal && e.CardPlay.Card.Owner == base.Owner);
+		int num = CombatManager.Instance.History.CardPlaysFinished.Count((CardPlayFinishedEntry e) => e.WasEthereal && e.CardPlay.Player == base.Owner);
 		base.EnergyCost.AddThisCombat(-num * base.DynamicVars.Energy.IntValue);
 		return Task.CompletedTask;
 	}

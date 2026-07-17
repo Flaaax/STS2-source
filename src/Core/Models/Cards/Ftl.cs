@@ -29,7 +29,7 @@ public sealed class Ftl : CardModel
 	{
 		get
 		{
-			int num = CombatManager.Instance.History.CardPlaysFinished.Count((CardPlayFinishedEntry e) => e.HappenedThisTurn(base.CombatState) && e.CardPlay.Card.Owner == base.Owner);
+			int num = CombatManager.Instance.History.CardPlaysFinished.Count((CardPlayFinishedEntry e) => e.HappenedThisTurn(base.CombatState) && e.CardPlay.Player == base.Owner);
 			return num < base.DynamicVars["PlayMax"].IntValue;
 		}
 	}

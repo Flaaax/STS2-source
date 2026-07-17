@@ -45,7 +45,6 @@ public partial class NInputSettingsPanel : NSettingsPanel
 		_controllerHeader.Text = new LocString("settings_ui", "INPUT_SETTINGS.CONTROLLER_HEADER").GetFormattedText();
 		_steamInputPrompt.Text = new LocString("settings_ui", "INPUT_SETTINGS.STEAM_INPUT_DETECTED").GetFormattedText();
 		IReadOnlyList<StringName> readOnlyList = NInputManager.remappableControllerInputs.Concat(NInputManager.remappableKeyboardInputs).Distinct().ToList();
-		List<NInputSettingsEntry> list = base.Content.GetChildren().OfType<NInputSettingsEntry>().ToList();
 		foreach (StringName item in readOnlyList)
 		{
 			NInputSettingsEntry entry = NInputSettingsEntry.Create(item);
@@ -54,7 +53,6 @@ public partial class NInputSettingsPanel : NSettingsPanel
 				SetAsListeningEntry(entry);
 			}));
 			base.Content.AddChildSafely(entry);
-			list.Add(entry);
 		}
 		UpdateNavigation();
 	}

@@ -1,8 +1,23 @@
 {
   "ACKNOWLEDGE_BUTTON": "ดำเนินการต่อ",
+  "EPOCH_INSPECT.chapterFormat": "บทที่ {ChapterIndex} - {ChapterName}",
   "EPOCH_INSPECT.closeButton": "ปิด",
   "EPOCH_INSPECT.continueButton": "ดำเนินการต่อ",
   "EPOCH_INSPECT.unlockButton": "ปลดล็อก",
+  "PLACEHOLDER_PORTRAIT": "Placeholder",
+  "REMINDER_TEXT": "เหลืออีก {RevealableEpochCount} ศักราชที่รอการเปิดเผย...",
   "REVEAL_TIP_HEADER": "เงื่อนไข",
-  "UNLOCK_CONFIRM": "ยืนยัน"
+  "TUTORIAL_TEXT": "ใน[blue]เส้นเวลา[/blue] เปิดเผย[gold]ศักราช[/gold]เพื่อปลดล็อกการ์ด, เครื่องราง, และอื่นๆ อีกมากมาย...",
+  "UNLOCK_ANCIENT": "เทพโบราณที่ถูกปลดล็อก: ดาร์ฟ ผู้กักตุน จะปรากฏในการเดินทางในอนาคต...",
+  "UNLOCK_CARDS": "การ์ดต่อไปนี้จะปรากฏในการเดินทางในอนาคต",
+  "UNLOCK_CARDS_BANNER": "ปลดล็อกการ์ดแล้ว!",
+  "UNLOCK_CONFIRM": "ยืนยัน",
+  "UNLOCK_EPOCHS": "เส้นเวลายืดขยาย...",
+  "UNLOCK_POTIONS": "ขวดยาต่อไปนี้จะปรากฏในการเดินทางในอนาคต",
+  "UNLOCK_POTIONS_BANNER": "ปลดล็อกขวดยาแล้ว!",
+  "UNLOCK_RELICS": "เครื่องรางต่อไปนี้จะปรากฏในการเดินทางในอนาคต",
+  "UNLOCK_RELICS_BANNER": "ปลดล็อกเครื่องรางแล้ว!",
+  "UNLOCK_TEXT.cards": "การ์ดที่ถูกปลดล็อก: {Card1}, {Card2}, และ {Card3}",
+  "UNLOCK_TEXT.potions": "ขวดยาที่ถูกปลดล็อก: {Potion1}, {Potion2}, และ {Potion3}",
+  "UNLOCK_TEXT.relics": "เครื่องรางที่ถูกปลดล็อก: {Relic1}, {Relic2}, และ {Relic3}"
 }

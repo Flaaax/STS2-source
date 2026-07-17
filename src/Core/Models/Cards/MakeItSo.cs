@@ -37,7 +37,7 @@ public sealed class MakeItSo : CardModel
 	{
 		if (cardPlay.Card.Owner == base.Owner && cardPlay.Card.Type == CardType.Skill && base.Pile.Type != PileType.Hand)
 		{
-			int num = CombatManager.Instance.History.CardPlaysFinished.Count((CardPlayFinishedEntry e) => e.HappenedThisTurn(base.CombatState) && e.CardPlay.Card.Type == CardType.Skill && e.CardPlay.Card.Owner == base.Owner);
+			int num = CombatManager.Instance.History.CardPlaysFinished.Count((CardPlayFinishedEntry e) => e.HappenedThisTurn(base.CombatState) && e.CardPlay.Card.Type == CardType.Skill && e.CardPlay.Player == base.Owner);
 			if (num % base.DynamicVars.Cards.IntValue == 0)
 			{
 				await CardPileCmd.Add(this, PileType.Hand);

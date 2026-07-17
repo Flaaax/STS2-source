@@ -103,13 +103,10 @@ public partial class NBossMapPoint : NMapPoint
 	protected override void OnUnfocus()
 	{
 		base.OnUnfocus();
-		if (IsInputAllowed())
-		{
-			_hoverTween?.Kill();
-			_hoverTween = CreateTween().SetParallel();
-			_hoverTween.TweenProperty(_spriteContainer, "scale", Vector2.One, 0.5).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);
-			_ = _usesSpine;
-		}
+		_hoverTween?.Kill();
+		_hoverTween = CreateTween().SetParallel();
+		_hoverTween.TweenProperty(_spriteContainer, "scale", Vector2.One, 0.5).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);
+		_ = _usesSpine;
 	}
 
 	protected override void OnPress()

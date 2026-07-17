@@ -14,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_e2pe4")
 
 [node name="Mask1" type="Sprite2D" parent="."]
@@ -35,7 +36,7 @@ offset_right = 880.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(960, 540)
-metadata/_edit_use_anchors_ = true
+mouse_filter = 2
 
 [node name="Mask2" type="Sprite2D" parent="."]
 clip_children = 1
@@ -57,7 +58,7 @@ grow_horizontal = 2
 grow_vertical = 2
 rotation = -0.0349066
 pivot_offset = Vector2(960, 540)
-metadata/_edit_use_anchors_ = true
+mouse_filter = 2
 
 [node name="Mask3" type="Sprite2D" parent="."]
 clip_children = 1
@@ -79,4 +80,4 @@ grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.0349066
 pivot_offset = Vector2(960, 540)
-metadata/_edit_use_anchors_ = true
+mouse_filter = 2

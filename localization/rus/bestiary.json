@@ -12,7 +12,7 @@
   "LOCKED.monsterTitle": "Закрыто",
   "MODE.viewActions": "Показать действия",
   "MODE.viewStats": "Показать статистику",
-  "QUOTE_PLACEHOLDER": "[red][i](Диалог данного персонажа еще не написан)[/i][/red]",
+  "QUOTE_PLACEHOLDER": "[red][i](Диалог еще не готов)[/i][/red]",
   "STATS.layout": "Боев: [blue]{total}[/blue]\nУбито: [green]{kills}[/green]\nСмертей: [red]{deaths}[/red]\nПроцент побед: [gold]{winrate}%[/gold]",
   "UNDER_CONSTRUCTION": "В разработке",
   "UNSEEN.monsterName": "[lb]Неизвестен[rb]"

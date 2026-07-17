@@ -206,6 +206,7 @@ turbulence_influence_over_life = SubResource("CurveTexture_huqp2")
 [node name="vfx_card_exhaust_quick" type="Control" node_paths=PackedStringArray("_anticipationParticlesContainer", "_particlesContainer")]
 layout_mode = 3
 anchors_preset = 0
+mouse_filter = 2
 script = ExtResource("1_221xw")
 _anticipationParticlesContainer = NodePath("card_mask/vfx_anticipation_particles")
 _particlesContainer = NodePath("vfx_particles")

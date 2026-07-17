@@ -53,7 +53,7 @@
   "FLYCONID_NORMAL.title": "Fungos e Gosmas",
   "FLYCONID_WEAK.loss": "Um [gold]{encounter}[/gold] abateu {character}.",
   "FLYCONID_WEAK.title": "Micodíptero",
-  "FOGMOG_NORMAL.loss": "{character} se distraiu pelas ilusões de um [gold]{encounter}[/gold].",
+  "FOGMOG_NORMAL.loss": "{character} se distraiu com as ilusões de um [gold]{encounter}[/gold].",
   "FOGMOG_NORMAL.title": "Brumesporo",
   "FOSSIL_STALKER_NORMAL.loss": "{character} sofreu uma emboscada de um [gold]{encounter}[/gold].",
   "FOSSIL_STALKER_NORMAL.title": "Fóssil Espreitador",

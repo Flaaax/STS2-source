@@ -68,7 +68,7 @@ public class EventSynchronizer : IDisposable
 
 	public event Action<Player>? PlayerVoteChanged;
 
-	public EventSynchronizer(RunLocationTargetedMessageBuffer messageBuffer, INetGameService netService, IPlayerCollection playerCollection, IRunState runState, ulong localPlayerId, uint seed)
+	public EventSynchronizer(RunLocationTargetedMessageBuffer messageBuffer, INetGameService netService, IPlayerCollection playerCollection, IRunState runState, ulong localPlayerId, ulong seed)
 	{
 		_netService = netService;
 		_messageBuffer = messageBuffer;

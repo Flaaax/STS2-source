@@ -36,7 +36,7 @@ public partial class NDarkOrbVfx : NOrbVfx
 	private void UpdateDarkBgSize(bool isSupercharged)
 	{
 		float num = (isSupercharged ? _darkBgSuperchargedScale : _darkBgNormalScale);
-		if (_darkBg.Scale.X != num)
+		if (!Mathf.IsEqualApprox(_darkBg.Scale.X, num))
 		{
 			Tween tween = GetTree().CreateTween();
 			tween.TweenProperty(_darkBg, "scale", Vector2.One * num, 0.25);

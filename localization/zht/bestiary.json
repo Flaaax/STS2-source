@@ -1,0 +1,19 @@
+{
+  "ACTIONS.header": "動作",
+  "ACTION_NAME.attack": "攻擊",
+  "ACTION_NAME.cast": "施放",
+  "ACTION_NAME.die": "死亡",
+  "ACTION_NAME.hurt": "受傷",
+  "ACTION_NAME.revive": "復活",
+  "ACTION_NAME.stun": "擊暈",
+  "DESCRIPTION.placeholder": "此怪物的資訊尚未揭曉……",
+  "EVENTS.title": "事件",
+  "LOCKED.monsterName": "[lb]未解鎖[rb]",
+  "LOCKED.monsterTitle": "未解鎖",
+  "MODE.viewActions": "檢視動作",
+  "MODE.viewStats": "檢視統計資料",
+  "QUOTE_PLACEHOLDER": "[red][i]（角色對話尚未撰寫）[/i][/red]",
+  "STATS.layout": "遭遇次數：[blue]{total}[/blue]\n擊殺數：[green]{kills}[/green]\n死亡次數：[red]{deaths}[/red]\n勝率：[gold]{winrate}%[/gold]",
+  "UNDER_CONSTRUCTION": "建置中",
+  "UNSEEN.monsterName": "[lb]未知[rb]"
+}

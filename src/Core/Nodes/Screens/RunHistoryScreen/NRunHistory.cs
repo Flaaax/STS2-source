@@ -251,7 +251,7 @@ public partial class NRunHistory : NSubmenu
 
 	public override void _Input(InputEvent inputEvent)
 	{
-		if (!IsVisibleInTree() || NDevConsole.Instance.Visible || !NControllerManager.Instance.IsUsingController)
+		if (!IsVisibleInTree() || NDevConsole.IsConsoleVisible || !NControllerManager.Instance.IsUsingController)
 		{
 			return;
 		}
@@ -459,7 +459,7 @@ public partial class NRunHistory : NSubmenu
 		CharacterModel characterModel = SaveUtil.CharacterOrDeprecated(characterId);
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.Append(_leftQuote.GetRawText());
-		Rng rng = new Rng((uint)StringHelper.GetDeterministicHashCode(history.Seed));
+		Rng rng = new Rng(StringHelper.GetDeterministicHashCode(history.Seed));
 		switch (gameOverType)
 		{
 		case GameOverType.AbandonedRun:
@@ -525,7 +525,7 @@ public partial class NRunHistory : NSubmenu
 		CharacterModel characterModel = SaveUtil.CharacterOrDeprecated(characterId);
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.Append(_leftQuote.GetRawText());
-		Rng rng = new Rng((uint)StringHelper.GetDeterministicHashCode(history.Seed));
+		Rng rng = new Rng(StringHelper.GetDeterministicHashCode(history.Seed));
 		if (history.Win)
 		{
 			_deathQuoteLabel.AddThemeColorOverride(ThemeConstants.RichTextLabel.DefaultColor, StsColors.green);

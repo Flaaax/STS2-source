@@ -9,7 +9,7 @@
   "CHANNELING.title": "生成",
   "COMPENDIUM.description": "これまでにスパイアで発見したすべてのカード、ポーション、レリックを確認する。",
   "COMPENDIUM.title": "図鑑",
-  "COOK.description": "[gold]休憩所[/gold]で[gold]デッキ[/gold]からカードを[blue]2[/blue]枚[gold]削除[/gold]し、最大HPが[green]9[/green]増加する。",
+  "COOK.description": "[gold]休憩所[/gold]で[gold]デッキ[/gold]からカードを[blue]2[/blue]枚[gold]削除[/gold]し、最大HPが[green]5[/green]増加する。",
   "COOK.title": "料理",
   "DECK.description": "デッキ内のすべてのカードを確認する。",
   "DECK.title": "デッキ {Hotkey:choose(None):| ({})}",

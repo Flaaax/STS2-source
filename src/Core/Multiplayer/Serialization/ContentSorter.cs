@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Modding;
 
@@ -51,17 +50,17 @@ public static class ContentSorter<TIdType> where TIdType : IComparable<TIdType>
 		List<Item> list = new List<Item>();
 		foreach (Type type in types)
 		{
-			Assembly assembly = type.Assembly;
-			AssemblyInfo.ModMap.TryGetValue(assembly, out Mod value);
-			if (assembly != AssemblyInfo.BaseGame && value == null)
+			bool isBaseGame;
+			Mod mod = AssemblyInfo.ModForType(type, out isBaseGame);
+			if (mod == null && !isBaseGame)
 			{
-				Log.Error($"Attempting to register type {type} in assembly {assembly}, but it is not associated with any mod! You may need to call {"ModManager"}.{"AssociateAssemblyWithMod"} to manually register the assembly. Type sorting may break because of this, causing errors in multiplayer.");
+				Log.Error($"Attempting to register type {type} in assembly {type.Assembly}, but it is not associated with any mod! You may need to call {"ModManager"}.{"AssociateAssemblyWithMod"} to manually register the assembly. Type sorting may break because of this, causing errors in multiplayer.");
 			}
 			list.Add(new Item
 			{
 				type = type,
 				id = getId(type),
-				mod = value
+				mod = mod
 			});
 		}
 		Sort(list, affectsGameplayAtEnd);

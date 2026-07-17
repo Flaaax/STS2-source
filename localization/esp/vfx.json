@@ -1,6 +1,11 @@
 {
   "BLOCKED": "¡Se bloqueó!",
   "EPOCH_GAIN": "Era descubierta",
+  "FAILED_JOIN_FULL": "{UserName} no se pudo sumar. (Lobby completo)",
+  "FAILED_JOIN_MOD_MISMATCH": "{UserName} no se pudo sumar. (Mod no coincide)",
+  "FAILED_JOIN_PROGRESS": "{UserName} no se pudo sumar. (Partida en progreso)",
+  "FAILED_JOIN_SAVE": "{UserName} no se pudo sumar. (No se aventuraron juntos)",
+  "FAILED_JOIN_VERSION": "{UserName} no se pudo sumar. (Versión del juego no coincide)",
   "POWER_WEARS_OFF": "Desapareció",
   "STUNNED": "¡Se aturdió!"
 }

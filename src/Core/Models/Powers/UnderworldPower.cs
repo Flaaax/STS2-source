@@ -20,7 +20,7 @@ public sealed class UnderworldPower : PowerModel
 
 	public override async Task AfterDamageGiven(PlayerChoiceContext choiceContext, Creature? dealer, DamageResult result, ValueProp props, Creature target, CardModel? cardSource)
 	{
-		if (dealer != null && dealer != base.Owner && dealer.PetOwner != base.Owner.Player && props.IsPoweredAttack() && result.TotalDamage > 0)
+		if (dealer != null && dealer.Side == base.Owner.Side && dealer != base.Owner && dealer.PetOwner != base.Owner.Player && props.IsPoweredAttack() && result.TotalDamage > 0)
 		{
 			await PowerCmd.Apply<DoomPower>(choiceContext, target, result.TotalDamage * base.Amount, base.Owner, null);
 		}

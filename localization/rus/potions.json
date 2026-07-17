@@ -1,4 +1,6 @@
 {
+  "AMBERGRIS.description": "Восполняет [green]{HealPercent}%[/green] максимальных ОЗ. При использовании в бою дает дополнительный ход.",
+  "AMBERGRIS.title": "Амбра",
   "ASHWATER.description": "[gold]Сжигает[/gold] любое количество выбранных карт в [gold]руке[/gold].",
   "ASHWATER.selectionScreenPrompt": "Выберите карты, которые хотите [gold]сжечь[/gold].",
   "ASHWATER.title": "Настой пепла",

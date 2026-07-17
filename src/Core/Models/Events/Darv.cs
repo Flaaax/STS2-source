@@ -169,7 +169,7 @@ public class Darv : AncientEventModel
 
 	static Darv()
 	{
-		int num = 9;
+		int num = 11;
 		List<ValidRelicSet> list = new List<ValidRelicSet>(num);
 		CollectionsMarshal.SetCount(list, num);
 		Span<ValidRelicSet> span = CollectionsMarshal.AsSpan(list);
@@ -188,17 +188,13 @@ public class Darv : AncientEventModel
 		num2++;
 		span[num2] = new ValidRelicSet(new RelicModel[1] { ModelDb.Relic<SneckoEye>() });
 		num2++;
-		span[num2] = new ValidRelicSet((Player owner) => owner.RunState.CurrentActIndex == 1, new RelicModel[2]
-		{
-			ModelDb.Relic<Ectoplasm>(),
-			ModelDb.Relic<Sozu>()
-		});
+		span[num2] = new ValidRelicSet((Player owner) => owner.RunState.CurrentActIndex == 1, new RelicModel[1] { ModelDb.Relic<Ectoplasm>() });
 		num2++;
-		span[num2] = new ValidRelicSet((Player owner) => owner.RunState.CurrentActIndex == 2, new RelicModel[2]
-		{
-			ModelDb.Relic<PhilosophersStone>(),
-			ModelDb.Relic<VelvetChoker>()
-		});
+		span[num2] = new ValidRelicSet((Player owner) => owner.RunState.CurrentActIndex == 1, new RelicModel[1] { ModelDb.Relic<Sozu>() });
+		num2++;
+		span[num2] = new ValidRelicSet((Player owner) => owner.RunState.CurrentActIndex >= 1, new RelicModel[1] { ModelDb.Relic<PhilosophersStone>() });
+		num2++;
+		span[num2] = new ValidRelicSet((Player owner) => owner.RunState.CurrentActIndex >= 1, new RelicModel[1] { ModelDb.Relic<VelvetChoker>() });
 		_validRelicSets = list;
 	}
 }

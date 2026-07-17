@@ -1,6 +1,11 @@
 {
   "BLOCKED": "ブロック",
   "EPOCH_GAIN": "断章 発見",
+  "FAILED_JOIN_FULL": "{UserName} は参加できませんでした。（ロビーが満員）",
+  "FAILED_JOIN_MOD_MISMATCH": "{UserName} は参加できませんでした。（MODが不一致）",
+  "FAILED_JOIN_PROGRESS": "{UserName} は参加できませんでした。（プレイが進行中）",
+  "FAILED_JOIN_SAVE": "{UserName} は参加できませんでした。（ゲームの開始メンバーでない）",
+  "FAILED_JOIN_VERSION": "{UserName} は参加できませんでした。（ゲームバージョンが不一致）",
   "POWER_WEARS_OFF": "効果終了",
   "STUNNED": "スタン！"
 }

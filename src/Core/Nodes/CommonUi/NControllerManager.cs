@@ -49,7 +49,7 @@ public partial class NControllerManager : Node
 	/// Minimum relative displacement (squared) to consider a mouse motion event as a warp artifact
 	/// rather than real user input. No human mouse movement covers 500+ pixels in a single frame.
 	/// </summary>
-	private const float WarpDisplacementThresholdSq = 250000f;
+	private const float _warpDisplacementThresholdSq = 250000f;
 
 	private MegaLabel _label;
 

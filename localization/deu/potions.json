@@ -1,4 +1,6 @@
 {
+  "AMBERGRIS.description": "Heile [green]{HealPercent}%[/green] deiner max. TP. Bei Nutzung im Kampf mache einen Extrazug.",
+  "AMBERGRIS.title": "Ambra",
   "ASHWATER.description": "[gold]Erschöpfe[/gold] beliebig viele deiner [gold]Handkarten[/gold].",
   "ASHWATER.selectionScreenPrompt": "Wähle beliebig viele Karten, die du [gold]Erschöpfst[/gold].",
   "ASHWATER.title": "Aschewasser",

@@ -1,0 +1,20 @@
+{
+  "DARK_ORB.description": "充能球：被[gold]激發[/gold]時，對生命值最低的敵人造成傷害。每回合提高傷害。",
+  "DARK_ORB.smartDescription": "[gold]被動：[/gold]回合結束時，使此充能球的傷害提高 [blue]{Passive}[/blue] 點。\n[gold]激發：[/gold]對生命值最低的敵人造成 [blue]{Evoke}[/blue] 點傷害。",
+  "DARK_ORB.title": "黑暗",
+  "EMPTY_SLOT.description": "充能球可被凝聚至這些欄位。",
+  "EMPTY_SLOT.title": "充能球欄位",
+  "FROST_ORB.description": "充能球：獲得[gold]格擋[/gold]。",
+  "FROST_ORB.smartDescription": "[gold]被動：[/gold]回合結束時，獲得 [blue]{Passive}[/blue] 點[gold]格擋[/gold]。\n[gold]激發：[/gold]獲得 [blue]{Evoke}[/blue] 點[gold]格擋[/gold]。",
+  "FROST_ORB.title": "冰霜",
+  "GLASS_ORB.description": "充能球：對所有敵人造成傷害。每回合降低傷害。",
+  "GLASS_ORB.smartDescription": "[gold]被動：[/gold]回合結束時，對所有敵人造成 [blue]{Passive}[/blue] 點傷害，並使此充能球的數值降低 [blue]1[/blue] 點。\n[gold]激發：[/gold]對所有敵人造成 [blue]{Evoke}[/blue] 點傷害。",
+  "GLASS_ORB.title": "玻璃",
+  "LIGHTNING_ORB.description": "充能球：對隨機敵人造成傷害。",
+  "LIGHTNING_ORB.smartDescription": "[gold]被動：[/gold]回合結束時，對一名隨機敵人造成 [blue]{Passive}[/blue] 點傷害。\n[gold]激發：[/gold]對一名隨機敵人造成 [blue]{Evoke}[/blue] 點傷害。",
+  "LIGHTNING_ORB.title": "閃電",
+  "MOCK_COMBAT_CLEANUP_ORB.title": "Mock Combat Cleanup",
+  "PLASMA_ORB.description": "充能球：獲得能量。",
+  "PLASMA_ORB.smartDescription": "[gold]被動：[/gold]回合開始時，\n獲得 {energyPrefix:energyIcons(1)}。\n[gold]激發：[/gold]獲得 {energyPrefix:energyIcons(2)}。\n電漿不受[gold]集中[/gold]影響。",
+  "PLASMA_ORB.title": "電漿"
+}

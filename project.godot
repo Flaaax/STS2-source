@@ -612,7 +612,7 @@ environment/defaults/default_clear_color=Color(0.0923724, 0.122398, 0.116929, 1)
 
 [sentry]
 
-config/dsn="https://b778d88a88ca5a2e42bea987c54743f1@o102851.ingest.us.sentry.io/4506843924725760"
+config/dsn="https://43fe4b6f92d89d121d156b06cd01d0f6@o102851.ingest.us.sentry.io/4506843924725760"
 config/disabled_in_editor=false
 config/attach_screenshot=false
 config/attach_log=false

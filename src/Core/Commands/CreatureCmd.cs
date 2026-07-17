@@ -397,7 +397,7 @@ public static class CreatureCmd
 			Creature originalTarget = unblockedDamageResult.Receiver;
 			if (unblockedDamageResult.WasBlockBroken)
 			{
-				await Hook.AfterBlockBroken(originalTarget.CombatState, originalTarget);
+				await Hook.AfterBlockBroken(originalTarget.CombatState, choiceContext, originalTarget, dealer);
 			}
 			if (unblockedDamageResult.UnblockedDamage > 0)
 			{
@@ -652,7 +652,7 @@ public static class CreatureCmd
 	}
 
 	/// <summary>
-	/// Make the specified creature gain the specified amount of block.
+	/// Make this creature gain the specified amount of block.
 	/// </summary>
 	/// <param name="creature">Creature that should gain block.</param>
 	/// <param name="amount">Amount of block they should gain.</param>
@@ -667,6 +667,10 @@ public static class CreatureCmd
 	public static async Task<decimal> GainBlock(Creature creature, decimal amount, ValueProp props, CardPlay? cardPlay, bool fast = false)
 	{
 		if (CombatManager.Instance.IsOverOrEnding)
+		{
+			return default(decimal);
+		}
+		if (creature.IsDead)
 		{
 			return default(decimal);
 		}
@@ -695,16 +699,26 @@ public static class CreatureCmd
 		return modifiedAmount;
 	}
 
-	public static async Task LoseBlock(Creature creature, decimal amount)
+	/// <summary>
+	/// Make this creature lose the specified amount of block.
+	/// </summary>
+	/// <param name="choiceContext">The context that is signalled in the event of a player choice.</param>
+	/// <param name="target">Creature that should lose block.</param>
+	/// <param name="amount">Amount of block they should lose.</param>
+	/// <param name="remover">
+	/// Creature that caused the block loss.
+	/// Null if no creature was involved in the block loss, like if it was removed by a power.
+	/// </param>
+	public static async Task LoseBlock(PlayerChoiceContext choiceContext, Creature target, decimal amount, Creature? remover)
 	{
-		if (!CombatManager.Instance.IsOverOrEnding && !creature.IsDead && !(amount <= 0m))
+		if (!CombatManager.Instance.IsOverOrEnding && !target.IsDead && !(amount <= 0m))
 		{
-			int block = creature.Block;
-			creature.LoseBlockInternal(amount);
-			if (block > 0 && creature.Block <= 0)
+			int block = target.Block;
+			target.LoseBlockInternal(amount);
+			if (block > 0 && target.Block <= 0)
 			{
 				SfxCmd.Play("event:/sfx/block_break");
-				await Hook.AfterBlockBroken(creature.CombatState, creature);
+				await Hook.AfterBlockBroken(target.CombatState, choiceContext, target, remover);
 			}
 		}
 	}

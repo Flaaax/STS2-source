@@ -117,15 +117,6 @@ public partial class NMultiplayerTest : Control, IStartRunLobbyListener
 		if (type != null)
 		{
 			_settings = (IBootstrapSettings)Activator.CreateInstance(type);
-			if (!_settings.BootstrapInMultiplayer)
-			{
-				_settings = null;
-			}
-			else
-			{
-				PreloadManager.Enabled = _settings.DoPreloading;
-				_game.DebugSeedOverride = _settings.Seed;
-			}
 		}
 		MegaCrit.Sts2.Core.Logging.Logger.logLevelTypeMap[LogType.Network] = LogLevel.Debug;
 		MegaCrit.Sts2.Core.Logging.Logger.logLevelTypeMap[LogType.Actions] = LogLevel.VeryDebug;
@@ -257,6 +248,11 @@ public partial class NMultiplayerTest : Control, IStartRunLobbyListener
 
 	private async Task<bool> StartHost(bool steam)
 	{
+		if (_settings?.BootstrapInMultiplayer ?? false)
+		{
+			PreloadManager.Enabled = _settings.DoPreloading;
+			_game.DebugSeedOverride = _settings.Seed;
+		}
 		Disconnect(NetError.Quit);
 		NetHostGameService netService = new NetHostGameService();
 		NetErrorInfo? value = ((!steam) ? netService.StartENetHost(33771, 4) : (await netService.StartSteamHost(4)));
@@ -277,6 +273,11 @@ public partial class NMultiplayerTest : Control, IStartRunLobbyListener
 
 	public async Task JoinToHost(IClientConnectionInitializer initializer)
 	{
+		if (_settings?.BootstrapInMultiplayer ?? false)
+		{
+			PreloadManager.Enabled = _settings.DoPreloading;
+			_game.DebugSeedOverride = _settings.Seed;
+		}
 		Disconnect(NetError.Quit);
 		JoinFlow joinFlow = new JoinFlow(new NetClientGameService());
 		try
@@ -369,11 +370,12 @@ public partial class NMultiplayerTest : Control, IStartRunLobbyListener
 		Log.Info($"Loaded replay. Game version: {combatReplay.version} Commit: {combatReplay.gitCommit} Model ID hash: {combatReplay.modelIdHash}");
 		if (ValidateReplay(combatReplay))
 		{
-			TaskHelper.RunSafely(RunReplay(combatReplay, GetTree()));
+			int valueOrDefault = (_settings?.ReplayPlayerIndex).GetValueOrDefault();
+			TaskHelper.RunSafely(RunReplay(combatReplay, GetTree(), valueOrDefault));
 		}
 	}
 
-	private static async Task RunReplay(CombatReplay replay, SceneTree sceneTree)
+	private static async Task RunReplay(CombatReplay replay, SceneTree sceneTree, int playerIndex)
 	{
 		string text = ReleaseInfoManager.Instance.ReleaseInfo?.Commit ?? GitHelper.ShortCommitId;
 		if (replay.gitCommit != text)
@@ -381,7 +383,8 @@ public partial class NMultiplayerTest : Control, IStartRunLobbyListener
 			Log.Warn($"Git commit in replay {replay.gitCommit} does not match ours ({text}). The replay has a chance of mismatching!");
 		}
 		RunState runState = RunState.FromSerializable(replay.serializableRun);
-		RunManager.Instance.SetUpReplay(runState, replay);
+		ulong netId = runState.Players[playerIndex].NetId;
+		RunManager.Instance.SetUpReplay(runState, replay, netId);
 		RunManager.Instance.CombatStateSynchronizer.IsDisabled = true;
 		await PreloadManager.LoadRunAssets(runState.Players.Select((Player p) => p.Character));
 		await PreloadManager.LoadActAssets(runState.Act);

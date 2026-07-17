@@ -9,7 +9,7 @@ public sealed class EventRelicPool : RelicPoolModel
 
 	protected override IEnumerable<RelicModel> GenerateAllRelics()
 	{
-		return new global::_003C_003Ez__ReadOnlyArray<RelicModel>(new RelicModel[140]
+		return new global::_003C_003Ez__ReadOnlyArray<RelicModel>(new RelicModel[142]
 		{
 			ModelDb.Relic<AlchemicalCoffer>(),
 			ModelDb.Relic<ArcaneScroll>(),
@@ -39,6 +39,7 @@ public sealed class EventRelicPool : RelicPoolModel
 			ModelDb.Relic<DiamondDiadem>(),
 			ModelDb.Relic<DistinguishedCape>(),
 			ModelDb.Relic<DivineDestiny>(),
+			ModelDb.Relic<DowsingRod>(),
 			ModelDb.Relic<DreamCatcher>(),
 			ModelDb.Relic<Driftwood>(),
 			ModelDb.Relic<DustyTome>(),
@@ -87,6 +88,7 @@ public sealed class EventRelicPool : RelicPoolModel
 			ModelDb.Relic<MrStruggles>(),
 			ModelDb.Relic<MusicBox>(),
 			ModelDb.Relic<NeowsBones>(),
+			ModelDb.Relic<NeowsSacrifice>(),
 			ModelDb.Relic<NeowsTalisman>(),
 			ModelDb.Relic<NeowsTorment>(),
 			ModelDb.Relic<NewLeaf>(),

@@ -231,7 +231,7 @@ public abstract class EventModel : AbstractModel
 			throw new InvalidOperationException("Tried to begin event, but it already has an owner!");
 		}
 		Owner = player;
-		Rng = new Rng((uint)((int)Owner.RunState.Rng.Seed + ((!IsShared) ? Owner.RunState.GetPlayerSlotIndex(Owner) : 0) + StringHelper.GetDeterministicHashCode(base.Id.Entry)));
+		Rng = new Rng((ulong)((long)Owner.RunState.Rng.Seed + (long)(IsShared ? 0 : Owner.RunState.GetPlayerSlotIndex(Owner))) + StringHelper.GetDeterministicHashCode(base.Id.Entry));
 		if (CanonicalEncounter != null && combatSynchronizer == null)
 		{
 			throw new InvalidOperationException("Combat synchronizer must be passed to events that may transition to combat!");

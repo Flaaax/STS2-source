@@ -37,7 +37,7 @@ public sealed class Aeonglass : MonsterModel
 
 	public override DamageSfxType TakeDamageSfxType => DamageSfxType.Stone;
 
-	private int EbbDamage => AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies, 32, 26);
+	private int EbbDamage => AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies, 26, 22);
 
 	private int EbbBlock => 33;
 

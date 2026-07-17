@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Godot;
 using MegaCrit.Sts2.Core.Entities.Actions;
 using MegaCrit.Sts2.Core.Entities.Multiplayer;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -31,7 +32,7 @@ namespace MegaCrit.Sts2.Core.GameActions;
 /// </summary>
 public abstract class GameAction
 {
-	private static readonly Logger _logger = new Logger("GameAction", LogType.Actions);
+	private static readonly MegaCrit.Sts2.Core.Logging.Logger _logger = new MegaCrit.Sts2.Core.Logging.Logger("GameAction", LogType.Actions);
 
 	private TaskCompletionSource? _pauseForPlayerChoiceTaskSource;
 
@@ -141,7 +142,7 @@ public abstract class GameAction
 				_logger.VeryDebug($"Action {this} finished execution");
 				State = GameActionState.Finished;
 				this.JustBeforeFinished?.Invoke(this);
-				_completionSource.SetResult();
+				_completionSource.TrySetResult();
 				this.AfterFinished?.Invoke(this);
 			}
 			else
@@ -191,6 +192,7 @@ public abstract class GameAction
 		State = GameActionState.Canceled;
 		this.BeforeCancelled?.Invoke(this);
 		CancelAction();
+		Callable.From(() => _completionSource.TrySetCanceled()).CallDeferred();
 	}
 
 	protected virtual void CancelAction()

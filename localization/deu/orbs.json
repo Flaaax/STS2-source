@@ -15,6 +15,6 @@
   "LIGHTNING_ORB.title": "Blitz",
   "MOCK_COMBAT_CLEANUP_ORB.title": "Test Kampf-Aufräumen",
   "PLASMA_ORB.description": "Orb: Gewährt Energie.",
-  "PLASMA_ORB.smartDescription": "[gold]Passiv:[/gold] Erhalte zu Beginn deines Zuges {energyPrefix:energyIcons(1)}.\n[gold]Entladen:[/gold] Erhalte {energyPrefix:energyIcons(2)}.\nPlasma wird durch [gold]Focus[/gold] nicht beeinflusst.",
+  "PLASMA_ORB.smartDescription": "[gold]Passiv:[/gold] Erhalte zu Beginn deines Zuges {energyPrefix:energyIcons(1)}.\n[gold]Entladen:[/gold] Erhalte {energyPrefix:energyIcons(2)}.\nPlasma wird durch [gold]Fokus[/gold] nicht beeinflusst.",
   "PLASMA_ORB.title": "Plasma"
 }

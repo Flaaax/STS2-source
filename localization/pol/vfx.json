@@ -1,6 +1,11 @@
 {
   "BLOCKED": "Zablokowano",
   "EPOCH_GAIN": "Odkryto epokę",
+  "FAILED_JOIN_FULL": "Gracz {UserName} nie mógł dołączyć. (Pełna poczekalnia)",
+  "FAILED_JOIN_MOD_MISMATCH": "Gracz {UserName} nie mógł dołączyć. (Niezgodność modów)",
+  "FAILED_JOIN_PROGRESS": "Gracz {UserName} nie mógł dołączyć. (Rozpoczęto wyprawę)",
+  "FAILED_JOIN_SAVE": "Gracz {UserName} nie mógł dołączyć. (Nie rozpoczęto razem)",
+  "FAILED_JOIN_VERSION": "Gracz {UserName} nie mógł dołączyć. (Niezgodność wersji gry)",
   "POWER_WEARS_OFF": "Efekt znika",
   "STUNNED": "Ogłuszenie!"
 }

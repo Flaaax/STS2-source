@@ -3,7 +3,7 @@ using Godot;
 public partial class NVfxProjectile : Node2D
 {
 	[Export(PropertyHint.None, "")]
-	private Node2D _projectileHead;
+	private Node2D? _projectileHead;
 
 	[Export(PropertyHint.None, "")]
 	private GpuParticles2D[] _particles;

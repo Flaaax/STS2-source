@@ -702,6 +702,16 @@ public static class CardCmd
 	}
 
 	/// <summary>
+	/// Apply Retain to a card for the current turn only.
+	/// </summary>
+	/// <param name="card">Card to apply single-turn Retain to.</param>
+	public static void ApplySingleTurnRetain(CardModel card)
+	{
+		card.GiveSingleTurnRetain();
+		NCard.FindOnTable(card)?.UpdateVisuals(card.Pile.Type, CardPreviewMode.Normal);
+	}
+
+	/// <summary>
 	/// Creates a set of NCards that spawn in the middle of the screen, then fly to the pile they're in.
 	/// Useful for when you want to preview cards that are being added to a pile.
 	/// </summary>

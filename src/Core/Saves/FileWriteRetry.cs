@@ -24,9 +24,9 @@ namespace MegaCrit.Sts2.Core.Saves;
 /// </summary>
 public static class FileWriteRetry
 {
-	public const int MaxAttempts = 4;
+	public const int maxAttempts = 4;
 
-	public const int RetryDelayMs = 50;
+	public const int retryDelayMs = 50;
 
 	/// <summary>
 	/// Runs <paramref name="writeAttempt" />, retrying on transient write failures. The

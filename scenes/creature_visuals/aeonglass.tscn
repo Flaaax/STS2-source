@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://b3gug0782dijb"]
+[gd_scene load_steps=61 format=3 uid="uid://b3gug0782dijb"]
 
 [ext_resource type="Script" uid="uid://cghtlla3sw0po" path="res://src/Core/Nodes/Combat/NCreatureVisuals.cs" id="1_t8ojf"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://dt0ajsrs13552" path="res://animations/monsters/aeonglass/aeonglass_skel_data.tres" id="2_s2a1s"]
@@ -13,6 +13,17 @@
 [ext_resource type="Texture2D" uid="uid://s7dgo8a5gfis" path="res://images/vfx/monsters/aeon_glass/aeonglass_ray.png" id="10_3x3y4"]
 [ext_resource type="Texture2D" uid="uid://pv0wehakt05t" path="res://images/vfx/monsters/aeon_glass/aeonglass_whither_particle.png" id="11_pl23w"]
 [ext_resource type="Script" uid="uid://lgd8x27njs5s" path="res://src/Core/Nodes/Vfx/NAeonGlassVfx.cs" id="11_qkbxh"]
+[ext_resource type="Texture2D" uid="uid://ul1oevmcxsoj" path="res://images/vfx/miasma_cloud.png" id="15_ie8ct"]
+[ext_resource type="Texture2D" uid="uid://dydejju6qx4gr" path="res://images/packed/vfx/generic/square_speck.png" id="16_vjkkv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qkbxh"]
+shader = ExtResource("8_ga8dm")
+shader_parameter/CoreColor = Color(0.78549993, 1, 0.66999996, 1)
+shader_parameter/Progress = 0.405
+shader_parameter/RayTex = ExtResource("10_3x3y4")
+shader_parameter/BlurColor = Color(1, 0, 0.3166666, 1)
+shader_parameter/EdgeMaskScale = Vector2(1, 1)
+shader_parameter/EdgeMaskTex = ExtResource("9_3x3y4")
 
 [sub_resource type="Curve" id="Curve_1w0dy"]
 _data = [Vector2(0, 0.875), 0.0, 0.6810098, 0, 0, Vector2(0.24543083, 0.8815789), -0.6951001, -0.6951001, 0, 0, Vector2(0.39425588, 0.71052635), 0.0, 0.0, 0, 0, Vector2(0.5065274, 0.5), 0.0, 0.0, 0, 0, Vector2(0.6475196, 0.71710527), 0.0, 0.0, 0, 0, Vector2(0.7310705, 0.98684216), 0.0, 0.0, 0, 0, Vector2(0.87989557, 0.5131579), 0.0, 0.0, 0, 0, Vector2(1, 0), -8.24643, 0.0, 0, 0]
@@ -121,15 +132,6 @@ scale_min = 3.0
 scale_max = 6.0
 scale_curve = SubResource("CurveXYZTexture_ni71e")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qkbxh"]
-shader = ExtResource("8_ga8dm")
-shader_parameter/CoreColor = Color(0.78549993, 1, 0.66999996, 1)
-shader_parameter/Progress = 0.405
-shader_parameter/RayTex = ExtResource("10_3x3y4")
-shader_parameter/BlurColor = Color(1, 0, 0.3166666, 1)
-shader_parameter/EdgeMaskScale = Vector2(1, 1)
-shader_parameter/EdgeMaskTex = ExtResource("9_3x3y4")
-
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qkbxh"]
 blend_mode = 1
 
@@ -216,6 +218,83 @@ scale_curve = SubResource("CurveTexture_nxey6")
 color = Color(1, 0.865, 0.55, 1)
 alpha_curve = SubResource("CurveTexture_7dkh7")
 
+[sub_resource type="Curve" id="Curve_xocbb"]
+_data = [Vector2(0, 0.25714278), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_buffb"]
+curve = SubResource("Curve_xocbb")
+
+[sub_resource type="Gradient" id="Gradient_6ajwx"]
+colors = PackedColorArray(0.45559996, 0.52292, 0.68, 1, 0.407, 0.59569997, 0.74, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ni71e"]
+gradient = SubResource("Gradient_6ajwx")
+
+[sub_resource type="Curve" id="Curve_bwtw8"]
+_data = [Vector2(0, 0.12979585), 0.0, 0.6499692, 0, 0, Vector2(0.51082253, 0.55959177), 1.2978141, 1.2978141, 0, 0, Vector2(1, 1), 0.05107146, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_a11kp"]
+curve = SubResource("Curve_bwtw8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cq1pt"]
+lifetime_randomness = 0.39
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(600, 1, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+direction = Vector3(-1, -0.3, 0)
+spread = 10.0
+initial_velocity_min = 500.0
+initial_velocity_max = 800.0
+angular_velocity_min = 49.99998
+angular_velocity_max = 99.999985
+gravity = Vector3(0, 50, 0)
+scale_min = 0.5
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_a11kp")
+color_ramp = SubResource("GradientTexture1D_ni71e")
+alpha_curve = SubResource("CurveTexture_buffb")
+hue_variation_min = -0.010000022
+hue_variation_max = 0.009999977
+
+[sub_resource type="Gradient" id="Gradient_1w0dy"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.42889908, 0.5848624)
+colors = PackedColorArray(0.3363, 0.45892158, 0.59, 1, 0.15758246, 0.2330738, 0.3434771, 1, 0.37519997, 0.41524002, 0.56, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ljg0d"]
+gradient = SubResource("Gradient_1w0dy")
+
+[sub_resource type="Curve" id="Curve_buffb"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.6212121, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -5.7954254, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_bwtw8"]
+curve = SubResource("Curve_buffb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a11kp"]
+lifetime_randomness = 0.39
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(200, 1, 1)
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+direction = Vector3(-0.6, -1, 0)
+spread = 25.0
+initial_velocity_min = 1000.0
+initial_velocity_max = 2000.0
+angular_velocity_min = -300.0
+angular_velocity_max = -100.000015
+gravity = Vector3(0, 300, 0)
+scale_min = 0.19999999
+scale_max = 0.39999998
+scale_curve = SubResource("CurveTexture_bwtw8")
+color_initial_ramp = SubResource("GradientTexture1D_ljg0d")
+
 [node name="Aeonglass" type="Node2D"]
 script = ExtResource("1_t8ojf")
 metadata/_edit_group_ = true
@@ -229,6 +308,16 @@ preview_time = 0.0
 unique_name_in_owner = true
 scale = Vector2(0.2, 0.2)
 metadata/_edit_lock_ = true
+
+[node name="NAeonGlassVfx" type="Node" parent="Visuals"]
+script = ExtResource("11_qkbxh")
+
+[node name="RaySlot" type="SpineSlotNode" parent="Visuals"]
+normal_material = SubResource("ShaderMaterial_qkbxh")
+slot_name = "blast_placeholder"
+show_behind_parent = true
+position = Vector2(0.08544922, -4048.2937)
+scale = Vector2(0.99999994, 0.99999994)
 
 [node name="GlassCenterSlot" type="SpineSlotNode" parent="Visuals"]
 slot_name = "glass_center_attach"
@@ -275,16 +364,9 @@ amount = 60
 texture = ExtResource("8_pl23w")
 lifetime = 2.1999999999999997
 speed_scale = 1.3
+fixed_fps = 0
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_1w0dy")
-
-[node name="RaySlot" type="SpineSlotNode" parent="Visuals"]
-normal_material = SubResource("ShaderMaterial_qkbxh")
-slot_name = "blast_placeholder"
-show_behind_parent = true
-position = Vector2(0.29832435, -3950.5803)
-rotation = -1.5729748
-scale = Vector2(0.99999994, 0.99999994)
 
 [node name="WitherSlot" type="SpineSlotNode" parent="Visuals"]
 slot_name = "whither_fx_attach"
@@ -298,6 +380,7 @@ rotation = -0.05925888
 amount = 4
 texture = ExtResource("11_pl23w")
 explosiveness = 0.4
+fixed_fps = 0
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_6ajwx")
 
@@ -314,6 +397,7 @@ position = Vector2(-1.1212336, -1.9034551)
 amount = 40
 texture = ExtResource("9_820em")
 explosiveness = 0.1
+fixed_fps = 0
 trail_enabled = true
 trail_lifetime = 0.1
 process_material = SubResource("ParticleProcessMaterial_pl23w")
@@ -332,12 +416,32 @@ scale = Vector2(0.99999976, 0.99999976)
 amount = 40
 texture = ExtResource("9_820em")
 explosiveness = 0.06
+fixed_fps = 0
 trail_enabled = true
 trail_lifetime = 0.1
 process_material = SubResource("ParticleProcessMaterial_7dkh7")
 
-[node name="NAeonGlassVfx" type="Node" parent="Visuals"]
-script = ExtResource("11_qkbxh")
+[node name="GroundPlowSlot" type="SpineSlotNode" parent="Visuals"]
+slot_name = "dirt_plow_attach"
+show_behind_parent = true
+position = Vector2(22.350904, -1.7991484)
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="DustParticles" type="GPUParticles2D" parent="Visuals/GroundPlowSlot"]
+position = Vector2(487.64893, 36.79871)
+amount = 400
+texture = ExtResource("15_ie8ct")
+lifetime = 1.5
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_cq1pt")
+
+[node name="ChunkParticles" type="GPUParticles2D" parent="Visuals/GroundPlowSlot"]
+amount = 80
+texture = ExtResource("16_vjkkv")
+lifetime = 1.5
+speed_scale = 2.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_a11kp")
 
 [node name="Bounds" type="Control" parent="."]
 unique_name_in_owner = true

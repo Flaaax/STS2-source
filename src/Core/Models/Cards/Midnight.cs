@@ -17,7 +17,7 @@ public class Midnight : CardModel
 {
 	public override CardMultiplayerConstraint MultiplayerConstraint => CardMultiplayerConstraint.MultiplayerOnly;
 
-	protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(99m, ValueProp.Move));
+	protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(60m, ValueProp.Move));
 
 	public Midnight()
 		: base(12, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
@@ -62,6 +62,6 @@ public class Midnight : CardModel
 
 	protected override void OnUpgrade()
 	{
-		base.DynamicVars.Damage.UpgradeValueBy(21m);
+		base.DynamicVars.Damage.UpgradeValueBy(12m);
 	}
 }
