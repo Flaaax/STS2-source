@@ -1,15 +1,15 @@
 {
   "AFFLICTION_FTUE_DESCRIPTION": "敵人可能會對你的卡牌附加異常，使其受到不利影響。\n一張牌同一時間只能帶有 1 種異常。異常會在戰鬥結束時消失。",
   "AFFLICTION_FTUE_TITLE": "什麼是異常？",
-  "ASCENSION_MULTIPLAYER_FTUE_DESCRIPTION": "恭喜你！遭遇[red]建築師[/red]後，你已解鎖多人遊戲晉階！\n\n多人遊戲晉階能讓你進一步挑戰自我，並證明自己在多人遊戲中的實力。\n\n完成[blue]第 3[/blue] [gold]幕[/gold]，即可解鎖難度逐步提升的挑戰。",
+  "ASCENSION_MULTIPLAYER_FTUE_DESCRIPTION": "恭喜你！遭遇[red]建築師[/red]後，你已解鎖多人遊戲晉階！\n\n多人遊戲晉階能讓你進一步挑戰自我，並證明自己在多人遊戲中的實力。\n\n完成[gold]第[/gold] [blue]3[/blue] [gold]幕[/gold]，即可解鎖難度逐步提升的挑戰。",
   "ASCENSION_MULTIPLAYER_FTUE_DISCLAIMER": "注意：在多人遊戲中，晉階進度與單人遊戲分開計算，且由所有角色共用。",
   "ASCENSION_MULTIPLAYER_FTUE_TITLE": "多人遊戲晉階！",
   "ASCENSION_SINGLEPLAYER_FTUE_DESCRIPTION": "恭喜你！遭遇[red]建築師[/red]後，你已解鎖晉階！\n\n晉階能讓你進一步挑戰自我，並證明你對各角色的掌握程度。\n\n以晉階難度完成[gold]第[/gold] [blue]3[/blue] [gold]幕[/gold]，即可解鎖難度逐步提升的挑戰。",
   "ASCENSION_SINGLEPLAYER_FTUE_DISCLAIMER": "注意：完成晉階 1 會解鎖一個紀元，但是否挑戰更高晉階則由你決定。",
   "ASCENSION_SINGLEPLAYER_FTUE_TITLE": "晉階已解鎖！",
-  "CANNOT_PLAY_CARD_FTUE_DESCRIPTION": "能量不足時便無法打出卡牌。\n\n結束你的回合即可補充能量並抽取新牌。",
-  "CANNOT_PLAY_CARD_FTUE_TITLE": "提示：你無法打出這張牌！",
-  "CAN_PLAY_CARDS_FTUE_DESCRIPTION": "這是[gold]能量指示器[/gold]。\n\n例如：[blue]2/3[/blue] 表示你本回合還剩 [blue]2[/blue] 點能量；下個回合開始時，能量會補充至 [blue]3[/blue] 點。",
+  "CANNOT_PLAY_CARD_FTUE_DESCRIPTION": "能量不足時就無法打出卡牌。\n\n結束你的回合即可補充能量並抽取新牌。",
+  "CANNOT_PLAY_CARD_FTUE_TITLE": "提示：你無法打出此牌！",
+  "CAN_PLAY_CARDS_FTUE_DESCRIPTION": "這是[gold]能量指示器[/gold]。\n\n例如：[blue]2/3[/blue] 表示你本回合還剩 [blue]2[/blue] 點能量；下回合開始時，能量會補充至 [blue]3[/blue] 點。",
   "CAN_PLAY_CARDS_FTUE_TITLE": "提示：你還能打出卡牌！",
   "CHEST_FTUE_DESCRIPTION": "有時房間裡會有寶箱或其他角色。繼續前進前，記得先進行互動。",
   "CHEST_FTUE_TITLE": "提示：你漏掉東西了！",
@@ -35,7 +35,7 @@
   "SHUFFLE_FTUE_DESCRIPTION": "如果沒有牌可抽，你[b]棄牌堆[/b]（右）中的牌會被洗入[b]抽牌堆[/b]（左）。",
   "SHUFFLE_FTUE_TITLE": "提示：沒牌可抽了嗎？",
   "TUTORIAL_FTUE_BODY_1": "打出手牌中的卡牌來擊敗敵人！\n\n打出卡牌需要消耗[gold]能量[/gold]。\n能量用盡後，請結束你的回合。\n\n你的回合開始時，會抽取新牌並補滿[gold]能量[/gold]。",
-  "TUTORIAL_FTUE_BODY_2": "當敵人即將攻擊你時，打出防禦型卡牌以獲得[gold]格擋[/gold]。\n\n[gold]格擋[/gold]能減少即將受到的攻擊傷害，但會在你的下個回合開始時[red]消失[/red]。",
+  "TUTORIAL_FTUE_BODY_2": "當敵人即將攻擊你時，打出防禦型卡牌以獲得[gold]格擋[/gold]。\n\n[gold]格擋[/gold]能減少即將受到的攻擊傷害，但會在你的下回合開始時[red]消失[/red]。",
   "TUTORIAL_FTUE_BODY_3": "在你的回合中，你可以查看敵人上方顯示的[gold]意圖[/gold]。\n\n如果敵人打算攻擊你，記得用[gold]格擋[/gold]防禦！",
   "TUTORIAL_FTUE_TITLE": "教學"
 }

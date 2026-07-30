@@ -16,7 +16,7 @@
   "OPTION_LIFT.name": "鍛鍊",
   "OPTION_MEND.description": "使 {HasTarget:{Name}|其他人} 恢復相當於其最大生命 30% 的生命{HasTarget:（{Heal}）|}。",
   "OPTION_MEND.name": "療傷",
-  "OPTION_SMITH.description": "[gold]升級[/gold]你[gold]牌組[/gold]中的 {Count:plural:一|{} }張牌。",
+  "OPTION_SMITH.description": "[gold]升級[/gold]你[gold]牌組[/gold]中的 {Count} 張牌。",
   "OPTION_SMITH.descriptionDisabled": "[red]你沒有可供升級的牌。[/red]",
   "OPTION_SMITH.name": "鍛造",
   "PROMPT": "我該做什麼？"

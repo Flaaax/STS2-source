@@ -1,5 +1,5 @@
 {
-  "ATTACK.description": "此敵人意圖[gold]攻擊[/gold]{IsMultiplayer:所有人 |}，造成 [blue]{Damage}[/blue] 點傷害{Repeat:plural:| [blue]{}[/blue] 次}。",
+  "ATTACK.description": "此敵人意圖[gold]攻擊[/gold]{IsMultiplayer:所有人 |}，造成 [blue]{Damage}[/blue] 點傷害{Repeat:choose:| [blue]{}[/blue] 次}。",
   "ATTACK.title": "攻勢",
   "BUFF.description": "此敵人意圖獲得[gold]強化效果[/gold]。",
   "BUFF.title": "賦能",

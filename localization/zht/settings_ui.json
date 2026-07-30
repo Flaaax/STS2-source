@@ -19,7 +19,7 @@
   "CREDITS_BUTTON_LABEL": "製作人員名單",
   "DATA": "資料",
   "DISCONNECT": "中斷連線",
-  "DISCONNECT_CONFIRMATION.body": "你的好友將無法繼續遊玩，你也無法重新加入。\n\n若房主重新載入存檔，你便能繼續本局。",
+  "DISCONNECT_CONFIRMATION.body": "你的好友將無法繼續遊玩，你也無法重新加入。\n\n若房主重新載入存檔，你就能繼續本局。",
   "DISCONNECT_CONFIRMATION.header": "確定要這麼做嗎？",
   "DISPLAY": "顯示",
   "DISPLAY_BLOCKED_DAMAGE": "顯示被格擋的傷害",

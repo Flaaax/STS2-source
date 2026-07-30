@@ -15,7 +15,7 @@
   "FLIGHT.title": "飛行",
   "HOARDER.description": "每當你將一張牌加入牌組時，再加入 [blue]2[/blue] 張相同的牌。你無法再透過商人從牌組中移除卡牌。",
   "HOARDER.title": "囤積者",
-  "INSANITY.description": "起始牌組由 [blue]30[/blue] 張隨機牌組成。",
+  "INSANITY.description": "起始牌組由隨機 [blue]30[/blue] 張卡牌組成。",
   "INSANITY.title": "精神錯亂",
   "MIDAS.description": "敵人掉落的金幣增加 [blue]200%[/blue]，但你無法再於[gold]休息處[/gold]鍛造。",
   "MIDAS.title": "點金手",

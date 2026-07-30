@@ -21,7 +21,7 @@
   "ELITE.goldTitle": "菁英屠戮者",
   "ELITE.silverDescription": "擊敗至少 [blue]6[/blue] 名菁英。",
   "ELITE.silverTitle": "菁英殺手",
-  "FAMISHED.description": "在最大生命降至初始值的一半以下時完成一局遊戲。",
+  "FAMISHED.description": "在最大生命降至起始值的一半以下時完成一局遊戲。",
   "FAMISHED.title": "飢腸轆轆",
   "FAVORITE_CARD.description": "完成一局遊戲，且在該局中將同一張牌打出超過 [blue]100[/blue] 次。",
   "FAVORITE_CARD.title": "最愛的牌",

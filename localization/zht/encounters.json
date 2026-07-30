@@ -118,7 +118,7 @@
   "PUNCH_OFF_EVENT_ENCOUNTER.title": "拳擊構造體",
   "QUEEN_BOSS.loss": "[gold]{encounter}[/gold]把{character}的一部分加入了她的收藏。",
   "QUEEN_BOSS.title": "女王",
-  "RUBY_RAIDERS_NORMAL.loss": "{character}遭[gold]{encounter}[/gold]圍攻。",
+  "RUBY_RAIDERS_NORMAL.loss": "{character}遭到[gold]{encounter}[/gold]伏擊。",
   "RUBY_RAIDERS_NORMAL.title": "紅寶石掠奪者",
   "SCROLLS_OF_BITING_NORMAL.loss": "[gold]{encounter}[/gold]把{character}撕成碎片。",
   "SCROLLS_OF_BITING_NORMAL.title": "大群咬噬卷軸",

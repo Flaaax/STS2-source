@@ -17,7 +17,7 @@
   "UNLOCK_POTIONS_BANNER": "藥水已解鎖！",
   "UNLOCK_RELICS": "今後的遊戲中將會出現以下遺物。",
   "UNLOCK_RELICS_BANNER": "遺物已解鎖！",
-  "UNLOCK_TEXT.cards": "已解鎖卡牌：{Card1}、{Card2} 與 {Card3}。",
-  "UNLOCK_TEXT.potions": "已解鎖藥水：{Potion1}、{Potion2} 與 {Potion3}。",
-  "UNLOCK_TEXT.relics": "已解鎖遺物：{Relic1}、{Relic2} 與 {Relic3}。"
+  "UNLOCK_TEXT.cards": "已解鎖卡牌：{Card1}、{Card2}與{Card3}。",
+  "UNLOCK_TEXT.potions": "已解鎖藥水：{Potion1}、{Potion2}與{Potion3}。",
+  "UNLOCK_TEXT.relics": "已解鎖遺物：{Relic1}、{Relic2}與{Relic3}。"
 }

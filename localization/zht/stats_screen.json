@@ -10,7 +10,7 @@
   "ENTRY_CHAR_STREAK.bottom": "最佳連勝 [blue]{Amount}[/blue]",
   "ENTRY_CHAR_STREAK.top": "目前連勝 [blue]{Amount}[/blue]",
   "ENTRY_CHAR_WIN_LOSS.bottom": "[green]{Wins} 勝[/green]  [red]{Losses} 敗[/red]",
-  "ENTRY_CHAR_WIN_LOSS.top": "已完成晉階 [blue]{Amount}[/blue]",
+  "ENTRY_CHAR_WIN_LOSS.top": "晉階 [blue]{Amount}[/blue]",
   "ENTRY_EVENTS.bottom": "已發現 [blue]{Amount}[/blue]",
   "ENTRY_EVENTS.top": "遭遇事件 [blue]{Amount}[/blue]",
   "ENTRY_MONSTER.bottom": "已發現 [blue]{Amount}[/blue]",
