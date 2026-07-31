@@ -14,6 +14,8 @@ public struct ClientLobbyJoinRequestMessage : INetMessage, IPacketSerializable
 
 	public SerializableUnlockState unlockState;
 
+	public PeerVersionInfo versionInfo;
+
 	public bool ShouldBroadcast => false;
 
 	public NetTransferMode Mode => NetTransferMode.Reliable;
@@ -26,11 +28,13 @@ public struct ClientLobbyJoinRequestMessage : INetMessage, IPacketSerializable
 	{
 		writer.WriteInt(maxAscensionUnlocked);
 		writer.Write(unlockState);
+		writer.Write(versionInfo);
 	}
 
 	public void Deserialize(PacketReader reader)
 	{
 		maxAscensionUnlocked = reader.ReadInt();
 		unlockState = reader.Read<SerializableUnlockState>();
+		versionInfo = reader.Read<PeerVersionInfo>();
 	}
 }

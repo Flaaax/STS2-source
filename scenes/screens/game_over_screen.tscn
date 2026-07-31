@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://boyt37q3f2aq0"]
+[gd_scene load_steps=42 format=3 uid="uid://boyt37q3f2aq0"]
 
 [ext_resource type="Script" uid="uid://cdyl6m160nbln" path="res://src/Core/Nodes/Screens/GameOverScreen/NGameOverScreen.cs" id="1_c0jfk"]
 [ext_resource type="Material" uid="uid://b7xlk1e6w51gu" path="res://materials/transitions/game_over_transition_mat.tres" id="2_wuwtc"]
@@ -24,13 +24,11 @@
 [ext_resource type="Script" uid="uid://hq7dltwwj2ue" path="res://src/Core/Nodes/Screens/GameOverScreen/NViewRunButton.cs" id="17_x6j7y"]
 [ext_resource type="PackedScene" uid="uid://b075h3ucmd4a1" path="res://scenes/screens/game_over_screen/game_over_button.tscn" id="17_yfy86"]
 [ext_resource type="Script" uid="uid://b4eaix3d55se3" path="res://src/Core/Nodes/Screens/GameOverScreen/NReturnToMainMenuButton.cs" id="18_2i5l7"]
-[ext_resource type="PackedScene" uid="uid://c42e8hjphxta7" path="res://scenes/screens/paginator.tscn" id="19_8cd7m"]
-[ext_resource type="Texture2D" uid="uid://b5x513mavmk5v" path="res://images/ui/placeholder_controller_icon.png" id="20_8stjc"]
 [ext_resource type="Shader" uid="uid://c66gb6g7tup3n" path="res://shaders/hsv.gdshader" id="20_cjrdj"]
-[ext_resource type="Script" uid="uid://cnrlg713728c8" path="res://src/Core/Nodes/Screens/DailyRun/NLeaderboardDayPaginator.cs" id="20_lyd0q"]
-[ext_resource type="Script" uid="uid://c28gslq0j6r3b" path="res://src/Core/Nodes/Screens/DailyRun/NLeaderboardPageArrow.cs" id="22_31kb3"]
+[ext_resource type="PackedScene" uid="uid://cyhw3s1faj4c7" path="res://scenes/screens/leaderboard_day_paginator.tscn" id="21_0f6go"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hotkey_icon.tscn" id="21_o0e6m"]
 [ext_resource type="Texture2D" uid="uid://cp6ed2au5l4cs" path="res://images/ui/game_over_screen/run_summary_merchant.png" id="22_hr6ft"]
-[ext_resource type="Texture2D" uid="uid://cakri10dsey1d" path="res://images/packed/common_ui/settings_tiny_left_arrow.png" id="23_kwk7x"]
+[ext_resource type="PackedScene" path="res://scenes/screens/game_over_screen/leaderboard_paginator_arrow.tscn" id="25_4krn0"]
 
 [sub_resource type="Gradient" id="Gradient_xomtg"]
 offsets = PackedFloat32Array(0, 0.5, 1)
@@ -47,68 +45,12 @@ shader_parameter/h = 1.0
 shader_parameter/s = 1.0
 shader_parameter/v = 1.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7y85p"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kwk7x"]
 resource_local_to_scene = true
 shader = ExtResource("20_cjrdj")
 shader_parameter/h = 1.0
 shader_parameter/s = 1.0
 shader_parameter/v = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_k470t"]
-resource_local_to_scene = true
-shader = ExtResource("20_cjrdj")
-shader_parameter/h = 1.0
-shader_parameter/s = 1.0
-shader_parameter/v = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ddehy"]
-resource_local_to_scene = true
-shader = ExtResource("20_cjrdj")
-shader_parameter/h = 1.0
-shader_parameter/s = 1.0
-shader_parameter/v = 0.9
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lyd0q"]
-resource_local_to_scene = true
-shader = ExtResource("20_cjrdj")
-shader_parameter/h = 1.0
-shader_parameter/s = 1.0
-shader_parameter/v = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0e547"]
-resource_local_to_scene = true
-shader = ExtResource("20_cjrdj")
-shader_parameter/h = 1.0
-shader_parameter/s = 1.0
-shader_parameter/v = 0.9
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_31kb3"]
-resource_local_to_scene = true
-shader = ExtResource("20_cjrdj")
-shader_parameter/h = 1.0
-shader_parameter/s = 1.0
-shader_parameter/v = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xq0jq"]
-resource_local_to_scene = true
-shader = ExtResource("20_cjrdj")
-shader_parameter/h = 1.0
-shader_parameter/s = 1.0
-shader_parameter/v = 0.9
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4krn0"]
-resource_local_to_scene = true
-shader = ExtResource("20_cjrdj")
-shader_parameter/h = 1.0
-shader_parameter/s = 1.0
-shader_parameter/v = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vpeer"]
-resource_local_to_scene = true
-shader = ExtResource("20_cjrdj")
-shader_parameter/h = 1.0
-shader_parameter/s = 1.0
-shader_parameter/v = 0.9
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8cd7m"]
 resource_local_to_scene = true
@@ -116,6 +58,13 @@ shader = ExtResource("20_cjrdj")
 shader_parameter/h = 1.0
 shader_parameter/s = 1.0
 shader_parameter/v = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4krn0"]
+resource_local_to_scene = true
+shader = ExtResource("20_cjrdj")
+shader_parameter/h = 1.0
+shader_parameter/s = 1.0
+shader_parameter/v = 0.9
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p3uq0"]
 resource_local_to_scene = true
@@ -820,227 +769,49 @@ script = ExtResource("4_k470t")
 AutoSizeEnabled = false
 MaxFontSize = 22
 
-[node name="ControllerIcon" type="TextureRect" parent="ScreenshakeContainer/DailyRunLeaderboard/Panel/GlobalTickbox"]
+[node name="HotkeyIcon" parent="ScreenshakeContainer/DailyRunLeaderboard/Panel/GlobalTickbox" instance=ExtResource("21_o0e6m")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_7y85p")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -135.0
-offset_top = -21.0
-offset_right = -93.0
-offset_bottom = 21.0
+offset_left = -137.0
+offset_right = -88.99999
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(21, 21)
-mouse_filter = 2
-texture = ExtResource("20_8stjc")
-expand_mode = 1
+scale = Vector2(0.7, 0.7)
 
-[node name="Paginator" parent="ScreenshakeContainer/DailyRunLeaderboard" instance=ExtResource("19_8cd7m")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -187.0
-offset_top = -414.50006
-offset_right = 190.0
-offset_bottom = -350.50006
-grow_horizontal = 2
-scale = Vector2(0.85, 0.85)
-pivot_offset = Vector2(190, 32)
-script = ExtResource("20_lyd0q")
+[node name="DayPaginator" parent="ScreenshakeContainer/DailyRunLeaderboard" instance=ExtResource("21_0f6go")]
+custom_minimum_size = Vector2(96, 54)
+layout_mode = 0
+offset_left = 232.00003
+offset_top = 45.000015
+offset_right = 612.0
+offset_bottom = 109.000015
+scale = Vector2(0.84, 0.84)
 
-[node name="LeftArrow" parent="ScreenshakeContainer/DailyRunLeaderboard/Paginator" index="0"]
-material = SubResource("ShaderMaterial_k470t")
-script = ExtResource("22_31kb3")
-_isLeftArrow = true
-
-[node name="Image" parent="ScreenshakeContainer/DailyRunLeaderboard/Paginator/LeftArrow" index="0"]
-material = SubResource("ShaderMaterial_ddehy")
-
-[node name="ControllerIcon" type="TextureRect" parent="ScreenshakeContainer/DailyRunLeaderboard/Paginator/LeftArrow" index="1"]
-material = SubResource("ShaderMaterial_lyd0q")
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -76.11765
-offset_top = -21.0
-offset_right = -34.117653
-offset_bottom = 21.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(21, 21)
-mouse_filter = 2
-texture = ExtResource("20_8stjc")
-expand_mode = 1
-
-[node name="LabelContainer" parent="ScreenshakeContainer/DailyRunLeaderboard/Paginator" index="1"]
-offset_left = 0.0
-offset_right = 0.0
-
-[node name="Label" parent="ScreenshakeContainer/DailyRunLeaderboard/Paginator/LabelContainer/Mask" index="0"]
-theme_override_colors/font_color = Color(0.521569, 0.807843, 0.921569, 1)
-text = "May 14, 2025"
-MinFontSize = 24
-
-[node name="VfxLabel" parent="ScreenshakeContainer/DailyRunLeaderboard/Paginator/LabelContainer/Mask" index="1"]
-theme_override_colors/font_color = Color(0.521569, 0.807843, 0.921569, 1)
-MinFontSize = 24
-
-[node name="RightArrow" parent="ScreenshakeContainer/DailyRunLeaderboard/Paginator" index="2"]
-script = ExtResource("22_31kb3")
-_isLeftArrow = false
-
-[node name="Image" parent="ScreenshakeContainer/DailyRunLeaderboard/Paginator/RightArrow" index="0"]
-material = SubResource("ShaderMaterial_0e547")
-
-[node name="ControllerIcon" type="TextureRect" parent="ScreenshakeContainer/DailyRunLeaderboard/Paginator/RightArrow" index="1"]
-material = SubResource("ShaderMaterial_31kb3")
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 32.588295
-offset_top = -21.0
-offset_right = 74.588295
-offset_bottom = 21.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(21, 21)
-mouse_filter = 2
-texture = ExtResource("20_8stjc")
-expand_mode = 1
-
-[node name="LeftArrow" type="Control" parent="ScreenshakeContainer/DailyRunLeaderboard"]
+[node name="LeftArrow" parent="ScreenshakeContainer/DailyRunLeaderboard" instance=ExtResource("25_4krn0")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_k470t")
+material = SubResource("ShaderMaterial_kwk7x")
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -442.0
-offset_top = -148.5
-offset_right = -325.0
-offset_bottom = -31.5
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(48, 48)
-script = ExtResource("22_31kb3")
 
-[node name="Image" type="TextureRect" parent="ScreenshakeContainer/DailyRunLeaderboard/LeftArrow"]
-material = SubResource("ShaderMaterial_xq0jq")
-custom_minimum_size = Vector2(96, 96)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -48.0
-offset_top = -48.0
-offset_right = 48.0
-offset_bottom = 48.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.75, 0.75)
-pivot_offset = Vector2(48, 48)
-mouse_filter = 2
-texture = ExtResource("23_kwk7x")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="ControllerIcon" type="TextureRect" parent="ScreenshakeContainer/DailyRunLeaderboard/LeftArrow"]
-material = SubResource("ShaderMaterial_4krn0")
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -80.0
-offset_top = 0.00024414063
-offset_right = -38.0
-offset_bottom = 42.000244
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(21, 21)
-mouse_filter = 2
-texture = ExtResource("20_8stjc")
-expand_mode = 1
-
-[node name="RightArrow" type="Control" parent="ScreenshakeContainer/DailyRunLeaderboard"]
+[node name="RightArrow" parent="ScreenshakeContainer/DailyRunLeaderboard" instance=ExtResource("25_4krn0")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_k470t")
-custom_minimum_size = Vector2(96, 96)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 341.0
-offset_top = -148.5
-offset_right = 458.0
-offset_bottom = -31.5
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(48, 48)
-script = ExtResource("22_31kb3")
-_isLeftArrow = false
-
-[node name="Image" type="TextureRect" parent="ScreenshakeContainer/DailyRunLeaderboard/RightArrow"]
-material = SubResource("ShaderMaterial_vpeer")
-custom_minimum_size = Vector2(96, 96)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -48.0
-offset_top = -48.0
-offset_right = 48.0
-offset_bottom = 48.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.75, 0.75)
-pivot_offset = Vector2(48, 48)
-mouse_filter = 2
-texture = ExtResource("23_kwk7x")
-expand_mode = 1
-stretch_mode = 5
-flip_h = true
-
-[node name="ControllerIcon" type="TextureRect" parent="ScreenshakeContainer/DailyRunLeaderboard/RightArrow"]
 material = SubResource("ShaderMaterial_8cd7m")
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 38.0
-offset_right = 80.0
-offset_bottom = 42.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(21, 21)
-mouse_filter = 2
-texture = ExtResource("20_8stjc")
-expand_mode = 1
+offset_left = 341.0
+offset_right = 458.0
+_isLeftArrow = false
+
+[node name="Image" parent="ScreenshakeContainer/DailyRunLeaderboard/RightArrow" index="0"]
+material = SubResource("ShaderMaterial_4krn0")
+flip_h = true
+
+[node name="HotkeyIcon" parent="ScreenshakeContainer/DailyRunLeaderboard/RightArrow" index="1"]
+offset_left = 35.5
+offset_right = 83.5
 
 [node name="Ui" type="Control" parent="ScreenshakeContainer"]
 unique_name_in_owner = true
@@ -1134,9 +905,6 @@ script = ExtResource("14_u0wqb")
 [node name="Image" parent="ScreenshakeContainer/Ui/ContinueButton" index="0"]
 material = SubResource("ShaderMaterial_anp0y")
 
-[node name="ControllerIcon" parent="ScreenshakeContainer/Ui/ContinueButton" index="2"]
-material = SubResource("ShaderMaterial_7y85p")
-
 [node name="LeaderboardButton" parent="ScreenshakeContainer/Ui" instance=ExtResource("17_yfy86")]
 unique_name_in_owner = true
 visible = false
@@ -1149,9 +917,6 @@ material = SubResource("ShaderMaterial_anp0y")
 
 [node name="Label" parent="ScreenshakeContainer/Ui/LeaderboardButton" index="1"]
 text = "Leaderboard"
-
-[node name="ControllerIcon" parent="ScreenshakeContainer/Ui/LeaderboardButton" index="2"]
-material = SubResource("ShaderMaterial_7y85p")
 
 [node name="ViewRunButton" parent="ScreenshakeContainer/Ui" instance=ExtResource("17_yfy86")]
 unique_name_in_owner = true
@@ -1170,9 +935,6 @@ material = SubResource("ShaderMaterial_anp0y")
 [node name="Label" parent="ScreenshakeContainer/Ui/ViewRunButton" index="1"]
 text = "View Run"
 
-[node name="ControllerIcon" parent="ScreenshakeContainer/Ui/ViewRunButton" index="2"]
-material = SubResource("ShaderMaterial_7y85p")
-
 [node name="MainMenuButton" parent="ScreenshakeContainer/Ui" instance=ExtResource("17_yfy86")]
 unique_name_in_owner = true
 visible = false
@@ -1190,9 +952,6 @@ material = SubResource("ShaderMaterial_wwj7j")
 [node name="Label" parent="ScreenshakeContainer/Ui/MainMenuButton" index="1"]
 theme_override_colors/font_outline_color = Color(0.290196, 0.117647, 0.117647, 1)
 text = "Main Menu"
-
-[node name="ControllerIcon" parent="ScreenshakeContainer/Ui/MainMenuButton" index="2"]
-material = SubResource("ShaderMaterial_7y85p")
 
 [node name="RunMocker" type="TextureRect" parent="ScreenshakeContainer"]
 unique_name_in_owner = true
@@ -1217,7 +976,7 @@ expand_mode = 1
 [editable path="ScreenshakeContainer/CenterContainer/RunSummaryContainer/Container/DiscoveryContainer/DiscoveredContents/DiscoveredEnemies"]
 [editable path="ScreenshakeContainer/CenterContainer/RunSummaryContainer/Container/DiscoveryContainer/DiscoveredContents/DiscoveredEpochs"]
 [editable path="ScreenshakeContainer/DailyRunLeaderboard/Panel/GlobalTickbox/TickboxVisuals"]
-[editable path="ScreenshakeContainer/DailyRunLeaderboard/Paginator"]
+[editable path="ScreenshakeContainer/DailyRunLeaderboard/RightArrow"]
 [editable path="ScreenshakeContainer/Ui/ContinueButton"]
 [editable path="ScreenshakeContainer/Ui/LeaderboardButton"]
 [editable path="ScreenshakeContainer/Ui/ViewRunButton"]

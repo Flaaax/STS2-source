@@ -95,7 +95,11 @@ public abstract class ControllerConfig
 	public virtual Dictionary<StringName, StringName> DefaultControllerInputMap => new Dictionary<StringName, StringName>
 	{
 		{
-			MegaInput.accept,
+			MegaInput.confirm,
+			Controller.faceButtonNorth
+		},
+		{
+			MegaInput.endTurn,
 			Controller.faceButtonNorth
 		},
 		{

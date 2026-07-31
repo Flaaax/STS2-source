@@ -131,7 +131,7 @@ public partial class NHandImageCollection : Control
 
 	private void ProcessGuiFocus(Control focusedControl)
 	{
-		if (IsVisibleInTree() && NControllerManager.Instance.IsUsingController && _runState.Players.Count != 1)
+		if (IsVisibleInTree() && NControllerManager.Instance.IsUsingDirectionalNavigation && _runState.Players.Count != 1)
 		{
 			if (focusedControl is NTreasureRoomRelicHolder)
 			{

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dk02ucetk63ke"]
+[gd_scene load_steps=11 format=3 uid="uid://dk02ucetk63ke"]
 
 [ext_resource type="Script" uid="uid://dhde76bcoejuy" path="res://src/Core/Nodes/Screens/ModdingScreen/NModMenuRow.cs" id="1_4i0ra"]
 [ext_resource type="FontVariation" uid="uid://c6wnuvk3exmk5" path="res://themes/kreon_regular_shared.tres" id="1_4l03m"]
@@ -7,19 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://bw8f1jtcj62xv" path="res://scenes/ui/tickbox.tscn" id="4_fcydb"]
 [ext_resource type="Script" uid="uid://h45v44q8fnkx" path="res://src/Core/Nodes/CommonUi/NTickbox.cs" id="5_ussnk"]
 [ext_resource type="Shader" uid="uid://c66gb6g7tup3n" path="res://shaders/hsv.gdshader" id="7_3frth"]
-[ext_resource type="Texture2D" uid="uid://b5x513mavmk5v" path="res://images/ui/placeholder_controller_icon.png" id="8_ussnk"]
+[ext_resource type="PackedScene" uid="uid://ddb8daodx7qsl" path="res://scenes/ui/hotkey_icon.tscn" id="9_gryaj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wyjbh"]
 bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ussnk"]
-resource_local_to_scene = true
-shader = ExtResource("7_3frth")
-shader_parameter/h = 1.0
-shader_parameter/s = 1.0
-shader_parameter/v = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gryaj"]
 resource_local_to_scene = true
 shader = ExtResource("7_3frth")
 shader_parameter/h = 1.0
@@ -110,24 +103,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ControllerIcon" type="TextureRect" parent="."]
+[node name="HotkeyIcon" parent="." instance=ExtResource("9_gryaj")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_gryaj")
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
+anchors_preset = 7
+anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -178.0
-offset_top = -94.0
-offset_right = -74.0
-offset_bottom = -42.0
-grow_horizontal = 0
+offset_left = -47.0
+offset_top = -39.0
+offset_right = 1.0
+offset_bottom = 9.0
+grow_horizontal = 2
 grow_vertical = 0
-scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(256, 128)
-mouse_filter = 2
-texture = ExtResource("8_ussnk")
-expand_mode = 1
-stretch_mode = 5
+scale = Vector2(0.62, 0.62)

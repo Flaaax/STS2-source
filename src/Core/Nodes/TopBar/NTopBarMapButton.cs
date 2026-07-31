@@ -67,7 +67,7 @@ public partial class NTopBarMapButton : NTopBarButton
 	{
 		base.OnFocus();
 		LocString locString = new LocString("static_hover_tips", "MAP.title");
-		locString.Add("Hotkey", NInputManager.Instance.GetShortcutKey(MegaInput.viewMap).ToString());
+		locString.Add("Hotkey", NInputManager.Instance.GetCurrentHotkey(MegaInput.viewMap).ToString());
 		HoverTip hoverTip = new HoverTip(locString, new LocString("static_hover_tips", "MAP.description"));
 		NHoverTipSet nHoverTipSet = NHoverTipSet.CreateAndShow(this, hoverTip);
 		nHoverTipSet?.SetGlobalPosition(base.GlobalPosition + new Vector2(base.Size.X - nHoverTipSet.Size.X, base.Size.Y + 20f));

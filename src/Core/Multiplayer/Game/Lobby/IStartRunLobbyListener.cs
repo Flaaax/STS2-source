@@ -13,7 +13,7 @@ public interface IStartRunLobbyListener
 	/// Called when a new player has connected. This includes the local player (even the host).
 	/// </summary>
 	/// <param name="player">The newly connected player.</param>
-	void PlayerConnected(LobbyPlayer player);
+	void PlayerConnected(StartRunLobbyPlayer player);
 
 	/// <summary>
 	/// Called when a lobby player's state has changed (e.g. their chosen character has changed).
@@ -21,7 +21,7 @@ public interface IStartRunLobbyListener
 	/// <param name="player">The player whose state has changed.</param>
 	/// <param name="isRandomCharacterResolution">This is only set to true when the player has changed due to the lobby
 	/// resolving the random character to the real one when the run is beginning.</param>
-	void PlayerChanged(LobbyPlayer player, bool isRandomCharacterResolution);
+	void PlayerChanged(StartRunLobbyPlayer player, bool isRandomCharacterResolution);
 
 	/// <summary>
 	/// Called when the host has changed the ascension level, on both host and client.
@@ -48,7 +48,7 @@ public interface IStartRunLobbyListener
 	/// Called when another player has left the lobby.
 	/// </summary>
 	/// <param name="player">The player who has left.</param>
-	void RemotePlayerDisconnected(LobbyPlayer player);
+	void RemotePlayerDisconnected(StartRunLobbyPlayer player);
 
 	/// <summary>
 	/// Called when the run begins, on both host and client. When calling CloseAndBeginRun on the host, you should wait

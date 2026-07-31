@@ -37,5 +37,12 @@
   "LEGEND_UNKNOWN.hoverTip.description": "情报不明的房间。\n\n可能遭遇事件、敌人、商店或宝箱。",
   "LEGEND_UNKNOWN.hoverTip.title": "？？？",
   "LEGEND_UNKNOWN.title": "未知",
+  "SHARE.description.other": "将整张地图截图保存并分享给朋友们吧。",
+  "SHARE.description.steam": "将完整的地图保存为Steam截图与好友分享。",
+  "SHARE.title": "分享",
+  "SHARE_POPUP.description": "[gold]已将截图保存到：[/gold]\n\n{path}",
+  "SHARE_POPUP.open": "打开",
+  "SHARE_POPUP.title": "截图已保存！",
+  "SHARE_TOAST.description.steam": "截图已保存！",
   "STARTING_ROOM_PROMPT": "选择一个初始房间"
 }

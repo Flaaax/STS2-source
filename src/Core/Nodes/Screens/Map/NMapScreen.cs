@@ -50,6 +50,8 @@ public partial class NMapScreen : Control, IScreenContext, INetCursorPositionTra
 
 	private Control _points;
 
+	private NMapShareButton _shareButton;
+
 	private NBossMapPoint? _bossPointNode;
 
 	private NBossMapPoint? _secondBossPointNode;
@@ -62,7 +64,7 @@ public partial class NMapScreen : Control, IScreenContext, INetCursorPositionTra
 
 	private NBackButton _backButton;
 
-	private TextureRect _drawingToolsHotkeyIcon;
+	private NHotkeyIcon _drawingToolsHotkeyIcon;
 
 	private Control _drawingTools;
 
@@ -76,7 +78,7 @@ public partial class NMapScreen : Control, IScreenContext, INetCursorPositionTra
 
 	private Control _legendItems;
 
-	private TextureRect _legendHotkeyIcon;
+	private NHotkeyIcon _legendHotkeyIcon;
 
 	private Control _backstop;
 
@@ -162,10 +164,18 @@ public partial class NMapScreen : Control, IScreenContext, INetCursorPositionTra
 	{
 		get
 		{
-			NMapPoint nMapPoint = _mapPointDictionary.Values.FirstOrDefault((NMapPoint n) => n.IsEnabled);
-			if (nMapPoint != null)
+			List<NMapPoint> list = _mapPointDictionary.Values.Where((NMapPoint n) => n.IsEnabled).ToList();
+			if (list.Count > 0)
 			{
-				return nMapPoint;
+				if (_runState.CurrentMapPoint != null)
+				{
+					NMapPoint nMapPoint = list.FirstOrDefault((NMapPoint mp) => _runState.CurrentMapPoint.Children.Contains(mp.Point));
+					if (nMapPoint != null)
+					{
+						return nMapPoint;
+					}
+				}
+				return list.First();
 			}
 			return this;
 		}
@@ -185,11 +195,12 @@ public partial class NMapScreen : Control, IScreenContext, INetCursorPositionTra
 		_backButton = GetNode<NBackButton>("Back");
 		_backButton.Connect(NClickableControl.SignalName.Released, Callable.From<NButton>(OnBackButtonPressed));
 		_backButton.Disable();
-		_mapLegend = GetNode<Control>("MapLegend");
+		_mapLegend = GetNode<Control>("%MapLegend");
 		_legendItems = GetNode<Control>("MapLegend/LegendItems");
-		_legendHotkeyIcon = GetNode<TextureRect>("MapLegend/LegendHotkeyIcon");
-		_drawingToolsHotkeyIcon = GetNode<TextureRect>("DrawingToolsHotkey");
+		_legendHotkeyIcon = GetNode<NHotkeyIcon>("%LegendHotkeyIcon");
+		_drawingToolsHotkeyIcon = GetNode<NHotkeyIcon>("%DrawingToolsHotkey");
 		_backstop = GetNode<Control>("%Backstop");
+		_shareButton = GetNode<NMapShareButton>("%ShareButton");
 		_drawingTools = GetNode<Control>("%DrawingTools");
 		_mapDrawingButton = GetNode<NMapDrawButton>("%DrawButton");
 		_mapDrawingButton.Connect(NClickableControl.SignalName.Released, Callable.From<NButton>(OnMapDrawingButtonPressed));
@@ -197,6 +208,7 @@ public partial class NMapScreen : Control, IScreenContext, INetCursorPositionTra
 		_mapErasingButton.Connect(NClickableControl.SignalName.Released, Callable.From<NButton>(OnMapErasingButtonPressed));
 		_mapClearButton = GetNode<NMapClearButton>("%ClearButton");
 		_mapClearButton.Connect(NClickableControl.SignalName.Released, Callable.From<NButton>(OnClearMapDrawingButtonPressed));
+		_shareButton.Initialize(this, _mapContainer, _mapBgContainer);
 		RunManager.Instance.MapSelectionSynchronizer.PlayerVoteChanged += OnPlayerVoteChanged;
 		RunManager.Instance.MapSelectionSynchronizer.PlayerVoteCancelled += OnPlayerVoteCancelled;
 		base.ProcessMode = (ProcessModeEnum)(base.Visible ? 0 : 4);
@@ -215,10 +227,13 @@ public partial class NMapScreen : Control, IScreenContext, INetCursorPositionTra
 		UpdateHotkeyDisplay();
 	}
 
-	public override void _ExitTree()
+	public override void _Notification(int what)
 	{
-		RunManager.Instance.MapSelectionSynchronizer.PlayerVoteChanged -= OnPlayerVoteChanged;
-		RunManager.Instance.MapSelectionSynchronizer.PlayerVoteCancelled -= OnPlayerVoteCancelled;
+		if ((long)what == 1)
+		{
+			RunManager.Instance.MapSelectionSynchronizer.PlayerVoteChanged -= OnPlayerVoteChanged;
+			RunManager.Instance.MapSelectionSynchronizer.PlayerVoteCancelled -= OnPlayerVoteCancelled;
+		}
 	}
 
 	public void Initialize(RunState runState)
@@ -626,7 +641,7 @@ public partial class NMapScreen : Control, IScreenContext, INetCursorPositionTra
 
 	public override void _Process(double delta)
 	{
-		if (IsVisibleInTree() && (_actAnimTween == null || !_actAnimTween.IsRunning()))
+		if (IsVisibleInTree() && (_actAnimTween == null || !_actAnimTween.IsRunning()) && !_shareButton.IsTakingScreenshot())
 		{
 			UpdateScrollPosition(delta);
 		}
@@ -791,7 +806,7 @@ public partial class NMapScreen : Control, IScreenContext, INetCursorPositionTra
 		{
 			value.RefreshVisualsInstantly();
 		}
-		_mapPointDictionary.Values.FirstOrDefault((NMapPoint n) => n.IsEnabled)?.TryGrabFocus();
+		DefaultFocusedControl.TryGrabFocus();
 	}
 
 	private void PlayStartOfActAnimation()
@@ -935,7 +950,7 @@ public partial class NMapScreen : Control, IScreenContext, INetCursorPositionTra
 			IsOpen = false;
 			base.FocusMode = FocusModeEnum.None;
 			NRun.Instance.GlobalUi.TopBar.Map.StopOscillation();
-			NHotkeyManager.Instance.RemoveHotkeyPressedBinding(MegaInput.accept, OnLegendHotkeyPressed);
+			NHotkeyManager.Instance.RemoveHotkeyPressedBinding(MegaInput.confirm, OnLegendHotkeyPressed);
 			NHotkeyManager.Instance.RemoveHotkeyPressedBinding(MegaInput.viewExhaustPileAndTabRight, OnDrawingToolsHotkeyPressed);
 			if (RunManager.Instance.IsSingleplayerOrFakeMultiplayer)
 			{
@@ -990,7 +1005,7 @@ public partial class NMapScreen : Control, IScreenContext, INetCursorPositionTra
 		IsOpen = true;
 		base.Visible = true;
 		_backButton.MoveToHidePosition();
-		NHotkeyManager.Instance.PushHotkeyPressedBinding(MegaInput.accept, OnLegendHotkeyPressed);
+		NHotkeyManager.Instance.PushHotkeyPressedBinding(MegaInput.confirm, OnLegendHotkeyPressed);
 		NHotkeyManager.Instance.PushHotkeyPressedBinding(MegaInput.viewExhaustPileAndTabRight, OnDrawingToolsHotkeyPressed);
 		if (_runState.ActFloor > 0)
 		{
@@ -1187,7 +1202,7 @@ public partial class NMapScreen : Control, IScreenContext, INetCursorPositionTra
 		List<NMapLegendItem> list = _legendItems.GetChildren().OfType<NMapLegendItem>().ToList();
 		if (list.Any((NMapLegendItem c) => GetViewport().GuiGetFocusOwner() == c))
 		{
-			_mapPointDictionary.Values.FirstOrDefault((NMapPoint n) => n.IsEnabled)?.TryGrabFocus();
+			DefaultFocusedControl.TryGrabFocus();
 			return;
 		}
 		NMapPoint nMapPoint = _mapPointDictionary.Values.LastOrDefault((NMapPoint n) => n.IsEnabled);
@@ -1262,9 +1277,9 @@ public partial class NMapScreen : Control, IScreenContext, INetCursorPositionTra
 
 	private void UpdateHotkeyDisplay()
 	{
-		_legendHotkeyIcon.Visible = NControllerManager.Instance.IsUsingController;
-		_legendHotkeyIcon.Texture = NInputManager.Instance.GetHotkeyIcon(MegaInput.accept);
-		_drawingToolsHotkeyIcon.Visible = NControllerManager.Instance.IsUsingController;
-		_drawingToolsHotkeyIcon.Texture = NInputManager.Instance.GetHotkeyIcon(MegaInput.viewExhaustPileAndTabRight);
+		_legendHotkeyIcon.Visible = NControllerManager.Instance.IsUsingDirectionalNavigation;
+		_legendHotkeyIcon.UpdateInput(MegaInput.confirm);
+		_drawingToolsHotkeyIcon.Visible = NControllerManager.Instance.IsUsingDirectionalNavigation;
+		_drawingToolsHotkeyIcon.UpdateInput(MegaInput.viewExhaustPileAndTabRight);
 	}
 }

@@ -6,6 +6,10 @@ using MegaCrit.Sts2.Core.Nodes.GodotExtensions;
 
 namespace MegaCrit.Sts2.Core.Nodes.Screens.Settings;
 
+/// <summary>
+/// Common button seen in the Settings screen.
+/// Used for an assortment of reasons like resetting settings, viewing credits, etc.
+/// </summary>
 public partial class NSettingsButton : NButton
 {
 	private TextureRect _image;
@@ -14,7 +18,7 @@ public partial class NSettingsButton : NButton
 
 	private NSelectionReticle _selectionReticle;
 
-	protected Tween? _tween;
+	private Tween? _tween;
 
 	protected override void ConnectSignals()
 	{
@@ -29,7 +33,7 @@ public partial class NSettingsButton : NButton
 		_tween?.Kill();
 		_tween = CreateTween().SetParallel();
 		_tween.TweenProperty(this, "scale", Vector2.One * 1.05f, 0.05);
-		if (NControllerManager.Instance.IsUsingController)
+		if (NControllerManager.Instance.IsUsingDirectionalNavigation)
 		{
 			_selectionReticle.OnSelect();
 		}

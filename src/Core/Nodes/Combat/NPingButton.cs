@@ -83,16 +83,6 @@ public partial class NPingButton : NButton
 		CombatManager.Instance.PlayerUnendedTurn += AfterPlayerUnendedTurn;
 	}
 
-	public override void _ExitTree()
-	{
-		base._ExitTree();
-		_showCancelTokenSource?.Cancel();
-		_showCancelTokenSource = null;
-		CombatManager.Instance.AboutToSwitchToEnemyTurn -= OnAboutToSwitchToEnemyTurn;
-		CombatManager.Instance.PlayerEndedTurn -= AfterPlayerEndedTurn;
-		CombatManager.Instance.PlayerUnendedTurn -= AfterPlayerUnendedTurn;
-	}
-
 	private void AfterPlayerEndedTurn(Player player, bool _)
 	{
 		if (CombatManager.Instance.AllPlayersReadyToEndTurn())
@@ -144,6 +134,7 @@ public partial class NPingButton : NButton
 
 	protected override void OnEnable()
 	{
+		base.OnEnable();
 		_image.Modulate = Colors.White;
 		_label.Modulate = StsColors.cream;
 	}
@@ -153,6 +144,7 @@ public partial class NPingButton : NButton
 	/// </summary>
 	protected override void OnDisable()
 	{
+		base.OnDisable();
 		NHoverTipSet.Remove(this);
 		_image.Modulate = StsColors.gray;
 		_label.Modulate = StsColors.gray;
@@ -255,5 +247,15 @@ public partial class NPingButton : NButton
 		{
 			Disable();
 		}
+	}
+
+	public override void _ExitTree()
+	{
+		base._ExitTree();
+		_showCancelTokenSource?.Cancel();
+		_showCancelTokenSource = null;
+		CombatManager.Instance.AboutToSwitchToEnemyTurn -= OnAboutToSwitchToEnemyTurn;
+		CombatManager.Instance.PlayerEndedTurn -= AfterPlayerEndedTurn;
+		CombatManager.Instance.PlayerUnendedTurn -= AfterPlayerUnendedTurn;
 	}
 }

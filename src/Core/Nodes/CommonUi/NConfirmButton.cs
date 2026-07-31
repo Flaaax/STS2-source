@@ -30,7 +30,7 @@ public partial class NConfirmButton : NButton
 
 	private Viewport _viewport;
 
-	private string[] _hotkeys = new string[1] { MegaInput.accept };
+	private string[] _hotkeys = new string[1] { MegaInput.confirm };
 
 	private static readonly Vector2 _hoverScale = new Vector2(1.05f, 1.05f);
 

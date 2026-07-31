@@ -63,7 +63,7 @@ public partial class NRunModifierTickbox : NTickbox
 	protected override void OnFocus()
 	{
 		base.OnFocus();
-		if (NControllerManager.Instance.IsUsingController)
+		if (NControllerManager.Instance.IsUsingDirectionalNavigation)
 		{
 			_highlight.Visible = true;
 		}

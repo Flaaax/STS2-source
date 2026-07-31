@@ -54,10 +54,17 @@ public sealed class PoisonPower : PowerModel
 
 	public override async Task AfterSideTurnStart(CombatSide side, IReadOnlyList<Creature> participants, ICombatState combatState)
 	{
-		if (!participants.Contains(base.Owner))
+		if (participants.Contains(base.Owner))
 		{
-			return;
+			await Trigger();
 		}
+	}
+
+	/// <summary>
+	/// Deals the Poison damage and decrements the stacks, once per <see cref="P:MegaCrit.Sts2.Core.Models.Powers.PoisonPower.TriggerCount" />.
+	/// </summary>
+	public async Task Trigger()
+	{
 		int iterations = TriggerCount;
 		for (int i = 0; i < iterations; i++)
 		{

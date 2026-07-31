@@ -8477,21 +8477,6 @@
           }
         },
         {
-          "filename": "silent/scare.png",
-          "region": {
-            "x": 1513,
-            "y": 3073,
-            "w": 250,
-            "h": 190
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
           "filename": "silent/serpent_form.png",
           "region": {
             "x": 1765,

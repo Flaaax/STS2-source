@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b4vajh8abu2w4"]
+[gd_scene load_steps=21 format=3 uid="uid://b4vajh8abu2w4"]
 
 [ext_resource type="Script" uid="uid://v255olek18af" path="res://src/Core/Nodes/Screens/DailyRun/NDailyRunScreen.cs" id="1_gsjt8"]
 [ext_resource type="Script" uid="uid://dtfio45agppyj" path="res://addons/mega_text/MegaLabel.cs" id="2_hw2l2"]
@@ -17,7 +17,6 @@
 [ext_resource type="Texture2D" uid="uid://ft7c6dms8rrf" path="res://images/ui/emote/exclaim.png" id="11_54yx2"]
 [ext_resource type="Texture2D" uid="uid://btjc3p508sth1" path="res://images/ui/fuzzy_nine_patch_char_select.png" id="11_bcqc1"]
 [ext_resource type="FontVariation" uid="uid://c71uw4aqpsn1b" path="res://themes/spectral_glphy_space_two.tres" id="12_2c4ej"]
-[ext_resource type="Texture2D" uid="uid://q1y4ux" path="res://images/atlases/compressed.sprites/back_button_x.tres" id="17_5d2ug"]
 [ext_resource type="Script" uid="uid://drm4tcwtxrx7u" path="res://src/Core/Nodes/Screens/DailyRun/NDailyRunScoreWarning.cs" id="19_y2b5y"]
 [ext_resource type="FontVariation" uid="uid://bhyxo1pcdm73o" path="res://themes/bitter_medium_italic_glyph_space_one.tres" id="20_n50pb"]
 
@@ -26,13 +25,6 @@ resource_local_to_scene = true
 shader = ExtResource("9_15d8j")
 shader_parameter/h = 0.171
 shader_parameter/s = 3.072
-shader_parameter/v = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_w3nvp"]
-resource_local_to_scene = true
-shader = ExtResource("9_15d8j")
-shader_parameter/h = 1.0
-shader_parameter/s = 1.0
 shader_parameter/v = 1.0
 
 [node name="DailyRunScreen" type="Control"]
@@ -315,11 +307,3 @@ layout_mode = 1
 [node name="UnreadyButton" parent="." instance=ExtResource("5_gvjr8")]
 unique_name_in_owner = true
 layout_mode = 1
-
-[node name="Icon" parent="UnreadyButton/Image" index="0"]
-texture = ExtResource("17_5d2ug")
-
-[node name="ControllerIcon" parent="UnreadyButton" index="3"]
-material = SubResource("ShaderMaterial_w3nvp")
-
-[editable path="UnreadyButton"]

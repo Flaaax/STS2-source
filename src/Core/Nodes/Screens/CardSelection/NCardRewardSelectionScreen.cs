@@ -164,7 +164,7 @@ public partial class NCardRewardSelectionScreen : Control, IOverlayScreen, IScre
 		{
 			int capturedIndex = num;
 			CardRewardAlternative cardRewardAlternative = _extraOptions[num];
-			NCardRewardAlternativeButton nCardRewardAlternativeButton = NCardRewardAlternativeButton.Create(cardRewardAlternative.Title.GetFormattedText(), cardRewardAlternative.Hotkey);
+			NCardRewardAlternativeButton nCardRewardAlternativeButton = NCardRewardAlternativeButton.Create(cardRewardAlternative.Title.GetFormattedText(), cardRewardAlternative.Hotkeys);
 			_rewardAlternativesContainer.AddChildSafely(nCardRewardAlternativeButton);
 			nCardRewardAlternativeButton.Connect(NClickableControl.SignalName.Released, Callable.From<NButton>(delegate
 			{
@@ -179,7 +179,10 @@ public partial class NCardRewardSelectionScreen : Control, IOverlayScreen, IScre
 			child.FocusNeighborLeft = ((num2 > 0) ? _cardRow.GetChild(num2 - 1).GetPath() : _cardRow.GetChild(_cardRow.GetChildCount() - 1).GetPath());
 			child.FocusNeighborRight = ((num2 < _cardRow.GetChildCount() - 1) ? _cardRow.GetChild(num2 + 1).GetPath() : _cardRow.GetChild(0).GetPath());
 		}
-		ActiveScreenContext.Instance.FocusOnDefaultControl();
+		Callable.From(delegate
+		{
+			ActiveScreenContext.Instance.FocusOnDefaultControl();
+		}).CallDeferred();
 	}
 
 	public override void _ExitTree()
@@ -306,8 +309,8 @@ public partial class NCardRewardSelectionScreen : Control, IOverlayScreen, IScre
 
 	private void UpdateControllerIcons()
 	{
-		_inspectPrompt.Visible = NControllerManager.Instance.IsUsingController;
-		_inspectPrompt.GetNode<TextureRect>("ControllerIcon").Texture = NInputManager.Instance.GetHotkeyIcon(MegaInput.accept);
+		_inspectPrompt.Visible = NControllerManager.Instance.IsUsingDirectionalNavigation;
+		_inspectPrompt.GetNode<NHotkeyIcon>("%HotkeyIcon").UpdateInput(MegaInput.confirm);
 		_inspectPrompt.GetNode<MegaLabel>("Label").SetTextAutoSize(new LocString("gameplay_ui", "TO_INSPECT_PROMPT").GetFormattedText());
 	}
 }

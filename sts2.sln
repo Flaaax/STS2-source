@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sts2", "sts2.csproj", "{0247AE35-4D3D-4AEA-B4E1-5993B9896363}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sts2", "sts2.csproj", "{6E9B4C59-B0D6-4D39-BD2D-3FC8F4E3B28A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -10,10 +10,10 @@ Global
 		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0247AE35-4D3D-4AEA-B4E1-5993B9896363}.Debug|x64.ActiveCfg = Debug|x64
-		{0247AE35-4D3D-4AEA-B4E1-5993B9896363}.Debug|x64.Build.0 = Debug|x64
-		{0247AE35-4D3D-4AEA-B4E1-5993B9896363}.Release|x64.ActiveCfg = Release|x64
-		{0247AE35-4D3D-4AEA-B4E1-5993B9896363}.Release|x64.Build.0 = Release|x64
+		{6E9B4C59-B0D6-4D39-BD2D-3FC8F4E3B28A}.Debug|x64.ActiveCfg = Debug|x64
+		{6E9B4C59-B0D6-4D39-BD2D-3FC8F4E3B28A}.Debug|x64.Build.0 = Debug|x64
+		{6E9B4C59-B0D6-4D39-BD2D-3FC8F4E3B28A}.Release|x64.ActiveCfg = Release|x64
+		{6E9B4C59-B0D6-4D39-BD2D-3FC8F4E3B28A}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

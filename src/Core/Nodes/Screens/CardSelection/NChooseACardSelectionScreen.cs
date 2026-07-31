@@ -269,8 +269,8 @@ public partial class NChooseACardSelectionScreen : Control, IOverlayScreen, IScr
 
 	private void UpdateControllerIcons()
 	{
-		_inspectPrompt.Modulate = (NControllerManager.Instance.IsUsingController ? Colors.White : Colors.Transparent);
-		_inspectPrompt.GetNode<TextureRect>("ControllerIcon").Texture = NInputManager.Instance.GetHotkeyIcon(MegaInput.accept);
-		_inspectPrompt.GetNode<MegaLabel>("Label").SetTextAutoSize(new LocString("gameplay_ui", "TO_INSPECT_PROMPT").GetFormattedText());
+		_inspectPrompt.Modulate = (NControllerManager.Instance.IsUsingDirectionalNavigation ? Colors.White : Colors.Transparent);
+		_inspectPrompt.GetNode<NHotkeyIcon>("%HotkeyIcon").UpdateInput(MegaInput.confirm);
+		_inspectPrompt.GetNode<MegaLabel>("%Label").SetTextAutoSize(new LocString("gameplay_ui", "TO_INSPECT_PROMPT").GetFormattedText());
 	}
 }

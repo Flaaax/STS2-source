@@ -3,6 +3,7 @@ using Godot;
 using MegaCrit.Sts2.addons.mega_text;
 using MegaCrit.Sts2.Core.ControllerInput;
 using MegaCrit.Sts2.Core.Helpers;
+using MegaCrit.Sts2.Core.Nodes.CommonUi;
 using MegaCrit.Sts2.Core.Nodes.GodotExtensions;
 
 namespace MegaCrit.Sts2.Core.Nodes.Events;
@@ -22,7 +23,7 @@ public partial class NAncientDialogueHitbox : NButton
 
 	private bool _isAnimating;
 
-	protected override string[] Hotkeys => new string[1] { MegaInput.accept };
+	protected override string[] Hotkeys => new string[1] { MegaInput.confirm };
 
 	public string? GetHotkey()
 	{
@@ -44,6 +45,11 @@ public partial class NAncientDialogueHitbox : NButton
 		Tween tween = CreateTween().SetParallel();
 		tween.TweenProperty(_label, "self_modulate:a", 1f, 1.0).SetDelay(0.5);
 		tween.TweenProperty(_arrow, "self_modulate:a", 1f, 1.0).SetDelay(0.5);
+	}
+
+	protected override void GetControllerIconNode()
+	{
+		_hotkeyIcon = GetNodeOrNull<NHotkeyIcon>("%ControllerIcon");
 	}
 
 	protected override void OnRelease()

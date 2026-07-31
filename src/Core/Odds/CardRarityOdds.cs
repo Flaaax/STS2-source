@@ -118,12 +118,14 @@ public class CardRarityOdds : AbstractOdds
 	/// <returns>What rarity a generated card should be.</returns>
 	public CardRarity RollWithBaseOdds(CardRarityOddsType type)
 	{
+		float baseOdds = GetBaseOdds(type, CardRarity.Rare);
+		float baseOdds2 = GetBaseOdds(type, CardRarity.Uncommon);
 		float num = _rng.NextFloat();
-		if (num < GetBaseOdds(type, CardRarity.Rare))
+		if (num < baseOdds)
 		{
 			return CardRarity.Rare;
 		}
-		if (num < GetBaseOdds(type, CardRarity.Uncommon))
+		if (num < baseOdds2 + baseOdds)
 		{
 			return CardRarity.Uncommon;
 		}

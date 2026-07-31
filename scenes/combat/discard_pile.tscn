@@ -1,19 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://degxcg30ychsl"]
+[gd_scene load_steps=7 format=3 uid="uid://degxcg30ychsl"]
 
 [ext_resource type="Script" uid="uid://b1cceaglmx2ff" path="res://src/Core/Nodes/Combat/NDiscardPileButton.cs" id="1_bp6xh"]
 [ext_resource type="FontVariation" uid="uid://ux4d708e7mk6" path="res://themes/kreon_bold_glyph_space_one.tres" id="3_4fw02"]
 [ext_resource type="Texture2D" uid="uid://lb7f7afwbapn" path="res://images/packed/combat_ui/discard_pile.png" id="3_wfalg"]
 [ext_resource type="Script" uid="uid://dtfio45agppyj" path="res://addons/mega_text/MegaLabel.cs" id="4_7gk71"]
 [ext_resource type="Texture2D" uid="uid://ce37xptc8x4au" path="res://images/packed/combat_ui/pile_button_count.png" id="5_5g5lj"]
-[ext_resource type="Shader" uid="uid://c66gb6g7tup3n" path="res://shaders/hsv.gdshader" id="6_bjwng"]
-[ext_resource type="Texture2D" uid="uid://b5x513mavmk5v" path="res://images/ui/placeholder_controller_icon.png" id="7_yxolv"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_iuwcd"]
-resource_local_to_scene = true
-shader = ExtResource("6_bjwng")
-shader_parameter/h = 1.0
-shader_parameter/s = 1.0
-shader_parameter/v = 1.0
+[ext_resource type="PackedScene" uid="uid://ddb8daodx7qsl" path="res://scenes/ui/hotkey_icon.tscn" id="6_32jwh"]
 
 [node name="DiscardPile" type="Control"]
 layout_mode = 3
@@ -93,24 +85,19 @@ script = ExtResource("4_7gk71")
 MinFontSize = 20
 MaxFontSize = 26
 
-[node name="ControllerIcon" type="TextureRect" parent="."]
+[node name="HotkeyIcon" parent="." instance=ExtResource("6_32jwh")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_iuwcd")
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -142.0
-offset_top = -67.0
-offset_right = 42.0
-offset_bottom = 25.0
+offset_left = 2.0000038
+offset_top = -1.0
+offset_right = 50.0
+offset_bottom = 47.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(256, 128)
-mouse_filter = 2
-texture = ExtResource("7_yxolv")
-expand_mode = 1
-stretch_mode = 5
+scale = Vector2(0.7, 0.7)

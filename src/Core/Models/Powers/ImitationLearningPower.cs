@@ -16,7 +16,7 @@ public sealed class ImitationLearningPower : PowerModel
 {
 	private class Data
 	{
-		public readonly Dictionary<CardModel, CardModel> cardsAndClones = new Dictionary<CardModel, CardModel>();
+		public readonly List<(CardModel Card, CardModel Clone)> cardsAndClones = new List<(CardModel, CardModel)>();
 	}
 
 	private const string _targetPlayerKey = "TargetPlayer";
@@ -70,15 +70,23 @@ public sealed class ImitationLearningPower : PowerModel
 		{
 			return Task.CompletedTask;
 		}
-		CardModel value = cardPlay.Card.CreateCloneForPlayer(base.Owner.Player);
-		GetInternalData<Data>().cardsAndClones.Add(cardPlay.Card, value);
+		if (!cardPlay.IsFirstInSeries)
+		{
+			return Task.CompletedTask;
+		}
+		CardModel item = cardPlay.Card.CreateCloneForPlayer(base.Owner.Player);
+		GetInternalData<Data>().cardsAndClones.Add((cardPlay.Card, item));
 		return Task.CompletedTask;
 	}
 
 	public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
 	{
-		if (GetInternalData<Data>().cardsAndClones.TryGetValue(cardPlay.Card, out CardModel clone))
+		Data internalData = GetInternalData<Data>();
+		int num = internalData.cardsAndClones.FindIndex(((CardModel Card, CardModel Clone) p) => p.Card == cardPlay.Card);
+		if (num >= 0)
 		{
+			CardModel clone = internalData.cardsAndClones[num].Clone;
+			internalData.cardsAndClones.RemoveAt(num);
 			Flash();
 			await PowerCmd.Decrement(this);
 			await CardCmd.AutoPlay(choiceContext, clone, null);

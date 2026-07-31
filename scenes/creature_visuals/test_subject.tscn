@@ -1,18 +1,1658 @@
-[gd_scene load_steps=70 format=3 uid="uid://md8ml871gufx"]
+[gd_scene load_steps=224 format=3 uid="uid://md8ml871gufx"]
 
 [ext_resource type="Script" uid="uid://cghtlla3sw0po" path="res://src/Core/Nodes/Combat/NCreatureVisuals.cs" id="1_4tnkf"]
+[ext_resource type="Shader" uid="uid://dryvqo67omhm" path="res://shaders/vfx/vfx_stepped_shader_fire_flat.tres" id="2_aatry"]
 [ext_resource type="Shader" uid="uid://0ha8llq0xusv" path="res://images/vfx/simple_noise_add_shader.tres" id="2_rbojw"]
 [ext_resource type="Texture2D" uid="uid://dtaovewempx07" path="res://images/vfx/tileable_noise_1.png" id="3_mg38a"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://bcbpmgaxrlav5" path="res://animations/monsters/test_subject/test_subject_skel_data.tres" id="3_mrvg4"]
 [ext_resource type="Texture2D" uid="uid://cl36fu65lm5v4" path="res://images/vfx/monsters/test_subject/test_subject_goop_particles.png" id="4_3aij5"]
+[ext_resource type="Texture2D" uid="uid://1epaordiol6u" path="res://images/vfx/fire/zigzag_fire_distortion.png" id="4_h1q5p"]
 [ext_resource type="Script" uid="uid://2wfl7p7wi1q8" path="res://src/Core/Nodes/Vfx/NTestSubjectVfx.cs" id="4_h8if4"]
 [ext_resource type="Texture2D" uid="uid://dcvu5sxac5xwc" path="res://images/vfx/fire/flame_paricle_tex.png" id="4_qdxto"]
 [ext_resource type="Texture2D" uid="uid://ci5u85gvkc1b0" path="res://images/vfx/monsters/test_subject/dizzy_zap_particle.png" id="5_22m1s"]
+[ext_resource type="Texture2D" uid="uid://nabb7hx4fxat" path="res://images/vfx/fire/fire_bottom_mask.png" id="5_qjm3t"]
 [ext_resource type="Texture2D" uid="uid://b47r2blhe2i3" path="res://images/vfx/fire/cinder_particle.png" id="6_4wku2"]
+[ext_resource type="Texture2D" uid="uid://c65hcljas0pyo" path="res://images/vfx/fire/triangle_noise_tile.png" id="6_j3sgb"]
+[ext_resource type="Texture2D" uid="uid://bid56elmy6fr6" path="res://images/vfx/tileable_noise_4.png" id="7_l5f6v"]
 [ext_resource type="SpineSkeletonDataResource" path="res://animations/monsters/test_subject/test_subject_burn_back_skel_data.tres" id="7_rbojw"]
+[ext_resource type="Texture2D" uid="uid://cacyidavgkt5i" path="res://images/vfx/monsters/test_subject/test_subject_ground_fire_base.png" id="8_epnne"]
 [ext_resource type="SpineSkeletonDataResource" path="res://animations/monsters/test_subject/test_subject_burn_front_skel_data.tres" id="13_kqbot"]
 [ext_resource type="Texture2D" uid="uid://qinrp8kdcart" path="res://images/vfx/tiny_glow_dot.png" id="15_cbevi"]
 [ext_resource type="Material" uid="uid://c4ycqv0gdxvmr" path="res://themes/canvas_item_material_additive_shared.tres" id="shared_additive_mat"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wucc3"]
+shader = ExtResource("2_aatry")
+shader_parameter/OuterColor = Color(1, 0.13333333, 0, 1)
+shader_parameter/InnerColorStep = Vector2(0.13, 0.205)
+shader_parameter/Noise2Strength = 1.0
+shader_parameter/Noise2Scaling = Vector2(1, 1)
+shader_parameter/Noise2Panning = Vector2(0.7, 0.4)
+shader_parameter/Noise2Texture = ExtResource("7_l5f6v")
+shader_parameter/Noise1Strength = 1.0
+shader_parameter/Noise1Scaling = Vector2(1, 0.8)
+shader_parameter/Noise1Panning = Vector2(0.4, 0.5)
+shader_parameter/Noise1Texture = ExtResource("6_j3sgb")
+shader_parameter/InvertNoiseMask = false
+shader_parameter/NoiseMaskScale = Vector2(1, 1.11)
+shader_parameter/NoiseMaskOffset = Vector2(0, -0.14)
+shader_parameter/NoiseMask = ExtResource("5_qjm3t")
+shader_parameter/Distortion2Scale = Vector2(1, 1)
+shader_parameter/Distortion2Panning = Vector2(-0.2, 0.7)
+shader_parameter/Distortion2Texture = ExtResource("4_h1q5p")
+shader_parameter/Distortion2Strength = 0.02
+shader_parameter/Distortion1Scale = Vector2(1, 1)
+shader_parameter/Distortion1Panning = Vector2(0.2, 0.5)
+shader_parameter/Distortion1Texture = ExtResource("3_mg38a")
+shader_parameter/Distortion1Strength = 0.055
+shader_parameter/DistortionMaskScale = Vector2(3, 3)
+shader_parameter/DistortionMaskOffset = Vector2(0, -1.495)
+shader_parameter/DistortionMask = ExtResource("5_qjm3t")
+shader_parameter/InnerColor = Color(1, 0.56666666, 0, 1)
+shader_parameter/OuterStep = Vector2(0.11, 0.14)
+
+[sub_resource type="VisualShaderNodeVec2Parameter" id="VisualShaderNodeVec2Parameter_aatry"]
+parameter_name = "Distortion1Panning"
+default_value_enabled = true
+default_value = Vector2(1, 1)
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_h1q5p"]
+parameter_name = "Distortion1Texture"
+texture_repeat = 1
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_qjm3t"]
+source = 5
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_l5f6v"]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_j6acs"]
+output_port_for_preview = 0
+expanded_output_ports = [0]
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_wucc3"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
+op_type = 0
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_3m75q"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
+op_type = 0
+operator = 2
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_a6i51"]
+input_name = "time"
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_uc1yf"]
+parameter_name = "OuterColor"
+default_value_enabled = true
+default_value = Color(1, 0, 0, 1)
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_oab4q"]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_r1qet"]
+input_name = "texture"
+
+[sub_resource type="VisualShaderNodeSmoothStep" id="VisualShaderNodeSmoothStep_qdlqg"]
+default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(1, 1, 1), 2, Vector3(0.5, 0.5, 0.5)]
+op_type = 3
+
+[sub_resource type="VisualShaderNodeVec2Parameter" id="VisualShaderNodeVec2Parameter_0thxx"]
+parameter_name = "InnerColorStep"
+default_value_enabled = true
+default_value = Vector2(0.3, 0.4)
+
+[sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_hwfjd"]
+default_input_values = [0, Vector2(0, 0)]
+op_type = 0
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_woxad"]
+parameter_name = "InnerColor"
+default_value_enabled = true
+default_value = Color(1, 0.85, 0, 1)
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_7idfc"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeVec2Parameter" id="VisualShaderNodeVec2Parameter_m6alh"]
+parameter_name = "OuterStep"
+default_value_enabled = true
+default_value = Vector2(0.1, 0.2)
+
+[sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_mahtf"]
+default_input_values = [0, Vector2(0, 0)]
+op_type = 0
+
+[sub_resource type="VisualShaderNodeSmoothStep" id="VisualShaderNodeSmoothStep_ptblu"]
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_8lq2d"]
+parameter_name = "DistortionMask"
+texture_repeat = 2
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_2ufyq"]
+source = 5
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_lrlsx"]
+expanded_output_ports = [0]
+source = 5
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_el6tt"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_32wtq"]
+default_input_values = [1, Vector2(1, 1), 2, Vector2(0, 0.04)]
+
+[sub_resource type="VisualShaderNodeVec2Parameter" id="VisualShaderNodeVec2Parameter_c17rp"]
+parameter_name = "DistortionMaskOffset"
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_bj0px"]
+parameter_name = "Distortion2Texture"
+texture_repeat = 1
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_p1ag1"]
+source = 5
+
+[sub_resource type="VisualShaderNodeVec2Parameter" id="VisualShaderNodeVec2Parameter_cc34u"]
+parameter_name = "Distortion2Panning"
+default_value_enabled = true
+default_value = Vector2(1, 1)
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_7tfpu"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
+op_type = 0
+operator = 2
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_j74tx"]
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_bu3rd"]
+parameter_name = "Distortion2Strength"
+default_value_enabled = true
+default_value = 0.02
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_wm887"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
+op_type = 0
+operator = 2
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_ees00"]
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_g1gn2"]
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_60d5n"]
+parameter_name = "Noise1Texture"
+texture_repeat = 1
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_fprl3"]
+expanded_output_ports = [0]
+source = 5
+
+[sub_resource type="VisualShaderNodeVec2Parameter" id="VisualShaderNodeVec2Parameter_6en01"]
+parameter_name = "Noise1Panning"
+default_value_enabled = true
+default_value = Vector2(1, 1)
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_4yvjh"]
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_l4823"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
+op_type = 0
+operator = 2
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_36x4r"]
+input_name = "time"
+
+[sub_resource type="VisualShaderNodeVec2Parameter" id="VisualShaderNodeVec2Parameter_kvbkq"]
+parameter_name = "Noise2Panning"
+default_value_enabled = true
+default_value = Vector2(1, 1)
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_0oymw"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
+op_type = 0
+operator = 2
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_iw64m"]
+parameter_name = "Distortion1Strength"
+default_value_enabled = true
+default_value = 0.02
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_frun2"]
+input_name = "time"
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_yg8lg"]
+expanded_output_ports = [0]
+source = 5
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_e6smk"]
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_qqxt4"]
+parameter_name = "Noise2Texture"
+texture_repeat = 1
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_lyiow"]
+expanded_output_ports = [0]
+source = 5
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_ismeb"]
+default_input_values = [1, Vector2(1, 1), 2, Vector2(0, 0.04)]
+
+[sub_resource type="VisualShaderNodeVec2Parameter" id="VisualShaderNodeVec2Parameter_c0b3g"]
+parameter_name = "NoiseMaskOffset"
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_5ighw"]
+parameter_name = "NoiseMask"
+texture_repeat = 2
+
+[sub_resource type="VisualShaderNodeBooleanParameter" id="VisualShaderNodeBooleanParameter_f8vap"]
+parameter_name = "InvertNoiseMask"
+default_value_enabled = true
+default_value = true
+
+[sub_resource type="VisualShaderNodeSwitch" id="VisualShaderNodeSwitch_s7xsn"]
+
+[sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_t5q3a"]
+function = 31
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_luqne"]
+parameter_name = "Noise1Strength"
+default_value_enabled = true
+default_value = 1.0
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_87n60"]
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_hmewn"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_7y76r"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_mbhgr"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_rkvqb"]
+parameter_name = "Noise2Strength"
+default_value_enabled = true
+default_value = 1.0
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_kt1mf"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeVec2Parameter" id="VisualShaderNodeVec2Parameter_qyg6f"]
+parameter_name = "Distortion2Scale"
+default_value_enabled = true
+default_value = Vector2(1, 1)
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_73ov6"]
+default_input_values = [1, Vector2(0, 0), 2, Vector2(0, 0)]
+function = 1
+
+[sub_resource type="VisualShaderNodeVec2Parameter" id="VisualShaderNodeVec2Parameter_adkyt"]
+parameter_name = "Distortion1Scale"
+default_value_enabled = true
+default_value = Vector2(1, 1)
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_g8ky0"]
+function = 1
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_hlgep"]
+function = 1
+
+[sub_resource type="VisualShaderNodeVec2Parameter" id="VisualShaderNodeVec2Parameter_juaa2"]
+parameter_name = "DistortionMaskScale"
+default_value_enabled = true
+default_value = Vector2(1, 1)
+
+[sub_resource type="VisualShaderNodeVec2Parameter" id="VisualShaderNodeVec2Parameter_0vp48"]
+parameter_name = "NoiseMaskScale"
+default_value_enabled = true
+default_value = Vector2(1, 1)
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_403sq"]
+default_input_values = [1, Vector2(1, 1), 2, Vector2(0, 0.04)]
+function = 1
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_6lrt2"]
+function = 1
+
+[sub_resource type="VisualShaderNodeVec2Parameter" id="VisualShaderNodeVec2Parameter_8017p"]
+parameter_name = "Noise1Scaling"
+default_value_enabled = true
+default_value = Vector2(1, 1)
+
+[sub_resource type="VisualShaderNodeVec2Parameter" id="VisualShaderNodeVec2Parameter_45oef"]
+expanded_output_ports = [0]
+parameter_name = "Noise2Scaling"
+default_value_enabled = true
+default_value = Vector2(1, 1)
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_16b41"]
+function = 1
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_qsceg"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
+op_type = 0
+operator = 2
+
+[sub_resource type="VisualShader" id="VisualShader_qx0ol"]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+uniform vec4 OuterColor : source_color = vec4(1.000000, 0.000000, 0.000000, 1.000000);
+uniform vec2 InnerColorStep = vec2(0.300000, 0.400000);
+uniform float Noise2Strength = 1.0;
+uniform vec2 Noise2Scaling = vec2(1.000000, 1.000000);
+uniform vec2 Noise2Panning = vec2(1.000000, 1.000000);
+uniform sampler2D Noise2Texture : repeat_enable;
+uniform float Noise1Strength = 1.0;
+uniform vec2 Noise1Scaling = vec2(1.000000, 1.000000);
+uniform vec2 Noise1Panning = vec2(1.000000, 1.000000);
+uniform sampler2D Noise1Texture : repeat_enable;
+uniform bool InvertNoiseMask = true;
+uniform vec2 NoiseMaskScale = vec2(1.000000, 1.000000);
+uniform vec2 NoiseMaskOffset;
+uniform sampler2D NoiseMask : repeat_disable;
+uniform vec2 Distortion2Scale = vec2(1.000000, 1.000000);
+uniform vec2 Distortion2Panning = vec2(1.000000, 1.000000);
+uniform sampler2D Distortion2Texture : repeat_enable;
+uniform float Distortion2Strength = 0.01999999955297;
+uniform vec2 Distortion1Scale = vec2(1.000000, 1.000000);
+uniform vec2 Distortion1Panning = vec2(1.000000, 1.000000);
+uniform sampler2D Distortion1Texture : repeat_enable;
+uniform float Distortion1Strength = 0.01999999955297;
+uniform vec2 DistortionMaskScale = vec2(1.000000, 1.000000);
+uniform vec2 DistortionMaskOffset;
+uniform sampler2D DistortionMask : repeat_disable;
+uniform vec4 InnerColor : source_color = vec4(1.000000, 0.850000, 0.000000, 1.000000);
+uniform vec2 OuterStep = vec2(0.100000, 0.200000);
+
+
+
+void fragment() {
+// ColorParameter:18
+	vec4 n_out18p0 = OuterColor;
+
+
+// Vector2Parameter:21
+	vec2 n_out21p0 = InnerColorStep;
+
+
+// VectorDecompose:22
+	float n_out22p0 = n_out21p0.x;
+	float n_out22p1 = n_out21p0.y;
+
+
+// FloatParameter:72
+	float n_out72p0 = Noise2Strength;
+
+
+// Vector2Parameter:85
+	vec2 n_out85p0 = Noise2Scaling;
+
+
+// UVFunc:86
+	vec2 n_in86p2 = vec2(0.00000, 0.00000);
+	vec2 n_out86p0 = (UV - n_in86p2) * n_out85p0 + n_in86p2;
+
+
+// Vector2Parameter:48
+	vec2 n_out48p0 = Noise2Panning;
+
+
+// Input:50
+	float n_out50p0 = TIME;
+
+
+// VectorOp:49
+	vec2 n_out49p0 = n_out48p0 * vec2(n_out50p0);
+
+
+// UVFunc:52
+	vec2 n_in52p1 = vec2(1.00000, 1.00000);
+	vec2 n_out52p0 = n_out49p0 * n_in52p1 + n_out86p0;
+
+
+	vec4 n_out51p0;
+// Texture2D:51
+	n_out51p0 = texture(Noise2Texture, n_out52p0);
+	float n_out51p3 = n_out51p0.b;
+
+
+// FloatOp:73
+	float n_out73p0 = n_out72p0 * n_out51p3;
+
+
+// FloatParameter:67
+	float n_out67p0 = Noise1Strength;
+
+
+// Vector2Parameter:84
+	vec2 n_out84p0 = Noise1Scaling;
+
+
+// UVFunc:83
+	vec2 n_in83p2 = vec2(0.00000, 0.00000);
+	vec2 n_out83p0 = (UV - n_in83p2) * n_out84p0 + n_in83p2;
+
+
+// Vector2Parameter:43
+	vec2 n_out43p0 = Noise1Panning;
+
+
+// Input:46
+	float n_out46p0 = TIME;
+
+
+// VectorOp:45
+	vec2 n_out45p0 = n_out43p0 * vec2(n_out46p0);
+
+
+// UVFunc:37
+	vec2 n_in37p1 = vec2(1.00000, 1.00000);
+	vec2 n_out37p0 = n_out45p0 * n_in37p1 + n_out83p0;
+
+
+	vec4 n_out42p0;
+// Texture2D:42
+	n_out42p0 = texture(Noise1Texture, n_out37p0);
+	float n_out42p3 = n_out42p0.b;
+
+
+// FloatOp:71
+	float n_out71p0 = n_out67p0 * n_out42p3;
+
+
+// FloatOp:69
+	float n_out69p0 = n_out73p0 * n_out71p0;
+
+
+// BooleanParameter:60
+	bool n_out60p0 = InvertNoiseMask;
+
+
+// Vector2Parameter:81
+	vec2 n_out81p0 = NoiseMaskScale;
+
+
+// UVFunc:82
+	vec2 n_in82p2 = vec2(0.00000, 0.04000);
+	vec2 n_out82p0 = (UV - n_in82p2) * n_out81p0 + n_in82p2;
+
+
+// Vector2Parameter:57
+	vec2 n_out57p0 = NoiseMaskOffset;
+
+
+// UVFunc:56
+	vec2 n_in56p1 = vec2(1.00000, 1.00000);
+	vec2 n_out56p0 = n_out57p0 * n_in56p1 + n_out82p0;
+
+
+	vec4 n_out55p0;
+// Texture2D:55
+	n_out55p0 = texture(NoiseMask, n_out56p0);
+	float n_out55p3 = n_out55p0.b;
+
+
+// FloatFunc:66
+	float n_out66p0 = 1.0 - n_out55p3;
+
+
+	float n_out65p0;
+// Switch:65
+	n_out65p0 = mix(n_out55p3, n_out66p0, float(n_out60p0));
+
+
+// FloatOp:68
+	float n_out68p0 = n_out69p0 + n_out65p0;
+
+
+// Input:14
+	vec2 n_out14p0 = UV;
+
+
+// Vector2Parameter:74
+	vec2 n_out74p0 = Distortion2Scale;
+
+
+// UVFunc:75
+	vec2 n_in75p2 = vec2(0.00000, 0.00000);
+	vec2 n_out75p0 = (UV - n_in75p2) * n_out74p0 + n_in75p2;
+
+
+// Vector2Parameter:35
+	vec2 n_out35p0 = Distortion2Panning;
+
+
+// Input:17
+	float n_out17p0 = TIME;
+
+
+// VectorOp:36
+	vec2 n_out36p0 = n_out35p0 * vec2(n_out17p0);
+
+
+// UVFunc:44
+	vec2 n_in44p1 = vec2(1.00000, 1.00000);
+	vec2 n_out44p0 = n_out36p0 * n_in44p1 + n_out75p0;
+
+
+	vec4 n_out34p0;
+// Texture2D:34
+	n_out34p0 = texture(Distortion2Texture, n_out44p0);
+
+
+// FloatParameter:38
+	float n_out38p0 = Distortion2Strength;
+
+
+// VectorOp:39
+	vec2 n_out39p0 = vec2(n_out34p0.xy) * vec2(n_out38p0);
+
+
+// Vector2Parameter:77
+	vec2 n_out77p0 = Distortion1Scale;
+
+
+// UVFunc:78
+	vec2 n_in78p2 = vec2(0.00000, 0.00000);
+	vec2 n_out78p0 = (UV - n_in78p2) * n_out77p0 + n_in78p2;
+
+
+// Vector2Parameter:10
+	vec2 n_out10p0 = Distortion1Panning;
+
+
+// VectorOp:9
+	vec2 n_out9p0 = vec2(n_out17p0) * n_out10p0;
+
+
+// UVFunc:4
+	vec2 n_in4p1 = vec2(1.00000, 1.00000);
+	vec2 n_out4p0 = n_out9p0 * n_in4p1 + n_out78p0;
+
+
+	vec4 n_out12p0;
+// Texture2D:12
+	n_out12p0 = texture(Distortion1Texture, n_out4p0);
+
+
+// FloatParameter:5
+	float n_out5p0 = Distortion1Strength;
+
+
+// VectorOp:16
+	vec2 n_out16p0 = vec2(n_out12p0.xy) * vec2(n_out5p0);
+
+
+// VectorOp:40
+	vec3 n_out40p0 = vec3(n_out39p0, 0.0) + vec3(n_out16p0, 0.0);
+
+
+// Vector2Parameter:80
+	vec2 n_out80p0 = DistortionMaskScale;
+
+
+// UVFunc:79
+	vec2 n_in79p2 = vec2(0.00000, 0.00000);
+	vec2 n_out79p0 = (UV - n_in79p2) * n_out80p0 + n_in79p2;
+
+
+// Vector2Parameter:32
+	vec2 n_out32p0 = DistortionMaskOffset;
+
+
+// UVFunc:31
+	vec2 n_in31p1 = vec2(1.00000, 1.00000);
+	vec2 n_out31p0 = n_out32p0 * n_in31p1 + n_out79p0;
+
+
+	vec4 n_out29p0;
+// Texture2D:29
+	n_out29p0 = texture(DistortionMask, n_out31p0);
+
+
+// VectorOp:30
+	vec3 n_out30p0 = n_out40p0 * vec3(n_out29p0.xyz);
+
+
+// VectorOp:15
+	vec2 n_out15p0 = n_out14p0 + vec2(n_out30p0.xy);
+
+
+// UVFunc:13
+	vec2 n_in13p1 = vec2(1.00000, 1.00000);
+	vec2 n_in13p2 = vec2(0.00000, 0.00000);
+	vec2 n_out13p0 = n_in13p2 * n_in13p1 + n_out15p0;
+
+
+	vec4 n_out3p0;
+// Texture2D:3
+	n_out3p0 = texture(TEXTURE, n_out13p0);
+	float n_out3p3 = n_out3p0.b;
+
+
+// FloatOp:70
+	float n_out70p0 = n_out68p0 * n_out3p3;
+
+
+// SmoothStep:20
+	vec3 n_out20p0 = smoothstep(vec3(n_out22p0), vec3(n_out22p1), vec3(n_out70p0));
+
+
+// ColorParameter:23
+	vec4 n_out23p0 = InnerColor;
+
+
+// VectorOp:24
+	vec3 n_out24p0 = n_out20p0 * vec3(n_out23p0.xyz);
+
+
+// VectorOp:19
+	vec3 n_out19p0 = vec3(n_out18p0.xyz) + n_out24p0;
+
+
+// Vector2Parameter:25
+	vec2 n_out25p0 = OuterStep;
+
+
+// VectorDecompose:26
+	float n_out26p0 = n_out25p0.x;
+	float n_out26p1 = n_out25p0.y;
+
+
+// SmoothStep:27
+	float n_out27p0 = smoothstep(n_out26p0, n_out26p1, n_out70p0);
+
+
+// Output:0
+	COLOR.rgb = n_out19p0;
+	COLOR.a = n_out27p0;
+
+
+}
+"
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2(1960, -60)
+nodes/fragment/2/node = SubResource("VisualShaderNodeInput_r1qet")
+nodes/fragment/2/position = Vector2(-640, 400)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture_lrlsx")
+nodes/fragment/3/position = Vector2(-200, 320)
+nodes/fragment/4/node = SubResource("VisualShaderNodeUVFunc_ees00")
+nodes/fragment/4/position = Vector2(-2840, -140)
+nodes/fragment/5/node = SubResource("VisualShaderNodeFloatParameter_iw64m")
+nodes/fragment/5/position = Vector2(-2620, 300)
+nodes/fragment/9/node = SubResource("VisualShaderNodeVectorOp_qsceg")
+nodes/fragment/9/position = Vector2(-3160, -340)
+nodes/fragment/10/node = SubResource("VisualShaderNodeVec2Parameter_aatry")
+nodes/fragment/10/position = Vector2(-3755.71, -80)
+nodes/fragment/11/node = SubResource("VisualShaderNodeTexture2DParameter_h1q5p")
+nodes/fragment/11/position = Vector2(-3380, 20)
+nodes/fragment/12/node = SubResource("VisualShaderNodeTexture_qjm3t")
+nodes/fragment/12/position = Vector2(-2560, 40)
+nodes/fragment/13/node = SubResource("VisualShaderNodeUVFunc_l5f6v")
+nodes/fragment/13/position = Vector2(-740, -140)
+nodes/fragment/14/node = SubResource("VisualShaderNodeInput_j6acs")
+nodes/fragment/14/position = Vector2(-1400, -280)
+nodes/fragment/15/node = SubResource("VisualShaderNodeVectorOp_wucc3")
+nodes/fragment/15/position = Vector2(-920, -100)
+nodes/fragment/16/node = SubResource("VisualShaderNodeVectorOp_3m75q")
+nodes/fragment/16/position = Vector2(-2280, 20)
+nodes/fragment/17/node = SubResource("VisualShaderNodeInput_a6i51")
+nodes/fragment/17/position = Vector2(-3655.71, -460)
+nodes/fragment/18/node = SubResource("VisualShaderNodeColorParameter_uc1yf")
+nodes/fragment/18/position = Vector2(1100, -520)
+nodes/fragment/19/node = SubResource("VisualShaderNodeVectorOp_oab4q")
+nodes/fragment/19/position = Vector2(1540, -200)
+nodes/fragment/20/node = SubResource("VisualShaderNodeSmoothStep_qdlqg")
+nodes/fragment/20/position = Vector2(1000, -320)
+nodes/fragment/21/node = SubResource("VisualShaderNodeVec2Parameter_0thxx")
+nodes/fragment/21/position = Vector2(320, -580)
+nodes/fragment/22/node = SubResource("VisualShaderNodeVectorDecompose_hwfjd")
+nodes/fragment/22/position = Vector2(780, -320)
+nodes/fragment/23/node = SubResource("VisualShaderNodeColorParameter_woxad")
+nodes/fragment/23/position = Vector2(940, -140)
+nodes/fragment/24/node = SubResource("VisualShaderNodeVectorOp_7idfc")
+nodes/fragment/24/position = Vector2(1240, -260)
+nodes/fragment/25/node = SubResource("VisualShaderNodeVec2Parameter_m6alh")
+nodes/fragment/25/position = Vector2(680, 320)
+nodes/fragment/26/node = SubResource("VisualShaderNodeVectorDecompose_mahtf")
+nodes/fragment/26/position = Vector2(980, 320)
+nodes/fragment/27/node = SubResource("VisualShaderNodeSmoothStep_ptblu")
+nodes/fragment/27/position = Vector2(1360, 120)
+nodes/fragment/28/node = SubResource("VisualShaderNodeTexture2DParameter_8lq2d")
+nodes/fragment/28/position = Vector2(-1460, 860)
+nodes/fragment/29/node = SubResource("VisualShaderNodeTexture_2ufyq")
+nodes/fragment/29/position = Vector2(-1120, 680)
+nodes/fragment/30/node = SubResource("VisualShaderNodeVectorOp_el6tt")
+nodes/fragment/30/position = Vector2(-1100, 80)
+nodes/fragment/31/node = SubResource("VisualShaderNodeUVFunc_32wtq")
+nodes/fragment/31/position = Vector2(-1400, 620)
+nodes/fragment/32/node = SubResource("VisualShaderNodeVec2Parameter_c17rp")
+nodes/fragment/32/position = Vector2(-1840, 740)
+nodes/fragment/33/node = SubResource("VisualShaderNodeTexture2DParameter_bj0px")
+nodes/fragment/33/position = Vector2(-2860, -1040)
+nodes/fragment/34/node = SubResource("VisualShaderNodeTexture_p1ag1")
+nodes/fragment/34/position = Vector2(-2380, -700)
+nodes/fragment/35/node = SubResource("VisualShaderNodeVec2Parameter_cc34u")
+nodes/fragment/35/position = Vector2(-3500, -760)
+nodes/fragment/36/node = SubResource("VisualShaderNodeVectorOp_7tfpu")
+nodes/fragment/36/position = Vector2(-3180, -640)
+nodes/fragment/37/node = SubResource("VisualShaderNodeUVFunc_j74tx")
+nodes/fragment/37/position = Vector2(-2060, -2740)
+nodes/fragment/38/node = SubResource("VisualShaderNodeFloatParameter_bu3rd")
+nodes/fragment/38/position = Vector2(-2440, -460)
+nodes/fragment/39/node = SubResource("VisualShaderNodeVectorOp_wm887")
+nodes/fragment/39/position = Vector2(-2120, -560)
+nodes/fragment/40/node = SubResource("VisualShaderNodeVectorOp_g1gn2")
+nodes/fragment/40/position = Vector2(-1900, -220)
+nodes/fragment/41/node = SubResource("VisualShaderNodeTexture2DParameter_60d5n")
+nodes/fragment/41/position = Vector2(-2120, -2440)
+nodes/fragment/42/node = SubResource("VisualShaderNodeTexture_fprl3")
+nodes/fragment/42/position = Vector2(-1780, -2600)
+nodes/fragment/43/node = SubResource("VisualShaderNodeVec2Parameter_6en01")
+nodes/fragment/43/position = Vector2(-2660, -2800)
+nodes/fragment/44/node = SubResource("VisualShaderNodeUVFunc_4yvjh")
+nodes/fragment/44/position = Vector2(-2660, -580)
+nodes/fragment/45/node = SubResource("VisualShaderNodeVectorOp_l4823")
+nodes/fragment/45/position = Vector2(-2220, -2620)
+nodes/fragment/46/node = SubResource("VisualShaderNodeInput_36x4r")
+nodes/fragment/46/position = Vector2(-2580, -2500)
+nodes/fragment/48/node = SubResource("VisualShaderNodeVec2Parameter_kvbkq")
+nodes/fragment/48/position = Vector2(-2540, -3680)
+nodes/fragment/49/node = SubResource("VisualShaderNodeVectorOp_0oymw")
+nodes/fragment/49/position = Vector2(-2180, -3440)
+nodes/fragment/50/node = SubResource("VisualShaderNodeInput_frun2")
+nodes/fragment/50/position = Vector2(-2500, -3360)
+nodes/fragment/51/node = SubResource("VisualShaderNodeTexture_yg8lg")
+nodes/fragment/51/position = Vector2(-1720, -3440)
+nodes/fragment/52/node = SubResource("VisualShaderNodeUVFunc_e6smk")
+nodes/fragment/52/position = Vector2(-1980, -3440)
+nodes/fragment/53/node = SubResource("VisualShaderNodeTexture2DParameter_qqxt4")
+nodes/fragment/53/position = Vector2(-2060, -3260)
+nodes/fragment/55/node = SubResource("VisualShaderNodeTexture_lyiow")
+nodes/fragment/55/position = Vector2(-1800, -1820)
+nodes/fragment/56/node = SubResource("VisualShaderNodeUVFunc_ismeb")
+nodes/fragment/56/position = Vector2(-2060, -1800)
+nodes/fragment/57/node = SubResource("VisualShaderNodeVec2Parameter_c0b3g")
+nodes/fragment/57/position = Vector2(-2500, -1680)
+nodes/fragment/58/node = SubResource("VisualShaderNodeTexture2DParameter_5ighw")
+nodes/fragment/58/position = Vector2(-2120, -1560)
+nodes/fragment/60/node = SubResource("VisualShaderNodeBooleanParameter_f8vap")
+nodes/fragment/60/position = Vector2(-1560, -1520)
+nodes/fragment/65/node = SubResource("VisualShaderNodeSwitch_s7xsn")
+nodes/fragment/65/position = Vector2(-1100, -1660)
+nodes/fragment/66/node = SubResource("VisualShaderNodeFloatFunc_t5q3a")
+nodes/fragment/66/position = Vector2(-1460, -1820)
+nodes/fragment/67/node = SubResource("VisualShaderNodeFloatParameter_luqne")
+nodes/fragment/67/position = Vector2(-1840, -2860)
+nodes/fragment/68/node = SubResource("VisualShaderNodeFloatOp_87n60")
+nodes/fragment/68/position = Vector2(-600, -1780)
+nodes/fragment/69/node = SubResource("VisualShaderNodeFloatOp_hmewn")
+nodes/fragment/69/position = Vector2(-1060, -2480)
+nodes/fragment/70/node = SubResource("VisualShaderNodeFloatOp_7y76r")
+nodes/fragment/70/position = Vector2(273.517, -93.0705)
+nodes/fragment/71/node = SubResource("VisualShaderNodeFloatOp_mbhgr")
+nodes/fragment/71/position = Vector2(-1500, -2600)
+nodes/fragment/72/node = SubResource("VisualShaderNodeFloatParameter_rkvqb")
+nodes/fragment/72/position = Vector2(-1780, -3680)
+nodes/fragment/73/node = SubResource("VisualShaderNodeFloatOp_kt1mf")
+nodes/fragment/73/position = Vector2(-1300, -3120)
+nodes/fragment/74/node = SubResource("VisualShaderNodeVec2Parameter_qyg6f")
+nodes/fragment/74/position = Vector2(-3760, -1040)
+nodes/fragment/75/node = SubResource("VisualShaderNodeUVFunc_73ov6")
+nodes/fragment/75/position = Vector2(-3420, -940)
+nodes/fragment/77/node = SubResource("VisualShaderNodeVec2Parameter_adkyt")
+nodes/fragment/77/position = Vector2(-4115.71, -560)
+nodes/fragment/78/node = SubResource("VisualShaderNodeUVFunc_g8ky0")
+nodes/fragment/78/position = Vector2(-3655.71, -280)
+nodes/fragment/79/node = SubResource("VisualShaderNodeUVFunc_hlgep")
+nodes/fragment/79/position = Vector2(-1680, 420)
+nodes/fragment/80/node = SubResource("VisualShaderNodeVec2Parameter_juaa2")
+nodes/fragment/80/position = Vector2(-2040, 360)
+nodes/fragment/81/node = SubResource("VisualShaderNodeVec2Parameter_0vp48")
+nodes/fragment/81/position = Vector2(-2640, -2020)
+nodes/fragment/82/node = SubResource("VisualShaderNodeUVFunc_403sq")
+nodes/fragment/82/position = Vector2(-2340, -2000)
+nodes/fragment/83/node = SubResource("VisualShaderNodeUVFunc_6lrt2")
+nodes/fragment/83/position = Vector2(-2380, -2980)
+nodes/fragment/84/node = SubResource("VisualShaderNodeVec2Parameter_8017p")
+nodes/fragment/84/position = Vector2(-2700, -3120)
+nodes/fragment/85/node = SubResource("VisualShaderNodeVec2Parameter_45oef")
+nodes/fragment/85/position = Vector2(-2560, -3980)
+nodes/fragment/86/node = SubResource("VisualShaderNodeUVFunc_16b41")
+nodes/fragment/86/position = Vector2(-2260, -3800)
+nodes/fragment/connections = PackedInt32Array(2, 0, 3, 2, 15, 0, 13, 0, 14, 0, 15, 0, 5, 0, 16, 1, 12, 0, 16, 0, 9, 0, 4, 2, 4, 0, 12, 0, 13, 0, 3, 0, 21, 0, 22, 0, 22, 0, 20, 0, 22, 1, 20, 1, 19, 0, 0, 0, 23, 0, 24, 1, 20, 0, 24, 0, 18, 0, 19, 0, 24, 0, 19, 1, 25, 0, 26, 0, 26, 0, 27, 0, 26, 1, 27, 1, 28, 0, 29, 2, 29, 0, 30, 1, 27, 0, 0, 1, 30, 0, 15, 1, 31, 0, 29, 0, 32, 0, 31, 2, 17, 0, 9, 0, 10, 0, 9, 1, 17, 0, 36, 1, 35, 0, 36, 0, 34, 0, 39, 0, 39, 0, 40, 0, 16, 0, 40, 1, 41, 0, 42, 2, 43, 0, 45, 0, 46, 0, 45, 1, 45, 0, 37, 2, 37, 0, 42, 0, 36, 0, 44, 2, 44, 0, 34, 0, 53, 0, 51, 2, 48, 0, 49, 0, 50, 0, 49, 1, 49, 0, 52, 2, 52, 0, 51, 0, 40, 0, 30, 0, 38, 0, 39, 1, 33, 0, 34, 2, 11, 0, 12, 2, 58, 0, 55, 2, 56, 0, 55, 0, 57, 0, 56, 2, 66, 0, 65, 1, 60, 0, 65, 0, 65, 0, 68, 1, 55, 3, 66, 0, 55, 3, 65, 2, 3, 3, 70, 1, 70, 0, 20, 2, 70, 0, 27, 2, 67, 0, 71, 0, 42, 3, 71, 1, 71, 0, 69, 1, 51, 3, 73, 1, 72, 0, 73, 0, 73, 0, 69, 0, 74, 0, 75, 1, 77, 0, 78, 1, 75, 0, 44, 0, 78, 0, 4, 0, 79, 0, 31, 0, 80, 0, 79, 1, 81, 0, 82, 1, 82, 0, 56, 0, 69, 0, 68, 0, 68, 0, 70, 0, 84, 0, 83, 1, 83, 0, 37, 0, 85, 0, 86, 1, 86, 0, 52, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2bavc"]
+shader = SubResource("VisualShader_qx0ol")
+shader_parameter/OuterColor = Color(1, 0.13333333, 0, 1)
+shader_parameter/InnerColorStep = Vector2(0.13, 0.205)
+shader_parameter/Noise2Strength = 1.0
+shader_parameter/Noise2Scaling = Vector2(1, 1)
+shader_parameter/Noise2Panning = Vector2(0.7, 0.4)
+shader_parameter/Noise2Texture = ExtResource("7_l5f6v")
+shader_parameter/Noise1Strength = 1.0
+shader_parameter/Noise1Scaling = Vector2(1, 0.8)
+shader_parameter/Noise1Panning = Vector2(0.45, 0.5)
+shader_parameter/Noise1Texture = ExtResource("6_j3sgb")
+shader_parameter/InvertNoiseMask = false
+shader_parameter/NoiseMaskScale = Vector2(1, 1.11)
+shader_parameter/NoiseMaskOffset = Vector2(0, -0.14)
+shader_parameter/NoiseMask = ExtResource("5_qjm3t")
+shader_parameter/Distortion2Scale = Vector2(1, 1)
+shader_parameter/Distortion2Panning = Vector2(-0.2, 0.7)
+shader_parameter/Distortion2Texture = ExtResource("4_h1q5p")
+shader_parameter/Distortion2Strength = 0.02
+shader_parameter/Distortion1Scale = Vector2(1, 1)
+shader_parameter/Distortion1Panning = Vector2(0.2, 0.5)
+shader_parameter/Distortion1Texture = ExtResource("3_mg38a")
+shader_parameter/Distortion1Strength = 0.055
+shader_parameter/DistortionMaskScale = Vector2(3, 3)
+shader_parameter/DistortionMaskOffset = Vector2(0, -1.495)
+shader_parameter/DistortionMask = ExtResource("5_qjm3t")
+shader_parameter/InnerColor = Color(1, 0.56666666, 0, 1)
+shader_parameter/OuterStep = Vector2(0.1, 0.13)
+
+[sub_resource type="VisualShaderNodeVec2Parameter" id="VisualShaderNodeVec2Parameter_h1q5p"]
+parameter_name = "Distortion1Panning"
+default_value_enabled = true
+default_value = Vector2(1, 1)
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_qjm3t"]
+parameter_name = "Distortion1Texture"
+texture_repeat = 1
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_j3sgb"]
+source = 5
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_epnne"]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_wucc3"]
+output_port_for_preview = 0
+expanded_output_ports = [0]
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_oqqyg"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
+op_type = 0
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_a6i51"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
+op_type = 0
+operator = 2
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_uc1yf"]
+input_name = "time"
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_oab4q"]
+parameter_name = "OuterColor"
+default_value_enabled = true
+default_value = Color(1, 0, 0, 1)
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_r1qet"]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_qdlqg"]
+input_name = "texture"
+
+[sub_resource type="VisualShaderNodeSmoothStep" id="VisualShaderNodeSmoothStep_0thxx"]
+default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(1, 1, 1), 2, Vector3(0.5, 0.5, 0.5)]
+op_type = 3
+
+[sub_resource type="VisualShaderNodeVec2Parameter" id="VisualShaderNodeVec2Parameter_hwfjd"]
+parameter_name = "InnerColorStep"
+default_value_enabled = true
+default_value = Vector2(0.3, 0.4)
+
+[sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_woxad"]
+default_input_values = [0, Vector2(0, 0)]
+op_type = 0
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_7idfc"]
+parameter_name = "InnerColor"
+default_value_enabled = true
+default_value = Color(1, 0.85, 0, 1)
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_m6alh"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeVec2Parameter" id="VisualShaderNodeVec2Parameter_mahtf"]
+parameter_name = "OuterStep"
+default_value_enabled = true
+default_value = Vector2(0.1, 0.2)
+
+[sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_ptblu"]
+default_input_values = [0, Vector2(0, 0)]
+op_type = 0
+
+[sub_resource type="VisualShaderNodeSmoothStep" id="VisualShaderNodeSmoothStep_8lq2d"]
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_2ufyq"]
+parameter_name = "DistortionMask"
+texture_repeat = 2
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_el6tt"]
+source = 5
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_32wtq"]
+expanded_output_ports = [0]
+source = 5
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_c17rp"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_bj0px"]
+default_input_values = [1, Vector2(1, 1), 2, Vector2(0, 0.04)]
+
+[sub_resource type="VisualShaderNodeVec2Parameter" id="VisualShaderNodeVec2Parameter_p1ag1"]
+parameter_name = "DistortionMaskOffset"
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_cc34u"]
+parameter_name = "Distortion2Texture"
+texture_repeat = 1
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_7tfpu"]
+source = 5
+
+[sub_resource type="VisualShaderNodeVec2Parameter" id="VisualShaderNodeVec2Parameter_j74tx"]
+parameter_name = "Distortion2Panning"
+default_value_enabled = true
+default_value = Vector2(1, 1)
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_bu3rd"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
+op_type = 0
+operator = 2
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_wm887"]
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_ees00"]
+parameter_name = "Distortion2Strength"
+default_value_enabled = true
+default_value = 0.02
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_60d5n"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
+op_type = 0
+operator = 2
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_fprl3"]
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_6en01"]
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_4yvjh"]
+parameter_name = "Noise1Texture"
+texture_repeat = 1
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_l4823"]
+expanded_output_ports = [0]
+source = 5
+
+[sub_resource type="VisualShaderNodeVec2Parameter" id="VisualShaderNodeVec2Parameter_36x4r"]
+parameter_name = "Noise1Panning"
+default_value_enabled = true
+default_value = Vector2(1, 1)
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_kvbkq"]
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_iw64m"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
+op_type = 0
+operator = 2
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_yg8lg"]
+input_name = "time"
+
+[sub_resource type="VisualShaderNodeVec2Parameter" id="VisualShaderNodeVec2Parameter_e6smk"]
+parameter_name = "Noise2Panning"
+default_value_enabled = true
+default_value = Vector2(1, 1)
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_qqxt4"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
+op_type = 0
+operator = 2
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_lyiow"]
+parameter_name = "Distortion1Strength"
+default_value_enabled = true
+default_value = 0.02
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_ismeb"]
+input_name = "time"
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_c0b3g"]
+expanded_output_ports = [0]
+source = 5
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_5ighw"]
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_f8vap"]
+parameter_name = "Noise2Texture"
+texture_repeat = 1
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_s7xsn"]
+expanded_output_ports = [0]
+source = 5
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_t5q3a"]
+default_input_values = [1, Vector2(1, 1), 2, Vector2(0, 0.04)]
+
+[sub_resource type="VisualShaderNodeVec2Parameter" id="VisualShaderNodeVec2Parameter_luqne"]
+parameter_name = "NoiseMaskOffset"
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_87n60"]
+parameter_name = "NoiseMask"
+texture_repeat = 2
+
+[sub_resource type="VisualShaderNodeBooleanParameter" id="VisualShaderNodeBooleanParameter_hmewn"]
+parameter_name = "InvertNoiseMask"
+default_value_enabled = true
+default_value = true
+
+[sub_resource type="VisualShaderNodeSwitch" id="VisualShaderNodeSwitch_7y76r"]
+
+[sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_mbhgr"]
+function = 31
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_kt1mf"]
+parameter_name = "Noise1Strength"
+default_value_enabled = true
+default_value = 1.0
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_qyg6f"]
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_73ov6"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_adkyt"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_g8ky0"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_hlgep"]
+parameter_name = "Noise2Strength"
+default_value_enabled = true
+default_value = 1.0
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_juaa2"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeVec2Parameter" id="VisualShaderNodeVec2Parameter_403sq"]
+parameter_name = "Distortion2Scale"
+default_value_enabled = true
+default_value = Vector2(1, 1)
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_8017p"]
+default_input_values = [1, Vector2(0, 0), 2, Vector2(0, 0)]
+function = 1
+
+[sub_resource type="VisualShaderNodeVec2Parameter" id="VisualShaderNodeVec2Parameter_16b41"]
+parameter_name = "Distortion1Scale"
+default_value_enabled = true
+default_value = Vector2(1, 1)
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_qsceg"]
+function = 1
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_qx0ol"]
+function = 1
+
+[sub_resource type="VisualShaderNodeVec2Parameter" id="VisualShaderNodeVec2Parameter_gxfbe"]
+parameter_name = "DistortionMaskScale"
+default_value_enabled = true
+default_value = Vector2(1, 1)
+
+[sub_resource type="VisualShaderNodeVec2Parameter" id="VisualShaderNodeVec2Parameter_pu4bx"]
+parameter_name = "NoiseMaskScale"
+default_value_enabled = true
+default_value = Vector2(1, 1)
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_q464a"]
+default_input_values = [1, Vector2(1, 1), 2, Vector2(0, 0.04)]
+function = 1
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_k8sos"]
+function = 1
+
+[sub_resource type="VisualShaderNodeVec2Parameter" id="VisualShaderNodeVec2Parameter_q6qau"]
+parameter_name = "Noise1Scaling"
+default_value_enabled = true
+default_value = Vector2(1, 1)
+
+[sub_resource type="VisualShaderNodeVec2Parameter" id="VisualShaderNodeVec2Parameter_dgmjv"]
+expanded_output_ports = [0]
+parameter_name = "Noise2Scaling"
+default_value_enabled = true
+default_value = Vector2(1, 1)
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_2bavc"]
+function = 1
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_mvbvw"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
+op_type = 0
+operator = 2
+
+[sub_resource type="VisualShader" id="VisualShader_hdsi0"]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+uniform vec4 OuterColor : source_color = vec4(1.000000, 0.000000, 0.000000, 1.000000);
+uniform vec2 InnerColorStep = vec2(0.300000, 0.400000);
+uniform float Noise2Strength = 1.0;
+uniform vec2 Noise2Scaling = vec2(1.000000, 1.000000);
+uniform vec2 Noise2Panning = vec2(1.000000, 1.000000);
+uniform sampler2D Noise2Texture : repeat_enable;
+uniform float Noise1Strength = 1.0;
+uniform vec2 Noise1Scaling = vec2(1.000000, 1.000000);
+uniform vec2 Noise1Panning = vec2(1.000000, 1.000000);
+uniform sampler2D Noise1Texture : repeat_enable;
+uniform bool InvertNoiseMask = true;
+uniform vec2 NoiseMaskScale = vec2(1.000000, 1.000000);
+uniform vec2 NoiseMaskOffset;
+uniform sampler2D NoiseMask : repeat_disable;
+uniform vec2 Distortion2Scale = vec2(1.000000, 1.000000);
+uniform vec2 Distortion2Panning = vec2(1.000000, 1.000000);
+uniform sampler2D Distortion2Texture : repeat_enable;
+uniform float Distortion2Strength = 0.01999999955297;
+uniform vec2 Distortion1Scale = vec2(1.000000, 1.000000);
+uniform vec2 Distortion1Panning = vec2(1.000000, 1.000000);
+uniform sampler2D Distortion1Texture : repeat_enable;
+uniform float Distortion1Strength = 0.01999999955297;
+uniform vec2 DistortionMaskScale = vec2(1.000000, 1.000000);
+uniform vec2 DistortionMaskOffset;
+uniform sampler2D DistortionMask : repeat_disable;
+uniform vec4 InnerColor : source_color = vec4(1.000000, 0.850000, 0.000000, 1.000000);
+uniform vec2 OuterStep = vec2(0.100000, 0.200000);
+
+
+
+void fragment() {
+// ColorParameter:18
+	vec4 n_out18p0 = OuterColor;
+
+
+// Vector2Parameter:21
+	vec2 n_out21p0 = InnerColorStep;
+
+
+// VectorDecompose:22
+	float n_out22p0 = n_out21p0.x;
+	float n_out22p1 = n_out21p0.y;
+
+
+// FloatParameter:72
+	float n_out72p0 = Noise2Strength;
+
+
+// Vector2Parameter:85
+	vec2 n_out85p0 = Noise2Scaling;
+
+
+// UVFunc:86
+	vec2 n_in86p2 = vec2(0.00000, 0.00000);
+	vec2 n_out86p0 = (UV - n_in86p2) * n_out85p0 + n_in86p2;
+
+
+// Vector2Parameter:48
+	vec2 n_out48p0 = Noise2Panning;
+
+
+// Input:50
+	float n_out50p0 = TIME;
+
+
+// VectorOp:49
+	vec2 n_out49p0 = n_out48p0 * vec2(n_out50p0);
+
+
+// UVFunc:52
+	vec2 n_in52p1 = vec2(1.00000, 1.00000);
+	vec2 n_out52p0 = n_out49p0 * n_in52p1 + n_out86p0;
+
+
+	vec4 n_out51p0;
+// Texture2D:51
+	n_out51p0 = texture(Noise2Texture, n_out52p0);
+	float n_out51p3 = n_out51p0.b;
+
+
+// FloatOp:73
+	float n_out73p0 = n_out72p0 * n_out51p3;
+
+
+// FloatParameter:67
+	float n_out67p0 = Noise1Strength;
+
+
+// Vector2Parameter:84
+	vec2 n_out84p0 = Noise1Scaling;
+
+
+// UVFunc:83
+	vec2 n_in83p2 = vec2(0.00000, 0.00000);
+	vec2 n_out83p0 = (UV - n_in83p2) * n_out84p0 + n_in83p2;
+
+
+// Vector2Parameter:43
+	vec2 n_out43p0 = Noise1Panning;
+
+
+// Input:46
+	float n_out46p0 = TIME;
+
+
+// VectorOp:45
+	vec2 n_out45p0 = n_out43p0 * vec2(n_out46p0);
+
+
+// UVFunc:37
+	vec2 n_in37p1 = vec2(1.00000, 1.00000);
+	vec2 n_out37p0 = n_out45p0 * n_in37p1 + n_out83p0;
+
+
+	vec4 n_out42p0;
+// Texture2D:42
+	n_out42p0 = texture(Noise1Texture, n_out37p0);
+	float n_out42p3 = n_out42p0.b;
+
+
+// FloatOp:71
+	float n_out71p0 = n_out67p0 * n_out42p3;
+
+
+// FloatOp:69
+	float n_out69p0 = n_out73p0 * n_out71p0;
+
+
+// BooleanParameter:60
+	bool n_out60p0 = InvertNoiseMask;
+
+
+// Vector2Parameter:81
+	vec2 n_out81p0 = NoiseMaskScale;
+
+
+// UVFunc:82
+	vec2 n_in82p2 = vec2(0.00000, 0.04000);
+	vec2 n_out82p0 = (UV - n_in82p2) * n_out81p0 + n_in82p2;
+
+
+// Vector2Parameter:57
+	vec2 n_out57p0 = NoiseMaskOffset;
+
+
+// UVFunc:56
+	vec2 n_in56p1 = vec2(1.00000, 1.00000);
+	vec2 n_out56p0 = n_out57p0 * n_in56p1 + n_out82p0;
+
+
+	vec4 n_out55p0;
+// Texture2D:55
+	n_out55p0 = texture(NoiseMask, n_out56p0);
+	float n_out55p3 = n_out55p0.b;
+
+
+// FloatFunc:66
+	float n_out66p0 = 1.0 - n_out55p3;
+
+
+	float n_out65p0;
+// Switch:65
+	n_out65p0 = mix(n_out55p3, n_out66p0, float(n_out60p0));
+
+
+// FloatOp:68
+	float n_out68p0 = n_out69p0 + n_out65p0;
+
+
+// Input:14
+	vec2 n_out14p0 = UV;
+
+
+// Vector2Parameter:74
+	vec2 n_out74p0 = Distortion2Scale;
+
+
+// UVFunc:75
+	vec2 n_in75p2 = vec2(0.00000, 0.00000);
+	vec2 n_out75p0 = (UV - n_in75p2) * n_out74p0 + n_in75p2;
+
+
+// Vector2Parameter:35
+	vec2 n_out35p0 = Distortion2Panning;
+
+
+// Input:17
+	float n_out17p0 = TIME;
+
+
+// VectorOp:36
+	vec2 n_out36p0 = n_out35p0 * vec2(n_out17p0);
+
+
+// UVFunc:44
+	vec2 n_in44p1 = vec2(1.00000, 1.00000);
+	vec2 n_out44p0 = n_out36p0 * n_in44p1 + n_out75p0;
+
+
+	vec4 n_out34p0;
+// Texture2D:34
+	n_out34p0 = texture(Distortion2Texture, n_out44p0);
+
+
+// FloatParameter:38
+	float n_out38p0 = Distortion2Strength;
+
+
+// VectorOp:39
+	vec2 n_out39p0 = vec2(n_out34p0.xy) * vec2(n_out38p0);
+
+
+// Vector2Parameter:77
+	vec2 n_out77p0 = Distortion1Scale;
+
+
+// UVFunc:78
+	vec2 n_in78p2 = vec2(0.00000, 0.00000);
+	vec2 n_out78p0 = (UV - n_in78p2) * n_out77p0 + n_in78p2;
+
+
+// Vector2Parameter:10
+	vec2 n_out10p0 = Distortion1Panning;
+
+
+// VectorOp:9
+	vec2 n_out9p0 = vec2(n_out17p0) * n_out10p0;
+
+
+// UVFunc:4
+	vec2 n_in4p1 = vec2(1.00000, 1.00000);
+	vec2 n_out4p0 = n_out9p0 * n_in4p1 + n_out78p0;
+
+
+	vec4 n_out12p0;
+// Texture2D:12
+	n_out12p0 = texture(Distortion1Texture, n_out4p0);
+
+
+// FloatParameter:5
+	float n_out5p0 = Distortion1Strength;
+
+
+// VectorOp:16
+	vec2 n_out16p0 = vec2(n_out12p0.xy) * vec2(n_out5p0);
+
+
+// VectorOp:40
+	vec3 n_out40p0 = vec3(n_out39p0, 0.0) + vec3(n_out16p0, 0.0);
+
+
+// Vector2Parameter:80
+	vec2 n_out80p0 = DistortionMaskScale;
+
+
+// UVFunc:79
+	vec2 n_in79p2 = vec2(0.00000, 0.00000);
+	vec2 n_out79p0 = (UV - n_in79p2) * n_out80p0 + n_in79p2;
+
+
+// Vector2Parameter:32
+	vec2 n_out32p0 = DistortionMaskOffset;
+
+
+// UVFunc:31
+	vec2 n_in31p1 = vec2(1.00000, 1.00000);
+	vec2 n_out31p0 = n_out32p0 * n_in31p1 + n_out79p0;
+
+
+	vec4 n_out29p0;
+// Texture2D:29
+	n_out29p0 = texture(DistortionMask, n_out31p0);
+
+
+// VectorOp:30
+	vec3 n_out30p0 = n_out40p0 * vec3(n_out29p0.xyz);
+
+
+// VectorOp:15
+	vec2 n_out15p0 = n_out14p0 + vec2(n_out30p0.xy);
+
+
+// UVFunc:13
+	vec2 n_in13p1 = vec2(1.00000, 1.00000);
+	vec2 n_in13p2 = vec2(0.00000, 0.00000);
+	vec2 n_out13p0 = n_in13p2 * n_in13p1 + n_out15p0;
+
+
+	vec4 n_out3p0;
+// Texture2D:3
+	n_out3p0 = texture(TEXTURE, n_out13p0);
+	float n_out3p3 = n_out3p0.b;
+
+
+// FloatOp:70
+	float n_out70p0 = n_out68p0 * n_out3p3;
+
+
+// SmoothStep:20
+	vec3 n_out20p0 = smoothstep(vec3(n_out22p0), vec3(n_out22p1), vec3(n_out70p0));
+
+
+// ColorParameter:23
+	vec4 n_out23p0 = InnerColor;
+
+
+// VectorOp:24
+	vec3 n_out24p0 = n_out20p0 * vec3(n_out23p0.xyz);
+
+
+// VectorOp:19
+	vec3 n_out19p0 = vec3(n_out18p0.xyz) + n_out24p0;
+
+
+// Vector2Parameter:25
+	vec2 n_out25p0 = OuterStep;
+
+
+// VectorDecompose:26
+	float n_out26p0 = n_out25p0.x;
+	float n_out26p1 = n_out25p0.y;
+
+
+// SmoothStep:27
+	float n_out27p0 = smoothstep(n_out26p0, n_out26p1, n_out70p0);
+
+
+// Output:0
+	COLOR.rgb = n_out19p0;
+	COLOR.a = n_out27p0;
+
+
+}
+"
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2(1960, -60)
+nodes/fragment/2/node = SubResource("VisualShaderNodeInput_qdlqg")
+nodes/fragment/2/position = Vector2(-640, 400)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture_32wtq")
+nodes/fragment/3/position = Vector2(-200, 320)
+nodes/fragment/4/node = SubResource("VisualShaderNodeUVFunc_fprl3")
+nodes/fragment/4/position = Vector2(-2840, -140)
+nodes/fragment/5/node = SubResource("VisualShaderNodeFloatParameter_lyiow")
+nodes/fragment/5/position = Vector2(-2620, 300)
+nodes/fragment/9/node = SubResource("VisualShaderNodeVectorOp_mvbvw")
+nodes/fragment/9/position = Vector2(-3160, -340)
+nodes/fragment/10/node = SubResource("VisualShaderNodeVec2Parameter_h1q5p")
+nodes/fragment/10/position = Vector2(-3755.71, -80)
+nodes/fragment/11/node = SubResource("VisualShaderNodeTexture2DParameter_qjm3t")
+nodes/fragment/11/position = Vector2(-3380, 20)
+nodes/fragment/12/node = SubResource("VisualShaderNodeTexture_j3sgb")
+nodes/fragment/12/position = Vector2(-2560, 40)
+nodes/fragment/13/node = SubResource("VisualShaderNodeUVFunc_epnne")
+nodes/fragment/13/position = Vector2(-740, -140)
+nodes/fragment/14/node = SubResource("VisualShaderNodeInput_wucc3")
+nodes/fragment/14/position = Vector2(-1400, -280)
+nodes/fragment/15/node = SubResource("VisualShaderNodeVectorOp_oqqyg")
+nodes/fragment/15/position = Vector2(-920, -100)
+nodes/fragment/16/node = SubResource("VisualShaderNodeVectorOp_a6i51")
+nodes/fragment/16/position = Vector2(-2280, 20)
+nodes/fragment/17/node = SubResource("VisualShaderNodeInput_uc1yf")
+nodes/fragment/17/position = Vector2(-3655.71, -460)
+nodes/fragment/18/node = SubResource("VisualShaderNodeColorParameter_oab4q")
+nodes/fragment/18/position = Vector2(1100, -520)
+nodes/fragment/19/node = SubResource("VisualShaderNodeVectorOp_r1qet")
+nodes/fragment/19/position = Vector2(1540, -200)
+nodes/fragment/20/node = SubResource("VisualShaderNodeSmoothStep_0thxx")
+nodes/fragment/20/position = Vector2(1000, -320)
+nodes/fragment/21/node = SubResource("VisualShaderNodeVec2Parameter_hwfjd")
+nodes/fragment/21/position = Vector2(320, -580)
+nodes/fragment/22/node = SubResource("VisualShaderNodeVectorDecompose_woxad")
+nodes/fragment/22/position = Vector2(780, -320)
+nodes/fragment/23/node = SubResource("VisualShaderNodeColorParameter_7idfc")
+nodes/fragment/23/position = Vector2(940, -140)
+nodes/fragment/24/node = SubResource("VisualShaderNodeVectorOp_m6alh")
+nodes/fragment/24/position = Vector2(1240, -260)
+nodes/fragment/25/node = SubResource("VisualShaderNodeVec2Parameter_mahtf")
+nodes/fragment/25/position = Vector2(680, 320)
+nodes/fragment/26/node = SubResource("VisualShaderNodeVectorDecompose_ptblu")
+nodes/fragment/26/position = Vector2(980, 320)
+nodes/fragment/27/node = SubResource("VisualShaderNodeSmoothStep_8lq2d")
+nodes/fragment/27/position = Vector2(1360, 120)
+nodes/fragment/28/node = SubResource("VisualShaderNodeTexture2DParameter_2ufyq")
+nodes/fragment/28/position = Vector2(-1460, 860)
+nodes/fragment/29/node = SubResource("VisualShaderNodeTexture_el6tt")
+nodes/fragment/29/position = Vector2(-1120, 680)
+nodes/fragment/30/node = SubResource("VisualShaderNodeVectorOp_c17rp")
+nodes/fragment/30/position = Vector2(-1100, 80)
+nodes/fragment/31/node = SubResource("VisualShaderNodeUVFunc_bj0px")
+nodes/fragment/31/position = Vector2(-1400, 620)
+nodes/fragment/32/node = SubResource("VisualShaderNodeVec2Parameter_p1ag1")
+nodes/fragment/32/position = Vector2(-1840, 740)
+nodes/fragment/33/node = SubResource("VisualShaderNodeTexture2DParameter_cc34u")
+nodes/fragment/33/position = Vector2(-2860, -1040)
+nodes/fragment/34/node = SubResource("VisualShaderNodeTexture_7tfpu")
+nodes/fragment/34/position = Vector2(-2380, -700)
+nodes/fragment/35/node = SubResource("VisualShaderNodeVec2Parameter_j74tx")
+nodes/fragment/35/position = Vector2(-3500, -760)
+nodes/fragment/36/node = SubResource("VisualShaderNodeVectorOp_bu3rd")
+nodes/fragment/36/position = Vector2(-3180, -640)
+nodes/fragment/37/node = SubResource("VisualShaderNodeUVFunc_wm887")
+nodes/fragment/37/position = Vector2(-2060, -2740)
+nodes/fragment/38/node = SubResource("VisualShaderNodeFloatParameter_ees00")
+nodes/fragment/38/position = Vector2(-2440, -460)
+nodes/fragment/39/node = SubResource("VisualShaderNodeVectorOp_60d5n")
+nodes/fragment/39/position = Vector2(-2120, -560)
+nodes/fragment/40/node = SubResource("VisualShaderNodeVectorOp_6en01")
+nodes/fragment/40/position = Vector2(-1900, -220)
+nodes/fragment/41/node = SubResource("VisualShaderNodeTexture2DParameter_4yvjh")
+nodes/fragment/41/position = Vector2(-2120, -2440)
+nodes/fragment/42/node = SubResource("VisualShaderNodeTexture_l4823")
+nodes/fragment/42/position = Vector2(-1780, -2600)
+nodes/fragment/43/node = SubResource("VisualShaderNodeVec2Parameter_36x4r")
+nodes/fragment/43/position = Vector2(-2660, -2800)
+nodes/fragment/44/node = SubResource("VisualShaderNodeUVFunc_kvbkq")
+nodes/fragment/44/position = Vector2(-2660, -580)
+nodes/fragment/45/node = SubResource("VisualShaderNodeVectorOp_iw64m")
+nodes/fragment/45/position = Vector2(-2220, -2620)
+nodes/fragment/46/node = SubResource("VisualShaderNodeInput_yg8lg")
+nodes/fragment/46/position = Vector2(-2580, -2500)
+nodes/fragment/48/node = SubResource("VisualShaderNodeVec2Parameter_e6smk")
+nodes/fragment/48/position = Vector2(-2540, -3680)
+nodes/fragment/49/node = SubResource("VisualShaderNodeVectorOp_qqxt4")
+nodes/fragment/49/position = Vector2(-2180, -3440)
+nodes/fragment/50/node = SubResource("VisualShaderNodeInput_ismeb")
+nodes/fragment/50/position = Vector2(-2500, -3360)
+nodes/fragment/51/node = SubResource("VisualShaderNodeTexture_c0b3g")
+nodes/fragment/51/position = Vector2(-1720, -3440)
+nodes/fragment/52/node = SubResource("VisualShaderNodeUVFunc_5ighw")
+nodes/fragment/52/position = Vector2(-1980, -3440)
+nodes/fragment/53/node = SubResource("VisualShaderNodeTexture2DParameter_f8vap")
+nodes/fragment/53/position = Vector2(-2060, -3260)
+nodes/fragment/55/node = SubResource("VisualShaderNodeTexture_s7xsn")
+nodes/fragment/55/position = Vector2(-1800, -1820)
+nodes/fragment/56/node = SubResource("VisualShaderNodeUVFunc_t5q3a")
+nodes/fragment/56/position = Vector2(-2060, -1800)
+nodes/fragment/57/node = SubResource("VisualShaderNodeVec2Parameter_luqne")
+nodes/fragment/57/position = Vector2(-2500, -1680)
+nodes/fragment/58/node = SubResource("VisualShaderNodeTexture2DParameter_87n60")
+nodes/fragment/58/position = Vector2(-2120, -1560)
+nodes/fragment/60/node = SubResource("VisualShaderNodeBooleanParameter_hmewn")
+nodes/fragment/60/position = Vector2(-1560, -1520)
+nodes/fragment/65/node = SubResource("VisualShaderNodeSwitch_7y76r")
+nodes/fragment/65/position = Vector2(-1100, -1660)
+nodes/fragment/66/node = SubResource("VisualShaderNodeFloatFunc_mbhgr")
+nodes/fragment/66/position = Vector2(-1460, -1820)
+nodes/fragment/67/node = SubResource("VisualShaderNodeFloatParameter_kt1mf")
+nodes/fragment/67/position = Vector2(-1840, -2860)
+nodes/fragment/68/node = SubResource("VisualShaderNodeFloatOp_qyg6f")
+nodes/fragment/68/position = Vector2(-600, -1780)
+nodes/fragment/69/node = SubResource("VisualShaderNodeFloatOp_73ov6")
+nodes/fragment/69/position = Vector2(-1060, -2480)
+nodes/fragment/70/node = SubResource("VisualShaderNodeFloatOp_adkyt")
+nodes/fragment/70/position = Vector2(273.517, -93.0705)
+nodes/fragment/71/node = SubResource("VisualShaderNodeFloatOp_g8ky0")
+nodes/fragment/71/position = Vector2(-1500, -2600)
+nodes/fragment/72/node = SubResource("VisualShaderNodeFloatParameter_hlgep")
+nodes/fragment/72/position = Vector2(-1780, -3680)
+nodes/fragment/73/node = SubResource("VisualShaderNodeFloatOp_juaa2")
+nodes/fragment/73/position = Vector2(-1300, -3120)
+nodes/fragment/74/node = SubResource("VisualShaderNodeVec2Parameter_403sq")
+nodes/fragment/74/position = Vector2(-3760, -1040)
+nodes/fragment/75/node = SubResource("VisualShaderNodeUVFunc_8017p")
+nodes/fragment/75/position = Vector2(-3420, -940)
+nodes/fragment/77/node = SubResource("VisualShaderNodeVec2Parameter_16b41")
+nodes/fragment/77/position = Vector2(-4115.71, -560)
+nodes/fragment/78/node = SubResource("VisualShaderNodeUVFunc_qsceg")
+nodes/fragment/78/position = Vector2(-3655.71, -280)
+nodes/fragment/79/node = SubResource("VisualShaderNodeUVFunc_qx0ol")
+nodes/fragment/79/position = Vector2(-1680, 420)
+nodes/fragment/80/node = SubResource("VisualShaderNodeVec2Parameter_gxfbe")
+nodes/fragment/80/position = Vector2(-2040, 360)
+nodes/fragment/81/node = SubResource("VisualShaderNodeVec2Parameter_pu4bx")
+nodes/fragment/81/position = Vector2(-2640, -2020)
+nodes/fragment/82/node = SubResource("VisualShaderNodeUVFunc_q464a")
+nodes/fragment/82/position = Vector2(-2340, -2000)
+nodes/fragment/83/node = SubResource("VisualShaderNodeUVFunc_k8sos")
+nodes/fragment/83/position = Vector2(-2380, -2980)
+nodes/fragment/84/node = SubResource("VisualShaderNodeVec2Parameter_q6qau")
+nodes/fragment/84/position = Vector2(-2700, -3120)
+nodes/fragment/85/node = SubResource("VisualShaderNodeVec2Parameter_dgmjv")
+nodes/fragment/85/position = Vector2(-2560, -3980)
+nodes/fragment/86/node = SubResource("VisualShaderNodeUVFunc_2bavc")
+nodes/fragment/86/position = Vector2(-2260, -3800)
+nodes/fragment/connections = PackedInt32Array(2, 0, 3, 2, 15, 0, 13, 0, 14, 0, 15, 0, 5, 0, 16, 1, 12, 0, 16, 0, 9, 0, 4, 2, 4, 0, 12, 0, 13, 0, 3, 0, 21, 0, 22, 0, 22, 0, 20, 0, 22, 1, 20, 1, 19, 0, 0, 0, 23, 0, 24, 1, 20, 0, 24, 0, 18, 0, 19, 0, 24, 0, 19, 1, 25, 0, 26, 0, 26, 0, 27, 0, 26, 1, 27, 1, 28, 0, 29, 2, 29, 0, 30, 1, 27, 0, 0, 1, 30, 0, 15, 1, 31, 0, 29, 0, 32, 0, 31, 2, 17, 0, 9, 0, 10, 0, 9, 1, 17, 0, 36, 1, 35, 0, 36, 0, 34, 0, 39, 0, 39, 0, 40, 0, 16, 0, 40, 1, 41, 0, 42, 2, 43, 0, 45, 0, 46, 0, 45, 1, 45, 0, 37, 2, 37, 0, 42, 0, 36, 0, 44, 2, 44, 0, 34, 0, 53, 0, 51, 2, 48, 0, 49, 0, 50, 0, 49, 1, 49, 0, 52, 2, 52, 0, 51, 0, 40, 0, 30, 0, 38, 0, 39, 1, 33, 0, 34, 2, 11, 0, 12, 2, 58, 0, 55, 2, 56, 0, 55, 0, 57, 0, 56, 2, 66, 0, 65, 1, 60, 0, 65, 0, 65, 0, 68, 1, 55, 3, 66, 0, 55, 3, 65, 2, 3, 3, 70, 1, 70, 0, 20, 2, 70, 0, 27, 2, 67, 0, 71, 0, 42, 3, 71, 1, 71, 0, 69, 1, 51, 3, 73, 1, 72, 0, 73, 0, 73, 0, 69, 0, 74, 0, 75, 1, 77, 0, 78, 1, 75, 0, 44, 0, 78, 0, 4, 0, 79, 0, 31, 0, 80, 0, 79, 1, 81, 0, 82, 1, 82, 0, 56, 0, 69, 0, 68, 0, 68, 0, 70, 0, 84, 0, 83, 1, 83, 0, 37, 0, 85, 0, 86, 1, 86, 0, 52, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i336v"]
+shader = SubResource("VisualShader_hdsi0")
+shader_parameter/OuterColor = Color(1, 0.13333333, 0, 1)
+shader_parameter/InnerColorStep = Vector2(0.2, 0.25)
+shader_parameter/Noise2Strength = 1.0
+shader_parameter/Noise2Scaling = Vector2(1, 1)
+shader_parameter/Noise2Panning = Vector2(0.7, 0.4)
+shader_parameter/Noise2Texture = ExtResource("7_l5f6v")
+shader_parameter/Noise1Strength = 1.0
+shader_parameter/Noise1Scaling = Vector2(1, 0.8)
+shader_parameter/Noise1Panning = Vector2(0.45, 0.5)
+shader_parameter/Noise1Texture = ExtResource("6_j3sgb")
+shader_parameter/InvertNoiseMask = false
+shader_parameter/NoiseMaskScale = Vector2(1, 1.11)
+shader_parameter/NoiseMaskOffset = Vector2(0, -0.14)
+shader_parameter/NoiseMask = ExtResource("5_qjm3t")
+shader_parameter/Distortion2Scale = Vector2(1, 1)
+shader_parameter/Distortion2Panning = Vector2(0.2, 0.7)
+shader_parameter/Distortion2Texture = ExtResource("4_h1q5p")
+shader_parameter/Distortion2Strength = 0.02
+shader_parameter/Distortion1Scale = Vector2(1, 1)
+shader_parameter/Distortion1Panning = Vector2(0.2, 0.5)
+shader_parameter/Distortion1Texture = ExtResource("3_mg38a")
+shader_parameter/Distortion1Strength = 0.055
+shader_parameter/DistortionMaskScale = Vector2(3, 3)
+shader_parameter/DistortionMaskOffset = Vector2(0, -1.495)
+shader_parameter/DistortionMask = ExtResource("5_qjm3t")
+shader_parameter/InnerColor = Color(1, 0.56666666, 0, 1)
+shader_parameter/OuterStep = Vector2(0.16, 0.19)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ym657"]
 shader = ExtResource("2_rbojw")
@@ -34,7 +1674,7 @@ colors = PackedColorArray(1, 0.53596056, 0.026028229, 1, 1, 0.10400003, 0.040000
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_oj1fi"]
 gradient = SubResource("Gradient_s3jwh")
 
-[sub_resource type="Image" id="Image_kqbot"]
+[sub_resource type="Image" id="Image_5xluh"]
 data = {
 "data": PackedByteArray(0, 0, 68, 194, 0, 0, 96, 64, 0, 0, 64, 194, 0, 0, 32, 64, 0, 0, 64, 194, 0, 0, 96, 64, 0, 0, 60, 194, 0, 0, 32, 64, 0, 0, 60, 194, 0, 0, 96, 64, 0, 0, 56, 194, 0, 0, 32, 64, 0, 0, 56, 194, 0, 0, 96, 64, 0, 0, 52, 194, 0, 0, 32, 64, 0, 0, 52, 194, 0, 0, 96, 64, 0, 0, 48, 194, 0, 0, 96, 192, 0, 0, 48, 194, 0, 0, 32, 192, 0, 0, 48, 194, 0, 0, 192, 191, 0, 0, 48, 194, 0, 0, 0, 191, 0, 0, 48, 194, 0, 0, 0, 63, 0, 0, 48, 194, 0, 0, 192, 63, 0, 0, 48, 194, 0, 0, 32, 64, 0, 0, 48, 194, 0, 0, 96, 64, 0, 0, 44, 194, 0, 0, 176, 192, 0, 0, 44, 194, 0, 0, 144, 192, 0, 0, 44, 194, 0, 0, 96, 192, 0, 0, 44, 194, 0, 0, 32, 192, 0, 0, 44, 194, 0, 0, 192, 191, 0, 0, 44, 194, 0, 0, 0, 63, 0, 0, 44, 194, 0, 0, 192, 63, 0, 0, 44, 194, 0, 0, 32, 64, 0, 0, 40, 194, 0, 0, 208, 192, 0, 0, 40, 194, 0, 0, 176, 192, 0, 0, 40, 194, 0, 0, 144, 192, 0, 0, 40, 194, 0, 0, 96, 192, 0, 0, 40, 194, 0, 0, 32, 192, 0, 0, 40, 194, 0, 0, 192, 191, 0, 0, 40, 194, 0, 0, 0, 191, 0, 0, 40, 194, 0, 0, 0, 63, 0, 0, 40, 194, 0, 0, 192, 63, 0, 0, 40, 194, 0, 0, 32, 64, 0, 0, 36, 194, 0, 0, 240, 192, 0, 0, 36, 194, 0, 0, 208, 192, 0, 0, 36, 194, 0, 0, 176, 192, 0, 0, 36, 194, 0, 0, 144, 192, 0, 0, 36, 194, 0, 0, 96, 192, 0, 0, 36, 194, 0, 0, 32, 192, 0, 0, 36, 194, 0, 0, 192, 191, 0, 0, 36, 194, 0, 0, 0, 191, 0, 0, 36, 194, 0, 0, 0, 63, 0, 0, 36, 194, 0, 0, 192, 63, 0, 0, 36, 194, 0, 0, 32, 64, 0, 0, 32, 194, 0, 0, 240, 192, 0, 0, 32, 194, 0, 0, 208, 192, 0, 0, 32, 194, 0, 0, 176, 192, 0, 0, 32, 194, 0, 0, 144, 192, 0, 0, 32, 194, 0, 0, 96, 192, 0, 0, 32, 194, 0, 0, 32, 192, 0, 0, 32, 194, 0, 0, 192, 191, 0, 0, 32, 194, 0, 0, 0, 191, 0, 0, 32, 194, 0, 0, 0, 63, 0, 0, 32, 194, 0, 0, 192, 63, 0, 0, 32, 194, 0, 0, 32, 64, 0, 0, 32, 194, 0, 0, 96, 64, 0, 0, 28, 194, 0, 0, 240, 192, 0, 0, 28, 194, 0, 0, 208, 192, 0, 0, 28, 194, 0, 0, 176, 192, 0, 0, 28, 194, 0, 0, 144, 192, 0, 0, 28, 194, 0, 0, 96, 192, 0, 0, 28, 194, 0, 0, 32, 192, 0, 0, 28, 194, 0, 0, 192, 191, 0, 0, 28, 194, 0, 0, 0, 191, 0, 0, 28, 194, 0, 0, 0, 63, 0, 0, 28, 194, 0, 0, 192, 63, 0, 0, 28, 194, 0, 0, 32, 64, 0, 0, 28, 194, 0, 0, 96, 64, 0, 0, 28, 194, 0, 0, 144, 64, 0, 0, 28, 194, 0, 0, 176, 64, 0, 0, 24, 194, 0, 0, 8, 193, 0, 0, 24, 194, 0, 0, 240, 192, 0, 0, 24, 194, 0, 0, 208, 192, 0, 0, 24, 194, 0, 0, 176, 192, 0, 0, 24, 194, 0, 0, 144, 192, 0, 0, 24, 194, 0, 0, 96, 192, 0, 0, 24, 194, 0, 0, 32, 192, 0, 0, 24, 194, 0, 0, 192, 191, 0, 0, 24, 194, 0, 0, 0, 191, 0, 0, 24, 194, 0, 0, 0, 63, 0, 0, 24, 194, 0, 0, 192, 63, 0, 0, 24, 194, 0, 0, 144, 64, 0, 0, 24, 194, 0, 0, 176, 64, 0, 0, 20, 194, 0, 0, 24, 193, 0, 0, 20, 194, 0, 0, 8, 193, 0, 0, 20, 194, 0, 0, 240, 192, 0, 0, 20, 194, 0, 0, 208, 192, 0, 0, 20, 194, 0, 0, 176, 192, 0, 0, 20, 194, 0, 0, 144, 192, 0, 0, 20, 194, 0, 0, 96, 192, 0, 0, 20, 194, 0, 0, 32, 192, 0, 0, 20, 194, 0, 0, 192, 191, 0, 0, 20, 194, 0, 0, 0, 191, 0, 0, 20, 194, 0, 0, 0, 63, 0, 0, 20, 194, 0, 0, 192, 63, 0, 0, 20, 194, 0, 0, 144, 64, 0, 0, 16, 194, 0, 0, 40, 193, 0, 0, 16, 194, 0, 0, 24, 193, 0, 0, 16, 194, 0, 0, 8, 193, 0, 0, 16, 194, 0, 0, 240, 192, 0, 0, 16, 194, 0, 0, 208, 192, 0, 0, 16, 194, 0, 0, 176, 192, 0, 0, 16, 194, 0, 0, 144, 192, 0, 0, 16, 194, 0, 0, 96, 192, 0, 0, 16, 194, 0, 0, 32, 192, 0, 0, 16, 194, 0, 0, 192, 191, 0, 0, 16, 194, 0, 0, 0, 191, 0, 0, 16, 194, 0, 0, 0, 63, 0, 0, 16, 194, 0, 0, 192, 63, 0, 0, 16, 194, 0, 0, 32, 64, 0, 0, 16, 194, 0, 0, 96, 64, 0, 0, 16, 194, 0, 0, 144, 64, 0, 0, 12, 194, 0, 0, 40, 193, 0, 0, 12, 194, 0, 0, 24, 193, 0, 0, 12, 194, 0, 0, 8, 193, 0, 0, 12, 194, 0, 0, 240, 192, 0, 0, 12, 194, 0, 0, 208, 192, 0, 0, 12, 194, 0, 0, 176, 192, 0, 0, 12, 194, 0, 0, 144, 192, 0, 0, 12, 194, 0, 0, 96, 192, 0, 0, 12, 194, 0, 0, 32, 192, 0, 0, 12, 194, 0, 0, 192, 191, 0, 0, 12, 194, 0, 0, 0, 191, 0, 0, 12, 194, 0, 0, 0, 63, 0, 0, 12, 194, 0, 0, 192, 63, 0, 0, 12, 194, 0, 0, 32, 64, 0, 0, 12, 194, 0, 0, 96, 64, 0, 0, 8, 194, 0, 0, 56, 193, 0, 0, 8, 194, 0, 0, 40, 193, 0, 0, 8, 194, 0, 0, 24, 193, 0, 0, 8, 194, 0, 0, 8, 193, 0, 0, 8, 194, 0, 0, 240, 192, 0, 0, 8, 194, 0, 0, 208, 192, 0, 0, 8, 194, 0, 0, 176, 192, 0, 0, 8, 194, 0, 0, 144, 192, 0, 0, 8, 194, 0, 0, 96, 192, 0, 0, 8, 194, 0, 0, 32, 192, 0, 0, 8, 194, 0, 0, 192, 191, 0, 0, 8, 194, 0, 0, 0, 191, 0, 0, 8, 194, 0, 0, 0, 63, 0, 0, 8, 194, 0, 0, 192, 63, 0, 0, 8, 194, 0, 0, 32, 64, 0, 0, 8, 194, 0, 0, 96, 64, 0, 0, 4, 194, 0, 0, 56, 193, 0, 0, 4, 194, 0, 0, 40, 193, 0, 0, 4, 194, 0, 0, 24, 193, 0, 0, 4, 194, 0, 0, 8, 193, 0, 0, 4, 194, 0, 0, 240, 192, 0, 0, 4, 194, 0, 0, 208, 192, 0, 0, 4, 194, 0, 0, 176, 192, 0, 0, 4, 194, 0, 0, 144, 192, 0, 0, 4, 194, 0, 0, 96, 192, 0, 0, 4, 194, 0, 0, 32, 192, 0, 0, 4, 194, 0, 0, 192, 191, 0, 0, 4, 194, 0, 0, 0, 191, 0, 0, 4, 194, 0, 0, 0, 63, 0, 0, 4, 194, 0, 0, 192, 63, 0, 0, 4, 194, 0, 0, 32, 64, 0, 0, 4, 194, 0, 0, 96, 64, 0, 0, 4, 194, 0, 0, 144, 64, 0, 0, 4, 194, 0, 0, 104, 65, 0, 0, 4, 194, 0, 0, 120, 65, 0, 0, 4, 194, 0, 0, 132, 65, 0, 0, 0, 194, 0, 0, 56, 193, 0, 0, 0, 194, 0, 0, 40, 193, 0, 0, 0, 194, 0, 0, 24, 193, 0, 0, 0, 194, 0, 0, 8, 193, 0, 0, 0, 194, 0, 0, 240, 192, 0, 0, 0, 194, 0, 0, 208, 192, 0, 0, 0, 194, 0, 0, 176, 192, 0, 0, 0, 194, 0, 0, 144, 192, 0, 0, 0, 194, 0, 0, 96, 192, 0, 0, 0, 194, 0, 0, 32, 192, 0, 0, 0, 194, 0, 0, 192, 191, 0, 0, 0, 194, 0, 0, 0, 191, 0, 0, 0, 194, 0, 0, 0, 63, 0, 0, 0, 194, 0, 0, 192, 63, 0, 0, 0, 194, 0, 0, 32, 64, 0, 0, 0, 194, 0, 0, 96, 64, 0, 0, 0, 194, 0, 0, 144, 64, 0, 0, 0, 194, 0, 0, 72, 65, 0, 0, 0, 194, 0, 0, 88, 65, 0, 0, 0, 194, 0, 0, 104, 65, 0, 0, 248, 193, 0, 0, 72, 193, 0, 0, 248, 193, 0, 0, 56, 193, 0, 0, 248, 193, 0, 0, 40, 193, 0, 0, 248, 193, 0, 0, 24, 193, 0, 0, 248, 193, 0, 0, 8, 193, 0, 0, 248, 193, 0, 0, 240, 192, 0, 0, 248, 193, 0, 0, 208, 192, 0, 0, 248, 193, 0, 0, 176, 192, 0, 0, 248, 193, 0, 0, 144, 192, 0, 0, 248, 193, 0, 0, 96, 192, 0, 0, 248, 193, 0, 0, 32, 192, 0, 0, 248, 193, 0, 0, 192, 191, 0, 0, 248, 193, 0, 0, 0, 191, 0, 0, 248, 193, 0, 0, 0, 63, 0, 0, 248, 193, 0, 0, 192, 63, 0, 0, 248, 193, 0, 0, 32, 64, 0, 0, 248, 193, 0, 0, 96, 64, 0, 0, 248, 193, 0, 0, 144, 64, 0, 0, 248, 193, 0, 0, 176, 64, 0, 0, 248, 193, 0, 0, 72, 65, 0, 0, 248, 193, 0, 0, 88, 65, 0, 0, 248, 193, 0, 0, 104, 65, 0, 0, 248, 193, 0, 0, 140, 65, 0, 0, 240, 193, 0, 0, 72, 193, 0, 0, 240, 193, 0, 0, 56, 193, 0, 0, 240, 193, 0, 0, 40, 193, 0, 0, 240, 193, 0, 0, 24, 193, 0, 0, 240, 193, 0, 0, 8, 193, 0, 0, 240, 193, 0, 0, 240, 192, 0, 0, 240, 193, 0, 0, 208, 192, 0, 0, 240, 193, 0, 0, 176, 192, 0, 0, 240, 193, 0, 0, 144, 192, 0, 0, 240, 193, 0, 0, 96, 192, 0, 0, 240, 193, 0, 0, 32, 192, 0, 0, 240, 193, 0, 0, 192, 191, 0, 0, 240, 193, 0, 0, 0, 191, 0, 0, 240, 193, 0, 0, 0, 63, 0, 0, 240, 193, 0, 0, 192, 63, 0, 0, 240, 193, 0, 0, 32, 64, 0, 0, 240, 193, 0, 0, 96, 64, 0, 0, 240, 193, 0, 0, 144, 64, 0, 0, 240, 193, 0, 0, 176, 64, 0, 0, 240, 193, 0, 0, 56, 65, 0, 0, 240, 193, 0, 0, 72, 65, 0, 0, 240, 193, 0, 0, 88, 65, 0, 0, 240, 193, 0, 0, 104, 65, 0, 0, 240, 193, 0, 0, 120, 65, 0, 0, 240, 193, 0, 0, 132, 65, 0, 0, 232, 193, 0, 0, 72, 193, 0, 0, 232, 193, 0, 0, 56, 193, 0, 0, 232, 193, 0, 0, 40, 193, 0, 0, 232, 193, 0, 0, 24, 193, 0, 0, 232, 193, 0, 0, 8, 193, 0, 0, 232, 193, 0, 0, 240, 192, 0, 0, 232, 193, 0, 0, 208, 192, 0, 0, 232, 193, 0, 0, 176, 192, 0, 0, 232, 193, 0, 0, 144, 192, 0, 0, 232, 193, 0, 0, 96, 192, 0, 0, 232, 193, 0, 0, 32, 192, 0, 0, 232, 193, 0, 0, 192, 191, 0, 0, 232, 193, 0, 0, 0, 191, 0, 0, 232, 193, 0, 0, 0, 63, 0, 0, 232, 193, 0, 0, 192, 63, 0, 0, 232, 193, 0, 0, 32, 64, 0, 0, 232, 193, 0, 0, 96, 64, 0, 0, 232, 193, 0, 0, 144, 64, 0, 0, 232, 193, 0, 0, 176, 64, 0, 0, 232, 193, 0, 0, 56, 65, 0, 0, 232, 193, 0, 0, 72, 65, 0, 0, 232, 193, 0, 0, 88, 65, 0, 0, 232, 193, 0, 0, 104, 65, 0, 0, 232, 193, 0, 0, 120, 65, 0, 0, 232, 193, 0, 0, 132, 65, 0, 0, 224, 193, 0, 0, 72, 193, 0, 0, 224, 193, 0, 0, 56, 193, 0, 0, 224, 193, 0, 0, 40, 193, 0, 0, 224, 193, 0, 0, 24, 193, 0, 0, 224, 193, 0, 0, 8, 193, 0, 0, 224, 193, 0, 0, 240, 192, 0, 0, 224, 193, 0, 0, 208, 192, 0, 0, 224, 193, 0, 0, 176, 192, 0, 0, 224, 193, 0, 0, 144, 192, 0, 0, 224, 193, 0, 0, 96, 192, 0, 0, 224, 193, 0, 0, 32, 192, 0, 0, 224, 193, 0, 0, 192, 191, 0, 0, 224, 193, 0, 0, 0, 191, 0, 0, 224, 193, 0, 0, 0, 63, 0, 0, 224, 193, 0, 0, 192, 63, 0, 0, 224, 193, 0, 0, 32, 64, 0, 0, 224, 193, 0, 0, 96, 64, 0, 0, 224, 193, 0, 0, 144, 64, 0, 0, 224, 193, 0, 0, 176, 64, 0, 0, 224, 193, 0, 0, 208, 64, 0, 0, 224, 193, 0, 0, 56, 65, 0, 0, 224, 193, 0, 0, 72, 65, 0, 0, 224, 193, 0, 0, 88, 65, 0, 0, 224, 193, 0, 0, 104, 65, 0, 0, 224, 193, 0, 0, 120, 65, 0, 0, 216, 193, 0, 0, 56, 193, 0, 0, 216, 193, 0, 0, 40, 193, 0, 0, 216, 193, 0, 0, 24, 193, 0, 0, 216, 193, 0, 0, 8, 193, 0, 0, 216, 193, 0, 0, 240, 192, 0, 0, 216, 193, 0, 0, 208, 192, 0, 0, 216, 193, 0, 0, 176, 192, 0, 0, 216, 193, 0, 0, 144, 192, 0, 0, 216, 193, 0, 0, 96, 192, 0, 0, 216, 193, 0, 0, 32, 192, 0, 0, 216, 193, 0, 0, 192, 191, 0, 0, 216, 193, 0, 0, 0, 191, 0, 0, 216, 193, 0, 0, 0, 63, 0, 0, 216, 193, 0, 0, 192, 63, 0, 0, 216, 193, 0, 0, 32, 64, 0, 0, 216, 193, 0, 0, 96, 64, 0, 0, 216, 193, 0, 0, 144, 64, 0, 0, 216, 193, 0, 0, 176, 64, 0, 0, 216, 193, 0, 0, 208, 64, 0, 0, 216, 193, 0, 0, 56, 65, 0, 0, 216, 193, 0, 0, 72, 65, 0, 0, 216, 193, 0, 0, 88, 65, 0, 0, 216, 193, 0, 0, 104, 65, 0, 0, 216, 193, 0, 0, 120, 65, 0, 0, 208, 193, 0, 0, 72, 193, 0, 0, 208, 193, 0, 0, 56, 193, 0, 0, 208, 193, 0, 0, 40, 193, 0, 0, 208, 193, 0, 0, 24, 193, 0, 0, 208, 193, 0, 0, 8, 193, 0, 0, 208, 193, 0, 0, 240, 192, 0, 0, 208, 193, 0, 0, 208, 192, 0, 0, 208, 193, 0, 0, 176, 192, 0, 0, 208, 193, 0, 0, 144, 192, 0, 0, 208, 193, 0, 0, 96, 192, 0, 0, 208, 193, 0, 0, 32, 192, 0, 0, 208, 193, 0, 0, 192, 191, 0, 0, 208, 193, 0, 0, 0, 191, 0, 0, 208, 193, 0, 0, 0, 63, 0, 0, 208, 193, 0, 0, 192, 63, 0, 0, 208, 193, 0, 0, 32, 64, 0, 0, 208, 193, 0, 0, 96, 64, 0, 0, 208, 193, 0, 0, 144, 64, 0, 0, 208, 193, 0, 0, 176, 64, 0, 0, 208, 193, 0, 0, 208, 64, 0, 0, 208, 193, 0, 0, 240, 64, 0, 0, 208, 193, 0, 0, 56, 65, 0, 0, 208, 193, 0, 0, 72, 65, 0, 0, 208, 193, 0, 0, 88, 65, 0, 0, 208, 193, 0, 0, 104, 65, 0, 0, 208, 193, 0, 0, 120, 65, 0, 0, 208, 193, 0, 0, 132, 65, 0, 0, 200, 193, 0, 0, 72, 193, 0, 0, 200, 193, 0, 0, 56, 193, 0, 0, 200, 193, 0, 0, 40, 193, 0, 0, 200, 193, 0, 0, 24, 193, 0, 0, 200, 193, 0, 0, 8, 193, 0, 0, 200, 193, 0, 0, 240, 192, 0, 0, 200, 193, 0, 0, 208, 192, 0, 0, 200, 193, 0, 0, 176, 192, 0, 0, 200, 193, 0, 0, 144, 192, 0, 0, 200, 193, 0, 0, 96, 192, 0, 0, 200, 193, 0, 0, 32, 192, 0, 0, 200, 193, 0, 0, 192, 191, 0, 0, 200, 193, 0, 0, 0, 191, 0, 0, 200, 193, 0, 0, 0, 63, 0, 0, 200, 193, 0, 0, 192, 63, 0, 0, 200, 193, 0, 0, 32, 64, 0, 0, 200, 193, 0, 0, 96, 64, 0, 0, 200, 193, 0, 0, 144, 64, 0, 0, 200, 193, 0, 0, 176, 64, 0, 0, 200, 193, 0, 0, 208, 64, 0, 0, 200, 193, 0, 0, 240, 64, 0, 0, 200, 193, 0, 0, 56, 65, 0, 0, 200, 193, 0, 0, 72, 65, 0, 0, 200, 193, 0, 0, 88, 65, 0, 0, 200, 193, 0, 0, 104, 65, 0, 0, 200, 193, 0, 0, 120, 65, 0, 0, 200, 193, 0, 0, 132, 65, 0, 0, 200, 193, 0, 0, 140, 65, 0, 0, 192, 193, 0, 0, 72, 193, 0, 0, 192, 193, 0, 0, 56, 193, 0, 0, 192, 193, 0, 0, 40, 193, 0, 0, 192, 193, 0, 0, 24, 193, 0, 0, 192, 193, 0, 0, 8, 193, 0, 0, 192, 193, 0, 0, 240, 192, 0, 0, 192, 193, 0, 0, 208, 192, 0, 0, 192, 193, 0, 0, 176, 192, 0, 0, 192, 193, 0, 0, 144, 192, 0, 0, 192, 193, 0, 0, 96, 192, 0, 0, 192, 193, 0, 0, 32, 192, 0, 0, 192, 193, 0, 0, 192, 191, 0, 0, 192, 193, 0, 0, 0, 191, 0, 0, 192, 193, 0, 0, 0, 63, 0, 0, 192, 193, 0, 0, 192, 63, 0, 0, 192, 193, 0, 0, 32, 64, 0, 0, 192, 193, 0, 0, 96, 64, 0, 0, 192, 193, 0, 0, 144, 64, 0, 0, 192, 193, 0, 0, 240, 64, 0, 0, 192, 193, 0, 0, 8, 65, 0, 0, 192, 193, 0, 0, 40, 65, 0, 0, 192, 193, 0, 0, 56, 65, 0, 0, 192, 193, 0, 0, 72, 65, 0, 0, 192, 193, 0, 0, 88, 65, 0, 0, 192, 193, 0, 0, 104, 65, 0, 0, 192, 193, 0, 0, 120, 65, 0, 0, 192, 193, 0, 0, 132, 65, 0, 0, 184, 193, 0, 0, 88, 193, 0, 0, 184, 193, 0, 0, 72, 193, 0, 0, 184, 193, 0, 0, 56, 193, 0, 0, 184, 193, 0, 0, 40, 193, 0, 0, 184, 193, 0, 0, 24, 193, 0, 0, 184, 193, 0, 0, 8, 193, 0, 0, 184, 193, 0, 0, 240, 192, 0, 0, 184, 193, 0, 0, 208, 192, 0, 0, 184, 193, 0, 0, 176, 192, 0, 0, 184, 193, 0, 0, 144, 192, 0, 0, 184, 193, 0, 0, 96, 192, 0, 0, 184, 193, 0, 0, 32, 192, 0, 0, 184, 193, 0, 0, 192, 191, 0, 0, 184, 193, 0, 0, 0, 191, 0, 0, 184, 193, 0, 0, 0, 63, 0, 0, 184, 193, 0, 0, 192, 63, 0, 0, 184, 193, 0, 0, 32, 64, 0, 0, 184, 193, 0, 0, 96, 64, 0, 0, 184, 193, 0, 0, 144, 64, 0, 0, 184, 193, 0, 0, 240, 64, 0, 0, 184, 193, 0, 0, 8, 65, 0, 0, 184, 193, 0, 0, 40, 65, 0, 0, 184, 193, 0, 0, 56, 65, 0, 0, 184, 193, 0, 0, 72, 65, 0, 0, 184, 193, 0, 0, 88, 65, 0, 0, 176, 193, 0, 0, 88, 193, 0, 0, 176, 193, 0, 0, 72, 193, 0, 0, 176, 193, 0, 0, 56, 193, 0, 0, 176, 193, 0, 0, 40, 193, 0, 0, 176, 193, 0, 0, 24, 193, 0, 0, 176, 193, 0, 0, 8, 193, 0, 0, 176, 193, 0, 0, 240, 192, 0, 0, 176, 193, 0, 0, 208, 192, 0, 0, 176, 193, 0, 0, 176, 192, 0, 0, 176, 193, 0, 0, 144, 192, 0, 0, 176, 193, 0, 0, 96, 192, 0, 0, 176, 193, 0, 0, 32, 192, 0, 0, 176, 193, 0, 0, 192, 191, 0, 0, 176, 193, 0, 0, 0, 191, 0, 0, 176, 193, 0, 0, 0, 63, 0, 0, 176, 193, 0, 0, 192, 63, 0, 0, 176, 193, 0, 0, 32, 64, 0, 0, 176, 193, 0, 0, 96, 64, 0, 0, 176, 193, 0, 0, 144, 64, 0, 0, 176, 193, 0, 0, 8, 65, 0, 0, 176, 193, 0, 0, 24, 65, 0, 0, 176, 193, 0, 0, 40, 65, 0, 0, 176, 193, 0, 0, 56, 65, 0, 0, 176, 193, 0, 0, 72, 65, 0, 0, 168, 193, 0, 0, 88, 193, 0, 0, 168, 193, 0, 0, 72, 193, 0, 0, 168, 193, 0, 0, 56, 193, 0, 0, 168, 193, 0, 0, 40, 193, 0, 0, 168, 193, 0, 0, 24, 193, 0, 0, 168, 193, 0, 0, 8, 193, 0, 0, 168, 193, 0, 0, 240, 192, 0, 0, 168, 193, 0, 0, 208, 192, 0, 0, 168, 193, 0, 0, 176, 192, 0, 0, 168, 193, 0, 0, 144, 192, 0, 0, 168, 193, 0, 0, 96, 192, 0, 0, 168, 193, 0, 0, 32, 192, 0, 0, 168, 193, 0, 0, 192, 191, 0, 0, 168, 193, 0, 0, 0, 191, 0, 0, 168, 193, 0, 0, 0, 63, 0, 0, 168, 193, 0, 0, 192, 63, 0, 0, 168, 193, 0, 0, 32, 64, 0, 0, 168, 193, 0, 0, 96, 64, 0, 0, 168, 193, 0, 0, 144, 64, 0, 0, 168, 193, 0, 0, 176, 64, 0, 0, 168, 193, 0, 0, 24, 65, 0, 0, 168, 193, 0, 0, 40, 65, 0, 0, 168, 193, 0, 0, 56, 65, 0, 0, 160, 193, 0, 0, 88, 193, 0, 0, 160, 193, 0, 0, 72, 193, 0, 0, 160, 193, 0, 0, 56, 193, 0, 0, 160, 193, 0, 0, 40, 193, 0, 0, 160, 193, 0, 0, 24, 193, 0, 0, 160, 193, 0, 0, 8, 193, 0, 0, 160, 193, 0, 0, 240, 192, 0, 0, 160, 193, 0, 0, 208, 192, 0, 0, 160, 193, 0, 0, 176, 192, 0, 0, 160, 193, 0, 0, 144, 192, 0, 0, 160, 193, 0, 0, 96, 192, 0, 0, 160, 193, 0, 0, 32, 192, 0, 0, 160, 193, 0, 0, 192, 191, 0, 0, 160, 193, 0, 0, 0, 191, 0, 0, 160, 193, 0, 0, 0, 63, 0, 0, 160, 193, 0, 0, 192, 63, 0, 0, 160, 193, 0, 0, 32, 64, 0, 0, 160, 193, 0, 0, 96, 64, 0, 0, 160, 193, 0, 0, 144, 64, 0, 0, 160, 193, 0, 0, 176, 64, 0, 0, 160, 193, 0, 0, 8, 65, 0, 0, 160, 193, 0, 0, 24, 65, 0, 0, 160, 193, 0, 0, 40, 65, 0, 0, 152, 193, 0, 0, 88, 193, 0, 0, 152, 193, 0, 0, 72, 193, 0, 0, 152, 193, 0, 0, 56, 193, 0, 0, 152, 193, 0, 0, 40, 193, 0, 0, 152, 193, 0, 0, 24, 193, 0, 0, 152, 193, 0, 0, 8, 193, 0, 0, 152, 193, 0, 0, 240, 192, 0, 0, 152, 193, 0, 0, 208, 192, 0, 0, 152, 193, 0, 0, 176, 192, 0, 0, 152, 193, 0, 0, 144, 192, 0, 0, 152, 193, 0, 0, 96, 192, 0, 0, 152, 193, 0, 0, 32, 192, 0, 0, 152, 193, 0, 0, 192, 191, 0, 0, 152, 193, 0, 0, 0, 191, 0, 0, 152, 193, 0, 0, 0, 63, 0, 0, 152, 193, 0, 0, 192, 63, 0, 0, 152, 193, 0, 0, 32, 64, 0, 0, 152, 193, 0, 0, 96, 64, 0, 0, 152, 193, 0, 0, 144, 64, 0, 0, 152, 193, 0, 0, 176, 64, 0, 0, 152, 193, 0, 0, 240, 64, 0, 0, 152, 193, 0, 0, 8, 65, 0, 0, 152, 193, 0, 0, 24, 65, 0, 0, 152, 193, 0, 0, 40, 65, 0, 0, 144, 193, 0, 0, 148, 193, 0, 0, 144, 193, 0, 0, 88, 193, 0, 0, 144, 193, 0, 0, 72, 193, 0, 0, 144, 193, 0, 0, 56, 193, 0, 0, 144, 193, 0, 0, 40, 193, 0, 0, 144, 193, 0, 0, 24, 193, 0, 0, 144, 193, 0, 0, 8, 193, 0, 0, 144, 193, 0, 0, 240, 192, 0, 0, 144, 193, 0, 0, 208, 192, 0, 0, 144, 193, 0, 0, 176, 192, 0, 0, 144, 193, 0, 0, 144, 192, 0, 0, 144, 193, 0, 0, 96, 192, 0, 0, 144, 193, 0, 0, 32, 192, 0, 0, 144, 193, 0, 0, 192, 191, 0, 0, 144, 193, 0, 0, 0, 191, 0, 0, 144, 193, 0, 0, 0, 63, 0, 0, 144, 193, 0, 0, 192, 63, 0, 0, 144, 193, 0, 0, 32, 64, 0, 0, 144, 193, 0, 0, 96, 64, 0, 0, 144, 193, 0, 0, 144, 64, 0, 0, 144, 193, 0, 0, 176, 64, 0, 0, 144, 193, 0, 0, 208, 64, 0, 0, 144, 193, 0, 0, 240, 64, 0, 0, 144, 193, 0, 0, 8, 65, 0, 0, 144, 193, 0, 0, 24, 65, 0, 0, 136, 193, 0, 0, 156, 193, 0, 0, 136, 193, 0, 0, 148, 193, 0, 0, 136, 193, 0, 0, 140, 193, 0, 0, 136, 193, 0, 0, 132, 193, 0, 0, 136, 193, 0, 0, 120, 193, 0, 0, 136, 193, 0, 0, 88, 193, 0, 0, 136, 193, 0, 0, 72, 193, 0, 0, 136, 193, 0, 0, 56, 193, 0, 0, 136, 193, 0, 0, 40, 193, 0, 0, 136, 193, 0, 0, 24, 193, 0, 0, 136, 193, 0, 0, 8, 193, 0, 0, 136, 193, 0, 0, 240, 192, 0, 0, 136, 193, 0, 0, 208, 192, 0, 0, 136, 193, 0, 0, 176, 192, 0, 0, 136, 193, 0, 0, 144, 192, 0, 0, 136, 193, 0, 0, 96, 192, 0, 0, 136, 193, 0, 0, 32, 192, 0, 0, 136, 193, 0, 0, 192, 191, 0, 0, 136, 193, 0, 0, 0, 191, 0, 0, 136, 193, 0, 0, 0, 63, 0, 0, 136, 193, 0, 0, 192, 63, 0, 0, 136, 193, 0, 0, 32, 64, 0, 0, 136, 193, 0, 0, 96, 64, 0, 0, 136, 193, 0, 0, 144, 64, 0, 0, 136, 193, 0, 0, 176, 64, 0, 0, 136, 193, 0, 0, 208, 64, 0, 0, 136, 193, 0, 0, 240, 64, 0, 0, 136, 193, 0, 0, 8, 65, 0, 0, 136, 193, 0, 0, 24, 65, 0, 0, 128, 193, 0, 0, 148, 193, 0, 0, 128, 193, 0, 0, 140, 193, 0, 0, 128, 193, 0, 0, 132, 193, 0, 0, 128, 193, 0, 0, 120, 193, 0, 0, 128, 193, 0, 0, 104, 193, 0, 0, 128, 193, 0, 0, 88, 193, 0, 0, 128, 193, 0, 0, 72, 193, 0, 0, 128, 193, 0, 0, 56, 193, 0, 0, 128, 193, 0, 0, 40, 193, 0, 0, 128, 193, 0, 0, 24, 193, 0, 0, 128, 193, 0, 0, 8, 193, 0, 0, 128, 193, 0, 0, 240, 192, 0, 0, 128, 193, 0, 0, 208, 192, 0, 0, 128, 193, 0, 0, 176, 192, 0, 0, 128, 193, 0, 0, 144, 192, 0, 0, 128, 193, 0, 0, 96, 192, 0, 0, 128, 193, 0, 0, 32, 192, 0, 0, 128, 193, 0, 0, 192, 191, 0, 0, 128, 193, 0, 0, 0, 191, 0, 0, 128, 193, 0, 0, 0, 63, 0, 0, 128, 193, 0, 0, 192, 63, 0, 0, 128, 193, 0, 0, 32, 64, 0, 0, 128, 193, 0, 0, 96, 64, 0, 0, 128, 193, 0, 0, 144, 64, 0, 0, 128, 193, 0, 0, 176, 64, 0, 0, 128, 193, 0, 0, 208, 64, 0, 0, 128, 193, 0, 0, 240, 64, 0, 0, 128, 193, 0, 0, 8, 65, 0, 0, 112, 193, 0, 0, 104, 193, 0, 0, 112, 193, 0, 0, 88, 193, 0, 0, 112, 193, 0, 0, 72, 193, 0, 0, 112, 193, 0, 0, 56, 193, 0, 0, 112, 193, 0, 0, 40, 193, 0, 0, 112, 193, 0, 0, 24, 193, 0, 0, 112, 193, 0, 0, 8, 193, 0, 0, 112, 193, 0, 0, 240, 192, 0, 0, 112, 193, 0, 0, 208, 192, 0, 0, 112, 193, 0, 0, 176, 192, 0, 0, 112, 193, 0, 0, 144, 192, 0, 0, 112, 193, 0, 0, 96, 192, 0, 0, 112, 193, 0, 0, 32, 192, 0, 0, 112, 193, 0, 0, 192, 191, 0, 0, 112, 193, 0, 0, 0, 191, 0, 0, 112, 193, 0, 0, 0, 63, 0, 0, 112, 193, 0, 0, 192, 63, 0, 0, 112, 193, 0, 0, 32, 64, 0, 0, 112, 193, 0, 0, 96, 64, 0, 0, 112, 193, 0, 0, 144, 64, 0, 0, 112, 193, 0, 0, 176, 64, 0, 0, 112, 193, 0, 0, 208, 64, 0, 0, 112, 193, 0, 0, 240, 64, 0, 0, 112, 193, 0, 0, 8, 65, 0, 0, 96, 193, 0, 0, 88, 193, 0, 0, 96, 193, 0, 0, 72, 193, 0, 0, 96, 193, 0, 0, 56, 193, 0, 0, 96, 193, 0, 0, 40, 193, 0, 0, 96, 193, 0, 0, 24, 193, 0, 0, 96, 193, 0, 0, 8, 193, 0, 0, 96, 193, 0, 0, 240, 192, 0, 0, 96, 193, 0, 0, 208, 192, 0, 0, 96, 193, 0, 0, 176, 192, 0, 0, 96, 193, 0, 0, 144, 192, 0, 0, 96, 193, 0, 0, 96, 192, 0, 0, 96, 193, 0, 0, 32, 192, 0, 0, 96, 193, 0, 0, 192, 191, 0, 0, 96, 193, 0, 0, 0, 191, 0, 0, 96, 193, 0, 0, 0, 63, 0, 0, 96, 193, 0, 0, 192, 63, 0, 0, 96, 193, 0, 0, 32, 64, 0, 0, 96, 193, 0, 0, 96, 64, 0, 0, 96, 193, 0, 0, 144, 64, 0, 0, 96, 193, 0, 0, 176, 64, 0, 0, 96, 193, 0, 0, 208, 64, 0, 0, 96, 193, 0, 0, 240, 64, 0, 0, 96, 193, 0, 0, 8, 65, 0, 0, 80, 193, 0, 0, 88, 193, 0, 0, 80, 193, 0, 0, 72, 193, 0, 0, 80, 193, 0, 0, 56, 193, 0, 0, 80, 193, 0, 0, 40, 193, 0, 0, 80, 193, 0, 0, 24, 193, 0, 0, 80, 193, 0, 0, 8, 193, 0, 0, 80, 193, 0, 0, 240, 192, 0, 0, 80, 193, 0, 0, 208, 192, 0, 0, 80, 193, 0, 0, 176, 192, 0, 0, 80, 193, 0, 0, 144, 192, 0, 0, 80, 193, 0, 0, 96, 192, 0, 0, 80, 193, 0, 0, 32, 192, 0, 0, 80, 193, 0, 0, 192, 191, 0, 0, 80, 193, 0, 0, 0, 191, 0, 0, 80, 193, 0, 0, 0, 63, 0, 0, 80, 193, 0, 0, 192, 63, 0, 0, 80, 193, 0, 0, 32, 64, 0, 0, 80, 193, 0, 0, 96, 64, 0, 0, 80, 193, 0, 0, 144, 64, 0, 0, 80, 193, 0, 0, 176, 64, 0, 0, 80, 193, 0, 0, 208, 64, 0, 0, 80, 193, 0, 0, 240, 64, 0, 0, 64, 193, 0, 0, 72, 193, 0, 0, 64, 193, 0, 0, 56, 193, 0, 0, 64, 193, 0, 0, 40, 193, 0, 0, 64, 193, 0, 0, 24, 193, 0, 0, 64, 193, 0, 0, 8, 193, 0, 0, 64, 193, 0, 0, 240, 192, 0, 0, 64, 193, 0, 0, 208, 192, 0, 0, 64, 193, 0, 0, 176, 192, 0, 0, 64, 193, 0, 0, 144, 192, 0, 0, 64, 193, 0, 0, 96, 192, 0, 0, 64, 193, 0, 0, 32, 192, 0, 0, 64, 193, 0, 0, 192, 191, 0, 0, 64, 193, 0, 0, 0, 191, 0, 0, 64, 193, 0, 0, 0, 63, 0, 0, 64, 193, 0, 0, 192, 63, 0, 0, 64, 193, 0, 0, 32, 64, 0, 0, 64, 193, 0, 0, 96, 64, 0, 0, 64, 193, 0, 0, 144, 64, 0, 0, 64, 193, 0, 0, 176, 64, 0, 0, 64, 193, 0, 0, 208, 64, 0, 0, 48, 193, 0, 0, 88, 193, 0, 0, 48, 193, 0, 0, 72, 193, 0, 0, 48, 193, 0, 0, 56, 193, 0, 0, 48, 193, 0, 0, 40, 193, 0, 0, 48, 193, 0, 0, 24, 193, 0, 0, 48, 193, 0, 0, 8, 193, 0, 0, 48, 193, 0, 0, 240, 192, 0, 0, 48, 193, 0, 0, 208, 192, 0, 0, 48, 193, 0, 0, 176, 192, 0, 0, 48, 193, 0, 0, 144, 192, 0, 0, 48, 193, 0, 0, 96, 192, 0, 0, 48, 193, 0, 0, 32, 192, 0, 0, 48, 193, 0, 0, 192, 191, 0, 0, 48, 193, 0, 0, 0, 191, 0, 0, 48, 193, 0, 0, 0, 63, 0, 0, 48, 193, 0, 0, 192, 63, 0, 0, 48, 193, 0, 0, 32, 64, 0, 0, 48, 193, 0, 0, 96, 64, 0, 0, 48, 193, 0, 0, 144, 64, 0, 0, 48, 193, 0, 0, 176, 64, 0, 0, 32, 193, 0, 0, 104, 193, 0, 0, 32, 193, 0, 0, 88, 193, 0, 0, 32, 193, 0, 0, 72, 193, 0, 0, 32, 193, 0, 0, 56, 193, 0, 0, 32, 193, 0, 0, 40, 193, 0, 0, 32, 193, 0, 0, 24, 193, 0, 0, 32, 193, 0, 0, 8, 193, 0, 0, 32, 193, 0, 0, 240, 192, 0, 0, 32, 193, 0, 0, 208, 192, 0, 0, 32, 193, 0, 0, 176, 192, 0, 0, 32, 193, 0, 0, 144, 192, 0, 0, 32, 193, 0, 0, 96, 192, 0, 0, 32, 193, 0, 0, 32, 192, 0, 0, 32, 193, 0, 0, 192, 191, 0, 0, 32, 193, 0, 0, 0, 191, 0, 0, 32, 193, 0, 0, 0, 63, 0, 0, 32, 193, 0, 0, 192, 63, 0, 0, 32, 193, 0, 0, 32, 64, 0, 0, 32, 193, 0, 0, 96, 64, 0, 0, 32, 193, 0, 0, 144, 64, 0, 0, 32, 193, 0, 0, 176, 64, 0, 0, 16, 193, 0, 0, 104, 193, 0, 0, 16, 193, 0, 0, 88, 193, 0, 0, 16, 193, 0, 0, 72, 193, 0, 0, 16, 193, 0, 0, 56, 193, 0, 0, 16, 193, 0, 0, 40, 193, 0, 0, 16, 193, 0, 0, 24, 193, 0, 0, 16, 193, 0, 0, 8, 193, 0, 0, 16, 193, 0, 0, 240, 192, 0, 0, 16, 193, 0, 0, 208, 192, 0, 0, 16, 193, 0, 0, 176, 192, 0, 0, 16, 193, 0, 0, 144, 192, 0, 0, 16, 193, 0, 0, 96, 192, 0, 0, 16, 193, 0, 0, 32, 192, 0, 0, 16, 193, 0, 0, 192, 191, 0, 0, 16, 193, 0, 0, 0, 191, 0, 0, 16, 193, 0, 0, 0, 63, 0, 0, 16, 193, 0, 0, 192, 63, 0, 0, 16, 193, 0, 0, 32, 64, 0, 0, 16, 193, 0, 0, 96, 64, 0, 0, 16, 193, 0, 0, 144, 64, 0, 0, 16, 193, 0, 0, 176, 64, 0, 0, 0, 193, 0, 0, 132, 193, 0, 0, 0, 193, 0, 0, 120, 193, 0, 0, 0, 193, 0, 0, 104, 193, 0, 0, 0, 193, 0, 0, 88, 193, 0, 0, 0, 193, 0, 0, 72, 193, 0, 0, 0, 193, 0, 0, 24, 193, 0, 0, 0, 193, 0, 0, 8, 193, 0, 0, 0, 193, 0, 0, 240, 192, 0, 0, 0, 193, 0, 0, 208, 192, 0, 0, 0, 193, 0, 0, 176, 192, 0, 0, 0, 193, 0, 0, 144, 192, 0, 0, 0, 193, 0, 0, 96, 192, 0, 0, 0, 193, 0, 0, 32, 192, 0, 0, 0, 193, 0, 0, 192, 191, 0, 0, 0, 193, 0, 0, 0, 191, 0, 0, 0, 193, 0, 0, 0, 63, 0, 0, 0, 193, 0, 0, 192, 63, 0, 0, 0, 193, 0, 0, 32, 64, 0, 0, 0, 193, 0, 0, 96, 64, 0, 0, 0, 193, 0, 0, 144, 64, 0, 0, 224, 192, 0, 0, 132, 193, 0, 0, 224, 192, 0, 0, 120, 193, 0, 0, 224, 192, 0, 0, 104, 193, 0, 0, 224, 192, 0, 0, 88, 193, 0, 0, 224, 192, 0, 0, 8, 193, 0, 0, 224, 192, 0, 0, 240, 192, 0, 0, 224, 192, 0, 0, 208, 192, 0, 0, 224, 192, 0, 0, 176, 192, 0, 0, 224, 192, 0, 0, 144, 192, 0, 0, 224, 192, 0, 0, 96, 192, 0, 0, 224, 192, 0, 0, 32, 192, 0, 0, 224, 192, 0, 0, 192, 191, 0, 0, 224, 192, 0, 0, 0, 191, 0, 0, 224, 192, 0, 0, 0, 63, 0, 0, 224, 192, 0, 0, 192, 63, 0, 0, 224, 192, 0, 0, 32, 64, 0, 0, 224, 192, 0, 0, 96, 64, 0, 0, 224, 192, 0, 0, 144, 64, 0, 0, 192, 192, 0, 0, 120, 193, 0, 0, 192, 192, 0, 0, 104, 193, 0, 0, 192, 192, 0, 0, 240, 192, 0, 0, 192, 192, 0, 0, 208, 192, 0, 0, 192, 192, 0, 0, 176, 192, 0, 0, 192, 192, 0, 0, 144, 192, 0, 0, 192, 192, 0, 0, 96, 192, 0, 0, 192, 192, 0, 0, 32, 192, 0, 0, 192, 192, 0, 0, 192, 191, 0, 0, 192, 192, 0, 0, 0, 191, 0, 0, 192, 192, 0, 0, 0, 63, 0, 0, 192, 192, 0, 0, 192, 63, 0, 0, 192, 192, 0, 0, 32, 64, 0, 0, 192, 192, 0, 0, 96, 64, 0, 0, 160, 192, 0, 0, 240, 192, 0, 0, 160, 192, 0, 0, 208, 192, 0, 0, 160, 192, 0, 0, 176, 192, 0, 0, 160, 192, 0, 0, 144, 192, 0, 0, 160, 192, 0, 0, 96, 192, 0, 0, 160, 192, 0, 0, 32, 192, 0, 0, 160, 192, 0, 0, 192, 191, 0, 0, 160, 192, 0, 0, 0, 191, 0, 0, 160, 192, 0, 0, 0, 63, 0, 0, 160, 192, 0, 0, 192, 63, 0, 0, 128, 192, 0, 0, 208, 192, 0, 0, 128, 192, 0, 0, 176, 192, 0, 0, 128, 192, 0, 0, 144, 192, 0, 0, 128, 192, 0, 0, 96, 192, 0, 0, 128, 192, 0, 0, 32, 192, 0, 0, 128, 192, 0, 0, 192, 191, 0, 0, 128, 192, 0, 0, 0, 191, 0, 0, 128, 192, 0, 0, 0, 63, 0, 0, 128, 192, 0, 0, 192, 63, 0, 0, 64, 192, 0, 0, 176, 192, 0, 0, 64, 192, 0, 0, 144, 192, 0, 0, 64, 192, 0, 0, 96, 192, 0, 0, 64, 192, 0, 0, 32, 192, 0, 0, 64, 192, 0, 0, 192, 191, 0, 0, 64, 192, 0, 0, 0, 191, 0, 0, 64, 192, 0, 0, 0, 63, 0, 0, 64, 192, 0, 0, 192, 63, 0, 0, 0, 192, 0, 0, 176, 192, 0, 0, 0, 192, 0, 0, 144, 192, 0, 0, 0, 192, 0, 0, 96, 192, 0, 0, 0, 192, 0, 0, 32, 192, 0, 0, 0, 192, 0, 0, 192, 191, 0, 0, 0, 192, 0, 0, 0, 191, 0, 0, 0, 192, 0, 0, 0, 63, 0, 0, 0, 192, 0, 0, 192, 63, 0, 0, 128, 191, 0, 0, 240, 192, 0, 0, 128, 191, 0, 0, 208, 192, 0, 0, 128, 191, 0, 0, 176, 192, 0, 0, 128, 191, 0, 0, 144, 192, 0, 0, 128, 191, 0, 0, 96, 192, 0, 0, 128, 191, 0, 0, 32, 192, 0, 0, 128, 191, 0, 0, 192, 191, 0, 0, 128, 191, 0, 0, 0, 191, 0, 0, 128, 191, 0, 0, 0, 63, 0, 0, 128, 191, 0, 0, 192, 63, 0, 0, 0, 0, 0, 0, 240, 192, 0, 0, 0, 0, 0, 0, 208, 192, 0, 0, 0, 0, 0, 0, 176, 192, 0, 0, 0, 0, 0, 0, 144, 192, 0, 0, 0, 0, 0, 0, 96, 192, 0, 0, 0, 0, 0, 0, 32, 192, 0, 0, 0, 0, 0, 0, 192, 191, 0, 0, 0, 0, 0, 0, 0, 191, 0, 0, 0, 0, 0, 0, 0, 63, 0, 0, 0, 0, 0, 0, 192, 63, 0, 0, 0, 0, 0, 0, 32, 64, 0, 0, 128, 63, 0, 0, 240, 192, 0, 0, 128, 63, 0, 0, 208, 192, 0, 0, 128, 63, 0, 0, 176, 192, 0, 0, 128, 63, 0, 0, 144, 192, 0, 0, 128, 63, 0, 0, 96, 192, 0, 0, 128, 63, 0, 0, 32, 192, 0, 0, 128, 63, 0, 0, 192, 191, 0, 0, 128, 63, 0, 0, 0, 191, 0, 0, 128, 63, 0, 0, 0, 63, 0, 0, 128, 63, 0, 0, 192, 63, 0, 0, 128, 63, 0, 0, 32, 64, 0, 0, 128, 63, 0, 0, 96, 64, 0, 0, 0, 64, 0, 0, 144, 192, 0, 0, 0, 64, 0, 0, 96, 192, 0, 0, 0, 64, 0, 0, 32, 192, 0, 0, 0, 64, 0, 0, 192, 191, 0, 0, 0, 64, 0, 0, 0, 191, 0, 0, 0, 64, 0, 0, 0, 63, 0, 0, 0, 64, 0, 0, 192, 63, 0, 0, 0, 64, 0, 0, 32, 64, 0, 0, 0, 64, 0, 0, 96, 64, 0, 0, 0, 64, 0, 0, 144, 64, 0, 0, 64, 64, 0, 0, 144, 192, 0, 0, 64, 64, 0, 0, 96, 192, 0, 0, 64, 64, 0, 0, 32, 192, 0, 0, 64, 64, 0, 0, 192, 191, 0, 0, 64, 64, 0, 0, 0, 191, 0, 0, 64, 64, 0, 0, 0, 63, 0, 0, 64, 64, 0, 0, 192, 63, 0, 0, 64, 64, 0, 0, 32, 64, 0, 0, 64, 64, 0, 0, 96, 64, 0, 0, 64, 64, 0, 0, 144, 64, 0, 0, 64, 64, 0, 0, 176, 64, 0, 0, 128, 64, 0, 0, 144, 192, 0, 0, 128, 64, 0, 0, 96, 192, 0, 0, 128, 64, 0, 0, 32, 192, 0, 0, 128, 64, 0, 0, 192, 191, 0, 0, 128, 64, 0, 0, 0, 191, 0, 0, 128, 64, 0, 0, 0, 63, 0, 0, 128, 64, 0, 0, 192, 63, 0, 0, 128, 64, 0, 0, 32, 64, 0, 0, 128, 64, 0, 0, 96, 64, 0, 0, 128, 64, 0, 0, 144, 64, 0, 0, 128, 64, 0, 0, 176, 64, 0, 0, 160, 64, 0, 0, 96, 192, 0, 0, 160, 64, 0, 0, 32, 192, 0, 0, 160, 64, 0, 0, 192, 191, 0, 0, 160, 64, 0, 0, 0, 191, 0, 0, 160, 64, 0, 0, 0, 63, 0, 0, 160, 64, 0, 0, 192, 63, 0, 0, 160, 64, 0, 0, 32, 64, 0, 0, 160, 64, 0, 0, 96, 64, 0, 0, 160, 64, 0, 0, 144, 64, 0, 0, 160, 64, 0, 0, 176, 64, 0, 0, 160, 64, 0, 0, 208, 64, 0, 0, 192, 64, 0, 0, 96, 192, 0, 0, 192, 64, 0, 0, 32, 192, 0, 0, 192, 64, 0, 0, 192, 191, 0, 0, 192, 64, 0, 0, 0, 191, 0, 0, 192, 64, 0, 0, 0, 63, 0, 0, 192, 64, 0, 0, 192, 63, 0, 0, 192, 64, 0, 0, 32, 64, 0, 0, 192, 64, 0, 0, 96, 64, 0, 0, 192, 64, 0, 0, 144, 64, 0, 0, 192, 64, 0, 0, 176, 64, 0, 0, 192, 64, 0, 0, 208, 64, 0, 0, 192, 64, 0, 0, 240, 64, 0, 0, 224, 64, 0, 0, 96, 192, 0, 0, 224, 64, 0, 0, 32, 192, 0, 0, 224, 64, 0, 0, 192, 191, 0, 0, 224, 64, 0, 0, 0, 191, 0, 0, 224, 64, 0, 0, 0, 63, 0, 0, 224, 64, 0, 0, 192, 63, 0, 0, 224, 64, 0, 0, 32, 64, 0, 0, 224, 64, 0, 0, 96, 64, 0, 0, 224, 64, 0, 0, 144, 64, 0, 0, 224, 64, 0, 0, 176, 64, 0, 0, 224, 64, 0, 0, 208, 64, 0, 0, 224, 64, 0, 0, 240, 64, 0, 0, 0, 65, 0, 0, 240, 192, 0, 0, 0, 65, 0, 0, 144, 192, 0, 0, 0, 65, 0, 0, 96, 192, 0, 0, 0, 65, 0, 0, 32, 192, 0, 0, 0, 65, 0, 0, 192, 191, 0, 0, 0, 65, 0, 0, 0, 191, 0, 0, 0, 65, 0, 0, 0, 63, 0, 0, 0, 65, 0, 0, 192, 63, 0, 0, 0, 65, 0, 0, 32, 64, 0, 0, 0, 65, 0, 0, 96, 64, 0, 0, 0, 65, 0, 0, 144, 64, 0, 0, 0, 65, 0, 0, 176, 64, 0, 0, 0, 65, 0, 0, 208, 64, 0, 0, 0, 65, 0, 0, 240, 64, 0, 0, 0, 65, 0, 0, 8, 65, 0, 0, 16, 65, 0, 0, 208, 192, 0, 0, 16, 65, 0, 0, 176, 192, 0, 0, 16, 65, 0, 0, 144, 192, 0, 0, 16, 65, 0, 0, 96, 192, 0, 0, 16, 65, 0, 0, 32, 192, 0, 0, 16, 65, 0, 0, 192, 191, 0, 0, 16, 65, 0, 0, 0, 191, 0, 0, 16, 65, 0, 0, 0, 63, 0, 0, 16, 65, 0, 0, 192, 63, 0, 0, 16, 65, 0, 0, 32, 64, 0, 0, 16, 65, 0, 0, 96, 64, 0, 0, 16, 65, 0, 0, 144, 64, 0, 0, 16, 65, 0, 0, 176, 64, 0, 0, 16, 65, 0, 0, 208, 64, 0, 0, 16, 65, 0, 0, 240, 64, 0, 0, 16, 65, 0, 0, 8, 65, 0, 0, 32, 65, 0, 0, 176, 192, 0, 0, 32, 65, 0, 0, 144, 192, 0, 0, 32, 65, 0, 0, 96, 192, 0, 0, 32, 65, 0, 0, 32, 192, 0, 0, 32, 65, 0, 0, 192, 191, 0, 0, 32, 65, 0, 0, 0, 191, 0, 0, 32, 65, 0, 0, 0, 63, 0, 0, 32, 65, 0, 0, 192, 63, 0, 0, 32, 65, 0, 0, 32, 64, 0, 0, 32, 65, 0, 0, 96, 64, 0, 0, 32, 65, 0, 0, 144, 64, 0, 0, 32, 65, 0, 0, 176, 64, 0, 0, 32, 65, 0, 0, 208, 64, 0, 0, 32, 65, 0, 0, 240, 64, 0, 0, 32, 65, 0, 0, 8, 65, 0, 0, 48, 65, 0, 0, 96, 192, 0, 0, 48, 65, 0, 0, 32, 192, 0, 0, 48, 65, 0, 0, 192, 191, 0, 0, 48, 65, 0, 0, 0, 191, 0, 0, 48, 65, 0, 0, 0, 63, 0, 0, 48, 65, 0, 0, 192, 63, 0, 0, 48, 65, 0, 0, 32, 64, 0, 0, 48, 65, 0, 0, 96, 64, 0, 0, 48, 65, 0, 0, 144, 64, 0, 0, 48, 65, 0, 0, 176, 64, 0, 0, 48, 65, 0, 0, 208, 64, 0, 0, 48, 65, 0, 0, 240, 64, 0, 0, 64, 65, 0, 0, 96, 192, 0, 0, 64, 65, 0, 0, 32, 192, 0, 0, 64, 65, 0, 0, 192, 191, 0, 0, 64, 65, 0, 0, 0, 191, 0, 0, 64, 65, 0, 0, 0, 63, 0, 0, 64, 65, 0, 0, 192, 63, 0, 0, 64, 65, 0, 0, 32, 64, 0, 0, 64, 65, 0, 0, 96, 64, 0, 0, 64, 65, 0, 0, 144, 64, 0, 0, 64, 65, 0, 0, 176, 64, 0, 0, 64, 65, 0, 0, 208, 64, 0, 0, 64, 65, 0, 0, 240, 64, 0, 0, 80, 65, 0, 0, 96, 192, 0, 0, 80, 65, 0, 0, 32, 192, 0, 0, 80, 65, 0, 0, 192, 191, 0, 0, 80, 65, 0, 0, 0, 191, 0, 0, 80, 65, 0, 0, 0, 63, 0, 0, 80, 65, 0, 0, 192, 63, 0, 0, 80, 65, 0, 0, 32, 64, 0, 0, 80, 65, 0, 0, 96, 64, 0, 0, 80, 65, 0, 0, 144, 64, 0, 0, 80, 65, 0, 0, 176, 64, 0, 0, 80, 65, 0, 0, 208, 64, 0, 0, 80, 65, 0, 0, 240, 64, 0, 0, 96, 65, 0, 0, 96, 192, 0, 0, 96, 65, 0, 0, 32, 192, 0, 0, 96, 65, 0, 0, 192, 191, 0, 0, 96, 65, 0, 0, 0, 191, 0, 0, 96, 65, 0, 0, 0, 63, 0, 0, 96, 65, 0, 0, 192, 63, 0, 0, 96, 65, 0, 0, 32, 64, 0, 0, 96, 65, 0, 0, 96, 64, 0, 0, 96, 65, 0, 0, 144, 64, 0, 0, 96, 65, 0, 0, 176, 64, 0, 0, 96, 65, 0, 0, 208, 64, 0, 0, 112, 65, 0, 0, 96, 192, 0, 0, 112, 65, 0, 0, 32, 192, 0, 0, 112, 65, 0, 0, 192, 191, 0, 0, 112, 65, 0, 0, 0, 191, 0, 0, 112, 65, 0, 0, 0, 63, 0, 0, 112, 65, 0, 0, 192, 63, 0, 0, 112, 65, 0, 0, 32, 64, 0, 0, 112, 65, 0, 0, 96, 64, 0, 0, 112, 65, 0, 0, 144, 64, 0, 0, 112, 65, 0, 0, 176, 64, 0, 0, 112, 65, 0, 0, 208, 64, 0, 0, 128, 65, 0, 0, 96, 192, 0, 0, 128, 65, 0, 0, 32, 192, 0, 0, 128, 65, 0, 0, 192, 191, 0, 0, 128, 65, 0, 0, 0, 191, 0, 0, 128, 65, 0, 0, 0, 63, 0, 0, 128, 65, 0, 0, 192, 63, 0, 0, 128, 65, 0, 0, 32, 64, 0, 0, 128, 65, 0, 0, 96, 64, 0, 0, 128, 65, 0, 0, 144, 64, 0, 0, 128, 65, 0, 0, 176, 64, 0, 0, 128, 65, 0, 0, 208, 64, 0, 0, 128, 65, 0, 0, 240, 64, 0, 0, 136, 65, 0, 0, 96, 192, 0, 0, 136, 65, 0, 0, 32, 192, 0, 0, 136, 65, 0, 0, 192, 191, 0, 0, 136, 65, 0, 0, 0, 191, 0, 0, 136, 65, 0, 0, 0, 63, 0, 0, 136, 65, 0, 0, 192, 63, 0, 0, 136, 65, 0, 0, 32, 64, 0, 0, 136, 65, 0, 0, 96, 64, 0, 0, 136, 65, 0, 0, 144, 64, 0, 0, 136, 65, 0, 0, 176, 64, 0, 0, 136, 65, 0, 0, 208, 64, 0, 0, 136, 65, 0, 0, 240, 64, 0, 0, 144, 65, 0, 0, 96, 192, 0, 0, 144, 65, 0, 0, 32, 192, 0, 0, 144, 65, 0, 0, 192, 191, 0, 0, 144, 65, 0, 0, 0, 191, 0, 0, 144, 65, 0, 0, 0, 63, 0, 0, 144, 65, 0, 0, 192, 63, 0, 0, 144, 65, 0, 0, 32, 64, 0, 0, 144, 65, 0, 0, 96, 64, 0, 0, 144, 65, 0, 0, 144, 64, 0, 0, 144, 65, 0, 0, 176, 64, 0, 0, 144, 65, 0, 0, 208, 64, 0, 0, 144, 65, 0, 0, 240, 64, 0, 0, 144, 65, 0, 0, 8, 65, 0, 0, 152, 65, 0, 0, 32, 192, 0, 0, 152, 65, 0, 0, 192, 191, 0, 0, 152, 65, 0, 0, 0, 191, 0, 0, 152, 65, 0, 0, 0, 63, 0, 0, 152, 65, 0, 0, 192, 63, 0, 0, 152, 65, 0, 0, 32, 64, 0, 0, 152, 65, 0, 0, 96, 64, 0, 0, 152, 65, 0, 0, 144, 64, 0, 0, 152, 65, 0, 0, 176, 64, 0, 0, 152, 65, 0, 0, 208, 64, 0, 0, 152, 65, 0, 0, 240, 64, 0, 0, 152, 65, 0, 0, 8, 65, 0, 0, 160, 65, 0, 0, 32, 192, 0, 0, 160, 65, 0, 0, 192, 191, 0, 0, 160, 65, 0, 0, 0, 191, 0, 0, 160, 65, 0, 0, 0, 63, 0, 0, 160, 65, 0, 0, 192, 63, 0, 0, 160, 65, 0, 0, 32, 64, 0, 0, 160, 65, 0, 0, 96, 64, 0, 0, 160, 65, 0, 0, 144, 64, 0, 0, 160, 65, 0, 0, 176, 64, 0, 0, 160, 65, 0, 0, 208, 64, 0, 0, 160, 65, 0, 0, 240, 64, 0, 0, 160, 65, 0, 0, 8, 65, 0, 0, 168, 65, 0, 0, 32, 192, 0, 0, 168, 65, 0, 0, 192, 191, 0, 0, 168, 65, 0, 0, 0, 191, 0, 0, 168, 65, 0, 0, 0, 63, 0, 0, 168, 65, 0, 0, 192, 63, 0, 0, 168, 65, 0, 0, 32, 64, 0, 0, 168, 65, 0, 0, 96, 64, 0, 0, 168, 65, 0, 0, 144, 64, 0, 0, 168, 65, 0, 0, 176, 64, 0, 0, 168, 65, 0, 0, 208, 64, 0, 0, 168, 65, 0, 0, 240, 64, 0, 0, 168, 65, 0, 0, 8, 65, 0, 0, 168, 65, 0, 0, 24, 65, 0, 0, 176, 65, 0, 0, 32, 192, 0, 0, 176, 65, 0, 0, 192, 191, 0, 0, 176, 65, 0, 0, 0, 191, 0, 0, 176, 65, 0, 0, 0, 63, 0, 0, 176, 65, 0, 0, 192, 63, 0, 0, 176, 65, 0, 0, 32, 64, 0, 0, 176, 65, 0, 0, 96, 64, 0, 0, 176, 65, 0, 0, 144, 64, 0, 0, 176, 65, 0, 0, 176, 64, 0, 0, 176, 65, 0, 0, 208, 64, 0, 0, 176, 65, 0, 0, 240, 64, 0, 0, 176, 65, 0, 0, 8, 65, 0, 0, 176, 65, 0, 0, 24, 65, 0, 0, 184, 65, 0, 0, 32, 192, 0, 0, 184, 65, 0, 0, 192, 191, 0, 0, 184, 65, 0, 0, 0, 191, 0, 0, 184, 65, 0, 0, 0, 63, 0, 0, 184, 65, 0, 0, 192, 63, 0, 0, 184, 65, 0, 0, 32, 64, 0, 0, 184, 65, 0, 0, 96, 64, 0, 0, 184, 65, 0, 0, 144, 64, 0, 0, 184, 65, 0, 0, 176, 64, 0, 0, 184, 65, 0, 0, 240, 64, 0, 0, 184, 65, 0, 0, 8, 65, 0, 0, 184, 65, 0, 0, 24, 65, 0, 0, 184, 65, 0, 0, 40, 65, 0, 0, 192, 65, 0, 0, 32, 192, 0, 0, 192, 65, 0, 0, 192, 191, 0, 0, 192, 65, 0, 0, 0, 191, 0, 0, 192, 65, 0, 0, 0, 63, 0, 0, 192, 65, 0, 0, 192, 63, 0, 0, 192, 65, 0, 0, 32, 64, 0, 0, 192, 65, 0, 0, 96, 64, 0, 0, 192, 65, 0, 0, 144, 64, 0, 0, 192, 65, 0, 0, 176, 64, 0, 0, 192, 65, 0, 0, 8, 65, 0, 0, 192, 65, 0, 0, 24, 65, 0, 0, 192, 65, 0, 0, 40, 65, 0, 0, 192, 65, 0, 0, 56, 65, 0, 0, 192, 65, 0, 0, 72, 65, 0, 0, 200, 65, 0, 0, 32, 192, 0, 0, 200, 65, 0, 0, 192, 191, 0, 0, 200, 65, 0, 0, 0, 191, 0, 0, 200, 65, 0, 0, 0, 63, 0, 0, 200, 65, 0, 0, 192, 63, 0, 0, 200, 65, 0, 0, 32, 64, 0, 0, 200, 65, 0, 0, 96, 64, 0, 0, 200, 65, 0, 0, 144, 64, 0, 0, 200, 65, 0, 0, 176, 64, 0, 0, 200, 65, 0, 0, 8, 65, 0, 0, 200, 65, 0, 0, 24, 65, 0, 0, 200, 65, 0, 0, 40, 65, 0, 0, 200, 65, 0, 0, 56, 65, 0, 0, 200, 65, 0, 0, 72, 65, 0, 0, 200, 65, 0, 0, 88, 65, 0, 0, 208, 65, 0, 0, 32, 192, 0, 0, 208, 65, 0, 0, 192, 191, 0, 0, 208, 65, 0, 0, 0, 191, 0, 0, 208, 65, 0, 0, 0, 63, 0, 0, 208, 65, 0, 0, 192, 63, 0, 0, 208, 65, 0, 0, 32, 64, 0, 0, 208, 65, 0, 0, 96, 64, 0, 0, 208, 65, 0, 0, 144, 64, 0, 0, 208, 65, 0, 0, 176, 64, 0, 0, 208, 65, 0, 0, 8, 65, 0, 0, 208, 65, 0, 0, 24, 65, 0, 0, 208, 65, 0, 0, 40, 65, 0, 0, 208, 65, 0, 0, 56, 65, 0, 0, 208, 65, 0, 0, 72, 65, 0, 0, 208, 65, 0, 0, 88, 65, 0, 0, 208, 65, 0, 0, 104, 65, 0, 0, 216, 65, 0, 0, 32, 192, 0, 0, 216, 65, 0, 0, 192, 191, 0, 0, 216, 65, 0, 0, 0, 191, 0, 0, 216, 65, 0, 0, 0, 63, 0, 0, 216, 65, 0, 0, 192, 63, 0, 0, 216, 65, 0, 0, 32, 64, 0, 0, 216, 65, 0, 0, 96, 64, 0, 0, 216, 65, 0, 0, 144, 64, 0, 0, 216, 65, 0, 0, 176, 64, 0, 0, 216, 65, 0, 0, 8, 65, 0, 0, 216, 65, 0, 0, 24, 65, 0, 0, 216, 65, 0, 0, 40, 65, 0, 0, 216, 65, 0, 0, 56, 65, 0, 0, 216, 65, 0, 0, 72, 65, 0, 0, 216, 65, 0, 0, 88, 65, 0, 0, 216, 65, 0, 0, 104, 65, 0, 0, 224, 65, 0, 0, 32, 192, 0, 0, 224, 65, 0, 0, 192, 191, 0, 0, 224, 65, 0, 0, 0, 191, 0, 0, 224, 65, 0, 0, 0, 63, 0, 0, 224, 65, 0, 0, 192, 63, 0, 0, 224, 65, 0, 0, 32, 64, 0, 0, 224, 65, 0, 0, 96, 64, 0, 0, 224, 65, 0, 0, 144, 64, 0, 0, 224, 65, 0, 0, 176, 64, 0, 0, 224, 65, 0, 0, 8, 65, 0, 0, 224, 65, 0, 0, 24, 65, 0, 0, 224, 65, 0, 0, 56, 65, 0, 0, 224, 65, 0, 0, 72, 65, 0, 0, 224, 65, 0, 0, 88, 65, 0, 0, 224, 65, 0, 0, 104, 65, 0, 0, 232, 65, 0, 0, 192, 191, 0, 0, 232, 65, 0, 0, 0, 191, 0, 0, 232, 65, 0, 0, 0, 63, 0, 0, 232, 65, 0, 0, 192, 63, 0, 0, 232, 65, 0, 0, 32, 64, 0, 0, 232, 65, 0, 0, 96, 64, 0, 0, 232, 65, 0, 0, 144, 64, 0, 0, 232, 65, 0, 0, 176, 64, 0, 0, 232, 65, 0, 0, 24, 65, 0, 0, 232, 65, 0, 0, 72, 65, 0, 0, 240, 65, 0, 0, 192, 191, 0, 0, 240, 65, 0, 0, 0, 191, 0, 0, 240, 65, 0, 0, 0, 63, 0, 0, 240, 65, 0, 0, 192, 63, 0, 0, 240, 65, 0, 0, 32, 64, 0, 0, 240, 65, 0, 0, 96, 64, 0, 0, 240, 65, 0, 0, 144, 64, 0, 0, 248, 65, 0, 0, 0, 191, 0, 0, 248, 65, 0, 0, 0, 63, 0, 0, 248, 65, 0, 0, 192, 63, 0, 0, 248, 65, 0, 0, 32, 64, 0, 0, 248, 65, 0, 0, 96, 64, 0, 0, 248, 65, 0, 0, 144, 64, 0, 0, 0, 66, 0, 0, 0, 191, 0, 0, 0, 66, 0, 0, 0, 63, 0, 0, 0, 66, 0, 0, 192, 63, 0, 0, 0, 66, 0, 0, 32, 64, 0, 0, 0, 66, 0, 0, 96, 64, 0, 0, 0, 66, 0, 0, 144, 64, 0, 0, 4, 66, 0, 0, 0, 191, 0, 0, 4, 66, 0, 0, 0, 63, 0, 0, 4, 66, 0, 0, 192, 63, 0, 0, 4, 66, 0, 0, 32, 64, 0, 0, 4, 66, 0, 0, 96, 64, 0, 0, 4, 66, 0, 0, 144, 64, 0, 0, 8, 66, 0, 0, 0, 191, 0, 0, 8, 66, 0, 0, 0, 63, 0, 0, 8, 66, 0, 0, 192, 63, 0, 0, 8, 66, 0, 0, 32, 64, 0, 0, 8, 66, 0, 0, 96, 64, 0, 0, 8, 66, 0, 0, 144, 64, 0, 0, 12, 66, 0, 0, 0, 191, 0, 0, 12, 66, 0, 0, 0, 63, 0, 0, 12, 66, 0, 0, 192, 63, 0, 0, 12, 66, 0, 0, 32, 64, 0, 0, 12, 66, 0, 0, 96, 64, 0, 0, 12, 66, 0, 0, 144, 64, 0, 0, 16, 66, 0, 0, 0, 63, 0, 0, 16, 66, 0, 0, 192, 63, 0, 0, 16, 66, 0, 0, 32, 64, 0, 0, 16, 66, 0, 0, 96, 64, 0, 0, 16, 66, 0, 0, 144, 64, 0, 0, 20, 66, 0, 0, 0, 63, 0, 0, 20, 66, 0, 0, 192, 63, 0, 0, 20, 66, 0, 0, 32, 64, 0, 0, 20, 66, 0, 0, 96, 64, 0, 0, 20, 66, 0, 0, 144, 64, 0, 0, 24, 66, 0, 0, 0, 63, 0, 0, 24, 66, 0, 0, 192, 63, 0, 0, 24, 66, 0, 0, 32, 64, 0, 0, 24, 66, 0, 0, 96, 64, 0, 0, 24, 66, 0, 0, 144, 64, 0, 0, 28, 66, 0, 0, 0, 63, 0, 0, 28, 66, 0, 0, 192, 63, 0, 0, 28, 66, 0, 0, 32, 64, 0, 0, 28, 66, 0, 0, 96, 64, 0, 0, 28, 66, 0, 0, 144, 64, 0, 0, 32, 66, 0, 0, 0, 63, 0, 0, 32, 66, 0, 0, 192, 63, 0, 0, 32, 66, 0, 0, 32, 64, 0, 0, 32, 66, 0, 0, 96, 64, 0, 0, 32, 66, 0, 0, 144, 64, 0, 0, 36, 66, 0, 0, 192, 63, 0, 0, 36, 66, 0, 0, 32, 64, 0, 0, 36, 66, 0, 0, 96, 64, 0, 0, 36, 66, 0, 0, 144, 64, 0, 0, 40, 66, 0, 0, 192, 63, 0, 0, 40, 66, 0, 0, 32, 64, 0, 0, 40, 66, 0, 0, 96, 64, 0, 0, 40, 66, 0, 0, 144, 64, 0, 0, 44, 66, 0, 0, 192, 63, 0, 0, 44, 66, 0, 0, 32, 64, 0, 0, 44, 66, 0, 0, 96, 64, 0, 0, 44, 66, 0, 0, 144, 64, 0, 0, 48, 66, 0, 0, 192, 63, 0, 0, 48, 66, 0, 0, 32, 64, 0, 0, 48, 66, 0, 0, 96, 64, 0, 0, 48, 66, 0, 0, 144, 64, 0, 0, 52, 66, 0, 0, 32, 64, 0, 0, 52, 66, 0, 0, 96, 64, 0, 0, 52, 66, 0, 0, 144, 64, 0, 0, 56, 66, 0, 0, 32, 64, 0, 0, 56, 66, 0, 0, 96, 64, 0, 0, 56, 66, 0, 0, 144, 64, 0, 0, 60, 66, 0, 0, 32, 64, 0, 0, 60, 66, 0, 0, 96, 64, 0, 0, 60, 66, 0, 0, 144, 64, 0, 0, 64, 66, 0, 0, 32, 64, 0, 0, 64, 66, 0, 0, 96, 64, 0, 0, 64, 66, 0, 0, 144, 64, 0, 0, 68, 66, 0, 0, 96, 64, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 46, 162, 186, 153, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 46, 16, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 211, 97, 16, 134, 119, 226, 114, 171, 90, 233, 33, 65, 32, 123, 24, 0, 0, 0, 29, 198, 69, 219, 170, 90, 233, 33, 65, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 46, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 46, 0, 0, 0, 0, 0, 0, 0, 64, 176, 186, 153, 3, 0, 0, 0, 232, 67, 182, 253, 1, 0, 0, 0, 228, 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 98, 112, 108, 105, 115, 116, 49, 55, 160, 227, 16, 0, 0, 0, 0, 0, 0, 127, 17, 21, 98, 111, 111, 116, 115, 116, 114, 97, 112, 58, 119, 105, 116, 104, 82, 101, 112, 108, 121, 58, 0, 127, 17, 66, 118, 49, 51, 54, 64, 48, 58, 56, 123, 63, 61, 64, 64, 64, 64, 64, 100, 123, 67, 71, 82, 101, 99, 116, 61, 123, 67, 71, 80, 111, 105, 110, 116, 61, 100, 100, 125, 123, 67, 71, 83, 105, 122, 101, 61, 100, 100, 125, 125, 81, 73, 66, 66, 66, 66, 64, 66, 125, 49, 54, 64, 63, 49, 50, 56, 0, 160, 227, 16, 0, 0, 0, 0, 0, 0, 208, 151, 1, 0, 0, 0, 0, 0, 0, 119, 36, 99, 108, 97, 115, 115, 0, 127, 17, 43, 78, 83, 82, 101, 109, 111, 116, 101, 86, 105, 101, 119, 67, 111, 110, 116, 114, 111, 108, 108, 101, 114, 80, 97, 114, 97, 109, 101, 116, 101, 114, 115, 70, 111, 114, 83, 101, 114, 118, 105, 99, 101, 0, 127, 17, 24, 118, 105, 101, 119, 70, 114, 97, 109, 101, 73, 110, 83, 99, 114, 101, 101, 110, 67, 111, 111, 114, 100, 115, 0, 79, 17, 32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 127, 17, 15, 115, 97, 102, 101, 65, 114, 101, 97, 73, 110, 115, 101, 116, 115, 0, 79, 17, 32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 127, 17, 25, 100, 101, 99, 108, 105, 110, 101, 78, 111, 110, 75, 101, 121, 98, 111, 97, 114, 100, 69, 118, 101, 110, 116, 115, 0, 65, 0, 127, 17, 31, 115, 101, 114, 118, 105, 99, 101, 86, 105, 101, 119, 67, 111, 110, 116, 114, 111, 108, 108, 101, 114, 67, 108, 97, 115, 115, 78, 97, 109, 101, 0, 111, 17, 22, 84, 0, 85, 0, 73, 0, 67, 0, 117, 0, 114, 0, 115, 0, 111, 0, 114, 0, 85, 0, 73, 0, 86, 0, 105, 0, 101, 0, 119, 0, 83, 0, 101, 0, 114, 0, 118, 0, 105, 0, 99, 0, 101, 0, 79, 18, 142, 14, 98, 112, 108, 105, 115, 116, 48, 48, 212, 1, 2, 3, 4, 5, 6, 7, 10, 88, 36, 118, 101, 114, 115, 105, 111, 110, 89, 36, 97, 114, 99, 104, 105, 118, 101, 114, 84, 36, 116, 111, 112, 88, 36, 111, 98, 106, 101, 99, 116, 115, 18, 0, 1, 134, 160, 95, 16, 15, 78, 83, 75, 101, 121, 101, 100, 65, 114, 99),
 "format": "RGFloat",
@@ -44,7 +1684,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_fwng8"]
-image = SubResource("Image_kqbot")
+image = SubResource("Image_5xluh")
 
 [sub_resource type="Curve" id="Curve_bpj4f"]
 _data = [Vector2(0, 0), 0.0, 1.40127, 0, 0, Vector2(0.350348, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.549166), 0.0, 0.0, 0, 0]
@@ -73,73 +1713,6 @@ color_ramp = SubResource("GradientTexture1D_oj1fi")
 alpha_curve = SubResource("CurveTexture_ectkh")
 hue_variation_min = -0.02
 hue_variation_max = 0.02
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gi1mu"]
-blend_mode = 1
-
-[sub_resource type="Gradient" id="Gradient_rbojw"]
-offsets = PackedFloat32Array(0.37471265, 0.8367816)
-colors = PackedColorArray(0.91, 0.55692, 0.027299974, 1, 1, 0.40600002, 0.00999999, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_cbevi"]
-gradient = SubResource("Gradient_rbojw")
-
-[sub_resource type="Curve" id="Curve_gi1mu"]
-_data = [Vector2(0, 0), 0.0, 8.693908, 0, 0, Vector2(0.18438178, 1), -0.038922437, -0.038922437, 0, 0, Vector2(0.24511933, 0.6595745), 0.0, 0.0, 0, 0, Vector2(0.31236443, 1), 0.0, 0.0, 0, 0, Vector2(0.37527117, 0.62234044), 0.0, 0.0, 0, 0, Vector2(0.4360087, 1), 0.0, 0.0, 0, 0, Vector2(0.48156184, 0.6968086), 0.0, 0.0, 0, 0, Vector2(0.55097616, 1), 0.0, 0.0, 0, 0, Vector2(0.6160521, 0.41096973), 0.0, 0.0, 0, 0, Vector2(0.70065075, 0.93799675), 0.0, 0.0, 0, 0, Vector2(0.7396963, 0.29255325), 0.0, 0.0, 0, 0, Vector2(0.835141, 0.79787236), 0.0, 0.0, 0, 0, Vector2(0.87852496, 0.22872347), 0.0, 0.0, 0, 0, Vector2(0.95444685, 0.6648936), 0.0, 0.0, 0, 0, Vector2(1, 0), -16.858366, 0.0, 0, 0]
-point_count = 15
-
-[sub_resource type="CurveTexture" id="CurveTexture_aatry"]
-curve = SubResource("Curve_gi1mu")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h1q5p"]
-lifetime_randomness = 0.8
-particle_flag_align_y = true
-particle_flag_disable_z = true
-emission_shape_scale = Vector3(5, 5, 1)
-emission_shape = 3
-emission_box_extents = Vector3(1000, 10, 1)
-direction = Vector3(0, 1, 0)
-initial_velocity_min = 100.0
-initial_velocity_max = 1000.0
-gravity = Vector3(0, 150, 0)
-scale_max = 1.5
-scale_curve = SubResource("CurveTexture_aatry")
-color_ramp = SubResource("GradientTexture1D_cbevi")
-hue_variation_min = -0.04000002
-hue_variation_max = 0.039999977
-
-[sub_resource type="Gradient" id="Gradient_cbevi"]
-offsets = PackedFloat32Array(0.0068965517, 0.26206896)
-colors = PackedColorArray(0.91, 0.6418534, 0.2912, 1, 1, 0.40600002, 0.00999999, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_vtvpp"]
-gradient = SubResource("Gradient_cbevi")
-
-[sub_resource type="Curve" id="Curve_p414i"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.086767904, 0.75), 0.0, 0.0, 0, 0, Vector2(0.1626898, 1), 0.0, 0.0, 0, 0, Vector2(0.23210412, 0.55851066), 0.0, 0.0, 0, 0, Vector2(0.29934925, 1), 0.0, 0.0, 0, 0, Vector2(0.362256, 0.7287234), 0.0, 0.0, 0, 0, Vector2(0.4360087, 1), 0.0, 0.0, 0, 0, Vector2(0.48156184, 0.6968086), 0.0, 0.0, 0, 0, Vector2(0.55097616, 1), 0.0, 0.0, 0, 0, Vector2(0.62255967, 0.4202128), 0.0, 0.0, 0, 0, Vector2(0.69848156, 1), 0.0, 0.0, 0, 0, Vector2(0.7657267, 0.29255325), 0.0, 0.0, 0, 0, Vector2(0.84381783, 0.8670213), 0.0, 0.0, 0, 0, Vector2(0.889371, 0.15425539), 0.0, 0.0, 0, 0, Vector2(0.95878524, 0.79787236), 0.0, 0.0, 0, 0, Vector2(1, 0), -16.858366, 0.0, 0, 0]
-point_count = 16
-
-[sub_resource type="CurveTexture" id="CurveTexture_hap1a"]
-curve = SubResource("Curve_p414i")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5xluh"]
-lifetime_randomness = 0.5
-particle_flag_align_y = true
-particle_flag_disable_z = true
-emission_shape_scale = Vector3(5, 5, 1)
-emission_shape = 3
-emission_box_extents = Vector3(20, 10, 1)
-direction = Vector3(0, -1, 0)
-spread = 15.0
-initial_velocity_min = 2000.0
-initial_velocity_max = 5000.0
-gravity = Vector3(0, 500, 0)
-scale_min = 0.79999995
-scale_max = 1.5
-scale_curve = SubResource("CurveTexture_hap1a")
-color_ramp = SubResource("GradientTexture1D_vtvpp")
-hue_variation_min = -0.04000002
-hue_variation_max = 0.039999977
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_k146s"]
 particles_animation = true
@@ -198,7 +1771,7 @@ point_count = 5
 [sub_resource type="CurveTexture" id="CurveTexture_qsugc"]
 curve = SubResource("Curve_uibwi")
 
-[sub_resource type="Image" id="Image_rbojw"]
+[sub_resource type="Image" id="Image_xyr7s"]
 data = {
 "data": PackedByteArray(0, 0, 128, 63, 0, 0, 184, 65, 0, 0, 0, 64, 0, 0, 176, 65, 0, 0, 0, 64, 0, 0, 184, 65, 0, 0, 64, 64, 0, 0, 176, 65, 0, 0, 64, 64, 0, 0, 184, 65, 0, 0, 128, 64, 0, 0, 176, 65, 0, 0, 128, 64, 0, 0, 184, 65, 0, 0, 160, 64, 0, 0, 176, 65, 0, 0, 160, 64, 0, 0, 184, 65, 0, 0, 192, 64, 0, 0, 128, 65, 0, 0, 192, 64, 0, 0, 136, 65, 0, 0, 192, 64, 0, 0, 144, 65, 0, 0, 192, 64, 0, 0, 152, 65, 0, 0, 192, 64, 0, 0, 160, 65, 0, 0, 192, 64, 0, 0, 168, 65, 0, 0, 192, 64, 0, 0, 176, 65, 0, 0, 192, 64, 0, 0, 184, 65, 0, 0, 224, 64, 0, 0, 96, 65, 0, 0, 224, 64, 0, 0, 112, 65, 0, 0, 224, 64, 0, 0, 128, 65, 0, 0, 224, 64, 0, 0, 136, 65, 0, 0, 224, 64, 0, 0, 144, 65, 0, 0, 224, 64, 0, 0, 160, 65, 0, 0, 224, 64, 0, 0, 168, 65, 0, 0, 224, 64, 0, 0, 176, 65, 0, 0, 0, 65, 0, 0, 80, 65, 0, 0, 0, 65, 0, 0, 96, 65, 0, 0, 0, 65, 0, 0, 112, 65, 0, 0, 0, 65, 0, 0, 128, 65, 0, 0, 0, 65, 0, 0, 136, 65, 0, 0, 0, 65, 0, 0, 144, 65, 0, 0, 0, 65, 0, 0, 152, 65, 0, 0, 0, 65, 0, 0, 160, 65, 0, 0, 0, 65, 0, 0, 168, 65, 0, 0, 0, 65, 0, 0, 176, 65, 0, 0, 16, 65, 0, 0, 64, 65, 0, 0, 16, 65, 0, 0, 80, 65, 0, 0, 16, 65, 0, 0, 96, 65, 0, 0, 16, 65, 0, 0, 112, 65, 0, 0, 16, 65, 0, 0, 128, 65, 0, 0, 16, 65, 0, 0, 136, 65, 0, 0, 16, 65, 0, 0, 144, 65, 0, 0, 16, 65, 0, 0, 152, 65, 0, 0, 16, 65, 0, 0, 160, 65, 0, 0, 16, 65, 0, 0, 168, 65, 0, 0, 16, 65, 0, 0, 176, 65, 0, 0, 32, 65, 0, 0, 64, 65, 0, 0, 32, 65, 0, 0, 80, 65, 0, 0, 32, 65, 0, 0, 96, 65, 0, 0, 32, 65, 0, 0, 112, 65, 0, 0, 32, 65, 0, 0, 128, 65, 0, 0, 32, 65, 0, 0, 136, 65, 0, 0, 32, 65, 0, 0, 144, 65, 0, 0, 32, 65, 0, 0, 152, 65, 0, 0, 32, 65, 0, 0, 160, 65, 0, 0, 32, 65, 0, 0, 168, 65, 0, 0, 32, 65, 0, 0, 176, 65, 0, 0, 32, 65, 0, 0, 184, 65, 0, 0, 48, 65, 0, 0, 64, 65, 0, 0, 48, 65, 0, 0, 80, 65, 0, 0, 48, 65, 0, 0, 96, 65, 0, 0, 48, 65, 0, 0, 112, 65, 0, 0, 48, 65, 0, 0, 128, 65, 0, 0, 48, 65, 0, 0, 136, 65, 0, 0, 48, 65, 0, 0, 144, 65, 0, 0, 48, 65, 0, 0, 152, 65, 0, 0, 48, 65, 0, 0, 160, 65, 0, 0, 48, 65, 0, 0, 168, 65, 0, 0, 48, 65, 0, 0, 176, 65, 0, 0, 48, 65, 0, 0, 184, 65, 0, 0, 48, 65, 0, 0, 192, 65, 0, 0, 48, 65, 0, 0, 200, 65, 0, 0, 64, 65, 0, 0, 48, 65, 0, 0, 64, 65, 0, 0, 64, 65, 0, 0, 64, 65, 0, 0, 80, 65, 0, 0, 64, 65, 0, 0, 96, 65, 0, 0, 64, 65, 0, 0, 112, 65, 0, 0, 64, 65, 0, 0, 128, 65, 0, 0, 64, 65, 0, 0, 136, 65, 0, 0, 64, 65, 0, 0, 144, 65, 0, 0, 64, 65, 0, 0, 152, 65, 0, 0, 64, 65, 0, 0, 160, 65, 0, 0, 64, 65, 0, 0, 168, 65, 0, 0, 64, 65, 0, 0, 192, 65, 0, 0, 64, 65, 0, 0, 200, 65, 0, 0, 80, 65, 0, 0, 32, 65, 0, 0, 80, 65, 0, 0, 48, 65, 0, 0, 80, 65, 0, 0, 64, 65, 0, 0, 80, 65, 0, 0, 80, 65, 0, 0, 80, 65, 0, 0, 96, 65, 0, 0, 80, 65, 0, 0, 112, 65, 0, 0, 80, 65, 0, 0, 128, 65, 0, 0, 80, 65, 0, 0, 136, 65, 0, 0, 80, 65, 0, 0, 144, 65, 0, 0, 80, 65, 0, 0, 152, 65, 0, 0, 80, 65, 0, 0, 160, 65, 0, 0, 80, 65, 0, 0, 168, 65, 0, 0, 80, 65, 0, 0, 192, 65, 0, 0, 96, 65, 0, 0, 16, 65, 0, 0, 96, 65, 0, 0, 32, 65, 0, 0, 96, 65, 0, 0, 48, 65, 0, 0, 96, 65, 0, 0, 64, 65, 0, 0, 96, 65, 0, 0, 80, 65, 0, 0, 96, 65, 0, 0, 96, 65, 0, 0, 96, 65, 0, 0, 112, 65, 0, 0, 96, 65, 0, 0, 128, 65, 0, 0, 96, 65, 0, 0, 136, 65, 0, 0, 96, 65, 0, 0, 144, 65, 0, 0, 96, 65, 0, 0, 152, 65, 0, 0, 96, 65, 0, 0, 160, 65, 0, 0, 96, 65, 0, 0, 168, 65, 0, 0, 96, 65, 0, 0, 176, 65, 0, 0, 96, 65, 0, 0, 184, 65, 0, 0, 96, 65, 0, 0, 192, 65, 0, 0, 112, 65, 0, 0, 16, 65, 0, 0, 112, 65, 0, 0, 32, 65, 0, 0, 112, 65, 0, 0, 48, 65, 0, 0, 112, 65, 0, 0, 64, 65, 0, 0, 112, 65, 0, 0, 80, 65, 0, 0, 112, 65, 0, 0, 96, 65, 0, 0, 112, 65, 0, 0, 112, 65, 0, 0, 112, 65, 0, 0, 128, 65, 0, 0, 112, 65, 0, 0, 136, 65, 0, 0, 112, 65, 0, 0, 144, 65, 0, 0, 112, 65, 0, 0, 152, 65, 0, 0, 112, 65, 0, 0, 160, 65, 0, 0, 112, 65, 0, 0, 168, 65, 0, 0, 112, 65, 0, 0, 176, 65, 0, 0, 112, 65, 0, 0, 184, 65, 0, 0, 128, 65, 0, 0, 0, 65, 0, 0, 128, 65, 0, 0, 16, 65, 0, 0, 128, 65, 0, 0, 32, 65, 0, 0, 128, 65, 0, 0, 48, 65, 0, 0, 128, 65, 0, 0, 64, 65, 0, 0, 128, 65, 0, 0, 80, 65, 0, 0, 128, 65, 0, 0, 96, 65, 0, 0, 128, 65, 0, 0, 112, 65, 0, 0, 128, 65, 0, 0, 128, 65, 0, 0, 128, 65, 0, 0, 136, 65, 0, 0, 128, 65, 0, 0, 144, 65, 0, 0, 128, 65, 0, 0, 152, 65, 0, 0, 128, 65, 0, 0, 160, 65, 0, 0, 128, 65, 0, 0, 168, 65, 0, 0, 128, 65, 0, 0, 176, 65, 0, 0, 128, 65, 0, 0, 184, 65, 0, 0, 136, 65, 0, 0, 0, 65, 0, 0, 136, 65, 0, 0, 16, 65, 0, 0, 136, 65, 0, 0, 32, 65, 0, 0, 136, 65, 0, 0, 48, 65, 0, 0, 136, 65, 0, 0, 64, 65, 0, 0, 136, 65, 0, 0, 80, 65, 0, 0, 136, 65, 0, 0, 96, 65, 0, 0, 136, 65, 0, 0, 112, 65, 0, 0, 136, 65, 0, 0, 128, 65, 0, 0, 136, 65, 0, 0, 136, 65, 0, 0, 136, 65, 0, 0, 144, 65, 0, 0, 136, 65, 0, 0, 152, 65, 0, 0, 136, 65, 0, 0, 160, 65, 0, 0, 136, 65, 0, 0, 168, 65, 0, 0, 136, 65, 0, 0, 176, 65, 0, 0, 136, 65, 0, 0, 184, 65, 0, 0, 136, 65, 0, 0, 192, 65, 0, 0, 136, 65, 0, 0, 8, 66, 0, 0, 136, 65, 0, 0, 12, 66, 0, 0, 136, 65, 0, 0, 16, 66, 0, 0, 144, 65, 0, 0, 0, 65, 0, 0, 144, 65, 0, 0, 16, 65, 0, 0, 144, 65, 0, 0, 32, 65, 0, 0, 144, 65, 0, 0, 48, 65, 0, 0, 144, 65, 0, 0, 64, 65, 0, 0, 144, 65, 0, 0, 80, 65, 0, 0, 144, 65, 0, 0, 96, 65, 0, 0, 144, 65, 0, 0, 112, 65, 0, 0, 144, 65, 0, 0, 128, 65, 0, 0, 144, 65, 0, 0, 136, 65, 0, 0, 144, 65, 0, 0, 144, 65, 0, 0, 144, 65, 0, 0, 152, 65, 0, 0, 144, 65, 0, 0, 160, 65, 0, 0, 144, 65, 0, 0, 168, 65, 0, 0, 144, 65, 0, 0, 176, 65, 0, 0, 144, 65, 0, 0, 184, 65, 0, 0, 144, 65, 0, 0, 192, 65, 0, 0, 144, 65, 0, 0, 0, 66, 0, 0, 144, 65, 0, 0, 4, 66, 0, 0, 144, 65, 0, 0, 8, 66, 0, 0, 152, 65, 0, 0, 224, 64, 0, 0, 152, 65, 0, 0, 0, 65, 0, 0, 152, 65, 0, 0, 16, 65, 0, 0, 152, 65, 0, 0, 32, 65, 0, 0, 152, 65, 0, 0, 48, 65, 0, 0, 152, 65, 0, 0, 64, 65, 0, 0, 152, 65, 0, 0, 80, 65, 0, 0, 152, 65, 0, 0, 96, 65, 0, 0, 152, 65, 0, 0, 112, 65, 0, 0, 152, 65, 0, 0, 128, 65, 0, 0, 152, 65, 0, 0, 136, 65, 0, 0, 152, 65, 0, 0, 144, 65, 0, 0, 152, 65, 0, 0, 152, 65, 0, 0, 152, 65, 0, 0, 160, 65, 0, 0, 152, 65, 0, 0, 168, 65, 0, 0, 152, 65, 0, 0, 176, 65, 0, 0, 152, 65, 0, 0, 184, 65, 0, 0, 152, 65, 0, 0, 192, 65, 0, 0, 152, 65, 0, 0, 200, 65, 0, 0, 152, 65, 0, 0, 0, 66, 0, 0, 152, 65, 0, 0, 4, 66, 0, 0, 152, 65, 0, 0, 8, 66, 0, 0, 152, 65, 0, 0, 20, 66, 0, 0, 160, 65, 0, 0, 224, 64, 0, 0, 160, 65, 0, 0, 0, 65, 0, 0, 160, 65, 0, 0, 16, 65, 0, 0, 160, 65, 0, 0, 32, 65, 0, 0, 160, 65, 0, 0, 48, 65, 0, 0, 160, 65, 0, 0, 64, 65, 0, 0, 160, 65, 0, 0, 80, 65, 0, 0, 160, 65, 0, 0, 96, 65, 0, 0, 160, 65, 0, 0, 112, 65, 0, 0, 160, 65, 0, 0, 128, 65, 0, 0, 160, 65, 0, 0, 136, 65, 0, 0, 160, 65, 0, 0, 144, 65, 0, 0, 160, 65, 0, 0, 152, 65, 0, 0, 160, 65, 0, 0, 160, 65, 0, 0, 160, 65, 0, 0, 168, 65, 0, 0, 160, 65, 0, 0, 176, 65, 0, 0, 160, 65, 0, 0, 184, 65, 0, 0, 160, 65, 0, 0, 192, 65, 0, 0, 160, 65, 0, 0, 200, 65, 0, 0, 160, 65, 0, 0, 248, 65, 0, 0, 160, 65, 0, 0, 0, 66, 0, 0, 160, 65, 0, 0, 4, 66, 0, 0, 160, 65, 0, 0, 8, 66, 0, 0, 160, 65, 0, 0, 12, 66, 0, 0, 160, 65, 0, 0, 16, 66, 0, 0, 168, 65, 0, 0, 224, 64, 0, 0, 168, 65, 0, 0, 0, 65, 0, 0, 168, 65, 0, 0, 16, 65, 0, 0, 168, 65, 0, 0, 32, 65, 0, 0, 168, 65, 0, 0, 48, 65, 0, 0, 168, 65, 0, 0, 64, 65, 0, 0, 168, 65, 0, 0, 80, 65, 0, 0, 168, 65, 0, 0, 96, 65, 0, 0, 168, 65, 0, 0, 112, 65, 0, 0, 168, 65, 0, 0, 128, 65, 0, 0, 168, 65, 0, 0, 136, 65, 0, 0, 168, 65, 0, 0, 144, 65, 0, 0, 168, 65, 0, 0, 152, 65, 0, 0, 168, 65, 0, 0, 160, 65, 0, 0, 168, 65, 0, 0, 168, 65, 0, 0, 168, 65, 0, 0, 176, 65, 0, 0, 168, 65, 0, 0, 184, 65, 0, 0, 168, 65, 0, 0, 192, 65, 0, 0, 168, 65, 0, 0, 200, 65, 0, 0, 168, 65, 0, 0, 248, 65, 0, 0, 168, 65, 0, 0, 0, 66, 0, 0, 168, 65, 0, 0, 4, 66, 0, 0, 168, 65, 0, 0, 8, 66, 0, 0, 168, 65, 0, 0, 12, 66, 0, 0, 168, 65, 0, 0, 16, 66, 0, 0, 176, 65, 0, 0, 224, 64, 0, 0, 176, 65, 0, 0, 0, 65, 0, 0, 176, 65, 0, 0, 16, 65, 0, 0, 176, 65, 0, 0, 32, 65, 0, 0, 176, 65, 0, 0, 48, 65, 0, 0, 176, 65, 0, 0, 64, 65, 0, 0, 176, 65, 0, 0, 80, 65, 0, 0, 176, 65, 0, 0, 96, 65, 0, 0, 176, 65, 0, 0, 112, 65, 0, 0, 176, 65, 0, 0, 128, 65, 0, 0, 176, 65, 0, 0, 136, 65, 0, 0, 176, 65, 0, 0, 144, 65, 0, 0, 176, 65, 0, 0, 152, 65, 0, 0, 176, 65, 0, 0, 160, 65, 0, 0, 176, 65, 0, 0, 168, 65, 0, 0, 176, 65, 0, 0, 176, 65, 0, 0, 176, 65, 0, 0, 184, 65, 0, 0, 176, 65, 0, 0, 192, 65, 0, 0, 176, 65, 0, 0, 200, 65, 0, 0, 176, 65, 0, 0, 208, 65, 0, 0, 176, 65, 0, 0, 248, 65, 0, 0, 176, 65, 0, 0, 0, 66, 0, 0, 176, 65, 0, 0, 4, 66, 0, 0, 176, 65, 0, 0, 8, 66, 0, 0, 176, 65, 0, 0, 12, 66, 0, 0, 184, 65, 0, 0, 0, 65, 0, 0, 184, 65, 0, 0, 16, 65, 0, 0, 184, 65, 0, 0, 32, 65, 0, 0, 184, 65, 0, 0, 48, 65, 0, 0, 184, 65, 0, 0, 64, 65, 0, 0, 184, 65, 0, 0, 80, 65, 0, 0, 184, 65, 0, 0, 96, 65, 0, 0, 184, 65, 0, 0, 112, 65, 0, 0, 184, 65, 0, 0, 128, 65, 0, 0, 184, 65, 0, 0, 136, 65, 0, 0, 184, 65, 0, 0, 144, 65, 0, 0, 184, 65, 0, 0, 152, 65, 0, 0, 184, 65, 0, 0, 160, 65, 0, 0, 184, 65, 0, 0, 168, 65, 0, 0, 184, 65, 0, 0, 176, 65, 0, 0, 184, 65, 0, 0, 184, 65, 0, 0, 184, 65, 0, 0, 192, 65, 0, 0, 184, 65, 0, 0, 200, 65, 0, 0, 184, 65, 0, 0, 208, 65, 0, 0, 184, 65, 0, 0, 248, 65, 0, 0, 184, 65, 0, 0, 0, 66, 0, 0, 184, 65, 0, 0, 4, 66, 0, 0, 184, 65, 0, 0, 8, 66, 0, 0, 184, 65, 0, 0, 12, 66, 0, 0, 192, 65, 0, 0, 224, 64, 0, 0, 192, 65, 0, 0, 0, 65, 0, 0, 192, 65, 0, 0, 16, 65, 0, 0, 192, 65, 0, 0, 32, 65, 0, 0, 192, 65, 0, 0, 48, 65, 0, 0, 192, 65, 0, 0, 64, 65, 0, 0, 192, 65, 0, 0, 80, 65, 0, 0, 192, 65, 0, 0, 96, 65, 0, 0, 192, 65, 0, 0, 112, 65, 0, 0, 192, 65, 0, 0, 128, 65, 0, 0, 192, 65, 0, 0, 136, 65, 0, 0, 192, 65, 0, 0, 144, 65, 0, 0, 192, 65, 0, 0, 152, 65, 0, 0, 192, 65, 0, 0, 160, 65, 0, 0, 192, 65, 0, 0, 168, 65, 0, 0, 192, 65, 0, 0, 176, 65, 0, 0, 192, 65, 0, 0, 184, 65, 0, 0, 192, 65, 0, 0, 192, 65, 0, 0, 192, 65, 0, 0, 200, 65, 0, 0, 192, 65, 0, 0, 208, 65, 0, 0, 192, 65, 0, 0, 216, 65, 0, 0, 192, 65, 0, 0, 248, 65, 0, 0, 192, 65, 0, 0, 0, 66, 0, 0, 192, 65, 0, 0, 4, 66, 0, 0, 192, 65, 0, 0, 8, 66, 0, 0, 192, 65, 0, 0, 12, 66, 0, 0, 192, 65, 0, 0, 16, 66, 0, 0, 200, 65, 0, 0, 224, 64, 0, 0, 200, 65, 0, 0, 0, 65, 0, 0, 200, 65, 0, 0, 16, 65, 0, 0, 200, 65, 0, 0, 32, 65, 0, 0, 200, 65, 0, 0, 48, 65, 0, 0, 200, 65, 0, 0, 64, 65, 0, 0, 200, 65, 0, 0, 80, 65, 0, 0, 200, 65, 0, 0, 96, 65, 0, 0, 200, 65, 0, 0, 112, 65, 0, 0, 200, 65, 0, 0, 128, 65, 0, 0, 200, 65, 0, 0, 136, 65, 0, 0, 200, 65, 0, 0, 144, 65, 0, 0, 200, 65, 0, 0, 152, 65, 0, 0, 200, 65, 0, 0, 160, 65, 0, 0, 200, 65, 0, 0, 168, 65, 0, 0, 200, 65, 0, 0, 176, 65, 0, 0, 200, 65, 0, 0, 184, 65, 0, 0, 200, 65, 0, 0, 192, 65, 0, 0, 200, 65, 0, 0, 200, 65, 0, 0, 200, 65, 0, 0, 208, 65, 0, 0, 200, 65, 0, 0, 216, 65, 0, 0, 200, 65, 0, 0, 248, 65, 0, 0, 200, 65, 0, 0, 0, 66, 0, 0, 200, 65, 0, 0, 4, 66, 0, 0, 200, 65, 0, 0, 8, 66, 0, 0, 200, 65, 0, 0, 12, 66, 0, 0, 200, 65, 0, 0, 16, 66, 0, 0, 200, 65, 0, 0, 20, 66, 0, 0, 208, 65, 0, 0, 224, 64, 0, 0, 208, 65, 0, 0, 0, 65, 0, 0, 208, 65, 0, 0, 16, 65, 0, 0, 208, 65, 0, 0, 32, 65, 0, 0, 208, 65, 0, 0, 48, 65, 0, 0, 208, 65, 0, 0, 64, 65, 0, 0, 208, 65, 0, 0, 80, 65, 0, 0, 208, 65, 0, 0, 96, 65, 0, 0, 208, 65, 0, 0, 112, 65, 0, 0, 208, 65, 0, 0, 128, 65, 0, 0, 208, 65, 0, 0, 136, 65, 0, 0, 208, 65, 0, 0, 144, 65, 0, 0, 208, 65, 0, 0, 152, 65, 0, 0, 208, 65, 0, 0, 160, 65, 0, 0, 208, 65, 0, 0, 168, 65, 0, 0, 208, 65, 0, 0, 176, 65, 0, 0, 208, 65, 0, 0, 184, 65, 0, 0, 208, 65, 0, 0, 192, 65, 0, 0, 208, 65, 0, 0, 216, 65, 0, 0, 208, 65, 0, 0, 224, 65, 0, 0, 208, 65, 0, 0, 240, 65, 0, 0, 208, 65, 0, 0, 248, 65, 0, 0, 208, 65, 0, 0, 0, 66, 0, 0, 208, 65, 0, 0, 4, 66, 0, 0, 208, 65, 0, 0, 8, 66, 0, 0, 208, 65, 0, 0, 12, 66, 0, 0, 208, 65, 0, 0, 16, 66, 0, 0, 216, 65, 0, 0, 192, 64, 0, 0, 216, 65, 0, 0, 224, 64, 0, 0, 216, 65, 0, 0, 0, 65, 0, 0, 216, 65, 0, 0, 16, 65, 0, 0, 216, 65, 0, 0, 32, 65, 0, 0, 216, 65, 0, 0, 48, 65, 0, 0, 216, 65, 0, 0, 64, 65, 0, 0, 216, 65, 0, 0, 80, 65, 0, 0, 216, 65, 0, 0, 96, 65, 0, 0, 216, 65, 0, 0, 112, 65, 0, 0, 216, 65, 0, 0, 128, 65, 0, 0, 216, 65, 0, 0, 136, 65, 0, 0, 216, 65, 0, 0, 144, 65, 0, 0, 216, 65, 0, 0, 152, 65, 0, 0, 216, 65, 0, 0, 160, 65, 0, 0, 216, 65, 0, 0, 168, 65, 0, 0, 216, 65, 0, 0, 176, 65, 0, 0, 216, 65, 0, 0, 184, 65, 0, 0, 216, 65, 0, 0, 192, 65, 0, 0, 216, 65, 0, 0, 216, 65, 0, 0, 216, 65, 0, 0, 224, 65, 0, 0, 216, 65, 0, 0, 240, 65, 0, 0, 216, 65, 0, 0, 248, 65, 0, 0, 216, 65, 0, 0, 0, 66, 0, 0, 216, 65, 0, 0, 4, 66, 0, 0, 224, 65, 0, 0, 192, 64, 0, 0, 224, 65, 0, 0, 224, 64, 0, 0, 224, 65, 0, 0, 0, 65, 0, 0, 224, 65, 0, 0, 16, 65, 0, 0, 224, 65, 0, 0, 32, 65, 0, 0, 224, 65, 0, 0, 48, 65, 0, 0, 224, 65, 0, 0, 64, 65, 0, 0, 224, 65, 0, 0, 80, 65, 0, 0, 224, 65, 0, 0, 96, 65, 0, 0, 224, 65, 0, 0, 112, 65, 0, 0, 224, 65, 0, 0, 128, 65, 0, 0, 224, 65, 0, 0, 136, 65, 0, 0, 224, 65, 0, 0, 144, 65, 0, 0, 224, 65, 0, 0, 152, 65, 0, 0, 224, 65, 0, 0, 160, 65, 0, 0, 224, 65, 0, 0, 168, 65, 0, 0, 224, 65, 0, 0, 176, 65, 0, 0, 224, 65, 0, 0, 184, 65, 0, 0, 224, 65, 0, 0, 192, 65, 0, 0, 224, 65, 0, 0, 224, 65, 0, 0, 224, 65, 0, 0, 232, 65, 0, 0, 224, 65, 0, 0, 240, 65, 0, 0, 224, 65, 0, 0, 248, 65, 0, 0, 224, 65, 0, 0, 0, 66, 0, 0, 232, 65, 0, 0, 192, 64, 0, 0, 232, 65, 0, 0, 224, 64, 0, 0, 232, 65, 0, 0, 0, 65, 0, 0, 232, 65, 0, 0, 16, 65, 0, 0, 232, 65, 0, 0, 32, 65, 0, 0, 232, 65, 0, 0, 48, 65, 0, 0, 232, 65, 0, 0, 64, 65, 0, 0, 232, 65, 0, 0, 80, 65, 0, 0, 232, 65, 0, 0, 96, 65, 0, 0, 232, 65, 0, 0, 112, 65, 0, 0, 232, 65, 0, 0, 128, 65, 0, 0, 232, 65, 0, 0, 136, 65, 0, 0, 232, 65, 0, 0, 144, 65, 0, 0, 232, 65, 0, 0, 152, 65, 0, 0, 232, 65, 0, 0, 160, 65, 0, 0, 232, 65, 0, 0, 168, 65, 0, 0, 232, 65, 0, 0, 176, 65, 0, 0, 232, 65, 0, 0, 184, 65, 0, 0, 232, 65, 0, 0, 192, 65, 0, 0, 232, 65, 0, 0, 200, 65, 0, 0, 232, 65, 0, 0, 232, 65, 0, 0, 232, 65, 0, 0, 240, 65, 0, 0, 232, 65, 0, 0, 248, 65, 0, 0, 240, 65, 0, 0, 192, 64, 0, 0, 240, 65, 0, 0, 224, 64, 0, 0, 240, 65, 0, 0, 0, 65, 0, 0, 240, 65, 0, 0, 16, 65, 0, 0, 240, 65, 0, 0, 32, 65, 0, 0, 240, 65, 0, 0, 48, 65, 0, 0, 240, 65, 0, 0, 64, 65, 0, 0, 240, 65, 0, 0, 80, 65, 0, 0, 240, 65, 0, 0, 96, 65, 0, 0, 240, 65, 0, 0, 112, 65, 0, 0, 240, 65, 0, 0, 128, 65, 0, 0, 240, 65, 0, 0, 136, 65, 0, 0, 240, 65, 0, 0, 144, 65, 0, 0, 240, 65, 0, 0, 152, 65, 0, 0, 240, 65, 0, 0, 160, 65, 0, 0, 240, 65, 0, 0, 168, 65, 0, 0, 240, 65, 0, 0, 176, 65, 0, 0, 240, 65, 0, 0, 184, 65, 0, 0, 240, 65, 0, 0, 192, 65, 0, 0, 240, 65, 0, 0, 200, 65, 0, 0, 240, 65, 0, 0, 224, 65, 0, 0, 240, 65, 0, 0, 232, 65, 0, 0, 240, 65, 0, 0, 240, 65, 0, 0, 248, 65, 0, 0, 192, 64, 0, 0, 248, 65, 0, 0, 224, 64, 0, 0, 248, 65, 0, 0, 0, 65, 0, 0, 248, 65, 0, 0, 16, 65, 0, 0, 248, 65, 0, 0, 32, 65, 0, 0, 248, 65, 0, 0, 48, 65, 0, 0, 248, 65, 0, 0, 64, 65, 0, 0, 248, 65, 0, 0, 80, 65, 0, 0, 248, 65, 0, 0, 96, 65, 0, 0, 248, 65, 0, 0, 112, 65, 0, 0, 248, 65, 0, 0, 128, 65, 0, 0, 248, 65, 0, 0, 136, 65, 0, 0, 248, 65, 0, 0, 144, 65, 0, 0, 248, 65, 0, 0, 152, 65, 0, 0, 248, 65, 0, 0, 160, 65, 0, 0, 248, 65, 0, 0, 168, 65, 0, 0, 248, 65, 0, 0, 176, 65, 0, 0, 248, 65, 0, 0, 184, 65, 0, 0, 248, 65, 0, 0, 192, 65, 0, 0, 248, 65, 0, 0, 200, 65, 0, 0, 248, 65, 0, 0, 216, 65, 0, 0, 248, 65, 0, 0, 224, 65, 0, 0, 248, 65, 0, 0, 232, 65, 0, 0, 248, 65, 0, 0, 240, 65, 0, 0, 0, 66, 0, 0, 128, 63, 0, 0, 0, 66, 0, 0, 192, 64, 0, 0, 0, 66, 0, 0, 224, 64, 0, 0, 0, 66, 0, 0, 0, 65, 0, 0, 0, 66, 0, 0, 16, 65, 0, 0, 0, 66, 0, 0, 32, 65, 0, 0, 0, 66, 0, 0, 48, 65, 0, 0, 0, 66, 0, 0, 64, 65, 0, 0, 0, 66, 0, 0, 80, 65, 0, 0, 0, 66, 0, 0, 96, 65, 0, 0, 0, 66, 0, 0, 112, 65, 0, 0, 0, 66, 0, 0, 128, 65, 0, 0, 0, 66, 0, 0, 136, 65, 0, 0, 0, 66, 0, 0, 144, 65, 0, 0, 0, 66, 0, 0, 152, 65, 0, 0, 0, 66, 0, 0, 160, 65, 0, 0, 0, 66, 0, 0, 168, 65, 0, 0, 0, 66, 0, 0, 176, 65, 0, 0, 0, 66, 0, 0, 184, 65, 0, 0, 0, 66, 0, 0, 192, 65, 0, 0, 0, 66, 0, 0, 200, 65, 0, 0, 0, 66, 0, 0, 208, 65, 0, 0, 0, 66, 0, 0, 216, 65, 0, 0, 0, 66, 0, 0, 224, 65, 0, 0, 0, 66, 0, 0, 232, 65, 0, 0, 4, 66, 0, 0, 0, 0, 0, 0, 4, 66, 0, 0, 128, 63, 0, 0, 4, 66, 0, 0, 0, 64, 0, 0, 4, 66, 0, 0, 64, 64, 0, 0, 4, 66, 0, 0, 128, 64, 0, 0, 4, 66, 0, 0, 192, 64, 0, 0, 4, 66, 0, 0, 224, 64, 0, 0, 4, 66, 0, 0, 0, 65, 0, 0, 4, 66, 0, 0, 16, 65, 0, 0, 4, 66, 0, 0, 32, 65, 0, 0, 4, 66, 0, 0, 48, 65, 0, 0, 4, 66, 0, 0, 64, 65, 0, 0, 4, 66, 0, 0, 80, 65, 0, 0, 4, 66, 0, 0, 96, 65, 0, 0, 4, 66, 0, 0, 112, 65, 0, 0, 4, 66, 0, 0, 128, 65, 0, 0, 4, 66, 0, 0, 136, 65, 0, 0, 4, 66, 0, 0, 144, 65, 0, 0, 4, 66, 0, 0, 152, 65, 0, 0, 4, 66, 0, 0, 160, 65, 0, 0, 4, 66, 0, 0, 168, 65, 0, 0, 4, 66, 0, 0, 176, 65, 0, 0, 4, 66, 0, 0, 184, 65, 0, 0, 4, 66, 0, 0, 192, 65, 0, 0, 4, 66, 0, 0, 200, 65, 0, 0, 4, 66, 0, 0, 208, 65, 0, 0, 4, 66, 0, 0, 216, 65, 0, 0, 4, 66, 0, 0, 224, 65, 0, 0, 4, 66, 0, 0, 232, 65, 0, 0, 8, 66, 0, 0, 128, 63, 0, 0, 8, 66, 0, 0, 0, 64, 0, 0, 8, 66, 0, 0, 64, 64, 0, 0, 8, 66, 0, 0, 128, 64, 0, 0, 8, 66, 0, 0, 160, 64, 0, 0, 8, 66, 0, 0, 192, 64, 0, 0, 8, 66, 0, 0, 224, 64, 0, 0, 8, 66, 0, 0, 0, 65, 0, 0, 8, 66, 0, 0, 16, 65, 0, 0, 8, 66, 0, 0, 32, 65, 0, 0, 8, 66, 0, 0, 48, 65, 0, 0, 8, 66, 0, 0, 64, 65, 0, 0, 8, 66, 0, 0, 80, 65, 0, 0, 8, 66, 0, 0, 96, 65, 0, 0, 8, 66, 0, 0, 112, 65, 0, 0, 8, 66, 0, 0, 128, 65, 0, 0, 8, 66, 0, 0, 136, 65, 0, 0, 8, 66, 0, 0, 144, 65, 0, 0, 8, 66, 0, 0, 152, 65, 0, 0, 8, 66, 0, 0, 160, 65, 0, 0, 8, 66, 0, 0, 168, 65, 0, 0, 8, 66, 0, 0, 176, 65, 0, 0, 8, 66, 0, 0, 184, 65, 0, 0, 8, 66, 0, 0, 192, 65, 0, 0, 8, 66, 0, 0, 200, 65, 0, 0, 8, 66, 0, 0, 208, 65, 0, 0, 8, 66, 0, 0, 216, 65, 0, 0, 8, 66, 0, 0, 224, 65, 0, 0, 12, 66, 0, 0, 160, 64, 0, 0, 12, 66, 0, 0, 192, 64, 0, 0, 12, 66, 0, 0, 224, 64, 0, 0, 12, 66, 0, 0, 0, 65, 0, 0, 12, 66, 0, 0, 16, 65, 0, 0, 12, 66, 0, 0, 32, 65, 0, 0, 12, 66, 0, 0, 48, 65, 0, 0, 12, 66, 0, 0, 64, 65, 0, 0, 12, 66, 0, 0, 80, 65, 0, 0, 12, 66, 0, 0, 96, 65, 0, 0, 12, 66, 0, 0, 112, 65, 0, 0, 12, 66, 0, 0, 128, 65, 0, 0, 12, 66, 0, 0, 136, 65, 0, 0, 12, 66, 0, 0, 144, 65, 0, 0, 12, 66, 0, 0, 152, 65, 0, 0, 12, 66, 0, 0, 160, 65, 0, 0, 12, 66, 0, 0, 168, 65, 0, 0, 12, 66, 0, 0, 176, 65, 0, 0, 12, 66, 0, 0, 184, 65, 0, 0, 12, 66, 0, 0, 192, 65, 0, 0, 12, 66, 0, 0, 200, 65, 0, 0, 12, 66, 0, 0, 208, 65, 0, 0, 12, 66, 0, 0, 216, 65, 0, 0, 12, 66, 0, 0, 224, 65, 0, 0, 16, 66, 0, 0, 192, 64, 0, 0, 16, 66, 0, 0, 224, 64, 0, 0, 16, 66, 0, 0, 0, 65, 0, 0, 16, 66, 0, 0, 16, 65, 0, 0, 16, 66, 0, 0, 32, 65, 0, 0, 16, 66, 0, 0, 48, 65, 0, 0, 16, 66, 0, 0, 64, 65, 0, 0, 16, 66, 0, 0, 80, 65, 0, 0, 16, 66, 0, 0, 96, 65, 0, 0, 16, 66, 0, 0, 112, 65, 0, 0, 16, 66, 0, 0, 128, 65, 0, 0, 16, 66, 0, 0, 136, 65, 0, 0, 16, 66, 0, 0, 144, 65, 0, 0, 16, 66, 0, 0, 152, 65, 0, 0, 16, 66, 0, 0, 160, 65, 0, 0, 16, 66, 0, 0, 168, 65, 0, 0, 16, 66, 0, 0, 176, 65, 0, 0, 16, 66, 0, 0, 184, 65, 0, 0, 16, 66, 0, 0, 192, 65, 0, 0, 16, 66, 0, 0, 200, 65, 0, 0, 16, 66, 0, 0, 208, 65, 0, 0, 16, 66, 0, 0, 216, 65, 0, 0, 16, 66, 0, 0, 224, 65, 0, 0, 20, 66, 0, 0, 192, 64, 0, 0, 20, 66, 0, 0, 224, 64, 0, 0, 20, 66, 0, 0, 0, 65, 0, 0, 20, 66, 0, 0, 16, 65, 0, 0, 20, 66, 0, 0, 32, 65, 0, 0, 20, 66, 0, 0, 48, 65, 0, 0, 20, 66, 0, 0, 64, 65, 0, 0, 20, 66, 0, 0, 80, 65, 0, 0, 20, 66, 0, 0, 96, 65, 0, 0, 20, 66, 0, 0, 112, 65, 0, 0, 20, 66, 0, 0, 128, 65, 0, 0, 20, 66, 0, 0, 136, 65, 0, 0, 20, 66, 0, 0, 144, 65, 0, 0, 20, 66, 0, 0, 152, 65, 0, 0, 20, 66, 0, 0, 160, 65, 0, 0, 20, 66, 0, 0, 168, 65, 0, 0, 20, 66, 0, 0, 176, 65, 0, 0, 20, 66, 0, 0, 184, 65, 0, 0, 20, 66, 0, 0, 192, 65, 0, 0, 20, 66, 0, 0, 200, 65, 0, 0, 20, 66, 0, 0, 208, 65, 0, 0, 20, 66, 0, 0, 216, 65, 0, 0, 24, 66, 0, 0, 224, 64, 0, 0, 24, 66, 0, 0, 0, 65, 0, 0, 24, 66, 0, 0, 16, 65, 0, 0, 24, 66, 0, 0, 32, 65, 0, 0, 24, 66, 0, 0, 48, 65, 0, 0, 24, 66, 0, 0, 64, 65, 0, 0, 24, 66, 0, 0, 80, 65, 0, 0, 24, 66, 0, 0, 96, 65, 0, 0, 24, 66, 0, 0, 112, 65, 0, 0, 24, 66, 0, 0, 128, 65, 0, 0, 24, 66, 0, 0, 136, 65, 0, 0, 24, 66, 0, 0, 144, 65, 0, 0, 24, 66, 0, 0, 152, 65, 0, 0, 24, 66, 0, 0, 160, 65, 0, 0, 24, 66, 0, 0, 168, 65, 0, 0, 24, 66, 0, 0, 176, 65, 0, 0, 24, 66, 0, 0, 184, 65, 0, 0, 24, 66, 0, 0, 192, 65, 0, 0, 24, 66, 0, 0, 200, 65, 0, 0, 24, 66, 0, 0, 208, 65, 0, 0, 28, 66, 0, 0, 192, 64, 0, 0, 28, 66, 0, 0, 224, 64, 0, 0, 28, 66, 0, 0, 0, 65, 0, 0, 28, 66, 0, 0, 16, 65, 0, 0, 28, 66, 0, 0, 32, 65, 0, 0, 28, 66, 0, 0, 48, 65, 0, 0, 28, 66, 0, 0, 64, 65, 0, 0, 28, 66, 0, 0, 80, 65, 0, 0, 28, 66, 0, 0, 96, 65, 0, 0, 28, 66, 0, 0, 112, 65, 0, 0, 28, 66, 0, 0, 128, 65, 0, 0, 28, 66, 0, 0, 136, 65, 0, 0, 28, 66, 0, 0, 144, 65, 0, 0, 28, 66, 0, 0, 152, 65, 0, 0, 28, 66, 0, 0, 160, 65, 0, 0, 28, 66, 0, 0, 168, 65, 0, 0, 28, 66, 0, 0, 176, 65, 0, 0, 28, 66, 0, 0, 184, 65, 0, 0, 28, 66, 0, 0, 192, 65, 0, 0, 28, 66, 0, 0, 200, 65, 0, 0, 32, 66, 0, 0, 160, 64, 0, 0, 32, 66, 0, 0, 192, 64, 0, 0, 32, 66, 0, 0, 224, 64, 0, 0, 32, 66, 0, 0, 0, 65, 0, 0, 32, 66, 0, 0, 16, 65, 0, 0, 32, 66, 0, 0, 32, 65, 0, 0, 32, 66, 0, 0, 48, 65, 0, 0, 32, 66, 0, 0, 64, 65, 0, 0, 32, 66, 0, 0, 80, 65, 0, 0, 32, 66, 0, 0, 96, 65, 0, 0, 32, 66, 0, 0, 112, 65, 0, 0, 32, 66, 0, 0, 128, 65, 0, 0, 32, 66, 0, 0, 136, 65, 0, 0, 32, 66, 0, 0, 144, 65, 0, 0, 32, 66, 0, 0, 152, 65, 0, 0, 32, 66, 0, 0, 160, 65, 0, 0, 32, 66, 0, 0, 168, 65, 0, 0, 32, 66, 0, 0, 176, 65, 0, 0, 32, 66, 0, 0, 184, 65, 0, 0, 32, 66, 0, 0, 192, 65, 0, 0, 32, 66, 0, 0, 200, 65, 0, 0, 36, 66, 0, 0, 160, 64, 0, 0, 36, 66, 0, 0, 192, 64, 0, 0, 36, 66, 0, 0, 224, 64, 0, 0, 36, 66, 0, 0, 0, 65, 0, 0, 36, 66, 0, 0, 16, 65, 0, 0, 36, 66, 0, 0, 32, 65, 0, 0, 36, 66, 0, 0, 48, 65, 0, 0, 36, 66, 0, 0, 64, 65, 0, 0, 36, 66, 0, 0, 80, 65, 0, 0, 36, 66, 0, 0, 96, 65, 0, 0, 36, 66, 0, 0, 112, 65, 0, 0, 36, 66, 0, 0, 128, 65, 0, 0, 36, 66, 0, 0, 136, 65, 0, 0, 36, 66, 0, 0, 144, 65, 0, 0, 36, 66, 0, 0, 152, 65, 0, 0, 36, 66, 0, 0, 160, 65, 0, 0, 36, 66, 0, 0, 168, 65, 0, 0, 36, 66, 0, 0, 176, 65, 0, 0, 36, 66, 0, 0, 184, 65, 0, 0, 36, 66, 0, 0, 192, 65, 0, 0, 36, 66, 0, 0, 200, 65, 0, 0, 40, 66, 0, 0, 64, 64, 0, 0, 40, 66, 0, 0, 128, 64, 0, 0, 40, 66, 0, 0, 160, 64, 0, 0, 40, 66, 0, 0, 192, 64, 0, 0, 40, 66, 0, 0, 224, 64, 0, 0, 40, 66, 0, 0, 32, 65, 0, 0, 40, 66, 0, 0, 48, 65, 0, 0, 40, 66, 0, 0, 64, 65, 0, 0, 40, 66, 0, 0, 80, 65, 0, 0, 40, 66, 0, 0, 96, 65, 0, 0, 40, 66, 0, 0, 112, 65, 0, 0, 40, 66, 0, 0, 128, 65, 0, 0, 40, 66, 0, 0, 136, 65, 0, 0, 40, 66, 0, 0, 144, 65, 0, 0, 40, 66, 0, 0, 152, 65, 0, 0, 40, 66, 0, 0, 160, 65, 0, 0, 40, 66, 0, 0, 168, 65, 0, 0, 40, 66, 0, 0, 176, 65, 0, 0, 40, 66, 0, 0, 184, 65, 0, 0, 40, 66, 0, 0, 192, 65, 0, 0, 44, 66, 0, 0, 64, 64, 0, 0, 44, 66, 0, 0, 128, 64, 0, 0, 44, 66, 0, 0, 160, 64, 0, 0, 44, 66, 0, 0, 192, 64, 0, 0, 44, 66, 0, 0, 48, 65, 0, 0, 44, 66, 0, 0, 64, 65, 0, 0, 44, 66, 0, 0, 80, 65, 0, 0, 44, 66, 0, 0, 96, 65, 0, 0, 44, 66, 0, 0, 112, 65, 0, 0, 44, 66, 0, 0, 128, 65, 0, 0, 44, 66, 0, 0, 136, 65, 0, 0, 44, 66, 0, 0, 144, 65, 0, 0, 44, 66, 0, 0, 152, 65, 0, 0, 44, 66, 0, 0, 160, 65, 0, 0, 44, 66, 0, 0, 168, 65, 0, 0, 44, 66, 0, 0, 176, 65, 0, 0, 44, 66, 0, 0, 184, 65, 0, 0, 44, 66, 0, 0, 192, 65, 0, 0, 48, 66, 0, 0, 128, 64, 0, 0, 48, 66, 0, 0, 160, 64, 0, 0, 48, 66, 0, 0, 64, 65, 0, 0, 48, 66, 0, 0, 80, 65, 0, 0, 48, 66, 0, 0, 96, 65, 0, 0, 48, 66, 0, 0, 112, 65, 0, 0, 48, 66, 0, 0, 128, 65, 0, 0, 48, 66, 0, 0, 136, 65, 0, 0, 48, 66, 0, 0, 144, 65, 0, 0, 48, 66, 0, 0, 152, 65, 0, 0, 48, 66, 0, 0, 160, 65, 0, 0, 48, 66, 0, 0, 168, 65, 0, 0, 48, 66, 0, 0, 176, 65, 0, 0, 48, 66, 0, 0, 184, 65, 0, 0, 52, 66, 0, 0, 64, 65, 0, 0, 52, 66, 0, 0, 80, 65, 0, 0, 52, 66, 0, 0, 96, 65, 0, 0, 52, 66, 0, 0, 112, 65, 0, 0, 52, 66, 0, 0, 128, 65, 0, 0, 52, 66, 0, 0, 136, 65, 0, 0, 52, 66, 0, 0, 144, 65, 0, 0, 52, 66, 0, 0, 152, 65, 0, 0, 52, 66, 0, 0, 160, 65, 0, 0, 52, 66, 0, 0, 168, 65, 0, 0, 56, 66, 0, 0, 80, 65, 0, 0, 56, 66, 0, 0, 96, 65, 0, 0, 56, 66, 0, 0, 112, 65, 0, 0, 56, 66, 0, 0, 128, 65, 0, 0, 56, 66, 0, 0, 136, 65, 0, 0, 56, 66, 0, 0, 144, 65, 0, 0, 56, 66, 0, 0, 152, 65, 0, 0, 56, 66, 0, 0, 160, 65, 0, 0, 56, 66, 0, 0, 168, 65, 0, 0, 60, 66, 0, 0, 96, 65, 0, 0, 60, 66, 0, 0, 112, 65, 0, 0, 60, 66, 0, 0, 128, 65, 0, 0, 60, 66, 0, 0, 136, 65, 0, 0, 60, 66, 0, 0, 144, 65, 0, 0, 60, 66, 0, 0, 152, 65, 0, 0, 60, 66, 0, 0, 160, 65, 0, 0, 60, 66, 0, 0, 168, 65, 0, 0, 64, 66, 0, 0, 96, 65, 0, 0, 64, 66, 0, 0, 112, 65, 0, 0, 64, 66, 0, 0, 128, 65, 0, 0, 64, 66, 0, 0, 136, 65, 0, 0, 64, 66, 0, 0, 144, 65, 0, 0, 64, 66, 0, 0, 152, 65, 0, 0, 64, 66, 0, 0, 160, 65, 0, 0, 64, 66, 0, 0, 168, 65, 0, 0, 68, 66, 0, 0, 64, 65, 0, 0, 68, 66, 0, 0, 80, 65, 0, 0, 68, 66, 0, 0, 96, 65, 0, 0, 68, 66, 0, 0, 112, 65, 0, 0, 68, 66, 0, 0, 128, 65, 0, 0, 68, 66, 0, 0, 136, 65, 0, 0, 68, 66, 0, 0, 144, 65, 0, 0, 68, 66, 0, 0, 152, 65, 0, 0, 68, 66, 0, 0, 160, 65, 0, 0, 68, 66, 0, 0, 168, 65, 0, 0, 72, 66, 0, 0, 64, 65, 0, 0, 72, 66, 0, 0, 80, 65, 0, 0, 72, 66, 0, 0, 96, 65, 0, 0, 72, 66, 0, 0, 112, 65, 0, 0, 72, 66, 0, 0, 128, 65, 0, 0, 72, 66, 0, 0, 136, 65, 0, 0, 72, 66, 0, 0, 144, 65, 0, 0, 72, 66, 0, 0, 152, 65, 0, 0, 72, 66, 0, 0, 160, 65, 0, 0, 72, 66, 0, 0, 168, 65, 0, 0, 72, 66, 0, 0, 176, 65, 0, 0, 76, 66, 0, 0, 64, 65, 0, 0, 76, 66, 0, 0, 80, 65, 0, 0, 76, 66, 0, 0, 96, 65, 0, 0, 76, 66, 0, 0, 112, 65, 0, 0, 76, 66, 0, 0, 128, 65, 0, 0, 76, 66, 0, 0, 136, 65, 0, 0, 76, 66, 0, 0, 144, 65, 0, 0, 76, 66, 0, 0, 152, 65, 0, 0, 76, 66, 0, 0, 160, 65, 0, 0, 76, 66, 0, 0, 168, 65, 0, 0, 76, 66, 0, 0, 176, 65, 0, 0, 76, 66, 0, 0, 184, 65, 0, 0, 80, 66, 0, 0, 112, 65, 0, 0, 80, 66, 0, 0, 128, 65, 0, 0, 80, 66, 0, 0, 136, 65, 0, 0, 80, 66, 0, 0, 144, 65, 0, 0, 80, 66, 0, 0, 152, 65, 0, 0, 80, 66, 0, 0, 160, 65, 0, 0, 80, 66, 0, 0, 168, 65, 0, 0, 80, 66, 0, 0, 176, 65, 0, 0, 80, 66, 0, 0, 184, 65, 0, 0, 80, 66, 0, 0, 192, 65, 0, 0, 84, 66, 0, 0, 112, 65, 0, 0, 84, 66, 0, 0, 128, 65, 0, 0, 84, 66, 0, 0, 136, 65, 0, 0, 84, 66, 0, 0, 144, 65, 0, 0, 84, 66, 0, 0, 152, 65, 0, 0, 84, 66, 0, 0, 160, 65, 0, 0, 84, 66, 0, 0, 168, 65, 0, 0, 84, 66, 0, 0, 176, 65, 0, 0, 84, 66, 0, 0, 184, 65, 0, 0, 84, 66, 0, 0, 192, 65, 0, 0, 84, 66, 0, 0, 200, 65, 0, 0, 88, 66, 0, 0, 112, 65, 0, 0, 88, 66, 0, 0, 128, 65, 0, 0, 88, 66, 0, 0, 136, 65, 0, 0, 88, 66, 0, 0, 144, 65, 0, 0, 88, 66, 0, 0, 152, 65, 0, 0, 88, 66, 0, 0, 160, 65, 0, 0, 88, 66, 0, 0, 168, 65, 0, 0, 88, 66, 0, 0, 176, 65, 0, 0, 88, 66, 0, 0, 184, 65, 0, 0, 88, 66, 0, 0, 192, 65, 0, 0, 88, 66, 0, 0, 200, 65, 0, 0, 92, 66, 0, 0, 128, 65, 0, 0, 92, 66, 0, 0, 136, 65, 0, 0, 92, 66, 0, 0, 144, 65, 0, 0, 92, 66, 0, 0, 152, 65, 0, 0, 92, 66, 0, 0, 160, 65, 0, 0, 92, 66, 0, 0, 168, 65, 0, 0, 92, 66, 0, 0, 176, 65, 0, 0, 92, 66, 0, 0, 184, 65, 0, 0, 92, 66, 0, 0, 192, 65, 0, 0, 92, 66, 0, 0, 200, 65, 0, 0, 92, 66, 0, 0, 208, 65, 0, 0, 96, 66, 0, 0, 128, 65, 0, 0, 96, 66, 0, 0, 136, 65, 0, 0, 96, 66, 0, 0, 144, 65, 0, 0, 96, 66, 0, 0, 152, 65, 0, 0, 96, 66, 0, 0, 160, 65, 0, 0, 96, 66, 0, 0, 168, 65, 0, 0, 96, 66, 0, 0, 176, 65, 0, 0, 96, 66, 0, 0, 184, 65, 0, 0, 96, 66, 0, 0, 192, 65, 0, 0, 96, 66, 0, 0, 200, 65, 0, 0, 96, 66, 0, 0, 208, 65, 0, 0, 96, 66, 0, 0, 216, 65, 0, 0, 100, 66, 0, 0, 128, 65, 0, 0, 100, 66, 0, 0, 136, 65, 0, 0, 100, 66, 0, 0, 144, 65, 0, 0, 100, 66, 0, 0, 152, 65, 0, 0, 100, 66, 0, 0, 160, 65, 0, 0, 100, 66, 0, 0, 168, 65, 0, 0, 100, 66, 0, 0, 176, 65, 0, 0, 100, 66, 0, 0, 184, 65, 0, 0, 100, 66, 0, 0, 192, 65, 0, 0, 100, 66, 0, 0, 200, 65, 0, 0, 100, 66, 0, 0, 208, 65, 0, 0, 100, 66, 0, 0, 216, 65, 0, 0, 104, 66, 0, 0, 64, 65, 0, 0, 104, 66, 0, 0, 112, 65, 0, 0, 104, 66, 0, 0, 128, 65, 0, 0, 104, 66, 0, 0, 136, 65, 0, 0, 104, 66, 0, 0, 144, 65, 0, 0, 104, 66, 0, 0, 152, 65, 0, 0, 104, 66, 0, 0, 160, 65, 0, 0, 104, 66, 0, 0, 168, 65, 0, 0, 104, 66, 0, 0, 176, 65, 0, 0, 104, 66, 0, 0, 184, 65, 0, 0, 104, 66, 0, 0, 192, 65, 0, 0, 104, 66, 0, 0, 200, 65, 0, 0, 104, 66, 0, 0, 208, 65, 0, 0, 104, 66, 0, 0, 216, 65, 0, 0, 104, 66, 0, 0, 224, 65, 0, 0, 108, 66, 0, 0, 80, 65, 0, 0, 108, 66, 0, 0, 96, 65, 0, 0, 108, 66, 0, 0, 112, 65, 0, 0, 108, 66, 0, 0, 128, 65, 0, 0, 108, 66, 0, 0, 136, 65, 0, 0, 108, 66, 0, 0, 144, 65, 0, 0, 108, 66, 0, 0, 152, 65, 0, 0, 108, 66, 0, 0, 160, 65, 0, 0, 108, 66, 0, 0, 168, 65, 0, 0, 108, 66, 0, 0, 176, 65, 0, 0, 108, 66, 0, 0, 184, 65, 0, 0, 108, 66, 0, 0, 192, 65, 0, 0, 108, 66, 0, 0, 200, 65, 0, 0, 108, 66, 0, 0, 208, 65, 0, 0, 108, 66, 0, 0, 216, 65, 0, 0, 108, 66, 0, 0, 224, 65, 0, 0, 112, 66, 0, 0, 96, 65, 0, 0, 112, 66, 0, 0, 112, 65, 0, 0, 112, 66, 0, 0, 128, 65, 0, 0, 112, 66, 0, 0, 136, 65, 0, 0, 112, 66, 0, 0, 144, 65, 0, 0, 112, 66, 0, 0, 152, 65, 0, 0, 112, 66, 0, 0, 160, 65, 0, 0, 112, 66, 0, 0, 168, 65, 0, 0, 112, 66, 0, 0, 176, 65, 0, 0, 112, 66, 0, 0, 184, 65, 0, 0, 112, 66, 0, 0, 192, 65, 0, 0, 112, 66, 0, 0, 200, 65, 0, 0, 112, 66, 0, 0, 208, 65, 0, 0, 112, 66, 0, 0, 216, 65, 0, 0, 112, 66, 0, 0, 224, 65, 0, 0, 116, 66, 0, 0, 128, 65, 0, 0, 116, 66, 0, 0, 136, 65, 0, 0, 116, 66, 0, 0, 144, 65, 0, 0, 116, 66, 0, 0, 152, 65, 0, 0, 116, 66, 0, 0, 160, 65, 0, 0, 116, 66, 0, 0, 168, 65, 0, 0, 116, 66, 0, 0, 176, 65, 0, 0, 116, 66, 0, 0, 184, 65, 0, 0, 116, 66, 0, 0, 192, 65, 0, 0, 116, 66, 0, 0, 200, 65, 0, 0, 116, 66, 0, 0, 208, 65, 0, 0, 116, 66, 0, 0, 216, 65, 0, 0, 120, 66, 0, 0, 128, 65, 0, 0, 120, 66, 0, 0, 136, 65, 0, 0, 120, 66, 0, 0, 144, 65, 0, 0, 120, 66, 0, 0, 152, 65, 0, 0, 120, 66, 0, 0, 160, 65, 0, 0, 120, 66, 0, 0, 168, 65, 0, 0, 120, 66, 0, 0, 176, 65, 0, 0, 120, 66, 0, 0, 184, 65, 0, 0, 120, 66, 0, 0, 192, 65, 0, 0, 120, 66, 0, 0, 200, 65, 0, 0, 120, 66, 0, 0, 208, 65, 0, 0, 120, 66, 0, 0, 216, 65, 0, 0, 124, 66, 0, 0, 128, 65, 0, 0, 124, 66, 0, 0, 136, 65, 0, 0, 124, 66, 0, 0, 144, 65, 0, 0, 124, 66, 0, 0, 152, 65, 0, 0, 124, 66, 0, 0, 160, 65, 0, 0, 124, 66, 0, 0, 168, 65, 0, 0, 124, 66, 0, 0, 176, 65, 0, 0, 124, 66, 0, 0, 184, 65, 0, 0, 124, 66, 0, 0, 192, 65, 0, 0, 124, 66, 0, 0, 200, 65, 0, 0, 124, 66, 0, 0, 208, 65, 0, 0, 124, 66, 0, 0, 216, 65, 0, 0, 128, 66, 0, 0, 128, 65, 0, 0, 128, 66, 0, 0, 136, 65, 0, 0, 128, 66, 0, 0, 144, 65, 0, 0, 128, 66, 0, 0, 152, 65, 0, 0, 128, 66, 0, 0, 160, 65, 0, 0, 128, 66, 0, 0, 168, 65, 0, 0, 128, 66, 0, 0, 176, 65, 0, 0, 128, 66, 0, 0, 184, 65, 0, 0, 128, 66, 0, 0, 192, 65, 0, 0, 128, 66, 0, 0, 200, 65, 0, 0, 128, 66, 0, 0, 208, 65, 0, 0, 130, 66, 0, 0, 128, 65, 0, 0, 130, 66, 0, 0, 136, 65, 0, 0, 130, 66, 0, 0, 144, 65, 0, 0, 130, 66, 0, 0, 152, 65, 0, 0, 130, 66, 0, 0, 160, 65, 0, 0, 130, 66, 0, 0, 168, 65, 0, 0, 130, 66, 0, 0, 176, 65, 0, 0, 130, 66, 0, 0, 184, 65, 0, 0, 130, 66, 0, 0, 192, 65, 0, 0, 130, 66, 0, 0, 200, 65, 0, 0, 130, 66, 0, 0, 208, 65, 0, 0, 132, 66, 0, 0, 128, 65, 0, 0, 132, 66, 0, 0, 136, 65, 0, 0, 132, 66, 0, 0, 144, 65, 0, 0, 132, 66, 0, 0, 152, 65, 0, 0, 132, 66, 0, 0, 160, 65, 0, 0, 132, 66, 0, 0, 168, 65, 0, 0, 132, 66, 0, 0, 176, 65, 0, 0, 132, 66, 0, 0, 184, 65, 0, 0, 132, 66, 0, 0, 192, 65, 0, 0, 132, 66, 0, 0, 200, 65, 0, 0, 132, 66, 0, 0, 208, 65, 0, 0, 132, 66, 0, 0, 216, 65, 0, 0, 134, 66, 0, 0, 128, 65, 0, 0, 134, 66, 0, 0, 136, 65, 0, 0, 134, 66, 0, 0, 144, 65, 0, 0, 134, 66, 0, 0, 152, 65, 0, 0, 134, 66, 0, 0, 160, 65, 0, 0, 134, 66, 0, 0, 168, 65, 0, 0, 134, 66, 0, 0, 176, 65, 0, 0, 134, 66, 0, 0, 184, 65, 0, 0, 134, 66, 0, 0, 192, 65, 0, 0, 134, 66, 0, 0, 200, 65, 0, 0, 134, 66, 0, 0, 208, 65, 0, 0, 134, 66, 0, 0, 216, 65, 0, 0, 136, 66, 0, 0, 128, 65, 0, 0, 136, 66, 0, 0, 136, 65, 0, 0, 136, 66, 0, 0, 144, 65, 0, 0, 136, 66, 0, 0, 152, 65, 0, 0, 136, 66, 0, 0, 160, 65, 0, 0, 136, 66, 0, 0, 168, 65, 0, 0, 136, 66, 0, 0, 176, 65, 0, 0, 136, 66, 0, 0, 184, 65, 0, 0, 136, 66, 0, 0, 192, 65, 0, 0, 136, 66, 0, 0, 200, 65, 0, 0, 136, 66, 0, 0, 208, 65, 0, 0, 136, 66, 0, 0, 216, 65, 0, 0, 136, 66, 0, 0, 224, 65, 0, 0, 138, 66, 0, 0, 136, 65, 0, 0, 138, 66, 0, 0, 144, 65, 0, 0, 138, 66, 0, 0, 152, 65, 0, 0, 138, 66, 0, 0, 160, 65, 0, 0, 138, 66, 0, 0, 168, 65, 0, 0, 138, 66, 0, 0, 176, 65, 0, 0, 138, 66, 0, 0, 184, 65, 0, 0, 138, 66, 0, 0, 192, 65, 0, 0, 138, 66, 0, 0, 200, 65, 0, 0, 138, 66, 0, 0, 208, 65, 0, 0, 138, 66, 0, 0, 216, 65, 0, 0, 138, 66, 0, 0, 224, 65, 0, 0, 140, 66, 0, 0, 136, 65, 0, 0, 140, 66, 0, 0, 144, 65, 0, 0, 140, 66, 0, 0, 152, 65, 0, 0, 140, 66, 0, 0, 160, 65, 0, 0, 140, 66, 0, 0, 168, 65, 0, 0, 140, 66, 0, 0, 176, 65, 0, 0, 140, 66, 0, 0, 184, 65, 0, 0, 140, 66, 0, 0, 192, 65, 0, 0, 140, 66, 0, 0, 200, 65, 0, 0, 140, 66, 0, 0, 208, 65, 0, 0, 140, 66, 0, 0, 216, 65, 0, 0, 140, 66, 0, 0, 224, 65, 0, 0, 142, 66, 0, 0, 136, 65, 0, 0, 142, 66, 0, 0, 144, 65, 0, 0, 142, 66, 0, 0, 152, 65, 0, 0, 142, 66, 0, 0, 160, 65, 0, 0, 142, 66, 0, 0, 168, 65, 0, 0, 142, 66, 0, 0, 176, 65, 0, 0, 142, 66, 0, 0, 184, 65, 0, 0, 142, 66, 0, 0, 192, 65, 0, 0, 142, 66, 0, 0, 200, 65, 0, 0, 142, 66, 0, 0, 208, 65, 0, 0, 142, 66, 0, 0, 216, 65, 0, 0, 142, 66, 0, 0, 224, 65, 0, 0, 142, 66, 0, 0, 232, 65, 0, 0, 144, 66, 0, 0, 136, 65, 0, 0, 144, 66, 0, 0, 144, 65, 0, 0, 144, 66, 0, 0, 152, 65, 0, 0, 144, 66, 0, 0, 160, 65, 0, 0, 144, 66, 0, 0, 168, 65, 0, 0, 144, 66, 0, 0, 176, 65, 0, 0, 144, 66, 0, 0, 184, 65, 0, 0, 144, 66, 0, 0, 192, 65, 0, 0, 144, 66, 0, 0, 200, 65, 0, 0, 144, 66, 0, 0, 208, 65, 0, 0, 144, 66, 0, 0, 216, 65, 0, 0, 144, 66, 0, 0, 224, 65, 0, 0, 144, 66, 0, 0, 232, 65, 0, 0, 146, 66, 0, 0, 136, 65, 0, 0, 146, 66, 0, 0, 144, 65, 0, 0, 146, 66, 0, 0, 152, 65, 0, 0, 146, 66, 0, 0, 160, 65, 0, 0, 146, 66, 0, 0, 168, 65, 0, 0, 146, 66, 0, 0, 176, 65, 0, 0, 146, 66, 0, 0, 184, 65, 0, 0, 146, 66, 0, 0, 192, 65, 0, 0, 146, 66, 0, 0, 200, 65, 0, 0, 146, 66, 0, 0, 216, 65, 0, 0, 146, 66, 0, 0, 224, 65, 0, 0, 146, 66, 0, 0, 232, 65, 0, 0, 146, 66, 0, 0, 240, 65, 0, 0, 148, 66, 0, 0, 136, 65, 0, 0, 148, 66, 0, 0, 144, 65, 0, 0, 148, 66, 0, 0, 152, 65, 0, 0, 148, 66, 0, 0, 160, 65, 0, 0, 148, 66, 0, 0, 168, 65, 0, 0, 148, 66, 0, 0, 176, 65, 0, 0, 148, 66, 0, 0, 184, 65, 0, 0, 148, 66, 0, 0, 192, 65, 0, 0, 148, 66, 0, 0, 200, 65, 0, 0, 148, 66, 0, 0, 224, 65, 0, 0, 148, 66, 0, 0, 232, 65, 0, 0, 148, 66, 0, 0, 240, 65, 0, 0, 148, 66, 0, 0, 248, 65, 0, 0, 148, 66, 0, 0, 0, 66, 0, 0, 150, 66, 0, 0, 136, 65, 0, 0, 150, 66, 0, 0, 144, 65, 0, 0, 150, 66, 0, 0, 152, 65, 0, 0, 150, 66, 0, 0, 160, 65, 0, 0, 150, 66, 0, 0, 168, 65, 0, 0, 150, 66, 0, 0, 176, 65, 0, 0, 150, 66, 0, 0, 184, 65, 0, 0, 150, 66, 0, 0, 192, 65, 0, 0, 150, 66, 0, 0, 200, 65, 0, 0, 150, 66, 0, 0, 224, 65, 0, 0, 150, 66, 0, 0, 232, 65, 0, 0, 150, 66, 0, 0, 240, 65, 0, 0, 150, 66, 0, 0, 248, 65, 0, 0, 150, 66, 0, 0, 0, 66, 0, 0, 150, 66, 0, 0, 4, 66, 0, 0, 152, 66, 0, 0, 136, 65, 0, 0, 152, 66, 0, 0, 144, 65, 0, 0, 152, 66, 0, 0, 152, 65, 0, 0, 152, 66, 0, 0, 160, 65, 0, 0, 152, 66, 0, 0, 168, 65, 0, 0, 152, 66, 0, 0, 176, 65, 0, 0, 152, 66, 0, 0, 184, 65, 0, 0, 152, 66, 0, 0, 192, 65, 0, 0, 152, 66, 0, 0, 200, 65, 0, 0, 152, 66, 0, 0, 224, 65, 0, 0, 152, 66, 0, 0, 232, 65, 0, 0, 152, 66, 0, 0, 240, 65, 0, 0, 152, 66, 0, 0, 248, 65, 0, 0, 152, 66, 0, 0, 0, 66, 0, 0, 152, 66, 0, 0, 4, 66, 0, 0, 152, 66, 0, 0, 8, 66, 0, 0, 154, 66, 0, 0, 136, 65, 0, 0, 154, 66, 0, 0, 144, 65, 0, 0, 154, 66, 0, 0, 152, 65, 0, 0, 154, 66, 0, 0, 160, 65, 0, 0, 154, 66, 0, 0, 168, 65, 0, 0, 154, 66, 0, 0, 176, 65, 0, 0, 154, 66, 0, 0, 184, 65, 0, 0, 154, 66, 0, 0, 192, 65, 0, 0, 154, 66, 0, 0, 200, 65, 0, 0, 154, 66, 0, 0, 224, 65, 0, 0, 154, 66, 0, 0, 232, 65, 0, 0, 154, 66, 0, 0, 240, 65, 0, 0, 154, 66, 0, 0, 248, 65, 0, 0, 154, 66, 0, 0, 0, 66, 0, 0, 154, 66, 0, 0, 4, 66, 0, 0, 154, 66, 0, 0, 8, 66, 0, 0, 156, 66, 0, 0, 136, 65, 0, 0, 156, 66, 0, 0, 144, 65, 0, 0, 156, 66, 0, 0, 152, 65, 0, 0, 156, 66, 0, 0, 160, 65, 0, 0, 156, 66, 0, 0, 168, 65, 0, 0, 156, 66, 0, 0, 176, 65, 0, 0, 156, 66, 0, 0, 184, 65, 0, 0, 156, 66, 0, 0, 192, 65, 0, 0, 156, 66, 0, 0, 200, 65, 0, 0, 156, 66, 0, 0, 224, 65, 0, 0, 156, 66, 0, 0, 232, 65, 0, 0, 156, 66, 0, 0, 248, 65, 0, 0, 156, 66, 0, 0, 0, 66, 0, 0, 156, 66, 0, 0, 4, 66, 0, 0, 156, 66, 0, 0, 8, 66, 0, 0, 158, 66, 0, 0, 144, 65, 0, 0, 158, 66, 0, 0, 152, 65, 0, 0, 158, 66, 0, 0, 160, 65, 0, 0, 158, 66, 0, 0, 168, 65, 0, 0, 158, 66, 0, 0, 176, 65, 0, 0, 158, 66, 0, 0, 184, 65, 0, 0, 158, 66, 0, 0, 192, 65, 0, 0, 158, 66, 0, 0, 200, 65, 0, 0, 158, 66, 0, 0, 232, 65, 0, 0, 158, 66, 0, 0, 0, 66, 0, 0, 160, 66, 0, 0, 144, 65, 0, 0, 160, 66, 0, 0, 152, 65, 0, 0, 160, 66, 0, 0, 160, 65, 0, 0, 160, 66, 0, 0, 168, 65, 0, 0, 160, 66, 0, 0, 176, 65, 0, 0, 160, 66, 0, 0, 184, 65, 0, 0, 160, 66, 0, 0, 192, 65, 0, 0, 162, 66, 0, 0, 152, 65, 0, 0, 162, 66, 0, 0, 160, 65, 0, 0, 162, 66, 0, 0, 168, 65, 0, 0, 162, 66, 0, 0, 176, 65, 0, 0, 162, 66, 0, 0, 184, 65, 0, 0, 162, 66, 0, 0, 192, 65, 0, 0, 164, 66, 0, 0, 152, 65, 0, 0, 164, 66, 0, 0, 160, 65, 0, 0, 164, 66, 0, 0, 168, 65, 0, 0, 164, 66, 0, 0, 176, 65, 0, 0, 164, 66, 0, 0, 184, 65, 0, 0, 164, 66, 0, 0, 192, 65, 0, 0, 166, 66, 0, 0, 152, 65, 0, 0, 166, 66, 0, 0, 160, 65, 0, 0, 166, 66, 0, 0, 168, 65, 0, 0, 166, 66, 0, 0, 176, 65, 0, 0, 166, 66, 0, 0, 184, 65, 0, 0, 166, 66, 0, 0, 192, 65, 0, 0, 168, 66, 0, 0, 152, 65, 0, 0, 168, 66, 0, 0, 160, 65, 0, 0, 168, 66, 0, 0, 168, 65, 0, 0, 168, 66, 0, 0, 176, 65, 0, 0, 168, 66, 0, 0, 184, 65, 0, 0, 168, 66, 0, 0, 192, 65, 0, 0, 170, 66, 0, 0, 152, 65, 0, 0, 170, 66, 0, 0, 160, 65, 0, 0, 170, 66, 0, 0, 168, 65, 0, 0, 170, 66, 0, 0, 176, 65, 0, 0, 170, 66, 0, 0, 184, 65, 0, 0, 170, 66, 0, 0, 192, 65, 0, 0, 172, 66, 0, 0, 160, 65, 0, 0, 172, 66, 0, 0, 168, 65, 0, 0, 172, 66, 0, 0, 176, 65, 0, 0, 172, 66, 0, 0, 184, 65, 0, 0, 172, 66, 0, 0, 192, 65, 0, 0, 174, 66, 0, 0, 160, 65, 0, 0, 174, 66, 0, 0, 168, 65, 0, 0, 174, 66, 0, 0, 176, 65, 0, 0, 174, 66, 0, 0, 184, 65, 0, 0, 174, 66, 0, 0, 192, 65, 0, 0, 176, 66, 0, 0, 160, 65, 0, 0, 176, 66, 0, 0, 168, 65, 0, 0, 176, 66, 0, 0, 176, 65, 0, 0, 176, 66, 0, 0, 184, 65, 0, 0, 176, 66, 0, 0, 192, 65, 0, 0, 178, 66, 0, 0, 160, 65, 0, 0, 178, 66, 0, 0, 168, 65, 0, 0, 178, 66, 0, 0, 176, 65, 0, 0, 178, 66, 0, 0, 184, 65, 0, 0, 178, 66, 0, 0, 192, 65, 0, 0, 180, 66, 0, 0, 160, 65, 0, 0, 180, 66, 0, 0, 168, 65, 0, 0, 180, 66, 0, 0, 176, 65, 0, 0, 180, 66, 0, 0, 184, 65, 0, 0, 180, 66, 0, 0, 192, 65, 0, 0, 182, 66, 0, 0, 168, 65, 0, 0, 182, 66, 0, 0, 176, 65, 0, 0, 182, 66, 0, 0, 184, 65, 0, 0, 182, 66, 0, 0, 192, 65, 0, 0, 184, 66, 0, 0, 168, 65, 0, 0, 184, 66, 0, 0, 176, 65, 0, 0, 184, 66, 0, 0, 184, 65, 0, 0, 184, 66, 0, 0, 192, 65, 0, 0, 186, 66, 0, 0, 168, 65, 0, 0, 186, 66, 0, 0, 176, 65, 0, 0, 186, 66, 0, 0, 184, 65, 0, 0, 186, 66, 0, 0, 192, 65, 0, 0, 188, 66, 0, 0, 168, 65, 0, 0, 188, 66, 0, 0, 176, 65, 0, 0, 188, 66, 0, 0, 184, 65, 0, 0, 188, 66, 0, 0, 192, 65, 0, 0, 190, 66, 0, 0, 176, 65, 0, 0, 190, 66, 0, 0, 184, 65, 0, 0, 190, 66, 0, 0, 192, 65, 0, 0, 192, 66, 0, 0, 176, 65, 0, 0, 192, 66, 0, 0, 184, 65, 0, 0, 192, 66, 0, 0, 192, 65, 0, 0, 194, 66, 0, 0, 176, 65, 0, 0, 194, 66, 0, 0, 184, 65, 0, 0, 194, 66, 0, 0, 192, 65, 0, 0, 196, 66, 0, 0, 176, 65, 0, 0, 196, 66, 0, 0, 184, 65, 0, 0, 196, 66, 0, 0, 192, 65, 0, 0, 198, 66, 0, 0, 184, 65, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 96, 148, 182, 218, 0, 96, 0, 0, 224, 11, 130, 119, 0, 96, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 180, 176, 145, 3, 0, 0, 0, 89, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 224, 205, 183, 218, 0, 96, 0, 0, 128, 21, 130, 119, 0, 96, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 144, 198, 183, 218, 0, 96, 0, 0, 144, 17, 130, 119, 0, 96, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 168, 145, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 16, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 146, 160, 83, 65, 65, 210, 186, 223, 45, 211, 33, 65, 32, 144, 176, 0, 0, 0, 29, 238, 98, 154, 223, 45, 211, 33, 65, 26, 192, 108, 21, 198, 45, 211, 33, 65, 0, 0, 0, 0, 255, 255, 255, 255, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 95, 51, 48, 54, 34, 32, 58, 32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 32, 32, 32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 32, 32, 32, 0, 0, 0, 0, 0, 0, 0, 0, 152, 54, 170, 54, 1, 0, 0, 0, 1, 0, 0, 0, 58, 32, 34, 99, 0, 0, 0, 0, 115, 95, 116, 114, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 0, 0, 32, 0, 0, 0, 0, 1, 1, 101, 34, 32, 58, 32, 34, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 32, 34, 111, 102, 102, 115, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 32, 32, 32, 32, 32, 32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 101, 34, 32, 58, 32, 49, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 125, 44, 10, 32, 32, 32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 32, 32, 32, 32, 32, 32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 58, 32, 34, 115, 99, 114, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 32, 32, 32, 32, 32, 32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 34, 32, 58, 32, 34, 109, 97, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 252, 167, 145, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 106, 0, 0, 46, 230, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 32, 34, 109, 97, 116, 114, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64, 65, 0, 0, 232, 65, 0, 0, 64, 65, 0, 0, 232, 65, 1, 253, 189, 214, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 192, 57, 135, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 9, 188, 214, 0, 96, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 152, 54, 170, 54, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 16, 64, 0, 110, 0, 0, 0, 0, 32, 145, 183, 218, 0, 96, 0, 0, 176, 58, 130, 119, 0, 96, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 253, 183, 218, 0, 96, 0, 0, 160, 48, 130, 119, 0, 96, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 160, 254, 183, 218, 0, 96, 0, 0, 128, 49, 130, 119, 0, 96, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 224, 128, 183, 218, 0, 96, 0, 0, 96, 50, 130, 119, 0, 96, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 95, 115, 99, 114, 101, 101, 110, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 32, 32, 32, 32, 32, 34, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64, 52, 193, 13, 0, 96, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 68, 16, 8, 168, 145, 3, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 160, 64, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 48, 111, 54, 135, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 32, 32, 34, 116, 121, 112, 101, 34, 32, 58, 32, 34, 102, 108, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 10, 32, 32, 32, 32, 32, 32, 32, 48, 213, 189, 214, 0, 96, 0, 0, 224, 117, 154, 115, 0, 96, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 32, 32, 32, 32, 32, 32, 32, 32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 116, 121, 112, 101, 34, 32, 58, 32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 54, 52, 10, 32, 32, 32, 32, 32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 32, 32, 32, 32, 32, 32, 32, 32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 32, 34, 116, 121, 112, 101, 34, 32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 32, 50, 54, 56, 10, 32, 32, 32, 32, 145, 189, 214, 0, 96, 0, 0, 32, 109, 154, 115, 0, 96, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 32, 32, 32, 32, 32, 32, 32, 32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 114, 116, 101, 120, 34, 44, 10, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 96, 199, 183, 218, 0, 96, 0, 0, 0, 18, 130, 119, 0, 96, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 32, 32, 32, 32, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 32, 32, 32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 101, 34, 32, 58, 32, 34, 103, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 58, 32, 34, 102, 108, 111, 97, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 32, 32, 32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 34, 97, 114, 114, 97, 121, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 24, 168, 145, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 97, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 32, 32, 32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 97, 110, 99, 101, 34, 44, 10, 32, 48, 162, 183, 218, 0, 96, 0, 0, 160, 198, 130, 119, 0, 96, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 32, 32, 32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 32, 32, 32, 0, 0, 0, 0, 0, 0, 0, 0, 152, 54, 170, 54, 1, 0, 0, 0, 1, 0, 0, 0, 32, 32, 32, 32, 0, 0, 0, 0, 44, 10, 32, 32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 64, 64, 122, 0, 0, 0, 0, 1, 1, 105, 116, 101, 114, 97, 108, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 32, 32, 32, 32, 116, 114, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 32, 32, 32, 32, 32, 93, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 125, 10, 32, 32, 32, 32, 32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 125, 44, 10, 32, 32, 32, 32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 32, 32, 32, 32, 32, 32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 116, 34, 44, 10, 32, 32, 32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 34, 32, 58, 32, 91, 10, 32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 32, 32, 32, 32, 32, 32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 8, 168, 145, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 106, 0, 0, 47, 230, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 34, 109, 97, 116, 50, 120, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 16, 58, 209, 53, 1, 0, 0, 0, 32, 16, 168, 145, 3, 0, 0, 0, 224, 13, 0, 0, 0, 0, 0, 0, 0, 16, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 187, 62, 70, 129, 204, 228, 193, 223, 45, 211, 33, 65, 32, 145, 176, 0, 0, 0, 29, 201, 13, 191, 223, 45, 211, 33, 65, 26, 126, 186, 148, 219, 45, 211, 33, 65, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 152, 54, 170, 54, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 16, 64, 0, 32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
 "format": "RGFloat",
@@ -208,7 +1781,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_1axs0"]
-image = SubResource("Image_rbojw")
+image = SubResource("Image_xyr7s")
 
 [sub_resource type="Curve" id="Curve_lu2yn"]
 _limits = [-2.0, 2.0, 0.0, 1.0]
@@ -296,6 +1869,9 @@ hue_variation_max = 0.019999977
 sub_emitter_mode = 1
 sub_emitter_frequency = 40.0
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gi1mu"]
+blend_mode = 1
+
 [sub_resource type="Gradient" id="Gradient_aatry"]
 offsets = PackedFloat32Array(0, 0.26206896)
 colors = PackedColorArray(0.94891894, 0.53986275, 0.16960001, 1, 1, 0.40600002, 0.00999999, 1)
@@ -325,6 +1901,39 @@ scale_min = 0.59999996
 scale_max = 1.1999999
 scale_curve = SubResource("CurveTexture_j3sgb")
 color_ramp = SubResource("GradientTexture1D_h1q5p")
+hue_variation_min = -0.04000002
+hue_variation_max = 0.039999977
+
+[sub_resource type="Gradient" id="Gradient_cbevi"]
+offsets = PackedFloat32Array(0.0068965517, 0.26206896)
+colors = PackedColorArray(0.91, 0.6418534, 0.2912, 1, 1, 0.40600002, 0.00999999, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vtvpp"]
+gradient = SubResource("Gradient_cbevi")
+
+[sub_resource type="Curve" id="Curve_p414i"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.086767904, 0.75), 0.0, 0.0, 0, 0, Vector2(0.1626898, 1), 0.0, 0.0, 0, 0, Vector2(0.23210412, 0.55851066), 0.0, 0.0, 0, 0, Vector2(0.29934925, 1), 0.0, 0.0, 0, 0, Vector2(0.362256, 0.7287234), 0.0, 0.0, 0, 0, Vector2(0.4360087, 1), 0.0, 0.0, 0, 0, Vector2(0.48156184, 0.6968086), 0.0, 0.0, 0, 0, Vector2(0.55097616, 1), 0.0, 0.0, 0, 0, Vector2(0.62255967, 0.4202128), 0.0, 0.0, 0, 0, Vector2(0.69848156, 1), 0.0, 0.0, 0, 0, Vector2(0.7657267, 0.29255325), 0.0, 0.0, 0, 0, Vector2(0.84381783, 0.8670213), 0.0, 0.0, 0, 0, Vector2(0.889371, 0.15425539), 0.0, 0.0, 0, 0, Vector2(0.95878524, 0.79787236), 0.0, 0.0, 0, 0, Vector2(1, 0), -16.858366, 0.0, 0, 0]
+point_count = 16
+
+[sub_resource type="CurveTexture" id="CurveTexture_hap1a"]
+curve = SubResource("Curve_p414i")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5xluh"]
+lifetime_randomness = 0.5
+particle_flag_align_y = true
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(5, 5, 1)
+emission_shape = 3
+emission_box_extents = Vector3(20, 10, 1)
+direction = Vector3(0, -1, 0)
+spread = 15.0
+initial_velocity_min = 2000.0
+initial_velocity_max = 5000.0
+gravity = Vector3(0, 500, 0)
+scale_min = 0.79999995
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_hap1a")
+color_ramp = SubResource("GradientTexture1D_vtvpp")
 hue_variation_min = -0.04000002
 hue_variation_max = 0.039999977
 
@@ -374,6 +1983,36 @@ sub_emitter_frequency = 30.0
 script = ExtResource("1_4tnkf")
 metadata/_edit_group_ = true
 
+[node name="BurnFire1" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_wucc3")
+offset_left = -476.0
+offset_top = -126.0
+offset_right = -26.0
+offset_bottom = 24.0
+pivot_offset = Vector2(220, 135)
+texture = ExtResource("8_epnne")
+
+[node name="BurnFire2" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_2bavc")
+offset_left = 42.0
+offset_top = -125.0
+offset_right = 492.0
+offset_bottom = 25.0
+scale = Vector2(0.806144, 0.79457325)
+pivot_offset = Vector2(220, 135)
+texture = ExtResource("8_epnne")
+
+[node name="BurnFire3" type="TextureRect" parent="."]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_i336v")
+offset_left = -390.0
+offset_top = -205.0
+offset_right = 60.0
+offset_bottom = -55.0
+scale = Vector2(0.64, 1)
+pivot_offset = Vector2(220, 135)
+texture = ExtResource("8_epnne")
+
 [node name="FlameParticles" type="GPUParticles2D" parent="."]
 show_behind_parent = true
 material = SubResource("ShaderMaterial_ym657")
@@ -384,34 +2023,6 @@ texture = ExtResource("4_qdxto")
 lifetime = 1.2
 process_material = SubResource("ParticleProcessMaterial_6r8gu")
 metadata/_edit_lock_ = true
-
-[node name="CeilingSparks" type="GPUParticles2D" parent="."]
-material = SubResource("CanvasItemMaterial_gi1mu")
-position = Vector2(-158, -770)
-scale = Vector2(0.135, 0.135)
-amount = 100
-texture = ExtResource("6_4wku2")
-lifetime = 3.0
-speed_scale = 2.0
-explosiveness = 0.2
-fixed_fps = 0
-visibility_rect = Rect2(-500, -500, 1000, 2000)
-trail_enabled = true
-trail_lifetime = 0.1
-trail_sections = 4
-trail_section_subdivisions = 2
-process_material = SubResource("ParticleProcessMaterial_h1q5p")
-
-[node name="BurnParticleFountain" type="GPUParticles2D" parent="."]
-material = SubResource("CanvasItemMaterial_gi1mu")
-position = Vector2(-23, -165)
-scale = Vector2(0.135, 0.135)
-amount = 100
-texture = ExtResource("6_4wku2")
-lifetime = 1.5
-speed_scale = 2.0
-fixed_fps = 0
-process_material = SubResource("ParticleProcessMaterial_5xluh")
 
 [node name="CanvasGroup" type="CanvasGroup" parent="."]
 unique_name_in_owner = true
@@ -427,7 +2038,7 @@ preview_animation = "burn"
 preview_frame = true
 preview_time = 0.66
 unique_name_in_owner = true
-scale = Vector2(0.9, 0.9)
+scale = Vector2(0.90000004, 0.90000004)
 metadata/_edit_lock_ = true
 
 [node name="BackBurnVfxSlot" type="SpineSlotNode" parent="CanvasGroup/Visuals"]
@@ -498,9 +2109,11 @@ fixed_fps = 0
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_rq8dr")
 
-[node name="BurnParticles" type="GPUParticles2D" parent="."]
-material = SubResource("CanvasItemMaterial_vtvpp")
+[node name="BurnParticleContainer" type="Node2D" parent="."]
 position = Vector2(-23, -165)
+
+[node name="BurnParticles" type="GPUParticles2D" parent="BurnParticleContainer"]
+material = SubResource("CanvasItemMaterial_vtvpp")
 scale = Vector2(0.135, 0.135)
 amount = 12
 sub_emitter = NodePath("BurnParticlesSub")
@@ -513,9 +2126,8 @@ trail_lifetime = 0.15000000000000002
 trail_sections = 2
 trail_section_subdivisions = 1
 process_material = SubResource("ParticleProcessMaterial_s7iq5")
-metadata/_edit_lock_ = true
 
-[node name="BurnParticlesSub" type="GPUParticles2D" parent="BurnParticles"]
+[node name="BurnParticlesSub" type="GPUParticles2D" parent="BurnParticleContainer/BurnParticles"]
 material = SubResource("CanvasItemMaterial_gi1mu")
 emitting = false
 amount = 500
@@ -524,9 +2136,18 @@ lifetime = 1.1
 fixed_fps = 0
 process_material = SubResource("ParticleProcessMaterial_l5f6v")
 
-[node name="TargetedBurnParticle" type="GPUParticles2D" parent="."]
+[node name="BurnParticleFountain" type="GPUParticles2D" parent="BurnParticleContainer"]
+material = SubResource("CanvasItemMaterial_gi1mu")
+scale = Vector2(0.135, 0.135)
+amount = 100
+texture = ExtResource("6_4wku2")
+lifetime = 1.5
+speed_scale = 2.0
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_5xluh")
+
+[node name="TargetedBurnParticle" type="GPUParticles2D" parent="BurnParticleContainer"]
 material = SubResource("CanvasItemMaterial_vtvpp")
-position = Vector2(-23, -165)
 scale = Vector2(0.135, 0.135)
 amount = 3
 sub_emitter = NodePath("BurnParticlesSubTargeted")
@@ -541,7 +2162,7 @@ trail_section_subdivisions = 1
 process_material = SubResource("ParticleProcessMaterial_aatry")
 metadata/_edit_lock_ = true
 
-[node name="BurnParticlesSubTargeted" type="GPUParticles2D" parent="TargetedBurnParticle"]
+[node name="BurnParticlesSubTargeted" type="GPUParticles2D" parent="BurnParticleContainer/TargetedBurnParticle"]
 material = SubResource("CanvasItemMaterial_gi1mu")
 emitting = false
 amount = 500

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Map;
 using MegaCrit.Sts2.Core.Rooms;
@@ -23,6 +24,8 @@ public sealed class Dowsing : CardModel
 
 	public override IEnumerable<CardKeyword> CanonicalKeywords => new global::_003C_003Ez__ReadOnlySingleElementList<CardKeyword>(CardKeyword.Unplayable);
 
+	protected override IEnumerable<IHoverTip> ExtraHoverTips => new global::_003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromCard<Abundance>());
+
 	[SavedProperty]
 	public int RoomsEntered
 	{
@@ -43,7 +46,7 @@ public sealed class Dowsing : CardModel
 	{
 	}
 
-	public override async Task AfterRoomEntered(AbstractRoom room)
+	public override async Task BeforeRoomEntered(AbstractRoom room)
 	{
 		CardPile? pile = base.Pile;
 		if (pile == null || pile.Type != PileType.Deck || base.Owner.RunState.CurrentRoomCount > 1)

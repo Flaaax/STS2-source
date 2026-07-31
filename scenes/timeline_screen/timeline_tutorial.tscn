@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cy12j2aaipqoa"]
+[gd_scene load_steps=10 format=3 uid="uid://cy12j2aaipqoa"]
 
 [ext_resource type="Script" uid="uid://dfx3b5b3u4xoe" path="res://src/Core/Nodes/Screens/Timeline/NTimelineTutorial.cs" id="1_lcc2w"]
 [ext_resource type="Script" uid="uid://bjc3usohmyhli" path="res://src/Core/Nodes/Screens/Timeline/NAcknowledgeButton.cs" id="2_p0c41"]
@@ -6,17 +6,9 @@
 [ext_resource type="FontVariation" uid="uid://ciql5khgewwbm" path="res://themes/kreon_bold_glyph_space_two.tres" id="4_n5nil"]
 [ext_resource type="FontVariation" uid="uid://bhyxo1pcdm73o" path="res://themes/bitter_medium_italic_glyph_space_one.tres" id="5_1dri1"]
 [ext_resource type="Script" uid="uid://dtfio45agppyj" path="res://addons/mega_text/MegaLabel.cs" id="5_3um6o"]
-[ext_resource type="Shader" uid="uid://c66gb6g7tup3n" path="res://shaders/hsv.gdshader" id="5_hyx3s"]
-[ext_resource type="Texture2D" uid="uid://b5x513mavmk5v" path="res://images/ui/placeholder_controller_icon.png" id="7_3um6o"]
+[ext_resource type="PackedScene" uid="uid://ddb8daodx7qsl" path="res://scenes/ui/hotkey_icon.tscn" id="8_5kuvw"]
 [ext_resource type="Script" uid="uid://c2oywrx8xbqfx" path="res://addons/mega_text/MegaRichTextLabel.cs" id="17_jcni2"]
 [ext_resource type="Material" uid="uid://c4ycqv0gdxvmr" path="res://themes/canvas_item_material_additive_shared.tres" id="shared_additive_mat"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3um6o"]
-resource_local_to_scene = true
-shader = ExtResource("5_hyx3s")
-shader_parameter/h = 1.0
-shader_parameter/s = 1.0
-shader_parameter/v = 1.0
 
 [node name="TimelineTutorial" type="Control"]
 layout_mode = 3
@@ -65,6 +57,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 36.5
+offset_right = -36.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.91, 0.86359, 0.7462, 1)
@@ -80,29 +74,22 @@ text = "Aknowledge?!"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("5_3um6o")
-AutoSizeEnabled = false
+MaxFontSize = 28
 
-[node name="ControllerIcon" type="TextureRect" parent="AcknowledgeButton"]
+[node name="HotkeyIcon" parent="AcknowledgeButton" instance=ExtResource("8_5kuvw")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_3um6o")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -188.0
-offset_top = -51.0
-offset_right = 56.0
-offset_bottom = 71.0
+offset_left = 87.0
+offset_top = -4.0
+offset_right = 135.0
+offset_bottom = 44.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(256, 128)
-mouse_filter = 2
-texture = ExtResource("7_3um6o")
-expand_mode = 1
-stretch_mode = 5
 
 [node name="TutorialText" type="RichTextLabel" parent="."]
 unique_name_in_owner = true

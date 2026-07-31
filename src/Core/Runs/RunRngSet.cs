@@ -121,6 +121,21 @@ public class RunRngSet
 		}
 	}
 
+	/// <summary>
+	/// Initializes an RNG set with all RNGs set to the RNG passed.
+	/// Only used in Bestiary.
+	/// </summary>
+	public RunRngSet(Rng rng)
+	{
+		StringSeed = string.Empty;
+		Seed = 0uL;
+		RunRngType[] values = Enum.GetValues<RunRngType>();
+		foreach (RunRngType key in values)
+		{
+			_rngs[key] = rng;
+		}
+	}
+
 	private Rng CreateRng(RunRngType rngType)
 	{
 		string name = StringHelper.SnakeCase(rngType.ToString());

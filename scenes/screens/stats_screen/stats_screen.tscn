@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c1chsoaeakleb"]
+[gd_scene load_steps=17 format=3 uid="uid://c1chsoaeakleb"]
 
 [ext_resource type="Script" uid="uid://0fhtbmre0npn" path="res://src/Core/Nodes/Screens/StatsScreen/NStatsScreen.cs" id="1_3brhs"]
 [ext_resource type="PackedScene" uid="uid://cfcqxx8wkmljw" path="res://scenes/screens/settings_tab.tscn" id="2_geqrk"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://cga165o6isk0q" path="res://scenes/ui/share_button.tscn" id="6_qy44f"]
 [ext_resource type="Texture2D" uid="uid://o5lbua" path="res://images/atlases/ui_atlas.sprites/card/card_unplayable_icon.tres" id="8_murhp"]
 [ext_resource type="Script" uid="uid://co8qrg0wac6ti" path="res://src/Core/Nodes/Screens/StatsScreen/NStatsTabManager.cs" id="10_murhp"]
-[ext_resource type="Texture2D" uid="uid://b5x513mavmk5v" path="res://images/ui/placeholder_controller_icon.png" id="12_murhp"]
 [ext_resource type="Shader" uid="uid://c66gb6g7tup3n" path="res://shaders/hsv.gdshader" id="14_dxpwi"]
 [ext_resource type="Texture2D" uid="uid://f0poqno5vvia" path="res://images/packed/main_menu/submenu_lock.png" id="15_1p7td"]
 [ext_resource type="PackedScene" uid="uid://b6nko387cwp7n" path="res://scenes/ui/scrollbar.tscn" id="16_7s2c0"]
@@ -202,14 +201,7 @@ grow_horizontal = 0
 grow_vertical = 0
 
 [node name="TextureRect" type="TextureRect" parent="StatsGrid/ShareButton"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 mouse_filter = 2
 texture = ExtResource("8_murhp")
 expand_mode = 1
@@ -233,11 +225,6 @@ mouse_filter = 2
 theme_override_constants/separation = 12
 alignment = 1
 script = ExtResource("10_murhp")
-
-[node name="LeftTriggerIcon" type="TextureRect" parent="Tabs"]
-layout_mode = 2
-texture = ExtResource("12_murhp")
-stretch_mode = 5
 
 [node name="TabContainer" type="HBoxContainer" parent="Tabs"]
 layout_mode = 2
@@ -265,11 +252,6 @@ offset_right = 182.0
 offset_bottom = 103.5
 texture = ExtResource("15_1p7td")
 expand_mode = 1
-stretch_mode = 5
-
-[node name="RightTriggerIcon" type="TextureRect" parent="Tabs"]
-layout_mode = 2
-texture = ExtResource("12_murhp")
 stretch_mode = 5
 
 [node name="BackButton" parent="." instance=ExtResource("16_qdxyq")]

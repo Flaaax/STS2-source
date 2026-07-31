@@ -357,8 +357,7 @@ public partial class NCard : Control, IPoolable
 		{
 			return null;
 		}
-		CardPile? pile = card.Pile;
-		return ((pile != null) ? new PileType?(pile.Type) : overridePile) switch
+		return (overridePile ?? card.Pile?.Type) switch
 		{
 			PileType.None => null, 
 			PileType.Draw => null, 

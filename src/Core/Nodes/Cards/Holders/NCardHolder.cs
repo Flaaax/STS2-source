@@ -109,7 +109,7 @@ public abstract partial class NCardHolder : Control
 				SfxCmd.Play("event:/sfx/ui/clicks/ui_click");
 				CallDeferred(MethodName.EmitPressed);
 			}
-			else if (inputEvent.IsActionPressed(MegaInput.accept))
+			else if (inputEvent.IsActionPressed(MegaInput.confirm))
 			{
 				SfxCmd.Play("event:/sfx/ui/clicks/ui_click");
 				CallDeferred(MethodName.EmitAltPressed);

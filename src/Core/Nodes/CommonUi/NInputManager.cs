@@ -110,16 +110,17 @@ public partial class NInputManager : Node
 		}
 	};
 
-	public static readonly IReadOnlyList<StringName> remappableKeyboardInputs = new List<StringName>
+	public static readonly IReadOnlyList<StringName> remappableMKbInputs = new List<StringName>
 	{
-		MegaInput.select,
 		MegaInput.cancel,
 		MegaInput.viewMap,
+		MegaInput.topPanel,
 		MegaInput.viewDeckAndTabLeft,
 		MegaInput.viewDrawPile,
 		MegaInput.viewDiscardPile,
 		MegaInput.viewExhaustPileAndTabRight,
-		MegaInput.accept,
+		MegaInput.confirm,
+		MegaInput.endTurn,
 		MegaInput.peek,
 		MegaInput.up,
 		MegaInput.down,
@@ -134,8 +135,36 @@ public partial class NInputManager : Node
 		MegaInput.selectCard7,
 		MegaInput.selectCard8,
 		MegaInput.selectCard9,
-		MegaInput.selectCard10,
-		MegaInput.releaseCard
+		MegaInput.selectCard10
+	};
+
+	public static readonly IReadOnlyList<StringName> remappableKbOnlyInputs = new List<StringName>
+	{
+		MegaInput.select,
+		MegaInput.cancel,
+		MegaInput.viewMap,
+		MegaInput.topPanel,
+		MegaInput.viewDeckAndTabLeft,
+		MegaInput.viewDrawPile,
+		MegaInput.viewDiscardPile,
+		MegaInput.viewExhaustPileAndTabRight,
+		MegaInput.confirm,
+		MegaInput.endTurn,
+		MegaInput.peek,
+		MegaInput.up,
+		MegaInput.down,
+		MegaInput.left,
+		MegaInput.right,
+		MegaInput.selectCard1,
+		MegaInput.selectCard2,
+		MegaInput.selectCard3,
+		MegaInput.selectCard4,
+		MegaInput.selectCard5,
+		MegaInput.selectCard6,
+		MegaInput.selectCard7,
+		MegaInput.selectCard8,
+		MegaInput.selectCard9,
+		MegaInput.selectCard10
 	};
 
 	public static readonly IReadOnlyList<StringName> remappableControllerInputs = new List<StringName>
@@ -148,7 +177,8 @@ public partial class NInputManager : Node
 		MegaInput.viewDrawPile,
 		MegaInput.viewDiscardPile,
 		MegaInput.viewExhaustPileAndTabRight,
-		MegaInput.accept,
+		MegaInput.confirm,
+		MegaInput.endTurn,
 		MegaInput.peek,
 		MegaInput.up,
 		MegaInput.down,
@@ -156,9 +186,11 @@ public partial class NInputManager : Node
 		MegaInput.right
 	};
 
-	private Dictionary<StringName, Key> _keyboardInputMap = new Dictionary<StringName, Key>();
+	private Dictionary<StringName, Key> _mKbInputMap = new Dictionary<StringName, Key>();
 
 	private Dictionary<StringName, StringName> _controllerInputMap = new Dictionary<StringName, StringName>();
+
+	private Dictionary<StringName, Key> _fKbInputMap = new Dictionary<StringName, Key>();
 
 	public static NInputManager? Instance
 	{
@@ -172,14 +204,14 @@ public partial class NInputManager : Node
 		}
 	}
 
-	private static Dictionary<StringName, Key> DefaultKeyboardInputMap => new Dictionary<StringName, Key>
+	private static Dictionary<StringName, Key> DefaultHotkeyInputMap => new Dictionary<StringName, Key>
 	{
 		{
-			MegaInput.accept,
+			MegaInput.endTurn,
 			Key.E
 		},
 		{
-			MegaInput.select,
+			MegaInput.confirm,
 			Key.Enter
 		},
 		{
@@ -269,10 +301,114 @@ public partial class NInputManager : Node
 		{
 			MegaInput.selectCard10,
 			Key.Key0
+		}
+	};
+
+	private static Dictionary<StringName, Key> DefaultKbOnlyInputMap => new Dictionary<StringName, Key>
+	{
+		{
+			MegaInput.confirm,
+			Key.Enter
 		},
 		{
-			MegaInput.releaseCard,
+			MegaInput.endTurn,
+			Key.E
+		},
+		{
+			MegaInput.select,
+			Key.Space
+		},
+		{
+			MegaInput.viewDiscardPile,
+			Key.D
+		},
+		{
+			MegaInput.viewDeckAndTabLeft,
+			Key.Q
+		},
+		{
+			MegaInput.viewExhaustPileAndTabRight,
+			Key.F
+		},
+		{
+			MegaInput.viewDrawPile,
+			Key.A
+		},
+		{
+			MegaInput.viewMap,
+			Key.Tab
+		},
+		{
+			MegaInput.cancel,
+			Key.Escape
+		},
+		{
+			MegaInput.peek,
+			Key.S
+		},
+		{
+			MegaInput.up,
+			Key.Up
+		},
+		{
+			MegaInput.down,
 			Key.Down
+		},
+		{
+			MegaInput.left,
+			Key.Left
+		},
+		{
+			MegaInput.right,
+			Key.Right
+		},
+		{
+			MegaInput.pauseAndBack,
+			Key.Escape
+		},
+		{
+			MegaInput.selectCard1,
+			Key.Key1
+		},
+		{
+			MegaInput.selectCard2,
+			Key.Key2
+		},
+		{
+			MegaInput.selectCard3,
+			Key.Key3
+		},
+		{
+			MegaInput.selectCard4,
+			Key.Key4
+		},
+		{
+			MegaInput.selectCard5,
+			Key.Key5
+		},
+		{
+			MegaInput.selectCard6,
+			Key.Key6
+		},
+		{
+			MegaInput.selectCard7,
+			Key.Key7
+		},
+		{
+			MegaInput.selectCard8,
+			Key.Key8
+		},
+		{
+			MegaInput.selectCard9,
+			Key.Key9
+		},
+		{
+			MegaInput.selectCard10,
+			Key.Key0
+		},
+		{
+			MegaInput.topPanel,
+			Key.W
 		}
 	};
 
@@ -295,20 +431,37 @@ public partial class NInputManager : Node
 		SettingsSave settingsSave = SaveManager.Instance.SettingsSave;
 		if (settingsSave.KeyboardMapping.Count > 0)
 		{
-			Dictionary<StringName, Key> defaultKeyboardInputMap = DefaultKeyboardInputMap;
-			_keyboardInputMap = new Dictionary<StringName, Key>(defaultKeyboardInputMap);
+			Dictionary<StringName, Key> defaultHotkeyInputMap = DefaultHotkeyInputMap;
+			_mKbInputMap = new Dictionary<StringName, Key>(defaultHotkeyInputMap);
 			foreach (KeyValuePair<string, string> item in settingsSave.KeyboardMapping)
 			{
 				if (Enum.TryParse<Key>(item.Value, out var result))
 				{
-					_keyboardInputMap[item.Key] = result;
+					_mKbInputMap[item.Key] = result;
 				}
 			}
 		}
 		else
 		{
-			_keyboardInputMap = DefaultKeyboardInputMap;
-			SaveKeyboardInputMapping();
+			_mKbInputMap = DefaultHotkeyInputMap;
+			SaveMKbInputMapping();
+		}
+		if (settingsSave.KbOnlyMapping.Count > 0)
+		{
+			Dictionary<StringName, Key> defaultKbOnlyInputMap = DefaultKbOnlyInputMap;
+			_fKbInputMap = new Dictionary<StringName, Key>(defaultKbOnlyInputMap);
+			foreach (KeyValuePair<string, string> item2 in settingsSave.KbOnlyMapping)
+			{
+				if (Enum.TryParse<Key>(item2.Value, out var result2))
+				{
+					_fKbInputMap[item2.Key] = result2;
+				}
+			}
+		}
+		else
+		{
+			_fKbInputMap = DefaultKbOnlyInputMap;
+			SaveFKbInputMapping();
 		}
 		if (settingsSave.ControllerMapping.Count > 0 && settingsSave.ControllerMappingType == ControllerManager.ControllerMappingType)
 		{
@@ -341,7 +494,14 @@ public partial class NInputManager : Node
 
 	public override void _UnhandledKeyInput(InputEvent inputEvent)
 	{
-		ProcessShortcutKeyInput(inputEvent);
+		if (ControllerManager.InputType == InputType.KeyboardOnlyMode)
+		{
+			ProcessFkbInput(inputEvent);
+		}
+		else
+		{
+			ProcessHotkeyInput(inputEvent);
+		}
 		ProcessDebugKeyInput(inputEvent);
 	}
 
@@ -365,13 +525,33 @@ public partial class NInputManager : Node
 		}
 	}
 
-	private void ProcessShortcutKeyInput(InputEvent inputEvent)
+	private void ProcessHotkeyInput(InputEvent inputEvent)
 	{
 		if (NGame.Instance.Transition.InTransition || !NGame.IsGameFocusedWindow() || !(inputEvent is InputEventKey inputEventKey))
 		{
 			return;
 		}
-		foreach (KeyValuePair<StringName, Key> item in _keyboardInputMap)
+		foreach (KeyValuePair<StringName, Key> item in _mKbInputMap)
+		{
+			if (inputEventKey.Keycode == item.Value && !inputEvent.IsEcho())
+			{
+				InputEventAction inputEventAction = new InputEventAction
+				{
+					Action = item.Key,
+					Pressed = inputEvent.IsPressed()
+				};
+				Input.ParseInputEvent(inputEventAction);
+			}
+		}
+	}
+
+	private void ProcessFkbInput(InputEvent inputEvent)
+	{
+		if (NGame.Instance.Transition.InTransition || !NGame.IsGameFocusedWindow() || !(inputEvent is InputEventKey inputEventKey))
+		{
+			return;
+		}
+		foreach (KeyValuePair<StringName, Key> item in _fKbInputMap)
 		{
 			if (inputEventKey.Keycode == item.Value && !inputEvent.IsEcho())
 			{
@@ -414,9 +594,27 @@ public partial class NInputManager : Node
 		}
 	}
 
-	public Key GetShortcutKey(StringName input)
+	public Key GetCurrentHotkey(StringName input)
 	{
-		if (!_keyboardInputMap.TryGetValue(input, out var value))
+		if (ControllerManager.InputType != InputType.KeyboardOnlyMode)
+		{
+			return GetMKbHotkey(input);
+		}
+		return GetKbOnlyHotkey(input);
+	}
+
+	public Key GetMKbHotkey(StringName input)
+	{
+		if (!_mKbInputMap.TryGetValue(input, out var value))
+		{
+			return Key.None;
+		}
+		return value;
+	}
+
+	public Key GetKbOnlyHotkey(StringName input)
+	{
+		if (!_fKbInputMap.TryGetValue(input, out var value))
 		{
 			return Key.None;
 		}
@@ -432,16 +630,29 @@ public partial class NInputManager : Node
 		return null;
 	}
 
-	public void ModifyShortcutKey(StringName input, Key shortcutKey)
+	public void ModifyMKbKey(StringName input, Key shortcutKey)
 	{
-		KeyValuePair<StringName, Key> keyValuePair = _keyboardInputMap.FirstOrDefault<KeyValuePair<StringName, Key>>((KeyValuePair<StringName, Key> kvp) => kvp.Value == shortcutKey && remappableKeyboardInputs.Contains(kvp.Key));
+		KeyValuePair<StringName, Key> keyValuePair = _mKbInputMap.FirstOrDefault<KeyValuePair<StringName, Key>>((KeyValuePair<StringName, Key> kvp) => kvp.Value == shortcutKey && remappableMKbInputs.Contains(kvp.Key));
 		if (keyValuePair.Key != null)
 		{
-			Key value = _keyboardInputMap[input];
-			_keyboardInputMap[keyValuePair.Key] = value;
+			Key value = _mKbInputMap[input];
+			_mKbInputMap[keyValuePair.Key] = value;
 		}
-		_keyboardInputMap[input] = shortcutKey;
-		SaveKeyboardInputMapping();
+		_mKbInputMap[input] = shortcutKey;
+		SaveMKbInputMapping();
+		EmitSignalInputRebound();
+	}
+
+	public void ModifyKbOnlyKey(StringName input, Key shortcutKey)
+	{
+		KeyValuePair<StringName, Key> keyValuePair = _fKbInputMap.FirstOrDefault<KeyValuePair<StringName, Key>>((KeyValuePair<StringName, Key> kvp) => kvp.Value == shortcutKey && remappableKbOnlyInputs.Contains(kvp.Key));
+		if (keyValuePair.Key != null)
+		{
+			Key value = _fKbInputMap[input];
+			_fKbInputMap[keyValuePair.Key] = value;
+		}
+		_fKbInputMap[input] = shortcutKey;
+		SaveFKbInputMapping();
 		EmitSignalInputRebound();
 	}
 
@@ -454,16 +665,26 @@ public partial class NInputManager : Node
 			_controllerInputMap[keyValuePair.Key] = value;
 		}
 		_controllerInputMap[input] = controllerInput;
+		if (input == MegaInput.confirm)
+		{
+			_controllerInputMap[MegaInput.endTurn] = controllerInput;
+		}
+		else if (input == MegaInput.endTurn)
+		{
+			_controllerInputMap[MegaInput.confirm] = controllerInput;
+		}
 		SaveControllerInputMapping();
 		EmitSignalInputRebound();
 	}
 
 	public void ResetToDefaults()
 	{
-		_keyboardInputMap = DefaultKeyboardInputMap;
+		_mKbInputMap = DefaultHotkeyInputMap;
 		_controllerInputMap = ControllerManager.GetDefaultControllerInputMap;
+		_fKbInputMap = DefaultKbOnlyInputMap;
 		SaveControllerInputMapping();
-		SaveKeyboardInputMapping();
+		SaveMKbInputMapping();
+		SaveFKbInputMapping();
 		EmitSignalInputRebound();
 	}
 
@@ -489,14 +710,25 @@ public partial class NInputManager : Node
 		SaveManager.Instance.SaveSettings();
 	}
 
-	private void SaveKeyboardInputMapping()
+	private void SaveMKbInputMapping()
 	{
 		Dictionary<string, string> dictionary = new Dictionary<string, string>();
-		foreach (KeyValuePair<StringName, Key> item in _keyboardInputMap)
+		foreach (KeyValuePair<StringName, Key> item in _mKbInputMap)
 		{
 			dictionary.Add(item.Key.ToString(), item.Value.ToString());
 		}
 		SaveManager.Instance.SettingsSave.KeyboardMapping = dictionary;
+		SaveManager.Instance.SaveSettings();
+	}
+
+	private void SaveFKbInputMapping()
+	{
+		Dictionary<string, string> dictionary = new Dictionary<string, string>();
+		foreach (KeyValuePair<StringName, Key> item in _fKbInputMap)
+		{
+			dictionary.Add(item.Key.ToString(), item.Value.ToString());
+		}
+		SaveManager.Instance.SettingsSave.KbOnlyMapping = dictionary;
 		SaveManager.Instance.SaveSettings();
 	}
 }

@@ -44,11 +44,13 @@ public partial class NTopBarDeckButton : NTopBarButton
 		_countLabel = GetNode<MegaLabel>("DeckCardCount");
 	}
 
-	public override void _ExitTree()
+	public override void _Notification(int what)
 	{
-		base._ExitTree();
-		_pile.CardAddFinished -= OnPileContentsChanged;
-		_pile.CardRemoveFinished -= OnPileContentsChanged;
+		if ((long)what == 1)
+		{
+			_pile.CardAddFinished -= OnPileContentsChanged;
+			_pile.CardRemoveFinished -= OnPileContentsChanged;
+		}
 	}
 
 	public void Initialize(Player player)
@@ -122,7 +124,7 @@ public partial class NTopBarDeckButton : NTopBarButton
 	{
 		base.OnFocus();
 		LocString locString = new LocString("static_hover_tips", "DECK.title");
-		locString.Add("Hotkey", NInputManager.Instance.GetShortcutKey(MegaInput.viewDeckAndTabLeft).ToString());
+		locString.Add("Hotkey", NInputManager.Instance.GetCurrentHotkey(MegaInput.viewDeckAndTabLeft).ToString());
 		HoverTip hoverTip = new HoverTip(locString, new LocString("static_hover_tips", "DECK.description"));
 		NHoverTipSet nHoverTipSet = NHoverTipSet.CreateAndShow(this, hoverTip);
 		nHoverTipSet?.SetGlobalPosition(base.GlobalPosition + new Vector2(base.Size.X - nHoverTipSet.Size.X, base.Size.Y + 20f));

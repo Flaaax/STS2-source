@@ -18,7 +18,7 @@ public partial class NSendFeedbackButton : NButton
 	protected override void OnFocus()
 	{
 		base.Scale = Vector2.One * 1.2f;
-		if (NControllerManager.Instance.IsUsingController)
+		if (NControllerManager.Instance.IsUsingDirectionalNavigation)
 		{
 			_selectionReticle?.OnSelect();
 		}

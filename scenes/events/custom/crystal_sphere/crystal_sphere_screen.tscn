@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://dmv21pjqlhkqf"]
+[gd_scene load_steps=21 format=4 uid="uid://dmv21pjqlhkqf"]
 
 [ext_resource type="Script" uid="uid://nup24q26505e" path="res://src/Core/Nodes/Events/Custom/CrystalSphere/NCrystalSphereScreen.cs" id="1_12402"]
 [ext_resource type="Texture2D" uid="uid://deroqsearxm2d" path="res://images/events/crystal_sphere/crystal_sphere_minigame_bg.png" id="2_eb8pr"]
@@ -51,26 +51,12 @@ shader_parameter/h = 1.0
 shader_parameter/s = 0.9
 shader_parameter/v = 0.8
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vnwew"]
-resource_local_to_scene = true
-shader = ExtResource("10_vnwew")
-shader_parameter/h = 1.0
-shader_parameter/s = 1.0
-shader_parameter/v = 1.0
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sfxwl"]
 resource_local_to_scene = true
 shader = ExtResource("10_vnwew")
 shader_parameter/h = 1.0
 shader_parameter/s = 0.9
 shader_parameter/v = 0.8
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8nrix"]
-resource_local_to_scene = true
-shader = ExtResource("10_vnwew")
-shader_parameter/h = 1.0
-shader_parameter/s = 1.0
-shader_parameter/v = 1.0
 
 [node name="CrystalSphereScreen" type="Control"]
 layout_mode = 3
@@ -257,20 +243,12 @@ text = "Big Divination"
 [node name="SizeIcon" parent="Ui/RightUi/BigDivinationButton" index="2"]
 texture = ExtResource("9_nj12v")
 
-[node name="ControllerIcon" parent="Ui/RightUi/BigDivinationButton" index="3"]
-material = SubResource("ShaderMaterial_vnwew")
-
 [node name="SmallDivinationButton" parent="Ui/RightUi" instance=ExtResource("10_2dh5v")]
 unique_name_in_owner = true
 layout_mode = 2
 
 [node name="ButtonImage" parent="Ui/RightUi/SmallDivinationButton" index="0"]
 material = SubResource("ShaderMaterial_sfxwl")
-
-[node name="ControllerIcon" parent="Ui/RightUi/SmallDivinationButton" index="3"]
-material = SubResource("ShaderMaterial_8nrix")
-offset_top = -64.0
-offset_bottom = 64.0
 
 [node name="Spacer" type="Control" parent="Ui/RightUi"]
 layout_mode = 2
@@ -321,9 +299,12 @@ bbcode_enabled = true
 text = "[center]How to Divine...[/center]"
 fit_content = true
 scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
 script = ExtResource("3_onw3v")
 AutoSizeEnabled = false
 MaxFontSize = 32
+IsVerticallyBound = false
 metadata/_custom_type_script = "uid://c2oywrx8xbqfx"
 
 [node name="InstructionsDescription" type="RichTextLabel" parent="Ui/RightUi/Instructions/VBoxContainer"]
@@ -340,11 +321,11 @@ theme_override_constants/shadow_outline_size = 0
 theme_override_constants/shadow_offset_x = 3
 theme_override_constants/shadow_offset_y = 3
 theme_override_fonts/normal_font = ExtResource("5_v340b")
-theme_override_font_sizes/normal_font_size = 24
-theme_override_font_sizes/bold_font_size = 24
-theme_override_font_sizes/bold_italics_font_size = 24
-theme_override_font_sizes/italics_font_size = 24
-theme_override_font_sizes/mono_font_size = 24
+theme_override_font_sizes/normal_font_size = 23
+theme_override_font_sizes/bold_font_size = 23
+theme_override_font_sizes/bold_italics_font_size = 23
+theme_override_font_sizes/italics_font_size = 23
+theme_override_font_sizes/mono_font_size = 23
 bbcode_enabled = true
 text = "Reveal your future by revealing the tiles!
 

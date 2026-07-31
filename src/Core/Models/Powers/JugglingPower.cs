@@ -33,7 +33,7 @@ public sealed class JugglingPower : PowerModel
 		return Task.CompletedTask;
 	}
 
-	public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+	public override async Task BeforeCardPlayed(CardPlay cardPlay)
 	{
 		if (cardPlay.Card.Owner != base.Owner.Player || cardPlay.Card.Type != CardType.Attack)
 		{

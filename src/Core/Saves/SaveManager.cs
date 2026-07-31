@@ -68,34 +68,6 @@ public class SaveManager : IProfileIdProvider
 
 	private int? _currentProfileId;
 
-	public const int totalAgnosticUnlocks = 18;
-
-	/// <summary>
-	/// The agnostic epoch IDs in unlock order.
-	/// Used by <see cref="M:MegaCrit.Sts2.Core.Saves.SaveManager.GetEpochIdForUnlock" /> and <see cref="M:MegaCrit.Sts2.Core.Saves.SaveManager.GetRevealableEpochs" /> to enforce prerequisite ordering.
-	/// </summary>
-	private static readonly string[] _agnosticEpochUnlockOrder = new string[18]
-	{
-		EpochModel.GetId<Colorless1Epoch>(),
-		EpochModel.GetId<Relic1Epoch>(),
-		EpochModel.GetId<Potion1Epoch>(),
-		EpochModel.GetId<UnderdocksEpoch>(),
-		EpochModel.GetId<Colorless2Epoch>(),
-		EpochModel.GetId<Relic2Epoch>(),
-		EpochModel.GetId<Potion2Epoch>(),
-		EpochModel.GetId<Act2BEpoch>(),
-		EpochModel.GetId<Colorless3Epoch>(),
-		EpochModel.GetId<Relic3Epoch>(),
-		EpochModel.GetId<Act3BEpoch>(),
-		EpochModel.GetId<Colorless4Epoch>(),
-		EpochModel.GetId<Relic4Epoch>(),
-		EpochModel.GetId<Event1Epoch>(),
-		EpochModel.GetId<Colorless5Epoch>(),
-		EpochModel.GetId<Relic5Epoch>(),
-		EpochModel.GetId<Event2Epoch>(),
-		EpochModel.GetId<Event3Epoch>()
-	};
-
 	public static SaveManager Instance
 	{
 		get
@@ -111,6 +83,12 @@ public class SaveManager : IProfileIdProvider
 			return _instance;
 		}
 	}
+
+	/// <summary>
+	/// The number of epochs the end-of-run score bar can grant. Derived from
+	/// <see cref="P:MegaCrit.Sts2.Core.Timeline.EpochModel.AgnosticUnlockOrder" /> so the two can never disagree.
+	/// </summary>
+	public static int TotalAgnosticUnlocks => EpochModel.AgnosticUnlockOrder.Count;
 
 	public SettingsSave SettingsSave => _settingsSaveManager.Settings;
 
@@ -1106,7 +1084,7 @@ public class SaveManager : IProfileIdProvider
 
 	public int GetUnlocksRemaining()
 	{
-		return 18 - Progress.TotalUnlocks;
+		return TotalAgnosticUnlocks - Progress.TotalUnlocks;
 	}
 
 	public int GetCurrentScore()
@@ -1115,28 +1093,21 @@ public class SaveManager : IProfileIdProvider
 	}
 
 	/// <summary>
-	/// Called whenever the score bar is filled.
-	/// Increments TotalUnlocks and grants an Epoch.
+	/// Called whenever the score bar is filled. Grants the next epoch in
+	/// <see cref="P:MegaCrit.Sts2.Core.Timeline.EpochModel.AgnosticUnlockOrder" />, or returns null once the player has them all.
 	/// </summary>
-	public string? IncrementUnlock()
+	/// <remarks>
+	/// NOTE: This path ignores the <see cref="M:MegaCrit.Sts2.Core.Runs.GameModeExtension.AreAchievementsAndEpochsLocked(MegaCrit.Sts2.Core.Runs.GameMode)" /> check
+	/// that the mid-run and post-run grants respect.
+	/// </remarks>
+	public EpochModel? GrantNextUnlock()
 	{
-		Progress.TotalUnlocks++;
-		return GetEpochIdForUnlock();
-	}
-
-	/// <summary>
-	/// Look-up function to get an Epoch ID based on the
-	/// player's TotalUnlocks (the score bar system at the end of run).
-	/// Must match <see cref="M:MegaCrit.Sts2.Core.Nodes.Screens.GameOverScreen.NGameOverScreen.GetScoreThreshold(System.Int32)" />.
-	/// </summary>
-	private string? GetEpochIdForUnlock()
-	{
-		int num = Progress.TotalUnlocks - 1;
-		if (num < 0 || num >= _agnosticEpochUnlockOrder.Length)
+		string text = Progress.GrantNextUnlock();
+		if (text != null)
 		{
-			return null;
+			return EpochModel.Get(text);
 		}
-		return _agnosticEpochUnlockOrder[num];
+		return null;
 	}
 
 	/// <summary>

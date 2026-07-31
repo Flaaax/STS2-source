@@ -161,6 +161,7 @@ public class AutoSlayer
 		NGame.Instance.DebugSeedOverride = seed;
 		SaveManager.Instance.PrefsSave.FastMode = FastModeType.Fast;
 		SaveManager.Instance.SetFtuesEnabled(enabled: false);
+		SaveManager.Instance.MarkFtueAsComplete("ascension_singleplayer_ftue");
 		SaveManager.Instance.ObtainEpochOverride(EpochModel.GetId<Silent1Epoch>(), EpochState.Revealed);
 		SaveManager.Instance.ObtainEpochOverride(EpochModel.GetId<Regent1Epoch>(), EpochState.Revealed);
 		SaveManager.Instance.ObtainEpochOverride(EpochModel.GetId<Defect1Epoch>(), EpochState.Revealed);

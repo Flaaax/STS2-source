@@ -181,7 +181,7 @@ public partial class NOrb : NClickableControl
 			NHoverTipSet.CreateAndShow(_bounds, hoverTips, HoverTip.GetHoverTipAlignment(_bounds))?.SetFollowOwner();
 			_labelContainer.Visible = true;
 			base.Modulate = Colors.White;
-			if (NControllerManager.Instance.IsUsingController)
+			if (NControllerManager.Instance.IsUsingDirectionalNavigation)
 			{
 				_selectionReticle.OnSelect();
 			}

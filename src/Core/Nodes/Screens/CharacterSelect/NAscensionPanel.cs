@@ -40,9 +40,9 @@ public partial class NAscensionPanel : Control
 
 	private MegaRichTextLabel _info;
 
-	private TextureRect _leftTriggerIcon;
+	private NHotkeyIcon _leftTabIcon;
 
-	private TextureRect _rightTriggerIcon;
+	private NHotkeyIcon _rightTabIcon;
 
 	private ShaderMaterial _iconHsv;
 
@@ -56,8 +56,8 @@ public partial class NAscensionPanel : Control
 
 	public override void _Ready()
 	{
-		_leftTriggerIcon = GetNode<TextureRect>("%LeftTriggerIcon");
-		_rightTriggerIcon = GetNode<TextureRect>("%RightTriggerIcon");
+		_leftTabIcon = GetNode<NHotkeyIcon>("%LeftTabIcon");
+		_rightTabIcon = GetNode<NHotkeyIcon>("%RightTabIcon");
 		_leftArrow = GetNode<NButton>("HBoxContainer/LeftArrowContainer/LeftArrow");
 		_rightArrow = GetNode<NButton>("HBoxContainer/RightArrowContainer/RightArrow");
 		_ascensionLevel = GetNode<MegaLabel>("HBoxContainer/AscensionIconContainer/AscensionIcon/AscensionLevel");
@@ -207,15 +207,15 @@ public partial class NAscensionPanel : Control
 		MultiplayerUiMode mode = _mode;
 		if ((uint)(mode - 1) <= 1u)
 		{
-			_leftTriggerIcon.Visible = NControllerManager.Instance.IsUsingController;
-			_rightTriggerIcon.Visible = NControllerManager.Instance.IsUsingController;
-			_leftTriggerIcon.Texture = NInputManager.Instance.GetHotkeyIcon(MegaInput.viewDeckAndTabLeft);
-			_rightTriggerIcon.Texture = NInputManager.Instance.GetHotkeyIcon(MegaInput.viewExhaustPileAndTabRight);
+			_leftTabIcon.Visible = NControllerManager.Instance.IsUsingDirectionalNavigation;
+			_rightTabIcon.Visible = NControllerManager.Instance.IsUsingDirectionalNavigation;
+			_leftTabIcon.UpdateInput(MegaInput.viewDeckAndTabLeft);
+			_rightTabIcon.UpdateInput(MegaInput.viewExhaustPileAndTabRight);
 		}
 		else
 		{
-			_leftTriggerIcon.Visible = false;
-			_rightTriggerIcon.Visible = false;
+			_leftTabIcon.Visible = false;
+			_rightTabIcon.Visible = false;
 		}
 	}
 
@@ -223,7 +223,7 @@ public partial class NAscensionPanel : Control
 	{
 		_leftArrow.Disable();
 		_rightArrow.Disable();
-		_leftTriggerIcon.Visible = false;
-		_rightTriggerIcon.Visible = false;
+		_leftTabIcon.Visible = false;
+		_rightTabIcon.Visible = false;
 	}
 }

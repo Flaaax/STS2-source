@@ -33,12 +33,7 @@ public partial class NLeaderboardPageArrow : NButton
 		ConnectSignals();
 		_image = GetNode<TextureRect>("Image");
 		_baseScale = _image.Scale;
-		_hsv = (ShaderMaterial)_image.Material;
-	}
-
-	protected override void GetControllerIconNode()
-	{
-		_controllerHotkeyIcon = GetNodeOrNull<TextureRect>("ControllerIcon");
+		_hsv = (ShaderMaterial)base.Material;
 	}
 
 	public void Connect(Action onRelease)
@@ -48,12 +43,16 @@ public partial class NLeaderboardPageArrow : NButton
 
 	protected override void OnDisable()
 	{
+		base.OnDisable();
 		base.Modulate = StsColors.exhaustGray;
+		UpdateShaderV(0.9f);
 	}
 
 	protected override void OnEnable()
 	{
+		base.OnEnable();
 		base.Modulate = Colors.White;
+		UpdateShaderV(0.9f);
 	}
 
 	protected override void OnRelease()

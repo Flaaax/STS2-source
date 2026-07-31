@@ -12,6 +12,7 @@ using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.Cards;
 using MegaCrit.Sts2.Core.Nodes.CommonUi;
+using MegaCrit.Sts2.Core.Nodes.Debug;
 using MegaCrit.Sts2.Core.Nodes.GodotExtensions;
 using MegaCrit.Sts2.Core.Nodes.HoverTips;
 using MegaCrit.Sts2.Core.Nodes.Screens.ScreenContext;
@@ -63,7 +64,7 @@ public partial class NInspectCardScreen : Control, IScreenContext
 
 	private bool IsShowingUpgradedCard => _upgradeTickbox.IsTicked;
 
-	public Control? DefaultFocusedControl => null;
+	public Control? DefaultFocusedControl => this;
 
 	public static NInspectCardScreen? Create()
 	{
@@ -139,8 +140,6 @@ public partial class NInspectCardScreen : Control, IScreenContext
 		_upgradeTickbox.Enable();
 		NHotkeyManager.Instance.PushHotkeyPressedBinding(MegaInput.cancel, Close);
 		NHotkeyManager.Instance.PushHotkeyPressedBinding(MegaInput.pauseAndBack, Close);
-		NHotkeyManager.Instance.PushHotkeyPressedBinding(MegaInput.left, OnLeftButtonReleased);
-		NHotkeyManager.Instance.PushHotkeyPressedBinding(MegaInput.right, OnRightButtonReleased);
 	}
 
 	public void Close()
@@ -168,9 +167,24 @@ public partial class NInspectCardScreen : Control, IScreenContext
 			}));
 			NHotkeyManager.Instance.RemoveHotkeyPressedBinding(MegaInput.cancel, Close);
 			NHotkeyManager.Instance.RemoveHotkeyPressedBinding(MegaInput.pauseAndBack, Close);
-			NHotkeyManager.Instance.RemoveHotkeyPressedBinding(MegaInput.left, OnLeftButtonReleased);
-			NHotkeyManager.Instance.RemoveHotkeyPressedBinding(MegaInput.right, OnRightButtonReleased);
 			NHotkeyManager.Instance.RemoveBlockingScreen(this);
+		}
+	}
+
+	public override void _Input(InputEvent inputEvent)
+	{
+		if (!NDevConsole.IsConsoleVisible && ActiveScreenContext.Instance.IsCurrent(this))
+		{
+			if (inputEvent.IsActionPressed(MegaInput.right))
+			{
+				OnRightButtonReleased();
+				GetViewport()?.SetInputAsHandled();
+			}
+			if (inputEvent.IsActionPressed(MegaInput.left))
+			{
+				OnLeftButtonReleased();
+				GetViewport()?.SetInputAsHandled();
+			}
 		}
 	}
 

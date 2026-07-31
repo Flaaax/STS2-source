@@ -1,0 +1,171 @@
+[gd_scene load_steps=11 format=3 uid="uid://cyhw3s1faj4c7"]
+
+[ext_resource type="FontVariation" uid="uid://ux4d708e7mk6" path="res://themes/kreon_bold_glyph_space_one.tres" id="1_j6tgr"]
+[ext_resource type="Script" uid="uid://cnrlg713728c8" path="res://src/Core/Nodes/Screens/DailyRun/NLeaderboardDayPaginator.cs" id="1_p3g0w"]
+[ext_resource type="Script" uid="uid://dtfio45agppyj" path="res://addons/mega_text/MegaLabel.cs" id="2_jy7nx"]
+[ext_resource type="PackedScene" uid="uid://qqxow7erw30c" path="res://scenes/screens/game_over_screen/settings_paginator_arrow.tscn" id="3_p3g0w"]
+[ext_resource type="Shader" uid="uid://c66gb6g7tup3n" path="res://shaders/hsv.gdshader" id="4_vt6bx"]
+[ext_resource type="Script" uid="uid://c28gslq0j6r3b" path="res://src/Core/Nodes/Screens/DailyRun/NLeaderboardPageArrow.cs" id="5_jy7nx"]
+[ext_resource type="PackedScene" uid="uid://bgy88bk44xxvk" path="res://scenes/ui/selection_reticle.tscn" id="5_rafr6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ej6b"]
+resource_local_to_scene = true
+shader = ExtResource("4_vt6bx")
+shader_parameter/h = 1.0
+shader_parameter/s = 1.0
+shader_parameter/v = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lb08q"]
+resource_local_to_scene = true
+shader = ExtResource("4_vt6bx")
+shader_parameter/h = 1.0
+shader_parameter/s = 1.0
+shader_parameter/v = 0.9
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p3g0w"]
+resource_local_to_scene = true
+shader = ExtResource("4_vt6bx")
+shader_parameter/h = 1.0
+shader_parameter/s = 1.0
+shader_parameter/v = 1.0
+
+[node name="Paginator" type="Control"]
+custom_minimum_size = Vector2(96, 64)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 324.0
+offset_bottom = 64.0
+size_flags_horizontal = 8
+focus_mode = 2
+mouse_filter = 2
+script = ExtResource("1_p3g0w")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="LabelContainer" type="Control" parent="."]
+custom_minimum_size = Vector2(188, 64)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 64.0
+offset_top = -32.0
+offset_right = -64.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Mask" type="Control" parent="LabelContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(200, 64)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="LabelContainer/Mask"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(112, 32)
+theme_override_colors/font_color = Color(0.52156866, 0.80784315, 0.92156863, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("1_j6tgr")
+theme_override_font_sizes/font_size = 28
+text = "Normal"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_jy7nx")
+MinFontSize = 12
+MaxFontSize = 28
+
+[node name="VfxLabel" type="Label" parent="LabelContainer/Mask"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(112, 32)
+theme_override_colors/font_color = Color(0.52156866, 0.80784315, 0.92156863, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("1_j6tgr")
+theme_override_font_sizes/font_size = 28
+text = "Normal"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_jy7nx")
+MinFontSize = 18
+MaxFontSize = 28
+
+[node name="LeftArrow" parent="." instance=ExtResource("3_p3g0w")]
+material = SubResource("ShaderMaterial_2ej6b")
+layout_mode = 1
+offset_left = -163.0
+offset_top = -32.0
+offset_right = -105.0
+offset_bottom = 26.0
+pivot_offset = Vector2(32, 32)
+script = ExtResource("5_jy7nx")
+
+[node name="Image" parent="LeftArrow" index="0"]
+material = SubResource("ShaderMaterial_lb08q")
+custom_minimum_size = Vector2(64, 64)
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+pivot_offset = Vector2(32, 32)
+
+[node name="RightArrow" parent="." instance=ExtResource("3_p3g0w")]
+material = SubResource("ShaderMaterial_p3g0w")
+layout_mode = 1
+offset_left = 98.0
+offset_top = -32.0
+offset_right = 156.0
+offset_bottom = 26.0
+pivot_offset = Vector2(32, 32)
+script = ExtResource("5_jy7nx")
+_isLeftArrow = false
+
+[node name="Image" parent="RightArrow" index="0"]
+material = SubResource("ShaderMaterial_lb08q")
+custom_minimum_size = Vector2(64, 64)
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+pivot_offset = Vector2(32, 32)
+flip_h = true
+
+[node name="SelectionReticle" parent="." instance=ExtResource("5_rafr6")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[editable path="LeftArrow"]
+[editable path="RightArrow"]

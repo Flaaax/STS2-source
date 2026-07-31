@@ -1,0 +1,76 @@
+[gd_scene load_steps=7 format=3 uid="uid://lknfal844kqr"]
+
+[ext_resource type="Shader" uid="uid://c66gb6g7tup3n" path="res://shaders/hsv.gdshader" id="1_adtsb"]
+[ext_resource type="Script" uid="uid://c28gslq0j6r3b" path="res://src/Core/Nodes/Screens/DailyRun/NLeaderboardPageArrow.cs" id="2_o8g4p"]
+[ext_resource type="Texture2D" uid="uid://cakri10dsey1d" path="res://images/packed/common_ui/settings_tiny_left_arrow.png" id="3_4upex"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hotkey_icon.tscn" id="4_o8g4p"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k470t"]
+resource_local_to_scene = true
+shader = ExtResource("1_adtsb")
+shader_parameter/h = 1.0
+shader_parameter/s = 1.0
+shader_parameter/v = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xq0jq"]
+resource_local_to_scene = true
+shader = ExtResource("1_adtsb")
+shader_parameter/h = 1.0
+shader_parameter/s = 1.0
+shader_parameter/v = 0.9
+
+[node name="LeftArrow" type="Control"]
+material = SubResource("ShaderMaterial_k470t")
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -442.0
+offset_top = -148.5
+offset_right = -325.0
+offset_bottom = -31.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(58, 58)
+script = ExtResource("2_o8g4p")
+
+[node name="Image" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_xq0jq")
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -48.0
+offset_right = 48.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+pivot_offset = Vector2(48, 48)
+mouse_filter = 2
+texture = ExtResource("3_4upex")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HotkeyIcon" parent="." instance=ExtResource("4_o8g4p")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -83.5
+offset_top = -3.0
+offset_right = -35.5
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.85, 0.85)

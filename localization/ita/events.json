@@ -55,7 +55,7 @@
   "BRAIN_LEECH.pages.INITIAL.options.RIP.title": "Rimuovi la sanguisuga",
   "BRAIN_LEECH.pages.INITIAL.options.SHARE_KNOWLEDGE.description": "Scegli [blue]{CardChoiceCount}[/blue] tra [blue]{FromCardChoiceCount}[/blue] carte casuali da aggiungere al tuo [gold]mazzo[/gold].",
   "BRAIN_LEECH.pages.INITIAL.options.SHARE_KNOWLEDGE.title": "Condividi la conoscenza",
-  "BRAIN_LEECH.pages.RIP.description": "[jitter]Rimuovi violentemente la sanguisuga dalla tua testa[/jitter] e la scagli lontana.\n\nSenti una voce nella tua testa:\n[purple][sine]\"NOOOOOOoOoooooOOOOoooo....\"",
+  "BRAIN_LEECH.pages.RIP.description": "[jitter]Rimuovi violentemente la sanguisuga dalla tua testa[/jitter] e la scagli lontana.\n\nSenti una voce nella tua testa:\n[purple][sine]\"NOOOOOOoOoooooOOOOoooo....\"[/sine][/purple]",
   "BRAIN_LEECH.pages.SHARE_KNOWLEDGE.description": "[purple][sine]\"RIESCO A VEDERE COME OSTENTI TUTTA LA TUA CONOSCENZA IN QUESTA MENTE LABIRINTICA!\nMI FARÒ UN BEL BANCHETTO CON TUTTE QUESTE SOSTANZE CEREBRALI!\"[/sine][/purple].\n\nSoddisfatta, la creatura si stacca dalla tua testa e striscia via.\nSei senza [blue]parole[/blue].",
   "BRAIN_LEECH.pages.SHARE_KNOWLEDGE.selectionScreenPrompt": "Scegli una carta.",
   "BRAIN_LEECH.title": "Sanguisuga cerebrale",

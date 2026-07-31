@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://dh55p72jgv47q"]
+
+[ext_resource type="Shader" uid="uid://cqiijffy4wn7s" path="res://shaders/vfx/forms/serpent/vfx_serpent_form_snakes_shader.gdshader" id="1_7xvkf"]
+
+[sub_resource type="Gradient" id="Gradient_7xvkf"]
+colors = PackedColorArray(0, 0.30312884, 0.14843918, 1, 0.37890273, 0.9141083, 0.6049071, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_a3vn8"]
+gradient = SubResource("Gradient_7xvkf")
+
+[resource]
+shader = ExtResource("1_7xvkf")
+shader_parameter/pivot_offset = Vector2(-0.025, -0.175)
+shader_parameter/distortion_st = Vector4(0.3, 0.3, 0.2, 0)
+shader_parameter/distortion_initial_offset = Vector2(0, 0)
+shader_parameter/distortion_dir = Vector2(0.5, 1)
+shader_parameter/distortion_strength = 0.025
+shader_parameter/lut = SubResource("GradientTexture1D_a3vn8")

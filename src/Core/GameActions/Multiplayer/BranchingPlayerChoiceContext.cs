@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.Entities.Multiplayer;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Logging;
+using MegaCrit.Sts2.Core.Models;
 
 namespace MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
@@ -52,6 +53,8 @@ public class BranchingPlayerChoiceContext : PlayerChoiceContext
 
 	private TaskCompletionSource _pausedCompletionSource = new TaskCompletionSource();
 
+	public AbstractModel? Source { get; }
+
 	public override ulong? OwnerId => _originalContext.OwnerId;
 
 	public event Action<HookPlayerChoiceContext>? AfterBranched;
@@ -61,6 +64,14 @@ public class BranchingPlayerChoiceContext : PlayerChoiceContext
 		_originalContext = existing;
 		_gameActionType = gameActionType;
 		_localPlayerId = localPlayerId;
+	}
+
+	public BranchingPlayerChoiceContext(AbstractModel source, ulong localPlayerId, GameActionType gameActionType, PlayerChoiceContext existing)
+	{
+		_originalContext = existing;
+		_gameActionType = gameActionType;
+		_localPlayerId = localPlayerId;
+		Source = source;
 	}
 
 	public override async Task SignalPlayerChoiceBegun(Player chooser, PlayerChoiceOptions options)
@@ -82,7 +93,14 @@ public class BranchingPlayerChoiceContext : PlayerChoiceContext
 		else
 		{
 			Log.LogMessage(LogLevel.Debug, LogType.GameSync, $"Branching context began choice for {chooser.NetId} who is not the owner ({_originalContext.OwnerId}). Using new {"HookPlayerChoiceContext"}");
-			_createdContext = new HookPlayerChoiceContext(chooser, _localPlayerId, _gameActionType);
+			if (Source != null)
+			{
+				_createdContext = new HookPlayerChoiceContext(Source, chooser, _localPlayerId, _gameActionType);
+			}
+			else
+			{
+				_createdContext = new HookPlayerChoiceContext(chooser, _localPlayerId, _gameActionType);
+			}
 			this.AfterBranched?.Invoke(_createdContext);
 			_pausedCompletionSource.SetResult();
 			playerChoiceContext = _createdContext;

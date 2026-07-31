@@ -22,7 +22,7 @@ public abstract partial class NSettingsDropdown : NDropdown
 	{
 		base.OnFocus();
 		_currentOptionHighlight.Modulate = new Color("3C5B6B");
-		if (NControllerManager.Instance.IsUsingController)
+		if (NControllerManager.Instance.IsUsingDirectionalNavigation)
 		{
 			_selectionReticle.OnSelect();
 		}

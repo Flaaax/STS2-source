@@ -20,7 +20,7 @@
   "IMBUED.title": "มนตร์อัดฉีด",
   "INKY.description": "การ์ดนี้สร้างความเสียหายเพิ่ม [blue]{Damage}[/blue] และสร้าง [blue]{WeakPower}[/blue] [gold]ความอ่อนแอ[/gold]",
   "INKY.extraCardText": "สร้าง [blue]{WeakPower}[/blue] [gold]ความอ่อนแอ[/gold]{TargetType:choose(AllEnemies): ใส่ศัตรูทั้งหมด|}",
-  "INKY.title": "อาบหมึก",
+  "INKY.title": "มนตร์อาบหมึก",
   "INSTINCT.description": "พลังโจมตีของการ์ดนี้เป็น 2 เท่า",
   "INSTINCT.title": "มนตร์สัญชาตญาณ",
   "MOCK_FREE_ENCHANTMENT.title": "Mock Free Enchantment",

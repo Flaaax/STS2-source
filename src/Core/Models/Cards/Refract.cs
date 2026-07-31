@@ -22,7 +22,7 @@ public sealed class Refract : CardModel
 	protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlyArray<DynamicVar>(new DynamicVar[2]
 	{
 		new RepeatVar(2),
-		new DamageVar(9m, ValueProp.Move)
+		new DamageVar(10m, ValueProp.Move)
 	});
 
 	public Refract()

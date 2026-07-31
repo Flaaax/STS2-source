@@ -1,6 +1,11 @@
 {
   "BLOCKED": "Блок",
   "EPOCH_GAIN": "Открыта эпоха",
+  "FAILED_JOIN_FULL": "{UserName} не может присоединиться. (Нет места в лобби)",
+  "FAILED_JOIN_MOD_MISMATCH": "{UserName} не может присоединиться. (Несовпадение модов)",
+  "FAILED_JOIN_PROGRESS": "{UserName} не может присоединиться. (Вылазка уже началась)",
+  "FAILED_JOIN_SAVE": "{UserName} не может присоединиться. (Этого игрока не было в начале вылазки)",
+  "FAILED_JOIN_VERSION": "{UserName} не может присоединиться. (Не совпадает версия игры)",
   "POWER_WEARS_OFF": "больше не действует",
   "STUNNED": "Оглушение"
 }

@@ -14,7 +14,7 @@ namespace MegaCrit.Sts2.Core.Nodes.Screens.ModdingScreen;
 
 public partial class NModMenuRow : NClickableControl
 {
-	private TextureRect _controllerIcon;
+	private NHotkeyIcon _hotkeyIcon;
 
 	private static readonly string _scenePath = SceneHelper.GetScenePath("screens/modding/modding_screen_row");
 
@@ -28,7 +28,7 @@ public partial class NModMenuRow : NClickableControl
 
 	private bool _isSelected;
 
-	private string Hotkey => MegaInput.accept;
+	private string Hotkey => MegaInput.confirm;
 
 	public Mod? Mod { get; private set; }
 
@@ -52,7 +52,7 @@ public partial class NModMenuRow : NClickableControl
 			_tickbox = GetNode<NTickbox>("Tickbox");
 			MegaRichTextLabel node = GetNode<MegaRichTextLabel>("Title");
 			TextureRect node2 = GetNode<TextureRect>("PlatformIcon");
-			_controllerIcon = GetNode<TextureRect>("ControllerIcon");
+			_hotkeyIcon = GetNode<NHotkeyIcon>("%HotkeyIcon");
 			_tickbox = GetNode<NTickbox>("Tickbox");
 			Panel selectionHighlight = _selectionHighlight;
 			Color color = _selectionHighlight.Modulate;
@@ -120,8 +120,8 @@ public partial class NModMenuRow : NClickableControl
 
 	private void UpdateControllerButton()
 	{
-		_controllerIcon.SetVisible(_isSelected && NControllerManager.Instance.IsUsingController);
-		_controllerIcon.Texture = NInputManager.Instance.GetHotkeyIcon(Hotkey);
+		_hotkeyIcon.SetVisible(_isSelected && NControllerManager.Instance.IsUsingDirectionalNavigation);
+		_hotkeyIcon.UpdateInput(Hotkey);
 	}
 
 	protected override void OnUnfocus()

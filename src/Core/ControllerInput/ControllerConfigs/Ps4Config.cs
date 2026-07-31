@@ -76,7 +76,11 @@ public class Ps4Config : ControllerConfig
 	public override Dictionary<StringName, StringName> DefaultControllerInputMap => new Dictionary<StringName, StringName>
 	{
 		{
-			MegaInput.accept,
+			MegaInput.confirm,
+			Controller.faceButtonNorth
+		},
+		{
+			MegaInput.endTurn,
 			Controller.faceButtonNorth
 		},
 		{

@@ -9,7 +9,7 @@ namespace MegaCrit.Sts2.Core.Models.Cards;
 public sealed class WellLaidPlans : CardModel
 {
 	public WellLaidPlans()
-		: base(1, CardType.Power, CardRarity.Rare, TargetType.Self)
+		: base(2, CardType.Power, CardRarity.Rare, TargetType.Self)
 	{
 	}
 

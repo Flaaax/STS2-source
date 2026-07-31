@@ -160,14 +160,17 @@ public partial class NTopBar : Control
 
 	public override void _EnterTree()
 	{
-		base._EnterTree();
 		ActiveScreenContext.Instance.Updated += UpdateNavigation;
 	}
 
 	public override void _ExitTree()
 	{
 		ActiveScreenContext.Instance.Updated -= UpdateNavigation;
-		if (_player != null)
+	}
+
+	public override void _Notification(int what)
+	{
+		if ((long)what == 1 && _player != null)
 		{
 			_player.RelicObtained -= OnRelicsUpdated;
 			_player.RelicRemoved -= OnRelicsUpdated;
@@ -232,7 +235,7 @@ public partial class NTopBar : Control
 
 	private void UpdateNavigation()
 	{
-		Control control = NRun.Instance.GlobalUi.RelicInventory.RelicNodes.FirstOrDefault();
+		Control control = NRun.Instance?.GlobalUi.RelicInventory.RelicNodes.FirstOrDefault();
 		if (control == null)
 		{
 			return;

@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Entities.Multiplayer;
@@ -7,6 +8,7 @@ using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Runs;
+using MegaCrit.Sts2.Core.TestSupport;
 
 namespace MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
@@ -75,6 +77,14 @@ public class HookPlayerChoiceContext : PlayerChoiceContext
 		Owner = owner;
 	}
 
+	public HookPlayerChoiceContext(AbstractModel source, Player owner, ulong localPlayerId, GameActionType gameActionType)
+	{
+		Source = source;
+		_gameActionType = gameActionType;
+		_localPlayerId = localPlayerId;
+		Owner = owner;
+	}
+
 	public HookPlayerChoiceContext(AbstractModel source, ulong localPlayerId, ICombatState? combatState, GameActionType gameActionType)
 	{
 		_localPlayerId = localPlayerId;
@@ -90,7 +100,7 @@ public class HookPlayerChoiceContext : PlayerChoiceContext
 		Player player2 = player;
 		if (player2 == null)
 		{
-			player2 = combatState?.Players[0];
+			player2 = combatState?.Players.FirstOrDefault();
 		}
 		return player2;
 	}
@@ -181,7 +191,7 @@ public class HookPlayerChoiceContext : PlayerChoiceContext
 				}
 			}
 			_gameAction.SetChoiceContext(this);
-			if (_gameAction.OwnerId == _localPlayerId)
+			if (_gameAction.OwnerId == _localPlayerId || TestFlags.ShouldSendResumeForRemotePlayers)
 			{
 				ActionQueueSynchronizer.RequestEnqueueHookAction(_gameAction);
 			}
@@ -193,7 +203,7 @@ public class HookPlayerChoiceContext : PlayerChoiceContext
 
 	public override async Task SignalPlayerChoiceEnded()
 	{
-		if (_gameAction.OwnerId == _localPlayerId)
+		if (_gameAction.OwnerId == _localPlayerId || TestFlags.ShouldSendResumeForRemotePlayers)
 		{
 			ActionQueueSynchronizer.RequestResumeActionAfterPlayerChoice(_gameAction);
 		}

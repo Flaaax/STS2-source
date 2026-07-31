@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://blc13hgd3twys"]
+[gd_scene load_steps=16 format=3 uid="uid://blc13hgd3twys"]
 
 [ext_resource type="Script" uid="uid://ccewvhinjagdk" path="res://src/Core/Nodes/Screens/NDeckViewScreen.cs" id="1_hma5v"]
 [ext_resource type="PackedScene" uid="uid://cso1enqajc0tc" path="res://scenes/cards/card_grid.tscn" id="2_bfdbe"]
@@ -13,14 +13,7 @@
 [ext_resource type="Script" uid="uid://cktduyaggev5n" path="res://src/Core/Nodes/Screens/InspectScreens/NUpgradePreviewTickbox.cs" id="9_1o7jv"]
 [ext_resource type="FontVariation" uid="uid://ux4d708e7mk6" path="res://themes/kreon_bold_glyph_space_one.tres" id="9_08f3c"]
 [ext_resource type="Script" uid="uid://dtfio45agppyj" path="res://addons/mega_text/MegaLabel.cs" id="10_espuj"]
-[ext_resource type="Texture2D" uid="uid://b5x513mavmk5v" path="res://images/ui/placeholder_controller_icon.png" id="11_1o7jv"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wequ5"]
-resource_local_to_scene = true
-shader = ExtResource("8_lj46y")
-shader_parameter/h = 1.0
-shader_parameter/s = 1.0
-shader_parameter/v = 1.0
+[ext_resource type="PackedScene" uid="uid://ddb8daodx7qsl" path="res://scenes/ui/hotkey_icon.tscn" id="12_h2fls"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ffwqd"]
 resource_local_to_scene = true
@@ -197,15 +190,10 @@ layout_mode = 2
 theme_override_constants/separation = 0
 script = ExtResource("9_1o7jv")
 
-[node name="ControllerIcon" type="TextureRect" parent="ViewUpgrades/MarginContainer/Upgrades"]
+[node name="HotkeyIcon" parent="ViewUpgrades/MarginContainer/Upgrades" instance=ExtResource("12_h2fls")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_wequ5")
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-mouse_filter = 2
-texture = ExtResource("11_1o7jv")
-expand_mode = 1
-stretch_mode = 5
 
 [node name="TickboxVisuals" parent="ViewUpgrades/MarginContainer/Upgrades" instance=ExtResource("7_cjypk")]
 unique_name_in_owner = true

@@ -18,7 +18,7 @@ public struct ClientLobbyJoinResponseMessage : INetMessage, IPacketSerializable
 	/// <summary>
 	/// List of players already in the lobby.
 	/// </summary>
-	public List<LobbyPlayer>? playersInLobby;
+	public List<StartRunLobbyPlayer>? playersInLobby;
 
 	/// <summary>
 	/// If the run is a daily, this contains information about the time that the host requested from the time server.
@@ -71,7 +71,7 @@ public struct ClientLobbyJoinResponseMessage : INetMessage, IPacketSerializable
 
 	public void Deserialize(PacketReader reader)
 	{
-		playersInLobby = reader.ReadList<LobbyPlayer>(3);
+		playersInLobby = reader.ReadList<StartRunLobbyPlayer>(3);
 		if (reader.ReadBool())
 		{
 			dailyTime = reader.Read<TimeServerResult>();

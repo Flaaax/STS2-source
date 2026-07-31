@@ -52,12 +52,12 @@ public partial class NInvitePlayersButton : NButton
 		}
 	}
 
-	private void OnPlayerConnected(LobbyPlayer player)
+	private void OnPlayerConnected(StartRunLobbyPlayer player)
 	{
 		UpdateVisibility();
 	}
 
-	private void OnPlayerDisconnected(LobbyPlayer player)
+	private void OnPlayerDisconnected(StartRunLobbyPlayer player)
 	{
 		UpdateVisibility();
 	}

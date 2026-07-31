@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bge0uai3eqnq1" path="res://images/ftue/ftue_confirm_button.png" id="10_xcqaa"]
 [ext_resource type="Script" uid="uid://dun8ku5mawif5" path="res://src/Core/Nodes/Ftue/NFtueConfirmButton.cs" id="11_y1xvo"]
 [ext_resource type="Texture2D" uid="uid://b52383702y3s4" path="res://images/ftue/ftue_confirm_button_outline.png" id="12_uqpim"]
-[ext_resource type="Texture2D" uid="uid://b5x513mavmk5v" path="res://images/ui/placeholder_controller_icon.png" id="13_18u3k"]
+[ext_resource type="PackedScene" uid="uid://ddb8daodx7qsl" path="res://scenes/ui/hotkey_icon.tscn" id="14_3tdvx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dhdfu"]
 shader = ExtResource("2_3tdvx")
@@ -319,24 +319,18 @@ vertical_alignment = 1
 script = ExtResource("6_scckq")
 MaxFontSize = 30
 
-[node name="ControllerIcon" type="TextureRect" parent="FtueConfirmButton"]
+[node name="HotkeyIcon" parent="FtueConfirmButton" instance=ExtResource("14_3tdvx")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(128, 128)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -208.0
-offset_top = -49.0
-offset_right = -80.0
-offset_bottom = 79.0
+offset_left = 110.0
+offset_top = 1.0000038
+offset_right = 158.0
+offset_bottom = 49.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(64, 64)
-mouse_filter = 2
-texture = ExtResource("13_18u3k")
-expand_mode = 1
-stretch_mode = 5
+scale = Vector2(0.85, 0.85)

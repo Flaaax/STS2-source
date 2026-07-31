@@ -1,0 +1,158 @@
+[gd_scene load_steps=31 format=3 uid="uid://b3cpvb02543u2"]
+
+[ext_resource type="Script" uid="uid://dg1gsohj6hh3a" path="res://src/Core/Nodes/Vfx/Forms/NReaperFormVfx.cs" id="1_pdwe8"]
+[ext_resource type="Script" uid="uid://b6yvonvw15xb6" path="res://src/Core/Nodes/Vfx/Utilities/NSpineSpriteBoneFollower.cs" id="2_ro4w0"]
+[ext_resource type="Material" uid="uid://buimjwpet3sr3" path="res://materials/vfx/common/vfx_glow.tres" id="3_b2kuj"]
+[ext_resource type="Texture2D" uid="uid://dltmdulxe1avi" path="res://images/vfx/common/common_glow.png" id="4_8n0gf"]
+[ext_resource type="Material" uid="uid://cu06dndh6vv33" path="res://materials/vfx/common/vfx_glow_noise_scale.tres" id="5_uch2j"]
+[ext_resource type="Material" uid="uid://ctwvjg85gynug" path="res://materials/vfx/forms/reaper/vfx_reaper_form_idle_panning_noise.tres" id="6_m0yy4"]
+[ext_resource type="Texture2D" uid="uid://cu2i22aqo2pj5" path="res://images/vfx/noise/vfx_noise_4.png" id="7_6hgfb"]
+[ext_resource type="Script" uid="uid://bd46jtcut2h66" path="res://src/Core/Nodes/Vfx/Utilities/NParticlesContainer.cs" id="8_onotn"]
+[ext_resource type="PackedScene" uid="uid://0vk581j1pecs" path="res://scenes/vfx/common/vfx_common_ring_polar_a.tscn" id="9_xn14y"]
+[ext_resource type="PackedScene" uid="uid://b4bmc8s54bfe8" path="res://scenes/vfx/common/vfx_common_ring_polar_b.tscn" id="10_ern4f"]
+
+[sub_resource type="Curve" id="Curve_eo05b"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_its5o"]
+curve = SubResource("Curve_eo05b")
+
+[sub_resource type="Gradient" id="Gradient_qs22b"]
+offsets = PackedFloat32Array(0, 0.6424581)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_sceup"]
+gradient = SubResource("Gradient_qs22b")
+
+[sub_resource type="Curve" id="Curve_5tjoo"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 3), 0.0, -8.75114, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_sj4o0"]
+curve = SubResource("Curve_5tjoo")
+
+[sub_resource type="Curve" id="Curve_hrces"]
+_data = [Vector2(0, 0.31898963), 0.0, 1.7108461, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_5rf2x"]
+curve = SubResource("Curve_hrces")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cvcfb"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+scale_min = 2.5
+scale_max = 2.5
+scale_curve = SubResource("CurveTexture_5rf2x")
+color_ramp = SubResource("GradientTexture1D_sceup")
+alpha_curve = SubResource("CurveTexture_its5o")
+emission_curve = SubResource("CurveTexture_sj4o0")
+
+[sub_resource type="Curve" id="Curve_i140c"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1ld4o"]
+curve = SubResource("Curve_i140c")
+
+[sub_resource type="Gradient" id="Gradient_n32ky"]
+offsets = PackedFloat32Array(0.2821229, 0.7765363)
+colors = PackedColorArray(0.4117474, 0.4117474, 0.4117474, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_tnyhl"]
+gradient = SubResource("Gradient_n32ky")
+
+[sub_resource type="Gradient" id="Gradient_rp2k6"]
+offsets = PackedFloat32Array(0, 0.49720672)
+colors = PackedColorArray(1, 1, 1, 1, 0.25033942, 0, 0.35743815, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_llsfj"]
+gradient = SubResource("Gradient_rp2k6")
+
+[sub_resource type="Curve" id="Curve_qani6"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 3), 0.0, -8.75114, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_tprk4"]
+curve = SubResource("Curve_qani6")
+
+[sub_resource type="Curve" id="Curve_gapkl"]
+_data = [Vector2(0, 0.245202), 0.0, 2.3427875, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_e8chm"]
+curve = SubResource("Curve_gapkl")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ra52p"]
+lifetime_randomness = 0.25
+particle_flag_disable_z = true
+angle_min = 1.07288e-05
+angle_max = 360.0
+gravity = Vector3(0, 0, 0)
+scale_min = 2.5
+scale_max = 3.5
+scale_curve = SubResource("CurveTexture_e8chm")
+color_ramp = SubResource("GradientTexture1D_llsfj")
+color_initial_ramp = SubResource("GradientTexture1D_tnyhl")
+alpha_curve = SubResource("CurveTexture_1ld4o")
+emission_curve = SubResource("CurveTexture_tprk4")
+
+[node name="vfx_reaper_form_idle_vfx" type="Node2D" node_paths=PackedStringArray("_effectTriggeredParticles", "_boneFollower")]
+scale = Vector2(0.99999994, 0.99999994)
+script = ExtResource("1_pdwe8")
+_ironcladBoneName = "bod_upper"
+_silentBoneName = "body_2"
+_regentBoneName = "body"
+_necrobinderBoneName = "body_lower"
+_defectBoneName = "torso_upper"
+_effectTriggeredParticles = NodePath("center_pivot/effect_triggered_vfx")
+_boneFollower = NodePath("center_pivot")
+
+[node name="center_pivot" type="Node2D" parent="."]
+position = Vector2(0, -209.00003)
+script = ExtResource("2_ro4w0")
+_snap = true
+
+[node name="vfx_reaper_form_idle_glow" type="Sprite2D" parent="center_pivot"]
+self_modulate = Color(0.112, 0, 0.12, 1)
+material = ExtResource("3_b2kuj")
+scale = Vector2(3, 3)
+texture = ExtResource("4_8n0gf")
+
+[node name="vfx_reaper_form_idle_glow_outer" type="Sprite2D" parent="center_pivot"]
+self_modulate = Color(0.116000004, 0, 0.12, 0.76862746)
+material = ExtResource("5_uch2j")
+instance_shader_parameters/noise_initial_offset = Vector2(0.6, 0.6)
+instance_shader_parameters/use_r_as_alpha = 1.0
+scale = Vector2(5.25, 5.25)
+texture = ExtResource("4_8n0gf")
+
+[node name="vfx_reaper_form_idle_panning_noise" type="Sprite2D" parent="center_pivot"]
+texture_repeat = 2
+material = ExtResource("6_m0yy4")
+scale = Vector2(2.25, 2.25)
+texture = ExtResource("7_6hgfb")
+
+[node name="effect_triggered_vfx" type="Node2D" parent="center_pivot" node_paths=PackedStringArray("_particles")]
+script = ExtResource("8_onotn")
+_particles = [NodePath("vfx_common_ring_polar_b")]
+
+[node name="vfx_common_ring_polar_a" parent="center_pivot/effect_triggered_vfx" instance=ExtResource("9_xn14y")]
+visible = false
+self_modulate = Color(0.7666664, 0, 1, 0.2509804)
+amount = 2
+lifetime = 0.65
+explosiveness = 0.5
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_cvcfb")
+
+[node name="vfx_common_ring_polar_b" parent="center_pivot/effect_triggered_vfx" instance=ExtResource("10_ern4f")]
+self_modulate = Color(0.7666664, 0, 1, 0.5019608)
+amount = 2
+lifetime = 0.75
+explosiveness = 0.65
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_ra52p")

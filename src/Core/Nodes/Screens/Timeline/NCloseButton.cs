@@ -1,4 +1,5 @@
 using Godot;
+using MegaCrit.Sts2.addons.mega_text;
 using MegaCrit.Sts2.Core.ControllerInput;
 using MegaCrit.Sts2.Core.Nodes.GodotExtensions;
 
@@ -7,6 +8,8 @@ namespace MegaCrit.Sts2.Core.Nodes.Screens.Timeline;
 public partial class NCloseButton : NButton
 {
 	private Tween? _tween;
+
+	private MegaLabel _closeLabel;
 
 	protected override string ClickedSfx => "event:/sfx/ui/timeline/ui_timeline_close_epoch";
 
@@ -21,6 +24,12 @@ public partial class NCloseButton : NButton
 	public override void _Ready()
 	{
 		ConnectSignals();
+		_closeLabel = GetNode<MegaLabel>("%CloseLabel");
+	}
+
+	public void SetLabel(string text)
+	{
+		_closeLabel.SetTextAutoSize(text);
 	}
 
 	protected override void OnFocus()

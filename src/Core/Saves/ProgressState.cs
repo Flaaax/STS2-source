@@ -102,8 +102,6 @@ public class ProgressState
 
 	public long TotalPlaytime { get; set; }
 
-	public int TotalUnlocks { get; set; }
-
 	public int CurrentScore { get; set; }
 
 	public long FloorsClimbed { get; set; }
@@ -119,6 +117,17 @@ public class ProgressState
 	public int TestSubjectKills { get; set; }
 
 	public ModelId PendingCharacterUnlock { get; set; } = ModelId.none;
+
+	/// <summary>
+	/// How many end-of-run score bar unlocks the player has earned.
+	/// </summary>
+	/// <remarks>
+	/// Counted from the epochs themselves rather than stored, so the count and the grants cannot
+	/// disagree. Storing it separately is what caused PRG-7234: the counter advanced, the grant did
+	/// not, and because the counter was the only record of how far the player had got, the epoch it
+	/// skipped could never be handed out again.
+	/// </remarks>
+	public int TotalUnlocks => EpochModel.AgnosticUnlockOrder.Count(IsEpochObtained);
 
 	public int Wins => _characterStats.Values.Sum((CharacterStats c) => c.TotalWins);
 
@@ -167,7 +176,6 @@ public class ProgressState
 			UniqueId = save.UniqueId,
 			EnableFtues = save.EnableFtues,
 			TotalPlaytime = ClampNonNegative(save.TotalPlaytime, "TotalPlaytime", ctx),
-			TotalUnlocks = ClampNonNegativeInt(save.TotalUnlocks, "TotalUnlocks", ctx),
 			CurrentScore = ClampNonNegativeInt(save.CurrentScore, "CurrentScore", ctx),
 			FloorsClimbed = ClampNonNegative(save.FloorsClimbed, "FloorsClimbed", ctx),
 			ArchitectDamage = ClampNonNegative(save.ArchitectDamage, "ArchitectDamage", ctx),
@@ -303,6 +311,25 @@ public class ProgressState
 	public bool IsAchievementUnlocked(Achievement achievement)
 	{
 		return _unlockedAchievements.ContainsKey(achievement);
+	}
+
+	/// <summary>
+	/// Grants the next epoch the end-of-run score bar owes the player, and returns its ID.
+	/// Returns null once they have earned every score bar unlock.
+	/// </summary>
+	/// <remarks>
+	/// Granting is the only way <see cref="P:MegaCrit.Sts2.Core.Saves.ProgressState.TotalUnlocks" /> moves, because the count is derived from
+	/// the grants. There is no counter to advance on its own, so the two cannot come apart (PRG-7234).
+	/// </remarks>
+	public string? GrantNextUnlock()
+	{
+		string text = EpochModel.AgnosticUnlockOrder.FirstOrDefault((string id) => !IsEpochObtained(id));
+		if (text == null)
+		{
+			return null;
+		}
+		ObtainEpoch(text);
+		return text;
 	}
 
 	/// <summary>

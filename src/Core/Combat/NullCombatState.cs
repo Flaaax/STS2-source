@@ -77,6 +77,8 @@ public class NullCombatState : ICombatState
 
 	public Creature CreateCreature(MonsterModel monster, CombatSide side, string? slot)
 	{
+		monster.AssertMutable();
+		monster.RunRng = NullRunState.Instance.Rng;
 		return new Creature(monster, side, slot);
 	}
 

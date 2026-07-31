@@ -1,21 +1,28 @@
-[gd_scene load_steps=11 format=3 uid="uid://bfnqywlr4306e"]
+[gd_scene load_steps=15 format=3 uid="uid://bfnqywlr4306e"]
 
 [ext_resource type="Script" uid="uid://jey7qn0rnfl0" path="res://src/Core/Nodes/Events/NAncientEventLayout.cs" id="1_nb4me"]
 [ext_resource type="Script" uid="uid://byg8e8nwmy7km" path="res://src/Core/Nodes/Screens/NAncientBgContainer.cs" id="2_xn3a5"]
 [ext_resource type="FontVariation" uid="uid://ux4d708e7mk6" path="res://themes/kreon_bold_glyph_space_one.tres" id="5_ibxqn"]
 [ext_resource type="Script" uid="uid://dfls1sumgwb36" path="res://src/Core/Nodes/Events/NAncientDialogueHitbox.cs" id="5_spk35"]
+[ext_resource type="Script" uid="uid://3dhpwt5eeskc" path="res://src/Core/Nodes/CommonUi/NHotkeyIcon.cs" id="6_2vdf8"]
 [ext_resource type="FontVariation" uid="uid://bhyxo1pcdm73o" path="res://themes/bitter_medium_italic_glyph_space_one.tres" id="6_m8isc"]
 [ext_resource type="Script" uid="uid://dtfio45agppyj" path="res://addons/mega_text/MegaLabel.cs" id="6_ohlth"]
 [ext_resource type="Shader" uid="uid://c66gb6g7tup3n" path="res://shaders/hsv.gdshader" id="6_spk35"]
 [ext_resource type="Texture2D" uid="uid://b5x513mavmk5v" path="res://images/ui/placeholder_controller_icon.png" id="7_3wi56"]
 [ext_resource type="Texture2D" uid="uid://bn5v87murqe3o" path="res://images/packed/common_ui/little_arrow.png" id="9_3wi56"]
+[ext_resource type="Texture2D" uid="uid://bwavhr1o6lbp4" path="res://images/ui/keyboard_icon_ninepatch.png" id="9_88x84"]
+[ext_resource type="FontVariation" uid="uid://bg85h22rkxs6g" path="res://themes/kreon_bold_shared.tres" id="10_h3377"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_f01r0"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jawct"]
 resource_local_to_scene = true
 shader = ExtResource("6_spk35")
 shader_parameter/h = 1.0
 shader_parameter/s = 1.0
 shader_parameter/v = 1.0
+
+[sub_resource type="FontVariation" id="FontVariation_fdsbe"]
+base_font = ExtResource("10_h3377")
+spacing_glyph = 1
 
 [node name="AncientEventLayout" type="Control"]
 layout_mode = 3
@@ -156,14 +163,102 @@ grow_vertical = 0
 mouse_filter = 2
 alignment = 2
 
-[node name="ControllerIcon" type="TextureRect" parent="FakeNextButtonContainer/FakeNextButton"]
-material = SubResource("ShaderMaterial_f01r0")
+[node name="IconHolder" type="Control" parent="FakeNextButtonContainer/FakeNextButton"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
+
+[node name="HotkeyIcon" type="Control" parent="FakeNextButtonContainer/FakeNextButton/IconHolder"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.0
+offset_top = -24.0
+offset_right = 22.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.85, 0.85)
+pivot_offset = Vector2(24, 24)
+mouse_filter = 2
+script = ExtResource("6_2vdf8")
+
+[node name="ControllerIcon" type="TextureRect" parent="FakeNextButtonContainer/FakeNextButton/IconHolder/HotkeyIcon"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_jawct")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -32.0
+offset_right = 64.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(64, 32)
 mouse_filter = 2
 texture = ExtResource("7_3wi56")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="KeyboardIcon" type="MarginContainer" parent="FakeNextButtonContainer/FakeNextButton/IconHolder/HotkeyIcon"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.7, 0.7)
+pivot_offset = Vector2(32, 32)
+mouse_filter = 2
+theme_override_constants/margin_left = 0
+
+[node name="TextureRect" type="NinePatchRect" parent="FakeNextButtonContainer/FakeNextButton/IconHolder/HotkeyIcon/KeyboardIcon"]
+layout_mode = 2
+texture = ExtResource("9_88x84")
+region_rect = Rect2(0, 0, 96, 96)
+patch_margin_left = 32
+patch_margin_right = 32
+
+[node name="LabelPositioner" type="MarginContainer" parent="FakeNextButtonContainer/FakeNextButton/IconHolder/HotkeyIcon/KeyboardIcon"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 18
+
+[node name="KeyboardLabel" type="Label" parent="FakeNextButtonContainer/FakeNextButton/IconHolder/HotkeyIcon/KeyboardIcon/LabelPositioner"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 0.964706, 0.886275, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.5019608)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = SubResource("FontVariation_fdsbe")
+theme_override_font_sizes/font_size = 30
+text = "|"
+vertical_alignment = 1
+script = ExtResource("6_ohlth")
+AutoSizeEnabled = false
+MinFontSize = 30
+MaxFontSize = 30
 
 [node name="Label" type="Label" parent="FakeNextButtonContainer/FakeNextButton"]
 unique_name_in_owner = true

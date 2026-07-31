@@ -135,11 +135,11 @@ public partial class NTargetManager : Node2D
 			cancel = false;
 			GetViewport().SetInputAsHandled();
 		}
-		else if (inputEvent.IsActionPressed(MegaInput.cancel) || inputEvent.IsActionPressed(MegaInput.topPanel))
+		else if (inputEvent.IsActionPressed(MegaInput.cancel) || inputEvent.IsActionPressed(MegaInput.topPanel) || inputEvent.IsActionPressed(MegaInput.pauseAndBack))
 		{
 			flag = true;
 			cancel = true;
-			if (inputEvent.IsActionPressed(MegaInput.cancel))
+			if (inputEvent.IsActionPressed(MegaInput.cancel) || inputEvent.IsActionPressed(MegaInput.pauseAndBack))
 			{
 				GetViewport().SetInputAsHandled();
 			}

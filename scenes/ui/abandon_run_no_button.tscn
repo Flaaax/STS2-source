@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://igj7lu34snpy"]
+[gd_scene load_steps=10 format=3 uid="uid://igj7lu34snpy"]
 
 [ext_resource type="Script" uid="uid://baaxo4sba5b7a" path="res://src/Core/Nodes/CommonUi/NPopupYesNoButton.cs" id="1_sb6hq"]
 [ext_resource type="Texture2D" uid="uid://3xd33t" path="res://images/atlases/compressed.sprites/popup_cancel_button_outline.tres" id="2_sb6hq"]
@@ -6,7 +6,7 @@
 [ext_resource type="FontVariation" uid="uid://ciql5khgewwbm" path="res://themes/kreon_bold_glyph_space_two.tres" id="4_ml3lb"]
 [ext_resource type="Script" uid="uid://dtfio45agppyj" path="res://addons/mega_text/MegaLabel.cs" id="5_e6axl"]
 [ext_resource type="Shader" uid="uid://c66gb6g7tup3n" path="res://shaders/hsv.gdshader" id="6_ihlhk"]
-[ext_resource type="Texture2D" uid="uid://b5x513mavmk5v" path="res://images/ui/placeholder_controller_icon.png" id="7_41ok1"]
+[ext_resource type="PackedScene" uid="uid://ddb8daodx7qsl" path="res://scenes/ui/hotkey_icon.tscn" id="7_41ok1"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_sb6hq"]
 
@@ -16,13 +16,6 @@ shader = ExtResource("6_ihlhk")
 shader_parameter/h = 1.0
 shader_parameter/s = 0.75
 shader_parameter/v = 1.2
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_41r5t"]
-resource_local_to_scene = true
-shader = ExtResource("6_ihlhk")
-shader_parameter/h = 1.0
-shader_parameter/s = 1.0
-shader_parameter/v = 1.0
 
 [node name="Button" type="Control"]
 custom_minimum_size = Vector2(180, 72)
@@ -101,24 +94,11 @@ vertical_alignment = 1
 script = ExtResource("5_e6axl")
 MaxFontSize = 28
 
-[node name="ControllerIcon" type="TextureRect" parent="."]
+[node name="HotkeyIcon" parent="." instance=ExtResource("7_41ok1")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_41r5t")
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -132.0
-offset_top = -2.0
-offset_right = -68.0
-offset_bottom = 62.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(32, 32)
-mouse_filter = 2
-texture = ExtResource("7_41ok1")
-expand_mode = 1
-stretch_mode = 4
+layout_mode = 0
+offset_left = -20.999998
+offset_top = 44.0
+offset_right = 27.000002
+offset_bottom = 92.0
+scale = Vector2(0.85, 0.85)

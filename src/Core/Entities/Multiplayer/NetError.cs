@@ -16,7 +16,7 @@ public enum NetError
 	/// </summary>
 	Quit,
 	/// <summary>
-	/// Normal quit at the end of the run. Signals to clients they should not also quit the application.
+	/// Normal quit at the end of the run. Signals to clients they should not also quit the run.
 	/// </summary>
 	QuitGameOver,
 	/// <summary>

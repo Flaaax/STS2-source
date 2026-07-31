@@ -39,7 +39,7 @@ public partial class NDiscoveredItem : NButton
 	{
 		base.OnFocus();
 		NHoverTipSet.CreateAndShow(this, _hoverTip)?.SetGlobalPosition(base.GlobalPosition + _hoverTipOffset);
-		if (NControllerManager.Instance.IsUsingController)
+		if (NControllerManager.Instance.IsUsingDirectionalNavigation)
 		{
 			_selectionReticle.OnSelect();
 		}

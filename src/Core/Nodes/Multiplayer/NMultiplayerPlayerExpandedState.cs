@@ -175,7 +175,7 @@ public partial class NMultiplayerPlayerExpandedState : Control, ICapstoneScreen,
 
 	public override void _Input(InputEvent inputEvent)
 	{
-		if (!IsVisibleInTree() || NDevConsole.IsConsoleVisible || !NControllerManager.Instance.IsUsingController)
+		if (!IsVisibleInTree() || NDevConsole.IsConsoleVisible || !NControllerManager.Instance.IsUsingDirectionalNavigation)
 		{
 			return;
 		}

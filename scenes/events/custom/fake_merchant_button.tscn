@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=3 uid="uid://demyfeth8kxct"]
+
+[ext_resource type="Script" uid="uid://b7u5s7fkjlcd3" path="res://src/Core/Nodes/Rooms/NMerchantButton.cs" id="1_rpqse"]
+[ext_resource type="PackedScene" uid="uid://bgy88bk44xxvk" path="res://scenes/ui/selection_reticle.tscn" id="2_xct5y"]
+[ext_resource type="SpineSkeletonDataResource" uid="uid://stqu06ccp8x6" path="res://animations/backgrounds/fake_merchant_room/top/fake_merchant_top.tres" id="3_h3xld"]
+[ext_resource type="PackedScene" uid="uid://ddb8daodx7qsl" path="res://scenes/ui/hotkey_icon.tscn" id="6_xct5y"]
+
+[node name="FakeMerchantButton" type="Control"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 174.0
+offset_top = -195.0
+offset_right = 504.0
+offset_bottom = 275.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(135, 165)
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+script = ExtResource("1_rpqse")
+
+[node name="MerchantSelectionReticle" parent="." instance=ExtResource("2_xct5y")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MerchantVisual" type="SpineSprite" parent="."]
+skeleton_data_res = ExtResource("3_h3xld")
+preview_skin = "default"
+preview_animation = "idle_loop"
+preview_frame = false
+preview_time = 0.0
+unique_name_in_owner = true
+position = Vector2(169, 416)
+scale = Vector2(0.470095, 0.470095)
+
+[node name="HotkeyIcon" parent="." instance=ExtResource("6_xct5y")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -195.0
+offset_top = 151.0
+offset_right = -147.0
+offset_bottom = 199.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.1, 1.1)

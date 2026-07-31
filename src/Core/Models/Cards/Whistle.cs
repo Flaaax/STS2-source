@@ -20,7 +20,7 @@ public sealed class Whistle : CardModel
 	public override IEnumerable<CardKeyword> CanonicalKeywords => new global::_003C_003Ez__ReadOnlySingleElementList<CardKeyword>(CardKeyword.Exhaust);
 
 	public Whistle()
-		: base(3, CardType.Attack, CardRarity.Ancient, TargetType.AnyEnemy)
+		: base(2, CardType.Attack, CardRarity.Ancient, TargetType.AnyEnemy)
 	{
 	}
 

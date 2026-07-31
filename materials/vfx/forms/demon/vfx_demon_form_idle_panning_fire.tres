@@ -1,0 +1,38 @@
+[gd_resource type="ShaderMaterial" load_steps=8 format=3 uid="uid://boo3dwprv5dtm"]
+
+[ext_resource type="Shader" uid="uid://dm15b4qcvalbb" path="res://shaders/vfx/forms/demon/vfx_demon_form_idle_panning_fire_shader.gdshader" id="1_kljew"]
+
+[sub_resource type="Gradient" id="Gradient_cjevs"]
+offsets = PackedFloat32Array(0.54864866, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_b32a5"]
+gradient = SubResource("Gradient_cjevs")
+
+[sub_resource type="Gradient" id="Gradient_1h6jh"]
+offsets = PackedFloat32Array(0.5162162, 1)
+colors = PackedColorArray(1, 0, 0.17748737, 1, 1, 0.485008, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fqab2"]
+gradient = SubResource("Gradient_1h6jh")
+
+[sub_resource type="Gradient" id="Gradient_kljew"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cjevs"]
+gradient = SubResource("Gradient_kljew")
+fill = 1
+fill_from = Vector2(0.7, 0.5)
+fill_to = Vector2(0.1, 0.5)
+
+[resource]
+shader = ExtResource("1_kljew")
+shader_parameter/pivot_offset = Vector2(-0.5, 0)
+shader_parameter/main_st_a = Vector4(0.75, 0.65, 1.25, 0)
+shader_parameter/main_st_b = Vector4(1.5, 1.5, 2.25, 0)
+shader_parameter/main_st_a_initial_offset = Vector2(0, 0)
+shader_parameter/main_st_b_initial_offset = Vector2(0, 0)
+shader_parameter/erosion = Vector2(0.25, 0.75)
+shader_parameter/mask_divisor = 0.25
+shader_parameter/lut = SubResource("GradientTexture1D_fqab2")
+shader_parameter/alpha_overlay = SubResource("GradientTexture1D_b32a5")
+shader_parameter/mask = SubResource("GradientTexture2D_cjevs")

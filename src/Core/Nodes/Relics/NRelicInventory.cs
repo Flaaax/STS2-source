@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Godot;
+using MegaCrit.Sts2.addons.mega_text;
 using MegaCrit.Sts2.Core.Context;
 using MegaCrit.Sts2.Core.Debug;
 using MegaCrit.Sts2.Core.Entities.Players;
@@ -85,6 +86,18 @@ public partial class NRelicInventory : FlowContainer
 			_player.RelicObtained -= OnRelicObtained;
 			_player.RelicRemoved -= OnRelicRemoved;
 		}
+	}
+
+	public Vector2 GetBottomOfInventory()
+	{
+		int lineCount = GetLineCount();
+		if (lineCount == 0 || GetChildCount() == 0)
+		{
+			return GetDefaultPosition();
+		}
+		float y = GetChild<Control>(0).Size.Y;
+		float num = GetThemeConstant(ThemeConstants.FlowContainer.VSeparation, "FlowContainer");
+		return GetDefaultPosition() + (float)lineCount * (y + num) * Vector2.Down;
 	}
 
 	private void Add(RelicModel relic, bool startsShown, int index = -1)

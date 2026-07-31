@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Godot;
 using MegaCrit.Sts2.Core.Localization;
+using MegaCrit.Sts2.Core.Multiplayer.Game.Lobby;
 using MegaCrit.Sts2.Core.Platform;
 using MegaCrit.Sts2.Core.Platform.Steam;
 using Steamworks;
@@ -14,7 +15,7 @@ namespace MegaCrit.Sts2.Core.Entities.Multiplayer;
 /// Prefer passing this instead of NetError, as this contains more information about the underlying error that might
 /// have been mapped to our NetError.
 /// </summary>
-public readonly struct NetErrorInfo
+public struct NetErrorInfo
 {
 	/// <summary>
 	/// Used for errors that occur above the platform level, in our transport layers.
@@ -65,6 +66,12 @@ public readonly struct NetErrorInfo
 	/// </summary>
 	public ConnectionFailureExtraInfo? ConnectionExtraInfo { get; }
 
+	/// <summary>
+	/// Set to true if ANYONE in the session has mods.
+	/// Don't trust this value fully, it probably doesn't get set for every error.
+	/// </summary>
+	public bool IsModded { get; private set; }
+
 	public NetErrorInfo(NetError reason, bool selfInitiated)
 	{
 		_connectionReason = null;
@@ -74,6 +81,7 @@ public readonly struct NetErrorInfo
 		_debugReason = null;
 		_godotError = null;
 		ConnectionExtraInfo = null;
+		IsModded = false;
 		_reason = reason;
 		SelfInitiated = selfInitiated;
 	}
@@ -86,6 +94,7 @@ public readonly struct NetErrorInfo
 		_lobbyEnterResponse = null;
 		_debugReason = null;
 		_godotError = null;
+		IsModded = false;
 		_connectionReason = reason;
 		ConnectionExtraInfo = extraInfo;
 		SelfInitiated = false;
@@ -99,6 +108,7 @@ public readonly struct NetErrorInfo
 		_lobbyEnterResponse = null;
 		_godotError = null;
 		ConnectionExtraInfo = null;
+		IsModded = false;
 		_steamReason = steamReason;
 		_debugReason = debugReason;
 		SelfInitiated = selfInitiated;
@@ -113,6 +123,7 @@ public readonly struct NetErrorInfo
 		_debugReason = null;
 		_godotError = null;
 		ConnectionExtraInfo = null;
+		IsModded = false;
 		_lobbyEnterResponse = lobbyEnterResponse;
 		SelfInitiated = true;
 	}
@@ -126,6 +137,7 @@ public readonly struct NetErrorInfo
 		_debugReason = null;
 		_godotError = null;
 		ConnectionExtraInfo = null;
+		IsModded = false;
 		_lobbyCreationResult = lobbyCreationResult;
 		SelfInitiated = true;
 	}
@@ -139,8 +151,14 @@ public readonly struct NetErrorInfo
 		_lobbyEnterResponse = null;
 		_debugReason = null;
 		ConnectionExtraInfo = null;
+		IsModded = false;
 		_godotError = error;
 		SelfInitiated = true;
+	}
+
+	public void SetModdedFlagIfModded(RunLobby? runLobby)
+	{
+		IsModded = runLobby?.AnyPlayerHadMods ?? false;
 	}
 
 	/// <summary>
@@ -250,6 +268,7 @@ public readonly struct NetErrorInfo
 	/// </summary>
 	public string GetErrorString()
 	{
+		bool flag = ConnectionExtraInfo?.localIsHost ?? false;
 		if (_reason.HasValue)
 		{
 			return _reason.Value.ToString();
@@ -259,43 +278,48 @@ public readonly struct NetErrorInfo
 			if (_connectionReason == ConnectionFailureReason.ModMismatch)
 			{
 				StringBuilder stringBuilder = new StringBuilder();
-				List<string> list = ConnectionExtraInfo?.missingModsOnHost;
+				List<string> list = ConnectionExtraInfo?.GetMissingModsOnRemote(nonGameplay: false);
+				List<string> list2 = ConnectionExtraInfo?.GetMissingModsOnLocal(nonGameplay: false);
 				if (list != null && list.Count > 0)
 				{
-					LocString locString = new LocString("main_menu_ui", "NETWORK_ERROR.MOD_MISMATCH.description.missingOnHost");
-					locString.Add("mods", string.Join(", ", ConnectionExtraInfo.missingModsOnHost));
+					string locEntryKey = "NETWORK_ERROR." + (flag ? "HOST." : "") + "MOD_MISMATCH.description.missingOnHost";
+					LocString locString = new LocString("main_menu_ui", locEntryKey);
+					locString.Add("mods", string.Join(", ", list));
 					stringBuilder.AppendLine(locString.GetFormattedText());
 				}
-				list = ConnectionExtraInfo?.missingModsOnLocal;
-				if (list != null && list.Count > 0)
+				if (list2 != null && list2.Count > 0)
 				{
-					LocString locString2 = new LocString("main_menu_ui", "NETWORK_ERROR.MOD_MISMATCH.description.missingOnLocal");
-					locString2.Add("mods", string.Join(", ", ConnectionExtraInfo.missingModsOnLocal));
+					string locEntryKey2 = "NETWORK_ERROR." + (flag ? "HOST." : "") + "MOD_MISMATCH.description.missingOnLocal";
+					LocString locString2 = new LocString("main_menu_ui", locEntryKey2);
+					locString2.Add("mods", string.Join(", ", list2));
 					stringBuilder.AppendLine(locString2.GetFormattedText());
 				}
 				return stringBuilder.ToString();
 			}
 			if (_connectionReason == ConnectionFailureReason.VersionMismatch)
 			{
-				if (ConnectionExtraInfo?.hostVersion != ConnectionExtraInfo?.localVersion)
+				if (ConnectionExtraInfo?.remoteInfo.version != ConnectionExtraInfo?.localInfo.version)
 				{
-					if (ConnectionExtraInfo?.hostBranch != ConnectionExtraInfo?.localBranch)
+					if (ConnectionExtraInfo?.remoteInfo.branch != ConnectionExtraInfo?.localInfo.branch)
 					{
-						LocString locString3 = new LocString("main_menu_ui", "NETWORK_ERROR.VERSION_MISMATCH.description.branchMismatch");
-						locString3.Add("hostBranch", ConnectionExtraInfo?.hostBranch?.ToName() ?? "<null>");
-						locString3.Add("localBranch", ConnectionExtraInfo?.localBranch?.ToName() ?? "<null>");
+						string locEntryKey3 = "NETWORK_ERROR." + (flag ? "HOST." : "") + "VERSION_MISMATCH.description.branchMismatch";
+						LocString locString3 = new LocString("main_menu_ui", locEntryKey3);
+						locString3.Add("remoteBranch", ConnectionExtraInfo?.remoteInfo.branch.ToName() ?? "<null>");
+						locString3.Add("localBranch", ConnectionExtraInfo?.localInfo.branch.ToName() ?? "<null>");
 						return locString3.GetFormattedText();
 					}
-					LocString locString4 = new LocString("main_menu_ui", "NETWORK_ERROR.VERSION_MISMATCH.description.versionMismatch");
-					locString4.Add("hostVersion", ConnectionExtraInfo?.hostVersion ?? "<null>");
-					locString4.Add("localVersion", ConnectionExtraInfo?.localVersion ?? "<null>");
+					string locEntryKey4 = "NETWORK_ERROR." + (flag ? "HOST." : "") + "VERSION_MISMATCH.description.versionMismatch";
+					LocString locString4 = new LocString("main_menu_ui", locEntryKey4);
+					locString4.Add("remoteVersion", ConnectionExtraInfo?.remoteInfo.version ?? "<null>");
+					locString4.Add("localVersion", ConnectionExtraInfo?.localInfo.version ?? "<null>");
 					return locString4.GetFormattedText();
 				}
-				if (ConnectionExtraInfo?.hostHash != ConnectionExtraInfo?.localHash)
+				if (ConnectionExtraInfo?.remoteInfo.idDatabaseHash != ConnectionExtraInfo?.localInfo.idDatabaseHash)
 				{
-					LocString locString5 = new LocString("main_menu_ui", "NETWORK_ERROR.VERSION_MISMATCH.description.modelDbMismatch");
-					locString5.Add("hostHash", ConnectionExtraInfo?.hostHash?.ToString() ?? "<null>");
-					locString5.Add("localHash", ConnectionExtraInfo?.localHash?.ToString() ?? "<null>");
+					string locEntryKey5 = "NETWORK_ERROR." + (flag ? "HOST." : "") + "VERSION_MISMATCH.description.modelDbMismatch";
+					LocString locString5 = new LocString("main_menu_ui", locEntryKey5);
+					locString5.Add("remoteHash", ConnectionExtraInfo?.remoteInfo.idDatabaseHash.ToString() ?? "<null>");
+					locString5.Add("localHash", ConnectionExtraInfo?.localInfo.idDatabaseHash.ToString() ?? "<null>");
 					return locString5.GetFormattedText();
 				}
 			}

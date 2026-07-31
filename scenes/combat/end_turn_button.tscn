@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bnnrjotxgq0sx" path="res://images/packed/combat_ui/end_turn_button_glow.png" id="5_qsbsn"]
 [ext_resource type="Script" uid="uid://dtfio45agppyj" path="res://addons/mega_text/MegaLabel.cs" id="6_dgca5"]
 [ext_resource type="PackedScene" uid="uid://bf5067m5nxvaw" path="res://scenes/ui/multiplayer_vote_container.tscn" id="8_3ps0v"]
-[ext_resource type="Texture2D" uid="uid://b5x513mavmk5v" path="res://images/ui/placeholder_controller_icon.png" id="8_nddli"]
+[ext_resource type="PackedScene" uid="uid://ddb8daodx7qsl" path="res://scenes/ui/hotkey_icon.tscn" id="8_nddli"]
 [ext_resource type="Script" uid="uid://dftpwyaeme121" path="res://src/Core/Nodes/Combat/NEndTurnLongPressBar.cs" id="9_m5hyw"]
 [ext_resource type="Material" uid="uid://c4ycqv0gdxvmr" path="res://themes/canvas_item_material_additive_shared.tres" id="shared_additive_mat"]
 
@@ -141,27 +141,14 @@ vertical_alignment = 1
 script = ExtResource("6_dgca5")
 MaxFontSize = 30
 
-[node name="ControllerIcon" type="TextureRect" parent="Visuals"]
+[node name="HotkeyIcon" parent="Visuals" instance=ExtResource("8_nddli")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_q83kt")
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -290.0
-offset_top = -62.0
-offset_right = -46.0
-offset_bottom = 60.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(256, 128)
-mouse_filter = 2
-texture = ExtResource("8_nddli")
-expand_mode = 1
-stretch_mode = 5
+layout_mode = 0
+offset_left = 185.00002
+offset_top = 54.000004
+offset_right = 233.00002
+offset_bottom = 102.0
+scale = Vector2(0.85, 0.85)
 
 [node name="PlayerIconContainer" parent="." instance=ExtResource("8_3ps0v")]
 unique_name_in_owner = true

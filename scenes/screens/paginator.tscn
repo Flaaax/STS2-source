@@ -1,21 +1,26 @@
-[gd_scene load_steps=10 format=3 uid="uid://c42e8hjphxta7"]
+[gd_scene load_steps=9 format=3 uid="uid://c42e8hjphxta7"]
 
-[ext_resource type="Script" uid="uid://b0kc4bkc0bgr1" path="res://src/Core/Nodes/Screens/Settings/NPaginateArrow.cs" id="1_hkvnt"]
 [ext_resource type="Shader" uid="uid://c66gb6g7tup3n" path="res://shaders/hsv.gdshader" id="2_lb08q"]
 [ext_resource type="FontVariation" uid="uid://ux4d708e7mk6" path="res://themes/kreon_bold_glyph_space_one.tres" id="3_or01d"]
+[ext_resource type="PackedScene" path="res://scenes/screens/game_over_screen/settings_paginator_arrow.tscn" id="3_wtx53"]
 [ext_resource type="Script" uid="uid://dtfio45agppyj" path="res://addons/mega_text/MegaLabel.cs" id="4_4niof"]
-[ext_resource type="Texture2D" uid="uid://b4ffylh" path="res://images/atlases/ui_atlas.sprites/settings_tiny_left_arrow.tres" id="4_lb08q"]
 [ext_resource type="PackedScene" uid="uid://bgy88bk44xxvk" path="res://scenes/ui/selection_reticle.tscn" id="7_7snux"]
-[ext_resource type="Texture2D" uid="uid://c7kumcmbdvuji" path="res://images/packed/common_ui/settings_tiny_right_arrow.png" id="7_lb08q"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7snux"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ej6b"]
 resource_local_to_scene = true
 shader = ExtResource("2_lb08q")
 shader_parameter/h = 1.0
 shader_parameter/s = 1.0
 shader_parameter/v = 1.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ej6b"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lb08q"]
+resource_local_to_scene = true
+shader = ExtResource("2_lb08q")
+shader_parameter/h = 1.0
+shader_parameter/s = 1.0
+shader_parameter/v = 0.9
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wtx53"]
 resource_local_to_scene = true
 shader = ExtResource("2_lb08q")
 shader_parameter/h = 1.0
@@ -34,36 +39,6 @@ mouse_filter = 2
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
-[node name="LeftArrow" type="Control" parent="."]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -32.0
-offset_right = 64.0
-offset_bottom = 32.0
-grow_vertical = 2
-mouse_filter = 1
-script = ExtResource("1_hkvnt")
-_pageLeft = true
-
-[node name="Image" type="TextureRect" parent="LeftArrow"]
-material = SubResource("ShaderMaterial_7snux")
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.75, 0.75)
-pivot_offset = Vector2(32, 32)
-mouse_filter = 2
-texture = ExtResource("4_lb08q")
-expand_mode = 1
-stretch_mode = 5
-
 [node name="LabelContainer" type="Control" parent="."]
 custom_minimum_size = Vector2(188, 64)
 layout_mode = 1
@@ -72,7 +47,9 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = 64.0
+offset_top = -32.0
 offset_right = -64.0
+offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -135,43 +112,43 @@ script = ExtResource("4_4niof")
 MinFontSize = 18
 MaxFontSize = 28
 
-[node name="RightArrow" type="Control" parent="."]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -64.0
-offset_top = -32.0
-offset_bottom = 32.0
-grow_horizontal = 0
-grow_vertical = 2
-mouse_filter = 1
-script = ExtResource("1_hkvnt")
-
-[node name="Image" type="TextureRect" parent="RightArrow"]
+[node name="LeftArrow" parent="." instance=ExtResource("3_wtx53")]
 material = SubResource("ShaderMaterial_2ej6b")
-custom_minimum_size = Vector2(64, 64)
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+offset_left = -163.0
+offset_top = -32.0
+offset_right = -105.0
+offset_bottom = 26.0
+pivot_offset = Vector2(32, 32)
+
+[node name="Image" parent="LeftArrow" index="0"]
+material = SubResource("ShaderMaterial_lb08q")
+custom_minimum_size = Vector2(64, 64)
 offset_left = -32.0
 offset_top = -32.0
 offset_right = 32.0
 offset_bottom = 32.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.75, 0.75)
 pivot_offset = Vector2(32, 32)
-mouse_filter = 2
-texture = ExtResource("7_lb08q")
-expand_mode = 1
-stretch_mode = 5
+
+[node name="RightArrow" parent="." instance=ExtResource("3_wtx53")]
+material = SubResource("ShaderMaterial_wtx53")
+layout_mode = 1
+offset_left = 98.0
+offset_top = -32.0
+offset_right = 156.0
+offset_bottom = 26.0
+pivot_offset = Vector2(32, 32)
+_isLeftArrow = false
+
+[node name="Image" parent="RightArrow" index="0"]
+material = SubResource("ShaderMaterial_lb08q")
+custom_minimum_size = Vector2(64, 64)
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+pivot_offset = Vector2(32, 32)
+flip_h = true
 
 [node name="SelectionReticle" parent="." instance=ExtResource("7_7snux")]
 layout_mode = 1
@@ -184,3 +161,6 @@ offset_right = 0.0
 offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[editable path="LeftArrow"]
+[editable path="RightArrow"]

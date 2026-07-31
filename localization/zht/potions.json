@@ -6,7 +6,7 @@
   "ASHWATER.title": "灰燼水",
   "ATTACK_POTION.description": "從 [blue]3[/blue] 張隨機攻擊牌中選擇 [blue]1[/blue] 張加入你的[gold]手牌[/gold]。本回合可免費打出。",
   "ATTACK_POTION.title": "攻擊藥水",
-  "BEETLE_JUICE.description": "{Repeat:choose:下|接下來 [blue]{}[/blue] }回合，敵人的攻擊傷害減少 [blue]{DamageDecrease}%[/blue]。",
+  "BEETLE_JUICE.description": "敵人的攻擊在{Repeat:choose:下|接下來 [blue]{}[/blue] }回合傷害減少 [blue]{DamageDecrease}%[/blue]。",
   "BEETLE_JUICE.title": "甲蟲汁",
   "BLESSING_OF_THE_FORGE.description": "在本場戰鬥中[gold]升級[/gold]你[gold]手牌[/gold]中的所有卡牌。",
   "BLESSING_OF_THE_FORGE.title": "鑄爐祝福",

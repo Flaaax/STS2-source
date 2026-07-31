@@ -80,7 +80,7 @@
   "EVENT2_EPOCH.title": "他們歸來",
   "EVENT2_EPOCH.unlockInfo": "{IsRevealed:已藉由累積分數解鎖|累積分數即可解鎖}。",
   "EVENT2_EPOCH.unlockText": "已解鎖事件：[blue]{Event}[/blue]。",
-  "EVENT3_EPOCH.description": "[gold]遠古之樹[/gold]的根再也無法從[orange]先子星[/orange]汲取養分，樹木開始枯萎死去……曾經美麗的森林屈服於永恆的重量。\n\n就連涅奧之樹也失去了枝幹與茂密葉片。最後一棵樹根本不是樹。\n他們為它取了名字。",
+  "EVENT3_EPOCH.description": "[gold]遠古之樹[/gold]的根再也無法從[orange]先子星[/orange]汲取養分，樹木開始枯萎死去……曾經美麗的森林屈服於永恆的重量。\n\n就連涅奧的樹也失去了枝幹與茂密葉片。最後一棵樹不再是樹的樣子。\n他們為它取了個名字。",
   "EVENT3_EPOCH.title": "尖塔",
   "EVENT3_EPOCH.unlockInfo": "{IsRevealed:已藉由累積分數解鎖|累積分數即可解鎖}。",
   "EVENT3_EPOCH.unlockText": "已解鎖事件：[blue]{Event}[/blue]。",

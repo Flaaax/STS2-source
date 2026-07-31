@@ -55,7 +55,7 @@
   "BRAIN_LEECH.pages.INITIAL.options.RIP.title": "Arracher la sangsue",
   "BRAIN_LEECH.pages.INITIAL.options.SHARE_KNOWLEDGE.description": "Choisissez [blue]{CardChoiceCount}[/blue] parmi [blue]{FromCardChoiceCount}[/blue] cartes aléatoires à ajouter à votre [gold]Deck[/gold].",
   "BRAIN_LEECH.pages.INITIAL.options.SHARE_KNOWLEDGE.title": "Partager la connaissance",
-  "BRAIN_LEECH.pages.RIP.description": "Vous [jitter]arrachez violemment la sangsue de votre tête[/jitter] et la jetez loin, très loin !\n\nUne voix résonne dans votre tête :\n[purple][sine]« NOOOOOOoOoooooOONNnnnn.... »",
+  "BRAIN_LEECH.pages.RIP.description": "Vous [jitter]arrachez violemment la sangsue de votre tête[/jitter] et la jetez loin, très loin !\n\nUne voix résonne dans votre tête :\n[purple][sine]« NOOOOOOoOoooooOONNnnnn.... »[/sine][/purple]",
   "BRAIN_LEECH.pages.SHARE_KNOWLEDGE.description": "[purple][sine]« QUELLE PRÉTENTIEUSE ÉRUDITION POUR UN ESPRIT SI LABYRINTHIQUE !\nUNE VÉRITABLE CORNE D’ABONDANCE DE MATIÈRE GRISE À DIGÉRER ! »[/sine][/purple]\n\nAinsi repue, la créature se détache et s’éloigne en rampant.\nVous restez [blue]abasourdi[/blue].",
   "BRAIN_LEECH.pages.SHARE_KNOWLEDGE.selectionScreenPrompt": "Choisissez une Carte.",
   "BRAIN_LEECH.title": "Sangsue cérébrale",

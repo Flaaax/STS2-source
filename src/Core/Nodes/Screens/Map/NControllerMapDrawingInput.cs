@@ -73,7 +73,14 @@ public partial class NControllerMapDrawingInput : NMapDrawingInput
 		_direction = NControllerManager.Instance.GetLeftAnalogStickDirection();
 		if (_direction.Length() < 0.1f)
 		{
-			_direction += Input.GetVector(Controller.dPadLeft, Controller.dPadRight, Controller.dPadUp, Controller.dPadDown);
+			if (NControllerManager.Instance.InputType == InputType.KeyboardOnlyMode)
+			{
+				_direction += Input.GetVector(MegaInput.left, MegaInput.right, MegaInput.up, MegaInput.down);
+			}
+			else
+			{
+				_direction += Input.GetVector(Controller.dPadLeft, Controller.dPadRight, Controller.dPadUp, Controller.dPadDown);
+			}
 		}
 		if (_direction.Length() > 0f)
 		{

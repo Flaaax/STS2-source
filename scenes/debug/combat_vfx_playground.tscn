@@ -1,24 +1,30 @@
-[gd_scene load_steps=1646 format=3 uid="uid://cxw3vcumabkw4"]
+[gd_scene load_steps=1653 format=3 uid="uid://cxw3vcumabkw4"]
 
 [ext_resource type="Texture2D" uid="uid://dita23ifir6qb" path="res://images/rooms/overgrowth/overgrowth_00.png" id="1_k6085"]
+[ext_resource type="Script" uid="uid://c517b5ya3oeiw" path="res://src/Core/Nodes/Debug/NFormVfxTester.cs" id="3_dcr57"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://b8e4wst5vt8xh" path="res://animations/characters/ironclad/ironclad_skel_data.tres" id="3_kg4hr"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://c2mrbqct15cgx" path="res://animations/characters/regent/regent_skel_data.tres" id="3_r5qc1"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://c0hdeqc1rqeah" path="res://animations/characters/defect/defect_skel_data.tres" id="3_yxndf"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://bqlhf04mk2866" path="res://animations/characters/silent/silent_skel_data.tres" id="4_34tvk"]
+[ext_resource type="PackedScene" uid="uid://b5ukky3i1o6o4" path="res://scenes/vfx/forms/demon/vfx_demon_form_idle_vfx.tscn" id="4_bn4fy"]
 [ext_resource type="PackedScene" uid="uid://ewa1gwt3sc0o" path="res://scenes/cards/card.tscn" id="4_jauyi"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://nsykb6vjitkj" path="res://animations/monsters/nibbit/nibbit_skel_data.tres" id="4_y7gnv"]
+[ext_resource type="PackedScene" uid="uid://cfcm1ar6lgu8e" path="res://scenes/vfx/forms/serpent/vfx_serpent_form_idle_vfx.tscn" id="5_13rly"]
 [ext_resource type="Script" uid="uid://bcetkuf23638s" path="res://src/gdscript/testing/spine_sprite_auto_player.gd" id="5_18j67"]
 [ext_resource type="Script" uid="uid://dk3dg1tujlwy1" path="res://src/Core/Debug/NCombatVfxSpawner.cs" id="5_kiecp"]
 [ext_resource type="Material" uid="uid://ci6ugu2cb88a8" path="res://materials/vfx/potion/potion_liquid_overlay.tres" id="5_wefho"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://w061e4iwxkil" path="res://animations/monsters/osty/osty_skel_data.tres" id="6_583sv"]
+[ext_resource type="PackedScene" uid="uid://c6cbriyc0ma55" path="res://scenes/vfx/forms/void/vfx_void_form_idle_vfx.tscn" id="6_g3pv2"]
 [ext_resource type="Script" uid="uid://sfjo8ns778wl" path="res://src/gdscript/testing/heavy_blunt_tester.gd" id="6_po8sb"]
 [ext_resource type="Script" uid="uid://ctjms8l6vxfkn" path="res://src/gdscript/play_vfx_on_key_press.gd" id="6_svddg"]
 [ext_resource type="Material" uid="uid://b1vtsj2jfacxj" path="res://materials/vfx/shiv/vfx_shiv_trail.tres" id="7_6wilv"]
+[ext_resource type="PackedScene" uid="uid://b3cpvb02543u2" path="res://scenes/vfx/forms/reaper/vfx_reaper_form_idle_vfx.tscn" id="7_275co"]
 [ext_resource type="PackedScene" uid="uid://c6eyce7g08bld" path="res://scenes/vfx/heavy_blunt/components/vfx_heavy_blunt_anticipation_core.tscn" id="7_kk5o2"]
 [ext_resource type="Texture2D" uid="uid://bg6qw8xjeh5dm" path="res://images/vfx/vfx_shiv/shiv_trail.png" id="7_r2qc1"]
 [ext_resource type="Texture2D" uid="uid://c4g3pn2eo7gak" path="res://images/vfx/vfx_shiv/shiv_simple.png" id="7_svddg"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://bnmu48daoyepk" path="res://animations/characters/necrobinder/necrobinder_skel_data.tres" id="7_wax6t"]
 [ext_resource type="Shader" uid="uid://bikvsfwlbp43n" path="res://shaders/card_ripple.gdshader" id="8_a3kvm"]
+[ext_resource type="PackedScene" uid="uid://dm4t1wkfmnfoc" path="res://scenes/vfx/forms/echo/vfx_echo_form_idle_vfx.tscn" id="8_jf3qt"]
 [ext_resource type="PackedScene" uid="uid://ddnrqskl423sy" path="res://scenes/vfx/heavy_blunt/components/vfx_heavy_blunt_hit_core.tscn" id="8_yfav0"]
 [ext_resource type="Texture2D" uid="uid://b7xxvjf" path="res://images/atlases/card_atlas.sprites/token/shiv.tres" id="9_txww1"]
 [ext_resource type="PackedScene" uid="uid://bfbxly8iht5vk" path="res://scenes/vfx/heavy_blunt/components/vfx_heavy_blunt_hit_core_glow.tscn" id="9_v25eq"]
@@ -43,7 +49,7 @@
 [ext_resource type="PackedScene" uid="uid://b4yd32ieheum6" path="res://scenes/vfx/distortions/vfx_outward_screen_distortion.tscn" id="25_tsq07"]
 [ext_resource type="Script" uid="uid://dkb7lfoaycd8q" path="res://src/gdscript/testing/vfx_playground_camera_tester.gd" id="27_a1fhn"]
 [ext_resource type="Script" uid="uid://cuutgh70cd7c4" path="res://src/gdscript/testing/potion_throw_tester.gd" id="30_rmxs2"]
-[ext_resource type="Texture2D" uid="uid://ddrnstkn2bxm7" path="res://images/potions/missing_potion.png" id="31_tsq07"]
+[ext_resource type="Texture2D" uid="uid://c07dy75g6wjgw" path="res://images/potions/large/weak_potion.png" id="31_tsq07"]
 [ext_resource type="Material" uid="uid://dhtfl3vwg84xd" path="res://materials/vfx/potion/potion_splash.tres" id="32_gj0ch"]
 [ext_resource type="Texture2D" uid="uid://d34u7tc7xm6pc" path="res://images/vfx/potion/potion_splash.png" id="32_y0ba4"]
 [ext_resource type="Texture2D" uid="uid://7oloccuqi8de" path="res://images/vfx/potion/potion_droplet.png" id="34_lthr7"]
@@ -203,6 +209,9 @@
 [ext_resource type="Texture2D" uid="uid://ckkugtwtsjdjk" path="res://images/vfx/ui/card/exhaust/ui_card_exhaust_quick_erosion.png" id="193_8k3et"]
 [ext_resource type="Material" uid="uid://byvgg42xta377" path="res://materials/vfx/ui/card/vfx_card_exhaust_quick_erosion.tres" id="193_ili5p"]
 [ext_resource type="PackedScene" uid="uid://t0u5th78x5ji" path="res://scenes/vfx/ui/card/vfx_card_exhaust.tscn" id="195_2pmo6"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_bn4fy"]
+viewport_path = NodePath("Back Combat VFX Container/Form Idle VFX Container/vfx_echo_form_idle_vfx/spine_subviewport")
 
 [sub_resource type="Curve" id="Curve_ywrhd"]
 _data = [Vector2(0, 0.201536), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.40172, 0.0, 0, 0]
@@ -481,12 +490,12 @@ scale_max = 20.0
 scale_curve = SubResource("CurveTexture_0eseu")
 alpha_curve = SubResource("CurveTexture_gj0ch")
 
-[sub_resource type="Curve" id="Curve_tqsfi"]
+[sub_resource type="Curve" id="Curve_k0ui1"]
 _data = [Vector2(0, 0.301344), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.710968, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_6woda"]
-curve = SubResource("Curve_tqsfi")
+[sub_resource type="CurveTexture" id="CurveTexture_hrces"]
+curve = SubResource("Curve_k0ui1")
 
 [sub_resource type="Curve" id="Curve_8mg5p"]
 _limits = [-1.0, 1.0, 0.0, 1.0]
@@ -496,7 +505,7 @@ point_count = 2
 [sub_resource type="CurveXYZTexture" id="CurveXYZTexture_o6cpj"]
 curve_x = SubResource("Curve_8mg5p")
 
-[sub_resource type="Curve" id="Curve_qani6"]
+[sub_resource type="Curve" id="Curve_xyoms"]
 _limits = [-2.0, 2.0, 0.0, 1.0]
 _data = [Vector2(0, -0.195777), 0.0, -9.65643, 0, 0, Vector2(0.196382, -0.84453), 0.0, -0.503267, 0, 0, Vector2(1, -1.21881), -0.436097, 0.0, 0, 0]
 point_count = 3
@@ -510,7 +519,7 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveXYZTexture" id="CurveXYZTexture_frh73"]
-curve_x = SubResource("Curve_qani6")
+curve_x = SubResource("Curve_xyoms")
 curve_y = SubResource("Curve_tprk4")
 curve_z = SubResource("Curve_24g6d")
 
@@ -523,7 +532,7 @@ gravity = Vector3(0, 0, 0)
 scale_min = 2.5
 scale_max = 2.5
 scale_curve = SubResource("CurveXYZTexture_frh73")
-alpha_curve = SubResource("CurveTexture_6woda")
+alpha_curve = SubResource("CurveTexture_hrces")
 
 [sub_resource type="Curve" id="Curve_4pjuu"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.06406, 0.0, 0, 0]
@@ -913,7 +922,7 @@ curve = SubResource("Curve_yxndf")
 _data = [Vector2(0, 0.700576), 0.0, 0.869079, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_tprk4"]
+[sub_resource type="CurveTexture" id="CurveTexture_m73rm"]
 curve = SubResource("Curve_yy5sh")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5qk05"]
@@ -923,7 +932,7 @@ angle_max = 360.0
 gravity = Vector3(0, 0, 0)
 scale_min = 1.5
 scale_max = 1.5
-scale_curve = SubResource("CurveTexture_tprk4")
+scale_curve = SubResource("CurveTexture_m73rm")
 emission_curve = SubResource("CurveTexture_c7m04")
 
 [sub_resource type="Curve" id="Curve_uk36r"]
@@ -1122,28 +1131,28 @@ scale_max = 12.0
 scale_curve = SubResource("CurveTexture_y3r7c")
 alpha_curve = SubResource("CurveTexture_oiudl")
 
-[sub_resource type="Curve" id="Curve_l02co"]
+[sub_resource type="Curve" id="Curve_0e38p"]
 _data = [Vector2(0, 0.353316), 0.0, -0.753348, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_ike7h"]
-curve = SubResource("Curve_l02co")
+[sub_resource type="CurveTexture" id="CurveTexture_wgcpk"]
+curve = SubResource("Curve_0e38p")
 
-[sub_resource type="Curve" id="Curve_2gmb7"]
+[sub_resource type="Curve" id="Curve_gbrgd"]
 _data = [Vector2(0, 0), 0.0, 11.5422, 0, 0, Vector2(0.203175, 0.842474), 0.0, 0.210613, 0, 0, Vector2(1, 1), 0.197691, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_21kn2"]
-curve = SubResource("Curve_2gmb7")
+[sub_resource type="CurveTexture" id="CurveTexture_5um6b"]
+curve = SubResource("Curve_gbrgd")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nf0nc"]
 particle_flag_disable_z = true
 gravity = Vector3(0, 0, 0)
 scale_min = 5.0
 scale_max = 5.0
-scale_curve = SubResource("CurveTexture_21kn2")
+scale_curve = SubResource("CurveTexture_5um6b")
 color = Color(0.962148, 0.684142, 1, 1)
-alpha_curve = SubResource("CurveTexture_ike7h")
+alpha_curve = SubResource("CurveTexture_wgcpk")
 
 [sub_resource type="Curve" id="Curve_pyd8j"]
 _data = [Vector2(0, 0.495894), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -1538,12 +1547,12 @@ point_count = 2
 [sub_resource type="CurveTexture" id="CurveTexture_flrgv"]
 curve = SubResource("Curve_trixi")
 
-[sub_resource type="Curve" id="Curve_ny88h"]
+[sub_resource type="Curve" id="Curve_spr6n"]
 _data = [Vector2(0, 0.756843), 0.0, 0.686261, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_41406"]
-curve = SubResource("Curve_ny88h")
+[sub_resource type="CurveTexture" id="CurveTexture_bs6rn"]
+curve = SubResource("Curve_spr6n")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ywtpc"]
 lifetime_randomness = 0.25
@@ -1557,7 +1566,7 @@ angular_velocity_curve = SubResource("CurveTexture_flrgv")
 gravity = Vector3(0, 0, 0)
 scale_min = 1.65
 scale_max = 1.85
-scale_curve = SubResource("CurveTexture_41406")
+scale_curve = SubResource("CurveTexture_bs6rn")
 alpha_curve = SubResource("CurveTexture_rv5i7")
 
 [sub_resource type="Curve" id="Curve_msv7a"]
@@ -1579,7 +1588,7 @@ angular_velocity_curve = SubResource("CurveTexture_flrgv")
 gravity = Vector3(0, 0, 0)
 scale_min = 2.6
 scale_max = 2.8
-scale_curve = SubResource("CurveTexture_41406")
+scale_curve = SubResource("CurveTexture_bs6rn")
 alpha_curve = SubResource("CurveTexture_i2ak4")
 
 [sub_resource type="Curve" id="Curve_qfsdm"]
@@ -2773,7 +2782,7 @@ gravity = Vector3(0, 0, 0)
 scale_min = 1.75
 scale_max = 1.75
 scale_curve = SubResource("CurveXYZTexture_frh73")
-alpha_curve = SubResource("CurveTexture_6woda")
+alpha_curve = SubResource("CurveTexture_hrces")
 
 [sub_resource type="Curve" id="Curve_s6ret"]
 _data = [Vector2(0, 0.252737), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.884221, 0.0, 0, 0]
@@ -3814,46 +3823,46 @@ colors = PackedColorArray(0.65, 0.65, 0.65, 1, 1, 1, 1, 1, 4, 4, 4, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_32k7s"]
 gradient = SubResource("Gradient_om8mf")
 
-[sub_resource type="Curve" id="Curve_ddpj8"]
+[sub_resource type="Curve" id="Curve_g1qw6"]
 _data = [Vector2(0, 0), 0.0, 4.30388, 0, 0, Vector2(0.501292, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -5.93081, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_k5mkh"]
-curve = SubResource("Curve_ddpj8")
+curve = SubResource("Curve_g1qw6")
 
-[sub_resource type="Curve" id="Curve_kin38"]
+[sub_resource type="Curve" id="Curve_awjgq"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.8868, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_mosi5"]
-curve = SubResource("Curve_kin38")
+[sub_resource type="CurveTexture" id="CurveTexture_ju24c"]
+curve = SubResource("Curve_awjgq")
 
-[sub_resource type="Curve" id="Curve_monce"]
+[sub_resource type="Curve" id="Curve_1amf1"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.59382, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_tfy6v"]
-curve = SubResource("Curve_monce")
+[sub_resource type="CurveTexture" id="CurveTexture_1niqq"]
+curve = SubResource("Curve_1amf1")
 
-[sub_resource type="Curve" id="Curve_k4yba"]
+[sub_resource type="Curve" id="Curve_ddle5"]
 _limits = [0.0, 3.0, 0.0, 1.0]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.604607), -1.44846, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Curve" id="Curve_8v0or"]
+[sub_resource type="Curve" id="Curve_gmg4g"]
 _limits = [0.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0, 0.997601), 0.0, 0.0, 0, 0, Vector2(1, 3.25336), 6.03527, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Curve" id="Curve_lppvb"]
+[sub_resource type="Curve" id="Curve_a6nis"]
 _limits = [0.0, 3.0, 0.0, 1.0]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveXYZTexture" id="CurveXYZTexture_io0od"]
-curve_x = SubResource("Curve_k4yba")
-curve_y = SubResource("Curve_8v0or")
-curve_z = SubResource("Curve_lppvb")
+curve_x = SubResource("Curve_ddle5")
+curve_y = SubResource("Curve_gmg4g")
+curve_z = SubResource("Curve_a6nis")
 
 [sub_resource type="Curve" id="Curve_ardwl"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -3876,14 +3885,14 @@ initial_velocity_min = 500.0
 initial_velocity_max = 3500.0
 radial_velocity_min = 150.0
 radial_velocity_max = 250.0
-radial_velocity_curve = SubResource("CurveTexture_mosi5")
+radial_velocity_curve = SubResource("CurveTexture_ju24c")
 gravity = Vector3(0, 0, 0)
 damping_min = 0.26
 damping_max = 0.26
 damping_curve = SubResource("CurveTexture_k5mkh")
 scale_min = 0.29
 scale_max = 0.31
-scale_curve = SubResource("CurveTexture_tfy6v")
+scale_curve = SubResource("CurveTexture_1niqq")
 scale_over_velocity_max = 670.71
 scale_over_velocity_curve = SubResource("CurveXYZTexture_io0od")
 color_initial_ramp = SubResource("GradientTexture1D_32k7s")
@@ -4093,14 +4102,14 @@ directional_velocity_max = -100.0
 directional_velocity_curve = SubResource("CurveXYZTexture_bupih")
 radial_velocity_min = 150.0
 radial_velocity_max = 250.0
-radial_velocity_curve = SubResource("CurveTexture_mosi5")
+radial_velocity_curve = SubResource("CurveTexture_ju24c")
 gravity = Vector3(0, -200, 0)
 damping_min = 0.26
 damping_max = 0.26
 damping_curve = SubResource("CurveTexture_k5mkh")
 scale_min = 0.29
 scale_max = 0.31
-scale_curve = SubResource("CurveTexture_tfy6v")
+scale_curve = SubResource("CurveTexture_1niqq")
 scale_over_velocity_max = 670.71
 scale_over_velocity_curve = SubResource("CurveXYZTexture_io0od")
 color_initial_ramp = SubResource("GradientTexture1D_32k7s")
@@ -4115,19 +4124,19 @@ turbulence_initial_displacement_min = 1.49012e-06
 turbulence_initial_displacement_max = 1.49012e-06
 turbulence_influence_over_life = SubResource("CurveTexture_d5rxi")
 
-[sub_resource type="Curve" id="Curve_21kn2"]
+[sub_resource type="Curve" id="Curve_u4rgi"]
 _data = [Vector2(0, 1), 0.0, -1.75571, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_v54xp"]
-curve = SubResource("Curve_21kn2")
+curve = SubResource("Curve_u4rgi")
 
-[sub_resource type="Curve" id="Curve_1gnb1"]
+[sub_resource type="Curve" id="Curve_a14rm"]
 _data = [Vector2(0, 0.50096), 0.0, 4.0738, 0, 0, Vector2(0.245478, 0.900192), 0.0, 0.115745, 0, 0, Vector2(1, 1), 0.131828, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_vnklo"]
-curve = SubResource("Curve_1gnb1")
+curve = SubResource("Curve_a14rm")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_px50u"]
 particle_flag_disable_z = true
@@ -6013,12 +6022,12 @@ point_count = 2
 [sub_resource type="CurveTexture" id="CurveTexture_monce"]
 curve = SubResource("Curve_mosi5")
 
-[sub_resource type="Curve" id="Curve_io0od"]
+[sub_resource type="Curve" id="Curve_c4q16"]
 _data = [Vector2(0, 0), 0.0, 11.5422, 0, 0, Vector2(0.203175, 0.842474), 0.0, 0.210613, 0, 0, Vector2(1, 1), 0.197691, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_ardwl"]
-curve = SubResource("Curve_io0od")
+curve = SubResource("Curve_c4q16")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_b8nia"]
 particle_flag_disable_z = true
@@ -7199,12 +7208,12 @@ point_count = 2
 [sub_resource type="CurveTexture" id="CurveTexture_kin38"]
 curve = SubResource("Curve_k5mkh")
 
-[sub_resource type="Curve" id="Curve_6rxrx"]
+[sub_resource type="Curve" id="Curve_its5o"]
 _data = [Vector2(0, 0.245202), 0.0, 9.35466, 0, 0, Vector2(0.149871, 0.850288), 0.184002, 0.184002, 0, 0, Vector2(1, 1), 0.16094, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_0v6l5"]
-curve = SubResource("Curve_6rxrx")
+[sub_resource type="CurveTexture" id="CurveTexture_qs22b"]
+curve = SubResource("Curve_its5o")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rbnxx"]
 particle_flag_disable_z = true
@@ -7213,7 +7222,7 @@ angle_max = 360.0
 gravity = Vector3(0, 0, 0)
 scale_min = 3.0
 scale_max = 3.0
-scale_curve = SubResource("CurveTexture_0v6l5")
+scale_curve = SubResource("CurveTexture_qs22b")
 emission_curve = SubResource("CurveTexture_kin38")
 
 [sub_resource type="Curve" id="Curve_lh005"]
@@ -7273,21 +7282,21 @@ use_hdr = true
 _data = [Vector2(0, 0), 0.0, 4.30388, 0, 0, Vector2(0.501292, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -5.93081, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_ey2nl"]
+[sub_resource type="CurveTexture" id="CurveTexture_h44r2"]
 curve = SubResource("Curve_roqbk")
 
 [sub_resource type="Curve" id="Curve_e0khs"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.8868, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_mxcp1"]
+[sub_resource type="CurveTexture" id="CurveTexture_u4rgi"]
 curve = SubResource("Curve_e0khs")
 
 [sub_resource type="Curve" id="Curve_mldpc"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.59382, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_hhyj2"]
+[sub_resource type="CurveTexture" id="CurveTexture_a14rm"]
 curve = SubResource("Curve_mldpc")
 
 [sub_resource type="Curve" id="Curve_7yo6x"]
@@ -7305,7 +7314,7 @@ _limits = [0.0, 3.0, 0.0, 1.0]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_by0yk"]
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_enscj"]
 curve_x = SubResource("Curve_7yo6x")
 curve_y = SubResource("Curve_eog3m")
 curve_z = SubResource("Curve_jmeei")
@@ -7314,7 +7323,7 @@ curve_z = SubResource("Curve_jmeei")
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_sy7ae"]
+[sub_resource type="CurveTexture" id="CurveTexture_0e38p"]
 curve = SubResource("Curve_epm3r")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pkmpr"]
@@ -7331,16 +7340,16 @@ initial_velocity_min = 300.0
 initial_velocity_max = 3600.0
 radial_velocity_min = 150.0
 radial_velocity_max = 250.0
-radial_velocity_curve = SubResource("CurveTexture_mxcp1")
+radial_velocity_curve = SubResource("CurveTexture_u4rgi")
 gravity = Vector3(0, 0, 0)
 damping_min = 0.26
 damping_max = 0.26
-damping_curve = SubResource("CurveTexture_ey2nl")
+damping_curve = SubResource("CurveTexture_h44r2")
 scale_min = 0.19999999
 scale_max = 0.25
-scale_curve = SubResource("CurveTexture_hhyj2")
+scale_curve = SubResource("CurveTexture_a14rm")
 scale_over_velocity_max = 670.71
-scale_over_velocity_curve = SubResource("CurveXYZTexture_by0yk")
+scale_over_velocity_curve = SubResource("CurveXYZTexture_enscj")
 color_initial_ramp = SubResource("GradientTexture1D_e8oys")
 alpha_curve = SubResource("CurveTexture_rbnxx")
 turbulence_enabled = true
@@ -7352,7 +7361,7 @@ turbulence_influence_min = 0.65
 turbulence_influence_max = 0.85
 turbulence_initial_displacement_min = 1.49012e-06
 turbulence_initial_displacement_max = 1.49012e-06
-turbulence_influence_over_life = SubResource("CurveTexture_sy7ae")
+turbulence_influence_over_life = SubResource("CurveTexture_0e38p")
 
 [sub_resource type="Curve" id="Curve_v6nyi"]
 _data = [Vector2(0.25065276, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -4.146876, 0.0, 0, 0]
@@ -7368,13 +7377,13 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_monce"]
 gradient = SubResource("Gradient_mosi5")
 
-[sub_resource type="Curve" id="Curve_tfy6v"]
+[sub_resource type="Curve" id="Curve_6fhp1"]
 _limits = [1.0, 1.1, 0.0, 1.0]
 _data = [Vector2(0, 1), 0.0, 0.21035688, 0, 0, Vector2(1, 1.1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_k4yba"]
-curve = SubResource("Curve_tfy6v")
+curve = SubResource("Curve_6fhp1")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ctbtb"]
 particle_flag_disable_z = true
@@ -8130,12 +8139,12 @@ turbulence_initial_displacement_min = -4.9999986
 turbulence_initial_displacement_max = 5.0000014
 turbulence_influence_over_life = SubResource("CurveTexture_3x2xt")
 
-[sub_resource type="Curve" id="Curve_qjcbv"]
+[sub_resource type="Curve" id="Curve_6howa"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 1, Vector2(1, 1), 0.0, 0.0, 1, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_atyxj"]
-curve = SubResource("Curve_qjcbv")
+[sub_resource type="CurveTexture" id="CurveTexture_rwk4f"]
+curve = SubResource("Curve_6howa")
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_bleyy"]
 gradient = SubResource("Gradient_5kqep")
@@ -8167,7 +8176,7 @@ curve = SubResource("Curve_c8s63")
 _data = [Vector2(0.1462141, 1), 0.0, 0.0, 0, 0, Vector2(0.74934727, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -7.7918205, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_8v0or"]
+[sub_resource type="CurveTexture" id="CurveTexture_j73bf"]
 curve = SubResource("Curve_eros1")
 
 [sub_resource type="Curve" id="Curve_myyji"]
@@ -8221,13 +8230,13 @@ damping_max = 1.5000001
 damping_curve = SubResource("CurveTexture_yp4d5")
 scale_min = 0.12
 scale_max = 0.17999999
-scale_curve = SubResource("CurveTexture_8v0or")
+scale_curve = SubResource("CurveTexture_j73bf")
 scale_over_velocity_min = 200.0
 scale_over_velocity_max = 500.0
 scale_over_velocity_curve = SubResource("CurveXYZTexture_mp2ug")
 color_ramp = SubResource("GradientTexture1D_foxwj")
 color_initial_ramp = SubResource("GradientTexture1D_bleyy")
-alpha_curve = SubResource("CurveTexture_atyxj")
+alpha_curve = SubResource("CurveTexture_rwk4f")
 anim_offset_max = 1.0
 turbulence_enabled = true
 turbulence_noise_strength = 20.0
@@ -8267,13 +8276,13 @@ damping_max = 1.5000001
 damping_curve = SubResource("CurveTexture_yp4d5")
 scale_min = 0.12
 scale_max = 0.17999999
-scale_curve = SubResource("CurveTexture_8v0or")
+scale_curve = SubResource("CurveTexture_j73bf")
 scale_over_velocity_min = 200.0
 scale_over_velocity_max = 500.0
 scale_over_velocity_curve = SubResource("CurveXYZTexture_mp2ug")
 color_ramp = SubResource("GradientTexture1D_foxwj")
 color_initial_ramp = SubResource("GradientTexture1D_bg52b")
-alpha_curve = SubResource("CurveTexture_atyxj")
+alpha_curve = SubResource("CurveTexture_rwk4f")
 anim_offset_max = 1.0
 turbulence_enabled = true
 turbulence_noise_strength = 20.0
@@ -8863,8 +8872,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_kiecp")
-_backCombatVfxContainer = NodePath("BackCombatVfxContainer")
-_combatVfxContainer = NodePath("CombatVfxContainer")
+_backCombatVfxContainer = NodePath("Back Combat VFX Container")
+_combatVfxContainer = NodePath("Combat VFX Container")
 _playerTopPosition = NodePath("Entities/Player Top")
 _playerPosition = NodePath("Entities/Player Center")
 _playerGroundPosition = NodePath("Entities/Ironclad")
@@ -8890,18 +8899,52 @@ grow_vertical = 2
 texture = ExtResource("1_k6085")
 expand_mode = 1
 
-[node name="BackCombatVfxContainer" type="Node2D" parent="."]
+[node name="Back Combat VFX Container" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Form Idle VFX Container" type="Node2D" parent="Back Combat VFX Container" node_paths=PackedStringArray("_formVfx", "_testSpine")]
+position = Vector2(407.99997, 733.9999)
+scale = Vector2(0.99999994, 0.99999994)
+script = ExtResource("3_dcr57")
+_formVfx = NodePath("vfx_echo_form_idle_vfx")
+_testSpine = NodePath("../../Entities/Defect")
+_testBoneName = "torso_upper"
+
+[node name="vfx_demon_form_idle_vfx" parent="Back Combat VFX Container/Form Idle VFX Container" instance=ExtResource("4_bn4fy")]
+visible = false
+
+[node name="vfx_serpent_form_idle_vfx" parent="Back Combat VFX Container/Form Idle VFX Container" instance=ExtResource("5_13rly")]
+visible = false
+
+[node name="vfx_void_form_idle_vfx" parent="Back Combat VFX Container/Form Idle VFX Container" instance=ExtResource("6_g3pv2")]
+visible = false
+
+[node name="vfx_reaper_form_idle_vfx" parent="Back Combat VFX Container/Form Idle VFX Container" instance=ExtResource("7_275co")]
+visible = false
+position = Vector2(1.0000305, 2.000122)
+
+[node name="vfx_echo_form_idle_vfx" parent="Back Combat VFX Container/Form Idle VFX Container" instance=ExtResource("8_jf3qt")]
+
+[node name="echo_form_lines" parent="Back Combat VFX Container/Form Idle VFX Container/vfx_echo_form_idle_vfx" index="1"]
+texture = SubResource("ViewportTexture_bn4fy")
 
 [node name="Entities" type="Node2D" parent="."]
 position = Vector2(-3.05176e-05, -0.00012207)
 
 [node name="Ironclad" type="SpineSprite" parent="Entities"]
 skeleton_data_res = ExtResource("3_kg4hr")
+bones = true
 preview_skin = "Default"
 preview_animation = "idle_loop"
-preview_frame = false
+preview_frame = true
 preview_time = 0.0
 unique_name_in_owner = true
+visible = false
 position = Vector2(408, 734)
 scale = Vector2(0.35, 0.35)
 script = ExtResource("5_18j67")
@@ -8909,9 +8952,24 @@ anim_name = "idle_loop"
 
 [node name="Silent" type="SpineSprite" parent="Entities"]
 skeleton_data_res = ExtResource("4_34tvk")
+bones = true
 preview_skin = "default"
 preview_animation = "idle_loop"
-preview_frame = false
+preview_frame = true
+preview_time = 0.0
+unique_name_in_owner = true
+visible = false
+position = Vector2(408, 734)
+scale = Vector2(0.35, 0.35)
+script = ExtResource("5_18j67")
+anim_name = "idle_loop"
+
+[node name="Regent" type="SpineSprite" parent="Entities"]
+skeleton_data_res = ExtResource("3_r5qc1")
+bones = true
+preview_skin = "default"
+preview_animation = "idle_loop"
+preview_frame = true
 preview_time = 0.0
 unique_name_in_owner = true
 visible = false
@@ -8935,22 +8993,10 @@ anim_name = "idle_loop"
 
 [node name="Necrobinder" type="SpineSprite" parent="Entities"]
 skeleton_data_res = ExtResource("7_wax6t")
+bones = true
 preview_skin = "default"
 preview_animation = "idle_loop"
-preview_frame = false
-preview_time = 0.0
-unique_name_in_owner = true
-visible = false
-position = Vector2(408, 734)
-scale = Vector2(0.35, 0.35)
-script = ExtResource("5_18j67")
-anim_name = "idle_loop"
-
-[node name="Regent" type="SpineSprite" parent="Entities"]
-skeleton_data_res = ExtResource("3_r5qc1")
-preview_skin = "default"
-preview_animation = "idle_loop"
-preview_frame = false
+preview_frame = true
 preview_time = 0.0
 unique_name_in_owner = true
 visible = false
@@ -8961,12 +9007,12 @@ anim_name = "idle_loop"
 
 [node name="Defect" type="SpineSprite" parent="Entities"]
 skeleton_data_res = ExtResource("3_yxndf")
+bones = true
 preview_skin = "Default"
 preview_animation = "idle_loop"
 preview_frame = false
 preview_time = 0.0
 unique_name_in_owner = true
-visible = false
 position = Vector2(408, 734)
 scale = Vector2(0.15, 0.15)
 script = ExtResource("5_18j67")
@@ -8978,7 +9024,7 @@ _orbVfx = NodePath("orb_container/LightningOrb")
 _basePassiveValue = 3.0
 _passiveIncrements = 0.0
 _target = NodePath("../../Enemy Center")
-_combatVfxContainer = NodePath("../../../CombatVfxContainer")
+_combatVfxContainer = NodePath("../../../Combat VFX Container")
 
 [node name="LightningOrb" parent="Entities/Defect/lightning_orb_tester/orb_container" index="0" instance=ExtResource("11_ikbjt")]
 
@@ -8994,7 +9040,7 @@ _basePassiveValue = 3.0
 _passiveIncrements = 0.0
 _playerCenter = NodePath("../../Player Center")
 _target = NodePath("../../Enemy Center")
-_combatVfxContainer = NodePath("../../../CombatVfxContainer")
+_combatVfxContainer = NodePath("../../../Combat VFX Container")
 
 [node name="PlasmaOrb" parent="Entities/Defect/plasma_orb_tester/orb_container" index="0" instance=ExtResource("12_kmuo4")]
 
@@ -9013,7 +9059,7 @@ _basePassiveValue = 2.0
 _passiveIncrements = 0.0
 _playerCenter = NodePath("../../Player Center")
 _target = NodePath("../../Enemy Center")
-_combatVfxContainer = NodePath("../../../CombatVfxContainer")
+_combatVfxContainer = NodePath("../../../Combat VFX Container")
 
 [node name="FrostOrb" parent="Entities/Defect/frost_orb_tester/orb_container" index="0" instance=ExtResource("13_rihti")]
 
@@ -9028,7 +9074,7 @@ _orbVfx = NodePath("orb_container/DarkOrb")
 _basePassiveValue = 6.0
 _passiveIncrements = 0.0
 _target = NodePath("../../Enemy Center")
-_combatVfxContainer = NodePath("../../../CombatVfxContainer")
+_combatVfxContainer = NodePath("../../../Combat VFX Container")
 
 [node name="DarkOrb" parent="Entities/Defect/dark_orb_tester/orb_container" index="0" instance=ExtResource("12_km08i")]
 
@@ -9042,7 +9088,7 @@ _testModelType = 3
 _orbVfx = NodePath("orb_container/ScrapOrb")
 _passiveIncrements = -1.0
 _target = NodePath("../../Enemy Center")
-_combatVfxContainer = NodePath("../../../CombatVfxContainer")
+_combatVfxContainer = NodePath("../../../Combat VFX Container")
 
 [node name="ScrapOrb" parent="Entities/Defect/glass_orb_tester/orb_container" index="0" instance=ExtResource("13_r3do5")]
 
@@ -9082,7 +9128,7 @@ position = Vector2(1536, 727)
 position = Vector2(412.00003, 468.00012)
 scale = Vector2(0.99999994, 0.99999994)
 
-[node name="CombatVfxContainer" type="Control" parent="."]
+[node name="Combat VFX Container" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -9092,13 +9138,13 @@ offset_right = -2.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Graveyard" type="Control" parent="CombatVfxContainer"]
+[node name="Graveyard" type="Control" parent="Combat VFX Container"]
 visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="shiv_trail" type="GPUParticles2D" parent="CombatVfxContainer/Graveyard"]
+[node name="shiv_trail" type="GPUParticles2D" parent="Combat VFX Container/Graveyard"]
 material = ExtResource("7_6wilv")
 position = Vector2(1482, 656)
 amount = 1
@@ -9108,7 +9154,7 @@ explosiveness = 1.0
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_4x1g4")
 
-[node name="Sweeping Beam Tester (Straight Beam)" type="Node2D" parent="CombatVfxContainer/Graveyard" node_paths=PackedStringArray("line", "pos_a", "pos_b")]
+[node name="Sweeping Beam Tester (Straight Beam)" type="Node2D" parent="Combat VFX Container/Graveyard" node_paths=PackedStringArray("line", "pos_a", "pos_b")]
 visible = false
 position = Vector2(403, 612)
 script = ExtResource("86_yxndf")
@@ -9122,32 +9168,32 @@ alpha_gradient = SubResource("Gradient_yy5sh")
 alpha_curve = SubResource("Curve_06i27")
 movement_curve = SubResource("Curve_uku87")
 
-[node name="pos_a" type="Node2D" parent="CombatVfxContainer/Graveyard/Sweeping Beam Tester (Straight Beam)"]
+[node name="pos_a" type="Node2D" parent="Combat VFX Container/Graveyard/Sweeping Beam Tester (Straight Beam)"]
 position = Vector2(600, -150)
 
-[node name="pos_b" type="Node2D" parent="CombatVfxContainer/Graveyard/Sweeping Beam Tester (Straight Beam)"]
+[node name="pos_b" type="Node2D" parent="Combat VFX Container/Graveyard/Sweeping Beam Tester (Straight Beam)"]
 position = Vector2(2000, 450)
 
-[node name="vfx_sweeping_beam_line" type="Line2D" parent="CombatVfxContainer/Graveyard/Sweeping Beam Tester (Straight Beam)"]
+[node name="vfx_sweeping_beam_line" type="Line2D" parent="Combat VFX Container/Graveyard/Sweeping Beam Tester (Straight Beam)"]
 points = PackedVector2Array(20, -135, 600, -150)
 width = 15.0
 width_curve = SubResource("Curve_vydxa")
 
-[node name="Line2D" type="Line2D" parent="CombatVfxContainer/Graveyard/Sweeping Beam Tester (Straight Beam)"]
+[node name="Line2D" type="Line2D" parent="Combat VFX Container/Graveyard/Sweeping Beam Tester (Straight Beam)"]
 visible = false
 points = PackedVector2Array(20, -135, 600, -150)
 width = 15.0
 width_curve = SubResource("Curve_vydxa")
 default_color = Color(1, 1, 1, 0.19607843)
 
-[node name="Line2D2" type="Line2D" parent="CombatVfxContainer/Graveyard/Sweeping Beam Tester (Straight Beam)"]
+[node name="Line2D2" type="Line2D" parent="Combat VFX Container/Graveyard/Sweeping Beam Tester (Straight Beam)"]
 visible = false
 points = PackedVector2Array(20, -135, 2000, 450)
 width = 150.0
 width_curve = SubResource("Curve_vydxa")
 default_color = Color(1, 1, 1, 0.19607843)
 
-[node name="Shiv Test" type="Control" parent="CombatVfxContainer" node_paths=PackedStringArray("particles")]
+[node name="Shiv Test" type="Control" parent="Combat VFX Container" node_paths=PackedStringArray("particles")]
 visible = false
 anchors_preset = 0
 offset_right = 40.0
@@ -9156,7 +9202,7 @@ script = ExtResource("6_svddg")
 key_to_press = 49
 particles = [NodePath("shiv"), NodePath("speck_burst"), null, null, null]
 
-[node name="shiv" type="GPUParticles2D" parent="CombatVfxContainer/Shiv Test"]
+[node name="shiv" type="GPUParticles2D" parent="Combat VFX Container/Shiv Test"]
 z_index = 1
 material = SubResource("ShaderMaterial_svddg")
 position = Vector2(1318, 656)
@@ -9170,7 +9216,7 @@ fixed_fps = 60
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_6wilv")
 
-[node name="speck_burst" type="GPUParticles2D" parent="CombatVfxContainer/Shiv Test"]
+[node name="speck_burst" type="GPUParticles2D" parent="Combat VFX Container/Shiv Test"]
 material = ExtResource("10_4x1g4")
 position = Vector2(1294, 656)
 emitting = false
@@ -9184,13 +9230,13 @@ trail_sections = 2
 trail_section_subdivisions = 2
 process_material = SubResource("ParticleProcessMaterial_gw8hd")
 
-[node name="Component Tests" type="Node2D" parent="CombatVfxContainer" node_paths=PackedStringArray("particles")]
+[node name="Component Tests" type="Node2D" parent="Combat VFX Container" node_paths=PackedStringArray("particles")]
 visible = false
 script = ExtResource("6_svddg")
 key_to_press = 81
 particles = [NodePath("../Archive/Dagger Spray Tester (Allow Tinting)/vfx_dagger_spray_dagger (Color Particle Material)")]
 
-[node name="debug_flipbook" type="GPUParticles2D" parent="CombatVfxContainer/Component Tests"]
+[node name="debug_flipbook" type="GPUParticles2D" parent="Combat VFX Container/Component Tests"]
 material = ExtResource("60_74ntt")
 position = Vector2(1538, 675)
 emitting = false
@@ -9198,10 +9244,10 @@ amount = 1
 texture = ExtResource("13_d62tj")
 process_material = SubResource("ParticleProcessMaterial_js5px")
 
-[node name="Archive" type="Node2D" parent="CombatVfxContainer"]
+[node name="Archive" type="Node2D" parent="Combat VFX Container"]
 visible = false
 
-[node name="Heavy Blunt Tester" type="Node2D" parent="CombatVfxContainer/Archive" node_paths=PackedStringArray("anticipation_particles", "hit_particles", "playground_camera")]
+[node name="Heavy Blunt Tester" type="Node2D" parent="Combat VFX Container/Archive" node_paths=PackedStringArray("anticipation_particles", "hit_particles", "playground_camera")]
 visible = false
 script = ExtResource("6_po8sb")
 key_to_press = 65
@@ -9209,32 +9255,32 @@ anticipation_particles = [NodePath("vfx_heavy_blunt_anticipation_core")]
 hit_particles = [NodePath("vfx_heavy_blunt_hit_core"), NodePath("vfx_heavy_blunt_hit_core_glow"), NodePath("vfx_heavy_blunt_hit_spikes"), NodePath("vfx_heavy_blunt_hit_floor_smoke_left"), NodePath("vfx_heavy_blunt_hit_floor_smoke_right"), NodePath("vfx_common_specks_gray"), NodePath("vfx_common_specks_glow_red"), NodePath("vfx_common_hit_flare_big"), NodePath("vfx_outward_screen_distortion")]
 playground_camera = NodePath("../../../CameraShaker")
 
-[node name="vfx_heavy_blunt_anticipation_core" parent="CombatVfxContainer/Archive/Heavy Blunt Tester" instance=ExtResource("7_kk5o2")]
+[node name="vfx_heavy_blunt_anticipation_core" parent="Combat VFX Container/Archive/Heavy Blunt Tester" instance=ExtResource("7_kk5o2")]
 position = Vector2(1540, 183)
 process_material = SubResource("ParticleProcessMaterial_2o5cn")
 
-[node name="vfx_outward_screen_distortion" parent="CombatVfxContainer/Archive/Heavy Blunt Tester" instance=ExtResource("25_tsq07")]
+[node name="vfx_outward_screen_distortion" parent="Combat VFX Container/Archive/Heavy Blunt Tester" instance=ExtResource("25_tsq07")]
 position = Vector2(1541, 672)
 process_material = SubResource("ParticleProcessMaterial_4pjuu")
 
-[node name="vfx_heavy_blunt_hit_core" parent="CombatVfxContainer/Archive/Heavy Blunt Tester" instance=ExtResource("8_yfav0")]
+[node name="vfx_heavy_blunt_hit_core" parent="Combat VFX Container/Archive/Heavy Blunt Tester" instance=ExtResource("8_yfav0")]
 z_index = 1
 position = Vector2(1538, 747)
 
-[node name="vfx_heavy_blunt_hit_core_glow" parent="CombatVfxContainer/Archive/Heavy Blunt Tester" instance=ExtResource("9_v25eq")]
+[node name="vfx_heavy_blunt_hit_core_glow" parent="Combat VFX Container/Archive/Heavy Blunt Tester" instance=ExtResource("9_v25eq")]
 position = Vector2(1538, 747)
 
-[node name="vfx_heavy_blunt_hit_spikes" parent="CombatVfxContainer/Archive/Heavy Blunt Tester" instance=ExtResource("10_rmxs2")]
+[node name="vfx_heavy_blunt_hit_spikes" parent="Combat VFX Container/Archive/Heavy Blunt Tester" instance=ExtResource("10_rmxs2")]
 position = Vector2(1544, 544)
 
-[node name="vfx_heavy_blunt_hit_floor_smoke_left" parent="CombatVfxContainer/Archive/Heavy Blunt Tester" instance=ExtResource("11_tsq07")]
+[node name="vfx_heavy_blunt_hit_floor_smoke_left" parent="Combat VFX Container/Archive/Heavy Blunt Tester" instance=ExtResource("11_tsq07")]
 position = Vector2(1367, 727)
 
-[node name="vfx_heavy_blunt_hit_floor_smoke_right" parent="CombatVfxContainer/Archive/Heavy Blunt Tester" instance=ExtResource("11_tsq07")]
+[node name="vfx_heavy_blunt_hit_floor_smoke_right" parent="Combat VFX Container/Archive/Heavy Blunt Tester" instance=ExtResource("11_tsq07")]
 position = Vector2(1781, 727)
 process_material = SubResource("ParticleProcessMaterial_0eseu")
 
-[node name="vfx_common_specks_gray" parent="CombatVfxContainer/Archive/Heavy Blunt Tester" instance=ExtResource("12_y0ba4")]
+[node name="vfx_common_specks_gray" parent="Combat VFX Container/Archive/Heavy Blunt Tester" instance=ExtResource("12_y0ba4")]
 material = ExtResource("14_yfav0")
 position = Vector2(1543, 685)
 amount = 8
@@ -9242,27 +9288,27 @@ texture = ExtResource("9_ywrhd")
 lifetime = 1.0
 process_material = SubResource("ParticleProcessMaterial_32k7s")
 
-[node name="vfx_common_specks_glow_red" parent="CombatVfxContainer/Archive/Heavy Blunt Tester" instance=ExtResource("12_y0ba4")]
+[node name="vfx_common_specks_glow_red" parent="Combat VFX Container/Archive/Heavy Blunt Tester" instance=ExtResource("12_y0ba4")]
 material = ExtResource("10_4x1g4")
 position = Vector2(1541, 683)
 lifetime = 1.0
 process_material = SubResource("ParticleProcessMaterial_0dvld")
 
-[node name="vfx_common_hit_flare_big" parent="CombatVfxContainer/Archive/Heavy Blunt Tester" instance=ExtResource("14_gj0ch")]
+[node name="vfx_common_hit_flare_big" parent="Combat VFX Container/Archive/Heavy Blunt Tester" instance=ExtResource("14_gj0ch")]
 z_index = 3
 position = Vector2(1541, 675)
 lifetime = 0.13
 process_material = SubResource("ParticleProcessMaterial_3o76e")
 
-[node name="vfx_common_ring_polar_a" parent="CombatVfxContainer/Archive/Heavy Blunt Tester" instance=ExtResource("16_lthr7")]
+[node name="vfx_common_ring_polar_a" parent="Combat VFX Container/Archive/Heavy Blunt Tester" instance=ExtResource("16_lthr7")]
 visible = false
 position = Vector2(1548, 679)
 
-[node name="vfx_common_ring_polar_b" parent="CombatVfxContainer/Archive/Heavy Blunt Tester" instance=ExtResource("17_wefho")]
+[node name="vfx_common_ring_polar_b" parent="Combat VFX Container/Archive/Heavy Blunt Tester" instance=ExtResource("17_wefho")]
 visible = false
 position = Vector2(1542, 703)
 
-[node name="Potion Throw Tester" type="Node2D" parent="CombatVfxContainer/Archive" node_paths=PackedStringArray("potion_sprite", "source_node", "destinaton_node", "splash_particles", "target_spine_sprite")]
+[node name="Potion Throw Tester" type="Node2D" parent="Combat VFX Container/Archive" node_paths=PackedStringArray("potion_sprite", "source_node", "destinaton_node", "splash_particles", "target_spine_sprite")]
 visible = false
 position = Vector2(1538, 727)
 script = ExtResource("30_rmxs2")
@@ -9283,12 +9329,12 @@ target_spine_sprite = NodePath("../../../Entities/Enemy")
 overlay_duration = 1.0
 potion_liquid_overlay_material = ExtResource("5_wefho")
 
-[node name="potion_sprite" type="Sprite2D" parent="CombatVfxContainer/Archive/Potion Throw Tester"]
+[node name="potion_sprite" type="Sprite2D" parent="Combat VFX Container/Archive/Potion Throw Tester"]
 visible = false
 scale = Vector2(0.35, 0.35)
 texture = ExtResource("31_tsq07")
 
-[node name="vfx_potion_splash" type="GPUParticles2D" parent="CombatVfxContainer/Archive/Potion Throw Tester"]
+[node name="vfx_potion_splash" type="GPUParticles2D" parent="Combat VFX Container/Archive/Potion Throw Tester"]
 texture_repeat = 3
 material = ExtResource("32_gj0ch")
 position = Vector2(0, -35)
@@ -9300,7 +9346,7 @@ one_shot = true
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_y0ba4")
 
-[node name="vfx_potion_droplets" type="GPUParticles2D" parent="CombatVfxContainer/Archive/Potion Throw Tester"]
+[node name="vfx_potion_droplets" type="GPUParticles2D" parent="Combat VFX Container/Archive/Potion Throw Tester"]
 position = Vector2(0, -75)
 emitting = false
 texture = ExtResource("34_lthr7")
@@ -9311,7 +9357,7 @@ randomness = 0.56
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_wefho")
 
-[node name="Starry Impact Tester" type="Node2D" parent="CombatVfxContainer/Archive" node_paths=PackedStringArray("hit_particles", "playground_camera")]
+[node name="Starry Impact Tester" type="Node2D" parent="Combat VFX Container/Archive" node_paths=PackedStringArray("hit_particles", "playground_camera")]
 visible = false
 position = Vector2(1538, 659)
 script = ExtResource("35_frh73")
@@ -9319,11 +9365,11 @@ key_to_press = 81
 hit_particles = [NodePath("vfx_starry_impact_core"), NodePath("vfx_starry_impact_small_stars"), NodePath("vfx_common_ring_polar_b"), NodePath("vfx_common_specks_fade"), NodePath("vfx_starry_impact_small_stars_burst"), NodePath("vfx_starry_impact_smoke_flipbook"), NodePath("vfx_common_glow"), NodePath("vfx_outward_screen_distortion")]
 playground_camera = NodePath("../../../CameraShaker")
 
-[node name="vfx_starry_impact_core" parent="CombatVfxContainer/Archive/Starry Impact Tester" instance=ExtResource("36_0eseu")]
+[node name="vfx_starry_impact_core" parent="Combat VFX Container/Archive/Starry Impact Tester" instance=ExtResource("36_0eseu")]
 
-[node name="vfx_starry_impact_small_stars" parent="CombatVfxContainer/Archive/Starry Impact Tester" instance=ExtResource("37_4pjuu")]
+[node name="vfx_starry_impact_small_stars" parent="Combat VFX Container/Archive/Starry Impact Tester" instance=ExtResource("37_4pjuu")]
 
-[node name="vfx_starry_impact_small_stars_burst" parent="CombatVfxContainer/Archive/Starry Impact Tester" instance=ExtResource("37_4pjuu")]
+[node name="vfx_starry_impact_small_stars_burst" parent="Combat VFX Container/Archive/Starry Impact Tester" instance=ExtResource("37_4pjuu")]
 z_index = 1
 amount = 4
 lifetime = 1.25
@@ -9331,32 +9377,32 @@ explosiveness = 1.0
 randomness = 0.0
 process_material = SubResource("ParticleProcessMaterial_21kn2")
 
-[node name="vfx_starry_impact_smoke_flipbook" parent="CombatVfxContainer/Archive/Starry Impact Tester" instance=ExtResource("38_tprk4")]
+[node name="vfx_starry_impact_smoke_flipbook" parent="Combat VFX Container/Archive/Starry Impact Tester" instance=ExtResource("38_tprk4")]
 emitting = false
 
-[node name="vfx_common_ring_polar_b" parent="CombatVfxContainer/Archive/Starry Impact Tester" instance=ExtResource("17_wefho")]
+[node name="vfx_common_ring_polar_b" parent="Combat VFX Container/Archive/Starry Impact Tester" instance=ExtResource("17_wefho")]
 z_index = 2
 lifetime = 0.6
 process_material = SubResource("ParticleProcessMaterial_5qk05")
 
-[node name="vfx_common_specks_fade" parent="CombatVfxContainer/Archive/Starry Impact Tester" instance=ExtResource("12_y0ba4")]
+[node name="vfx_common_specks_fade" parent="Combat VFX Container/Archive/Starry Impact Tester" instance=ExtResource("12_y0ba4")]
 z_index = 1
 amount = 8
 process_material = SubResource("ParticleProcessMaterial_5usk3")
 
-[node name="vfx_common_specks" parent="CombatVfxContainer/Archive/Starry Impact Tester" instance=ExtResource("12_y0ba4")]
+[node name="vfx_common_specks" parent="Combat VFX Container/Archive/Starry Impact Tester" instance=ExtResource("12_y0ba4")]
 visible = false
 lifetime = 0.5
 process_material = SubResource("ParticleProcessMaterial_oiudl")
 
-[node name="vfx_outward_screen_distortion" parent="CombatVfxContainer/Archive/Starry Impact Tester" instance=ExtResource("25_tsq07")]
+[node name="vfx_outward_screen_distortion" parent="Combat VFX Container/Archive/Starry Impact Tester" instance=ExtResource("25_tsq07")]
 lifetime = 0.75
 process_material = SubResource("ParticleProcessMaterial_fu2hu")
 
-[node name="vfx_common_glow" parent="CombatVfxContainer/Archive/Starry Impact Tester" instance=ExtResource("42_hx3ww")]
+[node name="vfx_common_glow" parent="Combat VFX Container/Archive/Starry Impact Tester" instance=ExtResource("42_hx3ww")]
 process_material = SubResource("ParticleProcessMaterial_nf0nc")
 
-[node name="Big Slash Impact Tester" type="Node2D" parent="CombatVfxContainer/Archive" node_paths=PackedStringArray("anticipation_particles", "hit_particles", "playground_camera")]
+[node name="Big Slash Impact Tester" type="Node2D" parent="Combat VFX Container/Archive" node_paths=PackedStringArray("anticipation_particles", "hit_particles", "playground_camera")]
 visible = false
 position = Vector2(1538, 675)
 script = ExtResource("55_32k7s")
@@ -9365,20 +9411,20 @@ anticipation_particles = [NodePath("impact_core_pivot/vfx_big_slash_impact_core"
 hit_particles = [NodePath("impact_core_pivot/vfx_big_slash_impact_side_smoke_left"), NodePath("impact_core_pivot/vfx_big_slash_impact_side_smoke_right"), NodePath("impact_core_pivot/vfx_common_specks"), NodePath("vfx_common_specks"), NodePath("vfx_common_hit_flare")]
 playground_camera = NodePath("../../../CameraShaker")
 
-[node name="impact_core_pivot" type="Node2D" parent="CombatVfxContainer/Archive/Big Slash Impact Tester"]
+[node name="impact_core_pivot" type="Node2D" parent="Combat VFX Container/Archive/Big Slash Impact Tester"]
 rotation = 2.61799
 
-[node name="vfx_big_slash_impact_core" parent="CombatVfxContainer/Archive/Big Slash Impact Tester/impact_core_pivot" instance=ExtResource("56_32k7s")]
+[node name="vfx_big_slash_impact_core" parent="Combat VFX Container/Archive/Big Slash Impact Tester/impact_core_pivot" instance=ExtResource("56_32k7s")]
 position = Vector2(-0.00012207, 120)
 
-[node name="vfx_big_slash_impact_side_smoke_left" parent="CombatVfxContainer/Archive/Big Slash Impact Tester/impact_core_pivot" instance=ExtResource("57_74ntt")]
+[node name="vfx_big_slash_impact_side_smoke_left" parent="Combat VFX Container/Archive/Big Slash Impact Tester/impact_core_pivot" instance=ExtResource("57_74ntt")]
 position = Vector2(165, 420)
 
-[node name="vfx_big_slash_impact_side_smoke_right" parent="CombatVfxContainer/Archive/Big Slash Impact Tester/impact_core_pivot" instance=ExtResource("57_74ntt")]
+[node name="vfx_big_slash_impact_side_smoke_right" parent="Combat VFX Container/Archive/Big Slash Impact Tester/impact_core_pivot" instance=ExtResource("57_74ntt")]
 position = Vector2(-165, 420)
 scale = Vector2(-1, 1)
 
-[node name="vfx_common_specks" parent="CombatVfxContainer/Archive/Big Slash Impact Tester/impact_core_pivot" instance=ExtResource("12_y0ba4")]
+[node name="vfx_common_specks" parent="Combat VFX Container/Archive/Big Slash Impact Tester/impact_core_pivot" instance=ExtResource("12_y0ba4")]
 material = ExtResource("14_yfav0")
 position = Vector2(-0.00178528, 397.394)
 rotation = -1.57079
@@ -9388,21 +9434,21 @@ lifetime = 1.0
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_m1oxd")
 
-[node name="vfx_common_specks" parent="CombatVfxContainer/Archive/Big Slash Impact Tester" instance=ExtResource("12_y0ba4")]
+[node name="vfx_common_specks" parent="Combat VFX Container/Archive/Big Slash Impact Tester" instance=ExtResource("12_y0ba4")]
 self_modulate = Color(0.5, 0.858615, 1, 1)
 process_material = SubResource("ParticleProcessMaterial_8vl02")
 
-[node name="vfx_common_hit_flare" parent="CombatVfxContainer/Archive/Big Slash Impact Tester" instance=ExtResource("14_gj0ch")]
+[node name="vfx_common_hit_flare" parent="Combat VFX Container/Archive/Big Slash Impact Tester" instance=ExtResource("14_gj0ch")]
 self_modulate = Color(0.5, 0.858615, 1, 1)
 z_index = 2
 process_material = SubResource("ParticleProcessMaterial_aj6ke")
 
-[node name="vfx_big_slash" type="Node2D" parent="CombatVfxContainer/Archive/Big Slash Impact Tester"]
+[node name="vfx_big_slash" type="Node2D" parent="Combat VFX Container/Archive/Big Slash Impact Tester"]
 
-[node name="vfx_slash_core" parent="CombatVfxContainer/Archive/Big Slash Impact Tester/vfx_big_slash" instance=ExtResource("58_om8mf")]
+[node name="vfx_slash_core" parent="Combat VFX Container/Archive/Big Slash Impact Tester/vfx_big_slash" instance=ExtResource("58_om8mf")]
 position = Vector2(-320, -80)
 
-[node name="Gaseous Impact Tester (Allow Tinting)" type="Node2D" parent="CombatVfxContainer/Archive" node_paths=PackedStringArray("particles")]
+[node name="Gaseous Impact Tester (Allow Tinting)" type="Node2D" parent="Combat VFX Container/Archive" node_paths=PackedStringArray("particles")]
 visible = false
 modulate = Color(0.65, 0.65, 0.65, 1)
 position = Vector2(1538, 675)
@@ -9410,58 +9456,58 @@ script = ExtResource("6_svddg")
 key_to_press = 81
 particles = [NodePath("vfx_common_glow"), NodePath("vfx_common_specks"), NodePath("vfx_poof"), NodePath("vfx_heavy_blunt_hit_floor_smoke_left"), NodePath("vfx_heavy_blunt_hit_floor_smoke_right"), NodePath("vfx_common_hit_flare"), NodePath("vfx_common_specks_glow"), NodePath("vfx_common_round_smoke_flipbook"), NodePath("vfx_common_round_smoke_flipbook_large")]
 
-[node name="vfx_common_hit_flare" parent="CombatVfxContainer/Archive/Gaseous Impact Tester (Allow Tinting)" instance=ExtResource("14_gj0ch")]
+[node name="vfx_common_hit_flare" parent="Combat VFX Container/Archive/Gaseous Impact Tester (Allow Tinting)" instance=ExtResource("14_gj0ch")]
 z_index = 2
 process_material = SubResource("ParticleProcessMaterial_i2ak4")
 
-[node name="vfx_common_glow" parent="CombatVfxContainer/Archive/Gaseous Impact Tester (Allow Tinting)" instance=ExtResource("42_hx3ww")]
+[node name="vfx_common_glow" parent="Combat VFX Container/Archive/Gaseous Impact Tester (Allow Tinting)" instance=ExtResource("42_hx3ww")]
 lifetime = 1.2
 process_material = SubResource("ParticleProcessMaterial_eswex")
 
-[node name="vfx_common_specks_glow" parent="CombatVfxContainer/Archive/Gaseous Impact Tester (Allow Tinting)" instance=ExtResource("12_y0ba4")]
+[node name="vfx_common_specks_glow" parent="Combat VFX Container/Archive/Gaseous Impact Tester (Allow Tinting)" instance=ExtResource("12_y0ba4")]
 z_index = 1
 amount = 6
 lifetime = 0.75
 process_material = SubResource("ParticleProcessMaterial_0yqks")
 
-[node name="vfx_common_round_smoke_flipbook" parent="CombatVfxContainer/Archive/Gaseous Impact Tester (Allow Tinting)" instance=ExtResource("62_0dvld")]
+[node name="vfx_common_round_smoke_flipbook" parent="Combat VFX Container/Archive/Gaseous Impact Tester (Allow Tinting)" instance=ExtResource("62_0dvld")]
 
-[node name="vfx_common_round_smoke_flipbook_large" parent="CombatVfxContainer/Archive/Gaseous Impact Tester (Allow Tinting)" instance=ExtResource("62_0dvld")]
+[node name="vfx_common_round_smoke_flipbook_large" parent="Combat VFX Container/Archive/Gaseous Impact Tester (Allow Tinting)" instance=ExtResource("62_0dvld")]
 lifetime = 0.75
 process_material = SubResource("ParticleProcessMaterial_xh717")
 
-[node name="vfx_common_round_smoke" parent="CombatVfxContainer/Archive/Gaseous Impact Tester (Allow Tinting)" instance=ExtResource("59_32k7s")]
+[node name="vfx_common_round_smoke" parent="Combat VFX Container/Archive/Gaseous Impact Tester (Allow Tinting)" instance=ExtResource("59_32k7s")]
 visible = false
 emitting = false
 process_material = SubResource("ParticleProcessMaterial_ywtpc")
 
-[node name="vfx_common_round_smoke_large" parent="CombatVfxContainer/Archive/Gaseous Impact Tester (Allow Tinting)" instance=ExtResource("59_32k7s")]
+[node name="vfx_common_round_smoke_large" parent="Combat VFX Container/Archive/Gaseous Impact Tester (Allow Tinting)" instance=ExtResource("59_32k7s")]
 visible = false
 emitting = false
 lifetime = 1.0
 process_material = SubResource("ParticleProcessMaterial_acegf")
 
-[node name="vfx_common_specks" parent="CombatVfxContainer/Archive/Gaseous Impact Tester (Allow Tinting)" instance=ExtResource("12_y0ba4")]
+[node name="vfx_common_specks" parent="Combat VFX Container/Archive/Gaseous Impact Tester (Allow Tinting)" instance=ExtResource("12_y0ba4")]
 amount = 16
 texture = ExtResource("9_ywrhd")
 lifetime = 1.75
 process_material = SubResource("ParticleProcessMaterial_5nv8a")
 
-[node name="vfx_poof" parent="CombatVfxContainer/Archive/Gaseous Impact Tester (Allow Tinting)" instance=ExtResource("58_dn0fg")]
+[node name="vfx_poof" parent="Combat VFX Container/Archive/Gaseous Impact Tester (Allow Tinting)" instance=ExtResource("58_dn0fg")]
 emitting = false
 amount = 3
 lifetime = 1.25
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_t38o2")
 
-[node name="vfx_heavy_blunt_hit_floor_smoke_left" parent="CombatVfxContainer/Archive/Gaseous Impact Tester (Allow Tinting)" instance=ExtResource("11_tsq07")]
+[node name="vfx_heavy_blunt_hit_floor_smoke_left" parent="Combat VFX Container/Archive/Gaseous Impact Tester (Allow Tinting)" instance=ExtResource("11_tsq07")]
 visible = false
 position = Vector2(-120, 50)
 lifetime = 0.75
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_5hbl3")
 
-[node name="vfx_heavy_blunt_hit_floor_smoke_right" parent="CombatVfxContainer/Archive/Gaseous Impact Tester (Allow Tinting)" instance=ExtResource("11_tsq07")]
+[node name="vfx_heavy_blunt_hit_floor_smoke_right" parent="Combat VFX Container/Archive/Gaseous Impact Tester (Allow Tinting)" instance=ExtResource("11_tsq07")]
 visible = false
 position = Vector2(120, 50)
 rotation = -3.14159
@@ -9470,7 +9516,7 @@ lifetime = 0.75
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_vfqhl")
 
-[node name="Dagger Spray Tester (Allow Tinting)" type="Node2D" parent="CombatVfxContainer/Archive" node_paths=PackedStringArray("dagger_particles", "impact_particles", "impact_container", "playground_camera")]
+[node name="Dagger Spray Tester (Allow Tinting)" type="Node2D" parent="Combat VFX Container/Archive" node_paths=PackedStringArray("dagger_particles", "impact_particles", "impact_container", "playground_camera")]
 visible = false
 show_behind_parent = true
 position = Vector2(405, 612)
@@ -9482,10 +9528,10 @@ impact_container = NodePath("impact_container")
 impact_delay = 0.1
 playground_camera = NodePath("../../../CameraShaker")
 
-[node name="impact_container" type="Node2D" parent="CombatVfxContainer/Archive/Dagger Spray Tester (Allow Tinting)"]
+[node name="impact_container" type="Node2D" parent="Combat VFX Container/Archive/Dagger Spray Tester (Allow Tinting)"]
 position = Vector2(1133, 62.9999)
 
-[node name="vfx_dagger_impact_core" type="GPUParticles2D" parent="CombatVfxContainer/Archive/Dagger Spray Tester (Allow Tinting)/impact_container"]
+[node name="vfx_dagger_impact_core" type="GPUParticles2D" parent="Combat VFX Container/Archive/Dagger Spray Tester (Allow Tinting)/impact_container"]
 self_modulate = Color(0.5, 0.858615, 1, 1)
 z_index = 2
 material = ExtResource("62_acegf")
@@ -9499,7 +9545,7 @@ fixed_fps = 60
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_14470")
 
-[node name="vfx_common_specks_impact" parent="CombatVfxContainer/Archive/Dagger Spray Tester (Allow Tinting)/impact_container" instance=ExtResource("12_y0ba4")]
+[node name="vfx_common_specks_impact" parent="Combat VFX Container/Archive/Dagger Spray Tester (Allow Tinting)/impact_container" instance=ExtResource("12_y0ba4")]
 self_modulate = Color(0.5, 0.858615, 1, 1)
 z_index = 1
 amount = 15
@@ -9507,13 +9553,13 @@ lifetime = 0.75
 explosiveness = 0.5
 process_material = SubResource("ParticleProcessMaterial_km08i")
 
-[node name="vfx_common_hit_flare" parent="CombatVfxContainer/Archive/Dagger Spray Tester (Allow Tinting)/impact_container" instance=ExtResource("14_gj0ch")]
+[node name="vfx_common_hit_flare" parent="Combat VFX Container/Archive/Dagger Spray Tester (Allow Tinting)/impact_container" instance=ExtResource("14_gj0ch")]
 self_modulate = Color(0.5, 0.858615, 1, 1)
 z_index = 3
 amount = 6
 process_material = SubResource("ParticleProcessMaterial_foxwj")
 
-[node name="vfx_common_specks_spray" parent="CombatVfxContainer/Archive/Dagger Spray Tester (Allow Tinting)" instance=ExtResource("12_y0ba4")]
+[node name="vfx_common_specks_spray" parent="Combat VFX Container/Archive/Dagger Spray Tester (Allow Tinting)" instance=ExtResource("12_y0ba4")]
 material = ExtResource("14_yfav0")
 position = Vector2(280, 0)
 amount = 25
@@ -9521,7 +9567,7 @@ texture = ExtResource("9_ywrhd")
 explosiveness = 0.75
 process_material = SubResource("ParticleProcessMaterial_1pwvi")
 
-[node name="vfx_dagger_spray_dagger (Color Particle Material)" type="GPUParticles2D" parent="CombatVfxContainer/Archive/Dagger Spray Tester (Allow Tinting)"]
+[node name="vfx_dagger_spray_dagger (Color Particle Material)" type="GPUParticles2D" parent="Combat VFX Container/Archive/Dagger Spray Tester (Allow Tinting)"]
 material = ExtResource("16_k0ykp")
 position = Vector2(-140, 0)
 emitting = false
@@ -9537,7 +9583,7 @@ trail_lifetime = 0.2
 trail_section_subdivisions = 1
 process_material = SubResource("ParticleProcessMaterial_kko0u")
 
-[node name="Fire Impact Tester A (Allow Tinting)" type="Node2D" parent="CombatVfxContainer/Archive" node_paths=PackedStringArray("flame_particles", "end_particles", "playground_camera")]
+[node name="Fire Impact Tester A (Allow Tinting)" type="Node2D" parent="Combat VFX Container/Archive" node_paths=PackedStringArray("flame_particles", "end_particles", "playground_camera")]
 visible = false
 position = Vector2(1538, 727)
 script = ExtResource("67_pa3ay")
@@ -9547,87 +9593,87 @@ flame_particles = [NodePath("fire_flipbook_container/vfx_fire_flipbook"), NodePa
 end_particles = [NodePath("fire_flipbook_container/vfx_fire_flipbook_dark"), NodePath("fire_flipbook_container/vfx_common_specks_burst"), NodePath("fire_flipbook_container/vfx_fire_burst_right_flipbook")]
 playground_camera = NodePath("../../../CameraShaker")
 
-[node name="fire_flipbook_container" type="Node2D" parent="CombatVfxContainer/Archive/Fire Impact Tester A (Allow Tinting)"]
+[node name="fire_flipbook_container" type="Node2D" parent="Combat VFX Container/Archive/Fire Impact Tester A (Allow Tinting)"]
 
-[node name="vfx_fire_flipbook" parent="CombatVfxContainer/Archive/Fire Impact Tester A (Allow Tinting)/fire_flipbook_container" instance=ExtResource("68_ike7h")]
+[node name="vfx_fire_flipbook" parent="Combat VFX Container/Archive/Fire Impact Tester A (Allow Tinting)/fire_flipbook_container" instance=ExtResource("68_ike7h")]
 position = Vector2(35, -190)
 
-[node name="vfx_common_specks" parent="CombatVfxContainer/Archive/Fire Impact Tester A (Allow Tinting)/fire_flipbook_container" instance=ExtResource("12_y0ba4")]
+[node name="vfx_common_specks" parent="Combat VFX Container/Archive/Fire Impact Tester A (Allow Tinting)/fire_flipbook_container" instance=ExtResource("12_y0ba4")]
 self_modulate = Color(1, 0.54595, 0.342164, 1)
 amount = 16
 explosiveness = 0.7
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_kanw8")
 
-[node name="vfx_common_glow" parent="CombatVfxContainer/Archive/Fire Impact Tester A (Allow Tinting)/fire_flipbook_container" instance=ExtResource("42_hx3ww")]
+[node name="vfx_common_glow" parent="Combat VFX Container/Archive/Fire Impact Tester A (Allow Tinting)/fire_flipbook_container" instance=ExtResource("42_hx3ww")]
 self_modulate = Color(1, 0.54595, 0.342164, 1)
 position = Vector2(21, -126)
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_275co")
 
-[node name="vfx_fire_burst_right_flipbook" parent="CombatVfxContainer/Archive/Fire Impact Tester A (Allow Tinting)/fire_flipbook_container" instance=ExtResource("69_vo6g6")]
+[node name="vfx_fire_burst_right_flipbook" parent="Combat VFX Container/Archive/Fire Impact Tester A (Allow Tinting)/fire_flipbook_container" instance=ExtResource("69_vo6g6")]
 position = Vector2(100, -125)
 rotation = 0.261799
 lifetime = 0.55
 process_material = SubResource("ParticleProcessMaterial_ili5p")
 
-[node name="vfx_fire_flipbook_dark" parent="CombatVfxContainer/Archive/Fire Impact Tester A (Allow Tinting)/fire_flipbook_container" instance=ExtResource("68_ike7h")]
+[node name="vfx_fire_flipbook_dark" parent="Combat VFX Container/Archive/Fire Impact Tester A (Allow Tinting)/fire_flipbook_container" instance=ExtResource("68_ike7h")]
 position = Vector2(35, -190)
 lifetime = 0.75
 process_material = SubResource("ParticleProcessMaterial_facwb")
 
-[node name="vfx_common_specks_burst" parent="CombatVfxContainer/Archive/Fire Impact Tester A (Allow Tinting)/fire_flipbook_container" instance=ExtResource("12_y0ba4")]
+[node name="vfx_common_specks_burst" parent="Combat VFX Container/Archive/Fire Impact Tester A (Allow Tinting)/fire_flipbook_container" instance=ExtResource("12_y0ba4")]
 self_modulate = Color(1, 0.54595, 0.342164, 1)
 amount = 6
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_evy5u")
 
-[node name="Fire Impact Tester B (Allow Tinting)" type="Node2D" parent="CombatVfxContainer/Archive" node_paths=PackedStringArray("particles")]
+[node name="Fire Impact Tester B (Allow Tinting)" type="Node2D" parent="Combat VFX Container/Archive" node_paths=PackedStringArray("particles")]
 visible = false
 position = Vector2(1538, 675)
 script = ExtResource("6_svddg")
 key_to_press = 81
 particles = [NodePath("center_pivot/vfx_fire_burst_center_flipbook"), NodePath("center_pivot/vfx_fire_burst_left_flipbook"), NodePath("center_pivot/vfx_fire_burst_right_flipbook"), NodePath("center_pivot/vfx_common_glow"), NodePath("center_pivot/vfx_common_specks_glow"), NodePath("center_pivot/vfx_common_specks"), NodePath("center_pivot/vfx_common_hit_flare"), NodePath("center_pivot/vfx_poof")]
 
-[node name="center_pivot" type="Node2D" parent="CombatVfxContainer/Archive/Fire Impact Tester B (Allow Tinting)"]
+[node name="center_pivot" type="Node2D" parent="Combat VFX Container/Archive/Fire Impact Tester B (Allow Tinting)"]
 
-[node name="vfx_fire_burst_center_flipbook" parent="CombatVfxContainer/Archive/Fire Impact Tester B (Allow Tinting)/center_pivot" instance=ExtResource("70_evy5u")]
+[node name="vfx_fire_burst_center_flipbook" parent="Combat VFX Container/Archive/Fire Impact Tester B (Allow Tinting)/center_pivot" instance=ExtResource("70_evy5u")]
 position = Vector2(0, -100)
 
-[node name="vfx_fire_burst_left_flipbook" parent="CombatVfxContainer/Archive/Fire Impact Tester B (Allow Tinting)/center_pivot" instance=ExtResource("71_n2edx")]
+[node name="vfx_fire_burst_left_flipbook" parent="Combat VFX Container/Archive/Fire Impact Tester B (Allow Tinting)/center_pivot" instance=ExtResource("71_n2edx")]
 position = Vector2(-200, -50)
 
-[node name="vfx_fire_burst_right_flipbook" parent="CombatVfxContainer/Archive/Fire Impact Tester B (Allow Tinting)/center_pivot" instance=ExtResource("69_vo6g6")]
+[node name="vfx_fire_burst_right_flipbook" parent="Combat VFX Container/Archive/Fire Impact Tester B (Allow Tinting)/center_pivot" instance=ExtResource("69_vo6g6")]
 position = Vector2(200, -50)
 
-[node name="vfx_common_glow" parent="CombatVfxContainer/Archive/Fire Impact Tester B (Allow Tinting)/center_pivot" instance=ExtResource("42_hx3ww")]
+[node name="vfx_common_glow" parent="Combat VFX Container/Archive/Fire Impact Tester B (Allow Tinting)/center_pivot" instance=ExtResource("42_hx3ww")]
 self_modulate = Color(1, 0.54595, 0.342164, 1)
 position = Vector2(0, -49.9999)
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_tf8ql")
 
-[node name="vfx_common_specks_glow" parent="CombatVfxContainer/Archive/Fire Impact Tester B (Allow Tinting)/center_pivot" instance=ExtResource("12_y0ba4")]
+[node name="vfx_common_specks_glow" parent="Combat VFX Container/Archive/Fire Impact Tester B (Allow Tinting)/center_pivot" instance=ExtResource("12_y0ba4")]
 self_modulate = Color(1, 0.54595, 0.342164, 1)
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_xh42l")
 
-[node name="vfx_common_hit_flare" parent="CombatVfxContainer/Archive/Fire Impact Tester B (Allow Tinting)/center_pivot" instance=ExtResource("14_gj0ch")]
+[node name="vfx_common_hit_flare" parent="Combat VFX Container/Archive/Fire Impact Tester B (Allow Tinting)/center_pivot" instance=ExtResource("14_gj0ch")]
 self_modulate = Color(1, 0.54595, 0.342164, 1)
 z_index = 3
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_p3tg8")
 
-[node name="vfx_common_specks" parent="CombatVfxContainer/Archive/Fire Impact Tester B (Allow Tinting)/center_pivot" instance=ExtResource("12_y0ba4")]
+[node name="vfx_common_specks" parent="Combat VFX Container/Archive/Fire Impact Tester B (Allow Tinting)/center_pivot" instance=ExtResource("12_y0ba4")]
 texture = ExtResource("9_ywrhd")
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_2lldl")
 
-[node name="vfx_poof" parent="CombatVfxContainer/Archive/Fire Impact Tester B (Allow Tinting)/center_pivot" instance=ExtResource("58_dn0fg")]
+[node name="vfx_poof" parent="Combat VFX Container/Archive/Fire Impact Tester B (Allow Tinting)/center_pivot" instance=ExtResource("58_dn0fg")]
 position = Vector2(0, -80)
 emitting = false
 process_material = SubResource("ParticleProcessMaterial_e4ucu")
 
-[node name="Sleeping Tester" type="Node2D" parent="CombatVfxContainer/Archive" node_paths=PackedStringArray("burst_particles", "continuous_particles")]
+[node name="Sleeping Tester" type="Node2D" parent="Combat VFX Container/Archive" node_paths=PackedStringArray("burst_particles", "continuous_particles")]
 visible = false
 position = Vector2(1538, 675)
 script = ExtResource("72_n2edx")
@@ -9635,11 +9681,11 @@ key_to_press = 65
 burst_particles = [NodePath("vfx_common_glow")]
 continuous_particles = [NodePath("vfx_starry_impact_small_stars"), NodePath("vfx_sleeping_z")]
 
-[node name="vfx_common_glow" parent="CombatVfxContainer/Archive/Sleeping Tester" instance=ExtResource("42_hx3ww")]
+[node name="vfx_common_glow" parent="Combat VFX Container/Archive/Sleeping Tester" instance=ExtResource("42_hx3ww")]
 self_modulate = Color(0.878661, 0.460541, 1, 1)
 lifetime = 0.35
 
-[node name="vfx_starry_impact_small_stars" parent="CombatVfxContainer/Archive/Sleeping Tester" instance=ExtResource("37_4pjuu")]
+[node name="vfx_starry_impact_small_stars" parent="Combat VFX Container/Archive/Sleeping Tester" instance=ExtResource("37_4pjuu")]
 self_modulate = Color(0.991938, 0.736755, 1, 1)
 emitting = true
 amount = 3
@@ -9648,7 +9694,7 @@ one_shot = false
 explosiveness = 0.0
 process_material = SubResource("ParticleProcessMaterial_pa3ay")
 
-[node name="vfx_sleeping_z" type="GPUParticles2D" parent="CombatVfxContainer/Archive/Sleeping Tester"]
+[node name="vfx_sleeping_z" type="GPUParticles2D" parent="Combat VFX Container/Archive/Sleeping Tester"]
 z_index = 2
 texture_repeat = 2
 material = ExtResource("72_evy5u")
@@ -9659,16 +9705,16 @@ lifetime = 4.0
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_n2edx")
 
-[node name="Spore Impact Tester" type="Node2D" parent="CombatVfxContainer/Archive" node_paths=PackedStringArray("particles")]
+[node name="Spore Impact Tester" type="Node2D" parent="Combat VFX Container/Archive" node_paths=PackedStringArray("particles")]
 visible = false
 position = Vector2(1538, 727)
 script = ExtResource("6_svddg")
 key_to_press = 65
 particles = [NodePath("poof_pivot/vfx_spore_impact_poof_flipbook"), NodePath("vfx_common_specks"), NodePath("vfx_common_glow"), NodePath("vfx_heavy_blunt_hit_floor_smoke_left"), NodePath("vfx_heavy_blunt_hit_floor_smoke_right"), NodePath("vfx_poof"), NodePath("vfx_dagger_impact_core"), NodePath("vfx_common_hit_flare")]
 
-[node name="poof_pivot" type="Node2D" parent="CombatVfxContainer/Archive/Spore Impact Tester"]
+[node name="poof_pivot" type="Node2D" parent="Combat VFX Container/Archive/Spore Impact Tester"]
 
-[node name="vfx_spore_impact_poof_flipbook" type="GPUParticles2D" parent="CombatVfxContainer/Archive/Spore Impact Tester/poof_pivot"]
+[node name="vfx_spore_impact_poof_flipbook" type="GPUParticles2D" parent="Combat VFX Container/Archive/Spore Impact Tester/poof_pivot"]
 modulate = Color(0.3, 1, 0.3, 1)
 material = ExtResource("75_8pyfw")
 position = Vector2(0, -250)
@@ -9681,36 +9727,36 @@ fixed_fps = 60
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_rrp7m")
 
-[node name="vfx_common_specks" parent="CombatVfxContainer/Archive/Spore Impact Tester" instance=ExtResource("12_y0ba4")]
+[node name="vfx_common_specks" parent="Combat VFX Container/Archive/Spore Impact Tester" instance=ExtResource("12_y0ba4")]
 modulate = Color(0.3, 1, 0.3, 1)
 amount = 16
 lifetime = 2.25
 process_material = SubResource("ParticleProcessMaterial_jese1")
 
-[node name="vfx_common_glow" parent="CombatVfxContainer/Archive/Spore Impact Tester" instance=ExtResource("42_hx3ww")]
+[node name="vfx_common_glow" parent="Combat VFX Container/Archive/Spore Impact Tester" instance=ExtResource("42_hx3ww")]
 modulate = Color(0.3, 1, 0.3, 1)
 position = Vector2(0, -75)
 lifetime = 0.75
 process_material = SubResource("ParticleProcessMaterial_4dq0n")
 
-[node name="vfx_heavy_blunt_hit_floor_smoke_left" parent="CombatVfxContainer/Archive/Spore Impact Tester" instance=ExtResource("11_tsq07")]
+[node name="vfx_heavy_blunt_hit_floor_smoke_left" parent="Combat VFX Container/Archive/Spore Impact Tester" instance=ExtResource("11_tsq07")]
 modulate = Color(0.3, 1, 0.3, 1)
 position = Vector2(-100, 0)
 process_material = SubResource("ParticleProcessMaterial_s6ret")
 
-[node name="vfx_heavy_blunt_hit_floor_smoke_right" parent="CombatVfxContainer/Archive/Spore Impact Tester" instance=ExtResource("11_tsq07")]
+[node name="vfx_heavy_blunt_hit_floor_smoke_right" parent="Combat VFX Container/Archive/Spore Impact Tester" instance=ExtResource("11_tsq07")]
 modulate = Color(0.3, 1, 0.3, 1)
 position = Vector2(100, 0)
 process_material = SubResource("ParticleProcessMaterial_uqr3r")
 
-[node name="vfx_poof" parent="CombatVfxContainer/Archive/Spore Impact Tester" instance=ExtResource("58_dn0fg")]
+[node name="vfx_poof" parent="Combat VFX Container/Archive/Spore Impact Tester" instance=ExtResource("58_dn0fg")]
 modulate = Color(0.3, 1, 0.3, 1)
 position = Vector2(0, -34.9999)
 emitting = false
 lifetime = 0.5
 process_material = SubResource("ParticleProcessMaterial_igl33")
 
-[node name="vfx_dagger_impact_core" parent="CombatVfxContainer/Archive/Spore Impact Tester" instance=ExtResource("77_3o76e")]
+[node name="vfx_dagger_impact_core" parent="Combat VFX Container/Archive/Spore Impact Tester" instance=ExtResource("77_3o76e")]
 modulate = Color(0.3, 1, 0.3, 1)
 self_modulate = Color(1, 1, 1, 1)
 position = Vector2(0, -54.9999)
@@ -9719,11 +9765,11 @@ amount = 1
 lifetime = 0.25
 process_material = SubResource("ParticleProcessMaterial_3rtms")
 
-[node name="vfx_common_hit_flare" parent="CombatVfxContainer/Archive/Spore Impact Tester" instance=ExtResource("14_gj0ch")]
+[node name="vfx_common_hit_flare" parent="Combat VFX Container/Archive/Spore Impact Tester" instance=ExtResource("14_gj0ch")]
 modulate = Color(0.3, 1, 0.3, 1)
 process_material = SubResource("ParticleProcessMaterial_7m1uf")
 
-[node name="Scratch Impact Tester" type="Node2D" parent="CombatVfxContainer/Archive" node_paths=PackedStringArray("anticipation_particles", "hit_particles", "playground_camera")]
+[node name="Scratch Impact Tester" type="Node2D" parent="Combat VFX Container/Archive" node_paths=PackedStringArray("anticipation_particles", "hit_particles", "playground_camera")]
 visible = false
 position = Vector2(1538, 675)
 script = ExtResource("78_o6cpj")
@@ -9732,35 +9778,35 @@ anticipation_particles = [NodePath("vfx_scratch_flipbook")]
 hit_particles = [NodePath("vfx_big_slash_impact_side_smoke_left"), NodePath("vfx_big_slash_impact_side_smoke_right"), NodePath("vfx_common_hit_flare"), NodePath("vfx_common_specks")]
 playground_camera = NodePath("../../../CameraShaker")
 
-[node name="vfx_scratch_flipbook" parent="CombatVfxContainer/Archive/Scratch Impact Tester" instance=ExtResource("77_vcpbd")]
+[node name="vfx_scratch_flipbook" parent="Combat VFX Container/Archive/Scratch Impact Tester" instance=ExtResource("77_vcpbd")]
 position = Vector2(10, -75)
 
-[node name="vfx_common_hit_flare" parent="CombatVfxContainer/Archive/Scratch Impact Tester" instance=ExtResource("14_gj0ch")]
+[node name="vfx_common_hit_flare" parent="Combat VFX Container/Archive/Scratch Impact Tester" instance=ExtResource("14_gj0ch")]
 modulate = Color(1, 0.3491902, 0.3491902, 1)
 process_material = SubResource("ParticleProcessMaterial_n758f")
 
-[node name="vfx_common_specks" parent="CombatVfxContainer/Archive/Scratch Impact Tester" instance=ExtResource("12_y0ba4")]
+[node name="vfx_common_specks" parent="Combat VFX Container/Archive/Scratch Impact Tester" instance=ExtResource("12_y0ba4")]
 position = Vector2(-25, -23)
 amount = 6
 lifetime = 1.0
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_ybutx")
 
-[node name="vfx_big_slash_impact_side_smoke_left" parent="CombatVfxContainer/Archive/Scratch Impact Tester" instance=ExtResource("57_74ntt")]
+[node name="vfx_big_slash_impact_side_smoke_left" parent="Combat VFX Container/Archive/Scratch Impact Tester" instance=ExtResource("57_74ntt")]
 position = Vector2(-92.99999, -49.999992)
 rotation = 4.1103506
 scale = Vector2(-1, -1)
 lifetime = 0.6
 process_material = SubResource("ParticleProcessMaterial_ppn2p")
 
-[node name="vfx_big_slash_impact_side_smoke_right" parent="CombatVfxContainer/Archive/Scratch Impact Tester" instance=ExtResource("57_74ntt")]
+[node name="vfx_big_slash_impact_side_smoke_right" parent="Combat VFX Container/Archive/Scratch Impact Tester" instance=ExtResource("57_74ntt")]
 position = Vector2(121, -50)
 rotation = 3.6651862
 scale = Vector2(-1, -1)
 lifetime = 0.6
 process_material = SubResource("ParticleProcessMaterial_m3xro")
 
-[node name="Shiv Tester" type="Node2D" parent="CombatVfxContainer/Archive" node_paths=PackedStringArray("dagger_particles", "impact_particles", "impact_container", "player_center", "enemy_center", "playground_camera")]
+[node name="Shiv Tester" type="Node2D" parent="Combat VFX Container/Archive" node_paths=PackedStringArray("dagger_particles", "impact_particles", "impact_container", "player_center", "enemy_center", "playground_camera")]
 visible = false
 show_behind_parent = true
 position = Vector2(1538, 674.9999)
@@ -9775,120 +9821,120 @@ impact_delay = 0.1
 repeats = 1
 playground_camera = NodePath("../../../CameraShaker")
 
-[node name="impact_container" type="Node2D" parent="CombatVfxContainer/Archive/Shiv Tester"]
+[node name="impact_container" type="Node2D" parent="Combat VFX Container/Archive/Shiv Tester"]
 
-[node name="vfx_dagger_impact_core" parent="CombatVfxContainer/Archive/Shiv Tester/impact_container" instance=ExtResource("77_3o76e")]
+[node name="vfx_dagger_impact_core" parent="Combat VFX Container/Archive/Shiv Tester/impact_container" instance=ExtResource("77_3o76e")]
 position = Vector2(80, 0)
 amount = 1
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_dddgi")
 
-[node name="vfx_common_specks_impact" parent="CombatVfxContainer/Archive/Shiv Tester/impact_container" instance=ExtResource("12_y0ba4")]
+[node name="vfx_common_specks_impact" parent="Combat VFX Container/Archive/Shiv Tester/impact_container" instance=ExtResource("12_y0ba4")]
 self_modulate = Color(0.5, 0.858615, 1, 1)
 z_index = 1
 amount = 5
 lifetime = 0.75
 process_material = SubResource("ParticleProcessMaterial_gxvfc")
 
-[node name="vfx_common_hit_flare" parent="CombatVfxContainer/Archive/Shiv Tester/impact_container" instance=ExtResource("14_gj0ch")]
+[node name="vfx_common_hit_flare" parent="Combat VFX Container/Archive/Shiv Tester/impact_container" instance=ExtResource("14_gj0ch")]
 self_modulate = Color(0.5, 0.858615, 1, 1)
 z_index = 3
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_6ujvi")
 
-[node name="throw_container" type="Node2D" parent="CombatVfxContainer/Archive/Shiv Tester"]
+[node name="throw_container" type="Node2D" parent="Combat VFX Container/Archive/Shiv Tester"]
 position = Vector2(-1133, 0)
 
-[node name="vfx_common_specks_spray" parent="CombatVfxContainer/Archive/Shiv Tester/throw_container" instance=ExtResource("12_y0ba4")]
+[node name="vfx_common_specks_spray" parent="Combat VFX Container/Archive/Shiv Tester/throw_container" instance=ExtResource("12_y0ba4")]
 material = ExtResource("14_yfav0")
 position = Vector2(280, 0)
 amount = 5
 texture = ExtResource("9_ywrhd")
 process_material = SubResource("ParticleProcessMaterial_5geno")
 
-[node name="vfx_dagger_spray_dagger" parent="CombatVfxContainer/Archive/Shiv Tester/throw_container" instance=ExtResource("79_8mg5p")]
+[node name="vfx_dagger_spray_dagger" parent="Combat VFX Container/Archive/Shiv Tester/throw_container" instance=ExtResource("79_8mg5p")]
 position = Vector2(-140, 0)
 amount = 1
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_av4la")
 
-[node name="Poison Impact Tester" type="Node2D" parent="CombatVfxContainer/Archive" node_paths=PackedStringArray("particles")]
+[node name="Poison Impact Tester" type="Node2D" parent="Combat VFX Container/Archive" node_paths=PackedStringArray("particles")]
 visible = false
 position = Vector2(1538, 674.9999)
 script = ExtResource("6_svddg")
 key_to_press = 65
 particles = [NodePath("vfx_poison_skull"), NodePath("horizontal_smoke_container/vfx_horizontal_smoke"), NodePath("vfx_common_glow"), NodePath("vfx_poof"), NodePath("vfx_liquid_droplets"), NodePath("vfx_common_specks"), NodePath("vfx_liquid_splash")]
 
-[node name="vfx_poison_skull" parent="CombatVfxContainer/Archive/Poison Impact Tester" instance=ExtResource("79_o6cpj")]
+[node name="vfx_poison_skull" parent="Combat VFX Container/Archive/Poison Impact Tester" instance=ExtResource("79_o6cpj")]
 z_index = 3
 position = Vector2(0, -94.99988)
 lifetime = 1.35
 process_material = SubResource("ParticleProcessMaterial_2gmb7")
 
-[node name="vfx_poof" parent="CombatVfxContainer/Archive/Poison Impact Tester" instance=ExtResource("58_dn0fg")]
+[node name="vfx_poof" parent="Combat VFX Container/Archive/Poison Impact Tester" instance=ExtResource("58_dn0fg")]
 z_index = 1
 position = Vector2(0, -49.999878)
 emitting = false
 lifetime = 1.25
 process_material = SubResource("ParticleProcessMaterial_ml7i0")
 
-[node name="vfx_common_glow" parent="CombatVfxContainer/Archive/Poison Impact Tester" instance=ExtResource("42_hx3ww")]
+[node name="vfx_common_glow" parent="Combat VFX Container/Archive/Poison Impact Tester" instance=ExtResource("42_hx3ww")]
 lifetime = 1.5
 process_material = SubResource("ParticleProcessMaterial_bskm1")
 
-[node name="vfx_liquid_droplets" parent="CombatVfxContainer/Archive/Poison Impact Tester" instance=ExtResource("80_21kn2")]
+[node name="vfx_liquid_droplets" parent="Combat VFX Container/Archive/Poison Impact Tester" instance=ExtResource("80_21kn2")]
 amount = 6
 process_material = SubResource("ParticleProcessMaterial_75wro")
 
-[node name="vfx_common_specks" parent="CombatVfxContainer/Archive/Poison Impact Tester" instance=ExtResource("12_y0ba4")]
+[node name="vfx_common_specks" parent="Combat VFX Container/Archive/Poison Impact Tester" instance=ExtResource("12_y0ba4")]
 position = Vector2(0, -100)
 lifetime = 1.25
 process_material = SubResource("ParticleProcessMaterial_m6hld")
 
-[node name="vfx_liquid_splash" parent="CombatVfxContainer/Archive/Poison Impact Tester" instance=ExtResource("81_uk36r")]
+[node name="vfx_liquid_splash" parent="Combat VFX Container/Archive/Poison Impact Tester" instance=ExtResource("81_uk36r")]
 z_index = 4
 material = ExtResource("82_1gnb1")
 position = Vector2(0, 20)
 lifetime = 0.65
 process_material = SubResource("ParticleProcessMaterial_v35u6")
 
-[node name="horizontal_smoke_container" type="Node2D" parent="CombatVfxContainer/Archive/Poison Impact Tester"]
+[node name="horizontal_smoke_container" type="Node2D" parent="Combat VFX Container/Archive/Poison Impact Tester"]
 
-[node name="vfx_horizontal_smoke" parent="CombatVfxContainer/Archive/Poison Impact Tester/horizontal_smoke_container" instance=ExtResource("80_2gmb7")]
+[node name="vfx_horizontal_smoke" parent="Combat VFX Container/Archive/Poison Impact Tester/horizontal_smoke_container" instance=ExtResource("80_2gmb7")]
 z_index = 2
 material = ExtResource("81_2gmb7")
 position = Vector2(35, 28.000122)
 process_material = SubResource("ParticleProcessMaterial_1j46p")
 
-[node name="Goopy Impact Tester" type="Node2D" parent="CombatVfxContainer/Archive" node_paths=PackedStringArray("particles")]
+[node name="Goopy Impact Tester" type="Node2D" parent="Combat VFX Container/Archive" node_paths=PackedStringArray("particles")]
 visible = false
 position = Vector2(1536, 675)
 script = ExtResource("6_svddg")
 key_to_press = 65
 particles = [NodePath("vfx_goopy_impact_bits"), NodePath("vfx_goopy_impact_bits_center"), NodePath("vfx_liquid_droplets"), NodePath("vfx_common_hit_flare"), NodePath("vfx_common_ring_polar_a")]
 
-[node name="vfx_goopy_impact_bits" parent="CombatVfxContainer/Archive/Goopy Impact Tester" instance=ExtResource("85_1gnb1")]
+[node name="vfx_goopy_impact_bits" parent="Combat VFX Container/Archive/Goopy Impact Tester" instance=ExtResource("85_1gnb1")]
 
-[node name="vfx_goopy_impact_bits_center" parent="CombatVfxContainer/Archive/Goopy Impact Tester" instance=ExtResource("85_1gnb1")]
+[node name="vfx_goopy_impact_bits_center" parent="Combat VFX Container/Archive/Goopy Impact Tester" instance=ExtResource("85_1gnb1")]
 amount = 1
 lifetime = 0.4
 process_material = SubResource("ParticleProcessMaterial_0u85o")
 
-[node name="vfx_liquid_droplets" parent="CombatVfxContainer/Archive/Goopy Impact Tester" instance=ExtResource("80_21kn2")]
+[node name="vfx_liquid_droplets" parent="Combat VFX Container/Archive/Goopy Impact Tester" instance=ExtResource("80_21kn2")]
 self_modulate = Color(0.42108184, 1, 0.4500577, 1)
 lifetime = 0.85
 process_material = SubResource("ParticleProcessMaterial_vydxa")
 
-[node name="vfx_common_hit_flare" parent="CombatVfxContainer/Archive/Goopy Impact Tester" instance=ExtResource("14_gj0ch")]
+[node name="vfx_common_hit_flare" parent="Combat VFX Container/Archive/Goopy Impact Tester" instance=ExtResource("14_gj0ch")]
 self_modulate = Color(0.42108184, 1, 0.4500577, 1)
 z_index = 3
 
-[node name="vfx_common_ring_polar_a" parent="CombatVfxContainer/Archive/Goopy Impact Tester" instance=ExtResource("16_lthr7")]
+[node name="vfx_common_ring_polar_a" parent="Combat VFX Container/Archive/Goopy Impact Tester" instance=ExtResource("16_lthr7")]
 self_modulate = Color(0.42108184, 1, 0.4500577, 1)
 z_index = 2
 process_material = SubResource("ParticleProcessMaterial_uku87")
 
-[node name="Large Magic Missile Tester" type="Node2D" parent="CombatVfxContainer/Archive" node_paths=PackedStringArray("anticipation_particles", "projectile_start_particles", "projectile_particles", "impact_particles", "anticipation_container", "projectile_start_pos", "projectile_end_pos", "projectile_container", "playground_camera")]
+[node name="Large Magic Missile Tester" type="Node2D" parent="Combat VFX Container/Archive" node_paths=PackedStringArray("anticipation_particles", "projectile_start_particles", "projectile_particles", "impact_particles", "anticipation_container", "projectile_start_pos", "projectile_end_pos", "projectile_container", "playground_camera")]
 visible = false
 modulate = Color(1, 0.5, 0.5, 1)
 position = Vector2(1538, 659)
@@ -9906,106 +9952,106 @@ projectile_position_offset = -275.0
 projectile_flight_duration = 0.15
 playground_camera = NodePath("../../../CameraShaker")
 
-[node name="sky_vfx_container" type="Node2D" parent="CombatVfxContainer/Archive/Large Magic Missile Tester"]
+[node name="sky_vfx_container" type="Node2D" parent="Combat VFX Container/Archive/Large Magic Missile Tester"]
 position = Vector2(-382, -660)
 
-[node name="vfx_missile_sky_flare" parent="CombatVfxContainer/Archive/Large Magic Missile Tester/sky_vfx_container" instance=ExtResource("46_pbrr6")]
+[node name="vfx_missile_sky_flare" parent="Combat VFX Container/Archive/Large Magic Missile Tester/sky_vfx_container" instance=ExtResource("46_pbrr6")]
 position = Vector2(54, 94)
 
-[node name="vfx_missile_sky_ray" parent="CombatVfxContainer/Archive/Large Magic Missile Tester/sky_vfx_container" instance=ExtResource("47_dlahl")]
+[node name="vfx_missile_sky_ray" parent="Combat VFX Container/Archive/Large Magic Missile Tester/sky_vfx_container" instance=ExtResource("47_dlahl")]
 position = Vector2(59, 103)
 
-[node name="vfx_common_ring_polar_a" parent="CombatVfxContainer/Archive/Large Magic Missile Tester/sky_vfx_container" instance=ExtResource("16_lthr7")]
+[node name="vfx_common_ring_polar_a" parent="Combat VFX Container/Archive/Large Magic Missile Tester/sky_vfx_container" instance=ExtResource("16_lthr7")]
 position = Vector2(0, -25)
 lifetime = 0.4
 process_material = SubResource("ParticleProcessMaterial_e2vl1")
 
-[node name="vfx_common_specks" parent="CombatVfxContainer/Archive/Large Magic Missile Tester/sky_vfx_container" instance=ExtResource("12_y0ba4")]
+[node name="vfx_common_specks" parent="Combat VFX Container/Archive/Large Magic Missile Tester/sky_vfx_container" instance=ExtResource("12_y0ba4")]
 z_index = 2
 rotation = 2.61799
 amount = 8
 lifetime = 0.75
 process_material = SubResource("ParticleProcessMaterial_ll8cw")
 
-[node name="projectile_vfx_container" type="Node2D" parent="CombatVfxContainer/Archive/Large Magic Missile Tester"]
+[node name="projectile_vfx_container" type="Node2D" parent="Combat VFX Container/Archive/Large Magic Missile Tester"]
 position = Vector2(-499, -863)
 rotation = -0.523599
 
-[node name="vfx_missile_core" parent="CombatVfxContainer/Archive/Large Magic Missile Tester/projectile_vfx_container" instance=ExtResource("48_v54xp")]
+[node name="vfx_missile_core" parent="Combat VFX Container/Archive/Large Magic Missile Tester/projectile_vfx_container" instance=ExtResource("48_v54xp")]
 
-[node name="projectile_vfx_start" type="Node2D" parent="CombatVfxContainer/Archive/Large Magic Missile Tester"]
+[node name="projectile_vfx_start" type="Node2D" parent="Combat VFX Container/Archive/Large Magic Missile Tester"]
 position = Vector2(-499, -863)
 rotation = -0.523599
 
-[node name="projectile_vfx_end" type="Node2D" parent="CombatVfxContainer/Archive/Large Magic Missile Tester"]
+[node name="projectile_vfx_end" type="Node2D" parent="Combat VFX Container/Archive/Large Magic Missile Tester"]
 position = Vector2(-154, -265)
 rotation = -0.523599
 
-[node name="impact_vfx_container" type="Node2D" parent="CombatVfxContainer/Archive/Large Magic Missile Tester"]
+[node name="impact_vfx_container" type="Node2D" parent="Combat VFX Container/Archive/Large Magic Missile Tester"]
 
-[node name="vfx_missile_impact_core" parent="CombatVfxContainer/Archive/Large Magic Missile Tester/impact_vfx_container" instance=ExtResource("49_vnklo")]
+[node name="vfx_missile_impact_core" parent="Combat VFX Container/Archive/Large Magic Missile Tester/impact_vfx_container" instance=ExtResource("49_vnklo")]
 position = Vector2(-93, -260)
 
-[node name="vfx_missile_impact_streak_side_left" parent="CombatVfxContainer/Archive/Large Magic Missile Tester/impact_vfx_container" instance=ExtResource("56_dn0fg")]
+[node name="vfx_missile_impact_streak_side_left" parent="Combat VFX Container/Archive/Large Magic Missile Tester/impact_vfx_container" instance=ExtResource("56_dn0fg")]
 z_index = 4
 position = Vector2(-130, -87)
 lifetime = 0.25
 process_material = SubResource("ParticleProcessMaterial_dn0fg")
 
-[node name="vfx_missile_impact_streak_side_right" parent="CombatVfxContainer/Archive/Large Magic Missile Tester/impact_vfx_container" instance=ExtResource("56_dn0fg")]
+[node name="vfx_missile_impact_streak_side_right" parent="Combat VFX Container/Archive/Large Magic Missile Tester/impact_vfx_container" instance=ExtResource("56_dn0fg")]
 z_index = 4
 position = Vector2(161, -165)
 scale = Vector2(-1, 1)
 lifetime = 0.3
 process_material = SubResource("ParticleProcessMaterial_74ntt")
 
-[node name="vfx_missile_impact_smoke_left" parent="CombatVfxContainer/Archive/Large Magic Missile Tester/impact_vfx_container" instance=ExtResource("59_om8mf")]
+[node name="vfx_missile_impact_smoke_left" parent="Combat VFX Container/Archive/Large Magic Missile Tester/impact_vfx_container" instance=ExtResource("59_om8mf")]
 position = Vector2(-93, 20)
 emitting = false
 lifetime = 0.7
 process_material = SubResource("ParticleProcessMaterial_cpogw")
 
-[node name="vfx_missile_impact_smoke_right" parent="CombatVfxContainer/Archive/Large Magic Missile Tester/impact_vfx_container" instance=ExtResource("59_om8mf")]
+[node name="vfx_missile_impact_smoke_right" parent="Combat VFX Container/Archive/Large Magic Missile Tester/impact_vfx_container" instance=ExtResource("59_om8mf")]
 position = Vector2(130, -50)
 scale = Vector2(-1, 1)
 emitting = false
 lifetime = 0.8
 process_material = SubResource("ParticleProcessMaterial_e5cbb")
 
-[node name="vfx_poof" parent="CombatVfxContainer/Archive/Large Magic Missile Tester/impact_vfx_container" instance=ExtResource("58_dn0fg")]
+[node name="vfx_poof" parent="Combat VFX Container/Archive/Large Magic Missile Tester/impact_vfx_container" instance=ExtResource("58_dn0fg")]
 position = Vector2(0, -54)
 emitting = false
 lifetime = 0.6
 process_material = SubResource("ParticleProcessMaterial_om8mf")
 
-[node name="vfx_common_glow" parent="CombatVfxContainer/Archive/Large Magic Missile Tester/impact_vfx_container" instance=ExtResource("42_hx3ww")]
+[node name="vfx_common_glow" parent="Combat VFX Container/Archive/Large Magic Missile Tester/impact_vfx_container" instance=ExtResource("42_hx3ww")]
 position = Vector2(0, -58)
 lifetime = 0.75
 process_material = SubResource("ParticleProcessMaterial_bupih")
 
-[node name="vfx_common_specks" parent="CombatVfxContainer/Archive/Large Magic Missile Tester/impact_vfx_container" instance=ExtResource("12_y0ba4")]
+[node name="vfx_common_specks" parent="Combat VFX Container/Archive/Large Magic Missile Tester/impact_vfx_container" instance=ExtResource("12_y0ba4")]
 z_index = 2
 amount = 15
 lifetime = 1.25
 process_material = SubResource("ParticleProcessMaterial_51tuk")
 
-[node name="vfx_heavy_blunt_hit_floor_smoke_left" parent="CombatVfxContainer/Archive/Large Magic Missile Tester/impact_vfx_container" instance=ExtResource("11_tsq07")]
+[node name="vfx_heavy_blunt_hit_floor_smoke_left" parent="Combat VFX Container/Archive/Large Magic Missile Tester/impact_vfx_container" instance=ExtResource("11_tsq07")]
 position = Vector2(-100, 60)
 local_coords = true
 
-[node name="vfx_heavy_blunt_hit_floor_smoke_right" parent="CombatVfxContainer/Archive/Large Magic Missile Tester/impact_vfx_container" instance=ExtResource("11_tsq07")]
+[node name="vfx_heavy_blunt_hit_floor_smoke_right" parent="Combat VFX Container/Archive/Large Magic Missile Tester/impact_vfx_container" instance=ExtResource("11_tsq07")]
 position = Vector2(142, 60)
 rotation = -3.14159
 scale = Vector2(1, -1)
 local_coords = true
 
-[node name="BackBufferCopy" type="BackBufferCopy" parent="CombatVfxContainer/Archive/Large Magic Missile Tester/impact_vfx_container"]
+[node name="BackBufferCopy" type="BackBufferCopy" parent="Combat VFX Container/Archive/Large Magic Missile Tester/impact_vfx_container"]
 copy_mode = 2
 
-[node name="vfx_outward_screen_distortion" parent="CombatVfxContainer/Archive/Large Magic Missile Tester/impact_vfx_container/BackBufferCopy" instance=ExtResource("25_tsq07")]
+[node name="vfx_outward_screen_distortion" parent="Combat VFX Container/Archive/Large Magic Missile Tester/impact_vfx_container/BackBufferCopy" instance=ExtResource("25_tsq07")]
 process_material = SubResource("ParticleProcessMaterial_px50u")
 
-[node name="Small Magic Missile Tester" type="Node2D" parent="CombatVfxContainer/Archive" node_paths=PackedStringArray("anticipation_particles", "projectile_start_particles", "projectile_particles", "impact_particles", "anticipation_container", "projectile_start_pos", "projectile_end_pos", "projectile_container", "playground_camera")]
+[node name="Small Magic Missile Tester" type="Node2D" parent="Combat VFX Container/Archive" node_paths=PackedStringArray("anticipation_particles", "projectile_start_particles", "projectile_particles", "impact_particles", "anticipation_container", "projectile_start_pos", "projectile_end_pos", "projectile_container", "playground_camera")]
 visible = false
 position = Vector2(1538, 659)
 script = ExtResource("47_ljjp2")
@@ -10021,78 +10067,78 @@ projectile_container = NodePath("projectile_vfx_container")
 projectile_position_offset = -100.0
 playground_camera = NodePath("../../../CameraShaker")
 
-[node name="sky_vfx_container" type="Node2D" parent="CombatVfxContainer/Archive/Small Magic Missile Tester"]
+[node name="sky_vfx_container" type="Node2D" parent="Combat VFX Container/Archive/Small Magic Missile Tester"]
 position = Vector2(-382, -660)
 
-[node name="vfx_missile_sky_ray" parent="CombatVfxContainer/Archive/Small Magic Missile Tester/sky_vfx_container" instance=ExtResource("47_dlahl")]
+[node name="vfx_missile_sky_ray" parent="Combat VFX Container/Archive/Small Magic Missile Tester/sky_vfx_container" instance=ExtResource("47_dlahl")]
 position = Vector2(59, 103)
 process_material = SubResource("ParticleProcessMaterial_7lu0x")
 
-[node name="vfx_common_ring_polar_a" parent="CombatVfxContainer/Archive/Small Magic Missile Tester/sky_vfx_container" instance=ExtResource("16_lthr7")]
+[node name="vfx_common_ring_polar_a" parent="Combat VFX Container/Archive/Small Magic Missile Tester/sky_vfx_container" instance=ExtResource("16_lthr7")]
 position = Vector2(0, -14)
 lifetime = 0.4
 process_material = SubResource("ParticleProcessMaterial_e2vl1")
 
-[node name="vfx_common_specks" parent="CombatVfxContainer/Archive/Small Magic Missile Tester/sky_vfx_container" instance=ExtResource("12_y0ba4")]
+[node name="vfx_common_specks" parent="Combat VFX Container/Archive/Small Magic Missile Tester/sky_vfx_container" instance=ExtResource("12_y0ba4")]
 z_index = 2
 rotation = 2.61799
 amount = 4
 lifetime = 0.75
 process_material = SubResource("ParticleProcessMaterial_ll8cw")
 
-[node name="projectile_vfx_container" type="Node2D" parent="CombatVfxContainer/Archive/Small Magic Missile Tester"]
+[node name="projectile_vfx_container" type="Node2D" parent="Combat VFX Container/Archive/Small Magic Missile Tester"]
 position = Vector2(-499, -863)
 rotation = -0.523599
 
-[node name="vfx_missile_core" parent="CombatVfxContainer/Archive/Small Magic Missile Tester/projectile_vfx_container" instance=ExtResource("48_v54xp")]
+[node name="vfx_missile_core" parent="Combat VFX Container/Archive/Small Magic Missile Tester/projectile_vfx_container" instance=ExtResource("48_v54xp")]
 lifetime = 0.2
 process_material = SubResource("ParticleProcessMaterial_eh5cj")
 
-[node name="projectile_vfx_start" type="Node2D" parent="CombatVfxContainer/Archive/Small Magic Missile Tester"]
+[node name="projectile_vfx_start" type="Node2D" parent="Combat VFX Container/Archive/Small Magic Missile Tester"]
 position = Vector2(-499, -863)
 rotation = -0.523599
 
-[node name="projectile_vfx_end" type="Node2D" parent="CombatVfxContainer/Archive/Small Magic Missile Tester"]
+[node name="projectile_vfx_end" type="Node2D" parent="Combat VFX Container/Archive/Small Magic Missile Tester"]
 position = Vector2(-154, -265)
 rotation = -0.523599
 
-[node name="impact_vfx_container" type="Node2D" parent="CombatVfxContainer/Archive/Small Magic Missile Tester"]
+[node name="impact_vfx_container" type="Node2D" parent="Combat VFX Container/Archive/Small Magic Missile Tester"]
 
-[node name="vfx_common_hit_flare" parent="CombatVfxContainer/Archive/Small Magic Missile Tester/impact_vfx_container" instance=ExtResource("14_gj0ch")]
+[node name="vfx_common_hit_flare" parent="Combat VFX Container/Archive/Small Magic Missile Tester/impact_vfx_container" instance=ExtResource("14_gj0ch")]
 material = ExtResource("53_vnklo")
 lifetime = 0.14
 process_material = SubResource("ParticleProcessMaterial_ny88h")
 
-[node name="vfx_smoke_flipbook" parent="CombatVfxContainer/Archive/Small Magic Missile Tester/impact_vfx_container" instance=ExtResource("54_ll8cw")]
+[node name="vfx_smoke_flipbook" parent="Combat VFX Container/Archive/Small Magic Missile Tester/impact_vfx_container" instance=ExtResource("54_ll8cw")]
 lifetime = 0.75
 process_material = SubResource("ParticleProcessMaterial_k0ykp")
 
-[node name="vfx_common_glow" parent="CombatVfxContainer/Archive/Small Magic Missile Tester/impact_vfx_container" instance=ExtResource("42_hx3ww")]
+[node name="vfx_common_glow" parent="Combat VFX Container/Archive/Small Magic Missile Tester/impact_vfx_container" instance=ExtResource("42_hx3ww")]
 lifetime = 0.75
 process_material = SubResource("ParticleProcessMaterial_xookn")
 
-[node name="vfx_common_specks" parent="CombatVfxContainer/Archive/Small Magic Missile Tester/impact_vfx_container" instance=ExtResource("12_y0ba4")]
+[node name="vfx_common_specks" parent="Combat VFX Container/Archive/Small Magic Missile Tester/impact_vfx_container" instance=ExtResource("12_y0ba4")]
 z_index = 2
 amount = 8
 lifetime = 1.25
 process_material = SubResource("ParticleProcessMaterial_51tuk")
 
-[node name="vfx_common_ring_polar_a" parent="CombatVfxContainer/Archive/Small Magic Missile Tester/impact_vfx_container" instance=ExtResource("16_lthr7")]
+[node name="vfx_common_ring_polar_a" parent="Combat VFX Container/Archive/Small Magic Missile Tester/impact_vfx_container" instance=ExtResource("16_lthr7")]
 process_material = SubResource("ParticleProcessMaterial_cxy2b")
 
-[node name="Hyperbeam Tester" type="Node2D" parent="CombatVfxContainer/Archive"]
+[node name="Hyperbeam Tester" type="Node2D" parent="Combat VFX Container/Archive"]
 visible = false
 position = Vector2(414, 468)
 rotation = 0.16081923
 scale = Vector2(0.99999994, 0.99999994)
 
-[node name="anticipation" type="Node2D" parent="CombatVfxContainer/Archive/Hyperbeam Tester" node_paths=PackedStringArray("particles")]
+[node name="anticipation" type="Node2D" parent="Combat VFX Container/Archive/Hyperbeam Tester" node_paths=PackedStringArray("particles")]
 script = ExtResource("87_8t4ew")
 particles = [null, NodePath("vfx_hyperbeam_core"), NodePath("vfx_common_specks"), NodePath("vfx_common_ring_polar_b_1"), NodePath("vfx_common_ring_polar_b_2"), NodePath("vfx_common_glow"), NodePath("vfx_hyperbeam_laser_anticipation")]
 
-[node name="vfx_common_ray" parent="CombatVfxContainer/Archive/Hyperbeam Tester/anticipation" instance=ExtResource("89_2ac57")]
+[node name="vfx_common_ray" parent="Combat VFX Container/Archive/Hyperbeam Tester/anticipation" instance=ExtResource("89_2ac57")]
 
-[node name="vfx_hyperbeam_core" type="GPUParticles2D" parent="CombatVfxContainer/Archive/Hyperbeam Tester/anticipation"]
+[node name="vfx_hyperbeam_core" type="GPUParticles2D" parent="Combat VFX Container/Archive/Hyperbeam Tester/anticipation"]
 material = ExtResource("89_5qk05")
 emitting = false
 amount = 1
@@ -10102,30 +10148,30 @@ one_shot = true
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_mpwvl")
 
-[node name="vfx_common_specks" parent="CombatVfxContainer/Archive/Hyperbeam Tester/anticipation" instance=ExtResource("12_y0ba4")]
+[node name="vfx_common_specks" parent="Combat VFX Container/Archive/Hyperbeam Tester/anticipation" instance=ExtResource("12_y0ba4")]
 self_modulate = Color(0.3803922, 0.7871679, 1, 1)
 amount = 20
 lifetime = 0.75
 explosiveness = 0.5
 process_material = SubResource("ParticleProcessMaterial_6sfr5")
 
-[node name="vfx_common_ring_polar_b_1" parent="CombatVfxContainer/Archive/Hyperbeam Tester/anticipation" instance=ExtResource("17_wefho")]
+[node name="vfx_common_ring_polar_b_1" parent="Combat VFX Container/Archive/Hyperbeam Tester/anticipation" instance=ExtResource("17_wefho")]
 self_modulate = Color(0.3803922, 0.7871679, 1, 1)
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_luktq")
 
-[node name="vfx_common_ring_polar_b_2" parent="CombatVfxContainer/Archive/Hyperbeam Tester/anticipation" instance=ExtResource("17_wefho")]
+[node name="vfx_common_ring_polar_b_2" parent="Combat VFX Container/Archive/Hyperbeam Tester/anticipation" instance=ExtResource("17_wefho")]
 self_modulate = Color(0.3803922, 0.7871679, 1, 1)
 lifetime = 0.5
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_8t4ew")
 
-[node name="vfx_common_glow" parent="CombatVfxContainer/Archive/Hyperbeam Tester/anticipation" instance=ExtResource("42_hx3ww")]
+[node name="vfx_common_glow" parent="Combat VFX Container/Archive/Hyperbeam Tester/anticipation" instance=ExtResource("42_hx3ww")]
 self_modulate = Color(0.3803922, 0.7871679, 1, 1)
 lifetime = 0.55
 process_material = SubResource("ParticleProcessMaterial_vgujh")
 
-[node name="vfx_hyperbeam_laser_anticipation" type="GPUParticles2D" parent="CombatVfxContainer/Archive/Hyperbeam Tester/anticipation"]
+[node name="vfx_hyperbeam_laser_anticipation" type="GPUParticles2D" parent="Combat VFX Container/Archive/Hyperbeam Tester/anticipation"]
 material = ExtResource("93_2ac57")
 emitting = false
 amount = 1
@@ -10136,13 +10182,13 @@ fixed_fps = 60
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_ieeq0")
 
-[node name="late_anticipation" type="Node2D" parent="CombatVfxContainer/Archive/Hyperbeam Tester"]
+[node name="late_anticipation" type="Node2D" parent="Combat VFX Container/Archive/Hyperbeam Tester"]
 script = ExtResource("87_8t4ew")
 
-[node name="laser" type="Node2D" parent="CombatVfxContainer/Archive/Hyperbeam Tester"]
+[node name="laser" type="Node2D" parent="Combat VFX Container/Archive/Hyperbeam Tester"]
 visible = false
 
-[node name="vfx_hyperbeam_laser_line" type="Line2D" parent="CombatVfxContainer/Archive/Hyperbeam Tester/laser"]
+[node name="vfx_hyperbeam_laser_line" type="Line2D" parent="Combat VFX Container/Archive/Hyperbeam Tester/laser"]
 z_index = 2
 material = SubResource("ShaderMaterial_nipnb")
 points = PackedVector2Array(0, 0, 50, 0, 150, 0, 400, 0, 750, 0, 1400, 0, 2000, 0)
@@ -10151,7 +10197,7 @@ width_curve = SubResource("Curve_vgujh")
 gradient = SubResource("Gradient_6sfr5")
 texture_mode = 1
 
-[node name="vfx_hyperbeam_core" type="GPUParticles2D" parent="CombatVfxContainer/Archive/Hyperbeam Tester/laser"]
+[node name="vfx_hyperbeam_core" type="GPUParticles2D" parent="Combat VFX Container/Archive/Hyperbeam Tester/laser"]
 z_index = 1
 material = ExtResource("89_5qk05")
 amount = 1
@@ -10160,21 +10206,21 @@ lifetime = 0.25
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_nipnb")
 
-[node name="vfx_common_glow" parent="CombatVfxContainer/Archive/Hyperbeam Tester/laser" instance=ExtResource("42_hx3ww")]
+[node name="vfx_common_glow" parent="Combat VFX Container/Archive/Hyperbeam Tester/laser" instance=ExtResource("42_hx3ww")]
 self_modulate = Color(0.3803922, 0.7871679, 1, 1)
 emitting = true
 lifetime = 0.5
 one_shot = false
 process_material = SubResource("ParticleProcessMaterial_5s5qt")
 
-[node name="vfx_common_hit_flare" parent="CombatVfxContainer/Archive/Hyperbeam Tester/laser" instance=ExtResource("14_gj0ch")]
+[node name="vfx_common_hit_flare" parent="Combat VFX Container/Archive/Hyperbeam Tester/laser" instance=ExtResource("14_gj0ch")]
 position = Vector2(0, -2)
 emitting = true
 amount = 8
 one_shot = false
 process_material = SubResource("ParticleProcessMaterial_nlsf5")
 
-[node name="vfx_common_hit_flare_transparent" parent="CombatVfxContainer/Archive/Hyperbeam Tester/laser" instance=ExtResource("14_gj0ch")]
+[node name="vfx_common_hit_flare_transparent" parent="Combat VFX Container/Archive/Hyperbeam Tester/laser" instance=ExtResource("14_gj0ch")]
 self_modulate = Color(0.09804774, 0.4199945, 0.7443918, 1)
 position = Vector2(0, -2)
 emitting = true
@@ -10182,7 +10228,7 @@ amount = 8
 one_shot = false
 process_material = SubResource("ParticleProcessMaterial_ausm0")
 
-[node name="vfx_common_ring_polar_a" parent="CombatVfxContainer/Archive/Hyperbeam Tester/laser" instance=ExtResource("16_lthr7")]
+[node name="vfx_common_ring_polar_a" parent="Combat VFX Container/Archive/Hyperbeam Tester/laser" instance=ExtResource("16_lthr7")]
 visible = false
 self_modulate = Color(0.3803922, 0.7871679, 1, 1)
 emitting = true
@@ -10190,7 +10236,7 @@ amount = 2
 one_shot = false
 process_material = SubResource("ParticleProcessMaterial_kc65x")
 
-[node name="vfx_common_specks_burst" parent="CombatVfxContainer/Archive/Hyperbeam Tester/laser" instance=ExtResource("12_y0ba4")]
+[node name="vfx_common_specks_burst" parent="Combat VFX Container/Archive/Hyperbeam Tester/laser" instance=ExtResource("12_y0ba4")]
 visible = false
 self_modulate = Color(0.3803922, 0.7871679, 1, 1)
 amount = 12
@@ -10198,7 +10244,7 @@ lifetime = 0.75
 randomness = 0.0
 process_material = SubResource("ParticleProcessMaterial_2ac57")
 
-[node name="vfx_common_specks_continuous" parent="CombatVfxContainer/Archive/Hyperbeam Tester/laser" instance=ExtResource("12_y0ba4")]
+[node name="vfx_common_specks_continuous" parent="Combat VFX Container/Archive/Hyperbeam Tester/laser" instance=ExtResource("12_y0ba4")]
 visible = false
 self_modulate = Color(0.3803922, 0.7871679, 1, 1)
 emitting = true
@@ -10208,7 +10254,7 @@ one_shot = false
 explosiveness = 0.0
 process_material = SubResource("ParticleProcessMaterial_kg4hr")
 
-[node name="vfx_common_specks_right" parent="CombatVfxContainer/Archive/Hyperbeam Tester/laser" instance=ExtResource("12_y0ba4")]
+[node name="vfx_common_specks_right" parent="Combat VFX Container/Archive/Hyperbeam Tester/laser" instance=ExtResource("12_y0ba4")]
 self_modulate = Color(0.3803922, 0.7871679, 1, 1)
 z_index = 2
 emitting = true
@@ -10218,28 +10264,28 @@ one_shot = false
 explosiveness = 0.0
 process_material = SubResource("ParticleProcessMaterial_syai8")
 
-[node name="BackBufferCopy" type="BackBufferCopy" parent="CombatVfxContainer/Archive/Hyperbeam Tester/laser"]
+[node name="BackBufferCopy" type="BackBufferCopy" parent="Combat VFX Container/Archive/Hyperbeam Tester/laser"]
 copy_mode = 2
 
-[node name="vfx_outward_screen_distortion" parent="CombatVfxContainer/Archive/Hyperbeam Tester/laser/BackBufferCopy" instance=ExtResource("25_tsq07")]
+[node name="vfx_outward_screen_distortion" parent="Combat VFX Container/Archive/Hyperbeam Tester/laser/BackBufferCopy" instance=ExtResource("25_tsq07")]
 visible = false
 emitting = true
 lifetime = 0.1
 one_shot = false
 process_material = SubResource("ParticleProcessMaterial_kshq1")
 
-[node name="end" type="Node2D" parent="CombatVfxContainer/Archive/Hyperbeam Tester" node_paths=PackedStringArray("particles")]
+[node name="end" type="Node2D" parent="Combat VFX Container/Archive/Hyperbeam Tester" node_paths=PackedStringArray("particles")]
 script = ExtResource("87_8t4ew")
 particles = [null]
 
-[node name="vfx_dagger_impact_core_right" parent="CombatVfxContainer/Archive/Hyperbeam Tester/end" instance=ExtResource("77_3o76e")]
+[node name="vfx_dagger_impact_core_right" parent="Combat VFX Container/Archive/Hyperbeam Tester/end" instance=ExtResource("77_3o76e")]
 position = Vector2(125, 0)
 amount = 1
 lifetime = 0.14
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_ik3nh")
 
-[node name="vfx_dagger_impact_core_left" parent="CombatVfxContainer/Archive/Hyperbeam Tester/end" instance=ExtResource("77_3o76e")]
+[node name="vfx_dagger_impact_core_left" parent="Combat VFX Container/Archive/Hyperbeam Tester/end" instance=ExtResource("77_3o76e")]
 position = Vector2(-125, 0)
 scale = Vector2(1, -1)
 amount = 1
@@ -10247,7 +10293,7 @@ lifetime = 0.14
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_ik3nh")
 
-[node name="vfx_hyperbeam_laser_end" type="GPUParticles2D" parent="CombatVfxContainer/Archive/Hyperbeam Tester/end"]
+[node name="vfx_hyperbeam_laser_end" type="GPUParticles2D" parent="Combat VFX Container/Archive/Hyperbeam Tester/end"]
 material = ExtResource("98_kc65x")
 emitting = false
 amount = 1
@@ -10258,25 +10304,25 @@ fixed_fps = 60
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_s7l46")
 
-[node name="vfx_common_ring_polar_b_1" parent="CombatVfxContainer/Archive/Hyperbeam Tester/end" instance=ExtResource("17_wefho")]
+[node name="vfx_common_ring_polar_b_1" parent="Combat VFX Container/Archive/Hyperbeam Tester/end" instance=ExtResource("17_wefho")]
 self_modulate = Color(0.3803922, 0.7871679, 1, 1)
 lifetime = 0.5
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_y3r7c")
 
-[node name="vfx_common_ring_polar_b_2" parent="CombatVfxContainer/Archive/Hyperbeam Tester/end" instance=ExtResource("17_wefho")]
+[node name="vfx_common_ring_polar_b_2" parent="Combat VFX Container/Archive/Hyperbeam Tester/end" instance=ExtResource("17_wefho")]
 self_modulate = Color(0.3803922, 0.7871679, 1, 1)
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_3p5mi")
 
-[node name="vfx_common_specks_burst" parent="CombatVfxContainer/Archive/Hyperbeam Tester/end" instance=ExtResource("12_y0ba4")]
+[node name="vfx_common_specks_burst" parent="Combat VFX Container/Archive/Hyperbeam Tester/end" instance=ExtResource("12_y0ba4")]
 self_modulate = Color(0.3803922, 0.7871679, 1, 1)
 amount = 12
 lifetime = 0.75
 randomness = 0.0
 process_material = SubResource("ParticleProcessMaterial_2ac57")
 
-[node name="vfx_common_specks_right" parent="CombatVfxContainer/Archive/Hyperbeam Tester/end" instance=ExtResource("12_y0ba4")]
+[node name="vfx_common_specks_right" parent="Combat VFX Container/Archive/Hyperbeam Tester/end" instance=ExtResource("12_y0ba4")]
 self_modulate = Color(0.3803922, 0.7871679, 1, 1)
 z_index = 2
 amount = 16
@@ -10284,23 +10330,23 @@ lifetime = 0.75
 explosiveness = 0.85
 process_material = SubResource("ParticleProcessMaterial_373df")
 
-[node name="vfx_common_glow" parent="CombatVfxContainer/Archive/Hyperbeam Tester/end" instance=ExtResource("42_hx3ww")]
+[node name="vfx_common_glow" parent="Combat VFX Container/Archive/Hyperbeam Tester/end" instance=ExtResource("42_hx3ww")]
 self_modulate = Color(0.3803922, 0.7871679, 1, 1)
 lifetime = 0.35000000000000003
 process_material = SubResource("ParticleProcessMaterial_j2i17")
 
-[node name="BackBufferCopy" type="BackBufferCopy" parent="CombatVfxContainer/Archive/Hyperbeam Tester/end"]
+[node name="BackBufferCopy" type="BackBufferCopy" parent="Combat VFX Container/Archive/Hyperbeam Tester/end"]
 copy_mode = 2
 
-[node name="vfx_outward_screen_distortion" parent="CombatVfxContainer/Archive/Hyperbeam Tester/end/BackBufferCopy" instance=ExtResource("25_tsq07")]
+[node name="vfx_outward_screen_distortion" parent="Combat VFX Container/Archive/Hyperbeam Tester/end/BackBufferCopy" instance=ExtResource("25_tsq07")]
 process_material = SubResource("ParticleProcessMaterial_a784j")
 
-[node name="impact" type="Node2D" parent="CombatVfxContainer/Archive/Hyperbeam Tester"]
+[node name="impact" type="Node2D" parent="Combat VFX Container/Archive/Hyperbeam Tester"]
 position = Vector2(1142.6428, 24.34616)
 rotation = -0.01993019
 scale = Vector2(1.0000001, 1.0000001)
 
-[node name="vfx_hyperbeam_impact_spikes" type="GPUParticles2D" parent="CombatVfxContainer/Archive/Hyperbeam Tester/impact"]
+[node name="vfx_hyperbeam_impact_spikes" type="GPUParticles2D" parent="Combat VFX Container/Archive/Hyperbeam Tester/impact"]
 visible = false
 z_index = 3
 texture_repeat = 2
@@ -10313,7 +10359,7 @@ fixed_fps = 60
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_r3r6c")
 
-[node name="vfx_common_ring_polar_b" parent="CombatVfxContainer/Archive/Hyperbeam Tester/impact" instance=ExtResource("17_wefho")]
+[node name="vfx_common_ring_polar_b" parent="Combat VFX Container/Archive/Hyperbeam Tester/impact" instance=ExtResource("17_wefho")]
 visible = false
 z_index = 3
 emitting = true
@@ -10321,48 +10367,48 @@ amount = 2
 one_shot = false
 process_material = SubResource("ParticleProcessMaterial_xjy80")
 
-[node name="vfx_common_hit_flare" parent="CombatVfxContainer/Archive/Hyperbeam Tester/impact" instance=ExtResource("14_gj0ch")]
+[node name="vfx_common_hit_flare" parent="Combat VFX Container/Archive/Hyperbeam Tester/impact" instance=ExtResource("14_gj0ch")]
 visible = false
 z_index = 3
 emitting = true
 one_shot = false
 process_material = SubResource("ParticleProcessMaterial_t2hxv")
 
-[node name="impact_end" type="Node2D" parent="CombatVfxContainer/Archive/Hyperbeam Tester" node_paths=PackedStringArray("particles")]
+[node name="impact_end" type="Node2D" parent="Combat VFX Container/Archive/Hyperbeam Tester" node_paths=PackedStringArray("particles")]
 position = Vector2(1142.6433, 24.34607)
 rotation = -0.019930216
 scale = Vector2(1.0000004, 1.0000004)
 script = ExtResource("87_8t4ew")
 particles = [NodePath("vfx_common_specks_right"), NodePath("vfx_dagger_impact_core"), NodePath("vfx_poof"), NodePath("vfx_common_ring_polar_b"), NodePath("vfx_common_hit_flare")]
 
-[node name="vfx_common_specks_right" parent="CombatVfxContainer/Archive/Hyperbeam Tester/impact_end" instance=ExtResource("12_y0ba4")]
+[node name="vfx_common_specks_right" parent="Combat VFX Container/Archive/Hyperbeam Tester/impact_end" instance=ExtResource("12_y0ba4")]
 self_modulate = Color(0.3803922, 0.7871679, 1, 1)
 z_index = 2
 amount = 6
 lifetime = 0.8
 process_material = SubResource("ParticleProcessMaterial_tgt2i")
 
-[node name="vfx_dagger_impact_core" parent="CombatVfxContainer/Archive/Hyperbeam Tester/impact_end" instance=ExtResource("77_3o76e")]
+[node name="vfx_dagger_impact_core" parent="Combat VFX Container/Archive/Hyperbeam Tester/impact_end" instance=ExtResource("77_3o76e")]
 amount = 1
 lifetime = 0.23
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_isuur")
 
-[node name="vfx_poof" parent="CombatVfxContainer/Archive/Hyperbeam Tester/impact_end" instance=ExtResource("58_dn0fg")]
+[node name="vfx_poof" parent="Combat VFX Container/Archive/Hyperbeam Tester/impact_end" instance=ExtResource("58_dn0fg")]
 position = Vector2(100, 0)
 rotation = 4.712389
 emitting = false
 lifetime = 0.55
 process_material = SubResource("ParticleProcessMaterial_y22qg")
 
-[node name="vfx_common_ring_polar_b" parent="CombatVfxContainer/Archive/Hyperbeam Tester/impact_end" instance=ExtResource("17_wefho")]
+[node name="vfx_common_ring_polar_b" parent="Combat VFX Container/Archive/Hyperbeam Tester/impact_end" instance=ExtResource("17_wefho")]
 process_material = SubResource("ParticleProcessMaterial_i4cs6")
 
-[node name="vfx_common_hit_flare" parent="CombatVfxContainer/Archive/Hyperbeam Tester/impact_end" instance=ExtResource("14_gj0ch")]
+[node name="vfx_common_hit_flare" parent="Combat VFX Container/Archive/Hyperbeam Tester/impact_end" instance=ExtResource("14_gj0ch")]
 lifetime = 0.14
 process_material = SubResource("ParticleProcessMaterial_nwfiu")
 
-[node name="Sweeping Beam Tester" type="Node2D" parent="CombatVfxContainer/Archive" node_paths=PackedStringArray("emitting_particles", "start_particles", "end_particles", "sweeping_particles", "impact_particles")]
+[node name="Sweeping Beam Tester" type="Node2D" parent="Combat VFX Container/Archive" node_paths=PackedStringArray("emitting_particles", "start_particles", "end_particles", "sweeping_particles", "impact_particles")]
 visible = false
 position = Vector2(414, 468)
 scale = Vector2(0.99999994, 0.99999994)
@@ -10376,15 +10422,15 @@ impact_particles = [NodePath("impact/vfx_dagger_impact_core_right"), NodePath("i
 sweeping_index_curve = SubResource("Curve_vsamy")
 emitting_particles_duration = 0.75
 
-[node name="start" type="Node2D" parent="CombatVfxContainer/Archive/Sweeping Beam Tester"]
+[node name="start" type="Node2D" parent="Combat VFX Container/Archive/Sweeping Beam Tester"]
 scale = Vector2(0.99999994, 0.99999994)
 
-[node name="vfx_common_ring_polar_b_1" parent="CombatVfxContainer/Archive/Sweeping Beam Tester/start" instance=ExtResource("17_wefho")]
+[node name="vfx_common_ring_polar_b_1" parent="Combat VFX Container/Archive/Sweeping Beam Tester/start" instance=ExtResource("17_wefho")]
 self_modulate = Color(1, 0.41568628, 0.13333334, 1)
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_luktq")
 
-[node name="vfx_dagger_impact_core_right" parent="CombatVfxContainer/Archive/Sweeping Beam Tester/start" instance=ExtResource("77_3o76e")]
+[node name="vfx_dagger_impact_core_right" parent="Combat VFX Container/Archive/Sweeping Beam Tester/start" instance=ExtResource("77_3o76e")]
 self_modulate = Color(1, 0.64705884, 0.09803922, 1)
 position = Vector2(125, 0)
 amount = 1
@@ -10392,7 +10438,7 @@ lifetime = 0.14
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_trixi")
 
-[node name="vfx_dagger_impact_core_left" parent="CombatVfxContainer/Archive/Sweeping Beam Tester/start" instance=ExtResource("77_3o76e")]
+[node name="vfx_dagger_impact_core_left" parent="Combat VFX Container/Archive/Sweeping Beam Tester/start" instance=ExtResource("77_3o76e")]
 self_modulate = Color(1, 0.6456022, 0.09883267, 1)
 position = Vector2(-125.00003, 0)
 scale = Vector2(1, -1)
@@ -10401,7 +10447,7 @@ lifetime = 0.14
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_flrgv")
 
-[node name="vfx_sweeping_beam_flipbook" type="GPUParticles2D" parent="CombatVfxContainer/Archive/Sweeping Beam Tester/start"]
+[node name="vfx_sweeping_beam_flipbook" type="GPUParticles2D" parent="Combat VFX Container/Archive/Sweeping Beam Tester/start"]
 texture_repeat = 1
 material = ExtResource("112_warox")
 emitting = false
@@ -10412,9 +10458,9 @@ one_shot = true
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_84qw1")
 
-[node name="emitting" type="Node2D" parent="CombatVfxContainer/Archive/Sweeping Beam Tester"]
+[node name="emitting" type="Node2D" parent="Combat VFX Container/Archive/Sweeping Beam Tester"]
 
-[node name="vfx_hyperbeam_core" type="GPUParticles2D" parent="CombatVfxContainer/Archive/Sweeping Beam Tester/emitting"]
+[node name="vfx_hyperbeam_core" type="GPUParticles2D" parent="Combat VFX Container/Archive/Sweeping Beam Tester/emitting"]
 self_modulate = Color(1, 0.81739336, 0.6381068, 1)
 z_index = 2
 material = ExtResource("89_5qk05")
@@ -10426,7 +10472,7 @@ lifetime = 0.25
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_722ig")
 
-[node name="vfx_common_hit_flare_transparent" parent="CombatVfxContainer/Archive/Sweeping Beam Tester/emitting" instance=ExtResource("14_gj0ch")]
+[node name="vfx_common_hit_flare_transparent" parent="Combat VFX Container/Archive/Sweeping Beam Tester/emitting" instance=ExtResource("14_gj0ch")]
 self_modulate = Color(1, 0.10842711, 0, 1)
 position = Vector2(0, -2)
 scale = Vector2(0.9999999, 0.9999999)
@@ -10434,7 +10480,7 @@ amount = 4
 one_shot = false
 process_material = SubResource("ParticleProcessMaterial_t4lxc")
 
-[node name="vfx_common_hit_flare" parent="CombatVfxContainer/Archive/Sweeping Beam Tester/emitting" instance=ExtResource("14_gj0ch")]
+[node name="vfx_common_hit_flare" parent="Combat VFX Container/Archive/Sweeping Beam Tester/emitting" instance=ExtResource("14_gj0ch")]
 self_modulate = Color(1, 0.56879807, 0.14486825, 1)
 z_index = 1
 position = Vector2(0, -2)
@@ -10443,7 +10489,7 @@ amount = 4
 one_shot = false
 process_material = SubResource("ParticleProcessMaterial_1k4jd")
 
-[node name="vfx_common_specks" parent="CombatVfxContainer/Archive/Sweeping Beam Tester/emitting" instance=ExtResource("12_y0ba4")]
+[node name="vfx_common_specks" parent="Combat VFX Container/Archive/Sweeping Beam Tester/emitting" instance=ExtResource("12_y0ba4")]
 visible = false
 scale = Vector2(0.9999998, 0.9999998)
 emitting = true
@@ -10453,57 +10499,57 @@ one_shot = false
 explosiveness = 0.15
 process_material = SubResource("ParticleProcessMaterial_kpk5e")
 
-[node name="vfx_common_glow" parent="CombatVfxContainer/Archive/Sweeping Beam Tester/emitting" instance=ExtResource("42_hx3ww")]
+[node name="vfx_common_glow" parent="Combat VFX Container/Archive/Sweeping Beam Tester/emitting" instance=ExtResource("42_hx3ww")]
 self_modulate = Color(1, 0.2488569, 0, 1)
 scale = Vector2(0.9999999, 0.9999999)
 lifetime = 0.2
 one_shot = false
 process_material = SubResource("ParticleProcessMaterial_vsamy")
 
-[node name="end" type="Node2D" parent="CombatVfxContainer/Archive/Sweeping Beam Tester"]
+[node name="end" type="Node2D" parent="Combat VFX Container/Archive/Sweeping Beam Tester"]
 scale = Vector2(0.99999994, 0.99999994)
 
-[node name="vfx_common_ring_polar_b_2" parent="CombatVfxContainer/Archive/Sweeping Beam Tester/end" instance=ExtResource("17_wefho")]
+[node name="vfx_common_ring_polar_b_2" parent="Combat VFX Container/Archive/Sweeping Beam Tester/end" instance=ExtResource("17_wefho")]
 self_modulate = Color(1, 0.41568628, 0.13333334, 1)
 lifetime = 0.5
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_a3kvm")
 
-[node name="vfx_common_specks" parent="CombatVfxContainer/Archive/Sweeping Beam Tester/end" instance=ExtResource("12_y0ba4")]
+[node name="vfx_common_specks" parent="Combat VFX Container/Archive/Sweeping Beam Tester/end" instance=ExtResource("12_y0ba4")]
 lifetime = 0.75
 explosiveness = 0.95
 process_material = SubResource("ParticleProcessMaterial_txww1")
 
-[node name="vfx_common_hit_flare" parent="CombatVfxContainer/Archive/Sweeping Beam Tester/end" instance=ExtResource("14_gj0ch")]
+[node name="vfx_common_hit_flare" parent="Combat VFX Container/Archive/Sweeping Beam Tester/end" instance=ExtResource("14_gj0ch")]
 self_modulate = Color(1, 0.5686275, 0.14509805, 1)
 lifetime = 0.14
 process_material = SubResource("ParticleProcessMaterial_74x3w")
 
-[node name="sweep_particles" type="Node2D" parent="CombatVfxContainer/Archive/Sweeping Beam Tester"]
+[node name="sweep_particles" type="Node2D" parent="Combat VFX Container/Archive/Sweeping Beam Tester"]
 
-[node name="vfx_common_specks_top" parent="CombatVfxContainer/Archive/Sweeping Beam Tester/sweep_particles" instance=ExtResource("12_y0ba4")]
+[node name="vfx_common_specks_top" parent="Combat VFX Container/Archive/Sweeping Beam Tester/sweep_particles" instance=ExtResource("12_y0ba4")]
 amount = 15
 lifetime = 1.0
 explosiveness = 0.95
 process_material = SubResource("ParticleProcessMaterial_rtb21")
 
-[node name="vfx_common_specks_middle" parent="CombatVfxContainer/Archive/Sweeping Beam Tester/sweep_particles" instance=ExtResource("12_y0ba4")]
+[node name="vfx_common_specks_middle" parent="Combat VFX Container/Archive/Sweeping Beam Tester/sweep_particles" instance=ExtResource("12_y0ba4")]
 amount = 20
 lifetime = 1.25
 explosiveness = 0.9
 process_material = SubResource("ParticleProcessMaterial_bch4b")
 
-[node name="vfx_common_specks_bottom" parent="CombatVfxContainer/Archive/Sweeping Beam Tester/sweep_particles" instance=ExtResource("12_y0ba4")]
+[node name="vfx_common_specks_bottom" parent="Combat VFX Container/Archive/Sweeping Beam Tester/sweep_particles" instance=ExtResource("12_y0ba4")]
 amount = 15
 lifetime = 2.0
 explosiveness = 0.9
 process_material = SubResource("ParticleProcessMaterial_vnn21")
 
-[node name="impact" type="Node2D" parent="CombatVfxContainer/Archive/Sweeping Beam Tester"]
+[node name="impact" type="Node2D" parent="Combat VFX Container/Archive/Sweeping Beam Tester"]
 position = Vector2(1123.9999, 206.99988)
 scale = Vector2(0.9999999, 0.9999999)
 
-[node name="vfx_dagger_impact_core_right" parent="CombatVfxContainer/Archive/Sweeping Beam Tester/impact" instance=ExtResource("77_3o76e")]
+[node name="vfx_dagger_impact_core_right" parent="Combat VFX Container/Archive/Sweeping Beam Tester/impact" instance=ExtResource("77_3o76e")]
 self_modulate = Color(1, 0.64705884, 0.09803922, 1)
 position = Vector2(100.000244, 0.00012207031)
 scale = Vector2(0.99999994, 0.99999994)
@@ -10512,34 +10558,34 @@ lifetime = 0.14
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_rv5i7")
 
-[node name="vfx_common_hit_flare" parent="CombatVfxContainer/Archive/Sweeping Beam Tester/impact" instance=ExtResource("14_gj0ch")]
+[node name="vfx_common_hit_flare" parent="Combat VFX Container/Archive/Sweeping Beam Tester/impact" instance=ExtResource("14_gj0ch")]
 self_modulate = Color(1, 0.69129324, 0.38819927, 1)
 position = Vector2(0.00012207031, 0)
 process_material = SubResource("ParticleProcessMaterial_gml80")
 
-[node name="Block Spark Tester" type="Node2D" parent="CombatVfxContainer/Archive" node_paths=PackedStringArray("particles")]
+[node name="Block Spark Tester" type="Node2D" parent="Combat VFX Container/Archive" node_paths=PackedStringArray("particles")]
 visible = false
 position = Vector2(1538, 674.9999)
 script = ExtResource("6_svddg")
 key_to_press = 65
 particles = [NodePath("BlockSparkVfx/vfx_common_specks_bright"), NodePath("BlockSparkVfx/vfx_common_specks"), NodePath("BlockSparkVfx/vfx_common_glow"), NodePath("BlockSparkVfx/vfx_common_ring_polar_b")]
 
-[node name="BlockSparkVfx" parent="CombatVfxContainer/Archive/Block Spark Tester" node_paths=PackedStringArray("_particles") instance=ExtResource("115_e2vl1")]
+[node name="BlockSparkVfx" parent="Combat VFX Container/Archive/Block Spark Tester" node_paths=PackedStringArray("_particles") instance=ExtResource("115_e2vl1")]
 position = Vector2(0, 0)
 _particles = []
 
-[node name="Hit Spark Tester" type="Node2D" parent="CombatVfxContainer/Archive" node_paths=PackedStringArray("particles")]
+[node name="Hit Spark Tester" type="Node2D" parent="Combat VFX Container/Archive" node_paths=PackedStringArray("particles")]
 visible = false
 position = Vector2(1538, 674.9999)
 script = ExtResource("6_svddg")
 key_to_press = 83
 particles = [NodePath("HitSparkVfx/vfx_common_specks_bright"), NodePath("HitSparkVfx/vfx_common_specks"), NodePath("HitSparkVfx/vfx_common_glow"), NodePath("HitSparkVfx/vfx_common_outward_streaks")]
 
-[node name="HitSparkVfx" parent="CombatVfxContainer/Archive/Hit Spark Tester" node_paths=PackedStringArray("_particles") instance=ExtResource("115_tgt2i")]
+[node name="HitSparkVfx" parent="Combat VFX Container/Archive/Hit Spark Tester" node_paths=PackedStringArray("_particles") instance=ExtResource("115_tgt2i")]
 position = Vector2(0, 0)
 _particles = []
 
-[node name="Wormy Impact Tester" type="Node2D" parent="CombatVfxContainer/Archive" node_paths=PackedStringArray("particles")]
+[node name="Wormy Impact Tester" type="Node2D" parent="Combat VFX Container/Archive" node_paths=PackedStringArray("particles")]
 visible = false
 show_behind_parent = true
 position = Vector2(409.99997, 733.9999)
@@ -10548,45 +10594,45 @@ script = ExtResource("6_svddg")
 key_to_press = 65
 particles = [NodePath("ground_pivot/vfx_wormy_impact_ground_flipbook_right"), NodePath("ground_pivot/vfx_wormy_impact_ground_flipbook_left"), NodePath("center_pivot/vfx_wormy_impact_air_flipbook"), NodePath("center_pivot/vfx_liquid_droplets"), NodePath("center_pivot/vfx_common_glow"), NodePath("center_pivot/vfx_common_outward_streaks"), NodePath("center_pivot/vfx_common_hit_flare"), NodePath("center_pivot/vfx_goopy_impact_bits")]
 
-[node name="center_pivot" type="Node2D" parent="CombatVfxContainer/Archive/Wormy Impact Tester"]
+[node name="center_pivot" type="Node2D" parent="Combat VFX Container/Archive/Wormy Impact Tester"]
 position = Vector2(0, -184.99988)
 scale = Vector2(0.99999994, 0.99999994)
 
-[node name="vfx_wormy_impact_air_flipbook" parent="CombatVfxContainer/Archive/Wormy Impact Tester/center_pivot" instance=ExtResource("118_xebgd")]
+[node name="vfx_wormy_impact_air_flipbook" parent="Combat VFX Container/Archive/Wormy Impact Tester/center_pivot" instance=ExtResource("118_xebgd")]
 
-[node name="vfx_liquid_droplets" parent="CombatVfxContainer/Archive/Wormy Impact Tester/center_pivot" instance=ExtResource("80_21kn2")]
+[node name="vfx_liquid_droplets" parent="Combat VFX Container/Archive/Wormy Impact Tester/center_pivot" instance=ExtResource("80_21kn2")]
 amount = 5
 process_material = SubResource("ParticleProcessMaterial_uj174")
 
-[node name="vfx_common_glow" parent="CombatVfxContainer/Archive/Wormy Impact Tester/center_pivot" instance=ExtResource("42_hx3ww")]
+[node name="vfx_common_glow" parent="Combat VFX Container/Archive/Wormy Impact Tester/center_pivot" instance=ExtResource("42_hx3ww")]
 z_index = 1
 process_material = SubResource("ParticleProcessMaterial_k25oo")
 
-[node name="vfx_common_outward_streaks" parent="CombatVfxContainer/Archive/Wormy Impact Tester/center_pivot" instance=ExtResource("121_7lu0x")]
+[node name="vfx_common_outward_streaks" parent="Combat VFX Container/Archive/Wormy Impact Tester/center_pivot" instance=ExtResource("121_7lu0x")]
 process_material = SubResource("ParticleProcessMaterial_vu1je")
 
-[node name="vfx_common_hit_flare" parent="CombatVfxContainer/Archive/Wormy Impact Tester/center_pivot" instance=ExtResource("14_gj0ch")]
+[node name="vfx_common_hit_flare" parent="Combat VFX Container/Archive/Wormy Impact Tester/center_pivot" instance=ExtResource("14_gj0ch")]
 self_modulate = Color(0.7925643, 1, 0.26324546, 1)
 z_index = 3
 
-[node name="vfx_goopy_impact_bits" parent="CombatVfxContainer/Archive/Wormy Impact Tester/center_pivot" instance=ExtResource("85_1gnb1")]
+[node name="vfx_goopy_impact_bits" parent="Combat VFX Container/Archive/Wormy Impact Tester/center_pivot" instance=ExtResource("85_1gnb1")]
 self_modulate = Color(0.7610783, 1, 0.56576514, 1)
 amount = 2
 lifetime = 0.6
 process_material = SubResource("ParticleProcessMaterial_ddpj8")
 
-[node name="ground_pivot" type="Node2D" parent="CombatVfxContainer/Archive/Wormy Impact Tester"]
+[node name="ground_pivot" type="Node2D" parent="Combat VFX Container/Archive/Wormy Impact Tester"]
 scale = Vector2(0.99999994, 0.99999994)
 
-[node name="vfx_wormy_impact_ground_flipbook_right" parent="CombatVfxContainer/Archive/Wormy Impact Tester/ground_pivot" instance=ExtResource("117_7lu0x")]
+[node name="vfx_wormy_impact_ground_flipbook_right" parent="Combat VFX Container/Archive/Wormy Impact Tester/ground_pivot" instance=ExtResource("117_7lu0x")]
 position = Vector2(2, 0)
 
-[node name="vfx_wormy_impact_ground_flipbook_left" parent="CombatVfxContainer/Archive/Wormy Impact Tester/ground_pivot" instance=ExtResource("117_7lu0x")]
+[node name="vfx_wormy_impact_ground_flipbook_left" parent="Combat VFX Container/Archive/Wormy Impact Tester/ground_pivot" instance=ExtResource("117_7lu0x")]
 position = Vector2(2, 0)
 rotation = 3.1415927
 scale = Vector2(1, -1)
 
-[node name="Scream Tester" type="Node2D" parent="CombatVfxContainer/Archive" node_paths=PackedStringArray("continuous_particles", "one_shot_particles", "playground_camera")]
+[node name="Scream Tester" type="Node2D" parent="Combat VFX Container/Archive" node_paths=PackedStringArray("continuous_particles", "one_shot_particles", "playground_camera")]
 visible = false
 position = Vector2(428, 545)
 script = ExtResource("40_24g6d")
@@ -10595,19 +10641,19 @@ continuous_particles = [NodePath("vfx_scream_ring_polar"), NodePath("vfx_scream_
 one_shot_particles = [NodePath("vfx_scream_distortion_polar"), NodePath("vfx_common_glow")]
 playground_camera = NodePath("../../../CameraShaker")
 
-[node name="vfx_scream_ring_polar" parent="CombatVfxContainer/Archive/Scream Tester" instance=ExtResource("41_nf0nc")]
+[node name="vfx_scream_ring_polar" parent="Combat VFX Container/Archive/Scream Tester" instance=ExtResource("41_nf0nc")]
 position = Vector2(2, 0)
 emitting = true
 
-[node name="vfx_scream_streaks" parent="CombatVfxContainer/Archive/Scream Tester" instance=ExtResource("42_ljjp2")]
+[node name="vfx_scream_streaks" parent="Combat VFX Container/Archive/Scream Tester" instance=ExtResource("42_ljjp2")]
 
-[node name="vfx_common_glow" parent="CombatVfxContainer/Archive/Scream Tester" instance=ExtResource("42_hx3ww")]
+[node name="vfx_common_glow" parent="Combat VFX Container/Archive/Scream Tester" instance=ExtResource("42_hx3ww")]
 z_index = 1
 process_material = SubResource("ParticleProcessMaterial_myty7")
 
-[node name="vfx_scream_distortion_polar" parent="CombatVfxContainer/Archive/Scream Tester" instance=ExtResource("43_2o5cn")]
+[node name="vfx_scream_distortion_polar" parent="Combat VFX Container/Archive/Scream Tester" instance=ExtResource("43_2o5cn")]
 
-[node name="Spooky Scream Tester" type="Node2D" parent="CombatVfxContainer/Archive" node_paths=PackedStringArray("continuous_particles", "one_shot_particles", "playground_camera")]
+[node name="Spooky Scream Tester" type="Node2D" parent="Combat VFX Container/Archive" node_paths=PackedStringArray("continuous_particles", "one_shot_particles", "playground_camera")]
 visible = false
 position = Vector2(1538, 659)
 script = ExtResource("40_24g6d")
@@ -10617,37 +10663,37 @@ one_shot_particles = [NodePath("vfx_common_glow"), NodePath("vfx_scream_squiggly
 camera_shake_intensity = 0.0
 playground_camera = NodePath("../../../CameraShaker")
 
-[node name="vfx_scream_squiggly_ring_polar" parent="CombatVfxContainer/Archive/Spooky Scream Tester" instance=ExtResource("44_e2oqh")]
+[node name="vfx_scream_squiggly_ring_polar" parent="Combat VFX Container/Archive/Spooky Scream Tester" instance=ExtResource("44_e2oqh")]
 position = Vector2(2, 0)
 emitting = true
 
-[node name="vfx_scream_squiggly_streaks" parent="CombatVfxContainer/Archive/Spooky Scream Tester" instance=ExtResource("45_pn40c")]
+[node name="vfx_scream_squiggly_streaks" parent="Combat VFX Container/Archive/Spooky Scream Tester" instance=ExtResource("45_pn40c")]
 
-[node name="vfx_scream_squiggly_streaks_burst" parent="CombatVfxContainer/Archive/Spooky Scream Tester" instance=ExtResource("45_pn40c")]
+[node name="vfx_scream_squiggly_streaks_burst" parent="Combat VFX Container/Archive/Spooky Scream Tester" instance=ExtResource("45_pn40c")]
 amount = 4
 one_shot = true
 explosiveness = 1.0
 
-[node name="vfx_common_glow" parent="CombatVfxContainer/Archive/Spooky Scream Tester" instance=ExtResource("42_hx3ww")]
+[node name="vfx_common_glow" parent="Combat VFX Container/Archive/Spooky Scream Tester" instance=ExtResource("42_hx3ww")]
 z_index = 1
 process_material = SubResource("ParticleProcessMaterial_warox")
 
-[node name="vfx_scream_squiggly_distortion_polar" parent="CombatVfxContainer/Archive/Spooky Scream Tester" instance=ExtResource("46_yvbsr")]
+[node name="vfx_scream_squiggly_distortion_polar" parent="Combat VFX Container/Archive/Spooky Scream Tester" instance=ExtResource("46_yvbsr")]
 
-[node name="Common Blunt Impact Tester" type="Node2D" parent="CombatVfxContainer/Archive" node_paths=PackedStringArray("particles")]
+[node name="Common Blunt Impact Tester" type="Node2D" parent="Combat VFX Container/Archive" node_paths=PackedStringArray("particles")]
 position = Vector2(1538, 674.9999)
 script = ExtResource("6_svddg")
 key_to_press = 65
 particles = [NodePath("vfx_common_blunt_impact_core"), NodePath("vfx_common_specks"), NodePath("vfx_common_glow")]
 
-[node name="vfx_tool" type="Node2D" parent="CombatVfxContainer/Archive/Common Blunt Impact Tester" node_paths=PackedStringArray("particles")]
+[node name="vfx_tool" type="Node2D" parent="Combat VFX Container/Archive/Common Blunt Impact Tester" node_paths=PackedStringArray("particles")]
 script = ExtResource("87_8t4ew")
 particles = [NodePath("../vfx_common_blunt_impact_core"), NodePath("../vfx_common_specks"), NodePath("../vfx_common_glow")]
 
-[node name="vfx_common_blunt_impact_core" parent="CombatVfxContainer/Archive/Common Blunt Impact Tester" instance=ExtResource("119_8vl02")]
+[node name="vfx_common_blunt_impact_core" parent="Combat VFX Container/Archive/Common Blunt Impact Tester" instance=ExtResource("119_8vl02")]
 z_index = 1
 
-[node name="vfx_common_specks" parent="CombatVfxContainer/Archive/Common Blunt Impact Tester" instance=ExtResource("12_y0ba4")]
+[node name="vfx_common_specks" parent="Combat VFX Container/Archive/Common Blunt Impact Tester" instance=ExtResource("12_y0ba4")]
 self_modulate = Color(1, 0.19999999, 0.19999999, 1)
 z_index = 1
 amount = 6
@@ -10655,12 +10701,12 @@ texture = ExtResource("9_ywrhd")
 lifetime = 1.0
 process_material = SubResource("ParticleProcessMaterial_d5rxi")
 
-[node name="vfx_common_glow" parent="CombatVfxContainer/Archive/Common Blunt Impact Tester" instance=ExtResource("42_hx3ww")]
+[node name="vfx_common_glow" parent="Combat VFX Container/Archive/Common Blunt Impact Tester" instance=ExtResource("42_hx3ww")]
 self_modulate = Color(0, 0, 0, 1)
 lifetime = 0.65
 process_material = SubResource("ParticleProcessMaterial_b8nia")
 
-[node name="Minion Divebomb Tester" type="Node2D" parent="CombatVfxContainer" node_paths=PackedStringArray("minion_sprite", "minion_animator", "minion_vfx", "falling_trail", "falling_vfx", "impact_vfx", "source_node", "destinaton_node", "playground_camera")]
+[node name="Minion Divebomb Tester" type="Node2D" parent="Combat VFX Container" node_paths=PackedStringArray("minion_sprite", "minion_animator", "minion_vfx", "falling_trail", "falling_vfx", "impact_vfx", "source_node", "destinaton_node", "playground_camera")]
 visible = false
 position = Vector2(404.99997, 611.9999)
 script = ExtResource("101_ausm0")
@@ -10685,99 +10731,99 @@ destinaton_node = NodePath("../../Entities/Enemy Grounded")
 destination_offset = Vector2(0, -100)
 playground_camera = NodePath("../../CameraShaker")
 
-[node name="vfx_minion_divebomb_minion" type="Sprite2D" parent="CombatVfxContainer/Minion Divebomb Tester"]
+[node name="vfx_minion_divebomb_minion" type="Sprite2D" parent="Combat VFX Container/Minion Divebomb Tester"]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("101_5usk3")
 
-[node name="minion_animation_player" type="AnimationPlayer" parent="CombatVfxContainer/Minion Divebomb Tester/vfx_minion_divebomb_minion"]
+[node name="minion_animation_player" type="AnimationPlayer" parent="Combat VFX Container/Minion Divebomb Tester/vfx_minion_divebomb_minion"]
 libraries = {
 &"": SubResource("AnimationLibrary_y3r7c")
 }
 autoplay = "idle"
 
-[node name="vfx_minion_divebomb_punch_particles" type="Node2D" parent="CombatVfxContainer/Minion Divebomb Tester/vfx_minion_divebomb_minion" node_paths=PackedStringArray("particles")]
+[node name="vfx_minion_divebomb_punch_particles" type="Node2D" parent="Combat VFX Container/Minion Divebomb Tester/vfx_minion_divebomb_minion" node_paths=PackedStringArray("particles")]
 scale = Vector2(2, 2)
 script = ExtResource("105_oiudl")
 particles = [NodePath("vfx_common_ring_polar_a"), NodePath("vfx_starry_impact_small_stars"), NodePath("vfx_common_specks")]
 
-[node name="vfx_common_ring_polar_a" parent="CombatVfxContainer/Minion Divebomb Tester/vfx_minion_divebomb_minion/vfx_minion_divebomb_punch_particles" instance=ExtResource("16_lthr7")]
+[node name="vfx_common_ring_polar_a" parent="Combat VFX Container/Minion Divebomb Tester/vfx_minion_divebomb_minion/vfx_minion_divebomb_punch_particles" instance=ExtResource("16_lthr7")]
 lifetime = 0.25
 process_material = SubResource("ParticleProcessMaterial_l0pcy")
 
-[node name="vfx_starry_impact_small_stars" parent="CombatVfxContainer/Minion Divebomb Tester/vfx_minion_divebomb_minion/vfx_minion_divebomb_punch_particles" instance=ExtResource("37_4pjuu")]
+[node name="vfx_starry_impact_small_stars" parent="Combat VFX Container/Minion Divebomb Tester/vfx_minion_divebomb_minion/vfx_minion_divebomb_punch_particles" instance=ExtResource("37_4pjuu")]
 amount = 5
 lifetime = 0.5
 explosiveness = 0.9
 process_material = SubResource("ParticleProcessMaterial_ho7kd")
 
-[node name="vfx_common_specks" parent="CombatVfxContainer/Minion Divebomb Tester/vfx_minion_divebomb_minion/vfx_minion_divebomb_punch_particles" instance=ExtResource("12_y0ba4")]
+[node name="vfx_common_specks" parent="Combat VFX Container/Minion Divebomb Tester/vfx_minion_divebomb_minion/vfx_minion_divebomb_punch_particles" instance=ExtResource("12_y0ba4")]
 amount = 4
 lifetime = 0.75
 process_material = SubResource("ParticleProcessMaterial_rcmjv")
 
-[node name="vfx_minion_divebomb_start_particles" type="Node2D" parent="CombatVfxContainer/Minion Divebomb Tester" node_paths=PackedStringArray("particles")]
+[node name="vfx_minion_divebomb_start_particles" type="Node2D" parent="Combat VFX Container/Minion Divebomb Tester" node_paths=PackedStringArray("particles")]
 rotation = -0.6981317
 script = ExtResource("105_oiudl")
 particles = [NodePath("vfx_poof"), NodePath("vfx_common_specks")]
 
-[node name="vfx_poof" parent="CombatVfxContainer/Minion Divebomb Tester/vfx_minion_divebomb_start_particles" instance=ExtResource("58_dn0fg")]
+[node name="vfx_poof" parent="Combat VFX Container/Minion Divebomb Tester/vfx_minion_divebomb_start_particles" instance=ExtResource("58_dn0fg")]
 position = Vector2(141.4213, 0.00010681152)
 rotation = 4.712389
 emitting = false
 lifetime = 0.35000000000000003
 process_material = SubResource("ParticleProcessMaterial_8bhan")
 
-[node name="vfx_common_specks" parent="CombatVfxContainer/Minion Divebomb Tester/vfx_minion_divebomb_start_particles" instance=ExtResource("12_y0ba4")]
+[node name="vfx_common_specks" parent="Combat VFX Container/Minion Divebomb Tester/vfx_minion_divebomb_start_particles" instance=ExtResource("12_y0ba4")]
 position = Vector2(100, 0)
 amount = 4
 texture = ExtResource("9_ywrhd")
 lifetime = 0.7
 process_material = SubResource("ParticleProcessMaterial_jlvfm")
 
-[node name="vfx_minion_divebomb_rotating_particles" type="Node2D" parent="CombatVfxContainer/Minion Divebomb Tester"]
+[node name="vfx_minion_divebomb_rotating_particles" type="Node2D" parent="Combat VFX Container/Minion Divebomb Tester"]
 script = ExtResource("105_oiudl")
 
-[node name="vfx_minion_divebomb_impact_particles" type="Node2D" parent="CombatVfxContainer/Minion Divebomb Tester" node_paths=PackedStringArray("particles")]
+[node name="vfx_minion_divebomb_impact_particles" type="Node2D" parent="Combat VFX Container/Minion Divebomb Tester" node_paths=PackedStringArray("particles")]
 position = Vector2(1133, 115)
 script = ExtResource("105_oiudl")
 particles = [NodePath("vfx_heavy_blunt_hit_spikes"), NodePath("vfx_heavy_blunt_hit_floor_smoke_left"), NodePath("vfx_heavy_blunt_hit_floor_smoke_right"), NodePath("vfx_common_specks_gray"), NodePath("vfx_common_specks_glow"), NodePath("vfx_common_hit_flare"), NodePath("vfx_heavy_blunt_hit_core"), NodePath("vfx_heavy_blunt_hit_core_glow")]
 
-[node name="vfx_heavy_blunt_hit_core" parent="CombatVfxContainer/Minion Divebomb Tester/vfx_minion_divebomb_impact_particles" instance=ExtResource("8_yfav0")]
+[node name="vfx_heavy_blunt_hit_core" parent="Combat VFX Container/Minion Divebomb Tester/vfx_minion_divebomb_impact_particles" instance=ExtResource("8_yfav0")]
 z_index = 1
 material = ExtResource("106_t2hxv")
 position = Vector2(0, 30)
 process_material = SubResource("ParticleProcessMaterial_wy7os")
 
-[node name="vfx_heavy_blunt_hit_core_glow" parent="CombatVfxContainer/Minion Divebomb Tester/vfx_minion_divebomb_impact_particles" instance=ExtResource("9_v25eq")]
+[node name="vfx_heavy_blunt_hit_core_glow" parent="Combat VFX Container/Minion Divebomb Tester/vfx_minion_divebomb_impact_particles" instance=ExtResource("9_v25eq")]
 material = ExtResource("107_myty7")
 position = Vector2(0, 30)
 process_material = SubResource("ParticleProcessMaterial_41s2r")
 
-[node name="vfx_heavy_blunt_hit_spikes" parent="CombatVfxContainer/Minion Divebomb Tester/vfx_minion_divebomb_impact_particles" instance=ExtResource("10_rmxs2")]
+[node name="vfx_heavy_blunt_hit_spikes" parent="Combat VFX Container/Minion Divebomb Tester/vfx_minion_divebomb_impact_particles" instance=ExtResource("10_rmxs2")]
 position = Vector2(0, -150)
 process_material = SubResource("ParticleProcessMaterial_q251e")
 
-[node name="vfx_heavy_blunt_hit_floor_smoke_left" parent="CombatVfxContainer/Minion Divebomb Tester/vfx_minion_divebomb_impact_particles" instance=ExtResource("11_tsq07")]
+[node name="vfx_heavy_blunt_hit_floor_smoke_left" parent="Combat VFX Container/Minion Divebomb Tester/vfx_minion_divebomb_impact_particles" instance=ExtResource("11_tsq07")]
 position = Vector2(-200, 30)
 process_material = SubResource("ParticleProcessMaterial_wgko3")
 
-[node name="vfx_heavy_blunt_hit_floor_smoke_right" parent="CombatVfxContainer/Minion Divebomb Tester/vfx_minion_divebomb_impact_particles" instance=ExtResource("11_tsq07")]
+[node name="vfx_heavy_blunt_hit_floor_smoke_right" parent="Combat VFX Container/Minion Divebomb Tester/vfx_minion_divebomb_impact_particles" instance=ExtResource("11_tsq07")]
 position = Vector2(200, 30)
 process_material = SubResource("ParticleProcessMaterial_0kwwk")
 
-[node name="vfx_common_specks_gray" parent="CombatVfxContainer/Minion Divebomb Tester/vfx_minion_divebomb_impact_particles" instance=ExtResource("12_y0ba4")]
+[node name="vfx_common_specks_gray" parent="Combat VFX Container/Minion Divebomb Tester/vfx_minion_divebomb_impact_particles" instance=ExtResource("12_y0ba4")]
 material = ExtResource("14_yfav0")
 amount = 8
 texture = ExtResource("9_ywrhd")
 lifetime = 1.0
 process_material = SubResource("ParticleProcessMaterial_xebgd")
 
-[node name="vfx_common_specks_glow" parent="CombatVfxContainer/Minion Divebomb Tester/vfx_minion_divebomb_impact_particles" instance=ExtResource("12_y0ba4")]
+[node name="vfx_common_specks_glow" parent="Combat VFX Container/Minion Divebomb Tester/vfx_minion_divebomb_impact_particles" instance=ExtResource("12_y0ba4")]
 self_modulate = Color(1, 0.3666913, 0.11198568, 1)
 lifetime = 1.0
 process_material = SubResource("ParticleProcessMaterial_41406")
 
-[node name="vfx_dagger_impact_core" parent="CombatVfxContainer/Minion Divebomb Tester/vfx_minion_divebomb_impact_particles" instance=ExtResource("77_3o76e")]
+[node name="vfx_dagger_impact_core" parent="Combat VFX Container/Minion Divebomb Tester/vfx_minion_divebomb_impact_particles" instance=ExtResource("77_3o76e")]
 visible = false
 self_modulate = Color(1, 0.6269188, 0.3553167, 1)
 position = Vector2(0, -114.99988)
@@ -10786,23 +10832,23 @@ amount = 1
 lifetime = 0.25
 process_material = SubResource("ParticleProcessMaterial_lnau3")
 
-[node name="vfx_common_hit_flare" parent="CombatVfxContainer/Minion Divebomb Tester/vfx_minion_divebomb_impact_particles" instance=ExtResource("14_gj0ch")]
+[node name="vfx_common_hit_flare" parent="Combat VFX Container/Minion Divebomb Tester/vfx_minion_divebomb_impact_particles" instance=ExtResource("14_gj0ch")]
 self_modulate = Color(1, 0.5610174, 0.27639848, 1)
 process_material = SubResource("ParticleProcessMaterial_q372g")
 
-[node name="vfx_poof" parent="CombatVfxContainer/Minion Divebomb Tester/vfx_minion_divebomb_impact_particles" instance=ExtResource("58_dn0fg")]
+[node name="vfx_poof" parent="Combat VFX Container/Minion Divebomb Tester/vfx_minion_divebomb_impact_particles" instance=ExtResource("58_dn0fg")]
 visible = false
 position = Vector2(0, -80)
 emitting = false
 lifetime = 0.5
 process_material = SubResource("ParticleProcessMaterial_j1wd2")
 
-[node name="vfx_minion_divebomb_falling_particles" type="Node2D" parent="CombatVfxContainer/Minion Divebomb Tester" node_paths=PackedStringArray("particles")]
+[node name="vfx_minion_divebomb_falling_particles" type="Node2D" parent="Combat VFX Container/Minion Divebomb Tester" node_paths=PackedStringArray("particles")]
 rotation = 0.9599311
 script = ExtResource("105_oiudl")
 particles = [NodePath("vfx_minion_divebomb_trail"), NodePath("vfx_minion_divebomb_rings")]
 
-[node name="vfx_minion_divebomb_trail" type="GPUParticles2D" parent="CombatVfxContainer/Minion Divebomb Tester/vfx_minion_divebomb_falling_particles"]
+[node name="vfx_minion_divebomb_trail" type="GPUParticles2D" parent="Combat VFX Container/Minion Divebomb Tester/vfx_minion_divebomb_falling_particles"]
 material = ExtResource("107_fu2hu")
 emitting = false
 amount = 1
@@ -10813,7 +10859,7 @@ fixed_fps = 60
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_pqs3n")
 
-[node name="vfx_minion_divebomb_rings" type="GPUParticles2D" parent="CombatVfxContainer/Minion Divebomb Tester/vfx_minion_divebomb_falling_particles"]
+[node name="vfx_minion_divebomb_rings" type="GPUParticles2D" parent="Combat VFX Container/Minion Divebomb Tester/vfx_minion_divebomb_falling_particles"]
 material = ExtResource("109_r3r6c")
 position = Vector2(25, 0)
 emitting = false
@@ -10824,7 +10870,7 @@ fixed_fps = 60
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_a4107")
 
-[node name="Grand Finale Tester" type="Node2D" parent="CombatVfxContainer" node_paths=PackedStringArray("silent", "spotlight", "spotlight_particles", "anticipation_particles", "slash_particles", "hit_particles", "end_particles", "playground_camera")]
+[node name="Grand Finale Tester" type="Node2D" parent="Combat VFX Container" node_paths=PackedStringArray("silent", "spotlight", "spotlight_particles", "anticipation_particles", "slash_particles", "hit_particles", "end_particles", "playground_camera")]
 visible = false
 script = ExtResource("124_i2ak4")
 key_to_press = 88
@@ -10837,19 +10883,19 @@ hit_particles = [NodePath("hit_center_container/vfx_ribbon_flipbook_1"), NodePat
 end_particles = [NodePath("end_container/vfx_grand_finale_petals")]
 playground_camera = NodePath("../../CameraShaker")
 
-[node name="anticipation_container" type="Node2D" parent="CombatVfxContainer/Grand Finale Tester"]
+[node name="anticipation_container" type="Node2D" parent="Combat VFX Container/Grand Finale Tester"]
 position = Vector2(404.99997, 549.9999)
 
-[node name="vfx_common_clean_flare_1" parent="CombatVfxContainer/Grand Finale Tester/anticipation_container" instance=ExtResource("125_nmb1b")]
+[node name="vfx_common_clean_flare_1" parent="Combat VFX Container/Grand Finale Tester/anticipation_container" instance=ExtResource("125_nmb1b")]
 self_modulate = Color(0.36869264, 0.7783351, 0.62310225, 1)
 lifetime = 0.2
 process_material = SubResource("ParticleProcessMaterial_tq21t")
 
-[node name="vfx_common_ring_polar_a" parent="CombatVfxContainer/Grand Finale Tester/anticipation_container" instance=ExtResource("16_lthr7")]
+[node name="vfx_common_ring_polar_a" parent="Combat VFX Container/Grand Finale Tester/anticipation_container" instance=ExtResource("16_lthr7")]
 amount = 2
 process_material = SubResource("ParticleProcessMaterial_6rxrx")
 
-[node name="vfx_grand_finale_horizontal_lines" type="GPUParticles2D" parent="CombatVfxContainer/Grand Finale Tester/anticipation_container"]
+[node name="vfx_grand_finale_horizontal_lines" type="GPUParticles2D" parent="Combat VFX Container/Grand Finale Tester/anticipation_container"]
 material = ExtResource("124_msv7a")
 rotation = -1.4835298
 emitting = false
@@ -10863,10 +10909,10 @@ local_coords = true
 process_material = SubResource("ParticleProcessMaterial_21ddx")
 script = ExtResource("126_nmb1b")
 
-[node name="slash_container" type="Node2D" parent="CombatVfxContainer/Grand Finale Tester"]
+[node name="slash_container" type="Node2D" parent="Combat VFX Container/Grand Finale Tester"]
 position = Vector2(404.99997, 549.9999)
 
-[node name="vfx_slash_core" parent="CombatVfxContainer/Grand Finale Tester/slash_container" instance=ExtResource("58_om8mf")]
+[node name="vfx_slash_core" parent="Combat VFX Container/Grand Finale Tester/slash_container" instance=ExtResource("58_om8mf")]
 self_modulate = Color(0.264, 0.8, 0.58559996, 1)
 position = Vector2(154.00003, 16.000122)
 rotation = 3.403392
@@ -10874,22 +10920,22 @@ scale = Vector2(1.125, 1.125)
 skew = 1.0471972
 lifetime = 0.25
 
-[node name="hit_center_container" type="Node2D" parent="CombatVfxContainer/Grand Finale Tester"]
+[node name="hit_center_container" type="Node2D" parent="Combat VFX Container/Grand Finale Tester"]
 position = Vector2(1538, 674.9999)
 
-[node name="BackBufferCopy" type="BackBufferCopy" parent="CombatVfxContainer/Grand Finale Tester/hit_center_container"]
+[node name="BackBufferCopy" type="BackBufferCopy" parent="Combat VFX Container/Grand Finale Tester/hit_center_container"]
 copy_mode = 2
 
-[node name="vfx_outward_screen_distortion" parent="CombatVfxContainer/Grand Finale Tester/hit_center_container/BackBufferCopy" instance=ExtResource("25_tsq07")]
+[node name="vfx_outward_screen_distortion" parent="Combat VFX Container/Grand Finale Tester/hit_center_container/BackBufferCopy" instance=ExtResource("25_tsq07")]
 lifetime = 1.25
 process_material = SubResource("ParticleProcessMaterial_7i43c")
 
-[node name="vfx_scream_distortion_polar" parent="CombatVfxContainer/Grand Finale Tester/hit_center_container/BackBufferCopy" instance=ExtResource("43_2o5cn")]
+[node name="vfx_scream_distortion_polar" parent="Combat VFX Container/Grand Finale Tester/hit_center_container/BackBufferCopy" instance=ExtResource("43_2o5cn")]
 visible = false
 lifetime = 0.3
 process_material = SubResource("ParticleProcessMaterial_who2y")
 
-[node name="vfx_ribbon_flipbook_1" parent="CombatVfxContainer/Grand Finale Tester/hit_center_container" instance=ExtResource("127_wcqih")]
+[node name="vfx_ribbon_flipbook_1" parent="Combat VFX Container/Grand Finale Tester/hit_center_container" instance=ExtResource("127_wcqih")]
 z_index = 2
 material = ExtResource("128_5hbl3")
 amount = 2
@@ -10897,47 +10943,47 @@ lifetime = 0.2
 explosiveness = 0.25
 process_material = SubResource("ParticleProcessMaterial_msv7a")
 
-[node name="vfx_common_hit_flare" parent="CombatVfxContainer/Grand Finale Tester/hit_center_container" instance=ExtResource("14_gj0ch")]
+[node name="vfx_common_hit_flare" parent="Combat VFX Container/Grand Finale Tester/hit_center_container" instance=ExtResource("14_gj0ch")]
 z_index = 3
 process_material = SubResource("ParticleProcessMaterial_pod23")
 
-[node name="vfx_common_glow" parent="CombatVfxContainer/Grand Finale Tester/hit_center_container" instance=ExtResource("42_hx3ww")]
+[node name="vfx_common_glow" parent="Combat VFX Container/Grand Finale Tester/hit_center_container" instance=ExtResource("42_hx3ww")]
 self_modulate = Color(0.121476546, 0.38459277, 0.23567313, 1)
 process_material = SubResource("ParticleProcessMaterial_mvavk")
 
-[node name="vfx_common_ring_polar_b" parent="CombatVfxContainer/Grand Finale Tester/hit_center_container" instance=ExtResource("17_wefho")]
+[node name="vfx_common_ring_polar_b" parent="Combat VFX Container/Grand Finale Tester/hit_center_container" instance=ExtResource("17_wefho")]
 self_modulate = Color(0.0684887, 0.24203092, 0.16269733, 1)
 z_index = 1
 lifetime = 0.5
 process_material = SubResource("ParticleProcessMaterial_rbnxx")
 
-[node name="vfx_common_ring_polar_a" parent="CombatVfxContainer/Grand Finale Tester/hit_center_container" instance=ExtResource("16_lthr7")]
+[node name="vfx_common_ring_polar_a" parent="Combat VFX Container/Grand Finale Tester/hit_center_container" instance=ExtResource("16_lthr7")]
 lifetime = 0.25
 process_material = SubResource("ParticleProcessMaterial_ursa6")
 
-[node name="vfx_common_specks" parent="CombatVfxContainer/Grand Finale Tester/hit_center_container" instance=ExtResource("12_y0ba4")]
+[node name="vfx_common_specks" parent="Combat VFX Container/Grand Finale Tester/hit_center_container" instance=ExtResource("12_y0ba4")]
 self_modulate = Color(0.15780468, 0.47963405, 0.27580875, 1)
 amount = 12
 lifetime = 1.0
 process_material = SubResource("ParticleProcessMaterial_pkmpr")
 
-[node name="vfx_common_blunt_impact_core" parent="CombatVfxContainer/Grand Finale Tester/hit_center_container" instance=ExtResource("119_8vl02")]
+[node name="vfx_common_blunt_impact_core" parent="Combat VFX Container/Grand Finale Tester/hit_center_container" instance=ExtResource("119_8vl02")]
 self_modulate = Color(0, 0, 0, 1)
 material = ExtResource("131_u87pp")
 lifetime = 0.2
 process_material = SubResource("ParticleProcessMaterial_ctbtb")
 
-[node name="vfx_common_ray" parent="CombatVfxContainer/Grand Finale Tester/hit_center_container" instance=ExtResource("89_2ac57")]
+[node name="vfx_common_ray" parent="Combat VFX Container/Grand Finale Tester/hit_center_container" instance=ExtResource("89_2ac57")]
 self_modulate = Color(1, 1, 1, 1)
 amount = 3
 lifetime = 0.2
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_lh005")
 
-[node name="hit_ground_container" type="Node2D" parent="CombatVfxContainer/Grand Finale Tester"]
+[node name="hit_ground_container" type="Node2D" parent="Combat VFX Container/Grand Finale Tester"]
 position = Vector2(1538, 726.9999)
 
-[node name="vfx_heavy_blunt_hit_floor_smoke" parent="CombatVfxContainer/Grand Finale Tester/hit_ground_container" instance=ExtResource("11_tsq07")]
+[node name="vfx_heavy_blunt_hit_floor_smoke" parent="Combat VFX Container/Grand Finale Tester/hit_ground_container" instance=ExtResource("11_tsq07")]
 position = Vector2(100, 0.00012207031)
 rotation = 3.1415927
 scale = Vector2(1, -1)
@@ -10945,19 +10991,19 @@ lifetime = 0.3
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_3netq")
 
-[node name="end_container" type="Node2D" parent="CombatVfxContainer/Grand Finale Tester"]
+[node name="end_container" type="Node2D" parent="Combat VFX Container/Grand Finale Tester"]
 position = Vector2(404.99997, 549.9999)
 
-[node name="vfx_grand_finale_petals" parent="CombatVfxContainer/Grand Finale Tester/end_container" instance=ExtResource("131_nmb1b")]
+[node name="vfx_grand_finale_petals" parent="Combat VFX Container/Grand Finale Tester/end_container" instance=ExtResource("131_nmb1b")]
 position = Vector2(-40.99997, -125)
 amount = 36
 explosiveness = 0.8
 process_material = SubResource("ParticleProcessMaterial_u87pp")
 
-[node name="spotlight_container" type="Node2D" parent="CombatVfxContainer/Grand Finale Tester"]
+[node name="spotlight_container" type="Node2D" parent="Combat VFX Container/Grand Finale Tester"]
 position = Vector2(960, 0)
 
-[node name="vfx_common_specks" parent="CombatVfxContainer/Grand Finale Tester/spotlight_container" instance=ExtResource("12_y0ba4")]
+[node name="vfx_common_specks" parent="Combat VFX Container/Grand Finale Tester/spotlight_container" instance=ExtResource("12_y0ba4")]
 amount = 12
 texture = ExtResource("132_21ddx")
 lifetime = 3.0
@@ -10965,7 +11011,7 @@ explosiveness = 0.75
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_e0khs")
 
-[node name="vfx_grand_finale_petals_slow" parent="CombatVfxContainer/Grand Finale Tester/spotlight_container" instance=ExtResource("131_nmb1b")]
+[node name="vfx_grand_finale_petals_slow" parent="Combat VFX Container/Grand Finale Tester/spotlight_container" instance=ExtResource("131_nmb1b")]
 self_modulate = Color(1, 1, 1, 0.5019608)
 position = Vector2(0, 98)
 amount = 28
@@ -10973,25 +11019,29 @@ lifetime = 1.75
 explosiveness = 0.55
 process_material = SubResource("ParticleProcessMaterial_2w7x6")
 
-[node name="spotlight" type="Node2D" parent="CombatVfxContainer/Grand Finale Tester/spotlight_container"]
+[node name="spotlight" type="Node2D" parent="Combat VFX Container/Grand Finale Tester/spotlight_container"]
 
-[node name="vfx_grand_finale_spotlight_add" type="Sprite2D" parent="CombatVfxContainer/Grand Finale Tester/spotlight_container/spotlight"]
+[node name="vfx_grand_finale_spotlight_add" type="Sprite2D" parent="Combat VFX Container/Grand Finale Tester/spotlight_container/spotlight"]
 self_modulate = Color(1, 1, 1, 0.047058824)
 material = ExtResource("133_u87pp")
 scale = Vector2(4.5, 4.5)
 texture = ExtResource("126_rc8i4")
 offset = Vector2(0, 128)
 
-[node name="vfx_grand_finale_spotlight_darken" type="Sprite2D" parent="CombatVfxContainer/Grand Finale Tester/spotlight_container/spotlight"]
+[node name="vfx_grand_finale_spotlight_darken" type="Sprite2D" parent="Combat VFX Container/Grand Finale Tester/spotlight_container/spotlight"]
 self_modulate = Color(1, 1, 1, 0.1254902)
 material = ExtResource("135_0yqks")
 scale = Vector2(4.5, 4.5)
 texture = ExtResource("136_u87pp")
 offset = Vector2(0, 128)
 
-[node name="play_vfx_tool" type="Node" parent="CombatVfxContainer/Grand Finale Tester" node_paths=PackedStringArray("particles")]
+[node name="play_vfx_tool" type="Node" parent="Combat VFX Container/Grand Finale Tester" node_paths=PackedStringArray("particles")]
 script = ExtResource("87_8t4ew")
 particles = [NodePath("../hit_center_container/vfx_ribbon_flipbook_1"), NodePath("../hit_center_container/vfx_common_hit_flare"), NodePath("../hit_center_container/vfx_common_glow"), NodePath("../hit_center_container/vfx_common_ring_polar_b"), NodePath("../hit_center_container/vfx_common_ring_polar_a"), NodePath("../hit_center_container/vfx_common_specks"), NodePath("../hit_ground_container/vfx_heavy_blunt_hit_floor_smoke"), NodePath("../hit_center_container/vfx_common_blunt_impact_core"), NodePath("../hit_center_container/vfx_common_ray"), NodePath("../hit_center_container/BackBufferCopy/vfx_outward_screen_distortion"), NodePath("../hit_center_container/BackBufferCopy/vfx_scream_distortion_polar")]
+
+[node name="Form Activation VFX Container" type="Node2D" parent="Combat VFX Container"]
+position = Vector2(404.99997, 549.9999)
+scale = Vector2(0.99999994, 0.99999994)
 
 [node name="UiVfxContainer" type="CanvasLayer" parent="."]
 visible = false
@@ -12276,6 +12326,7 @@ shake_curve = SubResource("Curve_v54xp")
 
 [node name="TestCamera" type="Camera2D" parent="CameraShaker/Pivot"]
 
+[editable path="Back Combat VFX Container/Form Idle VFX Container/vfx_echo_form_idle_vfx"]
 [editable path="Entities/Defect/lightning_orb_tester"]
 [editable path="Entities/Defect/lightning_orb_tester/orb_container/LightningOrb"]
 [editable path="Entities/Defect/plasma_orb_tester"]
@@ -12286,8 +12337,8 @@ shake_curve = SubResource("Curve_v54xp")
 [editable path="Entities/Defect/dark_orb_tester/orb_container/DarkOrb"]
 [editable path="Entities/Defect/glass_orb_tester"]
 [editable path="Entities/Defect/glass_orb_tester/orb_container/ScrapOrb"]
-[editable path="CombatVfxContainer/Archive/Block Spark Tester/BlockSparkVfx"]
-[editable path="CombatVfxContainer/Archive/Hit Spark Tester/HitSparkVfx"]
+[editable path="Combat VFX Container/Archive/Block Spark Tester/BlockSparkVfx"]
+[editable path="Combat VFX Container/Archive/Hit Spark Tester/HitSparkVfx"]
 [editable path="UiVfxContainer/TopBar"]
 [editable path="UiVfxContainer/Energy Counters/IroncladEnergyCounter"]
 [editable path="UiVfxContainer/Energy Counters/IroncladEnergyCounter/EnergyVfxBack"]

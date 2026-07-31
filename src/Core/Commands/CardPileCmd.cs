@@ -170,7 +170,7 @@ public static class CardPileCmd
 				model.Pile?.InvokeCardAddFinished();
 				if (cardPile.Type != PileType.Hand && cardPile.Type != PileType.Play)
 				{
-					AppendPileLerpTween(tween, node, PileType.Play, cardPile);
+					AppendPileLerpTween(tween, node, PileType.Play, cardPile.Type);
 				}
 				tween?.Chain().TweenCallback(Callable.From(delegate
 				{
@@ -224,24 +224,30 @@ public static class CardPileCmd
 	public static async Task GiveToAnotherPlayer(CardModel card, Player player, PileType pileType, CardPilePosition position = CardPilePosition.Bottom, AbstractModel? clonedBy = null)
 	{
 		NCard cardNode = NCard.FindOnTable(card);
+		PileType? oldPileType = card.Pile?.Type;
 		card.RemoveFromCurrentPile(silent: true);
 		card.GiveToAnotherPlayer(player);
 		bool islocalPlayerTheReceivingPlayer = LocalContext.IsMine(card);
 		await Add(new global::_003C_003Ez__ReadOnlySingleElementList<CardModel>(card), pileType.GetPile(player), position, clonedBy, skipVisuals: true, isChangingOwners: true);
-		if (cardNode != null && cardNode.IsValid())
+		if (cardNode == null || !cardNode.IsValid())
 		{
-			Node vfxContainer = card.Owner.Creature.GetVfxContainer();
-			cardNode.Reparent(vfxContainer);
-			if (islocalPlayerTheReceivingPlayer)
+			return;
+		}
+		Node vfxContainer = card.Owner.Creature.GetVfxContainer();
+		cardNode.Reparent(vfxContainer);
+		if (islocalPlayerTheReceivingPlayer)
+		{
+			Tween tweenForCardsChangingPiles = GetTweenForCardsChangingPiles(new global::_003C_003Ez__ReadOnlySingleElementList<(NCard, PileType?)>((cardNode, oldPileType)));
+			if (tweenForCardsChangingPiles != null)
 			{
-				NCardFlyVfx child = NCardFlyVfx.Create(cardNode, card.Pile?.Type ?? pileType, isAddingToPile: true, card.Owner.Character.TrailPath);
-				vfxContainer?.AddChildSafely(child);
+				tweenForCardsChangingPiles.Play();
+				await tweenForCardsChangingPiles.AwaitFinished(NCombatRoom.Instance);
 			}
-			else
-			{
-				NCardFlyVfx child2 = NCardFlyVfx.Create(cardNode, player.Creature, card.Owner.Character.TrailPath);
-				vfxContainer?.AddChildSafely(child2);
-			}
+		}
+		else
+		{
+			NCardFlyVfx child = NCardFlyVfx.Create(cardNode, player.Creature, card.Owner.Character.TrailPath);
+			vfxContainer?.AddChildSafely(child);
 		}
 	}
 
@@ -374,22 +380,23 @@ public static class CardPileCmd
 				success = false
 			}).ToList();
 		}
+		Player player = null;
 		List<CardPileAddResult> results = new List<CardPileAddResult>();
-		Player owningPlayer = null;
-		foreach (CardModel card5 in cards)
+		foreach (CardModel card3 in cards)
 		{
-			if (card5.Owner == null)
+			if (card3.Owner == null)
 			{
-				throw new InvalidOperationException(card5.Id.Entry + " has no owner.");
+				throw new InvalidOperationException(card3.Id.Entry + " has no owner.");
 			}
-			Creature creature = card5.Owner.Creature;
-			if (card5.HasBeenRemovedFromState || creature.IsDead || (card5.IsInCombat && creature.CombatState == null))
+			Creature creature = card3.Owner.Creature;
+			if (card3.HasBeenRemovedFromState || creature.IsDead || (card3.IsInCombat && creature.CombatState == null))
 			{
 				CardPileAddResult item = new CardPileAddResult
 				{
 					success = false,
-					cardAdded = card5,
-					oldPile = card5.Pile,
+					cardAdded = card3,
+					oldPile = card3.Pile,
+					targetPile = newPile.Type,
 					modifyingModels = null
 				};
 				results.Add(item);
@@ -397,51 +404,51 @@ public static class CardPileCmd
 			}
 			if (newPile.Type == PileType.Deck)
 			{
-				if (!card5.Owner.RunState.ContainsCard(card5))
+				if (!card3.Owner.RunState.ContainsCard(card3))
 				{
-					if (card5.Owner.RunState is NullRunState)
+					if (card3.Owner.RunState is NullRunState)
 					{
-						throw new InvalidOperationException("Tried to add card " + card5.Id.Entry + " to deck for an owner with a NullRunState!");
+						throw new InvalidOperationException("Tried to add card " + card3.Id.Entry + " to deck for an owner with a NullRunState!");
 					}
-					throw new InvalidOperationException(card5.Id.Entry + " must be added to a RunState before adding it to your deck.");
+					throw new InvalidOperationException(card3.Id.Entry + " must be added to a RunState before adding it to your deck.");
 				}
 			}
-			else if (card5.IsInCombat && creature.CombatState != null && !creature.CombatState.ContainsCard(card5))
+			else if (card3.IsInCombat && creature.CombatState != null && !creature.CombatState.ContainsCard(card3))
 			{
-				throw new InvalidOperationException(card5.Id.Entry + " must be added to a CombatState before adding it to this pile.");
+				throw new InvalidOperationException(card3.Id.Entry + " must be added to a CombatState before adding it to this pile.");
 			}
-			if (card5.UpgradePreviewType.IsPreview())
+			if (card3.UpgradePreviewType.IsPreview())
 			{
 				throw new InvalidOperationException("A card preview cannot be added to a pile.");
 			}
 			CardPileAddResult item2 = new CardPileAddResult
 			{
 				success = true,
-				cardAdded = card5,
-				oldPile = card5.Pile,
+				cardAdded = card3,
+				oldPile = card3.Pile,
+				targetPile = newPile.Type,
 				modifyingModels = null
 			};
 			results.Add(item2);
-			if (owningPlayer == null)
+			if (player == null)
 			{
-				owningPlayer = card5.Owner;
+				player = card3.Owner;
 			}
-			if (owningPlayer == card5.Owner)
+			if (player == card3.Owner)
 			{
 				continue;
 			}
 			throw new InvalidOperationException("Tried to add cards with different owners to the same pile!");
 		}
-		bool owningPlayerIsLocal = LocalContext.IsMe(owningPlayer);
 		if (newPile.Type == PileType.Deck)
 		{
 			for (int i = 0; i < results.Count; i++)
 			{
 				CardPileAddResult result = results[i];
-				if (Hook.ShouldAddToDeck(owningPlayer.RunState, result.cardAdded, out AbstractModel preventer))
+				IRunState runState = result.cardAdded.RunState;
+				if (Hook.ShouldAddToDeck(runState, result.cardAdded, out AbstractModel preventer))
 				{
-					IRunState runState = owningPlayer.RunState;
-					runState.CurrentMapPointHistoryEntry?.GetEntry(owningPlayer.NetId).CardsGained.Add(result.cardAdded.ToSerializable());
+					runState.CurrentMapPointHistoryEntry?.GetEntry(result.cardAdded.Owner.NetId).CardsGained.Add(result.cardAdded.ToSerializable());
 					result.cardAdded.FloorAddedToDeck = runState.TotalFloor;
 				}
 				else
@@ -460,8 +467,6 @@ public static class CardPileCmd
 		{
 			return results;
 		}
-		List<NCard> cardNodes = new List<NCard>();
-		List<CardModel> cardsWithoutNodesChangingPiles = new List<CardModel>();
 		for (int i = 0; i < results.Count; i++)
 		{
 			CardPileAddResult value = results[i];
@@ -469,90 +474,20 @@ public static class CardPileCmd
 			{
 				continue;
 			}
-			NCard cardNode = null;
 			CardPile oldPile = value.oldPile;
 			CardModel card = value.cardAdded;
-			CardPile targetPile = newPile;
-			bool isFullHandAdd = targetPile.Type == PileType.Hand && targetPile.Cards.Count >= CardPile.MaxCardsInHand;
+			CardPile cardPile = newPile;
+			bool isFullHandAdd = cardPile.Type == PileType.Hand && cardPile.Cards.Count >= CardPile.MaxCardsInHand;
 			if (isFullHandAdd)
 			{
-				targetPile = CardPile.Get(PileType.Discard, card.Owner);
+				cardPile = CardPile.Get(PileType.Discard, card.Owner);
 			}
-			int num;
-			if (!owningPlayerIsLocal && targetPile.Type != PileType.Play)
-			{
-				num = ((oldPile != null && oldPile.Type == PileType.Play) ? 1 : 0);
-			}
-			else
-			{
-				num = 1;
-			}
-			bool flag = (byte)num != 0;
-			bool flag2;
-			bool flag4;
-			bool flag5;
-			if (TestMode.IsOff && flag && !skipVisuals)
-			{
-				cardNode = NCard.FindOnTable(card);
-				flag2 = cardNode == null && targetPile.Type.IsCombatPile() && (isFullHandAdd || oldPile != null || targetPile.Type == PileType.Hand);
-				bool flag3 = cardNode == null;
-				flag4 = flag3;
-				if (flag4)
-				{
-					if (oldPile == null)
-					{
-						goto IL_0646;
-					}
-					switch (oldPile.Type)
-					{
-					case PileType.Draw:
-					case PileType.Discard:
-					case PileType.Exhaust:
-					case PileType.Deck:
-						break;
-					default:
-						goto IL_0646;
-					}
-					flag5 = true;
-					goto IL_0649;
-				}
-				goto IL_064d;
-			}
-			goto IL_06d7;
-			IL_0649:
-			flag4 = flag5;
-			goto IL_064d;
-			IL_0646:
-			flag5 = false;
-			goto IL_0649;
-			IL_064d:
-			bool flag6 = flag4;
-			if (flag6)
-			{
-				PileType type = targetPile.Type;
-				flag5 = ((type == PileType.Draw || type == PileType.Discard || type == PileType.Deck) ? true : false);
-				flag6 = flag5;
-			}
-			if (flag6)
-			{
-				cardsWithoutNodesChangingPiles.Add(card);
-			}
-			else if (flag2)
-			{
-				cardNode = CreateCardNodeAndUpdateVisuals(card, targetPile.Type, owningPlayerIsLocal);
-			}
-			if (cardNode != null)
-			{
-				cardNodes.Add(cardNode);
-			}
-			goto IL_06d7;
-			IL_06d7:
 			CardModel card2 = card;
 			if (oldPile != null)
 			{
 				card.RemoveFromCurrentPile(skipVisuals);
 			}
-			else if (targetPile.Type == PileType.Deck)
+			else if (cardPile.Type == PileType.Deck)
 			{
 				List<AbstractModel> modifyingModels;
 				CardModel cardModel = Hook.ModifyCardBeingAddedToDeck(card.Owner.RunState, card, out modifyingModels);
@@ -564,58 +499,220 @@ public static class CardPileCmd
 					results[i] = value;
 				}
 			}
-			targetPile.AddInternal(card2, position switch
+			cardPile.AddInternal(card2, position switch
 			{
 				CardPilePosition.Bottom => -1, 
 				CardPilePosition.Top => 0, 
-				CardPilePosition.Random => card.Owner.RunState.Rng.Shuffle.NextInt(targetPile.Cards.Count + 1), 
+				CardPilePosition.Random => card.Owner.RunState.Rng.Shuffle.NextInt(cardPile.Cards.Count + 1), 
 				_ => throw new ArgumentOutOfRangeException("position", position, null), 
 			});
-			if (oldPile == null && targetPile.IsCombatPile && !isChangingOwners)
+			if (oldPile == null && cardPile.IsCombatPile && !isChangingOwners)
 			{
 				await Hook.AfterCardEnteredCombat(card.CombatState, card);
 			}
-			if (isFullHandAdd && owningPlayerIsLocal)
+			if (isFullHandAdd && LocalContext.IsMe(card.Owner))
 			{
-				ThinkCmd.Play(new LocString("combat_messages", "HAND_FULL"), owningPlayer.Creature, 2.0);
-			}
-			if (oldPile == null || oldPile.Type != PileType.Play || newPile.Type == PileType.Hand || card.IsDupe)
-			{
-				cardNode?.UpdateVisuals(targetPile.Type, CardPreviewMode.Normal);
+				ThinkCmd.Play(new LocString("combat_messages", "HAND_FULL"), card.Owner.Creature, 2.0);
 			}
 		}
-		Tween tween = null;
-		if (cardNodes.Count != 0)
+		if (!skipVisuals)
 		{
-			NPlayerHand handNode = NCombatRoom.Instance?.Ui.Hand;
-			tween = NCombatRoom.Instance?.CreateTween().SetParallel();
-			foreach (NCard cardNode2 in cardNodes)
+			Tween item3 = GetTweenForCardsChangingPiles(results).Item1;
+			if (item3 != null)
 			{
-				CardModel card3 = cardNode2.Model;
-				CardPile oldPile2 = results.Find((CardPileAddResult r) => r.cardAdded == card3).oldPile;
-				MoveCardNodeToNewPileBeforeTween(cardNode2, card3.Pile.Type);
-				bool flag7 = !owningPlayerIsLocal;
-				bool flag8 = flag7;
-				if (flag8)
+				item3.Play();
+				if (!(await item3.AwaitFinished(NCombatRoom.Instance)))
 				{
-					PileType type = card3.Pile.Type;
-					bool flag5 = (((uint)(type - 1) <= 2u || type == PileType.Deck) ? true : false);
-					flag8 = flag5;
+					return results;
 				}
-				if (flag8)
+			}
+		}
+		foreach (CardPileAddResult item4 in results)
+		{
+			if (item4.success)
+			{
+				CardModel cardAdded = item4.cardAdded;
+				if (item4.oldPile == null || item4.oldPile.Type != cardAdded.Pile?.Type)
 				{
-					tween?.Parallel().TweenProperty(cardNode2, "position", cardNode2.Position + Vector2.Down * 25f, (SaveManager.Instance.PrefsSave.FastMode == FastModeType.Fast) ? 0.2f : 0.3f);
-					tween?.Parallel().TweenProperty(cardNode2, "modulate", StsColors.exhaustGray, (SaveManager.Instance.PrefsSave.FastMode == FastModeType.Fast) ? 0.2f : 0.3f);
-					tween?.Chain().TweenCallback(Callable.From(cardNode2.QueueFreeSafely));
-					continue;
+					await Hook.AfterCardChangedPiles(cardAdded.Owner.RunState, cardAdded.CombatState, cardAdded, item4.oldPile?.Type ?? PileType.None, clonedBy);
 				}
-				switch (card3.Pile.Type)
+			}
+		}
+		return results;
+	}
+
+	private static (Tween?, bool) GetTweenForCardsChangingPiles(IEnumerable<CardPileAddResult> results)
+	{
+		if (TestMode.IsOn)
+		{
+			return (null, false);
+		}
+		List<NCard> list = new List<NCard>();
+		List<CardModel> list2 = new List<CardModel>();
+		foreach (CardPileAddResult result in results)
+		{
+			if (!result.success)
+			{
+				continue;
+			}
+			CardModel cardAdded = result.cardAdded;
+			PileType? pileType = cardAdded.Pile?.Type;
+			PileType? pileType2 = result.oldPile?.Type;
+			bool flag = LocalContext.IsMe(result.cardAdded.Owner);
+			if (!flag && pileType != PileType.Play && pileType2 != PileType.Play)
+			{
+				continue;
+			}
+			NCard nCard = NCard.FindOnTable(cardAdded, pileType2);
+			int num;
+			if (result.targetPile == PileType.Hand)
+			{
+				CardPile? pile = result.cardAdded.Pile;
+				num = ((pile != null && pile.Type == PileType.Discard) ? 1 : 0);
+			}
+			else
+			{
+				num = 0;
+			}
+			bool flag2 = (byte)num != 0;
+			bool flag3 = nCard == null && pileType.HasValue && pileType.Value.IsCombatPile() && (flag2 || pileType2.HasValue || pileType == PileType.Hand);
+			bool flag4 = nCard == null;
+			bool flag5 = flag4;
+			if (flag5)
+			{
+				bool flag6;
+				switch (pileType2)
+				{
+				case PileType.Draw:
+				case PileType.Discard:
+				case PileType.Exhaust:
+				case PileType.Deck:
+					flag6 = true;
+					break;
+				default:
+					flag6 = false;
+					break;
+				}
+				flag5 = flag6;
+			}
+			bool flag7 = flag5;
+			if (flag7)
+			{
+				bool flag6;
+				switch (pileType)
+				{
+				case PileType.Draw:
+				case PileType.Discard:
+				case PileType.Deck:
+					flag6 = true;
+					break;
+				default:
+					flag6 = false;
+					break;
+				}
+				flag7 = flag6;
+			}
+			if (flag7)
+			{
+				list2.Add(cardAdded);
+			}
+			else if (flag3)
+			{
+				nCard = CreateCardNodeAndUpdateVisuals(cardAdded, pileType2, pileType.Value, flag);
+			}
+			if (pileType.HasValue && (pileType2 != PileType.Play || pileType == PileType.Hand || cardAdded.IsDupe))
+			{
+				nCard?.UpdateVisuals(pileType.Value, CardPreviewMode.Normal);
+			}
+			if (nCard != null)
+			{
+				list.Add(nCard);
+			}
+		}
+		IEnumerable<PileType?> second = list.Select((NCard c) => results.First((CardPileAddResult r) => r.cardAdded == c.Model).oldPile?.Type);
+		Tween tweenForCardsChangingPiles = GetTweenForCardsChangingPiles(list.Zip(second));
+		if (list2.Count != 0)
+		{
+			foreach (CardModel card in list2)
+			{
+				CardPile oldPile = results.First((CardPileAddResult r) => r.cardAdded == card).oldPile;
+				Node vfxContainer = ((card.Pile.Type != PileType.Deck) ? card.Owner.Creature.GetVfxContainer() : NRun.Instance.GlobalUi.TopBar.TrailContainer);
+				if (tweenForCardsChangingPiles != null)
+				{
+					tweenForCardsChangingPiles.TweenCallback(Callable.From(delegate
+					{
+						NCardFlyShuffleVfx child2 = NCardFlyShuffleVfx.Create(oldPile, card.Pile, card.Owner.Character.TrailPath);
+						vfxContainer?.AddChildSafely(child2);
+					}));
+				}
+				else
+				{
+					NCardFlyShuffleVfx child = NCardFlyShuffleVfx.Create(oldPile, card.Pile, card.Owner.Character.TrailPath);
+					vfxContainer?.AddChildSafely(child);
+				}
+			}
+		}
+		return (tweenForCardsChangingPiles, list2.Count > 0);
+	}
+
+	private static Tween? GetTweenForCardsChangingPiles(IEnumerable<(NCard, PileType?)> cards)
+	{
+		if (!cards.Any())
+		{
+			return null;
+		}
+		NPlayerHand handNode = NCombatRoom.Instance?.Ui.Hand;
+		Tween tween = NCombatRoom.Instance?.CreateTween().SetParallel();
+		foreach (var card2 in cards)
+		{
+			NCard cardNode = card2.Item1;
+			PileType? item = card2.Item2;
+			CardModel card = cardNode.Model;
+			PileType? newPileType = card.Pile?.Type;
+			if (newPileType.HasValue)
+			{
+				MoveCardNodeToNewPileBeforeTween(cardNode, newPileType.Value);
+			}
+			bool flag = !LocalContext.IsMe(card.Owner);
+			bool flag2 = flag;
+			bool flag3;
+			if (flag2)
+			{
+				if (!newPileType.HasValue)
+				{
+					goto IL_0145;
+				}
+				switch (newPileType.GetValueOrDefault())
+				{
+				case PileType.Draw:
+				case PileType.Hand:
+				case PileType.Discard:
+				case PileType.Deck:
+					break;
+				default:
+					goto IL_0145;
+				}
+				flag3 = true;
+				goto IL_0148;
+			}
+			goto IL_014c;
+			IL_014c:
+			if (flag2)
+			{
+				tween?.Parallel().TweenProperty(cardNode, "position", cardNode.Position + Vector2.Down * 25f, (SaveManager.Instance.PrefsSave.FastMode == FastModeType.Fast) ? 0.2f : 0.3f);
+				tween?.Parallel().TweenProperty(cardNode, "modulate", StsColors.exhaustGray, (SaveManager.Instance.PrefsSave.FastMode == FastModeType.Fast) ? 0.2f : 0.3f);
+				tween?.Chain().TweenCallback(Callable.From(cardNode.QueueFreeSafely));
+				continue;
+			}
+			if (newPileType.HasValue)
+			{
+				switch (newPileType.GetValueOrDefault())
 				{
 				case PileType.Exhaust:
-					card3.Pile.InvokeCardAddFinished();
-					if (oldPile2 != null && oldPile2.Type != PileType.Hand && oldPile2.Type != PileType.Play)
+					card.Pile?.InvokeCardAddFinished();
+					if (item.HasValue && item != PileType.Hand && item != PileType.Play)
 					{
-						AppendPileLerpTween(tween, cardNode2, PileType.Play, oldPile2);
+						AppendPileLerpTween(tween, cardNode, PileType.Play, item);
 						FastModeType fastMode = SaveManager.Instance.PrefsSave.FastMode;
 						tween?.Chain().TweenInterval(fastMode switch
 						{
@@ -624,11 +721,11 @@ public static class CardPileCmd
 							_ => 0.5f, 
 						});
 					}
-					if (oldPile2 != null && oldPile2.Type == PileType.Hand)
+					if (item == PileType.Hand)
 					{
 						tween?.Chain().TweenCallback(Callable.From(delegate
 						{
-							NCardExhaustQuickVfx nCardExhaustQuickVfx = NCardExhaustQuickVfx.Create(cardNode2);
+							NCardExhaustQuickVfx nCardExhaustQuickVfx = NCardExhaustQuickVfx.Create(cardNode);
 							if (nCardExhaustQuickVfx != null)
 							{
 								NDebugAudioManager.Instance?.Play("card_exhaust.mp3");
@@ -636,15 +733,15 @@ public static class CardPileCmd
 							}
 							else
 							{
-								cardNode2.QueueFreeSafely();
+								cardNode.QueueFreeSafely();
 							}
 						}));
-						break;
+						continue;
 					}
 					tween?.Chain().TweenCallback(Callable.From(delegate
 					{
 						NCombatRoom instance = NCombatRoom.Instance;
-						NCardExhaustVfx nCardExhaustVfx = ((instance != null) ? NCardExhaustVfx.Create(cardNode2) : null);
+						NCardExhaustVfx nCardExhaustVfx = ((instance != null) ? NCardExhaustVfx.Create(cardNode) : null);
 						if (nCardExhaustVfx != null)
 						{
 							instance.Ui.AddChildSafely(nCardExhaustVfx);
@@ -653,70 +750,48 @@ public static class CardPileCmd
 						}
 						else
 						{
-							cardNode2.QueueFreeSafely();
+							cardNode.QueueFreeSafely();
 						}
 					}));
-					break;
+					continue;
 				case PileType.Hand:
-					AppendPileLerpTween(tween, cardNode2, card3.Pile.Type, oldPile2);
-					tween?.Parallel().TweenCallback(Callable.From(delegate
+					if (item.HasValue)
 					{
-						handNode?.Add(cardNode2);
-					}));
-					break;
+						AppendPileLerpTween(tween, cardNode, PileType.Hand, item);
+						tween?.Parallel().TweenCallback(Callable.From(delegate
+						{
+							handNode?.Add(cardNode);
+						}));
+					}
+					else
+					{
+						tween?.Chain().TweenCallback(Callable.From(delegate
+						{
+							handNode?.Add(cardNode);
+						}));
+					}
+					continue;
 				case PileType.Play:
-					AppendPlayPileLerpTween(tween, cardNode2, oldPile2);
-					break;
-				default:
-					tween?.TweenCallback(Callable.From(delegate
-					{
-						Node node = ((card3.Pile.Type != PileType.Deck) ? card3.Owner.Creature.GetVfxContainer() : NRun.Instance.GlobalUi.TopBar.TrailContainer);
-						cardNode2.Reparent(node);
-						NCardFlyVfx child2 = NCardFlyVfx.Create(cardNode2, card3.Pile.Type, isAddingToPile: true, card3.Owner.Character.TrailPath);
-						node?.AddChildSafely(child2);
-					}));
-					break;
+					AppendPlayPileLerpTween(tween, cardNode, item);
+					continue;
 				}
 			}
-		}
-		if (cardsWithoutNodesChangingPiles.Count != 0)
-		{
-			foreach (CardModel card4 in cardsWithoutNodesChangingPiles)
+			tween?.TweenCallback(Callable.From(delegate
 			{
-				CardPile oldPile3 = results.Find((CardPileAddResult r) => r.cardAdded == card4).oldPile;
-				Node vfxContainer = ((card4.Pile.Type != PileType.Deck) ? card4.Owner.Creature.GetVfxContainer() : NRun.Instance.GlobalUi.TopBar.TrailContainer);
-				if (tween != null)
-				{
-					tween.TweenCallback(Callable.From(delegate
-					{
-						NCardFlyShuffleVfx child2 = NCardFlyShuffleVfx.Create(oldPile3, card4.Pile, card4.Owner.Character.TrailPath);
-						vfxContainer?.AddChildSafely(child2);
-					}));
-				}
-				else
-				{
-					NCardFlyShuffleVfx child = NCardFlyShuffleVfx.Create(oldPile3, card4.Pile, card4.Owner.Character.TrailPath);
-					vfxContainer?.AddChildSafely(child);
-				}
-			}
+				Node node = ((newPileType != PileType.Deck) ? card.Owner.Creature.GetVfxContainer() : NRun.Instance.GlobalUi.TopBar.TrailContainer);
+				cardNode.Reparent(node);
+				NCardFlyVfx child = NCardFlyVfx.Create(cardNode, card.Pile.Type, isAddingToPile: true, card.Owner.Character.TrailPath);
+				node?.AddChildSafely(child);
+			}));
+			continue;
+			IL_0148:
+			flag2 = flag3;
+			goto IL_014c;
+			IL_0145:
+			flag3 = false;
+			goto IL_0148;
 		}
-		if (tween != null)
-		{
-			tween.Play();
-			if (!(await tween.AwaitFinished(NCombatRoom.Instance)))
-			{
-				return results;
-			}
-		}
-		foreach (CardPileAddResult item3 in results)
-		{
-			if (item3.success)
-			{
-				CardModel cardAdded = item3.cardAdded;
-				await Hook.AfterCardChangedPiles(cardAdded.Owner.RunState, cardAdded.CombatState, cardAdded, item3.oldPile?.Type ?? PileType.None, clonedBy);
-			}
-		}
-		return results;
+		return tween;
 	}
 
 	/// <summary>
@@ -744,7 +819,7 @@ public static class CardPileCmd
 			nCard = NCard.FindOnTable(card);
 			if (nCard == null)
 			{
-				nCard = CreateCardNodeAndUpdateVisuals(card, PileType.Play, owningPlayerIsLocal);
+				nCard = CreateCardNodeAndUpdateVisuals(card, card.Pile?.Type, PileType.Play, owningPlayerIsLocal);
 			}
 		}
 		card.RemoveFromCurrentPile();
@@ -753,7 +828,7 @@ public static class CardPileCmd
 		{
 			MoveCardNodeToNewPileBeforeTween(nCard, PileType.Play);
 			Tween tween = NCombatRoom.Instance.CreateTween().SetParallel();
-			AppendPlayPileLerpTween(tween, nCard, oldPile);
+			AppendPlayPileLerpTween(tween, nCard, oldPile?.Type);
 			nCard.PlayPileTween = tween;
 			tween.Play();
 			if (card.Type == CardType.Power && !(await tween.AwaitFinished(NCombatRoom.Instance)))
@@ -764,7 +839,7 @@ public static class CardPileCmd
 		await Hook.AfterCardChangedPiles(card.Owner.RunState, card.CombatState, card, oldPile?.Type ?? PileType.None, null);
 	}
 
-	private static NCard CreateCardNodeAndUpdateVisuals(CardModel card, PileType targetPileType, bool owningPlayerIsLocal)
+	private static NCard CreateCardNodeAndUpdateVisuals(CardModel card, PileType? oldPileType, PileType targetPileType, bool owningPlayerIsLocal)
 	{
 		NCard nCard = NCard.Create(card);
 		NCombatRoom.Instance.Ui.AddChildSafely(nCard);
@@ -773,9 +848,9 @@ public static class CardPileCmd
 		{
 			nCard.Position = NCombatRoom.Instance.GetCreatureNode(card.Owner.Creature).IntentContainer.GlobalPosition;
 		}
-		else if (card.Pile != null)
+		else if (oldPileType.HasValue)
 		{
-			nCard.Position = card.Pile.Type.GetTargetPosition(nCard);
+			nCard.Position = oldPileType.Value.GetTargetPosition(nCard);
 		}
 		else
 		{
@@ -819,7 +894,7 @@ public static class CardPileCmd
 		cardNode.PlayPileTween?.FastForwardToCompletion();
 	}
 
-	private static void AppendPlayPileLerpTween(Tween? tween, NCard cardNode, CardPile? oldPile)
+	private static void AppendPlayPileLerpTween(Tween? tween, NCard cardNode, PileType? oldPile)
 	{
 		AppendPileLerpTween(tween, cardNode, cardNode.Model.Pile.Type, oldPile);
 		tween?.Parallel().TweenCallback(Callable.From(delegate
@@ -828,7 +903,7 @@ public static class CardPileCmd
 		}));
 	}
 
-	private static void AppendPileLerpTween(Tween? tween, NCard cardNode, PileType typePile, CardPile? oldPile)
+	private static void AppendPileLerpTween(Tween? tween, NCard cardNode, PileType typePile, PileType? oldPile)
 	{
 		if (tween != null)
 		{
@@ -847,7 +922,7 @@ public static class CardPileCmd
 			{
 				tween.TweenProperty(cardNode, "scale", Vector2.One * 0.8f, 0.25).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);
 			}
-			else if (oldPile == null)
+			else if (!oldPile.HasValue)
 			{
 				tween.TweenProperty(cardNode, "scale", Vector2.One, num).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic)
 					.From(Vector2.Zero);
@@ -894,11 +969,12 @@ public static class CardPileCmd
 	/// <param name="choiceContext">The context with which to handle player choices.</param>
 	/// <param name="count">Number of cards to draw.</param>
 	/// <param name="player">Player who the hand and draw pile belongs to.</param>
+	/// <param name="source">The source that is causing the draw.</param>
 	/// <param name="fromHandDraw">If this draw happened as part of the initial card draws at the start of your turn.</param>
 	/// <returns>Cards that were drawn.</returns>
-	public static Task DrawWithoutBlockingOnOtherPlayers(PlayerChoiceContext choiceContext, decimal count, Player player, bool fromHandDraw = false)
+	public static Task DrawWithoutBlockingOnOtherPlayers(PlayerChoiceContext choiceContext, decimal count, Player player, CardModel source, bool fromHandDraw = false)
 	{
-		BranchingPlayerChoiceContext branchingPlayerChoiceContext = new BranchingPlayerChoiceContext(LocalContext.NetId.Value, GameActionType.Combat, choiceContext);
+		BranchingPlayerChoiceContext branchingPlayerChoiceContext = new BranchingPlayerChoiceContext(source, LocalContext.NetId.Value, GameActionType.Combat, choiceContext);
 		Task<IEnumerable<CardModel>> task = Draw(branchingPlayerChoiceContext, count, player, fromHandDraw);
 		return branchingPlayerChoiceContext.AssignTaskAndWaitForPauseOrCompletion(task);
 	}
@@ -975,18 +1051,14 @@ public static class CardPileCmd
 		{
 			return;
 		}
-		CardPile drawPile = PileType.Draw.GetPile(player);
+		CardPile pile = PileType.Draw.GetPile(player);
 		List<CardModel> list = PileType.Discard.GetPile(player).Cards.ToList();
 		float timeBetweenCardAdds = Mathf.Min(0.045f, 0.8f / (float)list.Count);
 		float randomTimeBetweenCardAdds = 1.11f * timeBetweenCardAdds;
-		HashSet<CardModel> drawPileCards = drawPile.Cards.ToHashSet();
+		HashSet<CardModel> drawPileCards = pile.Cards.ToHashSet();
 		list.AddRange(drawPileCards);
 		list.StableShuffle(player.RunState.Rng.Shuffle);
 		Hook.ModifyShuffleOrder(player.Creature.CombatState, player, list, isInitialShuffle: false);
-		foreach (CardModel item in drawPileCards)
-		{
-			drawPile.RemoveInternal(item, silent: true);
-		}
 		if (CombatManager.Instance.DebugForcedTopCardOnNextShuffle != null)
 		{
 			if (!list.Remove(CombatManager.Instance.DebugForcedTopCardOnNextShuffle))
@@ -997,15 +1069,30 @@ public static class CardPileCmd
 			CombatManager.Instance.DebugClearForcedTopCardOnNextShuffle();
 		}
 		float waitTimeAccumulator = 0f;
-		foreach (CardModel item2 in list)
+		IReadOnlyList<CardPileAddResult> readOnlyList = await Add(list, pile, CardPilePosition.Bottom, null, skipVisuals: true);
+		List<Tween> tweens = new List<Tween>();
+		foreach (CardPile item in readOnlyList.SelectMany((CardPileAddResult r) => new global::_003C_003Ez__ReadOnlyArray<CardPile>(new CardPile[2]
 		{
-			if (!drawPileCards.Contains(item2))
+			r.oldPile,
+			r.cardAdded.Pile
+		})).Distinct())
+		{
+			item?.InvokeContentsChanged();
+		}
+		foreach (CardPileAddResult item2 in readOnlyList)
+		{
+			if (drawPileCards.Contains(item2.cardAdded))
 			{
-				await Add(item2, drawPile);
-				if (CombatManager.Instance.IsOverOrEnding)
-				{
-					return;
-				}
+				continue;
+			}
+			item2.oldPile?.InvokeCardRemoveFinished();
+			var (tween, flag) = GetTweenForCardsChangingPiles(new global::_003C_003Ez__ReadOnlySingleElementList<CardPileAddResult>(item2));
+			if (tween != null)
+			{
+				tweens.Add(tween);
+			}
+			if (tween != null || flag)
+			{
 				float num = timeBetweenCardAdds + Rng.Chaotic.NextFloat((0f - randomTimeBetweenCardAdds) * 0.5f, randomTimeBetweenCardAdds * 0.5f);
 				waitTimeAccumulator += num;
 				if ((double)waitTimeAccumulator >= ((SceneTree)Engine.GetMainLoop()).Root.GetProcessDeltaTime())
@@ -1014,9 +1101,12 @@ public static class CardPileCmd
 					waitTimeAccumulator = 0f;
 				}
 			}
-			else
+		}
+		foreach (Tween item3 in tweens)
+		{
+			if (item3.IsRunning() && await item3.AwaitFinished(NCombatRoom.Instance))
 			{
-				drawPile.AddInternal(item2, -1, silent: true);
+				return;
 			}
 		}
 		await Cmd.CustomScaledWait(0.2f, 0.5f);

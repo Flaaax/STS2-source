@@ -17,7 +17,7 @@
   "DISCARD_PILE.title": "Stos kart odrzuconych {Hotkey:choose(None):| ({})}",
   "DOUBLE_BOSS.description": "Pod koniec aktu zmierzysz się z [gold]{BossName1:choose(Leśny Stróż|Wieczny Obserwator|Krab Cesarski|Demon Wiedzy|Matka Lagavulinów|Królowa|Dusza Rypki|Eksperyment|Nienasycony|Kapłan|Fantom|Kaskadowy Olbrzym):Leśnym Stróżem|Wiecznym Obserwatorem|Krabem Cesarskim|Demonem Wiedzy|Matką Lagavulinów|Królową|Duszą Rypki|Eksperymentem|Nienasyconym|Kapłanem|Fantomem|Kaskadowym Olbrzymem}[/gold] i [gold]{BossName2:choose(Leśny Stróż|Wieczny Obserwator|Krab Cesarski|Demon Wiedzy|Matka Lagavulinów|Królowa|Dusza Rypki|Eksperyment|Nienasycony|Kapłan|Fantom|Kaskadowy Olbrzym):Leśnym Stróżem|Wiecznym Obserwatorem|Krabem Cesarskim|Demonem Wiedzy|Matką Lagavulinów|Królową|Duszą Rypki|Eksperymentem|Nienasyconym|Kapłanem|Fantomem|Kaskadowym Olbrzymem}[/gold].",
   "DOUBLE_BOSS.title": "{BossName1} i {BossName2}",
-  "DRAW_PILE.description": "Na początku każdej tury\ndobierasz stąd [blue]5[/blue] kart.\n\nKliknij, aby wyświetlić (potasowane) karty na stosie rozgrywającym.",
+  "DRAW_PILE.description": "Na początku każdej tury\ndobierasz stąd [blue]5[/blue] kart.\n\nKliknij, aby wyświetlić (przetasowane) karty na stosie rozgrywającym.",
   "DRAW_PILE.title": "Stos rozgrywający {Hotkey:choose(None):| ({})}",
   "END_TURN.description": "Naciśnięcie tego przycisku zakończy twoją turę.\n\nOdrzucisz wszystkie karty w ręce, przeciwnicy przeprowadzą swoją turę, dobierzesz [blue]5[/blue] kart, po czym znów rozpocznie się twoja tura.",
   "END_TURN.title": "Zakończ turę {Hotkey:choose(None):| ({})}",

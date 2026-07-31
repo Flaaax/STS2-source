@@ -15,57 +15,38 @@ using MegaCrit.Sts2.Core.Platform.Steam;
 using MegaCrit.Sts2.Core.Rooms;
 using MegaCrit.Sts2.Core.Runs;
 using MegaCrit.Sts2.Core.Saves;
+using MegaCrit.Sts2.Core.TestSupport;
 using Sentry;
+using Sentry.Godot;
 
 namespace MegaCrit.Sts2.Core.Debug;
 
 /// <summary>
-/// Manages Sentry .NET SDK initialization and error reporting for C# exceptions.
-/// This complements the GDExtension SDK which handles native crashes.
+/// Manages Sentry initialization and error reporting.
+/// Uses the sentry-godot 2.x unified integration: a single <see cref="M:Sentry.Godot.SentrySdk.Init(System.Action{Sentry.Godot.SentryGodotOptions})" />
+/// call brings up both the managed (.NET) and native layers, and scope data (tags, breadcrumbs, user) set here
+/// syncs to both automatically, so no manual bridge into the GDExtension singleton is needed. Contexts and
+/// attachments do NOT sync, so anything that must be visible on native events is set as a tag.
 /// </summary>
 public static class SentryService
 {
 	private const string _dsnSettingPath = "sentry/config/dsn";
 
-	private static readonly StringName _sentrySdkSingleton = new StringName("SentrySDK");
-
-	private static readonly StringName _sentryUserClass = new StringName("SentryUser");
-
-	private static readonly StringName _sentryBreadcrumbClass = new StringName("SentryBreadcrumb");
-
-	private static readonly StringName _levelProperty = new StringName("level");
-
-	private static readonly StringName _categoryProperty = new StringName("category");
-
-	private static readonly StringName _idProperty = new StringName("id");
-
-	private static readonly StringName _createMethod = new StringName("create");
-
-	private static readonly StringName _setUserMethod = new StringName("set_user");
-
-	private static readonly StringName _addBreadcrumbMethod = new StringName("add_breadcrumb");
-
-	private static readonly StringName _shutdownMethod = new StringName("shutdown");
-
-	private static readonly StringName _setShouldSampleEventMethod = new StringName("set_should_sample_event");
-
-	private static readonly StringName _setPlatformBranchMethod = new StringName("set_platform_branch");
-
-	private static readonly StringName _setCsharpContextMethod = new StringName("set_csharp_context");
-
-	private static IDisposable? _sentryInstance;
-
 	private static float _sampleRate = 1f;
+
+	private const float _earlyBootNativeSampleRate = 0.1f;
+
+	private static bool _platformBranchResolved;
+
+	private static bool _isHeadless;
+
+	private static string? _nativeEnvironment;
 
 	private static bool _isGameInitialized;
 
 	private static volatile bool _suppressAllEvents;
 
 	private static readonly string _sessionId = Guid.NewGuid().ToString();
-
-	private static Node? _sentryInit;
-
-	private static GodotObject? _extensionSdk;
 
 	public static bool IsEnabled { get; private set; }
 
@@ -80,41 +61,41 @@ public static class SentryService
 	/// ModManager.Initialize so mod errors during the rest of startup are never reported,
 	/// before AfterGameInit shuts things down.
 	///
-	/// Both SDKs get the same treatment. The native GDExtension SDK is set to reject every event
-	/// rather than closed, since it stays running until the app shuts down. The managed SDK is
-	/// suppressed with a flag read as the first line of FilterEvent. That flag is a plain bool, so
-	/// unlike the sampler it cannot throw during early startup and fail open (Sentry sends the
-	/// event when BeforeSend throws).
+	/// Both layers get the same treatment through one flag: it is read as the first line of both the
+	/// managed (FilterEvent) and native (FilterNativeEvent) before-send callbacks. That flag is a plain
+	/// bool, so unlike the sampler it cannot throw during early startup and fail open (Sentry sends the
+	/// event when a before-send throws). Native crashes bypass before-send entirely and are always
+	/// captured, but AfterGameInit shuts the SDK down for modded sessions so those are not sent either.
 	/// </summary>
 	public static void DisableSentryIfModded()
 	{
 		if (ModManager.IsRunningModded())
 		{
 			_suppressAllEvents = true;
-			((Engine.GetMainLoop() is SceneTree sceneTree) ? sceneTree.Root.GetNodeOrNull("SentryInit") : null)?.Call(_setShouldSampleEventMethod, Callable.From((Func<bool>)AlwaysRejectEvent));
 		}
 	}
 
-	private static bool AlwaysRejectEvent()
-	{
-		return false;
-	}
-
 	/// <summary>
-	/// Initializes the Sentry .NET SDK. Should be called early in game startup.
-	/// Disabled in editor (unless headless), uses "playtesters" environment with release_info, "development" without.
+	/// Initializes Sentry. Should be called early in game startup (from the SentryBootstrap autoload).
+	/// Disabled in editor (unless headless/forced). Uses "unknown" environment until the real Steam branch
+	/// is known in SetPlatformBranch.
 	/// </summary>
 	public static void Initialize()
 	{
 		bool flag = OS.HasFeature("editor");
-		bool flag2 = DisplayServer.GetName().Equals("headless", StringComparison.OrdinalIgnoreCase);
+		_isHeadless = DisplayServer.GetName().Equals("headless", StringComparison.OrdinalIgnoreCase);
 		bool isForcedOn = CommandLineHelper.HasArg("force-sentry");
-		if (flag && !flag2 && !isForcedOn)
+		if (flag && !_isHeadless && !isForcedOn)
 		{
 			Log.Info("[Sentry.NET] Disabled in editor");
 			return;
 		}
-		SampleForNonSteamBranches = flag2 || isForcedOn;
+		if (!isForcedOn && TestMode.IsTestRunFromCmdline())
+		{
+			Log.Info("[Sentry.NET] Disabled in test run");
+			return;
+		}
+		SampleForNonSteamBranches = _isHeadless || isForcedOn;
 		IsForcedOn = isForcedOn;
 		string dsn = GetDsn();
 		if (string.IsNullOrEmpty(dsn))
@@ -125,28 +106,31 @@ public static class SentryService
 		ReleaseInfo releaseInfo = ReleaseInfoManager.Instance.ReleaseInfo;
 		string environment = "unknown";
 		string release = releaseInfo?.Version ?? "dev";
-		_sentryInstance = SentrySdk.Init(delegate(SentryOptions options)
+		Sentry.Godot.SentrySdk.Init(delegate(SentryGodotOptions options)
 		{
 			options.Dsn = dsn;
 			options.Environment = environment;
 			options.Release = release;
 			options.Debug = isForcedOn;
-			options.AutoSessionTracking = true;
+			options.AutoSessionTracking = false;
 			options.IsGlobalModeEnabled = true;
 			options.SendDefaultPii = false;
 			options.SetBeforeSend((SentryEvent sentryEvent, SentryHint hint) => FilterEvent(sentryEvent));
+			options.Native.SetBeforeSend(FilterNativeEvent);
 		});
-		IsEnabled = SentrySdk.IsEnabled;
+		IsEnabled = Sentry.Godot.SentrySdk.IsEnabled;
 		if (!IsEnabled)
 		{
 			Log.Warn("[Sentry.NET] SDK initialization failed");
 			return;
 		}
-		SentrySdk.ConfigureScope(delegate(Scope scope)
+		Sentry.Godot.SentrySdk.ConfigureScope(delegate(Scope scope)
 		{
 			scope.SetTag("sdk", "dotnet");
 			scope.SetTag("session_id", _sessionId);
-			scope.SetExtra("assembly.main_hash", AssemblyHasher.GetMainAssemblyHash());
+			scope.SetTag("os", OS.GetName());
+			scope.SetTag("godot_version", Engine.GetVersionInfo()["string"].AsString());
+			scope.SetTag("assembly.main_hash", AssemblyHasher.GetMainAssemblyHash().ToString());
 			if (releaseInfo != null)
 			{
 				scope.SetTag("branch", releaseInfo.Branch);
@@ -154,19 +138,18 @@ public static class SentryService
 				scope.SetExtra("build.main_hash", releaseInfo.MainAssemblyHash);
 				scope.SetExtra("build.date", releaseInfo.Date.ToString("o"));
 			}
+			AddAutoslayTags(scope);
 		});
 		Log.LogCallback += OnLogCallback;
 		Log.Info("[Sentry.NET] Initialized: env=" + environment + ", release=" + release);
 	}
 
-	public static void AfterGameInit(string? platformBranch, string uniqueId, Node treeRoot)
+	public static void AfterGameInit(string? platformBranch, string uniqueId)
 	{
 		if (!IsEnabled)
 		{
 			return;
 		}
-		_sentryInit = treeRoot.GetNode("SentryInit");
-		_sentryInit?.Call(_setCsharpContextMethod, _sessionId, AssemblyHasher.GetMainAssemblyHash());
 		if (!ShouldStayAliveAfterInit(shouldLog: true))
 		{
 			Log.Info("[Sentry.NET] Shutting down because event reporting is disabled.");
@@ -174,14 +157,13 @@ public static class SentryService
 		}
 		else
 		{
-			SentrySdk.ConfigureScope(delegate(Scope scope)
+			Sentry.Godot.SentrySdk.ConfigureScope(delegate(Scope scope)
 			{
 				scope.User = new SentryUser
 				{
 					Id = uniqueId
 				};
 			});
-			SetGdExtensionUser(uniqueId);
 			Log.Debug("[Sentry.NET] User context set");
 			SetPlatformBranch(platformBranch);
 		}
@@ -195,58 +177,97 @@ public static class SentryService
 			switch (level)
 			{
 			case LogLevel.Error:
-				SentrySdk.AddBreadcrumb(message, "log", null, null, BreadcrumbLevel.Error);
-				SetGdExtensionBreadcrumb(message, "log", BreadcrumbLevel.Error);
+				Sentry.Godot.SentrySdk.AddBreadcrumb(message, "log", null, null, BreadcrumbLevel.Error);
 				break;
 			case LogLevel.Warn:
-				SentrySdk.AddBreadcrumb(message, "log", null, null, BreadcrumbLevel.Warning);
-				SetGdExtensionBreadcrumb(message, "log", BreadcrumbLevel.Warning);
+				Sentry.Godot.SentrySdk.AddBreadcrumb(message, "log", null, null, BreadcrumbLevel.Warning);
 				break;
 			}
 		}
 	}
 
-	private static void SetGdExtensionUser(string uniqueId)
+	/// <summary>
+	/// Tags autoslay runs so their events can be filtered out in Sentry. Re-homed from the old SentryInit.gd,
+	/// which owned these tags before the GDScript autoload was removed.
+	/// </summary>
+	private static void AddAutoslayTags(Scope scope)
 	{
-		try
+		if (!CommandLineHelper.HasArg("autoslay"))
 		{
-			if (Engine.HasSingleton(_sentrySdkSingleton))
-			{
-				if (_extensionSdk == null)
-				{
-					_extensionSdk = Engine.GetSingleton(_sentrySdkSingleton);
-				}
-				GodotObject godotObject = ClassDB.Instantiate(_sentryUserClass).AsGodotObject();
-				godotObject.Set(_idProperty, uniqueId);
-				_extensionSdk.Call(_setUserMethod, godotObject);
-			}
+			return;
 		}
-		catch (Exception ex)
+		scope.SetTag("autoslay", "true");
+		string[] cmdlineArgs = OS.GetCmdlineArgs();
+		foreach (string text in cmdlineArgs)
 		{
-			Log.Warn("[Sentry] Failed to set GDExtension user: " + ex.Message);
+			if (text.StartsWith("--seed=", StringComparison.Ordinal))
+			{
+				string text2 = text;
+				int length = "--seed=".Length;
+				scope.SetTag("autoslay.seed", text2.Substring(length, text2.Length - length));
+				break;
+			}
 		}
 	}
 
-	private static void SetGdExtensionBreadcrumb(string message, string category, BreadcrumbLevel level)
+	/// <summary>
+	/// Before-send filter for native/engine events (non-fatal GDScript/GDExtension/engine errors). Drops modded
+	/// sessions, transient build artifacts, and, in headless mode, hardware errors with no display/audio/GPU
+	/// context, then stamps the native environment and applies sampling + consent. C# exceptions never reach here
+	/// (the SDK forwards them to the managed layer). Native crashes bypass this callback entirely and are always
+	/// captured. The event wrapper is valid only for the duration of this call and must not be retained.
+	/// </summary>
+	private static SentryNativeEvent? FilterNativeEvent(SentryNativeEvent nativeEvent)
 	{
-		try
+		if (_suppressAllEvents)
 		{
-			if (Engine.HasSingleton(_sentrySdkSingleton))
+			return null;
+		}
+		string exceptionValue = nativeEvent.GetExceptionValue(0);
+		if (!string.IsNullOrEmpty(exceptionValue))
+		{
+			if (exceptionValue.Contains("/build/modules/mono/glue/") || exceptionValue.Contains("res://.godot/mono/temp/"))
 			{
-				if (_extensionSdk == null)
+				return null;
+			}
+			if (_isHeadless)
+			{
+				if (exceptionValue.Contains("fmod", StringComparison.OrdinalIgnoreCase))
 				{
-					_extensionSdk = Engine.GetSingleton(_sentrySdkSingleton);
+					return null;
 				}
-				GodotObject godotObject = ClassDB.ClassCallStatic(_sentryBreadcrumbClass, _createMethod, message).AsGodotObject();
-				godotObject.Set(_categoryProperty, category);
-				godotObject.Set(_levelProperty, (int)(level + 1));
-				_extensionSdk.Call(_addBreadcrumbMethod, godotObject);
+				if (exceptionValue.Contains("Failed to set animation mix"))
+				{
+					return null;
+				}
+				if (exceptionValue.Contains("custom_samplers.has"))
+				{
+					return null;
+				}
+				if (exceptionValue.Contains("Parameter \"mem\" is null"))
+				{
+					return null;
+				}
+				if (exceptionValue.Contains("Attempting to initialize the wrong RID"))
+				{
+					return null;
+				}
+				if (exceptionValue.Contains("Initializing already initialized RID"))
+				{
+					return null;
+				}
 			}
 		}
-		catch (Exception ex)
+		if (_nativeEnvironment != null)
 		{
-			Log.Warn("[Sentry] Failed to set GDExtension breadcrumb: " + ex.Message);
+			nativeEvent.Environment = _nativeEnvironment;
 		}
+		float sampleRate = (_platformBranchResolved ? _sampleRate : 0.1f);
+		if (!ShouldSampleEvent(sampleRate))
+		{
+			return null;
+		}
+		return nativeEvent;
 	}
 
 	/// <summary>
@@ -262,11 +283,7 @@ public static class SentryService
 			"public-beta" => 0.2f, 
 			_ => (branch != null) ? 0.1f : (SampleForNonSteamBranches ? 1f : 0f), 
 		};
-		_sentryInit?.Call(_setShouldSampleEventMethod, Callable.From((Func<bool>)ShouldSampleEvent));
-		if (branch != null)
-		{
-			_sentryInit?.Call(_setPlatformBranchMethod, branch);
-		}
+		_platformBranchResolved = true;
 		if (IsEnabled)
 		{
 			if (_sampleRate == 0f)
@@ -277,7 +294,8 @@ public static class SentryService
 			}
 			if (branch != null)
 			{
-				SentrySdk.ConfigureScope(delegate(Scope scope)
+				_nativeEnvironment = branch;
+				Sentry.Godot.SentrySdk.ConfigureScope(delegate(Scope scope)
 				{
 					scope.SetTag("platform.branch", branch);
 					scope.Environment = branch;
@@ -294,7 +312,7 @@ public static class SentryService
 	{
 		if (IsEnabled)
 		{
-			SentrySdk.AddBreadcrumb(message, category, null, null, level);
+			Sentry.Godot.SentrySdk.AddBreadcrumb(message, category, null, null, level);
 		}
 	}
 
@@ -307,7 +325,7 @@ public static class SentryService
 	{
 		if (IsEnabled)
 		{
-			SentrySdk.CaptureException(ex, delegate(Scope scope)
+			Sentry.Godot.SentrySdk.CaptureException(ex, delegate(Scope scope)
 			{
 				AttachGameState(scope);
 			});
@@ -322,7 +340,7 @@ public static class SentryService
 	{
 		if (IsEnabled)
 		{
-			SentrySdk.CaptureException(ex, delegate(Scope scope)
+			Sentry.Godot.SentrySdk.CaptureException(ex, delegate(Scope scope)
 			{
 				AttachGameState(scope);
 				configureScope(scope);
@@ -343,7 +361,7 @@ public static class SentryService
 				Message = message,
 				Level = level
 			};
-			SentrySdk.CaptureEvent(evt, delegate(Scope scope)
+			Sentry.Godot.SentrySdk.CaptureEvent(evt, delegate(Scope scope)
 			{
 				AttachGameState(scope);
 				configureScope?.Invoke(scope);
@@ -358,7 +376,7 @@ public static class SentryService
 	{
 		if (IsEnabled)
 		{
-			SentrySdk.ConfigureScope(delegate(Scope scope)
+			Sentry.Godot.SentrySdk.ConfigureScope(delegate(Scope scope)
 			{
 				scope.SetTag(key, value);
 			});
@@ -372,7 +390,7 @@ public static class SentryService
 	{
 		if (IsEnabled)
 		{
-			SentrySdk.ConfigureScope(delegate(Scope scope)
+			Sentry.Godot.SentrySdk.ConfigureScope(delegate(Scope scope)
 			{
 				scope.SetExtra(key, value);
 			});
@@ -395,7 +413,7 @@ public static class SentryService
 			Log.Warn("[Sentry.NET] Cannot initialize for testing: no DSN configured");
 			return;
 		}
-		_sentryInstance = SentrySdk.Init(delegate(SentryOptions options)
+		Sentry.Godot.SentrySdk.Init(delegate(SentryGodotOptions options)
 		{
 			options.Dsn = dsn;
 			options.Environment = "development";
@@ -405,13 +423,13 @@ public static class SentryService
 			options.IsGlobalModeEnabled = true;
 			options.SendDefaultPii = false;
 		});
-		IsEnabled = SentrySdk.IsEnabled;
+		IsEnabled = Sentry.Godot.SentrySdk.IsEnabled;
 		if (!IsEnabled)
 		{
 			Log.Warn("[Sentry.NET] SDK initialization failed for testing");
 			return;
 		}
-		SentrySdk.ConfigureScope(delegate(Scope scope)
+		Sentry.Godot.SentrySdk.ConfigureScope(delegate(Scope scope)
 		{
 			scope.SetTag("sdk", "dotnet");
 			scope.SetTag("session_id", _sessionId);
@@ -421,7 +439,7 @@ public static class SentryService
 	}
 
 	/// <summary>
-	/// Shuts down the Sentry SDK gracefully.
+	/// Shuts down the Sentry SDK gracefully, closing both the .NET and native layers.
 	/// Should be called when the game exits.
 	/// </summary>
 	public static void Shutdown()
@@ -430,9 +448,7 @@ public static class SentryService
 		{
 			Log.LogCallback -= OnLogCallback;
 			Log.Info("[Sentry.NET] Shutting down");
-			_sentryInstance?.Dispose();
-			_sentryInstance = null;
-			_sentryInit?.Call(_shutdownMethod);
+			Sentry.Godot.SentrySdk.Close();
 			IsEnabled = false;
 		}
 	}
@@ -557,7 +573,7 @@ public static class SentryService
 	}
 
 	/// <summary>
-	/// The BeforeSend filter. Suppression (set for modded sessions) is checked first and is a
+	/// The managed BeforeSend filter. Suppression (set for modded sessions) is checked first and is a
 	/// plain bool read, so it cannot throw and cannot be defeated by an exception in the sampler
 	/// below it (Sentry sends the event if BeforeSend throws).
 	/// </summary>
@@ -580,7 +596,12 @@ public static class SentryService
 
 	private static bool ShouldSampleEvent()
 	{
-		if (System.Random.Shared.NextDouble() >= (double)_sampleRate)
+		return ShouldSampleEvent(_sampleRate);
+	}
+
+	private static bool ShouldSampleEvent(float sampleRate)
+	{
+		if (System.Random.Shared.NextDouble() >= (double)sampleRate)
 		{
 			return false;
 		}

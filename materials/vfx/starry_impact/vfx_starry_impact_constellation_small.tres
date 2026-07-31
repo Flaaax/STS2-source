@@ -3,7 +3,7 @@
 [ext_resource type="Shader" uid="uid://bebj5rx7mk646" path="res://shaders/vfx/common/vfx_common_particle_shader.gdshader" id="1_v0cs3"]
 
 [sub_resource type="Curve" id="Curve_neg4c"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.49999994), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.15294117), 0.0, 0.0, 0, 0, Vector2(1, 0.49999994), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_q2bgw"]

@@ -432,6 +432,11 @@ alpha_curve = SubResource("CurveTexture_fijpa")
 script = ExtResource("1_ol0mx")
 metadata/_edit_group_ = true
 
+[node name="FormVfx" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+
 [node name="Visuals" type="SpineSprite" parent="."]
 skeleton_data_res = ExtResource("2_sp1yx")
 preview_skin = "Default"

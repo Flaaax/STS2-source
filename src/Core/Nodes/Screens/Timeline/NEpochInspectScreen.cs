@@ -8,7 +8,6 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.ControllerInput;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Localization;
-using MegaCrit.Sts2.Core.Nodes.CommonUi;
 using MegaCrit.Sts2.Core.Nodes.GodotExtensions;
 using MegaCrit.Sts2.Core.Nodes.Screens.ScreenContext;
 using MegaCrit.Sts2.Core.Nodes.Vfx.Ui;
@@ -28,7 +27,7 @@ public partial class NEpochInspectScreen : NClickableControl, IScreenContext
 
 	public static readonly string lockedImagePath = ImageHelper.GetImagePath("packed/timeline/epoch_slot_locked.png");
 
-	private NButton _closeButton;
+	private NCloseButton _closeButton;
 
 	private TextureRect _portrait;
 
@@ -45,8 +44,6 @@ public partial class NEpochInspectScreen : NClickableControl, IScreenContext
 	private MegaLabel _storyLabel;
 
 	private MegaLabel _chapterLabel;
-
-	private MegaLabel _closeLabel;
 
 	private MegaLabel _placeholderLabel;
 
@@ -106,25 +103,27 @@ public partial class NEpochInspectScreen : NClickableControl, IScreenContext
 		_maskOffsetX = _mask.OffsetLeft;
 		_chains = GetNode<NEpochChains>("%Chains");
 		_portraitHsv = (ShaderMaterial)_portrait.Material;
-		_closeButton = GetNode<NButton>("%CloseButton");
+		_closeButton = GetNode<NCloseButton>("%CloseButton");
 		_fancyText = GetNode<MegaRichTextLabel>("%FancyText");
-		_closeLabel = GetNode<MegaLabel>("%CloseLabel");
 		_chapterLoc = new LocString("timeline", "EPOCH_INSPECT.chapterFormat");
 		_unlockInfo = GetNode<NUnlockInfo>("%UnlockInfo");
 		_nextChapterButton = GetNode<NEpochPaginateButton>("%NextChapterButton");
 		_prevChapterButton = GetNode<NEpochPaginateButton>("%PrevChapterButton");
 		_prevChapterButtonOffsetX = _prevChapterButton.OffsetLeft;
 		_nextChapterButtonOffsetX = _nextChapterButton.OffsetLeft;
-		_nextChapterButton.Connect(NClickableControl.SignalName.MouseReleased, Callable.From<InputEvent>(delegate
+		_nextChapterButton.Connect(NClickableControl.SignalName.Released, Callable.From<NClickableControl>(delegate
 		{
 			NextChapter();
 		}));
-		_prevChapterButton.Connect(NClickableControl.SignalName.MouseReleased, Callable.From<InputEvent>(delegate
+		_prevChapterButton.Connect(NClickableControl.SignalName.Released, Callable.From<NClickableControl>(delegate
 		{
 			PrevChapter();
 		}));
+		_prevChapterButton.IsLeft = true;
 		Connect(NClickableControl.SignalName.MouseReleased, Callable.From<InputEvent>(OnMouseReleased));
 		_closeButton.Disable();
+		_nextChapterButton.Disable();
+		_prevChapterButton.Disable();
 	}
 
 	/// <summary>
@@ -204,7 +203,7 @@ public partial class NEpochInspectScreen : NClickableControl, IScreenContext
 			await TaskHelper.RunSafely(UnlockAnimation(epoch));
 			return;
 		}
-		_closeLabel.SetTextAutoSize(new LocString("timeline", "EPOCH_INSPECT.closeButton").GetRawText());
+		_closeButton.SetLabel(new LocString("timeline", "EPOCH_INSPECT.closeButton").GetRawText());
 		_fancyText.Text = epoch.Description;
 		_textTween?.Kill();
 		_textTween = CreateTween().SetParallel();
@@ -309,8 +308,8 @@ public partial class NEpochInspectScreen : NClickableControl, IScreenContext
 				AchievementsHelper.CheckTimelineComplete();
 			}
 		}));
-		NHotkeyManager.Instance.RemoveHotkeyPressedBinding(MegaInput.right, NextChapter);
-		NHotkeyManager.Instance.RemoveHotkeyPressedBinding(MegaInput.left, PrevChapter);
+		_nextChapterButton.Disable();
+		_prevChapterButton.Disable();
 	}
 
 	/// <summary>
@@ -323,7 +322,7 @@ public partial class NEpochInspectScreen : NClickableControl, IScreenContext
 		epoch.QueueUnlocks();
 		SaveManager.Instance.SaveProgressFile();
 		_unlockInfo.HideImmediately();
-		_closeLabel.SetTextAutoSize(new LocString("timeline", "EPOCH_INSPECT.continueButton").GetRawText());
+		_closeButton.SetLabel(new LocString("timeline", "EPOCH_INSPECT.continueButton").GetRawText());
 		_fancyText.VisibleRatio = 0f;
 		_fancyText.Modulate = StsColors.transparentWhite;
 		_portraitHsv.SetShaderParameter(_s, 0f);
@@ -373,7 +372,7 @@ public partial class NEpochInspectScreen : NClickableControl, IScreenContext
 
 	public override void _Input(InputEvent inputEvent)
 	{
-		if (inputEvent.IsActionPressed(MegaInput.select) || inputEvent.IsActionPressed(MegaInput.accept))
+		if (inputEvent.IsActionPressed(MegaInput.select) || inputEvent.IsActionPressed(MegaInput.confirm))
 		{
 			SpeedUpTextAnimation();
 		}
@@ -414,21 +413,19 @@ public partial class NEpochInspectScreen : NClickableControl, IScreenContext
 			_prevChapterEpoch = StoryModel.PrevChapter(_epoch);
 			if (_nextChapterEpoch != null)
 			{
-				NHotkeyManager.Instance.PushHotkeyPressedBinding(MegaInput.right, NextChapter);
-				_nextChapterButton.Visible = true;
+				_nextChapterButton.Enable();
 			}
 			else
 			{
-				_nextChapterButton.Visible = false;
+				_nextChapterButton.Disable();
 			}
 			if (_prevChapterEpoch != null)
 			{
-				NHotkeyManager.Instance.PushHotkeyPressedBinding(MegaInput.left, PrevChapter);
-				_prevChapterButton.Visible = true;
+				_prevChapterButton.Enable();
 			}
 			else
 			{
-				_prevChapterButton.Visible = false;
+				_prevChapterButton.Disable();
 			}
 		}
 	}

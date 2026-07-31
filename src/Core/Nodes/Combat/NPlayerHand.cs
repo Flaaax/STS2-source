@@ -785,7 +785,7 @@ public partial class NPlayerHand : Control
 		_holdersAwaitingQueue.Add(holder);
 		holder.Reparent(this);
 		holder.BeginDrag();
-		_currentCardPlay = (NControllerManager.Instance.IsUsingController ? ((NCardPlay)NControllerCardPlay.Create(holder)) : ((NCardPlay)NMouseCardPlay.Create(holder, _selectCardShortcuts[_draggedHolderIndex], startedViaShortcut)));
+		_currentCardPlay = (NControllerManager.Instance.IsUsingDirectionalNavigation ? ((NCardPlay)NControllerCardPlay.Create(holder)) : ((NCardPlay)NMouseCardPlay.Create(holder, _selectCardShortcuts[_draggedHolderIndex], startedViaShortcut)));
 		this.AddChildSafely(_currentCardPlay);
 		_currentCardPlay.Connect(NCardPlay.SignalName.Finished, Callable.From(delegate(bool success)
 		{
@@ -1056,7 +1056,7 @@ public partial class NPlayerHand : Control
 
 	public override void _UnhandledInput(InputEvent input)
 	{
-		if (NControllerManager.Instance.IsUsingController || !ActiveScreenContext.Instance.IsCurrent(NCombatRoom.Instance) || CombatManager.Instance.IsOverOrEnding)
+		if (NControllerManager.Instance.InputType == InputType.Controller || !ActiveScreenContext.Instance.IsCurrent(NCombatRoom.Instance) || CombatManager.Instance.IsOverOrEnding)
 		{
 			return;
 		}

@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=3 uid="uid://dws30qiqcim2u"]
+[gd_scene load_steps=86 format=3 uid="uid://dws30qiqcim2u"]
 
 [ext_resource type="Script" uid="uid://cdkdoakbh3b80" path="res://src/Core/Nodes/Screens/Settings/NSettingsScreen.cs" id="1_1pf55"]
 [ext_resource type="Script" uid="uid://cv2mvg7qmvhjt" path="res://src/Core/Nodes/GodotExtensions/NScrollableContainer.cs" id="2_4vgu4"]
@@ -57,7 +57,6 @@
 [ext_resource type="Script" uid="uid://tmqmb5h7n48r" path="res://src/Core/Nodes/Screens/Settings/NTextEffectsTickbox.cs" id="29_7w2t8"]
 [ext_resource type="Script" uid="uid://dbwh7kot7y1oa" path="res://src/Core/Nodes/Screens/Settings/NWindowResizeHoverTip.cs" id="30_6m7f6"]
 [ext_resource type="Script" uid="uid://dm6oqwffo8wox" path="res://src/Core/Nodes/Screens/Settings/NWindowResizeTickbox.cs" id="31_0lq70"]
-[ext_resource type="Script" uid="uid://b37icocjlkljb" path="res://src/Core/Nodes/Screens/Settings/NResetToDefaultControlsButton.cs" id="31_00ok6"]
 [ext_resource type="Script" uid="uid://boi012ocjdog0" path="res://src/Core/Nodes/Screens/Settings/NMsaaHoverTip.cs" id="34_6qnjx"]
 [ext_resource type="PackedScene" uid="uid://dj5xpv1lhwyd6" path="res://scenes/screens/settings_slider.tscn" id="34_u07sr"]
 [ext_resource type="Script" uid="uid://cawmlaankmelr" path="res://src/Core/Nodes/Screens/Settings/NMsaaPaginator.cs" id="34_x2scs"]
@@ -70,14 +69,14 @@
 [ext_resource type="Script" uid="uid://bkos28m4cxhvi" path="res://src/Core/Nodes/Screens/Settings/NBackgroundModeTickbox.cs" id="48_54lmw"]
 [ext_resource type="Script" uid="uid://cg308n8riuuch" path="res://src/Core/Nodes/Screens/Settings/NBackgroundModeHoverTip.cs" id="49_in1wt"]
 [ext_resource type="Script" uid="uid://n4ovm4nwu41i" path="res://src/Core/Nodes/Screens/Settings/NResetGraphicsButton.cs" id="51_0kcov"]
-[ext_resource type="Script" uid="uid://brygj0nhhmir2" path="res://src/Core/Nodes/Screens/Settings/NInputSettingsPanel.cs" id="56_627h1"]
 [ext_resource type="Texture2D" uid="uid://bxngoh7qrw8fa" path="res://images/ui/tiny_nine_patch.png" id="58_6qnjx"]
 [ext_resource type="Script" uid="uid://c0i0cmw4hl6n4" path="res://src/Core/Nodes/Screens/Settings/NSettingsToast.cs" id="59_6qnjx"]
 [ext_resource type="PackedScene" uid="uid://cjt0wu4meosli" path="res://scenes/ui/language_dropdown_item.tscn" id="60_lang_dropdown"]
 [ext_resource type="PackedScene" uid="uid://vytj1jn3yq0k" path="res://scenes/ui/display_dropdown_item.tscn" id="61_display_dropdown"]
 [ext_resource type="PackedScene" uid="uid://be1g7medufysw" path="res://scenes/ui/resolution_dropdown_item.tscn" id="62_resolution_dropdown"]
-[ext_resource type="Texture2D" uid="uid://b5x513mavmk5v" path="res://images/ui/placeholder_controller_icon.png" id="63_j50rd"]
+[ext_resource type="PackedScene" uid="uid://d06sfbomow0sm" path="res://scenes/screens/settings_input_screen.tscn" id="69_ptj7f"]
 [ext_resource type="FontFile" uid="uid://clypo64htko7l" path="res://fonts/kreon_regular.ttf" id="70_7w2t8"]
+[ext_resource type="PackedScene" uid="uid://ddb8daodx7qsl" path="res://scenes/ui/hotkey_icon.tscn" id="73_t7mgu"]
 
 [sub_resource type="Gradient" id="Gradient_ncxk2"]
 offsets = PackedFloat32Array(0, 0.0364078, 0.805825, 0.834951)
@@ -176,6 +175,7 @@ mouse_filter = 2
 
 [node name="GeneralSettings" type="Control" parent="ScrollContainer/Mask/Clipper"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -212,11 +212,11 @@ layout_mode = 2
 theme = ExtResource("6_s3c6d")
 theme_override_fonts/normal_font = ExtResource("10_cs3al")
 theme_override_fonts/bold_font = ExtResource("5_b5ao4")
-theme_override_font_sizes/normal_font_size = 28
-theme_override_font_sizes/bold_font_size = 28
-theme_override_font_sizes/bold_italics_font_size = 28
-theme_override_font_sizes/italics_font_size = 28
-theme_override_font_sizes/mono_font_size = 28
+theme_override_font_sizes/normal_font_size = 17
+theme_override_font_sizes/bold_font_size = 17
+theme_override_font_sizes/bold_italics_font_size = 17
+theme_override_font_sizes/italics_font_size = 17
+theme_override_font_sizes/mono_font_size = 17
 bbcode_enabled = true
 text = "Language"
 vertical_alignment = 1
@@ -257,11 +257,11 @@ mouse_filter = 2
 theme = ExtResource("6_s3c6d")
 theme_override_fonts/normal_font = ExtResource("10_cs3al")
 theme_override_fonts/bold_font = ExtResource("5_b5ao4")
-theme_override_font_sizes/normal_font_size = 28
-theme_override_font_sizes/bold_font_size = 28
-theme_override_font_sizes/bold_italics_font_size = 28
-theme_override_font_sizes/italics_font_size = 28
-theme_override_font_sizes/mono_font_size = 28
+theme_override_font_sizes/normal_font_size = 17
+theme_override_font_sizes/bold_font_size = 17
+theme_override_font_sizes/bold_italics_font_size = 17
+theme_override_font_sizes/italics_font_size = 17
+theme_override_font_sizes/mono_font_size = 17
 bbcode_enabled = true
 text = "Screenshake"
 vertical_alignment = 1
@@ -298,11 +298,11 @@ mouse_filter = 2
 theme = ExtResource("6_s3c6d")
 theme_override_fonts/normal_font = ExtResource("10_cs3al")
 theme_override_fonts/bold_font = ExtResource("5_b5ao4")
-theme_override_font_sizes/normal_font_size = 28
-theme_override_font_sizes/bold_font_size = 28
-theme_override_font_sizes/bold_italics_font_size = 28
-theme_override_font_sizes/italics_font_size = 28
-theme_override_font_sizes/mono_font_size = 28
+theme_override_font_sizes/normal_font_size = 17
+theme_override_font_sizes/bold_font_size = 17
+theme_override_font_sizes/bold_italics_font_size = 17
+theme_override_font_sizes/italics_font_size = 17
+theme_override_font_sizes/mono_font_size = 17
 bbcode_enabled = true
 text = "Fast Mode"
 vertical_alignment = 1
@@ -339,11 +339,11 @@ mouse_filter = 2
 theme = ExtResource("6_s3c6d")
 theme_override_fonts/normal_font = ExtResource("10_cs3al")
 theme_override_fonts/bold_font = ExtResource("5_b5ao4")
-theme_override_font_sizes/normal_font_size = 28
-theme_override_font_sizes/bold_font_size = 28
-theme_override_font_sizes/bold_italics_font_size = 28
-theme_override_font_sizes/italics_font_size = 28
-theme_override_font_sizes/mono_font_size = 28
+theme_override_font_sizes/normal_font_size = 17
+theme_override_font_sizes/bold_font_size = 17
+theme_override_font_sizes/bold_italics_font_size = 17
+theme_override_font_sizes/italics_font_size = 17
+theme_override_font_sizes/mono_font_size = 17
 bbcode_enabled = true
 text = "Phobia Mode"
 vertical_alignment = 1
@@ -423,11 +423,11 @@ mouse_filter = 2
 theme = ExtResource("6_s3c6d")
 theme_override_fonts/normal_font = ExtResource("10_cs3al")
 theme_override_fonts/bold_font = ExtResource("5_b5ao4")
-theme_override_font_sizes/normal_font_size = 28
-theme_override_font_sizes/bold_font_size = 28
-theme_override_font_sizes/bold_italics_font_size = 28
-theme_override_font_sizes/italics_font_size = 28
-theme_override_font_sizes/mono_font_size = 28
+theme_override_font_sizes/normal_font_size = 17
+theme_override_font_sizes/bold_font_size = 17
+theme_override_font_sizes/bold_italics_font_size = 17
+theme_override_font_sizes/italics_font_size = 17
+theme_override_font_sizes/mono_font_size = 17
 bbcode_enabled = true
 text = "Show Run Timer"
 vertical_alignment = 1
@@ -464,11 +464,11 @@ mouse_filter = 2
 theme = ExtResource("6_s3c6d")
 theme_override_fonts/normal_font = ExtResource("10_cs3al")
 theme_override_fonts/bold_font = ExtResource("5_b5ao4")
-theme_override_font_sizes/normal_font_size = 28
-theme_override_font_sizes/bold_font_size = 28
-theme_override_font_sizes/bold_italics_font_size = 28
-theme_override_font_sizes/italics_font_size = 28
-theme_override_font_sizes/mono_font_size = 28
+theme_override_font_sizes/normal_font_size = 17
+theme_override_font_sizes/bold_font_size = 17
+theme_override_font_sizes/bold_italics_font_size = 17
+theme_override_font_sizes/italics_font_size = 17
+theme_override_font_sizes/mono_font_size = 17
 bbcode_enabled = true
 text = "Show Hand Card Count"
 vertical_alignment = 1
@@ -505,11 +505,11 @@ mouse_filter = 2
 theme = ExtResource("6_s3c6d")
 theme_override_fonts/normal_font = ExtResource("10_cs3al")
 theme_override_fonts/bold_font = ExtResource("5_b5ao4")
-theme_override_font_sizes/normal_font_size = 28
-theme_override_font_sizes/bold_font_size = 28
-theme_override_font_sizes/bold_italics_font_size = 28
-theme_override_font_sizes/italics_font_size = 28
-theme_override_font_sizes/mono_font_size = 28
+theme_override_font_sizes/normal_font_size = 17
+theme_override_font_sizes/bold_font_size = 17
+theme_override_font_sizes/bold_italics_font_size = 17
+theme_override_font_sizes/italics_font_size = 17
+theme_override_font_sizes/mono_font_size = 17
 bbcode_enabled = true
 text = "SHOW_MP_DRAWINGS"
 vertical_alignment = 1
@@ -546,11 +546,11 @@ mouse_filter = 2
 theme = ExtResource("6_s3c6d")
 theme_override_fonts/normal_font = ExtResource("10_cs3al")
 theme_override_fonts/bold_font = ExtResource("5_b5ao4")
-theme_override_font_sizes/normal_font_size = 28
-theme_override_font_sizes/bold_font_size = 28
-theme_override_font_sizes/bold_italics_font_size = 28
-theme_override_font_sizes/italics_font_size = 28
-theme_override_font_sizes/mono_font_size = 28
+theme_override_font_sizes/normal_font_size = 17
+theme_override_font_sizes/bold_font_size = 17
+theme_override_font_sizes/bold_italics_font_size = 17
+theme_override_font_sizes/italics_font_size = 17
+theme_override_font_sizes/mono_font_size = 17
 bbcode_enabled = true
 text = "Long Press Confirmations"
 vertical_alignment = 1
@@ -587,11 +587,11 @@ mouse_filter = 2
 theme = ExtResource("6_s3c6d")
 theme_override_fonts/normal_font = ExtResource("10_cs3al")
 theme_override_fonts/bold_font = ExtResource("5_b5ao4")
-theme_override_font_sizes/normal_font_size = 28
-theme_override_font_sizes/bold_font_size = 28
-theme_override_font_sizes/bold_italics_font_size = 28
-theme_override_font_sizes/italics_font_size = 28
-theme_override_font_sizes/mono_font_size = 28
+theme_override_font_sizes/normal_font_size = 17
+theme_override_font_sizes/bold_font_size = 17
+theme_override_font_sizes/bold_italics_font_size = 17
+theme_override_font_sizes/italics_font_size = 17
+theme_override_font_sizes/mono_font_size = 17
 bbcode_enabled = true
 text = "Skip Intro Logo"
 vertical_alignment = 1
@@ -628,11 +628,11 @@ mouse_filter = 2
 theme = ExtResource("6_s3c6d")
 theme_override_fonts/normal_font = ExtResource("10_cs3al")
 theme_override_fonts/bold_font = ExtResource("5_b5ao4")
-theme_override_font_sizes/normal_font_size = 28
-theme_override_font_sizes/bold_font_size = 28
-theme_override_font_sizes/bold_italics_font_size = 28
-theme_override_font_sizes/italics_font_size = 28
-theme_override_font_sizes/mono_font_size = 28
+theme_override_font_sizes/normal_font_size = 17
+theme_override_font_sizes/bold_font_size = 17
+theme_override_font_sizes/bold_italics_font_size = 17
+theme_override_font_sizes/italics_font_size = 17
+theme_override_font_sizes/mono_font_size = 17
 bbcode_enabled = true
 text = "Limit FPS in Background"
 vertical_alignment = 1
@@ -669,11 +669,11 @@ mouse_filter = 2
 theme = ExtResource("6_s3c6d")
 theme_override_fonts/normal_font = ExtResource("10_cs3al")
 theme_override_fonts/bold_font = ExtResource("5_b5ao4")
-theme_override_font_sizes/normal_font_size = 28
-theme_override_font_sizes/bold_font_size = 28
-theme_override_font_sizes/bold_italics_font_size = 28
-theme_override_font_sizes/italics_font_size = 28
-theme_override_font_sizes/mono_font_size = 28
+theme_override_font_sizes/normal_font_size = 17
+theme_override_font_sizes/bold_font_size = 17
+theme_override_font_sizes/bold_italics_font_size = 17
+theme_override_font_sizes/italics_font_size = 17
+theme_override_font_sizes/mono_font_size = 17
 bbcode_enabled = true
 text = "Upload Gameplay Data"
 vertical_alignment = 1
@@ -710,11 +710,11 @@ mouse_filter = 2
 theme = ExtResource("6_s3c6d")
 theme_override_fonts/normal_font = ExtResource("10_cs3al")
 theme_override_fonts/bold_font = ExtResource("5_b5ao4")
-theme_override_font_sizes/normal_font_size = 28
-theme_override_font_sizes/bold_font_size = 28
-theme_override_font_sizes/bold_italics_font_size = 28
-theme_override_font_sizes/italics_font_size = 28
-theme_override_font_sizes/mono_font_size = 28
+theme_override_font_sizes/normal_font_size = 17
+theme_override_font_sizes/bold_font_size = 17
+theme_override_font_sizes/bold_italics_font_size = 17
+theme_override_font_sizes/italics_font_size = 17
+theme_override_font_sizes/mono_font_size = 17
 bbcode_enabled = true
 text = "Text Effects"
 vertical_alignment = 1
@@ -750,11 +750,11 @@ layout_mode = 2
 theme = ExtResource("6_s3c6d")
 theme_override_fonts/normal_font = ExtResource("10_cs3al")
 theme_override_fonts/bold_font = ExtResource("5_b5ao4")
-theme_override_font_sizes/normal_font_size = 28
-theme_override_font_sizes/bold_font_size = 28
-theme_override_font_sizes/bold_italics_font_size = 28
-theme_override_font_sizes/italics_font_size = 28
-theme_override_font_sizes/mono_font_size = 28
+theme_override_font_sizes/normal_font_size = 17
+theme_override_font_sizes/bold_font_size = 17
+theme_override_font_sizes/bold_italics_font_size = 17
+theme_override_font_sizes/italics_font_size = 17
+theme_override_font_sizes/mono_font_size = 17
 bbcode_enabled = true
 text = "Send Feedback"
 vertical_alignment = 1
@@ -945,11 +945,11 @@ mouse_filter = 2
 theme = ExtResource("6_s3c6d")
 theme_override_fonts/normal_font = ExtResource("10_cs3al")
 theme_override_fonts/bold_font = ExtResource("5_b5ao4")
-theme_override_font_sizes/normal_font_size = 28
-theme_override_font_sizes/bold_font_size = 28
-theme_override_font_sizes/bold_italics_font_size = 28
-theme_override_font_sizes/italics_font_size = 28
-theme_override_font_sizes/mono_font_size = 28
+theme_override_font_sizes/normal_font_size = 17
+theme_override_font_sizes/bold_font_size = 17
+theme_override_font_sizes/bold_italics_font_size = 17
+theme_override_font_sizes/italics_font_size = 17
+theme_override_font_sizes/mono_font_size = 17
 bbcode_enabled = true
 text = "View Credits"
 vertical_alignment = 1
@@ -1139,11 +1139,11 @@ layout_mode = 2
 theme = ExtResource("6_s3c6d")
 theme_override_fonts/normal_font = ExtResource("10_cs3al")
 theme_override_fonts/bold_font = ExtResource("5_b5ao4")
-theme_override_font_sizes/normal_font_size = 28
-theme_override_font_sizes/bold_font_size = 28
-theme_override_font_sizes/bold_italics_font_size = 28
-theme_override_font_sizes/italics_font_size = 28
-theme_override_font_sizes/mono_font_size = 28
+theme_override_font_sizes/normal_font_size = 17
+theme_override_font_sizes/bold_font_size = 17
+theme_override_font_sizes/bold_italics_font_size = 17
+theme_override_font_sizes/italics_font_size = 17
+theme_override_font_sizes/mono_font_size = 17
 bbcode_enabled = true
 text = "Reset to Default"
 vertical_alignment = 1
@@ -1928,197 +1928,21 @@ focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath(".")
 script = ExtResource("47_6qnjx")
 
-[node name="InputSettings" type="Control" parent="ScrollContainer/Mask/Clipper"]
+[node name="InputSettings" parent="ScrollContainer/Mask/Clipper" instance=ExtResource("69_ptj7f")]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -506.0
-offset_top = 24.0
-offset_right = 506.0
-offset_bottom = 358.0
-grow_horizontal = 2
-script = ExtResource("56_627h1")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/Mask/Clipper/InputSettings"]
-custom_minimum_size = Vector2(1012, 0)
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 64.0
-grow_horizontal = 2
-mouse_filter = 2
-theme_override_constants/separation = 16
-
-[node name="Padding" type="Control" parent="ScrollContainer/Mask/Clipper/InputSettings/VBoxContainer"]
-custom_minimum_size = Vector2(0, 25)
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/Mask/Clipper/InputSettings/VBoxContainer"]
-layout_mode = 2
-alignment = 2
-
-[node name="SteamInputPrompt" type="RichTextLabel" parent="ScrollContainer/Mask/Clipper/InputSettings/VBoxContainer/HBoxContainer"]
-unique_name_in_owner = true
-clip_contents = false
-custom_minimum_size = Vector2(300, 50)
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-theme = ExtResource("6_s3c6d")
-theme_override_colors/default_color = Color(0.49803922, 1, 0, 1)
-theme_override_fonts/normal_font = ExtResource("10_cs3al")
-theme_override_fonts/bold_font = ExtResource("5_b5ao4")
-theme_override_font_sizes/normal_font_size = 22
-theme_override_font_sizes/bold_font_size = 22
-theme_override_font_sizes/bold_italics_font_size = 22
-theme_override_font_sizes/italics_font_size = 22
-theme_override_font_sizes/mono_font_size = 22
-bbcode_enabled = true
-text = "Steam Input Detected. Disable Controller Remapping"
-fit_content = true
-scroll_active = false
-vertical_alignment = 1
-script = ExtResource("9_phm87")
-AutoSizeEnabled = false
-MinFontSize = 28
-MaxFontSize = 28
-IsVerticallyBound = false
-IsHorizontallyBound = true
-
-[node name="ResetToDefaultButton" type="MarginContainer" parent="ScrollContainer/Mask/Clipper/InputSettings/VBoxContainer/HBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-size_flags_horizontal = 10
-focus_mode = 2
-script = ExtResource("31_00ok6")
-
-[node name="Image" type="ColorRect" parent="ScrollContainer/Mask/Clipper/InputSettings/VBoxContainer/HBoxContainer/ResetToDefaultButton"]
-layout_mode = 2
-mouse_filter = 2
-color = Color(0.23591956, 0.52728134, 0.53395134, 1)
-
-[node name="Label" type="RichTextLabel" parent="ScrollContainer/Mask/Clipper/InputSettings/VBoxContainer/HBoxContainer/ResetToDefaultButton"]
-clip_contents = false
-custom_minimum_size = Vector2(300, 50)
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-theme = ExtResource("6_s3c6d")
-theme_override_fonts/normal_font = ExtResource("10_cs3al")
-theme_override_fonts/bold_font = ExtResource("5_b5ao4")
-theme_override_font_sizes/normal_font_size = 28
-theme_override_font_sizes/bold_font_size = 28
-theme_override_font_sizes/bold_italics_font_size = 28
-theme_override_font_sizes/italics_font_size = 28
-theme_override_font_sizes/mono_font_size = 28
-bbcode_enabled = true
-text = "Reset to Default"
-scroll_active = false
-autowrap_mode = 0
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("9_phm87")
-MinFontSize = 28
-MaxFontSize = 28
-IsVerticallyBound = false
-IsHorizontallyBound = true
-
-[node name="SelectionReticle" parent="ScrollContainer/Mask/Clipper/InputSettings/VBoxContainer/HBoxContainer/ResetToDefaultButton" instance=ExtResource("36_36woj")]
-layout_mode = 2
-
-[node name="Header" type="HBoxContainer" parent="ScrollContainer/Mask/Clipper/InputSettings/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 30
-
-[node name="CommandHeader" type="RichTextLabel" parent="ScrollContainer/Mask/Clipper/InputSettings/VBoxContainer/Header"]
-unique_name_in_owner = true
-clip_contents = false
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-theme = ExtResource("6_s3c6d")
-theme_override_fonts/normal_font = ExtResource("10_cs3al")
-theme_override_fonts/bold_font = ExtResource("5_b5ao4")
-theme_override_font_sizes/normal_font_size = 28
-theme_override_font_sizes/bold_font_size = 28
-theme_override_font_sizes/bold_italics_font_size = 28
-theme_override_font_sizes/italics_font_size = 28
-theme_override_font_sizes/mono_font_size = 28
-bbcode_enabled = true
-text = "[b]Commands"
-fit_content = true
-scroll_active = false
-vertical_alignment = 1
-script = ExtResource("9_phm87")
-AutoSizeEnabled = false
-MinFontSize = 28
-MaxFontSize = 28
-IsHorizontallyBound = true
-
-[node name="KeyboardHeader" type="RichTextLabel" parent="ScrollContainer/Mask/Clipper/InputSettings/VBoxContainer/Header"]
-unique_name_in_owner = true
-clip_contents = false
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-theme = ExtResource("6_s3c6d")
-theme_override_fonts/normal_font = ExtResource("10_cs3al")
-theme_override_fonts/bold_font = ExtResource("5_b5ao4")
-theme_override_font_sizes/normal_font_size = 28
-theme_override_font_sizes/bold_font_size = 28
-theme_override_font_sizes/bold_italics_font_size = 28
-theme_override_font_sizes/italics_font_size = 28
-theme_override_font_sizes/mono_font_size = 28
-bbcode_enabled = true
-text = "[b]Keyboard"
-fit_content = true
-scroll_active = false
-vertical_alignment = 1
-script = ExtResource("9_phm87")
-AutoSizeEnabled = false
-MinFontSize = 28
-MaxFontSize = 28
-IsHorizontallyBound = true
-
-[node name="ControllerHeader" type="RichTextLabel" parent="ScrollContainer/Mask/Clipper/InputSettings/VBoxContainer/Header"]
-unique_name_in_owner = true
-clip_contents = false
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-theme = ExtResource("6_s3c6d")
-theme_override_fonts/normal_font = ExtResource("10_cs3al")
-theme_override_fonts/bold_font = ExtResource("5_b5ao4")
-theme_override_font_sizes/normal_font_size = 28
-theme_override_font_sizes/bold_font_size = 28
-theme_override_font_sizes/bold_italics_font_size = 28
-theme_override_font_sizes/italics_font_size = 28
-theme_override_font_sizes/mono_font_size = 28
-bbcode_enabled = true
-text = "[b]Controller"
-fit_content = true
-scroll_active = false
-vertical_alignment = 1
-script = ExtResource("9_phm87")
-AutoSizeEnabled = false
-MinFontSize = 28
-MaxFontSize = 28
-IsHorizontallyBound = true
 
 [node name="Scrollbar" parent="ScrollContainer" instance=ExtResource("4_5hj6t")]
-visible = false
+custom_minimum_size = Vector2(48, 0)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.79375
-anchor_top = 0.187037
-anchor_right = 0.818312
+anchor_left = 0.5
+anchor_top = 0.187
+anchor_right = 0.5
 anchor_bottom = 0.947037
-offset_top = -1.52588e-05
-offset_right = 0.839844
+offset_left = 643.9988
+offset_top = 0.03994751
+offset_right = 691.9989
 offset_bottom = -0.800049
 grow_horizontal = 0
 grow_vertical = 2
@@ -2139,19 +1963,20 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -586.0
-offset_top = 102.0
-offset_right = 586.0
-offset_bottom = 192.0
+offset_left = -622.0
+offset_top = 72.0
+offset_right = 622.0
+offset_bottom = 162.0
 grow_horizontal = 2
 mouse_filter = 2
 alignment = 1
 script = ExtResource("2_pxuoj")
 
-[node name="LeftTriggerIcon" type="TextureRect" parent="SettingsTabManager"]
+[node name="LeftTabIcon" parent="SettingsTabManager" instance=ExtResource("73_t7mgu")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 48)
 layout_mode = 2
-texture = ExtResource("63_j50rd")
-stretch_mode = 5
+size_flags_stretch_ratio = 0.0
 
 [node name="General" parent="SettingsTabManager" instance=ExtResource("3_3nkkg")]
 layout_mode = 2
@@ -2183,10 +2008,11 @@ material = SubResource("ShaderMaterial_mdi6b")
 [node name="Label" parent="SettingsTabManager/Input" index="2"]
 text = "Input"
 
-[node name="RightTriggerIcon" type="TextureRect" parent="SettingsTabManager"]
+[node name="RightTabIcon" parent="SettingsTabManager" instance=ExtResource("73_t7mgu")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 48)
 layout_mode = 2
-texture = ExtResource("63_j50rd")
-stretch_mode = 5
+size_flags_stretch_ratio = 0.0
 
 [node name="BackButton" parent="." instance=ExtResource("11_f50ja")]
 layout_mode = 1

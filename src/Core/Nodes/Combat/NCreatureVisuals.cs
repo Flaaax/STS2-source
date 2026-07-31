@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Godot;
@@ -6,6 +7,7 @@ using MegaCrit.Sts2.Core.Bindings.MegaSpine;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.GodotExtensions;
+using MegaCrit.Sts2.Core.Nodes.Vfx.Forms;
 using MegaCrit.Sts2.Core.Saves;
 
 namespace MegaCrit.Sts2.Core.Nodes.Combat;
@@ -23,6 +25,12 @@ public partial class NCreatureVisuals : Node2D
 	private Node2D _body;
 
 	private Node2D? _phobiaModeBody;
+
+	/// <summary>
+	/// Control to hold Form Card Vfx for characters (ie Demon Form, Void Form, Serpent Form)
+	/// We do this so we can easily track what form vfx we have and destroy old ones as we apply new ones
+	/// </summary>
+	public Control? _formVfxHolder;
 
 	private float _hue = 1f;
 
@@ -69,6 +77,8 @@ public partial class NCreatureVisuals : Node2D
 
 	public float DefaultScale { get; set; } = 1f;
 
+	public Node2D Body => _body;
+
 	public Node2D GetCurrentBody()
 	{
 		Node2D phobiaModeBody = _phobiaModeBody;
@@ -83,6 +93,7 @@ public partial class NCreatureVisuals : Node2D
 	{
 		_body = GetNode<Node2D>("%Visuals");
 		_phobiaModeBody = GetNodeOrNull<Node2D>("%PhobiaModeVisuals");
+		_formVfxHolder = GetNodeOrNull<Control>("%FormVfx");
 		Bounds = GetNode<Control>("%Bounds");
 		IntentPosition = GetNode<Marker2D>("%IntentPos");
 		VfxSpawnPosition = GetNode<Marker2D>("%CenterPos");
@@ -99,6 +110,26 @@ public partial class NCreatureVisuals : Node2D
 		}
 		_savedNormalMaterial = null;
 		_currentLiquidOverlayMaterial = null;
+	}
+
+	public void AddFormVfx(NFormVfx formVfx)
+	{
+		if (_formVfxHolder == null)
+		{
+			throw new InvalidOperationException("This creature has no form holder to put this form vfx");
+		}
+		_formVfxHolder.FreeChildren();
+		_formVfxHolder.AddChildSafely(formVfx);
+		formVfx.Position = Vector2.Zero;
+	}
+
+	public void RemoveFormVfx()
+	{
+		if (_formVfxHolder == null)
+		{
+			throw new InvalidOperationException("This creature has no form holder to put this form vfx");
+		}
+		_formVfxHolder.FreeChildren();
 	}
 
 	public override void _EnterTree()

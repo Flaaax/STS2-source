@@ -1,10 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://b075h3ucmd4a1"]
+[gd_scene load_steps=8 format=3 uid="uid://b075h3ucmd4a1"]
 
 [ext_resource type="Texture2D" uid="uid://cyruikkcbbm0f" path="res://images/ui/reward_screen/reward_skip_button.png" id="2_0kr2m"]
 [ext_resource type="FontVariation" uid="uid://ciql5khgewwbm" path="res://themes/kreon_bold_glyph_space_two.tres" id="3_1xgvo"]
 [ext_resource type="Script" uid="uid://dtfio45agppyj" path="res://addons/mega_text/MegaLabel.cs" id="4_2xlto"]
 [ext_resource type="Shader" uid="uid://c66gb6g7tup3n" path="res://shaders/hsv.gdshader" id="5_koanp"]
-[ext_resource type="Texture2D" uid="uid://b5x513mavmk5v" path="res://images/ui/placeholder_controller_icon.png" id="5_rxnq4"]
+[ext_resource type="PackedScene" uid="uid://ddb8daodx7qsl" path="res://scenes/ui/hotkey_icon.tscn" id="6_a3kx8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fsh3r"]
 resource_local_to_scene = true
@@ -14,13 +14,6 @@ shader_parameter/s = 1.0
 shader_parameter/v = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gc2ta"]
-resource_local_to_scene = true
-shader = ExtResource("5_koanp")
-shader_parameter/h = 1.0
-shader_parameter/s = 1.0
-shader_parameter/v = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0f6go"]
 resource_local_to_scene = true
 shader = ExtResource("5_koanp")
 shader_parameter/h = 1.0
@@ -64,7 +57,9 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 36.0
 offset_top = -10.0
+offset_right = -36.0
 offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -81,27 +76,20 @@ text = "Continue"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("4_2xlto")
-MinFontSize = 18
 MaxFontSize = 28
 
-[node name="ControllerIcon" type="TextureRect" parent="."]
+[node name="HotkeyIcon" parent="." instance=ExtResource("6_a3kx8")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_0f6go")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -306.0
-offset_top = -80.0
-offset_right = -66.0
-offset_bottom = 40.0
+offset_left = 87.0
+offset_top = -3.0
+offset_right = 135.0
+offset_bottom = 45.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(256, 128)
-mouse_filter = 2
-texture = ExtResource("5_rxnq4")
-expand_mode = 1
-stretch_mode = 5
+scale = Vector2(0.85, 0.85)

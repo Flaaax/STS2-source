@@ -58,7 +58,7 @@ public partial class NProceedButton : NButton
 
 	public bool IsSkip { get; private set; }
 
-	protected override string[] Hotkeys => new string[1] { MegaInput.accept };
+	protected override string[] Hotkeys => new string[1] { MegaInput.confirm };
 
 	private Vector2 ShowPos => _showPosRatio * _viewport.GetVisibleRect().Size;
 

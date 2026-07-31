@@ -77,7 +77,6 @@ public partial class NShaker : Node
 				Vector2 vector = new Vector2(Mathf.Cos(s), Mathf.Sin(s)).Normalized();
 				_shakePos = vector * num * _strength;
 				_shakeRot = (float)GD.RandRange(0f - _maxRotOffset, _maxRotOffset);
-				SetTargetTransform(_shakePos, _shakeRot);
 			}
 		}
 	}

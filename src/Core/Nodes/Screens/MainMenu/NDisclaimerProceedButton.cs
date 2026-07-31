@@ -14,7 +14,7 @@ public partial class NDisclaimerProceedButton : NButton
 {
 	private Tween? _tween;
 
-	protected override string[] Hotkeys => new string[1] { MegaInput.accept };
+	protected override string[] Hotkeys => new string[1] { MegaInput.confirm };
 
 	public override void _Ready()
 	{

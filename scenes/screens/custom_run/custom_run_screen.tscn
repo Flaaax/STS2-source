@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://d3nw6pgxsxtis"]
+[gd_scene load_steps=21 format=3 uid="uid://d3nw6pgxsxtis"]
 
 [ext_resource type="Script" uid="uid://pjvpmq1gf4uu" path="res://src/Core/Nodes/Screens/CustomRun/NCustomRunScreen.cs" id="1_5nvxv"]
 [ext_resource type="FontVariation" uid="uid://c6wnuvk3exmk5" path="res://themes/kreon_regular_shared.tres" id="2_cbkga"]
@@ -15,8 +15,8 @@
 [ext_resource type="Shader" uid="uid://c66gb6g7tup3n" path="res://shaders/hsv.gdshader" id="13_fnl74"]
 [ext_resource type="PackedScene" uid="uid://iq6wsnph1mun" path="res://scenes/screens/custom_run/modifiers_list.tscn" id="13_ojakw"]
 [ext_resource type="FontVariation" uid="uid://c71uw4aqpsn1b" path="res://themes/spectral_glphy_space_two.tres" id="13_pxqo1"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hotkey_icon.tscn" id="13_xa85u"]
 [ext_resource type="PackedScene" uid="uid://de0uutrlt8i80" path="res://scenes/screens/custom_run/custom_run_randomize_button.tscn" id="14_xa85u"]
-[ext_resource type="Texture2D" uid="uid://b5x513mavmk5v" path="res://images/ui/placeholder_controller_icon.png" id="18_jnqea"]
 [ext_resource type="PackedScene" uid="uid://bl460ab2i4mkx" path="res://scenes/ui/confirm_button.tscn" id="20_6872w"]
 [ext_resource type="PackedScene" uid="uid://bl4mbjqjfffa3" path="res://scenes/ui/back_button.tscn" id="21_b7q7g"]
 
@@ -26,27 +26,6 @@ shader = ExtResource("13_fnl74")
 shader_parameter/h = 1.0
 shader_parameter/s = 1.0
 shader_parameter/v = 0.8
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jnqea"]
-resource_local_to_scene = true
-shader = ExtResource("13_fnl74")
-shader_parameter/h = 1.0
-shader_parameter/s = 1.0
-shader_parameter/v = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qajol"]
-resource_local_to_scene = true
-shader = ExtResource("13_fnl74")
-shader_parameter/h = 1.0
-shader_parameter/s = 1.0
-shader_parameter/v = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_l0vsb"]
-resource_local_to_scene = true
-shader = ExtResource("13_fnl74")
-shader_parameter/h = 1.0
-shader_parameter/s = 1.0
-shader_parameter/v = 1.0
 
 [node name="CustomRunScreen" type="Control"]
 layout_mode = 3
@@ -199,9 +178,6 @@ offset_top = 43.0
 [node name="Background" parent="LeftContainer/RemotePlayerContainer/Container/InviteButtonContainer/InviteButton" index="0"]
 material = SubResource("ShaderMaterial_u783x")
 
-[node name="ControllerIcon" parent="LeftContainer/RemotePlayerContainer/Container/InviteButtonContainer/InviteButton" index="2"]
-material = SubResource("ShaderMaterial_jnqea")
-
 [node name="RightContainer" type="Control" parent="."]
 unique_name_in_owner = true
 layout_mode = 1
@@ -229,6 +205,7 @@ offset_right = -91.0
 offset_bottom = 164.0
 grow_horizontal = 2
 mouse_filter = 2
+theme_override_constants/separation = 89
 
 [node name="ModifiersTitle" type="Label" parent="RightContainer/HBoxContainer"]
 unique_name_in_owner = true
@@ -249,16 +226,15 @@ script = ExtResource("3_wcg36")
 AutoSizeEnabled = false
 metadata/_custom_type_script = "uid://dtfio45agppyj"
 
-[node name="ModifiersHotkeyIcon" type="TextureRect" parent="RightContainer/HBoxContainer"]
+[node name="ModifiersHotkeyIcon" parent="RightContainer/HBoxContainer/ModifiersTitle" instance=ExtResource("13_xa85u")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_qajol")
-custom_minimum_size = Vector2(64, 48)
-layout_mode = 2
-size_flags_vertical = 8
-mouse_filter = 2
-texture = ExtResource("18_jnqea")
-expand_mode = 1
-stretch_mode = 5
+custom_minimum_size = Vector2(79.255, 0)
+layout_mode = 0
+offset_left = 159.0
+offset_top = -5.25
+offset_right = 238.255
+offset_bottom = 45.75
+scale = Vector2(0.75, 0.75)
 
 [node name="CustomRunRandomizeButton" parent="RightContainer/HBoxContainer" instance=ExtResource("14_xa85u")]
 unique_name_in_owner = true
@@ -329,9 +305,6 @@ layout_mode = 1
 
 [node name="Icon" parent="UnreadyButton/Image" index="0"]
 texture = ExtResource("12_wy4ys")
-
-[node name="ControllerIcon" parent="UnreadyButton" index="3"]
-material = SubResource("ShaderMaterial_l0vsb")
 
 [editable path="LeftContainer/RemotePlayerContainer"]
 [editable path="UnreadyButton"]

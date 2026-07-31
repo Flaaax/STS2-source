@@ -370,7 +370,7 @@ public partial class NCreature : Control
 			NTargetManager.Instance.OnNodeHovered(this);
 			return;
 		}
-		if (NControllerManager.Instance.IsUsingController)
+		if (NControllerManager.Instance.IsUsingDirectionalNavigation)
 		{
 			ShowSingleSelectReticle();
 		}
@@ -618,6 +618,7 @@ public partial class NCreature : Control
 			if (Entity.Player != null)
 			{
 				SfxCmd.PlayDeath(Entity.Player);
+				Visuals.RemoveFormVfx();
 			}
 			SetAnimationTrigger("Dead");
 			a = GetCurrentAnimationLength();

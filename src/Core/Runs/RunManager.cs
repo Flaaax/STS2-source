@@ -299,9 +299,14 @@ public class RunManager : IRunLobbyListener
 			throw new InvalidOperationException("State is already set.");
 		}
 		State = state;
-		INetGameService netService = new NetSingleplayerGameService();
-		InitializeShared(netService, new PeerInputSynchronizer(netService), shouldSave, dailyTime, DateTimeOffset.UtcNow.ToUnixTimeSeconds(), 0L, 0L, 0);
-		InitializeRunLobby(netService, state);
+		INetGameService netGameService = new NetSingleplayerGameService();
+		InitializeShared(netGameService, new PeerInputSynchronizer(netGameService), shouldSave, dailyTime, DateTimeOffset.UtcNow.ToUnixTimeSeconds(), 0L, 0L, 0);
+		IEnumerable<RunLobbyPlayer> players = new global::_003C_003Ez__ReadOnlySingleElementList<RunLobbyPlayer>(new RunLobbyPlayer
+		{
+			id = netGameService.NetId,
+			versionInfo = PeerVersionInfo.LocalDefault()
+		});
+		InitializeRunLobby(netGameService, state, players);
 		InitializeNewRun();
 		GenerateRooms();
 	}
@@ -328,7 +333,12 @@ public class RunManager : IRunLobbyListener
 		}
 		State = state;
 		InitializeShared(lobby.NetService, lobby.InputSynchronizer, shouldSave, dailyTime, DateTimeOffset.UtcNow.ToUnixTimeSeconds(), 0L, 0L, 0);
-		InitializeRunLobby(lobby.NetService, state);
+		IEnumerable<RunLobbyPlayer> players = lobby.Players.Select((StartRunLobbyPlayer p) => new RunLobbyPlayer
+		{
+			id = p.id,
+			versionInfo = p.versionInfo
+		});
+		InitializeRunLobby(lobby.NetService, state, players);
 		InitializeNewRun();
 		GenerateRooms();
 	}
@@ -349,9 +359,14 @@ public class RunManager : IRunLobbyListener
 		}
 		State = state;
 		await SaveManager.Instance.IncrementNumReloads(save, NetGameType.Singleplayer);
-		INetGameService netService = new NetSingleplayerGameService();
-		InitializeShared(netService, new PeerInputSynchronizer(netService), shouldSave: true, save.DailyTime, save.StartTime, save.RunTime, save.WinTime, save.NumReloads);
-		InitializeRunLobby(netService, state);
+		INetGameService netGameService = new NetSingleplayerGameService();
+		InitializeShared(netGameService, new PeerInputSynchronizer(netGameService), shouldSave: true, save.DailyTime, save.StartTime, save.RunTime, save.WinTime, save.NumReloads);
+		IEnumerable<RunLobbyPlayer> players = new global::_003C_003Ez__ReadOnlySingleElementList<RunLobbyPlayer>(new RunLobbyPlayer
+		{
+			id = netGameService.NetId,
+			versionInfo = PeerVersionInfo.LocalDefault()
+		});
+		InitializeRunLobby(netGameService, state, players);
 		InitializeSavedRun(save);
 	}
 
@@ -375,7 +390,12 @@ public class RunManager : IRunLobbyListener
 		SerializableRun save = lobby.Run;
 		await SaveManager.Instance.IncrementNumReloads(save, lobby.NetService.Type);
 		InitializeShared(lobby.NetService, lobby.InputSynchronizer, shouldSave: true, save.DailyTime, save.StartTime, save.RunTime, save.WinTime, save.NumReloads);
-		InitializeRunLobby(lobby.NetService, state);
+		IEnumerable<RunLobbyPlayer> players = lobby.Players.Select((LoadRunLobbyPlayer p) => new RunLobbyPlayer
+		{
+			id = p.id,
+			versionInfo = p.versionInfo
+		});
+		InitializeRunLobby(lobby.NetService, state, players);
 		InitializeSavedRun(save);
 	}
 
@@ -400,7 +420,12 @@ public class RunManager : IRunLobbyListener
 		SerializableRun serializableRun = replay.serializableRun;
 		NetReplayGameService netService = new NetReplayGameService(playerIdToLoad);
 		InitializeShared(netService, new PeerInputSynchronizer(netService), shouldSave: true, serializableRun.DailyTime, serializableRun.StartTime, serializableRun.RunTime, serializableRun.WinTime, serializableRun.NumReloads);
-		InitializeRunLobby(netService, state);
+		IEnumerable<RunLobbyPlayer> players = state.Players.Select((Player p) => new RunLobbyPlayer
+		{
+			id = p.NetId,
+			versionInfo = PeerVersionInfo.LocalDefault()
+		});
+		InitializeRunLobby(netService, state, players);
 		InitializeSavedRun(serializableRun);
 	}
 
@@ -426,7 +451,12 @@ public class RunManager : IRunLobbyListener
 		}
 		State = state;
 		InitializeShared(gameService, new PeerInputSynchronizer(gameService), shouldSave, null, DateTimeOffset.UtcNow.ToUnixTimeSeconds(), 0L, 0L, 0);
-		InitializeRunLobby(gameService, state);
+		IEnumerable<RunLobbyPlayer> players = state.Players.Select((Player p) => new RunLobbyPlayer
+		{
+			id = p.NetId,
+			versionInfo = PeerVersionInfo.LocalDefault()
+		});
+		InitializeRunLobby(gameService, state, players);
 		CombatStateSynchronizer.IsDisabled = disableCombatStateSync;
 		InitializeNewRun();
 	}
@@ -473,11 +503,11 @@ public class RunManager : IRunLobbyListener
 		HoveredModelTracker = new HoveredModelTracker(InputSynchronizer, State);
 	}
 
-	private void InitializeRunLobby(INetGameService netService, RunState state)
+	private void InitializeRunLobby(INetGameService netService, RunState state, IEnumerable<RunLobbyPlayer> players)
 	{
 		if (netService.Type.IsMultiplayer())
 		{
-			RunLobby = new RunLobby(state.GameMode, netService, this, state, state.Players.Select((Player p) => p.NetId));
+			RunLobby = new RunLobby(state.GameMode, netService, this, state, players);
 			RunLobby.RemotePlayerDisconnected += RemotePlayerDisconnected;
 		}
 		CombatStateSynchronizer = new CombatStateSynchronizer(NetService, RunLobby, state);
@@ -1288,8 +1318,7 @@ public class RunManager : IRunLobbyListener
 				AbstractRoom currentRoom = State.CurrentRoom;
 				if (currentRoom != null && currentRoom.IsVictoryRoom)
 				{
-					await WinRun();
-					return;
+					throw new InvalidOperationException("EnterNextAct called at victory room! WinRun should be called instead");
 				}
 				await FadeOut();
 				ClearScreens();
@@ -1303,12 +1332,10 @@ public class RunManager : IRunLobbyListener
 		}
 	}
 
-	private async Task WinRun()
+	public async Task WinRun()
 	{
 		if (State != null)
 		{
-			EventRoom eventRoom = (EventRoom)State.CurrentRoom;
-			((TheArchitect)eventRoom.LocalMutableEvent).TriggerVictory();
 			OnEnded(isVictory: true);
 			await GuaranteeKillAllPlayers();
 		}
@@ -1481,7 +1508,9 @@ public class RunManager : IRunLobbyListener
 		await GuaranteeKillAllPlayers();
 		if (NetService.Type == NetGameType.Client)
 		{
-			NErrorPopup nErrorPopup = NErrorPopup.Create(new NetErrorInfo(NetError.HostAbandoned, selfInitiated: false));
+			NetErrorInfo info = new NetErrorInfo(NetError.HostAbandoned, selfInitiated: false);
+			info.SetModdedFlagIfModded(RunLobby);
+			NErrorPopup nErrorPopup = NErrorPopup.Create(info);
 			if (nErrorPopup != null)
 			{
 				NModalContainer.Instance.Add(nErrorPopup);
@@ -1505,12 +1534,24 @@ public class RunManager : IRunLobbyListener
 		}
 	}
 
-	private void StateDiverged(NetFullCombatState state)
+	private void StateDiverged(ulong divergedFrom, NetFullCombatState state)
 	{
-		if (NetService.Type != NetGameType.Replay)
+		if (NetService.Type == NetGameType.Replay)
+		{
+			return;
+		}
+		if (NetService.Type == NetGameType.Client)
 		{
 			Log.Info("Abandoning run and returning to main menu because our state diverged from host's");
 			WriteReplay(stopRecording: false);
+			return;
+		}
+		NetErrorInfo info = new NetErrorInfo(NetError.StateDivergence, selfInitiated: true);
+		info.SetModdedFlagIfModded(RunLobby);
+		NErrorPopup nErrorPopup = NErrorPopup.Create(info);
+		if (nErrorPopup != null)
+		{
+			NModalContainer.Instance?.Add(nErrorPopup);
 		}
 	}
 
@@ -1711,6 +1752,7 @@ public class RunManager : IRunLobbyListener
 
 	public void LocalPlayerDisconnected(NetErrorInfo info)
 	{
+		info.SetModdedFlagIfModded(RunLobby);
 		foreach (Player player in State.Players)
 		{
 			if (!LocalContext.IsMe(player))
@@ -1731,6 +1773,7 @@ public class RunManager : IRunLobbyListener
 
 	private async Task ReturnToMainMenuWithError(NetErrorInfo info)
 	{
+		info.SetModdedFlagIfModded(RunLobby);
 		NCapstoneContainer.Instance?.Close();
 		NMapScreen.Instance?.Close(animateOut: false);
 		if (TestMode.IsOff)

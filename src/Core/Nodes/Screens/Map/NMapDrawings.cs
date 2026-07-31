@@ -79,6 +79,8 @@ public partial class NMapDrawings : Control
 
 	private PeerInputSynchronizer _inputSynchronizer;
 
+	private bool _initialized;
+
 	private PackedScene _lineDrawScene;
 
 	private PackedScene _lineEraseScene;
@@ -117,18 +119,22 @@ public partial class NMapDrawings : Control
 		_netService = netService;
 		_playerCollection = playerCollection;
 		_inputSynchronizer = inputSynchronizer;
+		_initialized = true;
 		_netService.RegisterMessageHandler<MapDrawingMessage>(HandleDrawingMessage);
 		_netService.RegisterMessageHandler<ClearMapDrawingsMessage>(HandleClearMapDrawingsMessage);
 		_netService.RegisterMessageHandler<MapDrawingModeChangedMessage>(HandleMapDrawingModeChangedMessage);
 		inputSynchronizer.ScreenChanged += OnPlayerScreenChanged;
 	}
 
-	public override void _ExitTree()
+	public override void _Notification(int what)
 	{
-		_netService.UnregisterMessageHandler<MapDrawingMessage>(HandleDrawingMessage);
-		_netService.UnregisterMessageHandler<ClearMapDrawingsMessage>(HandleClearMapDrawingsMessage);
-		_netService.UnregisterMessageHandler<MapDrawingModeChangedMessage>(HandleMapDrawingModeChangedMessage);
-		_inputSynchronizer.ScreenChanged -= OnPlayerScreenChanged;
+		if ((long)what == 1 && _initialized)
+		{
+			_netService.UnregisterMessageHandler<MapDrawingMessage>(HandleDrawingMessage);
+			_netService.UnregisterMessageHandler<ClearMapDrawingsMessage>(HandleClearMapDrawingsMessage);
+			_netService.UnregisterMessageHandler<MapDrawingModeChangedMessage>(HandleMapDrawingModeChangedMessage);
+			_inputSynchronizer.ScreenChanged -= OnPlayerScreenChanged;
+		}
 	}
 
 	/// <summary>

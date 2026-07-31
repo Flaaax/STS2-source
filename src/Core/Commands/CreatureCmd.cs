@@ -514,11 +514,12 @@ public static class CreatureCmd
 	/// </summary>
 	private static async Task KillWithoutCheckingWinCondition(Creature creature, bool force, int recursion = 0)
 	{
+		CombatId? killCombatId = CombatManager.Instance.CurrentCombatId;
 		if ((creature.CombatState == null && !creature.IsPlayer) || (creature.CombatState != null && !creature.CombatState.IsLiveCombat()))
 		{
 			return;
 		}
-		if (!CombatManager.Instance.IsInProgress && creature.IsPlayer && creature.Player.RunState.Players.Count > 1 && !(creature.Player.RunState.CurrentRoom?.IsVictoryRoom ?? false))
+		if (!CombatManager.Instance.IsInProgress && creature.IsPlayer && creature.Player.RunState.Players.Count > 1 && !force)
 		{
 			Log.Error($"Player {creature.Player.NetId} has been killed outside of combat in multiplayer! This should not occur");
 			await Heal(creature, 1m);
@@ -583,9 +584,9 @@ public static class CreatureCmd
 					await Kill(player.Osty, force);
 				}
 				player.DeactivateHooks();
-				if (combatState != null && !combatState.Players.All((Player p) => p.Creature.IsDead))
+				if (combatState != null)
 				{
-					await CombatManager.Instance.HandlePlayerDeath(player);
+					await CombatManager.Instance.HandlePlayerDeath(killCombatId, player);
 				}
 			}
 		}

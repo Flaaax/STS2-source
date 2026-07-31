@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://evdsarchoxnx"]
+
+[ext_resource type="Material" uid="uid://bs06eu17kr3pf" path="res://materials/vfx/forms/void/vfx_void_form_spike.tres" id="1_xrix6"]
+[ext_resource type="Script" uid="uid://dnm7b0lqxhpqk" path="res://src/Core/Nodes/Vfx/Utilities/NShaker.cs" id="1_yhkk8"]
+[ext_resource type="Texture2D" uid="uid://6cpwske1580u" path="res://images/vfx/forms/void/form_void_spike.png" id="2_yhkk8"]
+
+[node name="vfx_void_form_spike" type="Node2D"]
+
+[node name="pivot" type="Node2D" parent="."]
+
+[node name="vfx_void_form_spike_gfx" type="Sprite2D" parent="pivot"]
+material = ExtResource("1_xrix6")
+position = Vector2(110, 0)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("2_yhkk8")
+
+[node name="shaker" type="Node" parent="." node_paths=PackedStringArray("_target")]
+script = ExtResource("1_yhkk8")
+_target = NodePath("../pivot")
+_maxPosOffset = 5.0
+_maxRotOffset = 1.25
+_frequency = 0.8
+_strength = 1.0

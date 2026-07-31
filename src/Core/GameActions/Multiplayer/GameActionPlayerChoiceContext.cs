@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.Entities.Multiplayer;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Runs;
+using MegaCrit.Sts2.Core.TestSupport;
 
 namespace MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
@@ -47,7 +48,7 @@ public class GameActionPlayerChoiceContext : PlayerChoiceContext
 
 	public override async Task SignalPlayerChoiceEnded()
 	{
-		if (Action.OwnerId == LocalContext.NetId)
+		if (Action.OwnerId == LocalContext.NetId || TestFlags.ShouldSendResumeForRemotePlayers)
 		{
 			ActionQueueSynchronizer.RequestResumeActionAfterPlayerChoice(Action);
 		}

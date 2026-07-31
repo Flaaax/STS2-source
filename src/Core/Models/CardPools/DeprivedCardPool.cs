@@ -20,7 +20,7 @@ public sealed class DeprivedCardPool : CardPoolModel
 
 	protected override CardModel[] GenerateAllCards()
 	{
-		return new CardModel[12]
+		return new CardModel[13]
 		{
 			MockCard<MockAttackCard>(CardRarity.Common),
 			MockCard<MockAttackCard>(CardRarity.Uncommon),
@@ -33,7 +33,8 @@ public sealed class DeprivedCardPool : CardPoolModel
 			MockCard<MockSkillCard>(CardRarity.Rare),
 			MockCard<MockQuestCard>(CardRarity.Quest),
 			MockCard<MockCurseCard>(CardRarity.Curse),
-			MockCard<MockStatusCard>(CardRarity.Status)
+			MockCard<MockStatusCard>(CardRarity.Status),
+			MockCard<MockTurnEndInHandRecorderCard>(CardRarity.Common)
 		};
 	}
 

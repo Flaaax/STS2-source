@@ -187,14 +187,6 @@ public sealed class TheArchitect : EventModel
 		TaskHelper.RunSafely(PlayCurrentLine());
 	}
 
-	public void TriggerVictory()
-	{
-		if (LocalContext.IsMe(base.Owner))
-		{
-			NCombatRoom.Instance?.SetWaitingForOtherPlayersOverlayVisible(visible: false);
-		}
-	}
-
 	private static string CharKey<T>() where T : CharacterModel
 	{
 		return ModelDb.Character<T>().Id.Entry;
@@ -360,12 +352,9 @@ public sealed class TheArchitect : EventModel
 		{
 			await AnimPlayerAttackIfNecessary(Dialogue.EndAttackers);
 			await AnimArchitectAttackIfNecessary(Dialogue.EndAttackers);
-			if (base.Owner.RunState.Players.Count > 1)
-			{
-				NCombatRoom.Instance?.SetWaitingForOtherPlayersOverlayVisible(visible: true);
-			}
-			RunManager.Instance.ActChangeSynchronizer.SetLocalPlayerReady();
+			await RunManager.Instance.WinRun();
 		}
+		SetEventState(_emptyLocString, Array.Empty<EventOption>());
 	}
 
 	private async Task<bool> AnimPlayerAttackIfNecessary(ArchitectAttackers attackers)

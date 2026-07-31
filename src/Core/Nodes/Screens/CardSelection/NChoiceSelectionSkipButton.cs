@@ -2,7 +2,6 @@ using System.Linq;
 using Godot;
 using MegaCrit.Sts2.addons.mega_text;
 using MegaCrit.Sts2.Core.ControllerInput;
-using MegaCrit.Sts2.Core.Nodes.CommonUi;
 using MegaCrit.Sts2.Core.Nodes.GodotExtensions;
 
 namespace MegaCrit.Sts2.Core.Nodes.Screens.CardSelection;
@@ -55,7 +54,7 @@ public partial class NChoiceSelectionSkipButton : NButton
 		{
 			_label.SetTextAutoSize(_optionName);
 		}
-		_controllerHotkeyIcon.Texture = NInputManager.Instance.GetHotkeyIcon(Hotkeys.First());
+		_hotkeyIcon.UpdateInput(Hotkeys.First());
 	}
 
 	public void AnimateIn()
@@ -72,23 +71,24 @@ public partial class NChoiceSelectionSkipButton : NButton
 	{
 		_currentTween?.Kill();
 		_currentTween = CreateTween().SetParallel();
-		_currentTween.TweenMethod(Callable.From<float>(UpdateShaderParam), _hsvHover, _hsvDown, 0.20000000298023224).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Expo);
-		_currentTween.TweenProperty(this, "scale", _downScale, 0.20000000298023224).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Expo);
+		_currentTween.TweenMethod(Callable.From<float>(UpdateShaderParam), _hsvHover, _hsvDown, 0.25).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Expo);
+		_currentTween.TweenProperty(this, "scale", _downScale, 0.25).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Expo);
 	}
 
 	protected override void OnFocus()
 	{
-		_currentTween?.Kill();
-		base.Scale = _hoverScale;
 		_hsv.SetShaderParameter(_v, _hsvHover);
+		_currentTween?.Kill();
+		_currentTween = CreateTween().SetParallel();
+		_currentTween.TweenProperty(this, "scale", _hoverScale, 0.05);
 	}
 
 	protected override void OnUnfocus()
 	{
 		_currentTween?.Kill();
 		_currentTween = CreateTween().SetParallel();
-		_currentTween.TweenMethod(Callable.From<float>(UpdateShaderParam), _hsv.GetShaderParameter(_v), _hsvDefault, 0.5).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Expo);
-		_currentTween.TweenProperty(this, "scale", _defaultScale, 0.5).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Expo);
+		_currentTween.TweenMethod(Callable.From<float>(UpdateShaderParam), _hsv.GetShaderParameter(_v), _hsvDefault, 0.5).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);
+		_currentTween.TweenProperty(this, "scale", _defaultScale, 0.5).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);
 	}
 
 	private void UpdateShaderParam(float value)

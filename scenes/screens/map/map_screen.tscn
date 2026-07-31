@@ -1,9 +1,9 @@
-[gd_scene load_steps=27 format=3 uid="uid://sm6dqs1oybao"]
+[gd_scene load_steps=30 format=3 uid="uid://sm6dqs1oybao"]
 
 [ext_resource type="Script" uid="uid://bq0yj4xeu85h0" path="res://src/Core/Nodes/Screens/Map/NMapScreen.cs" id="1_se68p"]
 [ext_resource type="Script" uid="uid://dhh64x1cvm7ka" path="res://src/Core/Nodes/Screens/Map/NMapBg.cs" id="3_mc8yn"]
 [ext_resource type="Texture2D" uid="uid://b8ra3w" path="res://images/atlases/ui_atlas.sprites/map/map_legend.tres" id="5_i7oy3"]
-[ext_resource type="Texture2D" uid="uid://b5x513mavmk5v" path="res://images/ui/placeholder_controller_icon.png" id="7_8lavf"]
+[ext_resource type="PackedScene" uid="uid://ddb8daodx7qsl" path="res://scenes/ui/hotkey_icon.tscn" id="6_i7oy3"]
 [ext_resource type="Script" uid="uid://bedja71dpxxef" path="res://src/Core/Nodes/Screens/Map/NMapDrawings.cs" id="7_qa21d"]
 [ext_resource type="Texture2D" uid="uid://lplp03" path="res://images/atlases/ui_atlas.sprites/map/icons/map_unknown.tres" id="9_i7oy3"]
 [ext_resource type="Script" uid="uid://6xk4veb5i7om" path="res://src/Core/Nodes/Screens/Map/NMapMarker.cs" id="10_cf1pj"]
@@ -15,20 +15,23 @@
 [ext_resource type="Texture2D" uid="uid://b4vyq55" path="res://images/atlases/ui_atlas.sprites/map/icons/map_monster.tres" id="13_i7oy3"]
 [ext_resource type="Script" uid="uid://de458ifcpk73n" path="res://src/Core/Nodes/Screens/Map/NMapLegendItem.cs" id="14_cug7j"]
 [ext_resource type="Texture2D" uid="uid://ba4j0gn" path="res://images/atlases/ui_atlas.sprites/map/icons/map_elite.tres" id="14_i7oy3"]
+[ext_resource type="Script" uid="uid://b2pnm6smu7mp4" path="res://src/Core/Nodes/Screens/Map/NMapShareButton.cs" id="19_dd8od"]
 [ext_resource type="Texture2D" uid="uid://cfccyk2wkh1du" path="res://images/packed/map/drawing_quill.png" id="19_vobao"]
 [ext_resource type="PackedScene" uid="uid://bl4mbjqjfffa3" path="res://scenes/ui/back_button.tscn" id="21_1o3d0"]
 [ext_resource type="Texture2D" uid="uid://ce6dwayeevd5j" path="res://images/packed/map/drawing_eraser.png" id="21_vobao"]
 [ext_resource type="Texture2D" uid="uid://bykwcogxoyxd8" path="res://images/packed/map/drawing_clear.png" id="22_82mrn"]
 [ext_resource type="Texture2D" uid="uid://bxngoh7qrw8fa" path="res://images/ui/tiny_nine_patch.png" id="24_i7oy3"]
+[ext_resource type="PackedScene" uid="uid://cga165o6isk0q" path="res://scenes/ui/share_button.tscn" id="25_8lavf"]
+[ext_resource type="Shader" uid="uid://c66gb6g7tup3n" path="res://shaders/hsv.gdshader" id="26_058ps"]
 [ext_resource type="Script" uid="uid://b7q6oq5c6w3k6" path="res://src/Core/Nodes/Screens/Map/NMapDrawButton.cs" id="26_ndqqu"]
-[ext_resource type="Shader" uid="uid://c66gb6g7tup3n" path="res://shaders/hsv.gdshader" id="27_dd8od"]
+[ext_resource type="FontVariation" uid="uid://ciql5khgewwbm" path="res://themes/kreon_bold_glyph_space_two.tres" id="28_dd8od"]
 [ext_resource type="Script" uid="uid://dcfbx8j5qrt5v" path="res://src/Core/Nodes/Screens/Map/NMapEraseButton.cs" id="29_ql270"]
 [ext_resource type="Script" uid="uid://bydoucv4eno1k" path="res://src/Core/Nodes/Screens/Map/NMapClearButton.cs" id="30_q7r3k"]
 [ext_resource type="Material" uid="uid://c4ycqv0gdxvmr" path="res://themes/canvas_item_material_additive_shared.tres" id="shared_additive_mat"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6n8p4"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dd8od"]
 resource_local_to_scene = true
-shader = ExtResource("27_dd8od")
+shader = ExtResource("26_058ps")
 shader_parameter/h = 1.0
 shader_parameter/s = 1.0
 shader_parameter/v = 1.0
@@ -171,26 +174,15 @@ texture = ExtResource("5_i7oy3")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="LegendHotkeyIcon" type="TextureRect" parent="MapLegend"]
-material = SubResource("ShaderMaterial_6n8p4")
+[node name="LegendHotkeyIcon" parent="MapLegend" instance=ExtResource("6_i7oy3")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -287.0
-offset_top = -261.0
-offset_right = -43.0
-offset_bottom = -139.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(256, 128)
-mouse_filter = 2
-texture = ExtResource("7_8lavf")
-expand_mode = 1
-stretch_mode = 5
+offset_left = 49.0
+offset_top = 39.000004
+offset_right = 97.0
+offset_bottom = 87.0
+size_flags_stretch_ratio = 0.0
 
 [node name="Header" type="Label" parent="MapLegend"]
 layout_mode = 1
@@ -549,6 +541,23 @@ patch_margin_top = 12
 patch_margin_right = 12
 patch_margin_bottom = 12
 
+[node name="DrawingToolsHotkey" parent="DrawingTools" instance=ExtResource("6_i7oy3")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -139.00002
+offset_top = -11.0
+offset_right = -91.000015
+offset_bottom = 49.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_stretch_ratio = 0.0
+
 [node name="HBoxContainer" type="HBoxContainer" parent="DrawingTools"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 1
@@ -640,23 +649,48 @@ texture = ExtResource("22_82mrn")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="DrawingToolsHotkey" type="TextureRect" parent="."]
-material = SubResource("ShaderMaterial_6n8p4")
+[node name="ShareButton" parent="." instance=ExtResource("25_8lavf")]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_dd8od")
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -1089.0
-offset_top = 338.0
-offset_right = -845.0
-offset_bottom = 460.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(256, 128)
-mouse_filter = 2
-texture = ExtResource("7_8lavf")
-expand_mode = 1
-stretch_mode = 5
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -220.0
+offset_top = -112.0
+offset_right = -48.0
+offset_bottom = -48.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+script = ExtResource("19_dd8od")
+
+[node name="ShareToast" type="Label" parent="."]
+unique_name_in_owner = true
+modulate = Color(0.5294118, 0.80784315, 0.92156863, 1)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -359.0
+offset_top = -177.0
+offset_right = -49.0
+offset_bottom = -121.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0.132, 0.18060002, 0.24, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("28_dd8od")
+theme_override_font_sizes/font_size = 24
+text = "Screenshot saved!"
+horizontal_alignment = 2
+vertical_alignment = 2
+script = ExtResource("13_e2251")
+AutoSizeEnabled = false
+MaxFontSize = 24
+metadata/_custom_type_script = "uid://dtfio45agppyj"

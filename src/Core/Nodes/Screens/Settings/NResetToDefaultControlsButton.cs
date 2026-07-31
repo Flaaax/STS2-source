@@ -8,13 +8,13 @@ public partial class NResetToDefaultControlsButton : NSettingsButton
 {
 	private Control _image;
 
-	private MegaRichTextLabel _label;
+	private MegaLabel _label;
 
 	public override void _Ready()
 	{
 		ConnectSignals();
 		_image = GetNode<Control>("Image");
-		_label = GetNode<MegaRichTextLabel>("Label");
+		_label = GetNode<MegaLabel>("%ResetLabel");
 		_label.SetTextAutoSize(new LocString("settings_ui", "INPUT_SETTINGS.RESET_TO_DEFAULT").GetFormattedText());
 	}
 }

@@ -10,7 +10,7 @@ namespace MegaCrit.Sts2.Core.Debug;
 public partial class NCombatVfxSpawner : Control
 {
 	[Export(PropertyHint.None, "")]
-	private Node2D _backCombatVfxContainer;
+	private Control _backCombatVfxContainer;
 
 	[Export(PropertyHint.None, "")]
 	private Control _combatVfxContainer;

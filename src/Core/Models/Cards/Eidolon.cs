@@ -10,6 +10,8 @@ namespace MegaCrit.Sts2.Core.Models.Cards;
 
 public sealed class Eidolon : CardModel
 {
+	public override bool CanBeGeneratedInCombat => false;
+
 	public override IEnumerable<CardKeyword> CanonicalKeywords => new global::_003C_003Ez__ReadOnlySingleElementList<CardKeyword>(CardKeyword.Exhaust);
 
 	protected override IEnumerable<IHoverTip> ExtraHoverTips => new global::_003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(CardKeyword.Ethereal));

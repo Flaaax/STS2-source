@@ -1,18 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bsqfpx4tq1e2w"]
+[gd_scene load_steps=6 format=3 uid="uid://bsqfpx4tq1e2w"]
 
 [ext_resource type="Script" uid="uid://b50ny6m6ritnd" path="res://src/Core/Nodes/Combat/NExhaustPileButton.cs" id="1_633ve"]
 [ext_resource type="Texture2D" uid="uid://dyk2ylwv2fgxp" path="res://images/packed/combat_ui/exhaust_pile.png" id="2_y67gy"]
 [ext_resource type="FontVariation" uid="uid://cfurftqxyn4mn" path="res://themes/kreon_regular_glyph_space_one.tres" id="3_lkagj"]
 [ext_resource type="Script" uid="uid://dtfio45agppyj" path="res://addons/mega_text/MegaLabel.cs" id="4_lh1so"]
-[ext_resource type="Shader" uid="uid://c66gb6g7tup3n" path="res://shaders/hsv.gdshader" id="5_y4ndo"]
-[ext_resource type="Texture2D" uid="uid://b5x513mavmk5v" path="res://images/ui/placeholder_controller_icon.png" id="6_ccxnq"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_din1v"]
-resource_local_to_scene = true
-shader = ExtResource("5_y4ndo")
-shader_parameter/h = 1.0
-shader_parameter/s = 1.0
-shader_parameter/v = 1.0
+[ext_resource type="PackedScene" uid="uid://ddb8daodx7qsl" path="res://scenes/ui/hotkey_icon.tscn" id="5_qp0q5"]
 
 [node name="ExhaustPile" type="Control"]
 layout_mode = 3
@@ -75,24 +67,18 @@ script = ExtResource("4_lh1so")
 MinFontSize = 20
 MaxFontSize = 32
 
-[node name="ControllerIcon" type="TextureRect" parent="."]
+[node name="HotkeyIcon" parent="." instance=ExtResource("5_qp0q5")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_din1v")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -149.0
-offset_top = -115.0
-offset_right = 35.0
-offset_bottom = -23.0
+offset_left = -4.999996
+offset_top = 0.9999924
+offset_right = 43.0
+offset_bottom = 49.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(256, 128)
-mouse_filter = 2
-texture = ExtResource("6_ccxnq")
-expand_mode = 1
-stretch_mode = 5
+scale = Vector2(0.7, 0.7)

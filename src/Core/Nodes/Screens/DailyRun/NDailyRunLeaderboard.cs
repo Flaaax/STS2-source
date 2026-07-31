@@ -67,7 +67,7 @@ public partial class NDailyRunLeaderboard : Control
 
 	public override void _Ready()
 	{
-		_paginator = GetNode<NLeaderboardDayPaginator>("Paginator");
+		_paginator = GetNode<NLeaderboardDayPaginator>("DayPaginator");
 		_scoreContainer = GetNodeOrNull<VBoxContainer>("%ScoreContainer") ?? GetNodeOrNull<VBoxContainer>("%LeaderboardScoreContainer") ?? throw new InvalidOperationException("Couldn't find score container");
 		_leftArrow = GetNode<NLeaderboardPageArrow>("%LeftArrow");
 		_rightArrow = GetNode<NLeaderboardPageArrow>("%RightArrow");

@@ -27,17 +27,16 @@ public partial class NTopBarRoomIcon : NClickableControl
 	{
 		_roomIcon = GetNode<TextureRect>("Icon");
 		_roomIconOutline = GetNode<TextureRect>("Icon/Outline");
+		RunManager.Instance.RoomEntered += UpdateIcon;
 		ConnectSignals();
 	}
 
-	public override void _EnterTree()
+	public override void _Notification(int what)
 	{
-		RunManager.Instance.RoomEntered += UpdateIcon;
-	}
-
-	public override void _ExitTree()
-	{
-		RunManager.Instance.RoomEntered -= UpdateIcon;
+		if ((long)what == 1)
+		{
+			RunManager.Instance.RoomEntered -= UpdateIcon;
+		}
 	}
 
 	public void Initialize(IRunState runState)

@@ -232,7 +232,7 @@ public partial class NPotionPopup : Control
 				Remove();
 			}
 		}
-		else if (inputEvent.IsActionPressed(MegaInput.cancel))
+		else if (inputEvent.IsActionPressed(MegaInput.cancel) || inputEvent.IsActionPressed(MegaInput.pauseAndBack))
 		{
 			Remove();
 			GetViewport()?.SetInputAsHandled();

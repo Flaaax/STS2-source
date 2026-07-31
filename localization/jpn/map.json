@@ -37,5 +37,12 @@
   "LEGEND_UNKNOWN.hoverTip.description": "未知の部屋。\n\nイベント、敵、ショップ、あるいは宝箱のいずれかに遭遇する。",
   "LEGEND_UNKNOWN.hoverTip.title": "???",
   "LEGEND_UNKNOWN.title": "不明",
+  "SHARE.description.other": "マップ全体のスクリーンショットを保存して、フレンドと共有します。",
+  "SHARE.description.steam": "マップ全体のSteamスクリーンショットを保存して、フレンドと共有します。",
+  "SHARE.title": "共有",
+  "SHARE_POPUP.description": "[gold]スクリーンショットの保存先:[/gold]\n\n{path}",
+  "SHARE_POPUP.open": "開く",
+  "SHARE_POPUP.title": "スクリーンショットを保存しました！",
+  "SHARE_TOAST.description.steam": "スクリーンショットを保存しました！",
   "STARTING_ROOM_PROMPT": "開始する部屋を選択"
 }

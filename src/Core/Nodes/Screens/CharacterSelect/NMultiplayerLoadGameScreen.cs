@@ -12,6 +12,7 @@ using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Multiplayer;
 using MegaCrit.Sts2.Core.Multiplayer.Game;
 using MegaCrit.Sts2.Core.Multiplayer.Game.Lobby;
 using MegaCrit.Sts2.Core.Multiplayer.Messages.Lobby;
@@ -20,6 +21,7 @@ using MegaCrit.Sts2.Core.Nodes.CommonUi;
 using MegaCrit.Sts2.Core.Nodes.GodotExtensions;
 using MegaCrit.Sts2.Core.Nodes.Multiplayer;
 using MegaCrit.Sts2.Core.Nodes.Screens.MainMenu;
+using MegaCrit.Sts2.Core.Nodes.Vfx.Ui;
 using MegaCrit.Sts2.Core.Platform;
 using MegaCrit.Sts2.Core.Runs;
 using MegaCrit.Sts2.Core.Saves;
@@ -172,7 +174,7 @@ public partial class NMultiplayerLoadGameScreen : NSubmenu, ILoadRunLobbyListene
 	{
 		if (_runLobby.NetService.Type.IsMultiplayer())
 		{
-			PlatformUtil.SetRichPresence("LOADING_MP_LOBBY", _runLobby.NetService.GetRawLobbyIdentifier(), _runLobby.ConnectedPlayerIds.Count);
+			PlatformUtil.SetRichPresence("LOADING_MP_LOBBY", _runLobby.NetService.GetRawLobbyIdentifier(), _runLobby.PlayerCount);
 		}
 	}
 
@@ -186,18 +188,19 @@ public partial class NMultiplayerLoadGameScreen : NSubmenu, ILoadRunLobbyListene
 
 	private void CleanUpLobby(bool disconnectSession, NetError error = NetError.Quit)
 	{
+		_runLobby.PlayerFailedToConnect -= RemoteClientFailedToConnectToLocalHost;
 		_runLobby.CleanUp(disconnectSession, error);
 		_runLobby = null;
 	}
 
 	public async Task<bool> ShouldAllowRunToBegin()
 	{
-		if (_runLobby.ConnectedPlayerIds.Count >= _runLobby.Run.Players.Count)
+		if (_runLobby.PlayerCount >= _runLobby.Run.Players.Count)
 		{
 			return true;
 		}
 		LocString locString = new LocString("gameplay_ui", "CONFIRM_LOAD_SAVE.body");
-		locString.Add("MissingCount", _runLobby.Run.Players.Count - _runLobby.ConnectedPlayerIds.Count);
+		locString.Add("MissingCount", _runLobby.Run.Players.Count - _runLobby.PlayerCount);
 		NGenericPopup nGenericPopup = NGenericPopup.Create();
 		NModalContainer.Instance.Add(nGenericPopup);
 		return await nGenericPopup.WaitForConfirmation(locString, new LocString("gameplay_ui", "CONFIRM_LOAD_SAVE.header"), new LocString("gameplay_ui", "CONFIRM_LOAD_SAVE.cancel"), new LocString("gameplay_ui", "CONFIRM_LOAD_SAVE.confirm"));
@@ -207,7 +210,7 @@ public partial class NMultiplayerLoadGameScreen : NSubmenu, ILoadRunLobbyListene
 	{
 		try
 		{
-			Log.Info("Loading a multiplayer run. Players: " + string.Join(",", _runLobby.ConnectedPlayerIds) + ".");
+			Log.Info("Loading a multiplayer run. Players: " + string.Join(",", _runLobby.PlayerIds) + ".");
 			SerializablePlayer serializablePlayer = _runLobby.Run.Players.First((SerializablePlayer p) => p.NetId == _runLobby.NetService.NetId);
 			SfxCmd.Play(ModelDb.GetById<CharacterModel>(serializablePlayer.CharacterId).CharacterTransitionSfx);
 			await NGame.Instance.Transition.FadeOut(0.8f, ModelDb.GetById<CharacterModel>(serializablePlayer.CharacterId).CharacterSelectTransitionPath);
@@ -226,10 +229,19 @@ public partial class NMultiplayerLoadGameScreen : NSubmenu, ILoadRunLobbyListene
 		await NGame.Instance.Transition.FadeIn();
 	}
 
-	public void PlayerConnected(ulong playerId)
+	private void RemoteClientFailedToConnectToLocalHost(ClientConnectionFailedMessage message, ulong sender)
 	{
-		Log.Info($"Player connected: {playerId}");
-		_remotePlayerContainer.OnPlayerConnected(playerId);
+		string formattedText = message.GetLocString(PeerVersionInfo.LocalDefault()).GetFormattedText();
+		LocString locString = new LocString("main_menu_ui", "NETWORK_ERROR.HOST.PREFIX.body");
+		locString.Add("playerName", PlatformUtil.GetPlayerName(_runLobby.NetService.Platform, sender));
+		locString.Add("info", formattedText);
+		this.AddChildSafely(NFailedJoinVfx.Create(locString.GetFormattedText()));
+	}
+
+	public void PlayerConnected(LoadRunLobbyPlayer player)
+	{
+		Log.Info($"Player connected: {player.id}");
+		_remotePlayerContainer.OnPlayerConnected(player.id);
 		UpdateRichPresence();
 	}
 
@@ -282,8 +294,9 @@ public partial class NMultiplayerLoadGameScreen : NSubmenu, ILoadRunLobbyListene
 
 	private void AfterMultiplayerStarted()
 	{
-		NGame.Instance.RemoteCursorContainer.Initialize(_runLobby.InputSynchronizer, _runLobby.ConnectedPlayerIds);
+		NGame.Instance.RemoteCursorContainer.Initialize(_runLobby.InputSynchronizer, _runLobby.PlayerIds);
 		NGame.Instance.ReactionContainer.InitializeNetworking(_runLobby.NetService);
+		_runLobby.PlayerFailedToConnect += RemoteClientFailedToConnectToLocalHost;
 		SerializablePlayer serializablePlayer = _runLobby.Run.Players.First((SerializablePlayer p) => p.NetId == _runLobby.NetService.NetId);
 		CharacterModel byId = ModelDb.GetById<CharacterModel>(serializablePlayer.CharacterId);
 		SfxCmd.Play(byId.CharacterSelectSfx);

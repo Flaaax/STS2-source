@@ -3,23 +3,32 @@ using System.Linq;
 using Godot;
 using MegaCrit.Sts2.addons.mega_text;
 using MegaCrit.Sts2.Core.ControllerInput;
+using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Nodes.CommonUi;
 using MegaCrit.Sts2.Core.Nodes.GodotExtensions;
 
 namespace MegaCrit.Sts2.Core.Nodes.Screens.Settings;
 
+/// <summary>
+/// Represents a single input action and its corresponding hotkey to activate it.
+/// Can be clicked on to rebind the key.
+/// </summary>
 public partial class NInputSettingsEntry : NButton
 {
 	private static readonly Dictionary<StringName, string> _commandToLocTitle = new Dictionary<StringName, string>
 	{
 		{
-			MegaInput.accept,
+			MegaInput.confirm,
+			"confirm"
+		},
+		{
+			MegaInput.endTurn,
 			"endTurn"
 		},
 		{
 			MegaInput.select,
-			"confirmCard"
+			"select"
 		},
 		{
 			MegaInput.viewDiscardPile,
@@ -108,10 +117,6 @@ public partial class NInputSettingsEntry : NButton
 		{
 			MegaInput.selectCard10,
 			"selectCard10"
-		},
-		{
-			MegaInput.releaseCard,
-			"releaseCard"
 		}
 	};
 
@@ -119,11 +124,17 @@ public partial class NInputSettingsEntry : NButton
 
 	private Control _bg;
 
-	private MegaRichTextLabel _inputLabel;
+	private MegaLabel _inputLabel;
 
-	private MegaRichTextLabel _keyBindingLabel;
+	private MegaLabel _mKbBindingLabel;
+
+	private MegaLabel _keyboardOnlyModeBindingLabel;
+
+	private Control _missingControllerBindingLabel;
 
 	private TextureRect _controllerBindingIcon;
+
+	private Tween? _tween;
 
 	public static IEnumerable<string> AssetPaths => new global::_003C_003Ez__ReadOnlySingleElementList<string>("res://scenes/screens/settings_screen/input_settings_entry.tscn");
 
@@ -139,16 +150,84 @@ public partial class NInputSettingsEntry : NButton
 	public override void _Ready()
 	{
 		ConnectSignals();
-		_inputLabel = GetNode<MegaRichTextLabel>("%InputLabel");
-		_keyBindingLabel = GetNode<MegaRichTextLabel>("%KeyBindingInputLabel");
+		_inputLabel = GetNode<MegaLabel>("%InputLabel");
+		_mKbBindingLabel = GetNode<MegaLabel>("%MKbBindingInputLabel");
+		_keyboardOnlyModeBindingLabel = GetNode<MegaLabel>("%KbModeBindingInputLabel");
 		_controllerBindingIcon = GetNode<TextureRect>("%ControllerBindingIcon");
+		_missingControllerBindingLabel = GetNode<Control>("%MissingControllerBindingLabel");
 		_bg = GetNode<Control>("%Bg");
 		string text = _commandToLocTitle[InputName];
-		_inputLabel.Text = new LocString("settings_ui", "INPUT_SETTINGS.INPUT_TITLE." + text).GetFormattedText();
+		_inputLabel.SetTextAutoSize(new LocString("settings_ui", "INPUT_SETTINGS.INPUT_TITLE." + text).GetFormattedText());
 		NInputManager.Instance.Connect(NInputManager.SignalName.InputRebound, Callable.From(UpdateInput));
 		NControllerManager.Instance.Connect(NControllerManager.SignalName.ControllerDetected, Callable.From(UpdateInput));
 		NControllerManager.Instance.Connect(NControllerManager.SignalName.MouseDetected, Callable.From(UpdateInput));
 		Connect(CanvasItem.SignalName.VisibilityChanged, Callable.From(UpdateInput));
+	}
+
+	private void UpdateInput()
+	{
+		if (IsVisibleInTree())
+		{
+			if (NInputManager.remappableMKbInputs.Contains(InputName))
+			{
+				Key mKbHotkey = NInputManager.Instance.GetMKbHotkey(InputName);
+				_mKbBindingLabel.Text = ((mKbHotkey != Key.None) ? mKbHotkey.ToString() : "-");
+			}
+			else
+			{
+				_mKbBindingLabel.Text = "-";
+			}
+			if (NInputManager.remappableKbOnlyInputs.Contains(InputName))
+			{
+				Key kbOnlyHotkey = NInputManager.Instance.GetKbOnlyHotkey(InputName);
+				_keyboardOnlyModeBindingLabel.Text = ((kbOnlyHotkey != Key.None) ? kbOnlyHotkey.ToString() : "-");
+			}
+			else
+			{
+				_keyboardOnlyModeBindingLabel.Text = "-";
+			}
+			_mKbBindingLabel.SelfModulate = ((_mKbBindingLabel.Text == "-") ? StsColors.gray : Colors.White);
+			_keyboardOnlyModeBindingLabel.SelfModulate = ((_keyboardOnlyModeBindingLabel.Text == "-") ? StsColors.gray : Colors.White);
+			if (NInputManager.remappableControllerInputs.Contains(InputName))
+			{
+				_controllerBindingIcon.Texture = NInputManager.Instance.GetHotkeyIcon(InputName);
+				_missingControllerBindingLabel.Visible = false;
+			}
+			else
+			{
+				_missingControllerBindingLabel.Visible = true;
+			}
+			if (!NControllerManager.Instance.ShouldAllowControllerRebinding)
+			{
+				_controllerBindingIcon.Modulate = StsColors.disabledRed;
+			}
+			else if (InputName == MegaInput.endTurn)
+			{
+				_controllerBindingIcon.Modulate = new Color(0.2f, 0.2f, 0.2f);
+			}
+			else
+			{
+				_controllerBindingIcon.Modulate = Colors.White;
+			}
+			_mKbBindingLabel.Modulate = ((NControllerManager.Instance.InputType == InputType.MouseAndKeyboard) ? Colors.White : StsColors.disabledRed);
+			_keyboardOnlyModeBindingLabel.Modulate = ((NControllerManager.Instance.InputType == InputType.KeyboardOnlyMode) ? Colors.White : StsColors.disabledRed);
+		}
+	}
+
+	protected override void OnFocus()
+	{
+		_tween?.Kill();
+		Control bg = _bg;
+		Color modulate = _bg.Modulate;
+		modulate.A = 0.2f;
+		bg.Modulate = modulate;
+	}
+
+	protected override void OnUnfocus()
+	{
+		_tween?.Kill();
+		_tween = CreateTween().SetParallel();
+		_tween.TweenProperty(_bg, "modulate:a", 0f, 0.1);
 	}
 
 	public override void _ExitTree()
@@ -158,36 +237,5 @@ public partial class NInputSettingsEntry : NButton
 		NControllerManager.Instance.Disconnect(NControllerManager.SignalName.ControllerDetected, Callable.From(UpdateInput));
 		NControllerManager.Instance.Disconnect(NControllerManager.SignalName.MouseDetected, Callable.From(UpdateInput));
 		Disconnect(CanvasItem.SignalName.VisibilityChanged, Callable.From(UpdateInput));
-	}
-
-	private void UpdateInput()
-	{
-		if (IsVisibleInTree())
-		{
-			if (NInputManager.remappableKeyboardInputs.Contains(InputName))
-			{
-				Key shortcutKey = NInputManager.Instance.GetShortcutKey(InputName);
-				_keyBindingLabel.Text = ((shortcutKey != Key.None) ? shortcutKey.ToString() : "");
-			}
-			else
-			{
-				_keyBindingLabel.Text = "";
-			}
-			if (NInputManager.remappableControllerInputs.Contains(InputName))
-			{
-				_controllerBindingIcon.Texture = NInputManager.Instance.GetHotkeyIcon(InputName);
-			}
-			_controllerBindingIcon.Modulate = (NControllerManager.Instance.ShouldAllowControllerRebinding ? Colors.White : new Color(1f, 1f, 1f, 0.15f));
-		}
-	}
-
-	protected override void OnFocus()
-	{
-		_bg.Visible = true;
-	}
-
-	protected override void OnUnfocus()
-	{
-		_bg.Visible = false;
 	}
 }

@@ -1,19 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bl4mbjqjfffa3"]
+[gd_scene load_steps=7 format=3 uid="uid://bl4mbjqjfffa3"]
 
 [ext_resource type="Script" uid="uid://dwva4dvx6y2dc" path="res://src/Core/Nodes/CommonUi/NBackButton.cs" id="1_0mwkb"]
 [ext_resource type="Texture2D" uid="uid://bb803i8" path="res://images/atlases/ui_atlas.sprites/back_button.tres" id="2_7pdbc"]
 [ext_resource type="Texture2D" uid="uid://cahogy5" path="res://images/atlases/compressed.sprites/back_button_arrow.tres" id="2_kddgw"]
 [ext_resource type="Texture2D" uid="uid://cxm0iyd" path="res://images/atlases/compressed.sprites/back_button_outline.tres" id="3_outline"]
-[ext_resource type="Shader" uid="uid://c66gb6g7tup3n" path="res://shaders/hsv.gdshader" id="5_mp3lu"]
-[ext_resource type="Texture2D" uid="uid://b5x513mavmk5v" path="res://images/ui/placeholder_controller_icon.png" id="7_yqvhb"]
+[ext_resource type="PackedScene" uid="uid://ddb8daodx7qsl" path="res://scenes/ui/hotkey_icon.tscn" id="6_1k5xm"]
 [ext_resource type="Material" uid="uid://c4ycqv0gdxvmr" path="res://themes/canvas_item_material_additive_shared.tres" id="shared_additive_mat"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ckc57"]
-resource_local_to_scene = true
-shader = ExtResource("5_mp3lu")
-shader_parameter/h = 1.0
-shader_parameter/s = 1.0
-shader_parameter/v = 1.0
 
 [node name="BackButton" type="Control"]
 layout_mode = 3
@@ -93,24 +85,11 @@ texture = ExtResource("2_kddgw")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="ControllerIcon" type="TextureRect" parent="."]
+[node name="HotkeyIcon" parent="Image" instance=ExtResource("6_1k5xm")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_ckc57")
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -219.0
-offset_top = -48.0
-offset_right = 21.0
-offset_bottom = 72.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(256, 128)
-mouse_filter = 2
-texture = ExtResource("7_yqvhb")
-expand_mode = 1
-stretch_mode = 5
+offset_left = 70.0
+offset_top = 92.0
+offset_right = 118.0
+offset_bottom = 140.0
+scale = Vector2(0.85, 0.85)

@@ -153,7 +153,6 @@ public partial class NGame : Control
 			return;
 		}
 		Instance = this;
-		SentryService.Initialize();
 		RootSceneContainer = GetNode<NSceneContainer>("%RootSceneContainer");
 		HoverTipsContainer = GetNode<Node>("%HoverTipsContainer");
 		DebugAudio = GetNode<NDebugAudioManager>("%DebugAudioManager");
@@ -299,7 +298,7 @@ public partial class NGame : Control
 		SaveManager.Instance.InitProfileId();
 		ReadSaveResult<SerializableProgress> progressReadResult = SaveManager.Instance.InitProgressData();
 		ReadSaveResult<PrefsSave> prefsReadResult = SaveManager.Instance.InitPrefsData();
-		SentryService.AfterGameInit(PlatformUtil.GetPlatformBranch().ToName(), SaveManager.Instance.Progress.UniqueId, GetTree().Root);
+		SentryService.AfterGameInit(PlatformUtil.GetPlatformBranch().ToName(), SaveManager.Instance.Progress.UniqueId);
 		_screenShake.SetMultiplier(NScreenshakePaginator.GetShakeMultiplier(SaveManager.Instance.PrefsSave.ScreenShakeOptionIndex));
 		if (!OS.HasFeature("editor") && SaveManager.Instance.PrefsSave.FastMode == FastModeType.Instant)
 		{
@@ -768,7 +767,7 @@ public partial class NGame : Control
 	/// <param name="dailyTime">Time used to determine the daily run info. Null if not a daily run.</param>
 	public async Task<RunState> StartNewMultiplayerRun(StartRunLobby lobby, bool shouldSave, IReadOnlyList<ActModel> acts, IReadOnlyList<ModifierModel> modifiers, string seed, int ascensionLevel, DateTimeOffset? dailyTime = null)
 	{
-		RunState runState = RunState.CreateForNewRun(lobby.Players.Select((LobbyPlayer p) => Player.CreateForNewRun(p.character, UnlockState.FromSerializable(p.unlockState), p.id)).ToList(), acts.Select((ActModel a) => a.ToMutable()).ToList(), modifiers, lobby.GameMode, ascensionLevel, seed);
+		RunState runState = RunState.CreateForNewRun(lobby.Players.Select((StartRunLobbyPlayer p) => Player.CreateForNewRun(p.character, UnlockState.FromSerializable(p.unlockState), p.id)).ToList(), acts.Select((ActModel a) => a.ToMutable()).ToList(), modifiers, lobby.GameMode, ascensionLevel, seed);
 		RunManager.Instance.SetUpNewMultiplayer(runState, lobby, shouldSave, dailyTime);
 		await StartRun(runState);
 		return runState;

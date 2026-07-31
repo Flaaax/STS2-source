@@ -1,5 +1,6 @@
 using System.Collections.Generic;
-using MegaCrit.Sts2.Core.Platform;
+using System.Linq;
+using MegaCrit.Sts2.Core.Multiplayer;
 
 namespace MegaCrit.Sts2.Core.Entities.Multiplayer;
 
@@ -8,45 +9,27 @@ namespace MegaCrit.Sts2.Core.Entities.Multiplayer;
 /// </summary>
 public record ConnectionFailureExtraInfo
 {
-	/// <summary>
-	/// The mods that the host has that we are missing on our end.
-	/// Only set on ConnectionFailureReason.ModMismatch.
-	/// </summary>
-	public List<string>? missingModsOnLocal;
+	public PeerVersionInfo localInfo;
 
-	/// <summary>
-	/// The mods that we have that are missing on the host's end.
-	/// Only set on ConnectionFailureReason.ModMismatch.
-	/// </summary>
-	public List<string>? missingModsOnHost;
+	public PeerVersionInfo remoteInfo;
 
-	/// <summary>
-	/// The version of the game the host is playing on.
-	/// </summary>
-	public string? hostVersion;
+	public bool localIsHost;
 
-	/// <summary>
-	/// The steam branch the host is playing on.
-	/// </summary>
-	public PlatformBranch? hostBranch;
+	public List<string> GetMissingModsOnLocal(bool nonGameplay)
+	{
+		if (!nonGameplay)
+		{
+			return remoteInfo.gameplayAffectingMods?.Except(localInfo.gameplayAffectingMods ?? new List<string>()).ToList() ?? new List<string>();
+		}
+		return remoteInfo.otherMods?.Except(localInfo.otherMods ?? new List<string>()).ToList() ?? new List<string>();
+	}
 
-	/// <summary>
-	/// The ModelDb hash reported by the host.
-	/// </summary>
-	public ulong? hostHash;
-
-	/// <summary>
-	/// The version of the game that we are playing on.
-	/// </summary>
-	public string? localVersion;
-
-	/// <summary>
-	/// The steam branch that we are playing on.
-	/// </summary>
-	public PlatformBranch? localBranch;
-
-	/// <summary>
-	/// The ModelDb hash reported by us.
-	/// </summary>
-	public ulong? localHash;
+	public List<string> GetMissingModsOnRemote(bool nonGameplay)
+	{
+		if (!nonGameplay)
+		{
+			return localInfo.gameplayAffectingMods?.Except(remoteInfo.gameplayAffectingMods ?? new List<string>()).ToList() ?? new List<string>();
+		}
+		return localInfo.otherMods?.Except(remoteInfo.otherMods ?? new List<string>()).ToList() ?? new List<string>();
+	}
 }

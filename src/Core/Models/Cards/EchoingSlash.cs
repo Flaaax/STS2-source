@@ -16,7 +16,7 @@ public sealed class EchoingSlash : CardModel
 	protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(10m, ValueProp.Move));
 
 	public EchoingSlash()
-		: base(1, CardType.Attack, CardRarity.Rare, TargetType.AllEnemies)
+		: base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AllEnemies)
 	{
 	}
 

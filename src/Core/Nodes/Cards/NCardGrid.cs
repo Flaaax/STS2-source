@@ -434,7 +434,7 @@ public partial class NCardGrid : Control
 
 	private void ProcessGuiFocus(Control focusedControl)
 	{
-		if (IsVisibleInTree() && CanScroll && NControllerManager.Instance.IsUsingController && focusedControl.GetParent() == _scrollContainer)
+		if (IsVisibleInTree() && CanScroll && NControllerManager.Instance.IsUsingDirectionalNavigation && focusedControl.GetParent() == _scrollContainer)
 		{
 			float value = 0f - focusedControl.Position.Y + base.Size.Y * 0.5f;
 			float min = Math.Min(Math.Min(ScrollLimitTop, ScrollLimitBottom), 0f);

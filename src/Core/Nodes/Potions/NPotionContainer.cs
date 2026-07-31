@@ -47,28 +47,34 @@ public partial class NPotionContainer : Control
 
 	public override void _Ready()
 	{
-		Callable.From(UpdateNavigation).CallDeferred();
-	}
-
-	public override void _EnterTree()
-	{
-		_cts = new CancellationTokenSource();
 		_potionHolders = GetNode<Control>("MarginContainer/PotionHolders");
 		_potionErrorBg = GetNode<Control>("PotionErrorBg");
 		_potionShortcutButton = GetNode<NButton>("PotionShortcutButton");
 		_potionErrorBg.Modulate = Colors.Transparent;
 		_potionShortcutButton.Connect(NClickableControl.SignalName.Released, Callable.From<NButton>(OnPotionShortcutPressed));
 		CombatManager.Instance.CombatSetUp += OnCombatSetUp;
+		Callable.From(UpdateNavigation).CallDeferred();
 		ConnectPlayerEvents();
+	}
+
+	public override void _EnterTree()
+	{
+		_cts = new CancellationTokenSource();
 	}
 
 	public override void _ExitTree()
 	{
 		_cts.Cancel();
-		DisconnectPlayerEvents();
-		_player = null;
-		_potionShortcutButton.Disconnect(NClickableControl.SignalName.Released, Callable.From<NButton>(OnPotionShortcutPressed));
-		CombatManager.Instance.CombatSetUp -= OnCombatSetUp;
+	}
+
+	public override void _Notification(int what)
+	{
+		if ((long)what == 1)
+		{
+			DisconnectPlayerEvents();
+			_player = null;
+			CombatManager.Instance.CombatSetUp -= OnCombatSetUp;
+		}
 	}
 
 	public void Initialize(IRunState runState)
@@ -145,13 +151,13 @@ public partial class NPotionContainer : Control
 
 	private void UpdateNavigation()
 	{
-		Control control = NRun.Instance.GlobalUi.RelicInventory.RelicNodes.FirstOrDefault();
+		Control control = NRun.Instance?.GlobalUi.RelicInventory.RelicNodes.FirstOrDefault();
 		if (control != null)
 		{
 			for (int i = 0; i < _holders.Count; i++)
 			{
-				_holders[i].FocusNeighborLeft = ((i > 0) ? _holders[i - 1].GetPath() : NRun.Instance.GlobalUi.TopBar.Gold.GetPath());
-				_holders[i].FocusNeighborRight = ((i < _holders.Count - 1) ? _holders[i + 1].GetPath() : NRun.Instance.GlobalUi.TopBar.RoomIcon.GetPath());
+				_holders[i].FocusNeighborLeft = ((i > 0) ? _holders[i - 1].GetPath() : NRun.Instance?.GlobalUi.TopBar.Gold.GetPath());
+				_holders[i].FocusNeighborRight = ((i < _holders.Count - 1) ? _holders[i + 1].GetPath() : NRun.Instance?.GlobalUi.TopBar.RoomIcon.GetPath());
 				_holders[i].FocusNeighborBottom = control.GetPath();
 				_holders[i].FocusNeighborTop = _holders[i].GetPath();
 			}

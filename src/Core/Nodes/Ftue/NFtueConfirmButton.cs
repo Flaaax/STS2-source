@@ -7,6 +7,10 @@ using MegaCrit.Sts2.Core.Nodes.GodotExtensions;
 
 namespace MegaCrit.Sts2.Core.Nodes.Ftue;
 
+/// <summary>
+/// Generic button used to close any FTUE popups.
+/// Be warned, it's not actually used by every FTUE.
+/// </summary>
 public partial class NFtueConfirmButton : NButton
 {
 	private static readonly StringName _v = new StringName("v");

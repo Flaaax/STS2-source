@@ -65,7 +65,7 @@ public sealed class SilentCardPool : CardPoolModel
 			ModelDb.Card<Flanking>(),
 			ModelDb.Card<Flechettes>(),
 			ModelDb.Card<FlickFlack>(),
-			ModelDb.Card<Scare>(),
+			ModelDb.Card<Sidestep>(),
 			ModelDb.Card<Footwork>(),
 			ModelDb.Card<GrandFinale>(),
 			ModelDb.Card<HandTrick>(),

@@ -52,6 +52,8 @@ public partial class NTopBarBossIcon : NClickableControl
 	{
 		_bossIcon = GetNode<TextureRect>("Icon");
 		_bossIconOutline = GetNode<TextureRect>("Icon/Outline");
+		RunManager.Instance.ActEntered += OnActEntered;
+		RunManager.Instance.RoomEntered += OnRoomEntered;
 		ConnectSignals();
 	}
 
@@ -61,16 +63,13 @@ public partial class NTopBarBossIcon : NClickableControl
 		OnActEntered();
 	}
 
-	public override void _EnterTree()
+	public override void _Notification(int what)
 	{
-		RunManager.Instance.ActEntered += OnActEntered;
-		RunManager.Instance.RoomEntered += OnRoomEntered;
-	}
-
-	public override void _ExitTree()
-	{
-		RunManager.Instance.ActEntered -= OnActEntered;
-		RunManager.Instance.RoomEntered -= OnRoomEntered;
+		if ((long)what == 1)
+		{
+			RunManager.Instance.ActEntered -= OnActEntered;
+			RunManager.Instance.RoomEntered -= OnRoomEntered;
+		}
 	}
 
 	private void OnRoomEntered()

@@ -69,8 +69,19 @@ public class SettingsSave : ISaveSchema
 	[JsonPropertyName("skip_intro_logo")]
 	public bool SkipIntroLogo { get; set; }
 
+	/// <summary>
+	/// This is the saved Mouse-Keyboard (MKb) mapping. We are still calling it just "KeyboardMapping"
+	/// To not break compat with older versions of the settings save.
+	/// </summary>
 	[JsonPropertyName("keyboard_mapping")]
 	public Dictionary<string, string> KeyboardMapping { get; set; } = new Dictionary<string, string>();
+
+	/// <summary>
+	/// this is the saved Keyboard Only mapping. It is a control scheme that doesn't require use of the mouse.
+	/// See <see cref="F:MegaCrit.Sts2.Core.ControllerInput.InputType.KeyboardOnlyMode" /> for details.
+	/// </summary>
+	[JsonPropertyName("keyboard_only_mapping")]
+	public Dictionary<string, string> KbOnlyMapping { get; set; } = new Dictionary<string, string>();
 
 	[JsonPropertyName("controller_mapping_type")]
 	public ControllerMappingType ControllerMappingType { get; set; }

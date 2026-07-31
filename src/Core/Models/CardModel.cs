@@ -1900,7 +1900,7 @@ public abstract class CardModel : AbstractModel
 			return;
 		}
 		ulong playStartTime = Time.GetTicksMsec();
-		CombatManager.Instance.BeginCardOrPotionEffect(Owner);
+		CombatId? effectCombatId = CombatManager.Instance.BeginCardOrPotionEffect(Owner);
 		try
 		{
 			for (int i = 0; i < playCount; i++)
@@ -1935,7 +1935,7 @@ public abstract class CardModel : AbstractModel
 				};
 				await Hook.BeforeCardPlayed(combatState, cardPlay);
 				CombatManager.Instance.History.CardPlayStarted(combatState, cardPlay);
-				BranchingPlayerChoiceContext branchingPlayerChoiceContext = new BranchingPlayerChoiceContext(LocalContext.NetId.Value, GameActionType.Combat, choiceContext);
+				BranchingPlayerChoiceContext branchingPlayerChoiceContext = new BranchingPlayerChoiceContext(this, LocalContext.NetId.Value, GameActionType.Combat, choiceContext);
 				branchingPlayerChoiceContext.PushModel(this);
 				Task task = OnPlay(branchingPlayerChoiceContext, cardPlay);
 				await branchingPlayerChoiceContext.AssignTaskAndWaitForPauseOrCompletion(task);
@@ -1976,7 +1976,7 @@ public abstract class CardModel : AbstractModel
 		}
 		finally
 		{
-			await CombatManager.Instance.EndCardOrPotionEffect(Owner);
+			await CombatManager.Instance.EndCardOrPotionEffect(effectCombatId, Owner);
 		}
 		if (!skipCardPileVisuals)
 		{
@@ -2004,7 +2004,7 @@ public abstract class CardModel : AbstractModel
 				break;
 			}
 		}
-		await CombatManager.Instance.CheckForEmptyHand(choiceContext, originalOwner);
+		await CombatManager.Instance.CheckForEmptyHand(effectCombatId, choiceContext, originalOwner);
 		if (EnergyCost.AfterCardPlayedCleanup())
 		{
 			this.EnergyCostChanged?.Invoke();

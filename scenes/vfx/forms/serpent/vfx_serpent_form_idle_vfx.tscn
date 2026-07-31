@@ -1,0 +1,181 @@
+[gd_scene load_steps=31 format=3 uid="uid://cfcm1ar6lgu8e"]
+
+[ext_resource type="Script" uid="uid://b8rca0yxksksp" path="res://src/Core/Nodes/Vfx/Forms/NSerpentFormVfx.cs" id="1_r43ht"]
+[ext_resource type="Script" uid="uid://b6yvonvw15xb6" path="res://src/Core/Nodes/Vfx/Utilities/NSpineSpriteBoneFollower.cs" id="2_qy0po"]
+[ext_resource type="Material" uid="uid://cu06dndh6vv33" path="res://materials/vfx/common/vfx_glow_noise_scale.tres" id="3_ujdbg"]
+[ext_resource type="Texture2D" uid="uid://dltmdulxe1avi" path="res://images/vfx/common/common_glow.png" id="4_3v7d3"]
+[ext_resource type="Material" uid="uid://c48wr7upgpg1u" path="res://materials/vfx/forms/serpent/vfx_serpent_form_panning_noise.tres" id="5_0rkpn"]
+[ext_resource type="Texture2D" uid="uid://cu2i22aqo2pj5" path="res://images/vfx/noise/vfx_noise_4.png" id="6_76es8"]
+[ext_resource type="PackedScene" uid="uid://dxd6oltkhbeki" path="res://scenes/vfx/scream/vfx_scream_ring_polar.tscn" id="7_r2i7i"]
+[ext_resource type="Material" uid="uid://dh55p72jgv47q" path="res://materials/vfx/forms/serpent/vfx_serpent_form_snakes.tres" id="8_beu8l"]
+[ext_resource type="Texture2D" uid="uid://mh8du4e8tvu2" path="res://images/vfx/forms/serpent/form_serpent_snakes.png" id="9_b2f0g"]
+[ext_resource type="Script" uid="uid://dnm7b0lqxhpqk" path="res://src/Core/Nodes/Vfx/Utilities/NShaker.cs" id="10_b7nmw"]
+[ext_resource type="Script" uid="uid://bd46jtcut2h66" path="res://src/Core/Nodes/Vfx/Utilities/NParticlesContainer.cs" id="11_vj58o"]
+[ext_resource type="PackedScene" uid="uid://0vk581j1pecs" path="res://scenes/vfx/common/vfx_common_ring_polar_a.tscn" id="12_rkbfk"]
+[ext_resource type="Script" uid="uid://2wh5an80pwyn" path="res://src/Core/Nodes/Vfx/Utilities/NValueRamp.cs" id="13_hucty"]
+
+[sub_resource type="Gradient" id="Gradient_bm5yc"]
+colors = PackedColorArray(1, 1, 1, 0.2509804, 1, 1, 1, 0.76862746)
+
+[sub_resource type="Curve" id="Curve_21kn2"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1e-05, 1), -3.56434, -3.56434, 0, 0, Vector2(0.501292, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_bskm1"]
+curve = SubResource("Curve_21kn2")
+
+[sub_resource type="Curve" id="Curve_1gnb1"]
+_data = [Vector2(0, 0.25144), 0.0, 2.55137, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_yxndf"]
+curve = SubResource("Curve_1gnb1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_npm28"]
+particle_flag_disable_z = true
+angle_min = 1.07288e-05
+angle_max = 360.0
+gravity = Vector3(0, 0, 0)
+scale_min = 1.1
+scale_max = 1.1
+scale_curve = SubResource("CurveTexture_yxndf")
+alpha_curve = SubResource("CurveTexture_bskm1")
+
+[sub_resource type="Curve" id="Curve_sxkj2"]
+_data = [Vector2(0.25, 1), 0.0, 0.0, 0, 0, Vector2(0.50252527, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_eo05b"]
+curve = SubResource("Curve_sxkj2")
+
+[sub_resource type="Gradient" id="Gradient_its5o"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qs22b"]
+gradient = SubResource("Gradient_its5o")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sceup"]
+particle_flag_disable_z = true
+angle_min = 1.07288e-05
+angle_max = 360.0
+gravity = Vector3(0, 0, 0)
+scale_min = 1.1999999
+scale_max = 1.1999999
+scale_curve = SubResource("CurveTexture_yxndf")
+color_ramp = SubResource("GradientTexture1D_qs22b")
+alpha_curve = SubResource("CurveTexture_eo05b")
+
+[sub_resource type="Curve" id="Curve_tqsfi"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 3), 0.0, -8.75114, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_6woda"]
+curve = SubResource("Curve_tqsfi")
+
+[sub_resource type="Curve" id="Curve_05f3t"]
+_data = [Vector2(0, 0), 0.0, 3.0273855, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_5tjoo"]
+curve = SubResource("Curve_05f3t")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sj4o0"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+scale_min = 3.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_5tjoo")
+emission_curve = SubResource("CurveTexture_6woda")
+
+[sub_resource type="Curve" id="Curve_0bfnx"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="vfx_serpent_form_idle_vfx" type="Node2D" node_paths=PackedStringArray("_boneFollower", "_effectTriggeredParticles", "_snakesContainer", "_valueRamp")]
+scale = Vector2(0.9999999, 0.9999999)
+script = ExtResource("1_r43ht")
+_ironcladBoneName = "breathe"
+_silentBoneName = "body_3"
+_regentBoneName = "chest_particle_attach"
+_necrobinderBoneName = "body_upper2"
+_defectBoneName = "torso_twist"
+_boneFollower = NodePath("center_pivot")
+_effectTriggeredParticles = NodePath("center_pivot/effect_triggered_vfx")
+_snakesContainer = NodePath("center_pivot/snake_container")
+_valueRamp = NodePath("value_ramp")
+_snakesModulateGradient = SubResource("Gradient_bm5yc")
+
+[node name="center_pivot" type="Node2D" parent="."]
+position = Vector2(-42.00006, -164)
+scale = Vector2(0.9999999, 0.9999999)
+script = ExtResource("2_qy0po")
+_snap = true
+
+[node name="vfx_serpent_form_idle_glow" type="Sprite2D" parent="center_pivot"]
+self_modulate = Color(0, 0.1, 0.05, 0.76862746)
+material = ExtResource("3_ujdbg")
+instance_shader_parameters/noise_initial_offset = Vector2(0.8, 0.8)
+instance_shader_parameters/use_r_as_alpha = 1.0
+position = Vector2(3.0517578e-05, 0)
+scale = Vector2(5, 5)
+texture = ExtResource("4_3v7d3")
+
+[node name="vfx_serpent_form_idle_panning_noise" type="Sprite2D" parent="center_pivot"]
+self_modulate = Color(0, 0.17, 0.09066666, 0.5019608)
+texture_repeat = 2
+material = ExtResource("5_0rkpn")
+scale = Vector2(2.7700002, 2.7700002)
+texture = ExtResource("6_76es8")
+
+[node name="vfx_scream_ring_polar" parent="center_pivot" instance=ExtResource("7_r2i7i")]
+self_modulate = Color(0, 0.39138144, 0.17742926, 1)
+z_index = 0
+emitting = true
+lifetime = 4.5
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_npm28")
+
+[node name="snake_container" type="Node2D" parent="center_pivot"]
+modulate = Color(1, 1, 1, 0.2509804)
+
+[node name="vfx_serpent_form_snakes" type="Sprite2D" parent="center_pivot/snake_container"]
+texture_repeat = 2
+material = ExtResource("8_beu8l")
+position = Vector2(3.0517578e-05, 0)
+rotation = 0.17453292
+scale = Vector2(0.74999994, 0.74999994)
+texture = ExtResource("9_b2f0g")
+
+[node name="shaker" type="Node" parent="center_pivot/snake_container" node_paths=PackedStringArray("_target")]
+script = ExtResource("10_b7nmw")
+_target = NodePath("../vfx_serpent_form_snakes")
+_maxPosOffset = 3.0
+_maxRotOffset = 2.0
+_frequency = 1.25
+_strength = 1.0
+
+[node name="effect_triggered_vfx" type="Node2D" parent="center_pivot" node_paths=PackedStringArray("_particles")]
+script = ExtResource("11_vj58o")
+_particles = [NodePath("vfx_scream_ring_polar"), NodePath("vfx_common_ring_polar_a")]
+
+[node name="vfx_scream_ring_polar" parent="center_pivot/effect_triggered_vfx" instance=ExtResource("7_r2i7i")]
+self_modulate = Color(0, 1, 0.44886374, 1)
+z_index = 0
+scale = Vector2(0.99999994, 0.99999994)
+amount = 1
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_sceup")
+
+[node name="vfx_common_ring_polar_a" parent="center_pivot/effect_triggered_vfx" instance=ExtResource("12_rkbfk")]
+self_modulate = Color(0, 0.6154072, 0.22348492, 1)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_sj4o0")
+
+[node name="value_ramp" type="Node" parent="."]
+script = ExtResource("13_hucty")
+_rampCurve = SubResource("Curve_0bfnx")

@@ -453,7 +453,7 @@ public partial class NRewardsScreen : Control, IOverlayScreen, IScreenContext
 
 	private void ProcessGuiFocus(Control focusedControl)
 	{
-		if (IsVisibleInTree() && CanScroll && NControllerManager.Instance.IsUsingController && _rewardButtons.Contains(focusedControl))
+		if (IsVisibleInTree() && CanScroll && NControllerManager.Instance.IsUsingDirectionalNavigation && _rewardButtons.Contains(focusedControl))
 		{
 			float value = 0f - focusedControl.Position.Y + _rewardContainerMask.Size.Y * 0.5f;
 			value = Mathf.Clamp(value, ScrollLimitBottom, 35f);

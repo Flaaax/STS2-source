@@ -55,7 +55,7 @@
   "BRAIN_LEECH.pages.INITIAL.options.RIP.title": "Arrancarse el parásito",
   "BRAIN_LEECH.pages.INITIAL.options.SHARE_KNOWLEDGE.description": "Elige [blue]{CardChoiceCount}[/blue] de entre [blue]{FromCardChoiceCount}[/blue] cartas aleatorias y añádela a tu [gold]Mazo[/gold].",
   "BRAIN_LEECH.pages.INITIAL.options.SHARE_KNOWLEDGE.title": "Compartir conocimiento",
-  "BRAIN_LEECH.pages.RIP.description": "¡Te [jitter]arrancas el parásito de la cabeza[/jitter] con un tirón firme y lo lanzas a lo lejos!\n\nEscuchas una vez en tu cabeza:\n[purple][sine]—NOOOOOOoOoooooOOOOoooo...",
+  "BRAIN_LEECH.pages.RIP.description": "¡Te [jitter]arrancas el parásito de la cabeza[/jitter] con un tirón firme y lo lanzas a lo lejos!\n\nEscuchas una vez en tu cabeza:\n[purple][sine]—NOOOOOOoOoooooOOOOoooo...[/sine][/purple]",
   "BRAIN_LEECH.pages.SHARE_KNOWLEDGE.description": "[purple][sine]—¡QUÉ OSTENTOSAMENTE ESCOLÁSTICO ES ESTE LABERINTO MENTAL!\n¡UNA CORNUCOPIA DE DELICIOSA SUSTANCIA CEBERAL QUE DIGERIR![/sine][/purple]\n\nSatisfecha, la criatura se despega de tu cabeza y se marcha arrastrándose.\nTe has quedado [blue]de una pieza[/blue].",
   "BRAIN_LEECH.pages.SHARE_KNOWLEDGE.selectionScreenPrompt": "Elige una Carta.",
   "BRAIN_LEECH.title": "Parásito cerebral",

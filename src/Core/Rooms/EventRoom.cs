@@ -54,6 +54,7 @@ public class EventRoom : AbstractRoom
 
 	public override async Task EnterInternal(IRunState? runState, bool isRestoringRoomStackBase)
 	{
+		await PreloadManager.LoadRoomEventAssets(CanonicalEvent, runState ?? NullRunState.Instance);
 		RunManager.Instance.EventSynchronizer.BeginEvent(CanonicalEvent, IsPreFinished, OnStart);
 		foreach (EventModel @event in RunManager.Instance.EventSynchronizer.Events)
 		{
@@ -65,7 +66,6 @@ public class EventRoom : AbstractRoom
 		}
 		EventModel localEvent = RunManager.Instance.EventSynchronizer.GetLocalEvent();
 		RunManager.Instance.EventSynchronizer.GenerateInternalCombatStateIfNecessary(localEvent);
-		await PreloadManager.LoadRoomEventAssets(CanonicalEvent, runState ?? NullRunState.Instance);
 		if (!isRestoringRoomStackBase)
 		{
 			NEventRoom currentRoom = NEventRoom.Create(localEvent, runState, _isPreFinished);

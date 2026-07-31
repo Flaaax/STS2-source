@@ -37,5 +37,12 @@
   "LEGEND_UNKNOWN.hoverTip.description": "Ein unbekannter Raum.\n\nBegegne einem Ereignis, Gegnern, Laden oder Schatz.",
   "LEGEND_UNKNOWN.hoverTip.title": "???",
   "LEGEND_UNKNOWN.title": "Unbekannt",
+  "SHARE.description.other": "Speichere einen Screenshot der ganzen Wegkarte zum Teilen mit Freunden.",
+  "SHARE.description.steam": "Speichere einen Steam-Screenshot der ganzen Wegkarte zum Teilen mit Freunden.",
+  "SHARE.title": "Teilen",
+  "SHARE_POPUP.description": "[gold]Screenshot gespeichert unter:[/gold]\n\n{path}.",
+  "SHARE_POPUP.open": "Öffnen",
+  "SHARE_POPUP.title": "Screenshot gespeichert!",
+  "SHARE_TOAST.description.steam": "Screenshot gespeichert!",
   "STARTING_ROOM_PROMPT": "Wähle einen Anfangsraum"
 }

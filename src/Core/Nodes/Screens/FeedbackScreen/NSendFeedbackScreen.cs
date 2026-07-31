@@ -23,7 +23,7 @@ using MegaCrit.Sts2.Core.Nodes.Screens.ScreenContext;
 using MegaCrit.Sts2.Core.Platform;
 using MegaCrit.Sts2.Core.Saves;
 using MegaCrit.Sts2.Core.TestSupport;
-using Sentry;
+using Sentry.Godot;
 
 namespace MegaCrit.Sts2.Core.Nodes.Screens.FeedbackScreen;
 

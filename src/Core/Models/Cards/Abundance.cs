@@ -19,17 +19,19 @@ public sealed class Abundance : CardModel
 	{
 	}
 
+	protected override void OnUpgrade()
+	{
+		base.EnergyCost.UpgradeBy(-1);
+	}
+
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
 	{
 		List<CardModel> list = CardFactory.GetDistinctForCombat(base.Owner, from c in base.Owner.Character.CardPool.GetUnlockedCards(base.Owner.UnlockState, base.Owner.RunState.CardMultiplayerConstraint)
 			where c.Type == CardType.Power
 			select c, 3, base.Owner.RunState.Rng.CombatCardGeneration).ToList();
-		if (base.IsUpgraded)
+		foreach (CardModel item in list)
 		{
-			foreach (CardModel item in list)
-			{
-				CardCmd.Upgrade(item);
-			}
+			CardCmd.Upgrade(item);
 		}
 		CardModel cardModel = await CardSelectCmd.FromChooseACardScreen(choiceContext, list, base.Owner);
 		if (cardModel != null)

@@ -37,5 +37,12 @@
   "LEGEND_UNKNOWN.hoverTip.description": "Неизвестно, что ждет вас здесь.\n\nЛибо событие, либо враги, либо Торговец, либо сокровище.",
   "LEGEND_UNKNOWN.hoverTip.title": "???",
   "LEGEND_UNKNOWN.title": "Неизвестно",
+  "SHARE.description.other": "Сохранить скриншот всей карты, чтобы поделиться с друзьями.",
+  "SHARE.description.steam": "Сохранить скриншот всей карты, чтобы поделиться с друзьями.",
+  "SHARE.title": "Поделиться",
+  "SHARE_POPUP.description": "[gold]Скриншот всей карты сохранен в:[/gold]\n\n{path}.",
+  "SHARE_POPUP.open": "Открыть",
+  "SHARE_POPUP.title": "Скриншот сохранен!",
+  "SHARE_TOAST.description.steam": "Скриншот сохранен!",
   "STARTING_ROOM_PROMPT": "Выберите начальную комнату"
 }

@@ -78,15 +78,13 @@ public partial class NBestiary : NSubmenu
 
 	private const string _thoughtTailPath = "res://images/ui/thought_tail.png";
 
-	private NButton _modeButton;
-
-	private MegaLabel _modeLabel;
+	private NBestiaryModeButton _modeButton;
 
 	private bool _isStatsMode;
 
-	private TextureRect _pageLeftIcon;
+	private NHotkeyIcon _pageLeftIcon;
 
-	private TextureRect _pageRightIcon;
+	private NHotkeyIcon _pageRightIcon;
 
 	private static readonly StringName _filterLeftHotkey = MegaInput.viewDeckAndTabLeft;
 
@@ -166,9 +164,8 @@ public partial class NBestiary : NSubmenu
 		_dialogueTailShadow = GetNode<TextureRect>("%DialogueTailShadow");
 		_modeButton = GetNode<NBestiaryModeButton>("%ModeButton");
 		_modeButton.Connect(NClickableControl.SignalName.Released, Callable.From<NButton>(ToggleMode));
-		_modeLabel = GetNode<MegaLabel>("%ModeLabel");
-		_pageLeftIcon = GetNode<TextureRect>("%PageLeftIcon");
-		_pageRightIcon = GetNode<TextureRect>("%PageRightIcon");
+		_pageLeftIcon = GetNode<NHotkeyIcon>("%PageLeftIcon");
+		_pageRightIcon = GetNode<NHotkeyIcon>("%PageRightIcon");
 		NControllerManager.Instance.Connect(NControllerManager.SignalName.MouseDetected, Callable.From(UpdatePageIcons));
 		NControllerManager.Instance.Connect(NControllerManager.SignalName.ControllerDetected, Callable.From(UpdatePageIcons));
 		NInputManager.Instance.Connect(NInputManager.SignalName.InputRebound, Callable.From(UpdatePageIcons));
@@ -187,7 +184,7 @@ public partial class NBestiary : NSubmenu
 		_isStatsMode = !_isStatsMode;
 		if (_isStatsMode)
 		{
-			_modeLabel.SetTextAutoSize(new LocString("bestiary", "MODE.viewActions").GetRawText());
+			_modeButton.SetLabel(new LocString("bestiary", "MODE.viewActions").GetRawText());
 			ShowStatsPanel();
 			DisplayCharacterData();
 			EnableStatsModeHotkeys();
@@ -195,7 +192,7 @@ public partial class NBestiary : NSubmenu
 		}
 		else
 		{
-			_modeLabel.SetTextAutoSize(new LocString("bestiary", "MODE.viewStats").GetRawText());
+			_modeButton.SetLabel(new LocString("bestiary", "MODE.viewStats").GetRawText());
 			ShowMovesPanel();
 			HideDialogue();
 			DisableStatsModeHotkeys();
@@ -263,31 +260,49 @@ public partial class NBestiary : NSubmenu
 		}
 		BestiaryEntry entry = _selectedEntry.Entry;
 		EnemyStats enemyStats = null;
+		EncounterStats encounterStats = null;
 		if (entry.monsterModel != null)
 		{
 			enemyStats = _progress.EnemyStats.FirstOrDefault((EnemyStats e) => e.Id == entry.monsterModel.Id);
 		}
 		else
 		{
-			Log.Warn($"Need to handle special case: {entry.encounterModel.Id}");
+			encounterStats = _progress.EncounterStats.FirstOrDefault((EncounterStats e) => e.Id == entry.encounterModel.Id);
 		}
 		foreach (Node child in _filterContainer.GetChildren())
 		{
 			NBestiaryCharacterFilter filter = child as NBestiaryCharacterFilter;
-			if (filter == null || enemyStats == null)
+			if (filter == null)
 			{
 				continue;
 			}
-			if (filter.character != null)
+			if (enemyStats != null)
 			{
-				FightStats fightStats = enemyStats.FightStats.FirstOrDefault((FightStats f) => f.Character == filter.character.Id);
-				filter.kills = fightStats?.Wins ?? 0;
-				filter.deaths = fightStats?.Losses ?? 0;
+				if (filter.character != null)
+				{
+					FightStats fightStats = enemyStats.FightStats.FirstOrDefault((FightStats f) => f.Character == filter.character.Id);
+					filter.kills = fightStats?.Wins ?? 0;
+					filter.deaths = fightStats?.Losses ?? 0;
+				}
+				else
+				{
+					filter.kills = enemyStats.TotalWins;
+					filter.deaths = enemyStats.TotalLosses;
+				}
 			}
-			else
+			else if (encounterStats != null)
 			{
-				filter.kills = enemyStats.TotalWins;
-				filter.deaths = enemyStats.TotalLosses;
+				if (filter.character != null)
+				{
+					FightStats fightStats2 = encounterStats.FightStats.FirstOrDefault((FightStats f) => f.Character == filter.character.Id);
+					filter.kills = fightStats2?.Wins ?? 0;
+					filter.deaths = fightStats2?.Losses ?? 0;
+				}
+				else
+				{
+					filter.kills = encounterStats.TotalWins;
+					filter.deaths = encounterStats.TotalLosses;
+				}
 			}
 			filter.IsLocked = filter.kills + filter.deaths <= 0;
 		}
@@ -301,10 +316,6 @@ public partial class NBestiary : NSubmenu
 			return;
 		}
 		BestiaryEntry entry = _selectedEntry.Entry;
-		if (entry.monsterModel == null)
-		{
-			return;
-		}
 		LocString locString = new LocString("bestiary", "STATS.layout");
 		if (_currentFilter.Total == 0)
 		{
@@ -393,11 +404,11 @@ public partial class NBestiary : NSubmenu
 		_isStatsMode = !SaveManager.Instance.PrefsSave.IsBestiaryActionsPreferred;
 		if (_isStatsMode)
 		{
-			_modeLabel.SetTextAutoSize(new LocString("bestiary", "MODE.viewActions").GetRawText());
+			_modeButton.SetLabel(new LocString("bestiary", "MODE.viewActions").GetRawText());
 		}
 		else
 		{
-			_modeLabel.SetTextAutoSize(new LocString("bestiary", "MODE.viewStats").GetRawText());
+			_modeButton.SetLabel(new LocString("bestiary", "MODE.viewStats").GetRawText());
 		}
 		CreateFilters();
 		CreateEntries();
@@ -692,7 +703,7 @@ public partial class NBestiary : NSubmenu
 
 	private NBestiaryMoveButton CreateBestiaryMoveButton(BestiaryMonsterMove move, int moveIndex)
 	{
-		if (NControllerManager.Instance?.IsUsingController ?? false)
+		if (NControllerManager.Instance?.IsUsingDirectionalNavigation ?? false)
 		{
 			return moveIndex switch
 			{
@@ -863,13 +874,13 @@ public partial class NBestiary : NSubmenu
 
 	private void UpdatePageIcons()
 	{
-		bool flag = _isStatsMode && NControllerManager.Instance.IsUsingController;
+		bool flag = _isStatsMode && NControllerManager.Instance.IsUsingDirectionalNavigation;
 		_pageLeftIcon.Visible = flag;
 		_pageRightIcon.Visible = flag;
 		if (flag)
 		{
-			_pageLeftIcon.Texture = NInputManager.Instance.GetHotkeyIcon(MegaInput.viewDeckAndTabLeft);
-			_pageRightIcon.Texture = NInputManager.Instance.GetHotkeyIcon(MegaInput.viewExhaustPileAndTabRight);
+			_pageLeftIcon.UpdateInput(MegaInput.viewDeckAndTabLeft);
+			_pageRightIcon.UpdateInput(MegaInput.viewExhaustPileAndTabRight);
 		}
 	}
 

@@ -25,8 +25,6 @@ public sealed class Synchronize : CardModel
 			group orb by orb.Id).Count())
 	});
 
-	public override IEnumerable<CardKeyword> CanonicalKeywords => new global::_003C_003Ez__ReadOnlySingleElementList<CardKeyword>(CardKeyword.Exhaust);
-
 	public Synchronize()
 		: base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 	{
@@ -40,6 +38,6 @@ public sealed class Synchronize : CardModel
 
 	protected override void OnUpgrade()
 	{
-		RemoveKeyword(CardKeyword.Exhaust);
+		base.DynamicVars.CalculationExtra.UpgradeValueBy(1m);
 	}
 }

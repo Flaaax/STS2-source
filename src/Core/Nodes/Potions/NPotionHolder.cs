@@ -117,7 +117,7 @@ public partial class NPotionHolder : NClickableControl
 			nHoverTipSet?.SetGlobalPosition(base.GlobalPosition + Vector2.Down * base.Size.Y * Mathf.Max(1.5f, base.Scale.Y));
 			nHoverTipSet?.SetAlignment(this, HoverTipAlignment.Center);
 		}
-		if (NControllerManager.Instance.IsUsingController)
+		if (NControllerManager.Instance.IsUsingDirectionalNavigation)
 		{
 			_selectionReticle.OnSelect();
 		}
@@ -309,10 +309,10 @@ public partial class NPotionHolder : NClickableControl
 	{
 		Vector2 startPosition = base.GlobalPosition + Vector2.Right * base.Size.X * 0.5f + Vector2.Down * 50f;
 		NTargetManager instance = NTargetManager.Instance;
-		bool isUsingController = NControllerManager.Instance.IsUsingController;
-		instance.StartTargeting(targetType, startPosition, isUsingController ? TargetMode.Controller : TargetMode.ClickMouseToTarget, ShouldCancelTargeting, null);
+		bool isUsingDirectionalNavigation = NControllerManager.Instance.IsUsingDirectionalNavigation;
+		instance.StartTargeting(targetType, startPosition, isUsingDirectionalNavigation ? TargetMode.Controller : TargetMode.ClickMouseToTarget, ShouldCancelTargeting, null);
 		Creature creature = Potion.Model.Owner.Creature;
-		if (isUsingController && CombatManager.Instance.IsInProgress)
+		if (isUsingDirectionalNavigation && CombatManager.Instance.IsInProgress)
 		{
 			ICombatState combatState = creature.CombatState;
 			List<Creature> source = (targetType switch
@@ -324,7 +324,7 @@ public partial class NPotionHolder : NClickableControl
 			NCombatRoom.Instance.RestrictControllerNavigation(source.Select((Creature c) => NCombatRoom.Instance.GetCreatureNode(c).Hitbox));
 			NCombatRoom.Instance.GetCreatureNode(source.First()).Hitbox.TryGrabFocus();
 		}
-		else if (isUsingController && targetType == TargetType.AnyPlayer)
+		else if (isUsingDirectionalNavigation && targetType == TargetType.AnyPlayer)
 		{
 			NMultiplayerPlayerStateContainer multiplayerPlayerContainer = NRun.Instance.GlobalUi.MultiplayerPlayerContainer;
 			multiplayerPlayerContainer.FirstPlayerState?.Hitbox.TryGrabFocus();
@@ -334,7 +334,7 @@ public partial class NPotionHolder : NClickableControl
 		FocusBehaviorRecursiveEnum? savedFocusBehavior = null;
 		Control merchantScreenContext = null;
 		bool merchantButtonWasDisabled = false;
-		if (isUsingController && Potion.Model is FoulPotion)
+		if (isUsingDirectionalNavigation && Potion.Model is FoulPotion)
 		{
 			(merchantButton, merchantScreenContext) = FoulPotion.GetFoulPotionMerchantTarget(creature.Player.RunState.CurrentRoom);
 			if (merchantButton != null)

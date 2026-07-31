@@ -22,7 +22,7 @@ public sealed class CrushUnder : CardModel
 
 	protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlyArray<DynamicVar>(new DynamicVar[2]
 	{
-		new DamageVar(7m, ValueProp.Move),
+		new DamageVar(8m, ValueProp.Move),
 		new DynamicVar("StrengthLoss", 1m)
 	});
 

@@ -722,7 +722,7 @@
   "RED_VINE_TEA.description": "Sonraki {Combats:plural:savaşın|[blue]{}[/blue] savaşın} başında fazladan [blue]{Cards}[/blue] {Cards:plural:kart|kart} çek.",
   "RED_VINE_TEA.flavor": "[red]Bu kalıntının detayları ileride ortaya çıkacak...[/red]",
   "RED_VINE_TEA.title": "Kırmızı Asma Çayı",
-  "REGALITE.description": "Her kart oluşturduğunda [blue]{Block}[/blue] [gold]Blok[/gold] elde et.",
+  "REGALITE.description": "Her tur ilk kez kart oluşturduğunda [blue]{Block}[/blue] [gold]Blok[/gold] elde et.",
   "REGALITE.flavor": "[red]Bu kalıntının detayları ileride ortaya çıkacak...[/red]",
   "REGALITE.title": "Regalit",
   "REGAL_PILLOW.additionalRestSiteHealText": "Kraliyet Yastığı'ndan +{Heal} CP",

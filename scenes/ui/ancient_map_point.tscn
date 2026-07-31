@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://defhh5rqha2tm"]
+[gd_scene load_steps=6 format=3 uid="uid://defhh5rqha2tm"]
 
 [ext_resource type="Script" uid="uid://bj5cpredv5w1m" path="res://src/Core/Nodes/Screens/Map/NAncientMapPoint.cs" id="1_1mx34"]
 [ext_resource type="Texture2D" uid="uid://cholm6mbfh85o" path="res://images/packed/map/ancients/ancient_node_neow_outline.png" id="2_1shbl"]
 [ext_resource type="Texture2D" uid="uid://njuo12tymm6i" path="res://images/packed/map/ancients/ancient_node_neow.png" id="2_f046r"]
 [ext_resource type="PackedScene" uid="uid://bf5067m5nxvaw" path="res://scenes/ui/multiplayer_vote_container.tscn" id="4_l14d5"]
-[ext_resource type="Script" uid="uid://x0d65dc506fq" path="res://src/Core/Nodes/Combat/NSelectionReticle.cs" id="5_lsae4"]
-[ext_resource type="Texture2D" uid="uid://hm3yndjsncmt" path="res://images/ui/combat/combat_reticle.png" id="6_lr2rh"]
+[ext_resource type="PackedScene" uid="uid://bgy88bk44xxvk" path="res://scenes/ui/selection_reticle.tscn" id="7_ftkoj"]
 
 [node name="AncientMapPoint" type="Control"]
 layout_mode = 3
@@ -65,125 +64,32 @@ offset_top = 156.0
 offset_right = 223.0
 offset_bottom = 188.0
 
-[node name="SelectionReticle" type="Control" parent="."]
+[node name="SelectionReticle" parent="." instance=ExtResource("7_ftkoj")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(172, 172)
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -86.0
-offset_right = 86.0
+offset_left = -120.0
+offset_top = -104.0
+offset_right = 120.0
+offset_bottom = 104.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(126, 84)
-mouse_filter = 2
-script = ExtResource("5_lsae4")
+pivot_offset = Vector2(120, 104)
 
-[node name="Border" type="TextureRect" parent="SelectionReticle"]
-layout_mode = 0
-offset_left = -26.0
-offset_top = -26.0
-offset_right = 6.0
-offset_bottom = 6.0
-mouse_filter = 2
-texture = ExtResource("6_lr2rh")
-expand_mode = 1
+[node name="Shadow" parent="SelectionReticle/Border" index="0"]
+self_modulate = Color(0, 0, 0, 0.35000002)
 
-[node name="Shadow" type="TextureRect" parent="SelectionReticle/Border"]
-self_modulate = Color(0, 0, 0, 0.501961)
-show_behind_parent = true
-layout_mode = 0
-offset_left = 4.0
-offset_top = 3.0
-offset_right = 36.0
-offset_bottom = 35.0
-mouse_filter = 2
-texture = ExtResource("6_lr2rh")
-expand_mode = 1
+[node name="Shadow2" parent="SelectionReticle/Border2" index="0"]
+self_modulate = Color(0, 0, 0, 0.35000002)
 
-[node name="Border2" type="TextureRect" parent="SelectionReticle"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = -26.0
-offset_top = 23.0
-offset_right = 6.0
-offset_bottom = 55.0
-grow_vertical = 0
-scale = Vector2(1, -1)
-mouse_filter = 2
-texture = ExtResource("6_lr2rh")
-expand_mode = 1
+[node name="Shadow3" parent="SelectionReticle/Border3" index="0"]
+self_modulate = Color(0, 0, 0, 0.35000002)
 
-[node name="Shadow2" type="TextureRect" parent="SelectionReticle/Border2"]
-self_modulate = Color(0, 0, 0, 0.501961)
-show_behind_parent = true
-layout_mode = 0
-offset_left = 4.0
-offset_top = -3.0
-offset_right = 36.0
-offset_bottom = 29.0
-mouse_filter = 2
-texture = ExtResource("6_lr2rh")
-expand_mode = 1
+[node name="Shadow4" parent="SelectionReticle/Border4" index="0"]
+self_modulate = Color(0, 0, 0, 0.35000002)
 
-[node name="Border3" type="TextureRect" parent="SelectionReticle"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = 25.0
-offset_top = -25.0
-offset_right = 57.0
-offset_bottom = 7.0
-grow_horizontal = 0
-scale = Vector2(-1, 1)
-mouse_filter = 2
-texture = ExtResource("6_lr2rh")
-expand_mode = 1
-
-[node name="Shadow3" type="TextureRect" parent="SelectionReticle/Border3"]
-self_modulate = Color(0, 0, 0, 0.501961)
-show_behind_parent = true
-layout_mode = 0
-offset_left = -4.0
-offset_top = 3.0
-offset_right = 28.0
-offset_bottom = 35.0
-mouse_filter = 2
-texture = ExtResource("6_lr2rh")
-expand_mode = 1
-
-[node name="Border4" type="TextureRect" parent="SelectionReticle"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 25.0
-offset_top = 24.0
-offset_right = 57.0
-offset_bottom = 56.0
-grow_horizontal = 0
-grow_vertical = 0
-scale = Vector2(-1, -1)
-mouse_filter = 2
-texture = ExtResource("6_lr2rh")
-expand_mode = 1
-
-[node name="Shadow4" type="TextureRect" parent="SelectionReticle/Border4"]
-self_modulate = Color(0, 0, 0, 0.501961)
-show_behind_parent = true
-layout_mode = 0
-offset_left = -4.0
-offset_top = -3.0
-offset_right = 28.0
-offset_bottom = 29.0
-mouse_filter = 2
-texture = ExtResource("6_lr2rh")
-expand_mode = 1
+[editable path="SelectionReticle"]

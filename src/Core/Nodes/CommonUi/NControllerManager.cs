@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.ControllerInput.ControllerConfigs;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Nodes.Screens.ScreenContext;
+using MegaCrit.Sts2.Core.Saves;
 
 namespace MegaCrit.Sts2.Core.Nodes.CommonUi;
 
@@ -55,6 +56,12 @@ public partial class NControllerManager : Node
 
 	private Tween? _notifyTween;
 
+	/// <summary>
+	/// Make sure you know what you are doing when using this.
+	/// used to disable switching between InputTypes while we are listening for inputs to rebind them
+	/// </summary>
+	private bool _inputTypeCheckingDisabled;
+
 	public static NControllerManager? Instance
 	{
 		get
@@ -69,7 +76,33 @@ public partial class NControllerManager : Node
 
 	public bool ShouldAllowControllerRebinding => _inputStrategy?.ShouldAllowControllerRebinding ?? true;
 
-	public bool IsUsingController { get; private set; }
+	public bool ShouldShowInputGlyphs
+	{
+		get
+		{
+			InputType inputType = InputType;
+			if ((uint)(inputType - 1) <= 1u)
+			{
+				return true;
+			}
+			return false;
+		}
+	}
+
+	public InputType InputType { get; private set; }
+
+	public bool IsUsingDirectionalNavigation
+	{
+		get
+		{
+			InputType inputType = InputType;
+			if ((uint)(inputType - 1) <= 1u)
+			{
+				return true;
+			}
+			return false;
+		}
+	}
 
 	public Dictionary<StringName, StringName> GetDefaultControllerInputMap
 	{
@@ -111,10 +144,6 @@ public partial class NControllerManager : Node
 
 	public override void _Process(double delta)
 	{
-		if (_skipMouseCheckFrames > 0)
-		{
-			_skipMouseCheckFrames--;
-		}
 		if (NGame.IsGameFocusedWindow())
 		{
 			_inputStrategy?.ProcessInput();
@@ -123,13 +152,20 @@ public partial class NControllerManager : Node
 
 	public override void _Input(InputEvent inputEvent)
 	{
-		if (IsUsingController)
+		if (!_inputTypeCheckingDisabled)
 		{
-			CheckForMouseInput(inputEvent);
-		}
-		else
-		{
-			CheckForControllerInput(inputEvent);
+			if (InputType != InputType.Controller)
+			{
+				CheckForControllerInput(inputEvent);
+			}
+			if (InputType != InputType.MouseAndKeyboard)
+			{
+				CheckForMouseInput(inputEvent);
+			}
+			if (InputType != InputType.KeyboardOnlyMode)
+			{
+				CheckForArrowKeyInput(inputEvent);
+			}
 		}
 	}
 
@@ -146,14 +182,9 @@ public partial class NControllerManager : Node
 	{
 		bool flag = inputEvent is InputEventMouseButton;
 		bool flag2 = inputEvent is InputEventMouseMotion { Velocity: var velocity } inputEventMouseMotion && velocity.LengthSquared() > 100f && _skipMouseCheckFrames <= 0 && inputEventMouseMotion.Relative.LengthSquared() <= 250000f;
-		Viewport viewport = GetViewport();
 		if (flag || flag2)
 		{
-			IsUsingController = false;
-			Input.WarpMouse(_lastMousePosition);
-			viewport?.GuiReleaseFocus();
-			EmitSignal(SignalName.MouseDetected);
-			ControlModeChanged();
+			SwitchToMouseMode();
 		}
 	}
 
@@ -165,21 +196,54 @@ public partial class NControllerManager : Node
 	{
 		if (NGame.IsGameFocusedWindow() && Controller.AllControllerInputs.Any((StringName i) => inputEvent.IsActionPressed(i)))
 		{
-			IsUsingController = true;
+			InputType = InputType.Controller;
 			Viewport viewport = GetViewport();
-			if (viewport != null)
-			{
-				Vector2I vector2I = DisplayServer.MouseGetPosition();
-				Vector2I vector2I2 = DisplayServer.WindowGetPosition();
-				_lastMousePosition = new Vector2(vector2I.X - vector2I2.X, vector2I.Y - vector2I2.Y);
-				viewport.WarpMouse(_offscreenPos);
-				_skipMouseCheckFrames = 2;
-			}
+			NGame.Instance?.SetMouseBehaviorRecursive(Control.MouseBehaviorRecursiveEnum.Disabled);
 			ActiveScreenContext.Instance.FocusOnDefaultControl();
 			EmitSignal(SignalName.ControllerDetected);
 			ControlModeChanged();
 			viewport?.SetInputAsHandled();
 		}
+	}
+
+	private void CheckForArrowKeyInput(InputEvent inputEvent)
+	{
+		if (NGame.IsGameFocusedWindow() && inputEvent is InputEventKey inputEventKey && inputEventKey.IsPressed() && (inputEventKey.Keycode == Key.Up || inputEventKey.Keycode == Key.Down || inputEventKey.Keycode == Key.Left || inputEventKey.Keycode == Key.Right))
+		{
+			Viewport viewport = GetViewport();
+			if (SaveManager.Instance.PrefsSave.KeyboardMode)
+			{
+				InputType = InputType.KeyboardOnlyMode;
+				NGame.Instance?.SetMouseBehaviorRecursive(Control.MouseBehaviorRecursiveEnum.Disabled);
+				ActiveScreenContext.Instance.FocusOnDefaultControl();
+				EmitSignal(SignalName.ControllerDetected);
+				ControlModeChanged();
+				viewport?.SetInputAsHandled();
+			}
+			else if (InputType == InputType.Controller)
+			{
+				SwitchToMouseMode();
+			}
+		}
+	}
+
+	/// <summary>
+	/// WARNING: Normally this should be handled by CheckForMouseInput.
+	/// Make sure you know what you are doing if you use this.
+	/// </summary>
+	public void ForceMouseMode()
+	{
+		SwitchToMouseMode();
+	}
+
+	private void SwitchToMouseMode()
+	{
+		Viewport viewport = GetViewport();
+		InputType = InputType.MouseAndKeyboard;
+		viewport?.GuiReleaseFocus();
+		NGame.Instance?.SetMouseBehaviorRecursive(Control.MouseBehaviorRecursiveEnum.Inherited);
+		EmitSignal(SignalName.MouseDetected);
+		ControlModeChanged();
 	}
 
 	private void ControlModeChanged()
@@ -189,20 +253,26 @@ public partial class NControllerManager : Node
 		_notifyTween.TweenProperty(_label, "modulate", Colors.White, 0.25);
 		_notifyTween.TweenInterval(0.5);
 		_notifyTween.TweenProperty(_label, "modulate", Colors.Transparent, 0.75);
-		if (IsUsingController)
+		switch (InputType)
 		{
+		case InputType.Controller:
 			_label.SetTextAutoSize(new LocString("main_menu_ui", "CONTROLLER_DETECTED").GetFormattedText());
 			Log.Info("CONTROLLER DETECTED: " + ((_inputStrategy != null) ? _inputStrategy.GetControllerName() : "NONE"));
-		}
-		else
-		{
+			break;
+		case InputType.MouseAndKeyboard:
 			_label.SetTextAutoSize(new LocString("main_menu_ui", "MOUSE_DETECTED").GetFormattedText());
+			Log.Info("MOUSE DETECTED");
+			break;
+		case InputType.KeyboardOnlyMode:
+			_label.SetTextAutoSize(new LocString("main_menu_ui", "KEYBOARD_ONLY_DETECTED").GetFormattedText());
+			Log.Info("KEYBOARD-MODE DETECTED");
+			break;
 		}
 	}
 
 	private void OnScreenContextChanged()
 	{
-		if (IsUsingController)
+		if (IsUsingDirectionalNavigation)
 		{
 			Callable.From(delegate
 			{
@@ -215,6 +285,16 @@ public partial class NControllerManager : Node
 		inputEventMouseMotion.Position = mousePosition;
 		inputEventMouseMotion.GlobalPosition = mousePosition;
 		Input.ParseInputEvent(inputEventMouseMotion);
+	}
+
+	public void StartListeningForRebind()
+	{
+		_inputTypeCheckingDisabled = true;
+	}
+
+	public void StopListeningForRebind()
+	{
+		_inputTypeCheckingDisabled = false;
 	}
 
 	public Texture2D? GetHotkeyIcon(string hotkey)

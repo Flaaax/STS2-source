@@ -15,12 +15,15 @@
   <ItemGroup>
     <PackageReference Include="JetBrains.Annotations" Version="2023.3.0" />
     <PackageReference Include="MonoMod.Backports" Version="1.1.2" />
-    <PackageReference Include="Sentry" Version="5.0.0" />
+    <PackageReference Include="Sentry" Version="6.7.0" />
     <PackageReference Include="SmartFormat" Version="3.3.0" />
     <PackageReference Include="System.IO.Hashing" Version="9.0.0" />
     <PackageReference Include="Vortice.DXGI" Version="3.6.2" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Sentry.Godot">
+      <HintPath>D:\Steam\steamapps\common\Slay the Spire 2\data_sts2_windows_x86_64\Sentry.Godot.dll</HintPath>
+    </Reference>
     <Reference Include="Steamworks.NET">
       <HintPath>D:\Steam\steamapps\common\Slay the Spire 2\data_sts2_windows_x86_64\Steamworks.NET.dll</HintPath>
     </Reference>

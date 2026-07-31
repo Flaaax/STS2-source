@@ -47,7 +47,7 @@ public partial class NRemoteLobbyPlayer : Control
 
 	public ulong PlayerId => _playerId;
 
-	public static NRemoteLobbyPlayer Create(LobbyPlayer player, PlatformType platform, bool isSingleplayer)
+	public static NRemoteLobbyPlayer Create(StartRunLobbyPlayer player, PlatformType platform, bool isSingleplayer)
 	{
 		NRemoteLobbyPlayer nRemoteLobbyPlayer = PreloadManager.Cache.GetScene(_scenePath).Instantiate<NRemoteLobbyPlayer>(PackedScene.GenEditState.Disabled);
 		nRemoteLobbyPlayer._playerId = player.id;
@@ -67,7 +67,7 @@ public partial class NRemoteLobbyPlayer : Control
 		nRemoteLobbyPlayer._platform = runLobby.NetService.Platform;
 		nRemoteLobbyPlayer._character = ModelDb.GetById<CharacterModel>(runLobby.Run.Players.First((SerializablePlayer p) => p.NetId == playerId).CharacterId);
 		nRemoteLobbyPlayer._isReady = runLobby.IsPlayerReady(playerId);
-		nRemoteLobbyPlayer._isConnected = runLobby.ConnectedPlayerIds.Contains(playerId);
+		nRemoteLobbyPlayer._isConnected = runLobby.PlayerIds.Contains(playerId);
 		return nRemoteLobbyPlayer;
 	}
 
@@ -89,7 +89,7 @@ public partial class NRemoteLobbyPlayer : Control
 		RefreshVisuals();
 	}
 
-	public void OnPlayerChanged(LobbyPlayer lobbyPlayer)
+	public void OnPlayerChanged(StartRunLobbyPlayer lobbyPlayer)
 	{
 		_playerId = lobbyPlayer.id;
 		SetCharacter(lobbyPlayer.character);
@@ -103,7 +103,7 @@ public partial class NRemoteLobbyPlayer : Control
 		SerializablePlayer serializablePlayer = runLobby.Run.Players.First((SerializablePlayer p) => p.NetId == playerId);
 		SetCharacter(ModelDb.GetById<CharacterModel>(serializablePlayer.CharacterId));
 		_isReady = runLobby.IsPlayerReady(playerId);
-		_isConnected = runLobby.ConnectedPlayerIds.Contains(playerId);
+		_isConnected = runLobby.PlayerIds.Contains(playerId);
 		RefreshVisuals();
 	}
 

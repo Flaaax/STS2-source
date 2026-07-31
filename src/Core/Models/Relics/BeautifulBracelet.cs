@@ -20,8 +20,8 @@ public sealed class BeautifulBracelet : RelicModel
 
 	protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlyArray<DynamicVar>(new DynamicVar[2]
 	{
-		new CardsVar(3),
-		new DynamicVar("Swift", 3m)
+		new CardsVar(4),
+		new DynamicVar("Swift", 2m)
 	});
 
 	protected override IEnumerable<IHoverTip> ExtraHoverTips => HoverTipFactory.FromEnchantment<Swift>(base.DynamicVars["Swift"].IntValue);
@@ -30,7 +30,7 @@ public sealed class BeautifulBracelet : RelicModel
 	{
 		foreach (CardModel item in await CardSelectCmd.FromDeckForEnchantment(prefs: new CardSelectorPrefs(CardSelectorPrefs.EnchantSelectionPrompt, base.DynamicVars.Cards.IntValue), player: base.Owner, enchantment: ModelDb.Enchantment<Swift>(), amount: base.DynamicVars["Swift"].IntValue))
 		{
-			CardCmd.Enchant<Swift>(item, 3m);
+			CardCmd.Enchant<Swift>(item, base.DynamicVars["Swift"].IntValue);
 			NCardEnchantVfx nCardEnchantVfx = NCardEnchantVfx.Create(item);
 			if (nCardEnchantVfx != null)
 			{

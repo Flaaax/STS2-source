@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ch6con2qv1mxm"]
+[gd_scene load_steps=14 format=3 uid="uid://ch6con2qv1mxm"]
 
 [ext_resource type="Script" uid="uid://bso75nq8wcknm" path="res://src/Core/Nodes/Screens/MainMenu/NEarlyAccessDisclaimer.cs" id="1_8ab25"]
 [ext_resource type="Texture2D" uid="uid://dkl8hnhyro3ob" path="res://images/ui/reward_screen/reward_panel.png" id="2_gx7q0"]
@@ -8,7 +8,8 @@
 [ext_resource type="FontVariation" uid="uid://ux4d708e7mk6" path="res://themes/kreon_bold_glyph_space_one.tres" id="6_ud003"]
 [ext_resource type="Shader" uid="uid://c66gb6g7tup3n" path="res://shaders/hsv.gdshader" id="8_1c6xa"]
 [ext_resource type="Script" uid="uid://bikjeuqmkb1x2" path="res://src/Core/Nodes/Screens/MainMenu/NDisclaimerProceedButton.cs" id="10_ibbdc"]
-[ext_resource type="Texture2D" uid="uid://b5x513mavmk5v" path="res://images/ui/placeholder_controller_icon.png" id="11_jv4j7"]
+[ext_resource type="FontVariation" uid="uid://ciql5khgewwbm" path="res://themes/kreon_bold_glyph_space_two.tres" id="11_01lx0"]
+[ext_resource type="PackedScene" uid="uid://ddb8daodx7qsl" path="res://scenes/ui/hotkey_icon.tscn" id="11_1sjxb"]
 [ext_resource type="Script" uid="uid://c2oywrx8xbqfx" path="res://addons/mega_text/MegaRichTextLabel.cs" id="20_dkfru"]
 [ext_resource type="Texture2D" uid="uid://cyruikkcbbm0f" path="res://images/ui/reward_screen/reward_skip_button.png" id="21_1qslj"]
 
@@ -135,23 +136,25 @@ script = ExtResource("10_ibbdc")
 [node name="Label" type="Label" parent="Image/ProceedButton"]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 41.0
-offset_top = -14.5
-offset_right = -41.0
-offset_bottom = 14.5
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -111.0
+offset_top = -30.0
+offset_right = 111.0
+offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.9372549, 0.78431374, 0.31764707, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.2509804)
-theme_override_colors/font_outline_color = Color(0.2, 0.17666666, 0.1, 1)
-theme_override_constants/shadow_offset_x = 6
-theme_override_constants/shadow_offset_y = 4
-theme_override_constants/outline_size = 16
-theme_override_constants/shadow_outline_size = 0
-theme_override_fonts/font = ExtResource("3_vf7gi")
+theme_override_colors/font_outline_color = Color(0.2, 0.16406667, 0.102, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 12
+theme_override_constants/shadow_outline_size = 12
+theme_override_fonts/font = ExtResource("11_01lx0")
 theme_override_font_sizes/font_size = 32
 text = "Proceed?"
 horizontal_alignment = 1
@@ -161,14 +164,17 @@ MinFontSize = 18
 MaxFontSize = 32
 metadata/_custom_type_script = "uid://dtfio45agppyj"
 
-[node name="ControllerIcon" type="TextureRect" parent="Image/ProceedButton"]
+[node name="HotkeyIcon" parent="Image/ProceedButton" instance=ExtResource("11_1sjxb")]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = -31.0
-offset_top = 2.0
-offset_right = 213.0
-offset_bottom = 124.0
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("11_jv4j7")
-expand_mode = 1
-stretch_mode = 5
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 102.99994
+offset_top = 3.8146973e-06
+offset_right = 150.99994
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2

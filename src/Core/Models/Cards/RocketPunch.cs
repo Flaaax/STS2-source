@@ -46,7 +46,7 @@ public sealed class RocketPunch : CardModel
 		{
 			return Task.CompletedTask;
 		}
-		base.EnergyCost.SetUntilPlayed(0);
+		base.EnergyCost.AddUntilPlayed(-1);
 		return Task.CompletedTask;
 	}
 

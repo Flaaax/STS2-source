@@ -17,6 +17,11 @@ public static class SharedMigrationHelper
 	};
 
 	/// <summary>
+	/// Renames used by SerializableRun V19-&gt;V20 and RunHistory V9-&gt;V10.
+	/// </summary>
+	public static readonly IReadOnlyDictionary<string, string> v110Renames = new Dictionary<string, string> { ["CARD.SCARE"] = "CARD.SIDESTEP" };
+
+	/// <summary>
 	/// Recursively walks a JSON tree and replaces string values found in the renames dictionary.
 	/// </summary>
 	public static void ReplaceModelIds(JsonNode? node, IReadOnlyDictionary<string, string> renames)

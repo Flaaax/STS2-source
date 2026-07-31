@@ -37,5 +37,12 @@
   "LEGEND_UNKNOWN.hoverTip.description": "Tajemnicze pomieszczenie.\n\nMożna się w nim spodziewać przeciwników, skarbu, Handlarza lub wydarzenia.",
   "LEGEND_UNKNOWN.hoverTip.title": "???",
   "LEGEND_UNKNOWN.title": "Nieznane",
+  "SHARE.description.other": "Zapisz zrzut ekranu całej mapy, aby udostępnić go znajomym.",
+  "SHARE.description.steam": "Zapisz zrzut ekranu całej mapy, aby udostępnić go znajomym na Steam.",
+  "SHARE.title": "Udostępnij",
+  "SHARE_POPUP.description": "[gold]Zapisano zrzut ekranu do:[/gold]\n\n{path}",
+  "SHARE_POPUP.open": "Otwórz",
+  "SHARE_POPUP.title": "Zapisano zrzut ekranu!",
+  "SHARE_TOAST.description.steam": "Zapisano zrzut ekranu!",
   "STARTING_ROOM_PROMPT": "Wybierz pomieszczenie startowe"
 }

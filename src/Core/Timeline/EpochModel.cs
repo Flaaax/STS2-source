@@ -33,6 +33,8 @@ public abstract class EpochModel
 
 	private static HashSet<string>? _epochIdsHashSet;
 
+	private static List<string>? _agnosticUnlockOrder;
+
 	private string? _resolvedPortraitPath;
 
 	private static readonly Dictionary<string, Type> _epochTypeDictionary;
@@ -44,6 +46,70 @@ public abstract class EpochModel
 	public static IReadOnlyList<string> AllEpochIds => _allEpochIds ?? (_allEpochIds = _allEpochs.Select(GetId).ToList());
 
 	public static IReadOnlySet<string> EpochIdsHashSet => _epochIdsHashSet ?? (_epochIdsHashSet = AllEpochIds.ToHashSet());
+
+	/// <summary>
+	/// The character-agnostic epoch IDs in the order the end-of-run score bar grants them.
+	/// <see cref="M:MegaCrit.Sts2.Core.Saves.ProgressState.GrantNextUnlock" /> hands out the first one the player is missing, and
+	/// <see cref="P:MegaCrit.Sts2.Core.Saves.ProgressState.TotalUnlocks" /> counts how many of them they have.
+	/// Append only: the v23 to v24 migration reads a prefix of this list to work out which unlocks an
+	/// old save had earned, so reordering it changes what those saves resolve to.
+	/// </summary>
+	/// <remarks>
+	/// Lazily built rather than a field initializer: static field initializers run before the static
+	/// constructor that populates the ID dictionaries <see cref="M:MegaCrit.Sts2.Core.Timeline.EpochModel.GetId``1" /> reads.
+	/// </remarks>
+	public static IReadOnlyList<string> AgnosticUnlockOrder
+	{
+		get
+		{
+			List<string> list = _agnosticUnlockOrder;
+			if (list == null)
+			{
+				int num = 18;
+				list = new List<string>(num);
+				CollectionsMarshal.SetCount(list, num);
+				Span<string> span = CollectionsMarshal.AsSpan(list);
+				int num2 = 0;
+				span[num2] = GetId<Colorless1Epoch>();
+				num2++;
+				span[num2] = GetId<Relic1Epoch>();
+				num2++;
+				span[num2] = GetId<Potion1Epoch>();
+				num2++;
+				span[num2] = GetId<UnderdocksEpoch>();
+				num2++;
+				span[num2] = GetId<Colorless2Epoch>();
+				num2++;
+				span[num2] = GetId<Relic2Epoch>();
+				num2++;
+				span[num2] = GetId<Potion2Epoch>();
+				num2++;
+				span[num2] = GetId<Act2BEpoch>();
+				num2++;
+				span[num2] = GetId<Colorless3Epoch>();
+				num2++;
+				span[num2] = GetId<Relic3Epoch>();
+				num2++;
+				span[num2] = GetId<Act3BEpoch>();
+				num2++;
+				span[num2] = GetId<Colorless4Epoch>();
+				num2++;
+				span[num2] = GetId<Relic4Epoch>();
+				num2++;
+				span[num2] = GetId<Event1Epoch>();
+				num2++;
+				span[num2] = GetId<Colorless5Epoch>();
+				num2++;
+				span[num2] = GetId<Relic5Epoch>();
+				num2++;
+				span[num2] = GetId<Event2Epoch>();
+				num2++;
+				span[num2] = GetId<Event3Epoch>();
+				_agnosticUnlockOrder = list;
+			}
+			return list;
+		}
+	}
 
 	public abstract string Id { get; }
 

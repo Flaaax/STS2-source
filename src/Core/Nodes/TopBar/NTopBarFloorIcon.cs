@@ -17,6 +17,7 @@ public partial class NTopBarFloorIcon : NClickableControl
 	public override void _Ready()
 	{
 		_floorNumLabel = GetNode<MegaLabel>("FloorNumLabel");
+		RunManager.Instance.RoomEntered += UpdateIcon;
 		ConnectSignals();
 	}
 
@@ -26,14 +27,12 @@ public partial class NTopBarFloorIcon : NClickableControl
 		UpdateIcon();
 	}
 
-	public override void _EnterTree()
+	public override void _Notification(int what)
 	{
-		RunManager.Instance.RoomEntered += UpdateIcon;
-	}
-
-	public override void _ExitTree()
-	{
-		RunManager.Instance.RoomEntered -= UpdateIcon;
+		if ((long)what == 1)
+		{
+			RunManager.Instance.RoomEntered -= UpdateIcon;
+		}
 	}
 
 	private void UpdateIcon()

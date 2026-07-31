@@ -1,0 +1,375 @@
+[gd_scene load_steps=18 format=3 uid="uid://d06sfbomow0sm"]
+
+[ext_resource type="Script" uid="uid://brygj0nhhmir2" path="res://src/Core/Nodes/Screens/Settings/NInputSettingsPanel.cs" id="1_pafn5"]
+[ext_resource type="Script" uid="uid://byfvdo45fc3mu" path="res://src/Core/Nodes/Screens/Settings/NKeyboardOnlyModeHoverTip.cs" id="2_tmdhn"]
+[ext_resource type="Theme" uid="uid://brryqml7h0tef" path="res://themes/settings_screen_line_header.tres" id="3_s1fty"]
+[ext_resource type="FontVariation" uid="uid://c6wnuvk3exmk5" path="res://themes/kreon_regular_shared.tres" id="4_b2rvh"]
+[ext_resource type="FontVariation" uid="uid://bg85h22rkxs6g" path="res://themes/kreon_bold_shared.tres" id="5_ungse"]
+[ext_resource type="Shader" uid="uid://c66gb6g7tup3n" path="res://shaders/hsv.gdshader" id="10_6i6ed"]
+[ext_resource type="Texture2D" uid="uid://cyruikkcbbm0f" path="res://images/ui/reward_screen/reward_skip_button.png" id="10_kjr5t"]
+[ext_resource type="FontVariation" uid="uid://ciql5khgewwbm" path="res://themes/kreon_bold_glyph_space_two.tres" id="11_tcv32"]
+[ext_resource type="Script" uid="uid://dtfio45agppyj" path="res://addons/mega_text/MegaLabel.cs" id="12_mgvwx"]
+[ext_resource type="FontVariation" uid="uid://drc58pa03nghs" path="res://themes/kreon_regular_glyph_space_two.tres" id="13_4xkit"]
+[ext_resource type="FontVariation" uid="uid://ux4d708e7mk6" path="res://themes/kreon_bold_glyph_space_one.tres" id="15_3oixx"]
+[ext_resource type="Script" uid="uid://c2oywrx8xbqfx" path="res://addons/mega_text/MegaRichTextLabel.cs" id="19_dlkgh"]
+[ext_resource type="PackedScene" uid="uid://cqq1trtsn7j7r" path="res://scenes/screens/settings_tickbox.tscn" id="20_5hrot"]
+[ext_resource type="Script" uid="uid://bfyn5f1tkr4lp" path="res://src/Core/Nodes/Screens/Settings/NKeyboardOnlyModeTickbox.cs" id="21_4qfm2"]
+[ext_resource type="Script" uid="uid://b37icocjlkljb" path="res://src/Core/Nodes/Screens/Settings/NResetToDefaultControlsButton.cs" id="22_im674"]
+[ext_resource type="PackedScene" uid="uid://bgy88bk44xxvk" path="res://scenes/ui/selection_reticle.tscn" id="23_208nb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3oixx"]
+resource_local_to_scene = true
+shader = ExtResource("10_6i6ed")
+shader_parameter/h = 0.45
+shader_parameter/s = 1.5
+shader_parameter/v = 0.8
+
+[node name="InputSettings" type="Control"]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -550.0
+offset_top = 24.0
+offset_right = 550.0
+offset_bottom = 358.0
+grow_horizontal = 2
+script = ExtResource("1_pafn5")
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(1012, 0)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 64.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="Padding" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="KeyboardOnlyMode" type="MarginContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 0
+script = ExtResource("2_tmdhn")
+
+[node name="KeyboardOnlyModeHeader" type="RichTextLabel" parent="VBoxContainer/KeyboardOnlyMode"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("3_s1fty")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5)
+theme_override_constants/shadow_outline_size = 0
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 0
+theme_override_fonts/normal_font = ExtResource("4_b2rvh")
+theme_override_fonts/bold_font = ExtResource("5_ungse")
+theme_override_font_sizes/normal_font_size = 28
+theme_override_font_sizes/bold_font_size = 28
+theme_override_font_sizes/bold_italics_font_size = 28
+theme_override_font_sizes/italics_font_size = 28
+theme_override_font_sizes/mono_font_size = 28
+bbcode_enabled = true
+text = "Enable Keyboard-Only mode??"
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 1
+script = ExtResource("19_dlkgh")
+MaxFontSize = 28
+
+[node name="KeyboardOnlyModeTickbox" parent="VBoxContainer/KeyboardOnlyMode" instance=ExtResource("20_5hrot")]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../../ShowRunTimer/SettingsTickbox")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../LongPressConfirmations/SettingsTickbox")
+script = ExtResource("21_4qfm2")
+
+[node name="PaddedDivider" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(1100, 26)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ShowCountDivider" type="ColorRect" parent="VBoxContainer/PaddedDivider"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.909804, 0.862745, 0.745098, 0.25098)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 2
+
+[node name="SteamInputPrompt" type="RichTextLabel" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+clip_contents = false
+custom_minimum_size = Vector2(740, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme = ExtResource("3_s1fty")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5)
+theme_override_constants/shadow_outline_size = 0
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 0
+theme_override_fonts/normal_font = ExtResource("4_b2rvh")
+theme_override_fonts/bold_font = ExtResource("5_ungse")
+theme_override_font_sizes/normal_font_size = 28
+theme_override_font_sizes/bold_font_size = 28
+theme_override_font_sizes/bold_italics_font_size = 28
+theme_override_font_sizes/italics_font_size = 28
+theme_override_font_sizes/mono_font_size = 28
+bbcode_enabled = true
+text = "[green][b]Steam Input Detected![/b][/green] Controller remapping disabled."
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 1
+script = ExtResource("19_dlkgh")
+MaxFontSize = 28
+IsVerticallyBound = false
+IsHorizontallyBound = true
+
+[node name="ResetToDefaultButton" type="Control" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(320, 64)
+layout_mode = 2
+size_flags_horizontal = 10
+focus_mode = 2
+script = ExtResource("22_im674")
+
+[node name="Image" type="TextureRect" parent="VBoxContainer/HBoxContainer/ResetToDefaultButton"]
+material = SubResource("ShaderMaterial_3oixx")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("10_kjr5t")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ResetLabel" type="Label" parent="VBoxContainer/HBoxContainer/ResetToDefaultButton"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 60.0
+offset_right = -60.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.964706, 0.886275, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.2509804)
+theme_override_colors/font_outline_color = Color(0.2901961, 0.14509805, 0.14117648, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 12
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("11_tcv32")
+theme_override_font_sizes/font_size = 28
+text = "Reset?!"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("12_mgvwx")
+MaxFontSize = 28
+metadata/_custom_type_script = "uid://dtfio45agppyj"
+
+[node name="SelectionReticle" parent="VBoxContainer/HBoxContainer/ResetToDefaultButton" instance=ExtResource("23_208nb")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = -2.0
+offset_right = -25.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PaddedDivider2" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(1100, 38)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ShowCountDivider" type="ColorRect" parent="VBoxContainer/PaddedDivider2"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -7.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.909804, 0.862745, 0.745098, 0.25098)
+
+[node name="Header" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="CommandHeader" type="Label" parent="VBoxContainer/Header"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(308, 36)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.937255, 0.784314, 0.317647, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7529412)
+theme_override_colors/font_outline_color = Color(0.23, 0.1725, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("15_3oixx")
+theme_override_font_sizes/font_size = 28
+text = "Commands"
+vertical_alignment = 1
+script = ExtResource("12_mgvwx")
+MaxFontSize = 28
+metadata/_custom_type_script = "uid://dtfio45agppyj"
+
+[node name="MKbHeader" type="Label" parent="VBoxContainer/Header"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 36)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_colors/font_color = Color(0.937255, 0.784314, 0.317647, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7529412)
+theme_override_colors/font_outline_color = Color(0.23, 0.1725, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("15_3oixx")
+theme_override_font_sizes/font_size = 28
+text = "Mouse + Keyboard"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("12_mgvwx")
+MaxFontSize = 28
+metadata/_custom_type_script = "uid://dtfio45agppyj"
+
+[node name="ControllerHeader" type="Label" parent="VBoxContainer/Header"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 36)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_colors/font_color = Color(0.937255, 0.784314, 0.317647, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7529412)
+theme_override_colors/font_outline_color = Color(0.23, 0.1725, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("15_3oixx")
+theme_override_font_sizes/font_size = 28
+text = "Controller"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("12_mgvwx")
+MaxFontSize = 28
+metadata/_custom_type_script = "uid://dtfio45agppyj"
+
+[node name="KbModeHeader" type="Label" parent="VBoxContainer/Header"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 36)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_colors/font_color = Color(0.937255, 0.784314, 0.317647, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7529412)
+theme_override_colors/font_outline_color = Color(0.23, 0.1725, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("15_3oixx")
+theme_override_font_sizes/font_size = 28
+text = "Keyboard-Only"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("12_mgvwx")
+MaxFontSize = 28
+metadata/_custom_type_script = "uid://dtfio45agppyj"
+
+[node name="Padding2" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+
+[node name="ListeningPrompt" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+top_level = true
+custom_minimum_size = Vector2(1400, 200)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -700.0
+offset_top = -100.0
+offset_right = 700.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="ListeningPrompt"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.28707156, 0.26711738, 0.95000005)
+
+[node name="ListeningLabel" type="RichTextLabel" parent="ListeningPrompt"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_right = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(1, 0.964706, 0.886275, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/normal_font = ExtResource("13_4xkit")
+theme_override_font_sizes/normal_font_size = 64
+theme_override_font_sizes/bold_font_size = 64
+theme_override_font_sizes/bold_italics_font_size = 64
+theme_override_font_sizes/italics_font_size = 64
+theme_override_font_sizes/mono_font_size = 64
+bbcode_enabled = true
+text = "[sine]Listening for input...[/sine]"
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("19_dlkgh")
+MaxFontSize = 64
+IsVerticallyBound = false
+IsHorizontallyBound = true
+metadata/_custom_type_script = "uid://c2oywrx8xbqfx"

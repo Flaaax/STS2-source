@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dk7qbpbg2o0ea"]
+[gd_scene load_steps=10 format=3 uid="uid://dk7qbpbg2o0ea"]
 
 [ext_resource type="Script" uid="uid://cvqdf70l1hgkp" path="res://src/Core/Nodes/CommonUi/NProceedButton.cs" id="1_owcso"]
 [ext_resource type="Texture2D" uid="uid://b0jc80w" path="res://images/atlases/compressed.sprites/proceed_button_outline.tres" id="3_khr7c"]
@@ -6,17 +6,10 @@
 [ext_resource type="Shader" uid="uid://c66gb6g7tup3n" path="res://shaders/hsv.gdshader" id="4_4tgtr"]
 [ext_resource type="FontVariation" uid="uid://ux4d708e7mk6" path="res://themes/kreon_bold_glyph_space_one.tres" id="4_lar7x"]
 [ext_resource type="Script" uid="uid://dtfio45agppyj" path="res://addons/mega_text/MegaLabel.cs" id="4_tf41f"]
-[ext_resource type="Texture2D" uid="uid://b5x513mavmk5v" path="res://images/ui/placeholder_controller_icon.png" id="8_kri60"]
+[ext_resource type="PackedScene" uid="uid://ddb8daodx7qsl" path="res://scenes/ui/hotkey_icon.tscn" id="8_kri60"]
 [ext_resource type="Material" uid="uid://c4ycqv0gdxvmr" path="res://themes/canvas_item_material_additive_shared.tres" id="shared_additive_mat"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kri60"]
-shader = ExtResource("4_4tgtr")
-shader_parameter/h = 1.0
-shader_parameter/s = 1.0
-shader_parameter/v = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_18irs"]
-resource_local_to_scene = true
 shader = ExtResource("4_4tgtr")
 shader_parameter/h = 1.0
 shader_parameter/s = 1.0
@@ -119,25 +112,11 @@ script = ExtResource("4_tf41f")
 MinFontSize = 24
 MaxFontSize = 34
 
-[node name="ControllerIcon" type="TextureRect" parent="."]
+[node name="HotkeyIcon" parent="." instance=ExtResource("8_kri60")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_18irs")
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -196.5
-offset_top = -42.0
-offset_right = -68.5
-offset_bottom = 86.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(64, 64)
-mouse_filter = 2
-texture = ExtResource("8_kri60")
-expand_mode = 1
-stretch_mode = 5
+layout_mode = 0
+offset_left = -16.0
+offset_top = 60.0
+offset_right = 32.0
+offset_bottom = 108.0
+scale = Vector2(0.85, 0.85)

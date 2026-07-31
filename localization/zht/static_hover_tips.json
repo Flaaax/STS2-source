@@ -89,7 +89,7 @@
   "STUN.description": "防止敵人在其下回合行動。",
   "STUN.title": "擊暈",
   "SUMMON_DYNAMIC.description": "召喚[gold]奧斯提[/gold]，其生命為 [blue]{Summon}[/blue]。\n若已召喚，則在本場戰鬥中將他的最大生命提高 [blue]{Summon}[/blue] 點。",
-  "SUMMON_DYNAMIC.title": "召喚{Summon}",
+  "SUMMON_DYNAMIC.title": "召喚 {Summon}",
   "SUMMON_STATIC.description": "召喚[gold]奧斯提[/gold]。\n若已召喚，則在本場戰鬥中提高他的最大生命。",
   "SUMMON_STATIC.title": "召喚",
   "TRANSFORM.description": "被轉化的卡牌會變成任意稀有度的一張隨機卡牌。",

@@ -72,7 +72,7 @@ public sealed class MendRestSiteOption : RestSiteOption
 			NRestSiteRoom.Instance.AnimateDescriptionDown();
 			NRestSiteButton buttonForOption = NRestSiteRoom.Instance.GetButtonForOption(this);
 			Vector2 startPosition = buttonForOption.GlobalPosition + buttonForOption.Size / 2f;
-			bool usingController = NControllerManager.Instance.IsUsingController;
+			bool usingController = NControllerManager.Instance.IsUsingDirectionalNavigation;
 			NTargetManager targetManager = NTargetManager.Instance;
 			targetManager.StartTargeting(TargetType.AnyPlayer, startPosition, usingController ? TargetMode.Controller : TargetMode.ClickMouseToTarget, ShouldCancelTargeting, AllowHoveringNode);
 			if (usingController)

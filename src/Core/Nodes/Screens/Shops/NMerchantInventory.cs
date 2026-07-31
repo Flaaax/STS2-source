@@ -517,7 +517,7 @@ public partial class NMerchantInventory : Control, IScreenContext
 		this.UpdateControllerNavEnabled();
 		if (ActiveScreenContext.Instance.IsCurrent(this))
 		{
-			if (_characterCardContainer != null && NControllerManager.Instance.IsUsingController && _inventoryTween != null && _inventoryTween.IsRunning())
+			if (_characterCardContainer != null && NControllerManager.Instance.IsUsingDirectionalNavigation && _inventoryTween != null && _inventoryTween.IsRunning())
 			{
 				float num = 80f - _slotsContainer.Position.Y;
 				MerchantHand.PointAtTarget(_characterCardContainer.GetChild<NMerchantCard>(0), Vector2.Down * num);

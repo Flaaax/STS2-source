@@ -1,10 +1,9 @@
-[gd_scene load_steps=30 format=3 uid="uid://dgociq66jscru"]
+[gd_scene load_steps=27 format=3 uid="uid://dgociq66jscru"]
 
 [ext_resource type="Script" uid="uid://wv5a80suh8ar" path="res://src/Core/Nodes/Rooms/NTreasureRoom.cs" id="1_ywu15"]
-[ext_resource type="Script" uid="uid://vdssesny8fij" path="res://src/Core/Nodes/TreasureRooms/NTreasureButton.cs" id="3_66tj7"]
+[ext_resource type="PackedScene" uid="uid://c3jcd0vx27gd8" path="res://scenes/rooms/treasure_room/chest.tscn" id="2_gfpvi"]
 [ext_resource type="PackedScene" uid="uid://bf5067m5nxvaw" path="res://scenes/ui/multiplayer_vote_container.tscn" id="4_gfpvi"]
 [ext_resource type="PackedScene" uid="uid://7osm1qqwcp6e" path="res://scenes/ui/common_banner.tscn" id="5_2hmag"]
-[ext_resource type="Shader" uid="uid://c66gb6g7tup3n" path="res://shaders/hsv.gdshader" id="5_bgqql"]
 [ext_resource type="Script" uid="uid://ch6tljockspvh" path="res://src/Core/Nodes/Screens/TreasureRoomRelic/NTreasureRoomRelicCollection.cs" id="5_slpja"]
 [ext_resource type="PackedScene" uid="uid://bbjmuv5pii51o" path="res://scenes/ui/treasure_relic_holder.tscn" id="6_7qrnk"]
 [ext_resource type="FontVariation" uid="uid://cfurftqxyn4mn" path="res://themes/kreon_regular_glyph_space_one.tres" id="7_0okix"]
@@ -12,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://0obcqgs6fyx2" path="res://images/vfx/shared_use/smoke_vfx_flat.png" id="9_7q8g3"]
 [ext_resource type="FontVariation" uid="uid://wv64ujsu3e4w" path="res://themes/ancient_name_banner.tres" id="9_y0lmc"]
 [ext_resource type="Script" uid="uid://dtfio45agppyj" path="res://addons/mega_text/MegaLabel.cs" id="10_y7qma"]
-[ext_resource type="Texture2D" uid="uid://b5x513mavmk5v" path="res://images/ui/placeholder_controller_icon.png" id="11_g04bm"]
 [ext_resource type="Texture2D" uid="uid://bukbniuqsck3i" path="res://images/packed/vfx/coin_flip_anim.png" id="13_gfpvi"]
 [ext_resource type="PackedScene" uid="uid://dk7qbpbg2o0ea" path="res://scenes/ui/proceed_button.tscn" id="42_byu4k"]
 
@@ -56,13 +54,6 @@ alpha_curve = SubResource("CurveTexture_7q8g3")
 hue_variation_min = -2.2351742e-08
 hue_variation_max = 0.009999977
 anim_offset_max = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gvtqx"]
-resource_local_to_scene = true
-shader = ExtResource("5_bgqql")
-shader_parameter/h = 1.0
-shader_parameter/s = 1.0
-shader_parameter/v = 1.0
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gfpvi"]
 particles_animation = true
@@ -139,38 +130,9 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Chest" type="Control" parent="."]
+[node name="Chest" parent="." instance=ExtResource("2_gfpvi")]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -358.0
-offset_top = -173.0
-offset_right = 442.0
-offset_bottom = 327.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-script = ExtResource("3_66tj7")
-
-[node name="ChestVisual" type="SpineSprite" parent="Chest"]
-unique_name_in_owner = true
-position = Vector2(-604, -301)
-scale = Vector2(0.4, 0.4)
-
-[node name="ColorRect" type="ColorRect" parent="Chest"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0.983334, 1, 0.25098)
 
 [node name="ProceedButton" parent="." instance=ExtResource("42_byu4k")]
 unique_name_in_owner = true
@@ -386,28 +348,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("8_i6sm7")
-
-[node name="ControllerIcon" type="TextureRect" parent="."]
-unique_name_in_owner = true
-material = SubResource("ShaderMaterial_gvtqx")
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -597.0
-offset_top = 207.0
-offset_right = -405.0
-offset_bottom = 399.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(96, 96)
-mouse_filter = 2
-texture = ExtResource("11_g04bm")
-expand_mode = 1
-stretch_mode = 5
 
 [node name="GoldExplosion" type="GPUParticles2D" parent="."]
 unique_name_in_owner = true

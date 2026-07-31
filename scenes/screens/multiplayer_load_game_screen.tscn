@@ -1,33 +1,25 @@
-[gd_scene load_steps=20 format=3 uid="uid://bsb11jg3ecchr"]
+[gd_scene load_steps=18 format=3 uid="uid://bsb11jg3ecchr"]
 
 [ext_resource type="Script" uid="uid://dqtsf4g6qkrqq" path="res://src/Core/Nodes/Screens/CharacterSelect/NMultiplayerLoadGameScreen.cs" id="1_nbwrt"]
 [ext_resource type="Script" uid="uid://bwr42v37ujq67" path="res://src/Core/Nodes/Screens/CharacterSelect/NCharacterSelectScreenBg.cs" id="2_6w5ar"]
 [ext_resource type="Texture2D" uid="uid://btjc3p508sth1" path="res://images/ui/fuzzy_nine_patch_char_select.png" id="3_pj3pm"]
 [ext_resource type="FontVariation" uid="uid://c71uw4aqpsn1b" path="res://themes/spectral_glphy_space_two.tres" id="4_ln7xq"]
 [ext_resource type="Script" uid="uid://dtfio45agppyj" path="res://addons/mega_text/MegaLabel.cs" id="5_gilhf"]
-[ext_resource type="Texture2D" path="res://images/atlases/ui_atlas.sprites/top_bar/top_bar_heart.tres" id="6_jn3gc"]
+[ext_resource type="Texture2D" uid="uid://bi1dpaj" path="res://images/atlases/ui_atlas.sprites/top_bar/top_bar_heart.tres" id="6_jn3gc"]
 [ext_resource type="FontVariation" uid="uid://bg85h22rkxs6g" path="res://themes/kreon_bold_shared.tres" id="7_o3otj"]
-[ext_resource type="Texture2D" path="res://images/atlases/ui_atlas.sprites/top_bar/top_bar_gold.tres" id="8_jn3gc"]
-[ext_resource type="Texture2D" path="res://images/atlases/ui_atlas.sprites/top_bar/top_bar_floor.tres" id="9_jn3gc"]
+[ext_resource type="Texture2D" uid="uid://jqn0hv" path="res://images/atlases/ui_atlas.sprites/top_bar/top_bar_gold.tres" id="8_jn3gc"]
+[ext_resource type="Texture2D" uid="uid://bxj1tlj" path="res://images/atlases/ui_atlas.sprites/top_bar/top_bar_floor.tres" id="9_jn3gc"]
 [ext_resource type="FontVariation" uid="uid://c6wnuvk3exmk5" path="res://themes/kreon_regular_shared.tres" id="9_opnvd"]
 [ext_resource type="Script" uid="uid://c2oywrx8xbqfx" path="res://addons/mega_text/MegaRichTextLabel.cs" id="10_dtt3k"]
 [ext_resource type="PackedScene" uid="uid://yo7mkjn0r07a" path="res://scenes/screens/ascension_panel.tscn" id="12_jn3gc"]
 [ext_resource type="PackedScene" uid="uid://s7gh3imur03n" path="res://scenes/screens/remote_player_load_container.tscn" id="15_jn3gc"]
-[ext_resource type="Texture2D" path="res://images/atlases/compressed.sprites/back_button_x.tres" id="16_6qlgr"]
-[ext_resource type="Shader" uid="uid://c66gb6g7tup3n" path="res://shaders/hsv.gdshader" id="17_kxkjh"]
+[ext_resource type="Texture2D" uid="uid://q1y4ux" path="res://images/atlases/compressed.sprites/back_button_x.tres" id="16_6qlgr"]
 [ext_resource type="PackedScene" uid="uid://bl4mbjqjfffa3" path="res://scenes/ui/back_button.tscn" id="18_kudh4"]
 [ext_resource type="PackedScene" uid="uid://bl460ab2i4mkx" path="res://scenes/ui/confirm_button.tscn" id="19_euhvi"]
 
 [sub_resource type="FontVariation" id="FontVariation_3rwao"]
 base_font = ExtResource("7_o3otj")
 spacing_glyph = 1
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_v411y"]
-resource_local_to_scene = true
-shader = ExtResource("17_kxkjh")
-shader_parameter/h = 1.0
-shader_parameter/s = 1.0
-shader_parameter/v = 1.0
 
 [node name="MultiplayerLoadScreen" type="Control"]
 layout_mode = 3
@@ -122,7 +114,7 @@ theme_override_colors/font_color = Color(0.937255, 0.784314, 0.317647, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 0.25098)
 theme_override_constants/outline_size = 24
 theme_override_fonts/font = ExtResource("4_ln7xq")
-theme_override_font_sizes/font_size = 47
+theme_override_font_sizes/font_size = 80
 text = "The Ironclad"
 vertical_alignment = 1
 script = ExtResource("5_gilhf")
@@ -256,9 +248,7 @@ MaxFontSize = 24
 [node name="AscensionPanel" parent="." instance=ExtResource("12_jn3gc")]
 unique_name_in_owner = true
 layout_mode = 1
-offset_left = -317.0
 offset_top = -342.0
-offset_right = 317.0
 offset_bottom = -225.0
 
 [node name="BackButton" parent="." instance=ExtResource("18_kudh4")]
@@ -269,9 +259,6 @@ layout_mode = 1
 
 [node name="Icon" parent="UnreadyButton/Image" index="0"]
 texture = ExtResource("16_6qlgr")
-
-[node name="ControllerIcon" parent="UnreadyButton" index="3"]
-material = SubResource("ShaderMaterial_v411y")
 
 [node name="ConfirmButton" parent="." instance=ExtResource("19_euhvi")]
 layout_mode = 1

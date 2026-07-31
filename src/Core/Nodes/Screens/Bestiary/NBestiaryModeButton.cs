@@ -1,4 +1,5 @@
 using Godot;
+using MegaCrit.Sts2.addons.mega_text;
 using MegaCrit.Sts2.Core.ControllerInput;
 using MegaCrit.Sts2.Core.Nodes.GodotExtensions;
 
@@ -8,15 +9,23 @@ public partial class NBestiaryModeButton : NButton
 {
 	private Tween? _tween;
 
+	private MegaLabel _modeLabel;
+
 	protected override string ClickedSfx => "event:/sfx/ui/timeline/ui_timeline_close_epoch";
 
-	protected override string[] Hotkeys => new string[1] { MegaInput.accept };
+	protected override string[] Hotkeys => new string[1] { MegaInput.confirm };
 
-	protected override string ControllerIconHotkey => MegaInput.accept;
+	protected override string ControllerIconHotkey => MegaInput.confirm;
 
 	public override void _Ready()
 	{
 		ConnectSignals();
+		_modeLabel = GetNode<MegaLabel>("%ModeLabel");
+	}
+
+	public void SetLabel(string str)
+	{
+		_modeLabel.SetTextAutoSize(str);
 	}
 
 	protected override void OnFocus()

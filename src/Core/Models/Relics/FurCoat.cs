@@ -59,7 +59,7 @@ public sealed class FurCoat : RelicModel
 	[SavedProperty]
 	private bool FurCoatCoordsSet { get; set; }
 
-	protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DynamicVar("Combats", 7m));
+	protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DynamicVar("Combats", 8m));
 
 	public override Task AfterObtained()
 	{

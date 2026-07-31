@@ -30,9 +30,9 @@ public partial class NSettingsTabManager : Control
 
 	private readonly Dictionary<NSettingsTab, NSettingsPanel> _tabs = new Dictionary<NSettingsTab, NSettingsPanel>();
 
-	private TextureRect _leftTriggerIcon;
+	private NHotkeyIcon _leftTabIcon;
 
-	private TextureRect _rightTriggerIcon;
+	private NHotkeyIcon _rightTabIcon;
 
 	private Tween? _scrollbarTween;
 
@@ -55,8 +55,8 @@ public partial class NSettingsTabManager : Control
 	/// </summary>
 	public override void _Ready()
 	{
-		_leftTriggerIcon = GetNode<TextureRect>("LeftTriggerIcon");
-		_rightTriggerIcon = GetNode<TextureRect>("RightTriggerIcon");
+		_leftTabIcon = GetNode<NHotkeyIcon>("LeftTabIcon");
+		_rightTabIcon = GetNode<NHotkeyIcon>("RightTabIcon");
 		_scrollContainer = GetNode<NScrollableContainer>("%ScrollContainer");
 		_scrollContainer.DisableScrollingIfContentFits();
 		NSettingsTab node = GetNode<NSettingsTab>("General");
@@ -146,9 +146,9 @@ public partial class NSettingsTabManager : Control
 
 	private void UpdateControllerButton()
 	{
-		_leftTriggerIcon.Visible = NControllerManager.Instance.IsUsingController;
-		_rightTriggerIcon.Visible = NControllerManager.Instance.IsUsingController;
-		_leftTriggerIcon.Texture = NInputManager.Instance.GetHotkeyIcon(MegaInput.viewDeckAndTabLeft);
-		_rightTriggerIcon.Texture = NInputManager.Instance.GetHotkeyIcon(MegaInput.viewExhaustPileAndTabRight);
+		_leftTabIcon.Visible = NControllerManager.Instance.IsUsingDirectionalNavigation;
+		_rightTabIcon.Visible = NControllerManager.Instance.IsUsingDirectionalNavigation;
+		_leftTabIcon.UpdateInput(MegaInput.viewDeckAndTabLeft);
+		_rightTabIcon.UpdateInput(MegaInput.viewExhaustPileAndTabRight);
 	}
 }

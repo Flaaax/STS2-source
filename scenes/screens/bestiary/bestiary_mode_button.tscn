@@ -1,0 +1,73 @@
+[gd_scene load_steps=6 format=3 uid="uid://ki7kvq1te08p"]
+
+[ext_resource type="Script" uid="uid://dl5chpinpvnjk" path="res://src/Core/Nodes/Screens/Bestiary/NBestiaryModeButton.cs" id="1_ns2wi"]
+[ext_resource type="Texture2D" uid="uid://cyruikkcbbm0f" path="res://images/ui/reward_screen/reward_skip_button.png" id="2_enl8j"]
+[ext_resource type="FontVariation" uid="uid://ciql5khgewwbm" path="res://themes/kreon_bold_glyph_space_two.tres" id="3_rss3b"]
+[ext_resource type="Script" uid="uid://dtfio45agppyj" path="res://addons/mega_text/MegaLabel.cs" id="4_k4vhx"]
+[ext_resource type="PackedScene" uid="uid://ddb8daodx7qsl" path="res://scenes/ui/hotkey_icon.tscn" id="5_enl8j"]
+
+[node name="ModeButton" type="Control"]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 94.0
+offset_top = -124.0
+offset_right = 354.0
+offset_bottom = -66.0
+grow_vertical = 0
+pivot_offset = Vector2(130, 29)
+script = ExtResource("1_ns2wi")
+
+[node name="Image" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(130, 29)
+mouse_filter = 2
+texture = ExtResource("2_enl8j")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ModeLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 34.0
+offset_right = -34.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.91, 0.86359, 0.7462, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
+theme_override_colors/font_outline_color = Color(0.115875, 0.25976, 0.288407, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 12
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("3_rss3b")
+theme_override_font_sizes/font_size = 28
+text = "View Stats"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("4_k4vhx")
+MaxFontSize = 28
+
+[node name="HotkeyIcon" parent="." instance=ExtResource("5_enl8j")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 86.0
+offset_top = -6.0
+offset_right = 134.0
+offset_bottom = 42.0
+grow_horizontal = 2
+grow_vertical = 2

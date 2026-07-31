@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://c0ukastwa6q7q" path="res://src/Core/Nodes/CommonUi/NGoldArrowButton.cs" id="2_nikwq"]
 [ext_resource type="Shader" uid="uid://c66gb6g7tup3n" path="res://shaders/hsv.gdshader" id="3_2vicy"]
 [ext_resource type="Texture2D" uid="uid://b4ffylh" path="res://images/atlases/ui_atlas.sprites/settings_tiny_left_arrow.tres" id="3_m8tgv"]
-[ext_resource type="Texture2D" uid="uid://b5x513mavmk5v" path="res://images/ui/placeholder_controller_icon.png" id="3_qf22s"]
+[ext_resource type="PackedScene" uid="uid://ddb8daodx7qsl" path="res://scenes/ui/hotkey_icon.tscn" id="3_qf22s"]
 [ext_resource type="Texture2D" uid="uid://b75ih21" path="res://images/atlases/ui_atlas.sprites/top_bar/top_bar_ascension.tres" id="4_m8tgv"]
 [ext_resource type="FontVariation" uid="uid://ux4d708e7mk6" path="res://themes/kreon_bold_glyph_space_one.tres" id="5_qmjmq"]
 [ext_resource type="Script" uid="uid://dtfio45agppyj" path="res://addons/mega_text/MegaLabel.cs" id="6_d5g22"]
@@ -41,9 +41,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -197.0
+offset_left = -317.0
 offset_top = -441.0
-offset_right = 437.0
+offset_right = 317.0
 offset_bottom = -324.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -51,12 +51,19 @@ mouse_filter = 2
 script = ExtResource("1_0jdvo")
 
 [node name="Background" type="NinePatchRect" parent="."]
-modulate = Color(0, 0, 0, 0.470588)
-layout_mode = 0
-offset_left = 14.0
-offset_top = 5.0
-offset_right = 615.0
-offset_bottom = 123.0
+modulate = Color(0, 0, 0, 0.5)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -301.0
+offset_top = -52.5
+offset_right = 299.0
+offset_bottom = 65.5
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("2_injea")
 patch_margin_left = 12
 patch_margin_top = 12
@@ -65,27 +72,43 @@ patch_margin_bottom = 12
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
 anchor_bottom = 1.0
+offset_left = -382.0
+offset_right = 382.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_override_constants/separation = 8
 alignment = 1
 
-[node name="LeftTriggerIcon" type="TextureRect" parent="HBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 64)
+[node name="GlyphHolderLeft" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(48, 64)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("3_qf22s")
-expand_mode = 2
-stretch_mode = 4
+mouse_filter = 2
+
+[node name="LeftTabIcon" parent="HBoxContainer/GlyphHolderLeft" instance=ExtResource("3_qf22s")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -16.0
+offset_right = 0.0
+offset_bottom = 32.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_stretch_ratio = 0.0
+mouse_filter = 2
 
 [node name="LeftArrowContainer" type="Control" parent="HBoxContainer"]
-custom_minimum_size = Vector2(80, 64)
+custom_minimum_size = Vector2(72, 64)
 layout_mode = 2
 mouse_filter = 2
 
@@ -128,11 +151,12 @@ mouse_filter = 2
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_bw1ox")
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
+anchor_top = 0.051000003
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 6.0
-offset_bottom = 6.0
+anchor_bottom = 1.051
+offset_top = 0.032999516
+offset_bottom = 0.03299713
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -168,16 +192,18 @@ MinFontSize = 22
 MaxFontSize = 36
 
 [node name="AscensionDescription" type="Control" parent="HBoxContainer"]
-custom_minimum_size = Vector2(500, 0)
+custom_minimum_size = Vector2(500, 64)
 layout_mode = 2
 mouse_filter = 2
 
 [node name="Description" type="RichTextLabel" parent="HBoxContainer/AscensionDescription"]
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = -1
+anchor_top = 0.068
 anchor_right = 1.0
-offset_top = 8.0
-offset_bottom = 125.0
+anchor_bottom = 1.0680001
+offset_top = 0.043999672
+offset_bottom = 0.04399109
 grow_horizontal = 2
 mouse_filter = 2
 theme_override_colors/default_color = Color(1, 0.964706, 0.886275, 1)
@@ -203,7 +229,7 @@ MinFontSize = 18
 MaxFontSize = 24
 
 [node name="RightArrowContainer" type="Control" parent="HBoxContainer"]
-custom_minimum_size = Vector2(80, 64)
+custom_minimum_size = Vector2(72, 64)
 layout_mode = 2
 mouse_filter = 2
 
@@ -237,12 +263,22 @@ texture = ExtResource("10_m8tgv")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="RightTriggerIcon" type="TextureRect" parent="HBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 64)
+[node name="GlyphHolderRight" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(48, 64)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("3_qf22s")
-expand_mode = 2
-stretch_mode = 5
+mouse_filter = 2
+
+[node name="RightTabIcon" parent="HBoxContainer/GlyphHolderRight" instance=ExtResource("3_qf22s")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 0.0
+offset_top = -16.0
+offset_right = 48.0
+offset_bottom = 32.0
+grow_vertical = 2
+scale = Vector2(0.85, 0.85)
+size_flags_stretch_ratio = 0.0
+mouse_filter = 2

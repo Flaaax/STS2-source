@@ -13,7 +13,6 @@ namespace MegaCrit.Sts2.Core.Nodes.Screens.DailyRun;
 /// This is pretty close to NPaginator, but NPaginator only supports a static list of options whereas this needs to
 /// - Set its text based on a DateTimeOffset that is (effectively) infinite
 /// - Dynamically enable/disable arrows based on whether the query says there is a leaderboard
-/// It uses the same scene as NPaginator but with the script replaced.
 /// </summary>
 public partial class NLeaderboardDayPaginator : Control
 {
@@ -138,7 +137,7 @@ public partial class NLeaderboardDayPaginator : Control
 
 	private void OnFocus()
 	{
-		if (NControllerManager.Instance.IsUsingController)
+		if (NControllerManager.Instance.IsUsingDirectionalNavigation)
 		{
 			_selectionReticle.OnSelect();
 		}

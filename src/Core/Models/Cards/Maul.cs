@@ -34,7 +34,7 @@ public sealed class Maul : CardModel
 	protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlyArray<DynamicVar>(new DynamicVar[2]
 	{
 		new DamageVar(5m, ValueProp.Move),
-		new DynamicVar("Increase", 1m)
+		new DynamicVar("Increase", 2m)
 	});
 
 	public Maul()

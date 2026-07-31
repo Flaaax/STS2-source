@@ -22,7 +22,7 @@ public sealed class Sacrifice : CardModel
 	{
 		new CalculationBaseVar(0m),
 		new CalculationExtraVar(1m),
-		new CalculatedBlockVar(ValueProp.Move).WithMultiplier((CardModel card, Creature? _) => card.Owner.IsOstyAlive ? (card.Owner.Osty.MaxHp * 2) : 0)
+		new CalculatedBlockVar(ValueProp.Move).WithMultiplier((CardModel card, Creature? _) => card.Owner.IsOstyAlive ? (card.Owner.Osty.MaxHp * 3) : 0)
 	});
 
 	public Sacrifice()

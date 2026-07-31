@@ -1,0 +1,20 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://cu06dndh6vv33"]
+
+[ext_resource type="Shader" uid="uid://bnfu3d5w0w7cq" path="res://shaders/vfx/common/vfx_noise_scale_shader.gdshader" id="1_llpcj"]
+[ext_resource type="Texture2D" uid="uid://bid56elmy6fr6" path="res://images/vfx/tileable_noise_4.png" id="2_dvvyu"]
+
+[sub_resource type="Gradient" id="Gradient_rvmb5"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4kh46"]
+gradient = SubResource("Gradient_rvmb5")
+
+[resource]
+shader = ExtResource("1_llpcj")
+shader_parameter/pivot_offset = Vector2(0, 0)
+shader_parameter/lut = SubResource("GradientTexture1D_4kh46")
+shader_parameter/noise = ExtResource("2_dvvyu")
+shader_parameter/noise_st = Vector4(0, 0, 0.35, 0)
+shader_parameter/scale_multiplier_range = Vector2(0.85, 1.15)
+shader_parameter/scale_strength = Vector2(1, 1)

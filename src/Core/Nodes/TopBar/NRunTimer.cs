@@ -12,7 +12,7 @@ public partial class NRunTimer : Control
 {
 	private MegaLabel _timerLabel;
 
-	private Timer _timer;
+	private Timer? _timer;
 
 	public override void _Ready()
 	{
@@ -37,9 +37,12 @@ public partial class NRunTimer : Control
 		_timer.Start();
 	}
 
-	public override void _ExitTree()
+	public override void _Notification(int what)
 	{
-		_timer.Stop();
+		if ((long)what == 1)
+		{
+			_timer?.Stop();
+		}
 	}
 
 	public void RefreshVisibility()

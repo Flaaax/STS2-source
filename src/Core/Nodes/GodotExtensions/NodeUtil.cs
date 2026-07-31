@@ -106,7 +106,7 @@ public static class NodeUtil
 	/// </summary>
 	public static void TryGrabFocus(this Control control)
 	{
-		if (!NControllerManager.Instance.IsUsingController)
+		if (!NControllerManager.Instance.IsUsingDirectionalNavigation)
 		{
 			return;
 		}

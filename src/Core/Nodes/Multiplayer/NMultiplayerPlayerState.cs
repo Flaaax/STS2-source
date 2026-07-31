@@ -441,9 +441,14 @@ public partial class NMultiplayerPlayerState : Control
 		RefreshConnectedState();
 	}
 
+	private void RefreshConnectedState(RunLobbyPlayer _)
+	{
+		RefreshConnectedState();
+	}
+
 	private void RefreshConnectedState()
 	{
-		bool flag = RunManager.Instance.RunLobby.ConnectedPlayerIds.Contains(Player.NetId);
+		bool flag = RunManager.Instance.RunLobby.PlayerIds.Contains(Player.NetId);
 		_disconnectedIndicator.Visible = !flag;
 		_characterIcon.SelfModulate = (flag ? Colors.White : StsColors.gray);
 	}

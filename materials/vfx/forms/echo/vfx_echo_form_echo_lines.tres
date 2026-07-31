@@ -1,0 +1,21 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://bh2jbvctnvu0i"]
+
+[ext_resource type="Shader" uid="uid://c8y8tg4i8gh7w" path="res://shaders/vfx/forms/echo/vfx_echo_form_echo_lines_shader.gdshader" id="1_0kw3v"]
+
+[sub_resource type="Gradient" id="Gradient_0kw3v"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.55675673, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xd4u7"]
+gradient = SubResource("Gradient_0kw3v")
+fill = 1
+fill_to = Vector2(0.8076923, 0.2991453)
+
+[resource]
+shader = ExtResource("1_0kw3v")
+shader_parameter/mask_texture = SubResource("GradientTexture2D_xd4u7")
+shader_parameter/pivot_offset = Vector2(0, -0.5)
+shader_parameter/scale_center = Vector2(0.75, 0.6)
+shader_parameter/scale_factor = 1.045
+shader_parameter/scale_alpha_smoothstep = Vector2(0.5, 1)

@@ -139,6 +139,10 @@ public abstract class GameAction
 		{
 			if (_executionTask.IsCompleted)
 			{
+				if (State != GameActionState.Executing)
+				{
+					throw new InvalidOperationException($"GameAction {this} finished execution, but was in state {State}! The task probably kept executing in a paused state without properly resuming.");
+				}
 				_logger.VeryDebug($"Action {this} finished execution");
 				State = GameActionState.Finished;
 				this.JustBeforeFinished?.Invoke(this);

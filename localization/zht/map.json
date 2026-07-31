@@ -37,5 +37,12 @@
   "LEGEND_UNKNOWN.hoverTip.description": "一間未知的房間。\n\n其中可能會出現事件、敵人、商店或財寶。",
   "LEGEND_UNKNOWN.hoverTip.title": "？？？",
   "LEGEND_UNKNOWN.title": "未知",
+  "SHARE.description.other": "將整張地圖存為截圖分享給朋友。",
+  "SHARE.description.steam": "將整張地圖存為 Steam 螢幕截圖分享給朋友。",
+  "SHARE.title": "分享",
+  "SHARE_POPUP.description": "[gold]已將截圖存到：[/gold]\n\n{path}",
+  "SHARE_POPUP.open": "開啟",
+  "SHARE_POPUP.title": "已儲存截圖！",
+  "SHARE_TOAST.description.steam": "已儲存截圖！",
   "STARTING_ROOM_PROMPT": "選擇起始房間"
 }

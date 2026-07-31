@@ -54,6 +54,8 @@ public partial class NGlobalUi : Control
 
 	public NTargetManager TargetManager { get; private set; }
 
+	public Control DebugInfo { get; private set; }
+
 	public override void _Ready()
 	{
 		_window = GetTree().Root;
@@ -72,6 +74,7 @@ public partial class NGlobalUi : Control
 		TargetManager = GetNode<NTargetManager>("TargetManager");
 		TimeoutOverlay = GetNode<NMultiplayerTimeoutOverlay>("%MultiplayerTimeoutOverlay");
 		AboveTopBarVfxContainer = GetNode<Control>("%AboveTopBarVfxContainer");
+		DebugInfo = GetNode<Control>("%DebugInfo");
 	}
 
 	private void OnWindowChange()

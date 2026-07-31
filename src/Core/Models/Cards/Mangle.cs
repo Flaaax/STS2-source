@@ -18,7 +18,7 @@ public sealed class Mangle : CardModel
 
 	protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlyArray<DynamicVar>(new DynamicVar[2]
 	{
-		new DamageVar(15m, ValueProp.Move),
+		new DamageVar(20m, ValueProp.Move),
 		new DynamicVar("StrengthLoss", 10m)
 	});
 
@@ -42,7 +42,7 @@ public sealed class Mangle : CardModel
 
 	protected override void OnUpgrade()
 	{
-		base.DynamicVars.Damage.UpgradeValueBy(5m);
+		base.DynamicVars.Damage.UpgradeValueBy(6m);
 		base.DynamicVars["StrengthLoss"].UpgradeValueBy(5m);
 	}
 }

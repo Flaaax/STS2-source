@@ -119,7 +119,7 @@ public partial class NRunHistoryPlayerIcon : NButton
 	protected override void OnFocus()
 	{
 		NHoverTipSet.CreateAndShow(this, _hoverTips)?.SetGlobalPosition(base.GlobalPosition + new Vector2(0f, base.Size.Y + 20f));
-		if (NControllerManager.Instance.IsUsingController)
+		if (NControllerManager.Instance.IsUsingDirectionalNavigation)
 		{
 			_selectionReticle.OnSelect();
 		}

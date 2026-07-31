@@ -256,29 +256,28 @@ public partial class NJoinFriendScreen : NSubmenu
 				_currentJoinFlow.NetService.Disconnect(NetError.RunInProgress);
 			}
 		}
-		catch (ClientConnectionFailedException ex)
-		{
-			Log.Error($"Received connection failed exception while joining game: {ex}");
-			NErrorPopup nErrorPopup2 = NErrorPopup.Create(ex.info);
-			if (nErrorPopup2 != null)
-			{
-				NModalContainer.Instance.Add(nErrorPopup2);
-			}
-			_currentJoinFlow.NetService.Disconnect(ex.info.GetReason());
-		}
 		catch (OperationCanceledException)
 		{
 			Log.Warn("Joining was canceled by user");
 		}
-		catch (Exception ex3)
+		catch (Exception ex2)
 		{
-			Log.Error($"Received unexpected exception {ex3.GetType()} while joining game! Disconnecting with InternalError");
-			NErrorPopup nErrorPopup3 = NErrorPopup.Create(new NetErrorInfo(NetError.InternalError, selfInitiated: false));
-			if (nErrorPopup3 != null)
+			NetErrorInfo info;
+			if (ex2 is ClientConnectionFailedException ex3)
 			{
-				NModalContainer.Instance.Add(nErrorPopup3);
+				Log.Error($"Received connection failed exception while joining game: {ex3}");
+				info = ex3.info;
 			}
-			_currentJoinFlow.NetService.Disconnect(NetError.InternalError);
+			else
+			{
+				Log.Error($"Received unexpected exception {ex2.GetType()} while joining game! Disconnecting with InternalError");
+				info = new NetErrorInfo(NetError.InternalError, selfInitiated: false);
+			}
+			NErrorPopup nErrorPopup2 = NErrorPopup.Create(info);
+			if (nErrorPopup2 != null)
+			{
+				NModalContainer.Instance.Add(nErrorPopup2);
+			}
 			throw;
 		}
 		finally

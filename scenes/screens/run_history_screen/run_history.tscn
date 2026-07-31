@@ -52,15 +52,16 @@ script = ExtResource("3_whacj")
 
 [node name="Content" type="MarginContainer" parent="ScreenContents"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -960.0
+offset_right = 960.0
+offset_bottom = 710.0
 grow_horizontal = 2
-grow_vertical = 2
 theme_override_constants/margin_left = 250
 theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 250
-metadata/_edit_lock_ = true
 
 [node name="Container" type="VBoxContainer" parent="ScreenContents/Content"]
 custom_minimum_size = Vector2(1420, 0)
@@ -563,45 +564,6 @@ accessibility_controls_nodes = Array[NodePath]([])
 accessibility_described_by_nodes = Array[NodePath]([])
 accessibility_labeled_by_nodes = Array[NodePath]([])
 accessibility_flow_to_nodes = Array[NodePath]([])
-
-[node name="ScreenContents_Container_MarginContainer#HBoxContainer" type="HBoxContainer" parent="."]
-custom_minimum_size = Vector2(-0.05, 0)
-layout_mode = 0
-
-[node name="ScreenContents_Container_MarginContainer_HBoxContainer#DeathQuoteLabel" type="RichTextLabel" parent="."]
-unique_name_in_owner = true
-clip_contents = false
-layout_mode = 0
-size_flags_horizontal = 3
-mouse_filter = 2
-theme_override_colors/default_color = Color(1, 0.333333, 0.333333, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.501961)
-theme_override_constants/line_separation = -2
-theme_override_constants/shadow_offset_x = 3
-theme_override_constants/shadow_offset_y = 2
-theme_override_fonts/normal_font = ExtResource("9_yggd1")
-theme_override_font_sizes/normal_font_size = 7
-theme_override_font_sizes/bold_font_size = 7
-theme_override_font_sizes/bold_italics_font_size = 7
-theme_override_font_sizes/italics_font_size = 7
-theme_override_font_sizes/mono_font_size = 7
-bbcode_enabled = true
-text = "[center]“Ironclad was killed by a Nibbit...”[/center]"
-autowrap_mode = 0
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("19_er1vu")
-MaxFontSize = 22
-
-[node name="ScreenContents_Container_MarginContainer_HBoxContainer#BadgeContainer" type="HBoxContainer" parent="."]
-unique_name_in_owner = true
-layout_mode = 0
-size_flags_horizontal = 3
-alignment = 1
-
-[node name="ScreenContents_Container#CenterContainer" type="CenterContainer" parent="."]
-layout_mode = 0
-size_flags_horizontal = 0
 
 [node name="OutOfDateVisual" type="ColorRect" parent="."]
 unique_name_in_owner = true

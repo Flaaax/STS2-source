@@ -22,6 +22,7 @@ using MegaCrit.Sts2.Core.Nodes.CommonUi;
 using MegaCrit.Sts2.Core.Nodes.GodotExtensions;
 using MegaCrit.Sts2.Core.Nodes.Multiplayer;
 using MegaCrit.Sts2.Core.Nodes.Screens.MainMenu;
+using MegaCrit.Sts2.Core.Nodes.Vfx.Ui;
 using MegaCrit.Sts2.Core.Platform;
 using MegaCrit.Sts2.Core.Random;
 using MegaCrit.Sts2.Core.Runs;
@@ -184,7 +185,7 @@ public partial class NDailyRunScreen : NSubmenu, IStartRunLobbyListener
 	/// </summary>
 	private void InitializeLeaderboard()
 	{
-		_leaderboard.Initialize(_lobby.DailyTime.Value.serverTime, _lobby.Players.Select((LobbyPlayer p) => p.id), allowPagination: false);
+		_leaderboard.Initialize(_lobby.DailyTime.Value.serverTime, _lobby.Players.Select((StartRunLobbyPlayer p) => p.id), allowPagination: true);
 	}
 
 	/// <summary>
@@ -283,7 +284,7 @@ public partial class NDailyRunScreen : NSubmenu, IStartRunLobbyListener
 		Rng rng3 = new Rng(rng.NextUnsignedLong());
 		Rng rng4 = new Rng(rng.NextUnsignedLong());
 		CharacterModel characterModel = null;
-		foreach (LobbyPlayer player in lobby.Players)
+		foreach (StartRunLobbyPlayer player in lobby.Players)
 		{
 			CharacterModel characterModel2 = rng2.NextItem(ModelDb.AllCharacters);
 			if (player.id == lobby.LocalPlayer.id)
@@ -292,7 +293,7 @@ public partial class NDailyRunScreen : NSubmenu, IStartRunLobbyListener
 			}
 		}
 		int num = rng3.NextInt(0, 11);
-		IReadOnlyCollection<ModifierModel> readOnlyCollection = ModifierModel.Pick2Good1Bad(rng4, _lobby.Players.Select((LobbyPlayer p) => p.character));
+		IReadOnlyCollection<ModifierModel> readOnlyCollection = ModifierModel.Pick2Good1Bad(rng4, _lobby.Players.Select((StartRunLobbyPlayer p) => p.character));
 		NetGameType type = lobby.NetService.Type;
 		if ((uint)(type - 1) <= 1u)
 		{
@@ -380,7 +381,7 @@ public partial class NDailyRunScreen : NSubmenu, IStartRunLobbyListener
 		}
 	}
 
-	public void PlayerConnected(LobbyPlayer player)
+	public void PlayerConnected(StartRunLobbyPlayer player)
 	{
 		_remotePlayerContainer.OnPlayerConnected(player);
 		SetupLobbyParams(_lobby);
@@ -388,7 +389,7 @@ public partial class NDailyRunScreen : NSubmenu, IStartRunLobbyListener
 		UpdateRichPresence();
 	}
 
-	public void PlayerChanged(LobbyPlayer player, bool isRandomCharacterResolution)
+	public void PlayerChanged(StartRunLobbyPlayer player, bool isRandomCharacterResolution)
 	{
 		if (isRandomCharacterResolution)
 		{
@@ -419,7 +420,7 @@ public partial class NDailyRunScreen : NSubmenu, IStartRunLobbyListener
 		InitializeDisplay();
 	}
 
-	public void RemotePlayerDisconnected(LobbyPlayer player)
+	public void RemotePlayerDisconnected(StartRunLobbyPlayer player)
 	{
 		_remotePlayerContainer.OnPlayerDisconnected(player);
 		SetupLobbyParams(_lobby);
@@ -530,17 +531,31 @@ public partial class NDailyRunScreen : NSubmenu, IStartRunLobbyListener
 		CleanUpLobby(disconnectSession: false);
 	}
 
+	private void RemoteClientFailedToConnectToLocalHost(ClientConnectionFailedMessage message, ulong sender)
+	{
+		string formattedText = message.GetLocString(PeerVersionInfo.LocalDefault()).GetFormattedText();
+		LocString locString = new LocString("main_menu_ui", "NETWORK_ERROR.HOST.PREFIX.body");
+		locString.Add("playerName", PlatformUtil.GetPlayerName(_lobby.NetService.Platform, sender));
+		locString.Add("info", formattedText);
+		this.AddChildSafely(NFailedJoinVfx.Create(locString.GetFormattedText()));
+	}
+
 	private void CleanUpLobby(bool disconnectSession, NetError error = NetError.Quit)
 	{
-		_lobby?.CleanUp(disconnectSession, error);
-		_lobby = null;
+		if (_lobby != null)
+		{
+			_lobby.PlayerFailedToConnect -= RemoteClientFailedToConnectToLocalHost;
+			_lobby.CleanUp(disconnectSession, error);
+			_lobby = null;
+		}
 	}
 
 	private void AfterLobbyInitialized()
 	{
-		NGame.Instance.RemoteCursorContainer.Initialize(_lobby.InputSynchronizer, _lobby.Players.Select((LobbyPlayer p) => p.id));
+		NGame.Instance.RemoteCursorContainer.Initialize(_lobby.InputSynchronizer, _lobby.Players.Select((StartRunLobbyPlayer p) => p.id));
 		NGame.Instance.ReactionContainer.InitializeNetworking(_lobby.NetService);
 		NGame.Instance.TimeoutOverlay.Initialize(_lobby.NetService, isGameLevel: true);
+		_lobby.PlayerFailedToConnect += RemoteClientFailedToConnectToLocalHost;
 		_remotePlayerContainer.Initialize(_lobby, displayLocalPlayer: false);
 		UpdateRichPresence();
 		MegaCrit.Sts2.Core.Logging.Logger.logLevelTypeMap[LogType.Network] = ((_lobby.NetService.Type == NetGameType.Singleplayer) ? LogLevel.Info : LogLevel.Debug);

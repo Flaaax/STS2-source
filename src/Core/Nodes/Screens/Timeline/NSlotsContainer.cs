@@ -85,7 +85,7 @@ public partial class NSlotsContainer : Control
 
 	private void ProcessGuiFocus(Control focusedControl)
 	{
-		if (IsVisibleInTree() && NControllerManager.Instance.IsUsingController && IsAncestorOf(focusedControl))
+		if (IsVisibleInTree() && NControllerManager.Instance.IsUsingDirectionalNavigation && IsAncestorOf(focusedControl))
 		{
 			float x = _whatsMoved.GlobalPosition.X - focusedControl.GetParent<Control>().GlobalPosition.X;
 			_targetPosition = new Vector2(x, _targetPosition.Y);

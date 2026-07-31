@@ -207,7 +207,7 @@ public partial class NRemoteMouseCursorContainer : Control
 		if (_synchronizer != null)
 		{
 			NControllerManager? instance = NControllerManager.Instance;
-			if (instance != null && instance.IsUsingController)
+			if (instance != null && instance.IsUsingDirectionalNavigation)
 			{
 				_synchronizer.SyncLocalIsUsingController(isUsingController: true);
 				_synchronizer.SyncLocalControllerFocus(focused.GlobalPosition + focused.Size * 0.5f, this);

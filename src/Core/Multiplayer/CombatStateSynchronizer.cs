@@ -163,7 +163,7 @@ public class CombatStateSynchronizer : IDisposable
 		await _syncCompletionSource.Task;
 		foreach (KeyValuePair<ulong, SerializablePlayer> syncDatum in _syncData)
 		{
-			if (_runLobby != null && !_runLobby.ConnectedPlayerIds.Contains(syncDatum.Key))
+			if (_runLobby != null && !_runLobby.PlayerIds.Contains(syncDatum.Key))
 			{
 				_logger.Debug($"Skipping sync for disconnected player {syncDatum.Key}");
 				continue;
@@ -218,9 +218,9 @@ public class CombatStateSynchronizer : IDisposable
 			_syncCompletionSource.SetResult();
 			return;
 		}
-		foreach (ulong connectedPlayerId in _runLobby.ConnectedPlayerIds)
+		foreach (ulong playerId in _runLobby.PlayerIds)
 		{
-			if (!_syncData.ContainsKey(connectedPlayerId))
+			if (!_syncData.ContainsKey(playerId))
 			{
 				return;
 			}

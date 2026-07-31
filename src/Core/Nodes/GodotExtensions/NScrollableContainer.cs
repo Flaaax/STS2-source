@@ -238,7 +238,7 @@ public partial class NScrollableContainer : Control
 
 	private void ProcessGuiFocus(Control focusedControl)
 	{
-		if (_content != null && IsVisibleInTree() && NControllerManager.Instance.IsUsingController && !(focusedControl is NDropdownItem) && _content.IsAncestorOf(focusedControl))
+		if (_content != null && IsVisibleInTree() && NControllerManager.Instance.IsUsingDirectionalNavigation && !(focusedControl is NDropdownItem) && _content.IsAncestorOf(focusedControl))
 		{
 			float num = _content.GlobalPosition.Y - focusedControl.GlobalPosition.Y;
 			float value = num + ScrollViewportSize * 0.5f;

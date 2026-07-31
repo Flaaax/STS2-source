@@ -257,14 +257,12 @@ public partial class NTreasureRoomRelicCollection : Control, IScreenContext
 	/// <summary>
 	/// Animates in the relic collection.
 	/// </summary>
-	/// <param name="chestVisual">Chest visual to fade out.</param>
-	public void AnimIn(Node chestVisual)
+	public void AnimIn()
 	{
 		base.Visible = true;
 		base.Modulate = Colors.Transparent;
 		Tween tween = CreateTween().SetParallel();
 		tween.TweenProperty(this, "modulate", Colors.White, 0.4);
-		tween.TweenProperty(chestVisual, "modulate", StsColors.halfTransparentWhite, 0.4);
 		if (_isEmptyChest)
 		{
 			LocalContext.GetMe(_runState)?.Relics.OfType<SilverCrucible>().FirstOrDefault()?.Flash();
@@ -297,13 +295,11 @@ public partial class NTreasureRoomRelicCollection : Control, IScreenContext
 	/// <summary>
 	/// Animates out the relic collection, after relic picking is done.
 	/// </summary>
-	/// <param name="chestVisual">Chest visual to fade back in.</param>
-	public void AnimOut(Node chestVisual)
+	public void AnimOut()
 	{
 		base.Modulate = Colors.White;
 		Tween tween = CreateTween().Parallel();
 		tween.TweenProperty(this, "modulate", StsColors.transparentWhite, 0.3);
-		tween.TweenProperty(chestVisual, "modulate", Colors.White, 0.3);
 		tween.TweenCallback(Callable.From(() => base.Visible = false));
 		NRun.Instance.ScreenStateTracker.SetIsInSharedRelicPickingScreen(isInSharedRelicPicking: false);
 	}

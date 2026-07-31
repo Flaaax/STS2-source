@@ -58,7 +58,11 @@ public class LoadRunLobby
 
 	private bool _isBeginningRun;
 
-	private readonly HashSet<ulong> _readyPlayers = new HashSet<ulong>();
+	public List<LoadRunLobbyPlayer> Players { get; } = new List<LoadRunLobbyPlayer>();
+
+	public int PlayerCount => Players.Count;
+
+	public IEnumerable<ulong> PlayerIds => Players.Select((LoadRunLobbyPlayer p) => p.id);
 
 	public INetGameService NetService { get; }
 
@@ -68,8 +72,6 @@ public class LoadRunLobby
 
 	public SerializableRun Run { get; }
 
-	public HashSet<ulong> ConnectedPlayerIds { get; } = new HashSet<ulong>();
-
 	public GameMode GameMode => Run.GameMode;
 
 	/// <summary>
@@ -77,6 +79,11 @@ public class LoadRunLobby
 	/// Public for tests.
 	/// </summary>
 	public int HandshakeTimeout { get; set; } = 10000;
+
+	/// <summary>
+	/// Provides extended disconnection info to UI, but only when the local player is the host.
+	/// </summary>
+	public event Action<ClientConnectionFailedMessage, ulong>? PlayerFailedToConnect;
 
 	public LoadRunLobby(INetGameService netService, ILoadRunLobbyListener lobbyListener, SerializableRun runSave)
 	{
@@ -88,6 +95,7 @@ public class LoadRunLobby
 		NetService.RegisterMessageHandler<ClientLoadJoinRequestMessage>(HandleClientLoadJoinRequestMessage);
 		NetService.RegisterMessageHandler<ClientLobbyJoinRequestMessage>(HandleClientLobbyJoinRequestMessage);
 		NetService.RegisterMessageHandler<ClientRejoinRequestMessage>(HandleClientRejoinRequestMessage);
+		NetService.RegisterMessageHandler<ClientConnectionFailedMessage>(HandleClientDisconnectionMessage);
 		NetService.RegisterMessageHandler<PlayerReconnectedMessage>(HandlePlayerReconnectedMessage);
 		NetService.RegisterMessageHandler<PlayerLeftMessage>(HandlePlayerLeftMessage);
 		NetService.RegisterMessageHandler<LobbyPlayerSetReadyMessage>(HandlePlayerReadyMessage);
@@ -104,10 +112,7 @@ public class LoadRunLobby
 	public LoadRunLobby(INetGameService netService, ILoadRunLobbyListener lobbyListener, ClientLoadJoinResponseMessage message)
 		: this(netService, lobbyListener, message.serializableRun)
 	{
-		foreach (ulong item in message.playersAlreadyConnected)
-		{
-			ConnectedPlayerIds.Add(item);
-		}
+		Players = message.playersAlreadyConnected;
 	}
 
 	/// <summary>
@@ -123,6 +128,7 @@ public class LoadRunLobby
 		NetService.UnregisterMessageHandler<ClientLoadJoinRequestMessage>(HandleClientLoadJoinRequestMessage);
 		NetService.UnregisterMessageHandler<ClientLobbyJoinRequestMessage>(HandleClientLobbyJoinRequestMessage);
 		NetService.UnregisterMessageHandler<ClientRejoinRequestMessage>(HandleClientRejoinRequestMessage);
+		NetService.UnregisterMessageHandler<ClientConnectionFailedMessage>(HandleClientDisconnectionMessage);
 		NetService.UnregisterMessageHandler<PlayerReconnectedMessage>(HandlePlayerReconnectedMessage);
 		NetService.UnregisterMessageHandler<PlayerLeftMessage>(HandlePlayerLeftMessage);
 		NetService.UnregisterMessageHandler<LobbyPlayerSetReadyMessage>(HandlePlayerReadyMessage);
@@ -154,8 +160,14 @@ public class LoadRunLobby
 			throw new InvalidOperationException("Tried to add local host player as client!");
 		}
 		_logger.Context = $"Lobby ({NetService.NetId})";
-		ConnectedPlayerIds.Add(NetService.NetId);
-		LobbyListener.PlayerConnected(NetService.NetId);
+		LoadRunLobbyPlayer loadRunLobbyPlayer = new LoadRunLobbyPlayer
+		{
+			id = NetService.NetId,
+			isReady = false,
+			versionInfo = PeerVersionInfo.LocalDefault()
+		};
+		Players.Add(loadRunLobbyPlayer);
+		LobbyListener.PlayerConnected(loadRunLobbyPlayer);
 	}
 
 	private void HandleClientLoadJoinRequestMessage(ClientLoadJoinRequestMessage message, ulong senderId)
@@ -174,26 +186,32 @@ public class LoadRunLobby
 				return;
 			}
 			_logger.Info($"Received ClientLoadJoinRequestMessage for {senderId}");
-			ConnectedPlayerIds.Add(senderId);
-			LobbyListener.PlayerConnected(senderId);
+			LoadRunLobbyPlayer loadRunLobbyPlayer = new LoadRunLobbyPlayer
+			{
+				id = senderId,
+				isReady = false,
+				versionInfo = message.versionInfo
+			};
+			Players.Add(loadRunLobbyPlayer);
+			LobbyListener.PlayerConnected(loadRunLobbyPlayer);
 			ClientLoadJoinResponseMessage message2 = new ClientLoadJoinResponseMessage
 			{
 				serializableRun = Run,
-				playersAlreadyConnected = ConnectedPlayerIds.ToList()
+				playersAlreadyConnected = Players.ToList()
 			};
 			_logger.Debug($"Sending ClientLoadJoinResponseMessage to {senderId}");
 			netHostGameService.SendMessage(message2, senderId);
 			netHostGameService.SetPeerReadyForBroadcasting(senderId);
 			PlayerReconnectedMessage message3 = new PlayerReconnectedMessage
 			{
-				playerId = senderId
+				player = loadRunLobbyPlayer
 			};
-			foreach (ulong connectedPlayerId in ConnectedPlayerIds)
+			foreach (LoadRunLobbyPlayer player in Players)
 			{
-				if (connectedPlayerId != senderId && connectedPlayerId != NetService.NetId)
+				if (player.id != senderId && player.id != NetService.NetId)
 				{
-					_logger.Debug($"Sending PlayerReconnectedMessage to {connectedPlayerId}");
-					netHostGameService.SendMessage(message3, connectedPlayerId);
+					_logger.Debug($"Sending PlayerReconnectedMessage to {player.id}");
+					netHostGameService.SendMessage(message3, player.id);
 				}
 			}
 			RemoveConnectingPlayer(senderId);
@@ -229,17 +247,27 @@ public class LoadRunLobby
 
 	private void HandlePlayerReconnectedMessage(PlayerReconnectedMessage message, ulong _)
 	{
-		_logger.Debug($"Received PlayerReconnectedMessage with player ID {message.playerId}");
-		ConnectedPlayerIds.Add(message.playerId);
-		LobbyListener.PlayerConnected(message.playerId);
+		_logger.Debug($"Received PlayerReconnectedMessage with player ID {message.player.id}");
+		Players.Add(message.player);
+		LobbyListener.PlayerConnected(message.player);
+	}
+
+	private void HandleClientDisconnectionMessage(ClientConnectionFailedMessage message, ulong senderId)
+	{
+		if (NetService.Type != NetGameType.Host)
+		{
+			throw new InvalidOperationException("Received ClientConnectionFailedMessage as non-host!");
+		}
+		_logger.Info($"Received ClientDisconnectionMessage for {senderId}");
+		this.PlayerFailedToConnect?.Invoke(message, senderId);
 	}
 
 	private void HandlePlayerLeftMessage(PlayerLeftMessage message, ulong senderId)
 	{
 		_logger.Debug($"Received PlayerLeftMessage for {message.playerId}");
-		if (ConnectedPlayerIds.Contains(message.playerId))
+		int num = Players.RemoveAll((LoadRunLobbyPlayer p) => p.id == message.playerId);
+		if (num > 0)
 		{
-			ConnectedPlayerIds.Remove(message.playerId);
 			InputSynchronizer.OnPlayerDisconnected(message.playerId);
 			LobbyListener.RemotePlayerDisconnected(message.playerId);
 		}
@@ -248,18 +276,19 @@ public class LoadRunLobby
 	private void HandlePlayerReadyMessage(LobbyPlayerSetReadyMessage message, ulong senderId)
 	{
 		_logger.Debug($"Received {"LobbyPlayerSetReadyMessage"} for player {senderId} with value {message.ready}");
-		if (message.ready)
+		int num = Players.FindIndex((LoadRunLobbyPlayer p) => p.id == senderId);
+		if (num >= 0)
 		{
-			if (_readyPlayers.Add(senderId))
+			LoadRunLobbyPlayer value = Players[num];
+			bool isReady = value.isReady;
+			value.isReady = message.ready;
+			Players[num] = value;
+			if (isReady != message.ready)
 			{
 				LobbyListener.PlayerReadyChanged(senderId);
 			}
+			BeginRunForAllPlayersIfAllReady();
 		}
-		else if (_readyPlayers.Remove(senderId))
-		{
-			LobbyListener.PlayerReadyChanged(senderId);
-		}
-		BeginRunForAllPlayersIfAllReady();
 	}
 
 	private void HandleLobbyBeginRunMessage(LobbyBeginLoadedRunMessage message, ulong senderId)
@@ -304,27 +333,26 @@ public class LoadRunLobby
 
 	public void SetReady(bool ready)
 	{
-		if (ready)
+		int num = Players.FindIndex((LoadRunLobbyPlayer p) => p.id == NetService.NetId);
+		if (num >= 0)
 		{
-			_readyPlayers.Add(NetService.NetId);
+			LoadRunLobbyPlayer value = Players[num];
+			value.isReady = ready;
+			Players[num] = value;
+			LobbyPlayerSetReadyMessage message = new LobbyPlayerSetReadyMessage
+			{
+				ready = ready
+			};
+			NetService.SendMessage(message);
+			LobbyListener.PlayerReadyChanged(NetService.NetId);
+			_logger.Info($"Local player {NetService.NetId} is ready");
+			BeginRunForAllPlayersIfAllReady();
 		}
-		else
-		{
-			_readyPlayers.Remove(NetService.NetId);
-		}
-		LobbyPlayerSetReadyMessage message = new LobbyPlayerSetReadyMessage
-		{
-			ready = ready
-		};
-		NetService.SendMessage(message);
-		LobbyListener.PlayerReadyChanged(NetService.NetId);
-		_logger.Info($"Local player {NetService.NetId} is ready");
-		BeginRunForAllPlayersIfAllReady();
 	}
 
 	public bool IsPlayerReady(ulong playerId)
 	{
-		return _readyPlayers.Contains(playerId);
+		return Players.First((LoadRunLobbyPlayer p) => p.id == playerId).isReady;
 	}
 
 	public bool IsAboutToBeginGame()
@@ -333,11 +361,11 @@ public class LoadRunLobby
 		{
 			return false;
 		}
-		if (NetService.Type.IsMultiplayer() && ConnectedPlayerIds.Count == 1)
+		if (NetService.Type.IsMultiplayer() && Players.Count == 1)
 		{
 			return false;
 		}
-		return !ConnectedPlayerIds.Except(_readyPlayers).Any();
+		return Players.All((LoadRunLobbyPlayer p) => p.isReady);
 	}
 
 	private void BeginRunForAllPlayersIfAllReady()
@@ -351,9 +379,12 @@ public class LoadRunLobby
 	private void OnConnectedToClientAsHost(ulong playerId)
 	{
 		_logger.Info($"Client {playerId} connected. Sending initial game info message");
-		InitialGameInfoMessage message = InitialGameInfoMessage.Basic();
-		message.sessionState = RunSessionState.InLoadedLobby;
-		message.gameMode = GameMode;
+		InitialGameInfoMessage message = new InitialGameInfoMessage
+		{
+			versionInfo = PeerVersionInfo.LocalDefault(),
+			sessionState = RunSessionState.InLoadedLobby,
+			gameMode = GameMode
+		};
 		if (_isBeginningRun)
 		{
 			message.connectionFailureReason = ConnectionFailureReason.RunInProgress;
@@ -398,7 +429,8 @@ public class LoadRunLobby
 
 	private void OnDisconnectedFromClientAsHost(ulong playerId, NetErrorInfo info)
 	{
-		if (ConnectedPlayerIds.Contains(playerId))
+		int num = Players.FindIndex((LoadRunLobbyPlayer p) => p.id == playerId);
+		if (num >= 0)
 		{
 			_logger.Info($"Client {playerId} disconnected, reason: {info.GetReason()}");
 			PlayerLeftMessage message = new PlayerLeftMessage
@@ -406,8 +438,7 @@ public class LoadRunLobby
 				playerId = playerId
 			};
 			NetService.SendMessage(message);
-			ConnectedPlayerIds.Remove(playerId);
-			_readyPlayers.Remove(playerId);
+			Players.RemoveAt(num);
 			RemoveConnectingPlayer(playerId);
 			InputSynchronizer.OnPlayerDisconnected(message.playerId);
 			LobbyListener.RemotePlayerDisconnected(playerId);
@@ -431,7 +462,7 @@ public class LoadRunLobby
 	private void OnDisconnected(NetErrorInfo info)
 	{
 		_logger.Info($"Disconnected from host, reason: {info.GetReason()}");
-		ConnectedPlayerIds.Clear();
+		Players.Clear();
 		LobbyListener.LocalPlayerDisconnected(info);
 	}
 }

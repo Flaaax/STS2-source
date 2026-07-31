@@ -37,5 +37,12 @@
   "LEGEND_UNKNOWN.hoverTip.description": "Una stanza misteriosa.\n\nPuoi trovarci un evento, dei nemici, un negozio o un tesoro.",
   "LEGEND_UNKNOWN.hoverTip.title": "???",
   "LEGEND_UNKNOWN.title": "Mistero",
+  "SHARE.description.other": "Salva uno screenshot dell'intera mappa da condividere con gli amici.",
+  "SHARE.description.steam": "Salva uno screenshot di Steam dell'intera mappa da condividere con gli amici.",
+  "SHARE.title": "Condividi",
+  "SHARE_POPUP.description": "[gold]Screenshot salvato in:[/gold]\n\n{path}",
+  "SHARE_POPUP.open": "Apri",
+  "SHARE_POPUP.title": "Screenshot salvato!",
+  "SHARE_TOAST.description.steam": "Screenshot salvato!",
   "STARTING_ROOM_PROMPT": "Seleziona una stanza iniziale"
 }

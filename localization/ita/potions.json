@@ -1,4 +1,6 @@
 {
+  "AMBERGRIS.description": "Recuperi un [green]{HealPercent}%[/green] dei tuoi PV massimi. Se la usi in combattimento, giochi un turno extra.",
+  "AMBERGRIS.title": "Ambra Cinerina",
   "ASHWATER.description": "[gold]Esaurisci[/gold] un numero qualsiasi di carte nella tua [gold]mano[/gold].",
   "ASHWATER.selectionScreenPrompt": "Scegli un numero qualsiasi di carte da [gold]esaurire[/gold].",
   "ASHWATER.title": "Acqua Cinerea",

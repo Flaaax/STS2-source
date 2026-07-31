@@ -37,5 +37,12 @@
   "LEGEND_UNKNOWN.hoverTip.description": "Una sala desconocida.\n\nPuedes encontrarte un evento, una tienda, un tesoro o enemigos.",
   "LEGEND_UNKNOWN.hoverTip.title": "???",
   "LEGEND_UNKNOWN.title": "Desconocido",
+  "SHARE.description.other": "Guarda una captura de pantalla del mapa entero para compartirla con amigos.",
+  "SHARE.description.steam": "Guarda una captura de pantalla de Steam del mapa entero para compartirla con amigos.",
+  "SHARE.title": "Compartir",
+  "SHARE_POPUP.description": "[gold]Captura guardada en:[/gold]\n\n{path}",
+  "SHARE_POPUP.open": "Abrir",
+  "SHARE_POPUP.title": "¡Captura guardada!",
+  "SHARE_TOAST.description.steam": "¡Captura guardada!",
   "STARTING_ROOM_PROMPT": "Selecciona una sala de inicio"
 }

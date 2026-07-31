@@ -58,6 +58,7 @@ public sealed class FeralPower : PowerModel
 		}
 		location.pileType = PileType.Hand;
 		location.position = CardPilePosition.Top;
+		location.player = base.Owner.Player;
 		return location;
 	}
 

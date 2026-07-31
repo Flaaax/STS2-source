@@ -24,21 +24,21 @@ public partial class NTopBarHp : NClickableControl
 		ConnectSignals();
 	}
 
-	public override void _ExitTree()
-	{
-		if (_player != null)
-		{
-			_player.Creature.CurrentHpChanged -= UpdateHealth;
-			_player.Creature.MaxHpChanged -= UpdateHealth;
-		}
-	}
-
 	public void Initialize(Player player)
 	{
 		_player = player;
 		_player.Creature.CurrentHpChanged += UpdateHealth;
 		_player.Creature.MaxHpChanged += UpdateHealth;
 		UpdateHealth(0, 0);
+	}
+
+	public override void _Notification(int what)
+	{
+		if ((long)what == 1 && _player != null)
+		{
+			_player.Creature.CurrentHpChanged -= UpdateHealth;
+			_player.Creature.MaxHpChanged -= UpdateHealth;
+		}
 	}
 
 	private void UpdateHealth(int _, int __)

@@ -203,7 +203,7 @@ public partial class NMultiplayerTest : Control, IStartRunLobbyListener
 			using (new NetLoadingHandle(_lobby.NetService))
 			{
 				acts[0] = _settings.Act;
-				RunState runState = RunState.CreateForNewRun(_lobby.Players.Select((LobbyPlayer p) => Player.CreateForNewRun(p.character, UnlockState.FromSerializable(p.unlockState), p.id)).ToList(), acts.Select((ActModel a) => a.ToMutable()).ToList(), _settings.Modifiers, GameMode.Standard, _lobby.Ascension, seed);
+				RunState runState = RunState.CreateForNewRun(_lobby.Players.Select((StartRunLobbyPlayer p) => Player.CreateForNewRun(p.character, UnlockState.FromSerializable(p.unlockState), p.id)).ToList(), acts.Select((ActModel a) => a.ToMutable()).ToList(), _settings.Modifiers, GameMode.Standard, _lobby.Ascension, seed);
 				RunManager.Instance.SetUpNewMultiplayer(runState, _lobby, _settings.SaveRunHistory);
 				await PreloadManager.LoadRunAssets(runState.Players.Select((Player p) => p.Character));
 				await RunManager.Instance.FinalizeStartingRelics();
@@ -306,14 +306,14 @@ public partial class NMultiplayerTest : Control, IStartRunLobbyListener
 
 	private void AfterMultiplayerStarted()
 	{
-		foreach (LobbyPlayer player in _lobby.Players)
+		foreach (StartRunLobbyPlayer player in _lobby.Players)
 		{
 			_characterContainers[player.slotId].characterImage.Texture = player.character.IconTexture;
 			_characterContainers[player.slotId].playerName.Text = PlatformUtil.GetPlayerNameRaw(_lobby.NetService.Platform, player.id);
 		}
 		_readyButton.Visible = true;
 		_characterPaginator.Visible = true;
-		_game.RemoteCursorContainer.Initialize(_lobby.InputSynchronizer, _lobby.Players.Select((LobbyPlayer p) => p.id));
+		_game.RemoteCursorContainer.Initialize(_lobby.InputSynchronizer, _lobby.Players.Select((StartRunLobbyPlayer p) => p.id));
 		_game.ReactionContainer.InitializeNetworking(_lobby.NetService);
 		OnCharacterChanged(_lobby.LocalPlayer.character);
 	}
@@ -498,13 +498,13 @@ public partial class NMultiplayerTest : Control, IStartRunLobbyListener
 		_lobby?.NetService.Update();
 	}
 
-	public void PlayerConnected(LobbyPlayer player)
+	public void PlayerConnected(StartRunLobbyPlayer player)
 	{
 		_characterContainers[player.slotId].characterImage.Texture = player.character.IconTexture;
 		_characterContainers[player.slotId].playerName.Text = PlatformUtil.GetPlayerNameRaw(_lobby.NetService.Platform, player.id);
 	}
 
-	public void PlayerChanged(LobbyPlayer player, bool isRandomCharacterResolution)
+	public void PlayerChanged(StartRunLobbyPlayer player, bool isRandomCharacterResolution)
 	{
 		_characterContainers[player.slotId].characterImage.Texture = player.character.IconTexture;
 		_characterContainers[player.slotId].playerName.Text = PlatformUtil.GetPlayerNameRaw(_lobby.NetService.Platform, player.id);
@@ -526,7 +526,7 @@ public partial class NMultiplayerTest : Control, IStartRunLobbyListener
 	{
 	}
 
-	public void RemotePlayerDisconnected(LobbyPlayer player)
+	public void RemotePlayerDisconnected(StartRunLobbyPlayer player)
 	{
 		_characterContainers[player.slotId].characterImage.Texture = null;
 		_characterContainers[player.slotId].playerName.Text = "?";

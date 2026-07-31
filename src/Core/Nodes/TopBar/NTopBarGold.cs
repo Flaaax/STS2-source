@@ -36,22 +36,24 @@ public partial class NTopBarGold : NClickableControl
 		ConnectSignals();
 	}
 
-	public override void _ExitTree()
-	{
-		base._ExitTree();
-		_animCts?.Cancel();
-		if (_player != null)
-		{
-			_player.GoldChanged -= UpdateGold;
-		}
-	}
-
 	public void Initialize(Player player)
 	{
 		_player = player;
 		_currentGold = _player.Gold;
 		_goldLabel.SetTextAutoSize($"{_currentGold}");
 		_player.GoldChanged += UpdateGold;
+	}
+
+	public override void _Notification(int what)
+	{
+		if ((long)what == 1)
+		{
+			_animCts?.Cancel();
+			if (_player != null)
+			{
+				_player.GoldChanged -= UpdateGold;
+			}
+		}
 	}
 
 	private void UpdateGold()

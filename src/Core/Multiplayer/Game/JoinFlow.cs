@@ -1,18 +1,14 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Godot;
 using MegaCrit.Sts2.Core.Entities.Multiplayer;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Logging;
-using MegaCrit.Sts2.Core.Modding;
 using MegaCrit.Sts2.Core.Multiplayer.Connection;
 using MegaCrit.Sts2.Core.Multiplayer.Messages.Lobby;
 using MegaCrit.Sts2.Core.Multiplayer.Serialization;
-using MegaCrit.Sts2.Core.Nodes;
-using MegaCrit.Sts2.Core.Platform;
 using MegaCrit.Sts2.Core.Saves;
 using MegaCrit.Sts2.Core.Unlocks;
 
@@ -23,19 +19,6 @@ namespace MegaCrit.Sts2.Core.Multiplayer.Game;
 /// </summary>
 public class JoinFlow
 {
-	public struct MockInfo
-	{
-		public string version;
-
-		public uint hash;
-
-		public PlatformBranch branch;
-
-		public List<string>? gameplayAffectingMods;
-
-		public List<string>? nonGameplayAffectingMods;
-	}
-
 	private TaskCompletionSource<InitialGameInfoMessage>? _connectCompletion;
 
 	private TaskCompletionSource<ClientRejoinResponseMessage>? _rejoinCompletion;
@@ -46,13 +29,13 @@ public class JoinFlow
 
 	private readonly MegaCrit.Sts2.Core.Logging.Logger _logger = new MegaCrit.Sts2.Core.Logging.Logger("JoinFlow", LogType.Network);
 
-	private readonly MockInfo? _mockInfo;
+	private readonly PeerVersionInfo? _mockInfo;
 
 	public INetClientGameService NetService { get; }
 
 	public CancellationTokenSource CancelToken { get; } = new CancellationTokenSource();
 
-	public JoinFlow(INetClientGameService netService, MockInfo? mockInfo = null)
+	public JoinFlow(INetClientGameService netService, PeerVersionInfo? mockInfo = null)
 	{
 		_mockInfo = mockInfo;
 		NetService = netService;
@@ -100,52 +83,46 @@ public class JoinFlow
 				if (value.HasValue)
 				{
 					_logger.Info($"Connection failed: {value}");
-					throw new ClientConnectionFailedException("Could not connect", value.Value);
+					throw new ClientConnectionFailedException("Could not connect", ConnectionFailureReason.None, null);
 				}
 				_logger.Info("Initializer connection completed, awaiting initial game info message");
 				InitialGameInfoMessage initialMessage = await _connectCompletion.Task;
+				PeerVersionInfo versionInfo = initialMessage.versionInfo;
+				PeerVersionInfo localInfo = _mockInfo ?? PeerVersionInfo.LocalDefault();
+				ConnectionFailureExtraInfo connectionFailureExtraInfo = new ConnectionFailureExtraInfo
+				{
+					localInfo = localInfo,
+					remoteInfo = versionInfo,
+					localIsHost = false
+				};
 				if (initialMessage.connectionFailureReason.HasValue)
 				{
 					_logger.Info($"Received initial join message with failure: {initialMessage.connectionFailureReason}");
-					throw new ClientConnectionFailedException("Got connection failure from host", new NetErrorInfo(initialMessage.connectionFailureReason.Value));
+					throw new ClientConnectionFailedException("Got connection failure from host", initialMessage.connectionFailureReason.Value, connectionFailureExtraInfo);
 				}
 				RunSessionState state = initialMessage.sessionState;
-				_logger.Info($"Got initial game info message. Version: {initialMessage.version} Hash: {initialMessage.idDatabaseHash} Type: {initialMessage.gameMode} State: {state}");
-				ConnectionFailureExtraInfo connectionFailureExtraInfo = new ConnectionFailureExtraInfo
+				_logger.Info($"Got initial game info message. Version: {versionInfo.version} Hash: {versionInfo.idDatabaseHash} Type: {initialMessage.gameMode} State: {state}");
+				if (versionInfo.version != localInfo.version)
 				{
-					hostBranch = initialMessage.branch,
-					hostVersion = initialMessage.version,
-					hostHash = initialMessage.idDatabaseHash,
-					localVersion = (_mockInfo?.version ?? NGame.GetGameVersion()),
-					localBranch = (_mockInfo?.branch ?? PlatformUtil.GetPlatformBranch()),
-					localHash = (_mockInfo?.hash ?? ModelIdSerializationCache.Hash)
-				};
-				if (initialMessage.version != connectionFailureExtraInfo.localVersion)
-				{
-					throw new ClientConnectionFailedException(info: new NetErrorInfo(ConnectionFailureReason.VersionMismatch, connectionFailureExtraInfo), message: $"Version mismatch. Host: {initialMessage.version} Ours: {connectionFailureExtraInfo.localVersion} Host branch: {initialMessage.branch}");
+					throw new ClientConnectionFailedException($"Version mismatch. Host: {versionInfo.version} Ours: {localInfo.version} Host branch: {versionInfo.branch}", ConnectionFailureReason.VersionMismatch, connectionFailureExtraInfo);
 				}
-				List<string> list = ((!_mockInfo.HasValue) ? ModManager.GetGameplayRelevantModNameList() : _mockInfo.Value.gameplayAffectingMods) ?? new List<string>();
-				List<string> list2 = initialMessage.gameplayAffectingMods ?? new List<string>();
-				List<string> list3 = list2.Except(list).ToList();
-				List<string> list4 = (connectionFailureExtraInfo.missingModsOnHost = list.Except(list2).ToList());
-				connectionFailureExtraInfo.missingModsOnLocal = list3;
-				if (list3.Count > 0 || list4.Count > 0)
+				List<string> missingModsOnRemote = connectionFailureExtraInfo.GetMissingModsOnRemote(nonGameplay: false);
+				List<string> missingModsOnLocal = connectionFailureExtraInfo.GetMissingModsOnLocal(nonGameplay: false);
+				if (missingModsOnLocal.Count > 0 || missingModsOnRemote.Count > 0)
 				{
-					_logger.Warn($"Mismatch in gameplay-relevant mods with the host!\nMods that host has that we don't: {string.Join(",", list3)}.\nMods that we have that host doesn't: {string.Join(",", list4)}.");
-					throw new ClientConnectionFailedException("Mod mismatch. Host mods: " + string.Join(",", list2) + " Local mods: " + string.Join(",", list), new NetErrorInfo(ConnectionFailureReason.ModMismatch, connectionFailureExtraInfo));
+					_logger.Warn($"Mismatch in gameplay-relevant mods with the host!\nMods that host has that we don't: {string.Join(",", missingModsOnLocal)}.\nMods that we have that host doesn't: {string.Join(",", missingModsOnRemote)}.");
+					throw new ClientConnectionFailedException("Mod mismatch. Host mods: " + string.Join(",", versionInfo.gameplayAffectingMods ?? new List<string>()) + " Local mods: " + string.Join(",", localInfo.gameplayAffectingMods ?? new List<string>()), ConnectionFailureReason.ModMismatch, connectionFailureExtraInfo);
 				}
-				if (initialMessage.idDatabaseHash != connectionFailureExtraInfo.localHash)
+				if (versionInfo.idDatabaseHash != localInfo.idDatabaseHash)
 				{
-					_logger.Warn("Our version " + connectionFailureExtraInfo.localVersion + " matches the host's, but our Model ID hash does not! Disconnecting");
-					throw new ClientConnectionFailedException($"ModelDb hash mismatch. Host: {initialMessage.idDatabaseHash} Ours: {ModelIdSerializationCache.Hash}", new NetErrorInfo(ConnectionFailureReason.VersionMismatch, connectionFailureExtraInfo));
+					_logger.Warn("Our version " + localInfo.version + " matches the host's, but our Model ID hash does not! Disconnecting");
+					throw new ClientConnectionFailedException($"ModelDb hash mismatch. Host: {versionInfo.idDatabaseHash} Ours: {ModelIdSerializationCache.Hash}", ConnectionFailureReason.VersionMismatch, connectionFailureExtraInfo);
 				}
-				List<string> list5 = ((!_mockInfo.HasValue) ? ModManager.GetNonGameplayRelevantModNameList() : _mockInfo.Value.nonGameplayAffectingMods) ?? new List<string>();
-				List<string> list6 = initialMessage.otherMods ?? new List<string>();
-				List<string> list7 = list6.Except(list5).ToList();
-				List<string> list8 = list5.Except(list6).ToList();
-				if (list8.Count > 0 || list7.Count > 0)
+				List<string> missingModsOnRemote2 = connectionFailureExtraInfo.GetMissingModsOnRemote(nonGameplay: true);
+				List<string> missingModsOnLocal2 = connectionFailureExtraInfo.GetMissingModsOnLocal(nonGameplay: true);
+				if (missingModsOnRemote2.Count > 0 || missingModsOnLocal2.Count > 0)
 				{
-					_logger.Warn($"Mismatch in non-gameplay relevant mods. This is allowed, but it's up to the mod authors to guarantee that it doesn't break anything.\nNon-gameplay relevant mods that host has that we don't: {string.Join(",", list7)}.\nNon-gameplay relevant mods that we have that host doesn't: {string.Join(",", list8)}.");
+					_logger.Warn($"Mismatch in non-gameplay relevant mods. This is allowed, but it's up to the mod authors to guarantee that it doesn't break anything.\nNon-gameplay relevant mods that host has that we don't: {string.Join(",", missingModsOnLocal2)}.\nNon-gameplay relevant mods that we have that host doesn't: {string.Join(",", missingModsOnRemote2)}.");
 				}
 				switch (state)
 				{
@@ -191,7 +168,23 @@ public class JoinFlow
 			{
 				if (NetService.IsConnected)
 				{
-					NetError reason = ((ex is OperationCanceledException) ? NetError.CancelledJoin : NetError.InternalError);
+					NetError reason;
+					if (ex is ClientConnectionFailedException ex2)
+					{
+						ClientConnectionFailedMessage message = new ClientConnectionFailedMessage
+						{
+							disconnectionReason = ex2.rawReason,
+							versionInfo = (ex2.info.ConnectionExtraInfo?.localInfo ?? PeerVersionInfo.LocalDefault())
+						};
+						NetService.SendMessage(message);
+						reason = ex2.info.GetReason();
+					}
+					else
+					{
+						reason = ((ex is OperationCanceledException) ? NetError.CancelledJoin : NetError.InternalError);
+					}
+					NetService.Disconnected -= OnDisconnected;
+					SetDisconnectionException(ex);
 					NetService.Disconnect(reason);
 				}
 				MegaCrit.Sts2.Core.Logging.Logger.logLevelTypeMap[LogType.Network] = LogLevel.Info;
@@ -236,7 +229,8 @@ public class JoinFlow
 		ClientLobbyJoinRequestMessage message = new ClientLobbyJoinRequestMessage
 		{
 			maxAscensionUnlocked = SaveManager.Instance.Progress.MaxMultiplayerAscension,
-			unlockState = unlockState.ToSerializable()
+			unlockState = unlockState.ToSerializable(),
+			versionInfo = PeerVersionInfo.LocalDefault()
 		};
 		NetService.SendMessage(message);
 		ClientLobbyJoinResponseMessage clientLobbyJoinResponseMessage = await _joinCompletion.Task;
@@ -248,7 +242,11 @@ public class JoinFlow
 	{
 		_loadJoinCompletion = new TaskCompletionSource<ClientLoadJoinResponseMessage>();
 		_logger.Info("Sending ClientLoadJoinRequestMessage and waiting for rejoin response message");
-		NetService.SendMessage(default(ClientLoadJoinRequestMessage));
+		ClientLoadJoinRequestMessage message = new ClientLoadJoinRequestMessage
+		{
+			versionInfo = PeerVersionInfo.LocalDefault()
+		};
+		NetService.SendMessage(message);
 		ClientLoadJoinResponseMessage clientLoadJoinResponseMessage = await _loadJoinCompletion.Task;
 		_logger.Info($"Received ClientLoadJoinResponseMessage: {clientLoadJoinResponseMessage}");
 		return clientLoadJoinResponseMessage;
@@ -258,7 +256,11 @@ public class JoinFlow
 	{
 		_rejoinCompletion = new TaskCompletionSource<ClientRejoinResponseMessage>();
 		_logger.Info("Sending ClientRequestRejoinMessage and waiting for rejoin response message");
-		NetService.SendMessage(default(ClientRejoinRequestMessage));
+		ClientRejoinRequestMessage message = new ClientRejoinRequestMessage
+		{
+			versionInfo = PeerVersionInfo.LocalDefault()
+		};
+		NetService.SendMessage(message);
 		ClientRejoinResponseMessage clientRejoinResponseMessage = await _rejoinCompletion.Task;
 		_logger.Info($"Received ClientRejoinResponseMessage: {clientRejoinResponseMessage}");
 		return clientRejoinResponseMessage;
@@ -315,7 +317,12 @@ public class JoinFlow
 	private void OnDisconnected(NetErrorInfo info)
 	{
 		_logger.Info($"Disconnected during join flow, reason: {info.GetReason()}. Failing with an exception");
-		ClientConnectionFailedException exception = new ClientConnectionFailedException($"Unexpectedly disconnected from host while joining. Reason: {info.GetReason()}", info);
+		ClientConnectionFailedException disconnectionException = new ClientConnectionFailedException($"Unexpectedly disconnected from host while joining. Reason: {info.GetReason()}", info);
+		SetDisconnectionException(disconnectionException);
+	}
+
+	private void SetDisconnectionException(Exception exception)
+	{
 		TaskCompletionSource<InitialGameInfoMessage> connectCompletion = _connectCompletion;
 		if (connectCompletion != null)
 		{

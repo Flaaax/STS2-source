@@ -77,7 +77,7 @@ public partial class NAncientEventLayout : NEventLayout
 	/// </summary>
 	private Control _fakeNextButton;
 
-	private TextureRect _fakeNextButtonControllerIcon;
+	private NHotkeyIcon _fakeNextButtonControllerIcon;
 
 	private MegaLabel _fakeNextButtonLabel;
 
@@ -116,7 +116,7 @@ public partial class NAncientEventLayout : NEventLayout
 		_fakeNextButtonContainer = GetNode<Control>("%FakeNextButtonContainer");
 		_fakeNextButton = _fakeNextButtonContainer.GetNode<Control>("FakeNextButton");
 		_fakeNextButtonLabel = _fakeNextButton.GetNode<MegaLabel>("Label");
-		_fakeNextButtonControllerIcon = _fakeNextButton.GetNode<TextureRect>("ControllerIcon");
+		_fakeNextButtonControllerIcon = _fakeNextButton.GetNode<NHotkeyIcon>("%HotkeyIcon");
 		_originalContentContainerHeight = _contentContainer.Size.Y;
 		_contentContainer.Size = new Vector2(_contentContainer.Size.X, _fakeNextButtonContainer.GlobalPosition.Y - _contentContainer.GlobalPosition.Y);
 		UpdateHotkeyDisplay();
@@ -393,11 +393,15 @@ public partial class NAncientEventLayout : NEventLayout
 
 	private void UpdateHotkeyDisplay()
 	{
-		_fakeNextButtonControllerIcon.Visible = NControllerManager.Instance.IsUsingController;
+		_fakeNextButtonControllerIcon.Visible = NControllerManager.Instance.IsUsingDirectionalNavigation;
 		string hotkey = _dialogueHitbox.GetHotkey();
 		if (hotkey != null)
 		{
-			_fakeNextButtonControllerIcon.Texture = NInputManager.Instance.GetHotkeyIcon(hotkey);
+			_fakeNextButtonControllerIcon.UpdateInput(hotkey);
+		}
+		else
+		{
+			_fakeNextButtonControllerIcon.Visible = false;
 		}
 	}
 }

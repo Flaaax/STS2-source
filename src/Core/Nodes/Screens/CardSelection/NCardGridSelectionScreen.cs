@@ -158,7 +158,7 @@ public abstract partial class NCardGridSelectionScreen : Control, IOverlayScreen
 
 	private void ShowCardDetail(CardModel card)
 	{
-		if (!NControllerManager.Instance.IsUsingController)
+		if (!NControllerManager.Instance.IsUsingDirectionalNavigation)
 		{
 			NGame.Instance.GetInspectCardScreen().Open(_cards.ToList(), _cards.IndexOf(card), _grid.IsShowingUpgrades);
 		}

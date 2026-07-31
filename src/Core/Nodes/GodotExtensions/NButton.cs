@@ -11,7 +11,7 @@ namespace MegaCrit.Sts2.Core.Nodes.GodotExtensions;
 /// </summary>
 public partial class NButton : NClickableControl
 {
-	protected TextureRect? _controllerHotkeyIcon;
+	protected NHotkeyIcon? _hotkeyIcon;
 
 	protected virtual string? ClickedSfx => "event:/sfx/ui/clicks/ui_click";
 
@@ -56,7 +56,7 @@ public partial class NButton : NClickableControl
 
 	protected virtual void GetControllerIconNode()
 	{
-		_controllerHotkeyIcon = GetNodeOrNull<TextureRect>("%ControllerIcon");
+		_hotkeyIcon = GetNodeOrNull<NHotkeyIcon>("%HotkeyIcon");
 	}
 
 	public override void _EnterTree()
@@ -111,22 +111,13 @@ public partial class NButton : NClickableControl
 
 	protected void UpdateControllerButton()
 	{
-		if (_controllerHotkeyIcon == null)
-		{
-			return;
-		}
 		NControllerManager instance = NControllerManager.Instance;
-		if (instance == null)
+		if (instance != null && _hotkeyIcon != null)
 		{
-			return;
-		}
-		_controllerHotkeyIcon.Visible = instance.IsUsingController && _isEnabled;
-		if (ControllerIconHotkey != null)
-		{
-			Texture2D hotkeyIcon = NInputManager.Instance.GetHotkeyIcon(ControllerIconHotkey);
-			if (hotkeyIcon != null)
+			_hotkeyIcon.Visible = instance.IsUsingDirectionalNavigation && _isEnabled;
+			if (ControllerIconHotkey != null)
 			{
-				_controllerHotkeyIcon.Texture = hotkeyIcon;
+				_hotkeyIcon.UpdateInput(ControllerIconHotkey);
 			}
 		}
 	}

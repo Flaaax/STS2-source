@@ -82,14 +82,21 @@ public partial class NRelicInventoryHolder : NButton
 		base._ExitTree();
 		_hoverTween?.Kill();
 		_cancellationTokenSource?.Cancel();
-		if (_subscribedRelic != null)
+	}
+
+	public override void _Notification(int what)
+	{
+		if ((long)what == 1 && IsNodeReady())
 		{
-			_subscribedRelic.DisplayAmountChanged -= OnDisplayAmountChanged;
-			_subscribedRelic.StatusChanged -= OnStatusChanged;
-			_subscribedRelic.Flashed -= OnRelicFlashed;
+			if (_subscribedRelic != null)
+			{
+				_subscribedRelic.DisplayAmountChanged -= OnDisplayAmountChanged;
+				_subscribedRelic.StatusChanged -= OnStatusChanged;
+				_subscribedRelic.Flashed -= OnRelicFlashed;
+			}
+			_subscribedRelic = null;
+			_relic.ModelChanged -= OnModelChanged;
 		}
-		_subscribedRelic = null;
-		_relic.ModelChanged -= OnModelChanged;
 	}
 
 	private void OnModelChanged(RelicModel? oldModel, RelicModel? newModel)

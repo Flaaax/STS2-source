@@ -162,7 +162,7 @@ public abstract partial class NMapPoint : NButton
 	/// </summary>
 	protected sealed override void OnRelease()
 	{
-		if (IsTravelable && (Point.coord.row != 0 || !TestMode.IsOff || SaveManager.Instance.SeenFtue("map_select_ftue")) && _screen.Drawings.GetLocalDrawingMode() == DrawingMode.None && (_screen.IsNodeOnScreen(this) || !NControllerManager.Instance.IsUsingController))
+		if (IsTravelable && (Point.coord.row != 0 || !TestMode.IsOff || SaveManager.Instance.SeenFtue("map_select_ftue")) && _screen.Drawings.GetLocalDrawingMode() == DrawingMode.None && (_screen.IsNodeOnScreen(this) || !NControllerManager.Instance.IsUsingDirectionalNavigation))
 		{
 			_screen.OnMapPointSelectedLocally(this);
 		}
@@ -190,11 +190,11 @@ public abstract partial class NMapPoint : NButton
 		{
 			return;
 		}
-		if (_isEnabled && NControllerManager.Instance.IsUsingController)
+		if (_isEnabled && NControllerManager.Instance.IsUsingDirectionalNavigation)
 		{
 			_controllerSelectionReticle.OnSelect();
 		}
-		if (_state != MapPointState.Traveled || !(_runState.MapLocation.coord != Point.coord) || NControllerManager.Instance.IsUsingController)
+		if (_state != MapPointState.Traveled || !(_runState.MapLocation.coord != Point.coord) || NControllerManager.Instance.IsUsingDirectionalNavigation)
 		{
 			return;
 		}

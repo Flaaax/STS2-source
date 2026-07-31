@@ -12,7 +12,7 @@ public partial class NPatchNotesButton : NButton
 
 	private Control _icon;
 
-	protected override string[] Hotkeys => new string[1] { MegaInput.accept };
+	protected override string[] Hotkeys => new string[1] { MegaInput.confirm };
 
 	public override void _Ready()
 	{

@@ -94,7 +94,7 @@ public partial class NMainMenu : Control, IScreenContext
 
 	public NPatchNotesScreen PatchNotesScreen { get; private set; }
 
-	public Control BlurBackstop { get; private set; }
+	private Control BlurBackstop { get; set; }
 
 	private NButton[] MainMenuButtons => new NButton[8] { _continueButton, _abandonRunButton, _singleplayerButton, _multiplayerButton, _timelineButton, _settingsButton, _compendiumButton, _quitButton };
 

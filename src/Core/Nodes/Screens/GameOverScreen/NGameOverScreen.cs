@@ -77,8 +77,6 @@ public partial class NGameOverScreen : NClickableControl, IOverlayScreen, IScree
 
 	private int _scoreThreshold;
 
-	private string? _scoreUnlockedEpochId;
-
 	private NDailyRunLeaderboard _leaderboard;
 
 	private Control _creatureContainer;
@@ -391,6 +389,7 @@ public partial class NGameOverScreen : NClickableControl, IOverlayScreen, IScree
 		if (!_serializableRun.GameMode.AreAchievementsAndEpochsLocked())
 		{
 			SaveBadgesToProgress(badges);
+			SaveManager.Instance.SaveProgressFile();
 		}
 		await Cmd.Wait(0.25f, _cts.Token);
 		foreach (NBadge item2 in _badgeContainer.GetChildren().OfType<NBadge>())
@@ -466,7 +465,6 @@ public partial class NGameOverScreen : NClickableControl, IOverlayScreen, IScree
 			{
 				Log.Info("New Unlock, yay!");
 				MegaLabel node = GetNode<MegaLabel>("%UnlockText");
-				_scoreUnlockedEpochId = SaveManager.Instance.IncrementUnlock();
 				currentScore -= _scoreThreshold;
 				int newThreshold = GetScoreThreshold(unlocksRemaining - 1);
 				string locEntryKey = ((newThreshold == 0) ? "SCORE.unlockedAllMessage" : "SCORE.unlockedEpochMessage");
@@ -484,10 +482,9 @@ public partial class NGameOverScreen : NClickableControl, IOverlayScreen, IScree
 				{
 					return;
 				}
-				if (_scoreUnlockedEpochId != null && !SaveManager.Instance.IsEpochRevealed(_scoreUnlockedEpochId))
+				EpochModel epochModel = SaveManager.Instance.GrantNextUnlock();
+				if (epochModel != null)
 				{
-					EpochModel epochModel = EpochModel.Get(_scoreUnlockedEpochId);
-					SaveManager.Instance.ObtainEpoch(_scoreUnlockedEpochId);
 					NGame.Instance.AddChildSafely(NGainEpochVfx.Create(epochModel));
 					_localPlayer.DiscoveredEpochs.Add(epochModel.Id);
 					LocalContext.GetMe(_serializableRun).DiscoveredEpochs.Add(epochModel.Id);
@@ -497,43 +494,48 @@ public partial class NGameOverScreen : NClickableControl, IOverlayScreen, IScree
 				_unlocksRemaining.SetTextAutoSize(locString2.GetFormattedText());
 				_scoreThreshold = newThreshold;
 				currentScore += _score;
+				int currentScore2;
 				if (newThreshold == 0 || currentScore == 0)
 				{
 					Log.Info("Player has gotten all unlocks or they've overflowed exactly 0");
-					SaveManager.Instance.Progress.CurrentScore = 0;
+					currentScore2 = 0;
 				}
 				else if (currentScore >= newThreshold)
 				{
 					Log.Info("Score is too awesome. Disallow double unlock.");
-					scoreTween.Kill();
-					scoreTween = CreateTween().SetParallel();
-					scoreTween.TweenInterval(0.5);
-					scoreTween.Chain();
-					scoreTween.TweenMethod(Callable.From<int>(TweenScore), 0, newThreshold * 99 / 100, 1.0).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);
-					scoreTween.TweenProperty(_scoreFg, "scale:x", 1f, 1.0).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic)
-						.From(0f);
-					if (!(await scoreTween.AwaitFinished(this)))
-					{
-						return;
-					}
-					SaveManager.Instance.Progress.CurrentScore = newThreshold - 1;
+					currentScore2 = newThreshold - 1;
 				}
 				else
 				{
 					Log.Info("Animate overflow score.");
+					currentScore2 = currentScore;
+				}
+				SaveManager.Instance.Progress.CurrentScore = currentScore2;
+				SaveManager.Instance.SaveProgressFile();
+				if (newThreshold != 0 && currentScore != 0)
+				{
 					scoreTween.Kill();
 					scoreTween = CreateTween().SetParallel();
-					scoreTween.Chain();
-					scoreTween.TweenInterval(0.5);
-					scoreTween.Chain();
-					scoreTween.TweenMethod(Callable.From<int>(TweenScore), 0, currentScore, 1.0).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);
-					scoreTween.TweenProperty(_scoreFg, "scale:x", (float)currentScore / (float)newThreshold, 1.0).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic)
-						.From(0f);
-					if (!(await scoreTween.AwaitFinished(this)))
+					if (currentScore >= newThreshold)
 					{
-						return;
+						scoreTween.TweenInterval(0.5);
+						scoreTween.Chain();
+						scoreTween.TweenMethod(Callable.From<int>(TweenScore), 0, newThreshold * 99 / 100, 1.0).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);
+						scoreTween.TweenProperty(_scoreFg, "scale:x", 1f, 1.0).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic)
+							.From(0f);
 					}
-					SaveManager.Instance.Progress.CurrentScore = currentScore;
+					else
+					{
+						scoreTween.Chain();
+						scoreTween.TweenInterval(0.5);
+						scoreTween.Chain();
+						scoreTween.TweenMethod(Callable.From<int>(TweenScore), 0, currentScore, 1.0).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);
+						scoreTween.TweenProperty(_scoreFg, "scale:x", (float)currentScore / (float)newThreshold, 1.0).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic)
+							.From(0f);
+					}
+					if (await scoreTween.AwaitFinished(this))
+					{
+					}
 				}
 			}
 			else
@@ -544,8 +546,8 @@ public partial class NGameOverScreen : NClickableControl, IOverlayScreen, IScree
 				scoreTween.TweenMethod(Callable.From<int>(TweenScore), currentScore, currentScore + _score, 1.0);
 				scoreTween.TweenProperty(_scoreFg, "scale:x", (float)(currentScore + _score) / (float)_scoreThreshold, 1.0);
 				SaveManager.Instance.Progress.CurrentScore += _score;
+				SaveManager.Instance.SaveProgressFile();
 			}
-			SaveManager.Instance.SaveProgressFile();
 		}
 		else
 		{
@@ -565,13 +567,13 @@ public partial class NGameOverScreen : NClickableControl, IOverlayScreen, IScree
 
 	/// <summary>
 	/// Lookup table of score thresholds based on the total number of unlocks the player has completed.
-	/// Must match: <see cref="M:MegaCrit.Sts2.Core.Saves.SaveManager.GetEpochIdForUnlock" />.
+	/// Must have one entry per epoch in <see cref="P:MegaCrit.Sts2.Core.Timeline.EpochModel.AgnosticUnlockOrder" />.
 	/// </summary>
 	/// <param name="unlocksRemaining"></param>
 	/// <returns></returns>
 	private int GetScoreThreshold(int unlocksRemaining)
 	{
-		return (18 - unlocksRemaining) switch
+		return (SaveManager.TotalAgnosticUnlocks - unlocksRemaining) switch
 		{
 			0 => 200, 
 			1 => 500, 

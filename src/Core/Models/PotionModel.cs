@@ -327,17 +327,17 @@ public abstract class PotionModel : AbstractModel
 			NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(child);
 			await Cmd.Wait(0.5f);
 		}
-		CombatManager.Instance.BeginCardOrPotionEffect(Owner);
+		CombatId? effectCombatId = CombatManager.Instance.BeginCardOrPotionEffect(Owner);
 		try
 		{
-			BranchingPlayerChoiceContext branchingPlayerChoiceContext = new BranchingPlayerChoiceContext(LocalContext.NetId.Value, GameActionType.Combat, choiceContext);
+			BranchingPlayerChoiceContext branchingPlayerChoiceContext = new BranchingPlayerChoiceContext(this, LocalContext.NetId.Value, GameActionType.Combat, choiceContext);
 			branchingPlayerChoiceContext.PushModel(this);
 			Task task = OnUse(branchingPlayerChoiceContext, target);
 			await branchingPlayerChoiceContext.AssignTaskAndWaitForPauseOrCompletion(task);
 		}
 		finally
 		{
-			await CombatManager.Instance.EndCardOrPotionEffect(Owner);
+			await CombatManager.Instance.EndCardOrPotionEffect(effectCombatId, Owner);
 		}
 		if (!Owner.Creature.IsDead)
 		{
@@ -348,7 +348,7 @@ public abstract class PotionModel : AbstractModel
 			}
 			await Hook.AfterPotionUsed(Owner.RunState, combatState, this, target);
 			Owner.RunState.CurrentMapPointHistoryEntry?.GetEntry(Owner.NetId).PotionUsed.Add(base.Id);
-			await CombatManager.Instance.CheckForEmptyHand(choiceContext, Owner);
+			await CombatManager.Instance.CheckForEmptyHand(effectCombatId, choiceContext, Owner);
 			choiceContext.PopModel(this);
 		}
 	}

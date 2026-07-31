@@ -11,6 +11,6 @@ public partial class NShareButton : NButton
 	{
 		ConnectSignals();
 		Disable();
-		GetNode<MegaLabel>("%ShareLabel").SetTextAutoSize(new LocString("main_menu_ui", "RUN_HISTORY.SHARE.title").GetFormattedText());
+		GetNode<MegaLabel>("%Label").SetTextAutoSize(new LocString("main_menu_ui", "RUN_HISTORY.SHARE.title").GetFormattedText());
 	}
 }

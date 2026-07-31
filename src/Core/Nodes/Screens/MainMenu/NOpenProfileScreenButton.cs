@@ -31,9 +31,9 @@ public partial class NOpenProfileScreenButton : NButton
 	public override void _Ready()
 	{
 		ConnectSignals();
-		_profileIcon = GetNode<NProfileIcon>("ProfileIcon");
-		_title = GetNode<MegaLabel>("Title");
-		_description = GetNode<MegaLabel>("Description");
+		_profileIcon = GetNode<NProfileIcon>("%ProfileIcon");
+		_title = GetNode<MegaLabel>("%Title");
+		_description = GetNode<MegaLabel>("%Description");
 		RefreshLabels();
 		_profileIcon.SetProfileId(SaveManager.Instance.CurrentProfileId);
 		UpdateDescription();
@@ -46,16 +46,6 @@ public partial class NOpenProfileScreenButton : NButton
 		{
 			NControllerManager.Instance.Connect(NControllerManager.SignalName.MouseDetected, Callable.From(UpdateDescription));
 			NControllerManager.Instance.Connect(NControllerManager.SignalName.ControllerDetected, Callable.From(UpdateDescription));
-		}
-	}
-
-	public override void _ExitTree()
-	{
-		base._ExitTree();
-		if (NControllerManager.Instance != null)
-		{
-			NControllerManager.Instance.Disconnect(NControllerManager.SignalName.ControllerDetected, Callable.From(UpdateDescription));
-			NControllerManager.Instance.Disconnect(NControllerManager.SignalName.MouseDetected, Callable.From(UpdateDescription));
 		}
 	}
 
@@ -83,7 +73,8 @@ public partial class NOpenProfileScreenButton : NButton
 	{
 		base.OnFocus();
 		_tween?.Kill();
-		base.Scale = Vector2.One * 1.02f;
+		_tween = CreateTween();
+		_tween.TweenProperty(this, "scale", Vector2.One * 1.02f, 0.05).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Expo);
 	}
 
 	protected override void OnUnfocus()
@@ -91,14 +82,24 @@ public partial class NOpenProfileScreenButton : NButton
 		base.OnUnfocus();
 		_tween?.Kill();
 		_tween = CreateTween();
-		_tween.TweenProperty(this, "scale", Vector2.One * 1f, 0.3).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Expo);
+		_tween.TweenProperty(this, "scale", Vector2.One, 0.3).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Expo);
 	}
 
 	private void UpdateDescription()
 	{
 		if (NControllerManager.Instance != null)
 		{
-			_description.SetVisible(!NControllerManager.Instance.IsUsingController);
+			_description.SetVisible(!NControllerManager.Instance.IsUsingDirectionalNavigation);
+		}
+	}
+
+	public override void _ExitTree()
+	{
+		base._ExitTree();
+		if (NControllerManager.Instance != null)
+		{
+			NControllerManager.Instance.Disconnect(NControllerManager.SignalName.ControllerDetected, Callable.From(UpdateDescription));
+			NControllerManager.Instance.Disconnect(NControllerManager.SignalName.MouseDetected, Callable.From(UpdateDescription));
 		}
 	}
 }

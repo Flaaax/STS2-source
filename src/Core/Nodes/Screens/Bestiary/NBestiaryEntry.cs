@@ -80,7 +80,7 @@ public partial class NBestiaryEntry : NButton
 		_tween?.Kill();
 		_tween = CreateTween();
 		_tween.TweenProperty(_label, "scale", Vector2.One * 1.1f, 0.05);
-		if (NControllerManager.Instance.IsUsingController)
+		if (NControllerManager.Instance.IsUsingDirectionalNavigation)
 		{
 			_highlight.Visible = true;
 		}

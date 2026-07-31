@@ -1,0 +1,43 @@
+[gd_resource type="ShaderMaterial" load_steps=8 format=3 uid="uid://ctwvjg85gynug"]
+
+[ext_resource type="Shader" uid="uid://uca8pux3tjek" path="res://shaders/vfx/forms/reaper/vfx_reaper_form_idle_panning_noise_shader.gdshader" id="1_4xevt"]
+
+[sub_resource type="Gradient" id="Gradient_4xevt"]
+offsets = PackedFloat32Array(0.12162162, 0.75405407)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rwu5c"]
+gradient = SubResource("Gradient_4xevt")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_rwu5c"]
+offsets = PackedFloat32Array(0.3054054, 0.7027027, 1)
+colors = PackedColorArray(0.04765566, 0, 0.07231444, 1, 0.8661208, 0, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ib54y"]
+gradient = SubResource("Gradient_rwu5c")
+
+[sub_resource type="Gradient" id="Gradient_ib54y"]
+interpolation_color_space = 2
+offsets = PackedFloat32Array(0, 0.26216215, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.75, 0.75, 0.75, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fgjmg"]
+gradient = SubResource("Gradient_ib54y")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[resource]
+shader = ExtResource("1_4xevt")
+shader_parameter/pivot_offset = Vector2(0, 0)
+shader_parameter/main_st_a = Vector4(2.5, 2, -0.4, -0.025)
+shader_parameter/main_st_b = Vector4(1.5, 1, -0.9, 0.05)
+shader_parameter/main_st_a_initial_offset = Vector2(0, 0)
+shader_parameter/main_st_b_initial_offset = Vector2(0, 0)
+shader_parameter/erosion = Vector2(0.2, 1)
+shader_parameter/rotation_normalized = 0.5
+shader_parameter/lut = SubResource("GradientTexture1D_ib54y")
+shader_parameter/alpha_overlay = SubResource("GradientTexture2D_rwu5c")
+shader_parameter/mask = SubResource("GradientTexture2D_fgjmg")

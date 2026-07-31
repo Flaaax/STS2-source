@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://bsyvuj0d646l7"]
+[gd_scene load_steps=39 format=3 uid="uid://dq84rqqbmq64n"]
 
 [ext_resource type="Script" uid="uid://b7knj3kel4tg3" path="res://src/Core/Nodes/Screens/FeedbackScreen/NSendFeedbackScreen.cs" id="1_yc05q"]
 [ext_resource type="FontVariation" uid="uid://c6wnuvk3exmk5" path="res://themes/kreon_regular_shared.tres" id="2_gelno"]
@@ -24,12 +24,12 @@
 [ext_resource type="PackedScene" uid="uid://bl4mbjqjfffa3" path="res://scenes/ui/back_button.tscn" id="20_saum5"]
 [ext_resource type="Texture2D" uid="uid://cumaq3i" path="res://images/atlases/compressed.sprites/feedback/cupcake.tres" id="22_eeemu"]
 [ext_resource type="Script" uid="uid://flxw0da70sec" path="res://src/Core/Nodes/Screens/FeedbackScreen/NSendFeedbackCartoon.cs" id="22_jsgi0"]
-[ext_resource type="Shader" uid="uid://c66gb6g7tup3n" path="res://shaders/hsv.gdshader" id="23_2v6pa"]
 [ext_resource type="Script" uid="uid://c2oywrx8xbqfx" path="res://addons/mega_text/MegaRichTextLabel.cs" id="23_3wqwb"]
 [ext_resource type="FontFile" uid="uid://clypo64htko7l" path="res://fonts/kreon_regular.ttf" id="23_awk5d"]
-[ext_resource type="Texture2D" uid="uid://b5x513mavmk5v" path="res://images/ui/placeholder_controller_icon.png" id="24_3wqwb"]
 [ext_resource type="Texture2D" uid="uid://b4v8u4r" path="res://images/atlases/compressed.sprites/feedback/flower.tres" id="24_eeemu"]
 [ext_resource type="Script" uid="uid://8u0eqyharlbr" path="res://src/Core/Nodes/Screens/FeedbackScreen/NSendFeedbackFlower.cs" id="24_ujhq0"]
+[ext_resource type="FontVariation" uid="uid://ux4d708e7mk6" path="res://themes/kreon_bold_glyph_space_one.tres" id="25_widk4"]
+[ext_resource type="PackedScene" uid="uid://ddb8daodx7qsl" path="res://scenes/ui/hotkey_icon.tscn" id="27_5d2l3"]
 [ext_resource type="PackedScene" uid="uid://cpd22pwyuoc6u" path="res://scenes/screens/feedback_screen/category_dropdown_item.tscn" id="27_category_dropdown_item"]
 [ext_resource type="Texture2D" uid="uid://b6yryuf4syvy8" path="res://images/atlases/ui_atlas_0.png" id="28_ud0lt"]
 
@@ -93,13 +93,6 @@ atlas = ExtResource("28_ud0lt")
 region = Rect2(1568, 1743, 109, 120)
 margin = Rect2(8, 4, 19, 8)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5d2l3"]
-resource_local_to_scene = true
-shader = ExtResource("23_2v6pa")
-shader_parameter/h = 1.0
-shader_parameter/s = 1.0
-shader_parameter/v = 1.0
-
 [node name="FeedbackScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -111,7 +104,7 @@ script = ExtResource("1_yc05q")
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="BG" type="ColorRect" parent="."]
+[node name="Bg" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -814,43 +807,40 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 28.0
-offset_top = 21.0
-offset_right = -33.0
-offset_bottom = -22.0
+offset_left = 14.0
+offset_top = 5.0
+offset_right = -19.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 0.964706, 0.886275, 1)
 theme_override_colors/font_outline_color = Color(0.2166, 0.317363, 0.38, 1)
-theme_override_constants/outline_size = 16
-theme_override_fonts/font = ExtResource("12_gelno")
-theme_override_font_sizes/font_size = 30
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 12
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("25_widk4")
+theme_override_font_sizes/font_size = 28
 text = "Return to Game"
 horizontal_alignment = 1
+vertical_alignment = 1
 script = ExtResource("3_5wfa4")
-AutoSizeEnabled = false
+MaxFontSize = 28
 
-[node name="ControllerIcon" type="TextureRect" parent="SendBackstop/ReturnToGameButton"]
+[node name="HotkeyIcon" parent="SendBackstop/ReturnToGameButton" instance=ExtResource("27_5d2l3")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_5d2l3")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -186.0
-offset_top = -48.0
-offset_right = 54.0
-offset_bottom = 72.0
+offset_left = 122.0
+offset_top = 6.000004
+offset_right = 170.0
+offset_bottom = 54.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(256, 128)
-mouse_filter = 2
-texture = ExtResource("24_3wqwb")
-expand_mode = 1
-stretch_mode = 5
 
 [node name="ReturnToGameHoverLabel" type="Label" parent="SendBackstop"]
 unique_name_in_owner = true

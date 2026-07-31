@@ -37,5 +37,12 @@
   "LEGEND_UNKNOWN.hoverTip.description": "An unknown room.\n\nEncounter an event, enemies, shop, or treasure.",
   "LEGEND_UNKNOWN.hoverTip.title": "???",
   "LEGEND_UNKNOWN.title": "Unknown",
+  "SHARE.description.other": "Save a screenshot of the entire map to share with friends.",
+  "SHARE.description.steam": "Save a Steam screenshot of the entire map to share with friends.",
+  "SHARE.title": "Share",
+  "SHARE_POPUP.description": "[gold]Saved screenshot to:[/gold]\n\n{path}",
+  "SHARE_POPUP.open": "Open",
+  "SHARE_POPUP.title": "Screenshot Saved!",
+  "SHARE_TOAST.description.steam": "Screenshot saved!",
   "STARTING_ROOM_PROMPT": "Select a Starting Room"
 }

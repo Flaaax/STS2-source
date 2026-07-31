@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cij4nlmt4b1di"]
+[gd_scene load_steps=20 format=3 uid="uid://cij4nlmt4b1di"]
 
 [ext_resource type="Script" uid="uid://s3hkv8x1gcxt" path="res://src/Core/Nodes/Screens/Bestiary/NBestiary.cs" id="1_41s1u"]
 [ext_resource type="FontVariation" uid="uid://b8ce4a71ref23" path="res://themes/spectral_bold_shared.tres" id="2_he457"]
@@ -14,20 +14,11 @@
 [ext_resource type="PackedScene" uid="uid://b6nko387cwp7n" path="res://scenes/ui/scrollbar.tscn" id="8_45oiu"]
 [ext_resource type="Texture2D" uid="uid://b6vija0dly5pt" path="res://images/ui/thought_tail.png" id="8_nt0cb"]
 [ext_resource type="FontVariation" uid="uid://ux4d708e7mk6" path="res://themes/kreon_bold_glyph_space_one.tres" id="8_w1gfe"]
-[ext_resource type="Shader" uid="uid://c66gb6g7tup3n" path="res://shaders/hsv.gdshader" id="10_ik5ss"]
 [ext_resource type="Texture2D" uid="uid://dq7iib8cadxmf" path="res://images/ui/dialogue_nine_patch.png" id="11_x8jeb"]
+[ext_resource type="PackedScene" uid="uid://ddb8daodx7qsl" path="res://scenes/ui/hotkey_icon.tscn" id="12_3jq4s"]
 [ext_resource type="Texture2D" uid="uid://q86di1eocspv" path="res://images/ancients/under_construction.png" id="12_w1gfe"]
 [ext_resource type="FontVariation" uid="uid://ciql5khgewwbm" path="res://themes/kreon_bold_glyph_space_two.tres" id="13_lxch6"]
-[ext_resource type="Script" uid="uid://dl5chpinpvnjk" path="res://src/Core/Nodes/Screens/Bestiary/NBestiaryModeButton.cs" id="19_1l8mc"]
-[ext_resource type="Texture2D" uid="uid://cyruikkcbbm0f" path="res://images/ui/reward_screen/reward_skip_button.png" id="23_ik5ss"]
-[ext_resource type="Texture2D" uid="uid://b5x513mavmk5v" path="res://images/ui/placeholder_controller_icon.png" id="24_p8for"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_p8for"]
-resource_local_to_scene = true
-shader = ExtResource("10_ik5ss")
-shader_parameter/h = 1.0
-shader_parameter/s = 1.0
-shader_parameter/v = 1.0
+[ext_resource type="PackedScene" uid="uid://ki7kvq1te08p" path="res://scenes/screens/bestiary/bestiary_mode_button.tscn" id="19_yexn3"]
 
 [node name="Bestiary" type="Control"]
 layout_mode = 3
@@ -384,42 +375,32 @@ MinFontSize = 32
 MaxFontSize = 32
 metadata/_custom_type_script = "uid://dtfio45agppyj"
 
-[node name="PageLeftIcon" type="TextureRect" parent="StatsContainer/VBoxContainer/StatsHeader"]
+[node name="PageLeftIcon" parent="StatsContainer/VBoxContainer/StatsHeader" instance=ExtResource("12_3jq4s")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(48, 48)
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = -56.0
-offset_top = 32.208336
-offset_right = -8.0
-offset_bottom = 80.208336
+offset_left = -52.0
+offset_top = 30.208334
+offset_right = -4.0
+offset_bottom = 78.208336
 grow_vertical = 2
-pivot_offset = Vector2(24, 24)
-texture = ExtResource("24_p8for")
-expand_mode = 1
-stretch_mode = 5
 
-[node name="PageRightIcon" type="TextureRect" parent="StatsContainer/VBoxContainer/StatsHeader"]
+[node name="PageRightIcon" parent="StatsContainer/VBoxContainer/StatsHeader" instance=ExtResource("12_3jq4s")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(48, 48)
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 8.0
-offset_top = 32.208336
-offset_right = 56.0
-offset_bottom = 80.208336
+offset_left = 11.0
+offset_top = 30.208342
+offset_right = 59.0
+offset_bottom = 78.20834
 grow_horizontal = 0
 grow_vertical = 2
-pivot_offset = Vector2(24, 24)
-texture = ExtResource("24_p8for")
-expand_mode = 1
-stretch_mode = 5
 
 [node name="PoolFilters" type="GridContainer" parent="StatsContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -573,74 +554,6 @@ script = ExtResource("4_h1koc")
 MaxFontSize = 24
 metadata/_custom_type_script = "uid://c2oywrx8xbqfx"
 
-[node name="ModeButton" type="Control" parent="."]
+[node name="ModeButton" parent="." instance=ExtResource("19_yexn3")]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 94.0
-offset_top = -124.0
-offset_right = 354.0
-offset_bottom = -66.0
-grow_vertical = 0
-pivot_offset = Vector2(130, 29)
-script = ExtResource("19_1l8mc")
-
-[node name="Image" type="TextureRect" parent="ModeButton"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(130, 29)
-mouse_filter = 2
-texture = ExtResource("23_ik5ss")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="ModeLabel" type="Label" parent="ModeButton"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.91, 0.86359, 0.7462, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25098)
-theme_override_colors/font_outline_color = Color(0.115875, 0.25976, 0.288407, 1)
-theme_override_constants/shadow_offset_x = 5
-theme_override_constants/shadow_offset_y = 4
-theme_override_constants/outline_size = 12
-theme_override_constants/shadow_outline_size = 0
-theme_override_fonts/font = ExtResource("13_lxch6")
-theme_override_font_sizes/font_size = 28
-text = "View Stats"
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("5_45oiu")
-AutoSizeEnabled = false
-
-[node name="ControllerIcon" type="TextureRect" parent="ModeButton"]
-unique_name_in_owner = true
-material = SubResource("ShaderMaterial_p8for")
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -314.0
-offset_top = -94.0
-offset_right = -70.0
-offset_bottom = 28.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(256, 128)
-mouse_filter = 2
-texture = ExtResource("24_p8for")
-expand_mode = 1
-stretch_mode = 5
