@@ -94,6 +94,8 @@
   "INVALID_SAVE_POPUP.dismiss": "Zamknij",
   "INVALID_SAVE_POPUP.title": "Uszkodzony plik zapisu!",
   "INVITE": "Zaproś",
+  "INVITE.DISABLED.steam.description": "Nakładka Steam jest wyłączona.\n\nWłącz nakładkę, aby zaprosić znajomych, lub wyślij zaproszenie przez listę znajomych Steam.",
+  "INVITE.DISABLED.steam.title": "Nakładka Steam wyłączona",
   "JOIN.description": "Dołącz do gry hostowanej przez znajomego.",
   "JOIN.title": "Dołącz",
   "JOIN_FRIENDS_MENU.noFriends": "Nikt ze znajomych nie gra obecnie w trybie wieloosobowym.",

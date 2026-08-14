@@ -1,0 +1,23 @@
+{
+  "EXTENSION.card.humanizedCardTypes.attack": "Serangan",
+  "EXTENSION.card.humanizedCardTypes.curse": "Kutukan",
+  "EXTENSION.card.humanizedCardTypes.power": "Kuasa",
+  "EXTENSION.card.humanizedCardTypes.quest": "Misi",
+  "EXTENSION.card.humanizedCardTypes.skill": "Teknik",
+  "EXTENSION.card.humanizedCardTypes.status": "Status",
+  "EXTENSION.config.activate": "Mohon nyalakan ekstensi menggunakan tombol 'Nyalakan' di pojok kanan bawah layar ini.",
+  "EXTENSION.config.categoryWarning": "Pastikan kategori disetel ke Slay the Spire 2, atau ekstensi tidak akan muncul bagi penonton!",
+  "EXTENSION.config.inGameConnect": "Pergi ke pengaturan untuk menyambungkan dan mengatur integrasinya.",
+  "EXTENSION.config.title": "Pendamping Slay the Spire 2",
+  "EXTENSION.piles.clickHint.deck": "Klik untuk lihat dek",
+  "EXTENSION.piles.clickHint.discardPile": "Klik untuk lihat tumpukan singkir",
+  "EXTENSION.piles.clickHint.drawPile": "Klik untuk lihat tumpukan ambil",
+  "EXTENSION.poll.voteReceived": "Suara diterima!",
+  "EXTENSION.tutorial.back": "Kembali",
+  "EXTENSION.tutorial.finish": "Paham!",
+  "EXTENSION.tutorial.hoverIndicator": "Arahkan ke atas stream untuk melihat kartu, pusaka dan ramuan milik {{streamerName}} saat kamu lihat indikator ini:",
+  "EXTENSION.tutorial.next": "Selanjutnya",
+  "EXTENSION.tutorial.title": "Slay the Spire 2",
+  "EXTENSION.tutorial.twitchIntegration": "Integrasi Twitch",
+  "EXTENSION.tutorial.voting": "Kamu juga bisa memilih kartu mana yang harus {{streamerName}} ambil, dan kemana mereka harus pergi selanjutnya."
+}

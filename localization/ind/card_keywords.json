@@ -1,0 +1,17 @@
+{
+  "ETERNAL.description": "Tidak bisa dibuang atau ditransformasi dari [gold]Dek[/gold] kamu.",
+  "ETERNAL.title": "Abadi",
+  "ETHEREAL.description": "Jika kartu ini di [gold]Tangan[/gold] pada akhir giliran ini, kartu [gold]Hangus[/gold].",
+  "ETHEREAL.title": "Rapuh",
+  "EXHAUST.description": "Hilang sampai akhir perlawanan.",
+  "EXHAUST.title": "Hangus",
+  "INNATE.description": "Mulai perlawanan dengan kartu ini di [gold]Tangan[/gold].",
+  "INNATE.title": "Bawaan",
+  "PERIOD": ".",
+  "RETAIN.description": "Kartu yang dipertahankan tidak disingkirkan saat akhir giliran.",
+  "RETAIN.title": "Pertahankan",
+  "SLY.description": "Jika kartu ini disingkirkan dari [gold]Tangan[/gold] sebelum giliran berakhir, mainkan secara gratis.",
+  "SLY.title": "Lihai",
+  "UNPLAYABLE.description": "Kartu nonaktif tidak bisa dimainkan.",
+  "UNPLAYABLE.title": "Nonaktif"
+}

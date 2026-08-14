@@ -63,9 +63,17 @@ public class StartRunLobby
 
 	private readonly Logger _logger;
 
+	/// <summary>
+	/// Contains players who are in the process of connecting, but have not yet fully connected. Only set on host.
+	/// </summary>
 	private readonly List<ConnectingPlayer> _connectingPlayers = new List<ConnectingPlayer>();
 
+	/// <summary>
+	/// Set to true when the run starts, but the lobby is still listening for messages
+	/// </summary>
 	private bool _isBeginningRun;
+
+	private readonly int _maxPlayers;
 
 	private readonly List<ModifierModel> _modifiers = new List<ModifierModel>();
 
@@ -74,8 +82,6 @@ public class StartRunLobby
 	public IStartRunLobbyListener LobbyListener { get; }
 
 	public PeerInputSynchronizer InputSynchronizer { get; }
-
-	public int MaxPlayers { get; private set; }
 
 	public int Ascension { get; private set; }
 
@@ -90,10 +96,10 @@ public class StartRunLobby
 	public IReadOnlyList<ModifierModel> Modifiers => _modifiers;
 
 	/// <summary>
-	/// If we are the host, this is the amount of time we give clients to send the handshake response in milliseconds.
-	/// Public for tests.
+	/// If we are the host, this is the amount of time we give clients to send the initial message response in
+	/// milliseconds. Public for tests.
 	/// </summary>
-	public int HandshakeTimeout { get; set; } = 10000;
+	public int ClientResponseTimeout { get; set; } = 10000;
 
 	/// <summary>
 	/// TEMPORARY way for the host to manually specify which ActModel they want for act 1.
@@ -111,20 +117,19 @@ public class StartRunLobby
 	/// <summary>
 	/// Provides extended disconnection info to UI, but only when the local player is the host.
 	/// </summary>
-	public event Action<ClientConnectionFailedMessage, ulong>? PlayerFailedToConnect;
+	public event Action<ulong, NetErrorInfo>? PlayerFailedToConnect;
 
 	public StartRunLobby(GameMode gameMode, INetGameService netService, IStartRunLobbyListener lobbyListener, int maxPlayers)
 	{
 		GameMode = gameMode;
 		NetService = netService;
 		LobbyListener = lobbyListener;
-		MaxPlayers = maxPlayers;
+		_maxPlayers = maxPlayers;
 		InputSynchronizer = new PeerInputSynchronizer(netService);
 		_logger = new Logger("StartRunLobby", LogType.Network);
 		NetService.RegisterMessageHandler<ClientLobbyJoinRequestMessage>(HandleClientLobbyJoinRequestMessage);
 		NetService.RegisterMessageHandler<ClientLoadJoinRequestMessage>(HandleClientLoadJoinRequestMessage);
 		NetService.RegisterMessageHandler<ClientRejoinRequestMessage>(HandleClientRejoinRequestMessage);
-		NetService.RegisterMessageHandler<ClientConnectionFailedMessage>(HandleClientDisconnectionMessage);
 		NetService.RegisterMessageHandler<PlayerJoinedMessage>(HandlePlayerJoinedMessage);
 		NetService.RegisterMessageHandler<PlayerLeftMessage>(HandlePlayerLeftMessage);
 		NetService.RegisterMessageHandler<LobbyPlayerChangedCharacterMessage>(HandleLobbyPlayerChangedCharacterMessage);
@@ -134,16 +139,12 @@ public class StartRunLobby
 		NetService.RegisterMessageHandler<LobbyPlayerSetReadyMessage>(HandlePlayerReadyMessage);
 		NetService.RegisterMessageHandler<LobbyBeginRunMessage>(HandleLobbyBeginRunMessage);
 		NetService.Disconnected += OnDisconnected;
-		if (NetService.Type != NetGameType.Host)
+		if (NetService.Type == NetGameType.Host)
 		{
-			return;
-		}
-		INetHostGameService netHostGameService = (INetHostGameService)netService;
-		netHostGameService.ClientConnected += OnConnectedToClientAsHost;
-		netHostGameService.ClientDisconnected += OnDisconnectedFromClientAsHost;
-		foreach (NetClientData connectedPeer in netHostGameService.ConnectedPeers)
-		{
-			OnConnectedToClientAsHost(connectedPeer.peerId);
+			INetHostGameService netHostGameService = (INetHostGameService)netService;
+			netHostGameService.ClientConnected += OnConnectedToClientAsHost;
+			netHostGameService.ClientDisconnected += OnDisconnectedFromClientAsHost;
+			netHostGameService.ClientConnectionFailed += OnClientConnectionFailed;
 		}
 	}
 
@@ -181,7 +182,6 @@ public class StartRunLobby
 		NetService.UnregisterMessageHandler<ClientLobbyJoinRequestMessage>(HandleClientLobbyJoinRequestMessage);
 		NetService.UnregisterMessageHandler<ClientLoadJoinRequestMessage>(HandleClientLoadJoinRequestMessage);
 		NetService.UnregisterMessageHandler<ClientRejoinRequestMessage>(HandleClientRejoinRequestMessage);
-		NetService.UnregisterMessageHandler<ClientConnectionFailedMessage>(HandleClientDisconnectionMessage);
 		NetService.UnregisterMessageHandler<PlayerJoinedMessage>(HandlePlayerJoinedMessage);
 		NetService.UnregisterMessageHandler<PlayerLeftMessage>(HandlePlayerLeftMessage);
 		NetService.UnregisterMessageHandler<LobbyPlayerChangedCharacterMessage>(HandleLobbyPlayerChangedCharacterMessage);
@@ -204,6 +204,7 @@ public class StartRunLobby
 			INetHostGameService netHostGameService = (INetHostGameService)NetService;
 			netHostGameService.ClientConnected -= OnConnectedToClientAsHost;
 			netHostGameService.ClientDisconnected -= OnDisconnectedFromClientAsHost;
+			netHostGameService.ClientConnectionFailed -= OnClientConnectionFailed;
 		}
 	}
 
@@ -226,7 +227,7 @@ public class StartRunLobby
 	/// </summary>
 	public StartRunLobbyPlayer? AddLocalHostPlayerInternal(SerializableUnlockState unlockState, int maxMultiplayerAscension)
 	{
-		StartRunLobbyPlayer? result = TryAddPlayerInFirstAvailableSlot(unlockState, maxMultiplayerAscension, PeerVersionInfo.LocalDefault(), NetService.NetId);
+		StartRunLobbyPlayer? result = TryAddPlayerInFirstAvailableSlot(unlockState, maxMultiplayerAscension, NetService.LocalVersion.IsModded(), NetService.NetId);
 		if (result.HasValue)
 		{
 			LobbyListener.PlayerConnected(result.Value);
@@ -245,14 +246,14 @@ public class StartRunLobby
 		INetHostGameService netHostGameService = (INetHostGameService)NetService;
 		try
 		{
-			if (Players.Count >= MaxPlayers)
+			if (Players.Count >= _maxPlayers)
 			{
 				_logger.Warn($"Client {senderId} sent ClientLobbyJoinRequestMessage but we are at maximum players!");
 				netHostGameService.DisconnectClient(senderId, NetError.LobbyFull);
 				return;
 			}
 			_logger.Info($"Received ClientLobbyJoinRequestMessage for {senderId}");
-			StartRunLobbyPlayer? startRunLobbyPlayer = TryAddPlayerInFirstAvailableSlot(message.unlockState, message.maxAscensionUnlocked, message.versionInfo, senderId);
+			StartRunLobbyPlayer? startRunLobbyPlayer = TryAddPlayerInFirstAvailableSlot(message.unlockState, message.maxAscensionUnlocked, netHostGameService.GetVersionInfoForPeer(senderId).Value.IsModded(), senderId);
 			if (!startRunLobbyPlayer.HasValue)
 			{
 				return;
@@ -325,16 +326,6 @@ public class StartRunLobby
 		_logger.Info($"Received invalid ClientRejoinRequestMessage for {senderId}");
 		NetHostGameService netHostGameService = (NetHostGameService)NetService;
 		netHostGameService.DisconnectClient(senderId, NetError.InvalidJoin);
-	}
-
-	private void HandleClientDisconnectionMessage(ClientConnectionFailedMessage message, ulong senderId)
-	{
-		if (NetService.Type != NetGameType.Host)
-		{
-			throw new InvalidOperationException("Received ClientConnectionFailedMessage as non-host!");
-		}
-		_logger.Info($"Received ClientDisconnectionMessage for {senderId}");
-		this.PlayerFailedToConnect?.Invoke(message, senderId);
 	}
 
 	private void HandlePlayerJoinedMessage(PlayerJoinedMessage message, ulong senderId)
@@ -791,11 +782,11 @@ public class StartRunLobby
 		}
 	}
 
-	private StartRunLobbyPlayer? TryAddPlayerInFirstAvailableSlot(SerializableUnlockState unlockState, int maxAscensionUnlocked, PeerVersionInfo versionInfo, ulong playerId)
+	private StartRunLobbyPlayer? TryAddPlayerInFirstAvailableSlot(SerializableUnlockState unlockState, int maxAscensionUnlocked, bool isModded, ulong playerId)
 	{
 		int num = -1;
 		int i;
-		for (i = 0; i < MaxPlayers; i++)
+		for (i = 0; i < _maxPlayers; i++)
 		{
 			int num2 = Players.FindIndex((StartRunLobbyPlayer p) => p.slotId == i);
 			if (num2 < 0)
@@ -815,7 +806,7 @@ public class StartRunLobby
 			slotId = num,
 			maxMultiplayerAscensionUnlocked = maxAscensionUnlocked,
 			unlockState = unlockState,
-			versionInfo = versionInfo
+			isModded = isModded
 		};
 		Players.Add(startRunLobbyPlayer);
 		return startRunLobbyPlayer;
@@ -826,7 +817,6 @@ public class StartRunLobby
 		_logger.Info($"Client {playerId} connected. Sending initial game info message");
 		InitialGameInfoMessage message = new InitialGameInfoMessage
 		{
-			versionInfo = PeerVersionInfo.LocalDefault(),
 			sessionState = RunSessionState.InLobby,
 			gameMode = GameMode
 		};
@@ -837,7 +827,7 @@ public class StartRunLobby
 			_logger.Warn($"Client {playerId} connected but we are already beginning the run!");
 			((NetHostGameService)NetService).DisconnectClient(playerId, NetError.RunInProgress);
 		}
-		else if (Players.Count >= MaxPlayers)
+		else if (Players.Count >= _maxPlayers)
 		{
 			message.connectionFailureReason = ConnectionFailureReason.LobbyFull;
 			NetService.SendMessage(message, playerId);
@@ -853,21 +843,21 @@ public class StartRunLobby
 			};
 			_connectingPlayers.Add(connectingPlayer);
 			NetService.SendMessage(message, playerId);
-			TaskHelper.RunSafely(BeginHandshakeTimeout(connectingPlayer));
+			TaskHelper.RunSafely(BeginClientResponseTimeout(connectingPlayer));
 		}
 	}
 
-	private async Task BeginHandshakeTimeout(ConnectingPlayer connectingPlayer)
+	private async Task BeginClientResponseTimeout(ConnectingPlayer connectingPlayer)
 	{
-		await Task.Delay(HandshakeTimeout, connectingPlayer.timeoutCancelToken.Token);
+		await Task.Delay(ClientResponseTimeout, connectingPlayer.timeoutCancelToken.Token);
 		if (!connectingPlayer.timeoutCancelToken.IsCancellationRequested)
 		{
 			int num = _connectingPlayers.IndexOf(connectingPlayer);
 			if (num >= 0)
 			{
-				_logger.Info($"Disconnecting player {connectingPlayer.id} because they did not respond to the initial game join handshake within {HandshakeTimeout}ms");
+				_logger.Info($"Disconnecting player {connectingPlayer.id} because they did not respond to the initial game join message within {ClientResponseTimeout}ms");
 				INetHostGameService netHostGameService = (INetHostGameService)NetService;
-				netHostGameService.DisconnectClient(connectingPlayer.id, NetError.HandshakeTimeout);
+				netHostGameService.DisconnectClient(connectingPlayer.id, NetError.LobbyJoinTimeout);
 			}
 		}
 	}
@@ -879,7 +869,7 @@ public class StartRunLobby
 		int num = Players.FindIndex((StartRunLobbyPlayer p) => p.id == playerId);
 		if (num < 0)
 		{
-			_logger.Info($"Player {playerId} not found in players list. Assuming they disconnected during the handshake");
+			_logger.Info($"Player {playerId} not found in players list. Assuming they disconnected before sending the initial message response");
 			return;
 		}
 		StartRunLobbyPlayer startRunLobbyPlayer = Players[num];
@@ -894,6 +884,11 @@ public class StartRunLobby
 		this.PlayerDisconnected?.Invoke(startRunLobbyPlayer);
 		UpdateMaxMultiplayerAscension();
 		BeginRunForAllPlayersIfAllReady();
+	}
+
+	private void OnClientConnectionFailed(ulong playerId, NetErrorInfo info)
+	{
+		this.PlayerFailedToConnect?.Invoke(playerId, info);
 	}
 
 	private UnlockState GetUnlockState()
@@ -912,7 +907,7 @@ public class StartRunLobby
 			if (_connectingPlayers[i].id == playerId)
 			{
 				_connectingPlayers[i].timeoutCancelToken.Cancel();
-				_logger.Info($"Cancel handshake timeout for {playerId}");
+				_logger.Info($"Cancel initial message timeout for {playerId}");
 				_connectingPlayers.RemoveAt(i);
 				i--;
 			}

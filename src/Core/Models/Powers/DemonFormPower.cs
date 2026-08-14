@@ -9,7 +9,6 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Nodes.GodotExtensions;
 using MegaCrit.Sts2.Core.Nodes.Vfx.Forms;
-using MegaCrit.Sts2.Core.ValueProps;
 
 namespace MegaCrit.Sts2.Core.Models.Powers;
 
@@ -53,15 +52,6 @@ public sealed class DemonFormPower : PowerModel
 	public override Task AfterRemoved(Creature oldOwner)
 	{
 		Vfx?.SetActive(isActive: false);
-		return Task.CompletedTask;
-	}
-
-	public override Task AfterDamageGiven(PlayerChoiceContext choiceContext, Creature? dealer, DamageResult result, ValueProp props, Creature target, CardModel? cardSource)
-	{
-		if (dealer != base.Owner)
-		{
-			return Task.CompletedTask;
-		}
 		return Task.CompletedTask;
 	}
 

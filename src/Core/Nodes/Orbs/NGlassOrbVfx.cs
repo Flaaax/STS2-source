@@ -1,6 +1,8 @@
 using Godot;
 using MegaCrit.Sts2.Core.Commands;
 
+namespace MegaCrit.Sts2.Core.Nodes.Orbs;
+
 public partial class NGlassOrbVfx : NOrbVfx
 {
 	[Export(PropertyHint.None, "")]

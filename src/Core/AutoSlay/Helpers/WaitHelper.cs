@@ -16,7 +16,16 @@ public static class WaitHelper
 	/// Waits until a condition becomes true, with timeout.
 	/// Also checks the watchdog periodically to detect stuck states.
 	/// </summary>
-	public static async Task Until(Func<bool> condition, CancellationToken ct, TimeSpan? timeout = null, string? timeoutMessage = null)
+	public static Task Until(Func<bool> condition, CancellationToken ct, TimeSpan? timeout = null, string? timeoutMessage = null)
+	{
+		return Until(condition, ct, timeout, (timeoutMessage == null) ? null : ((Func<string>)(() => timeoutMessage)));
+	}
+
+	/// <summary>
+	/// Waits until a condition becomes true, building the timeout message only if it times out.
+	/// </summary>
+	/// <remarks>An interpolated string argument is evaluated when the wait starts, so it reports pre-wait state.</remarks>
+	public static async Task Until(Func<bool> condition, CancellationToken ct, TimeSpan? timeout, Func<string>? timeoutMessage)
 	{
 		TimeSpan actualTimeout = timeout ?? AutoSlayConfig.nodeWaitTimeout;
 		using CancellationTokenSource timeoutCts = new CancellationTokenSource(actualTimeout);
@@ -31,7 +40,7 @@ public static class WaitHelper
 		}
 		catch (OperationCanceledException) when (timeoutCts.IsCancellationRequested)
 		{
-			string message = timeoutMessage ?? $"Condition not met after {actualTimeout.TotalSeconds}s";
+			string message = timeoutMessage?.Invoke() ?? $"Condition not met after {actualTimeout.TotalSeconds}s";
 			throw new AutoSlayTimeoutException(message);
 		}
 	}

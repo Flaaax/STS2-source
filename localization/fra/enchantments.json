@@ -18,7 +18,6 @@
   "IMBUED.description": "Cette carte est jouée automatiquement au début de chaque combat.",
   "IMBUED.extraCardText": "Imprégnée.",
   "IMBUED.title": "Imprégnation",
-  "INKY.description": "Cette carte inflige [blue]{Damage}[/blue] dégâts supplémentaires et applique [gold]Affaibli[/gold] ([blue]{WeakPower}[/blue]).",
   "INKY.extraCardText": "Appliquez [gold]Affaibli[/gold] ([blue]{WeakPower}[/blue]){TargetType:choose(AllEnemies): à TOUS les ennemis|}.",
   "INKY.title": "Encrée",
   "INSTINCT.description": "Les dégâts de cette attaque sont doublés.",

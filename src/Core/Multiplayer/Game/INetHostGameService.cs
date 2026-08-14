@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using MegaCrit.Sts2.Core.Entities.Multiplayer;
 using MegaCrit.Sts2.Core.Multiplayer.Transport;
 
@@ -10,8 +9,6 @@ namespace MegaCrit.Sts2.Core.Multiplayer.Game;
 /// </summary>
 public interface INetHostGameService : INetGameService
 {
-	IReadOnlyList<NetClientData> ConnectedPeers { get; }
-
 	NetHost? NetHost { get; }
 
 	/// <summary>
@@ -23,6 +20,12 @@ public interface INetHostGameService : INetGameService
 	/// Event called when a client disconnects from the host, either voluntarily or because we disconnected them.
 	/// </summary>
 	event Action<ulong, NetErrorInfo>? ClientDisconnected;
+
+	/// <summary>
+	/// Event called when a client successfully made a socket connection but we disconnected them during the handshake.
+	/// Usually due to version mismatch.
+	/// </summary>
+	event Action<ulong, NetErrorInfo>? ClientConnectionFailed;
 
 	/// <summary>
 	/// Disconnects a client from the host.
@@ -38,4 +41,8 @@ public interface INetHostGameService : INetGameService
 	/// for them. Call this when initial setup is done.
 	/// </summary>
 	void SetPeerReadyForBroadcasting(ulong peerId);
+
+	/// <returns>Peer's version info. Null if the peer is not connected, or if they have not yet completed the handshake.
+	/// </returns>
+	PeerVersionInfo? GetVersionInfoForPeer(ulong peerId);
 }

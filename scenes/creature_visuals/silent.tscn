@@ -15,7 +15,7 @@ anchors_preset = 0
 [node name="Visuals" type="SpineSprite" parent="."]
 skeleton_data_res = ExtResource("2_6jvbt")
 preview_skin = "Default"
-preview_animation = "idle_loop"
+preview_animation = "low_health_loop"
 preview_frame = false
 preview_time = 0.0
 unique_name_in_owner = true

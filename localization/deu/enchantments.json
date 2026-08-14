@@ -18,7 +18,7 @@
   "IMBUED.description": "Diese Karte wird automatisch am Beginn jedes Kampfes ausgespielt.",
   "IMBUED.extraCardText": "Durchdrungen.",
   "IMBUED.title": "Durchdrungen",
-  "INKY.description": "Diese Karte fügt [blue]{Damage}[/blue] Schaden mehr zu und wendet [blue]{WeakPower}[/blue] [gold]Schwach[/gold] an.",
+  "INKY.description": "Diese Karte wendet [blue]{WeakPower}[/blue] [gold]Schwach[/gold] an.",
   "INKY.extraCardText": "Wende [blue]{WeakPower}[/blue] [gold]Schwach[/gold]{TargetType:choose(AllEnemies): auf ALLE Gegner|} an.",
   "INKY.title": "Tintenbeschmiert",
   "INSTINCT.description": "Der Angriffsschaden dieser Karte ist verdoppelt.",

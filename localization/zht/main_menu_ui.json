@@ -94,6 +94,8 @@
   "INVALID_SAVE_POPUP.dismiss": "關閉",
   "INVALID_SAVE_POPUP.title": "存檔損毀！",
   "INVITE": "邀請",
+  "INVITE.DISABLED.steam.description": "Steam 內嵌介面已被停用。\n\n請將其啟用或者透過桌面的 Steam 朋友選單手動邀請朋友。",
+  "INVITE.DISABLED.steam.title": "Steam 內嵌介面停用",
   "JOIN.description": "加入好友建立的遊戲。",
   "JOIN.title": "加入",
   "JOIN_FRIENDS_MENU.noFriends": "目前沒有好友正在進行多人遊戲。",

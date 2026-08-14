@@ -18,7 +18,7 @@
   "IMBUED.description": "Esta carta é jogada automaticamente no início de cada combate.",
   "IMBUED.extraCardText": "Imbuída.",
   "IMBUED.title": "Imbuída",
-  "INKY.description": "Esta carta causa [blue]{Damage}[/blue] de dano adicional e aplica [blue]{WeakPower}[/blue] de [gold]Fraqueza[/gold].",
+  "INKY.description": "Esta carta aplica [blue]{WeakPower}[/blue] de [gold]Fraqueza[/gold].",
   "INKY.extraCardText": "Aplique [blue]{WeakPower}[/blue] de [gold]Fraqueza[/gold]{TargetType:choose(AllEnemies): a TODOS os inimigos|}.",
   "INKY.title": "Nanquim",
   "INSTINCT.description": "O dano de ataque desta carta é dobrado.",

@@ -4,8 +4,10 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text.Json;
 using System.Text.RegularExpressions;
+using MegaCrit.Sts2.Core.Debug;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Runs;
+using Sentry;
 
 namespace MegaCrit.Sts2.Core.Saves.Migrations;
 
@@ -490,6 +492,7 @@ public class MigrationManager
 				{
 					Log.Error($"Migration failed for {filePath} with exception: {ex2}");
 					T val3 = RecoverPartialDataFromCorruptSave<T>(migratingData);
+					CaptureMigrationFailure<T>(ex2, num, currentVersion, val3 != null);
 					if (val3 != null)
 					{
 						Log.Info("Migration failed but data scavenging succeeded");
@@ -628,6 +631,25 @@ public class MigrationManager
 		{
 			return null;
 		}
+	}
+
+	/// <summary>
+	/// Reports a failed migration to Sentry.
+	/// </summary>
+	/// <remarks>
+	/// Not capped or deduplicated. Branch sampling already throttles volume, and the event count is
+	/// the only signal we get for how many players and files a broken migration reaches. Deliberately
+	/// does not attach the save: a few hundred KB carrying the player's unique ID is not worth sending.
+	/// </remarks>
+	private static void CaptureMigrationFailure<T>(Exception ex, int fromVersion, int toVersion, bool scavenged) where T : ISaveSchema
+	{
+		SentryService.CaptureException(ex, delegate(Scope scope)
+		{
+			scope.SetTag("migration.save_type", typeof(T).Name);
+			scope.SetTag("migration.from_version", fromVersion.ToString());
+			scope.SetTag("migration.to_version", toVersion.ToString());
+			scope.SetTag("migration.scavenged", scavenged.ToString());
+		});
 	}
 
 	/// <summary>

@@ -16,7 +16,7 @@ namespace MegaCrit.Sts2.Core.Nodes.Screens.Settings;
 /// </summary>
 public partial class NInputSettingsEntry : NButton
 {
-	private static readonly Dictionary<StringName, string> _commandToLocTitle = new Dictionary<StringName, string>
+	public static readonly Dictionary<StringName, string> commandToLocTitle = new Dictionary<StringName, string>
 	{
 		{
 			MegaInput.confirm,
@@ -156,7 +156,7 @@ public partial class NInputSettingsEntry : NButton
 		_controllerBindingIcon = GetNode<TextureRect>("%ControllerBindingIcon");
 		_missingControllerBindingLabel = GetNode<Control>("%MissingControllerBindingLabel");
 		_bg = GetNode<Control>("%Bg");
-		string text = _commandToLocTitle[InputName];
+		string text = commandToLocTitle[InputName];
 		_inputLabel.SetTextAutoSize(new LocString("settings_ui", "INPUT_SETTINGS.INPUT_TITLE." + text).GetFormattedText());
 		NInputManager.Instance.Connect(NInputManager.SignalName.InputRebound, Callable.From(UpdateInput));
 		NControllerManager.Instance.Connect(NControllerManager.SignalName.ControllerDetected, Callable.From(UpdateInput));
@@ -188,6 +188,8 @@ public partial class NInputSettingsEntry : NButton
 			}
 			_mKbBindingLabel.SelfModulate = ((_mKbBindingLabel.Text == "-") ? StsColors.gray : Colors.White);
 			_keyboardOnlyModeBindingLabel.SelfModulate = ((_keyboardOnlyModeBindingLabel.Text == "-") ? StsColors.gray : Colors.White);
+			_keyboardOnlyModeBindingLabel.Modulate = ((NControllerManager.Instance.InputType == InputType.KeyboardOnlyMode) ? Colors.White : StsColors.disabledRed);
+			_mKbBindingLabel.Modulate = ((NControllerManager.Instance.InputType == InputType.MouseAndKeyboard) ? Colors.White : StsColors.disabledRed);
 			if (NInputManager.remappableControllerInputs.Contains(InputName))
 			{
 				_controllerBindingIcon.Texture = NInputManager.Instance.GetHotkeyIcon(InputName);
@@ -209,8 +211,10 @@ public partial class NInputSettingsEntry : NButton
 			{
 				_controllerBindingIcon.Modulate = Colors.White;
 			}
-			_mKbBindingLabel.Modulate = ((NControllerManager.Instance.InputType == InputType.MouseAndKeyboard) ? Colors.White : StsColors.disabledRed);
-			_keyboardOnlyModeBindingLabel.Modulate = ((NControllerManager.Instance.InputType == InputType.KeyboardOnlyMode) ? Colors.White : StsColors.disabledRed);
+			if (InputName == MegaInput.endTurn)
+			{
+				_mKbBindingLabel.Modulate *= new Color(0.6f, 0.6f, 0.6f);
+			}
 		}
 	}
 

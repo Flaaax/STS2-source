@@ -1,0 +1,20 @@
+{
+  "DARK_ORB.description": "Bola: Saat [gold]Terpicu[/gold], serang musuh dengan HP paling sedikit. Kerusakan meningkat setiap gilirannya.",
+  "DARK_ORB.smartDescription": "[gold]Pasif:[/gold] Pada akhir giliran, naikkan kerusakan Bola ini sebesar [blue]{Passive}[/blue].\n[gold]Picu:[/gold] Lakukan [blue]{Evoke}[/blue] kerusakan ke musuh dengan HP paling sedikit.",
+  "DARK_ORB.title": "Gelap",
+  "EMPTY_SLOT.description": "Bola dapat disalurkan ke tempat ini.",
+  "EMPTY_SLOT.title": "Tempat Bola",
+  "FROST_ORB.description": "Bola: Dapatkan [gold]Blok[/gold].",
+  "FROST_ORB.smartDescription": "[gold]Pasif:[/gold] Pada akhir giliran, dapatkan [blue]{Passive}[/blue] [gold]Blok[/gold].\n[gold]Picu:[/gold] Dapatkan [blue]{Evoke}[/blue] [gold]Blok[/gold].",
+  "FROST_ORB.title": "Es",
+  "GLASS_ORB.description": "Bola: Lakukan kerusakan ke SEMUA musuh. Kurangi kerusakan setiap gilirannya.",
+  "GLASS_ORB.smartDescription": "[gold]Pasif:[/gold] Pada akhir giliran, lakukan [blue]{Passive}[/blue] kerusakan ke SEMUA musuh dan kurangi nilai bola ini sebanyak [blue]1[/blue].\n[gold]Picu:[/gold] Lakukan [blue]{Evoke}[/blue] kerusakan ke SEMUA musuh.",
+  "GLASS_ORB.title": "Kaca",
+  "LIGHTNING_ORB.description": "Bola: Lakukan kerusakan ke musuh acak.",
+  "LIGHTNING_ORB.smartDescription": "[gold]Pasif:[/gold] Pada akhir giliran, lakukan [blue]{Passive}[/blue] kerusakan ke musuh acak.\n[gold]Picu:[/gold] Lakukan [blue]{Evoke}[/blue] kerusakan ke musuh acak.",
+  "LIGHTNING_ORB.title": "Petir",
+  "MOCK_COMBAT_CLEANUP_ORB.title": "Contoh Akhir Perlawanan",
+  "PLASMA_ORB.description": "Bola: Dapatkan Energi.",
+  "PLASMA_ORB.smartDescription": "[gold]Pasif:[/gold] Pada awal giliran,\ndapatkan {energyPrefix:energyIcons(1)}.\n[gold]Picu:[/gold] Dapatkan {energyPrefix:energyIcons(2)}.\n[gold]Focus[/gold] tidak memiliki efek pada Plasma.",
+  "PLASMA_ORB.title": "Plasma"
+}

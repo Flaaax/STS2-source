@@ -12,7 +12,7 @@ public sealed class BrightestFlame : CardModel
 {
 	protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlyArray<DynamicVar>(new DynamicVar[3]
 	{
-		new MaxHpVar(1m),
+		new MaxHpVar(2m),
 		new EnergyVar(2),
 		new CardsVar(2)
 	});

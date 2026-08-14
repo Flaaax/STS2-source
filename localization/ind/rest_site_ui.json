@@ -1,0 +1,23 @@
+{
+  "OPTION_CLONE.description": "Duplikat semua kartu yang berefek [gold]{EnchantmentName}[/gold].",
+  "OPTION_CLONE.name": "Klona",
+  "OPTION_COOK.description": "[gold]Buang[/gold] [blue]{Cards}[/blue] kartu dari [gold]Dek[/gold] kamu dan dapatkan [green]{MaxHp}[/green] HP Maksimal.",
+  "OPTION_COOK.descriptionDisabled": "[red]Kamu perlu setidaknya 2 kartu yang bisa dibuang dalam Dekmu.[/red]",
+  "OPTION_COOK.name": "Masak",
+  "OPTION_DIG.description": "Gali mencari [gold]Pusaka[/gold].",
+  "OPTION_DIG.name": "Gali",
+  "OPTION_HATCH.description": "Tetaskan [green]Telur Byurungis[/green] milikmu.",
+  "OPTION_HATCH.name": "Tetaskan",
+  "OPTION_HEAL.description": "Sembuhkan 30% dari HP Maksimalmu ({Heal}).{ExtraText}",
+  "OPTION_HEAL.name": "Rehat",
+  "OPTION_KINDLE.description": "Tambahkan {RekindleAmount} penggunaan ke [gold]{RelicName}[/gold].",
+  "OPTION_KINDLE.name": "Sulut",
+  "OPTION_LIFT.description": "Awali perlawanan dengan +1 Kekuatan. ({LiftsLeft} Left)",
+  "OPTION_LIFT.name": "Latihan",
+  "OPTION_MEND.description": "Sembuhkan {HasTarget:{Name}|orang lain} sebesar 30% HP Maksimal mereka{HasTarget: ({Heal})|}.",
+  "OPTION_MEND.name": "Rawat",
+  "OPTION_SMITH.description": "[gold]Tingkatkan[/gold] {Count:choose(1):sebuah kartu|{} kartu} dalam [gold]Dek[/gold] kamu.",
+  "OPTION_SMITH.descriptionDisabled": "[red]Kamu tidak punya kartu yang bisa Ditingkatkan.[/red]",
+  "OPTION_SMITH.name": "Tingkatkan",
+  "PROMPT": "Apa yang akan kulakukan?"
+}

@@ -531,9 +531,10 @@ public partial class NDailyRunScreen : NSubmenu, IStartRunLobbyListener
 		CleanUpLobby(disconnectSession: false);
 	}
 
-	private void RemoteClientFailedToConnectToLocalHost(ClientConnectionFailedMessage message, ulong sender)
+	private void RemoteClientFailedToConnectToLocalHost(ulong sender, NetErrorInfo info)
 	{
-		string formattedText = message.GetLocString(PeerVersionInfo.LocalDefault()).GetFormattedText();
+		bool showReportBugButton;
+		string formattedText = NErrorPopup.LocStringFromNetError(info, out showReportBugButton).GetFormattedText();
 		LocString locString = new LocString("main_menu_ui", "NETWORK_ERROR.HOST.PREFIX.body");
 		locString.Add("playerName", PlatformUtil.GetPlayerName(_lobby.NetService.Platform, sender));
 		locString.Add("info", formattedText);

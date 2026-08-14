@@ -1,0 +1,6 @@
+{
+  "COMMON": "[gold][font_size=28][b]Biasa:[/b][/font_size][/gold] Ramuan paling sering ditemukan dalam Spire.",
+  "RARE": "[gold][font_size=28][b]Langka:[/b][/font_size][/gold] Ramuan unik dan kuat yang jarang ditemukan.",
+  "SPECIAL": "[gold][font_size=28][b]Spesial:[/b][/font_size][/gold] Ramuan yang didapat melalui event atau dibuat dengan cara lain.",
+  "UNCOMMON": "[gold][font_size=28][b]Tidak Biasa:[/b][/font_size][/gold] Ramuan lebih kuat yang lebih jarang didapat dari ramuan biasa."
+}

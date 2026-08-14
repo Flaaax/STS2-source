@@ -1,0 +1,9 @@
+{
+  "TO_DISCARD": "Pilih {Amount:choose(1):sebuah kartu|[blue]{}[/blue] kartu} untuk di [gold]Singkirkan[/gold].",
+  "TO_ENCHANT": "Pilih {Amount:choose(1):sebuah kartu|[blue]{}[/blue] kartu} untuk di tambah [purple]efek[/purple].",
+  "TO_EXHAUST": "Pilih {Amount:choose(1):sebuah kartu|[blue]{}[/blue] kartu} untuk di [gold]Hanguskan[/gold].",
+  "TO_REMOVE": "Pilih {Amount:choose(1):sebuah kartu|[blue]{}[/blue] kartu} untuk di [gold]Buang[/gold].",
+  "TO_TRANSFORM": "Pilih {Amount:choose(1):sebuah kartu|[blue]{}[/blue] kartu} untuk di [gold]Transformasikan[/gold].",
+  "TO_UPGRADE": "Pilih {Amount:choose(1):sebuah kartu|[blue]{}[/blue] kartu} untuk di [gold]Tingkatkan[/gold].",
+  "VIEW_UPGRADES": "Lihat Peningkatan"
+}

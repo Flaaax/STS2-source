@@ -16,7 +16,7 @@ public static class ScoreUtility
 {
 	/// <summary>
 	/// A sentinel value for clients in a multiplayer run to submit when uploading a daily run score.
-	/// For more information on why this is needed, see <see cref="M:MegaCrit.Sts2.Core.Daily.DailyRunUtility.ShouldUploadScore(MegaCrit.Sts2.Core.Leaderboard.ILeaderboardHandle,System.Collections.Generic.IReadOnlyList{System.UInt64},System.Threading.CancellationToken)" />.
+	/// For more information on why this is needed, see <see cref="M:MegaCrit.Sts2.Core.Daily.DailyRunUtility.ShouldUploadScore(MegaCrit.Sts2.Core.Leaderboard.ILeaderboardHandle,System.Collections.Generic.List{System.UInt64},System.Threading.CancellationToken)" />.
 	/// </summary>
 	public const int clientScore = -999999999;
 

@@ -1,0 +1,23 @@
+{
+  "ACKNOWLEDGE_BUTTON": "Lanjut",
+  "EPOCH_INSPECT.chapterFormat": "Bab {ChapterIndex} - {ChapterName}",
+  "EPOCH_INSPECT.closeButton": "Tutup",
+  "EPOCH_INSPECT.continueButton": "Lanjut",
+  "EPOCH_INSPECT.unlockButton": "Buka",
+  "PLACEHOLDER_PORTRAIT": "Placeholder",
+  "REMINDER_TEXT": "{RevealableEpochCount} {RevealableEpochCount:plural:Zaman|Zaman} menanti untuk diungkap...",
+  "REVEAL_TIP_HEADER": "Syarat",
+  "TUTORIAL_TEXT": "Dalam [blue]Linimasa[/blue], ungkap [gold]Zaman[/gold] untuk membuka, kartu, pusaka, dan banyak lagi...",
+  "UNLOCK_ANCIENT": "Ancient Terbuka: Darv, Penimbun, dapat muncul di perjalananmu...",
+  "UNLOCK_CARDS": "Kartu-kartu ini dapat muncul di perjalananmu.",
+  "UNLOCK_CARDS_BANNER": "Kartu Terbuka!",
+  "UNLOCK_CONFIRM": "Konfirmasi",
+  "UNLOCK_EPOCHS": "Linimasa meluas...",
+  "UNLOCK_POTIONS": "Ramuan-ramuan ini dapat muncul di perjalananmu.",
+  "UNLOCK_POTIONS_BANNER": "Ramuan Terbuka!",
+  "UNLOCK_RELICS": "Pusaka-pusaka ini dapat muncul di perjalananmu.",
+  "UNLOCK_RELICS_BANNER": "Pusaka Terbuka!",
+  "UNLOCK_TEXT.cards": "Kartu Terbuka: {Card1}, {Card2}, dan {Card3}.",
+  "UNLOCK_TEXT.potions": "Ramuan Terbuka: {Potion1}, {Potion2}, dan {Potion3}.",
+  "UNLOCK_TEXT.relics": "Pusaka terbuka: {Relic1}, {Relic2}, dan {Relic3}."
+}

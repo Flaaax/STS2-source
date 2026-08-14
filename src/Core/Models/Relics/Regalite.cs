@@ -19,7 +19,7 @@ public sealed class Regalite : RelicModel
 
 	public override RelicRarity Rarity => RelicRarity.Uncommon;
 
-	protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new BlockVar(6m, ValueProp.Unpowered));
+	protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new BlockVar(4m, ValueProp.Unpowered));
 
 	private bool UsedThisTurn
 	{

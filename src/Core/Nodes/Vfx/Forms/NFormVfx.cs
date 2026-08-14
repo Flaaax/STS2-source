@@ -27,11 +27,6 @@ public partial class NFormVfx : Node2D
 		}
 	}
 
-	public override void _ExitTree()
-	{
-		base._ExitTree();
-	}
-
 	public virtual void OnEffectTriggered()
 	{
 	}

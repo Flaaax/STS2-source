@@ -1,0 +1,11 @@
+{
+  "BLOCKED_BY_HOOK": "Aku terhalang\noleh [red]{BlockingHook}[/red].",
+  "HAND_FULL": "Aku punya terlalu banyak kartu...",
+  "NOT_ENOUGH_ENERGY": "Aku tak \ncukup [red]Energi[/red].",
+  "NOT_ENOUGH_STARS": "Aku tak \ncukup [red]Bintang[/red].",
+  "NO_DRAW": "Aku tak cukup\nkartu untuk diambil.",
+  "NO_LIVING_ALLIES": "Aku tak punya\nteman.",
+  "OPEN_EMPTY_DISCARD": "Tumpukan Singkirku [red]kosong[/red].",
+  "OPEN_EMPTY_DRAW": "Tumpukan Ambilku [red]kosong[/red].",
+  "UNPLAYABLE": "Aku tidak bisa memainkan\nkartu ini."
+}

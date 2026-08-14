@@ -1,6 +1,8 @@
 using Godot;
 using MegaCrit.Sts2.Core.Nodes.Vfx.Forms;
 
+namespace MegaCrit.Sts2.Core.Nodes.Debug;
+
 public partial class NFormVfxTester : Node2D
 {
 	[Export(PropertyHint.None, "")]
@@ -33,7 +35,7 @@ public partial class NFormVfxTester : Node2D
 			}
 			if (inputEvent is InputEventKey inputEventKey2 && inputEventKey2.Keycode == Key.S && inputEventKey2.Pressed)
 			{
-				_formVfx?.OnEffectTriggered();
+				_formVfx.OnEffectTriggered();
 			}
 		}
 	}

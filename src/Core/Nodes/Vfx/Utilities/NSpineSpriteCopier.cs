@@ -21,14 +21,26 @@ public partial class NSpineSpriteCopier : Node2D
 		if (_targetSpineSprite != null && _selfSpineSprite != null)
 		{
 			_selfSpineSprite.SetSkeletonDataRes(_targetSpineSprite.GetSkeleton().GetData());
+			_targetSpineSprite.ConnectAnimationStarted(Callable.From<GodotObject, GodotObject, GodotObject>(OnAnimationStart));
 		}
 	}
 
-	public override void _Process(double delta)
+	private void OnAnimationStart(GodotObject spineSprite, GodotObject animationState, GodotObject trackEntry)
 	{
-		if (_selfSpineSprite != null && _targetSpineSprite != null)
+		if (_selfSpineSprite == null || _targetSpineSprite == null)
 		{
-			_targetSpineSprite.GetAnimationState().Apply(_selfSpineSprite.GetSkeleton());
+			return;
+		}
+		string currentAnimationName = _targetSpineSprite.GetAnimationState().GetCurrentAnimationName();
+		if (currentAnimationName == null)
+		{
+			return;
+		}
+		using MegaTrackEntry megaTrackEntry = _targetSpineSprite.GetAnimationState().GetCurrent(0);
+		if (megaTrackEntry != null)
+		{
+			bool loop = megaTrackEntry.IsLoop();
+			_selfSpineSprite.GetAnimationState().SetAnimation(currentAnimationName, loop);
 		}
 	}
 }

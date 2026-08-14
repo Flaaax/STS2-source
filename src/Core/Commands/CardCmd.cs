@@ -234,15 +234,17 @@ public static class CardCmd
 	/// This should always be false except the specific case in <see cref="T:MegaCrit.Sts2.Core.Combat.CombatManager" />.
 	/// </param>
 	/// <param name="skipVisuals">Skip card pile visuals (tween to/from pile, smoke puff VFX, etc).</param>
-	public static async Task Exhaust(PlayerChoiceContext choiceContext, CardModel card, bool causedByEthereal = false, bool skipVisuals = false)
+	public static async Task<CardPileAddResult?> Exhaust(PlayerChoiceContext choiceContext, CardModel card, bool causedByEthereal = false, bool skipVisuals = false)
 	{
-		if (!CombatManager.Instance.IsOverOrEnding)
+		if (CombatManager.Instance.IsOverOrEnding)
 		{
-			ICombatState combatState = card.CombatState ?? card.Owner.Creature.CombatState;
-			await CardPileCmd.Add(card, PileType.Exhaust, CardPilePosition.Bottom, null, skipVisuals);
-			CombatManager.Instance.History.CardExhausted(combatState, card);
-			await Hook.AfterCardExhausted(combatState, choiceContext, card, causedByEthereal);
+			return null;
 		}
+		ICombatState combatState = card.CombatState ?? card.Owner.Creature.CombatState;
+		CardPileAddResult result = await CardPileCmd.Add(card, PileType.Exhaust, CardPilePosition.Bottom, null, skipVisuals);
+		CombatManager.Instance.History.CardExhausted(combatState, card);
+		await Hook.AfterCardExhausted(combatState, choiceContext, card, causedByEthereal);
+		return result;
 	}
 
 	/// <summary>

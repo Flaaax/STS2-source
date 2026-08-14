@@ -16,13 +16,13 @@ public sealed class Rend : CardModel
 {
 	protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlyArray<DynamicVar>(new DynamicVar[3]
 	{
-		new CalculationBaseVar(15m),
+		new CalculationBaseVar(10m),
 		new ExtraDamageVar(5m),
 		new CalculatedDamageVar(ValueProp.Move).WithMultiplier((CardModel card, Creature? target) => target?.Powers.Count(ShouldCountPower) ?? 0)
 	});
 
 	public Rend()
-		: base(2, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
+		: base(1, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
 	{
 	}
 
@@ -37,7 +37,7 @@ public sealed class Rend : CardModel
 	protected override void OnUpgrade()
 	{
 		base.DynamicVars.ExtraDamage.UpgradeValueBy(3m);
-		base.DynamicVars.CalculationBase.UpgradeValueBy(3m);
+		base.DynamicVars.CalculationBase.UpgradeValueBy(2m);
 	}
 
 	private static bool ShouldCountPower(PowerModel power)

@@ -342,7 +342,7 @@ public abstract class PotionModel : AbstractModel
 		if (!Owner.Creature.IsDead)
 		{
 			InvokeExecutionFinished();
-			if (combatState != null && CombatManager.Instance.IsInProgress)
+			if (combatState != null && CombatManager.Instance.IsCurrentLiveCombat(effectCombatId))
 			{
 				CombatManager.Instance.History.PotionUsed(combatState, this, target);
 			}

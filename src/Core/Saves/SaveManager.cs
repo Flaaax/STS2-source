@@ -94,6 +94,8 @@ public class SaveManager : IProfileIdProvider
 
 	public PrefsSave PrefsSave => _prefsSaveManager.Prefs;
 
+	public bool IsPrefsLoaded => _prefsSaveManager.IsLoaded;
+
 	public ProgressState Progress
 	{
 		get

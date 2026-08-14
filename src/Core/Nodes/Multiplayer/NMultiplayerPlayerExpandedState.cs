@@ -144,13 +144,10 @@ public partial class NMultiplayerPlayerExpandedState : Control, ICapstoneScreen,
 		_potionsHeader.Text = locString4.GetFormattedText();
 		foreach (RelicModel relic in _player.Relics)
 		{
-			NRelicBasicHolder holder = NRelicBasicHolder.Create(relic);
-			_relicContainer.AddChildSafely(holder);
-			holder.Connect(NClickableControl.SignalName.Released, Callable.From<NButton>(delegate
-			{
-				OnRelicClicked(holder.Relic);
-			}));
-			holder.MouseDefaultCursorShape = CursorShape.Help;
+			NRelicBasicHolder nRelicBasicHolder = NRelicBasicHolder.Create(relic);
+			_relicContainer.AddChildSafely(nRelicBasicHolder);
+			nRelicBasicHolder.Connect(NClickableControl.SignalName.Released, Callable.From<NRelicBasicHolder>(OnRelicHolderReleased));
+			nRelicBasicHolder.MouseDefaultCursorShape = CursorShape.Help;
 		}
 		foreach (PotionModel potion in _player.Potions)
 		{
@@ -200,6 +197,11 @@ public partial class NMultiplayerPlayerExpandedState : Control, ICapstoneScreen,
 	private void BackButtonPressed(NButton _)
 	{
 		NCapstoneContainer.Instance.Close();
+	}
+
+	private void OnRelicHolderReleased(NRelicBasicHolder holder)
+	{
+		OnRelicClicked(holder.Relic);
 	}
 
 	/// <summary>

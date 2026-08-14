@@ -202,7 +202,7 @@ public class CombatRoom : AbstractRoom, ICombatRoomVisuals
 		}
 		if (ShouldCreateCombat)
 		{
-			await PreloadManager.LoadRoomCombatAssets(Encounter, runState ?? NullRunState.Instance);
+			await PreloadManager.LoadRoomCombatAssets(Encounter, CombatState.RunState);
 		}
 		foreach (var (monsterModel, slot) in Encounter.MonstersWithSlots)
 		{

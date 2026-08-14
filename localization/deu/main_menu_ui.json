@@ -94,6 +94,8 @@
   "INVALID_SAVE_POPUP.dismiss": "Verwerfen",
   "INVALID_SAVE_POPUP.title": "Beschädigter Speicherstand!",
   "INVITE": "Einladen",
+  "INVITE.DISABLED.steam.description": "Das Steam-Overlay ist deaktiviert.\n\nAktiviere es oder lade Freunde per Hand ein mit dem Steam-Freunde-Menü deines Desktops.",
+  "INVITE.DISABLED.steam.title": "Steam-Overlay deaktiviert",
   "JOIN.description": "Tritt einem Spiel bei, das ein Freund ausrichtet.",
   "JOIN.title": "Beitreten",
   "JOIN_FRIENDS_MENU.noFriends": "Keine Freunde, die gerade im Mehrspielermodus spielen.",

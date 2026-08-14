@@ -134,9 +134,14 @@ public sealed class SurroundedPower : PowerModel
 		}
 		IEnumerable<Creature> source = new global::_003C_003Ez__ReadOnlyArray<Creature>(array);
 		IEnumerable<Node2D> enumerable = source.Select((Creature c) => NCombatRoom.Instance?.GetCreatureNode(c)?.Body);
+		IEnumerable<Control?> formVfxHolders = source.Select((Creature c) => NCombatRoom.Instance?.GetCreatureNode(c)?.Visuals.FormVfxHolder);
 		foreach (Node2D item2 in enumerable)
 		{
 			await FlipScale(item2);
+		}
+		foreach (Control item3 in formVfxHolders)
+		{
+			await FlipScale(item3);
 		}
 		if (LocalContext.GetMe(base.Owner.CombatState) == base.Owner.Player)
 		{
@@ -145,6 +150,20 @@ public sealed class SurroundedPower : PowerModel
 	}
 
 	private Task FlipScale(Node2D? body)
+	{
+		if (body == null)
+		{
+			return Task.CompletedTask;
+		}
+		float x = body.Scale.X;
+		if ((Facing == Direction.Right && x < 0f) || (Facing == Direction.Left && x > 0f))
+		{
+			body.Scale *= new Vector2(-1f, 1f);
+		}
+		return Task.CompletedTask;
+	}
+
+	private Task FlipScale(Control? body)
 	{
 		if (body == null)
 		{

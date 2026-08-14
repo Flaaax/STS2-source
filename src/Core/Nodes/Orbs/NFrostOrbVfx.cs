@@ -1,6 +1,8 @@
 using Godot;
 using MegaCrit.Sts2.Core.Commands;
 
+namespace MegaCrit.Sts2.Core.Nodes.Orbs;
+
 public partial class NFrostOrbVfx : NOrbVfx
 {
 	public override void OnPassiveActivated(decimal passiveVal, decimal evokeVal)

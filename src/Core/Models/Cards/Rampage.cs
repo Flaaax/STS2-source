@@ -17,7 +17,7 @@ public sealed class Rampage : CardModel
 
 	protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlyArray<DynamicVar>(new DynamicVar[2]
 	{
-		new DamageVar(9m, ValueProp.Move),
+		new DamageVar(10m, ValueProp.Move),
 		new DynamicVar("Increase", 5m)
 	});
 
@@ -60,6 +60,6 @@ public sealed class Rampage : CardModel
 
 	protected override void OnUpgrade()
 	{
-		base.DynamicVars["Increase"].UpgradeValueBy(4m);
+		base.DynamicVars["Increase"].UpgradeValueBy(5m);
 	}
 }

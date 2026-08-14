@@ -1,5 +1,7 @@
 using Godot;
 
+namespace MegaCrit.Sts2.Core.Nodes.Vfx.Utilities;
+
 public partial class NVfxProjectile : Node2D
 {
 	[Export(PropertyHint.None, "")]

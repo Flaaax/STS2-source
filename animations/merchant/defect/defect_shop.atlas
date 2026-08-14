@@ -1,225 +1,205 @@
 defect_shop.png
-size:2000,491
+size:1855,523
 filter:Linear,Linear
 scale:0.29
 binder_bolt
-bounds:571,138,38,96
+bounds:101,13,38,96
 offsets:0,1,38,97
 rotate:90
 blender/blender_blur
-bounds:1215,149,152,140
+bounds:761,9,152,140
 offsets:0,0,153,140
 blender/blender_core
-bounds:329,138,161,351
+bounds:606,360,161,351
+rotate:90
 blender/blender_edge_1
-bounds:1537,372,70,117
+bounds:1221,110,70,117
 offsets:1,2,71,119
 blender/blender_edge_2
-bounds:1055,284,61,205
+bounds:1272,381,61,205
 offsets:0,0,61,211
+rotate:90
 blender/blender_hline
-bounds:1683,392,97,45
-rotate:90
+bounds:2,6,97,45
 blender/blender_thick_1
-bounds:492,159,77,330
+bounds:1272,444,77,330
 offsets:25,0,110,336
-blender/blender_thick_2
-bounds:830,253,110,236
-offsets:0,100,111,336
-blender/blender_whisp_1
-bounds:387,10,126,321
 rotate:90
+blender/blender_thick_2
+bounds:1604,411,110,236
+offsets:0,100,111,336
+rotate:90
+blender/blender_whisp_1
+bounds:357,57,126,321
 blender/blender_whisp_2
-bounds:718,203,110,286
+bounds:485,92,110,286
 blip_circle
-bounds:743,179,22,22
+bounds:1525,15,22,22
 blip_star
-bounds:718,178,23,23
+bounds:1447,144,23,23
 bod
-bounds:942,282,207,111
+bounds:797,151,207,111
 rotate:90
 castfist_l
-bounds:1730,395,94,88
-rotate:90
+bounds:485,2,94,88
 castfist_r
-bounds:1541,118,110,95
+bounds:1118,16,110,95
 rotate:90
 cowl 1
-bounds:571,178,311,145
-rotate:90
+bounds:959,376,311,145
 cowl 2
-bounds:1314,2,145,113
+bounds:1164,229,145,113
 offsets:4,0,149,113
 rotate:90
 cowl back
-bounds:2,136,353,325
+bounds:2,53,353,325
 offsets:10,0,372,325
-rotate:90
 deathspark/deathspark00
-bounds:1885,247,63,70
+bounds:1688,88,63,70
 offsets:13,4,87,87
+rotate:90
 deathspark/deathspark01
-bounds:1872,403,77,86
+bounds:1599,205,83,86
 offsets:4,1,87,87
 deathspark/deathspark02
-bounds:1908,60,77,85
+bounds:1764,205,81,87
 offsets:6,0,87,87
 rotate:90
+deathspark/deathspark03
+bounds:1684,205,78,86
+offsets:9,0,87,87
 defect_flare
-bounds:715,148,57,28
+bounds:1819,92,57,28
 offsets:0,0,58,29
+rotate:90
 eye
-bounds:1748,300,63,93
+bounds:1504,165,63,93
+rotate:90
 eye shine
-bounds:942,260,20,62
-rotate:90
-eye_data_1
-bounds:1619,64,52,63
-offsets:11,0,64,64
-rotate:90
-eye_data_2
-bounds:1885,193,52,63
-offsets:11,0,64,64
-rotate:90
-eye_data_3
-bounds:1885,139,52,63
-offsets:11,0,64,64
-rotate:90
-eye_data_4
-bounds:1807,10,52,63
-offsets:11,0,64,64
-rotate:90
-eye_data_5
-bounds:1843,73,52,63
-offsets:11,0,64,64
+bounds:581,7,20,62
 rotate:90
 eye_progress1
-bounds:1429,3,57,61
+bounds:1420,318,57,61
 offsets:3,3,63,66
-rotate:90
 eye_progress2
-bounds:1492,3,57,61
+bounds:1403,5,57,61
 offsets:3,3,63,66
 rotate:90
 eye_progress3
-bounds:1555,5,57,61
+bounds:1760,88,57,61
 offsets:3,3,63,66
-rotate:90
 eye_progress4
-bounds:1618,5,57,61
+bounds:1466,4,57,61
 offsets:3,3,63,66
-rotate:90
 eye_progress5
-bounds:1681,5,57,61
+bounds:1505,102,57,61
 offsets:3,3,63,66
-rotate:90
 eye_progress6
-bounds:1744,5,57,61
+bounds:1597,74,57,61
 offsets:3,3,63,66
 rotate:90
 eye_progress7
-bounds:1826,243,57,61
+bounds:1525,39,57,61
 offsets:3,3,63,66
 eye_progress8
-bounds:1826,180,57,61
+bounds:1584,15,57,61
 offsets:3,3,63,66
+rotate:90
 eye_progress9
-bounds:1784,64,57,61
+bounds:1647,11,57,61
 offsets:3,3,63,66
 glow1
-bounds:1925,7,50,51
+bounds:424,5,50,51
 offsets:2,3,55,57
+rotate:90
 glow2
-bounds:774,145,47,56
+bounds:915,2,47,56
 offsets:3,3,52,62
 glow3
-bounds:1951,381,45,42
+bounds:1752,44,45,42
 offsets:3,3,51,48
 glow4
-bounds:1951,425,47,64
+bounds:1456,67,47,64
 offsets:2,3,52,70
 head
-bounds:1068,145,145,137
+bounds:1017,237,145,137
 hip
-bounds:1737,187,93,87
+bounds:1215,15,93,87
 offsets:2,0,95,87
 rotate:90
 hip joint bottom
-bounds:1950,179,44,44
+bounds:1706,42,44,44
 hip joint top
-bounds:1872,7,51,51
+bounds:964,7,51,51
 l foot
-bounds:1885,319,82,64
-rotate:90
+bounds:1420,252,82,64
 l hand
-bounds:1552,263,107,99
-rotate:90
+bounds:1112,128,107,99
 l leg bottom
-bounds:166,3,139,131
+bounds:1279,248,139,131
 l leg middle
-bounds:1463,230,87,121
+bounds:1766,288,87,121
 r leg middle
-bounds:1463,230,87,121
+bounds:1766,288,87,121
 l leg top
-bounds:1638,157,104,97
+bounds:1304,12,104,97
 rotate:90
 l lower arm
-bounds:1369,187,92,140
+bounds:1018,95,92,140
 offsets:0,0,92,155
 l toe left
-bounds:1951,303,76,44
-rotate:90
+bounds:199,7,76,44
 l toe middle
-bounds:823,146,81,55
+bounds:1447,169,81,55
+rotate:90
 l toe right
-bounds:1950,225,76,44
-rotate:90
+bounds:277,7,76,44
 l upper arm
-bounds:1316,329,116,160
+bounds:1604,293,116,160
 offsets:0,0,118,162
+rotate:90
 neck
-bounds:1813,306,87,70
-rotate:90
+bounds:1599,133,87,70
 orb
-bounds:1118,291,198,196
+bounds:597,162,198,196
 offsets:2,2,202,201
-rotate:90
 orb patch
-bounds:669,145,44,31
+bounds:1564,119,44,31
 offsets:0,0,44,33
+rotate:90
 orb shine
-bounds:2,3,162,131
+bounds:597,29,162,131
 orb sparkles
-bounds:307,6,128,78
+bounds:1293,118,128,78
 rotate:90
 pipe 1
-bounds:1609,384,72,105
+bounds:1373,141,72,105
 pipe 2
-bounds:830,203,48,65
+bounds:357,7,48,65
 rotate:90
 r foot
-bounds:1541,64,76,52
+bounds:1777,151,76,52
 offsets:1,0,77,53
 r hand
-bounds:1684,64,98,91
+bounds:1018,2,98,91
 r leg bottom
-bounds:1429,62,110,123
+bounds:1479,332,110,123
+rotate:90
 r leg top
-bounds:1653,282,93,100
+bounds:1504,230,93,100
 offsets:0,0,94,100
 r lower arm
-bounds:1434,353,101,136
+bounds:915,60,101,136
 offsets:0,0,101,145
 r toe left
-bounds:1807,127,75,51
+bounds:1403,64,75,51
+rotate:90
 r toe right
-bounds:1820,402,87,50
-rotate:90
+bounds:1688,153,87,50
 r upper arm
-bounds:906,146,105,160
-rotate:90
+bounds:910,198,105,160
 roundspark
-bounds:492,146,11,11
+bounds:1525,2,11,11
 shadow
-bounds:710,2,602,141
+bounds:2,380,602,141
 offsets:1,2,603,144

@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using Godot;
+using MegaCrit.Sts2.Core.Debug;
 using MegaCrit.Sts2.Core.Entities.Actions;
 using MegaCrit.Sts2.Core.Entities.Multiplayer;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -139,15 +140,23 @@ public abstract class GameAction
 		{
 			if (_executionTask.IsCompleted)
 			{
-				if (State != GameActionState.Executing)
-				{
-					throw new InvalidOperationException($"GameAction {this} finished execution, but was in state {State}! The task probably kept executing in a paused state without properly resuming.");
-				}
+				GameActionState state = State;
 				_logger.VeryDebug($"Action {this} finished execution");
 				State = GameActionState.Finished;
 				this.JustBeforeFinished?.Invoke(this);
 				_completionSource.TrySetResult();
 				this.AfterFinished?.Invoke(this);
+				if (state != GameActionState.Executing)
+				{
+					string text = $"GameAction {this} finished execution, but was in state {state}! The task probably kept executing in a paused state without properly resuming.";
+					Exception ex = new InvalidOperationException(text, Exception);
+					if (NonInteractiveMode.IsActive)
+					{
+						throw ex;
+					}
+					Log.Error(text);
+					SentryService.CaptureException(ex);
+				}
 			}
 			else
 			{

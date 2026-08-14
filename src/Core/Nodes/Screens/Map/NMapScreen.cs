@@ -806,7 +806,10 @@ public partial class NMapScreen : Control, IScreenContext, INetCursorPositionTra
 		{
 			value.RefreshVisualsInstantly();
 		}
-		DefaultFocusedControl.TryGrabFocus();
+		if (IsVisible())
+		{
+			DefaultFocusedControl.TryGrabFocus();
+		}
 	}
 
 	private void PlayStartOfActAnimation()
@@ -1171,7 +1174,7 @@ public partial class NMapScreen : Control, IScreenContext, INetCursorPositionTra
 	{
 		Drawings.ClearDrawnLinesLocal();
 		SfxCmd.Play("event:/sfx/ui/map/map_erase");
-		UpdateDrawingButtonStates();
+		_drawingInput?.StopDrawing();
 	}
 
 	public void HighlightPointType(MapPointType pointType)

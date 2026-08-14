@@ -35,10 +35,7 @@ public partial class NControllerMapDrawingInput : NMapDrawingInput
 		base._Ready();
 		_cursor = GetNode<Control>("%Cursor");
 		this.TryGrabFocus();
-		GetViewport().Connect(Viewport.SignalName.GuiFocusChanged, Callable.From<Control>(delegate
-		{
-			StopDrawing();
-		}));
+		GetViewport().Connect(Viewport.SignalName.GuiFocusChanged, Callable.From<Control>(OnGuiFocusChanged));
 		if (base.DrawingMode == DrawingMode.Drawing)
 		{
 			_cursorTex = ImageTexture.CreateFromImage(PreloadManager.Cache.GetAsset<Image>("res://images/packed/common_ui/cursor_quill.png"));
@@ -51,6 +48,11 @@ public partial class NControllerMapDrawingInput : NMapDrawingInput
 		}
 		_cursor.GetNode<TextureRect>("TextureRect").Texture = _cursorTex;
 		_cursor.GetNode<TextureRect>("TextureRect").Position = ((base.DrawingMode == DrawingMode.Drawing) ? _drawingIconPos : _eraserIconPos);
+	}
+
+	private void OnGuiFocusChanged(Control _)
+	{
+		StopDrawing();
 	}
 
 	public override void _Process(double delta)

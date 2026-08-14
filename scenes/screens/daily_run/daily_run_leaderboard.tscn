@@ -11,7 +11,7 @@
 [ext_resource type="FontVariation" uid="uid://ciql5khgewwbm" path="res://themes/kreon_bold_glyph_space_two.tres" id="9_s5div"]
 [ext_resource type="PackedScene" uid="uid://bw8f1jtcj62xv" path="res://scenes/ui/tickbox.tscn" id="9_w48gk"]
 [ext_resource type="PackedScene" path="res://scenes/ui/hotkey_icon.tscn" id="11_lswjr"]
-[ext_resource type="PackedScene" uid="uid://cyhw3s1faj4c7" path="res://scenes/screens/leaderboard_day_paginator.tscn" id="13_w48gk"]
+[ext_resource type="PackedScene" path="res://scenes/screens/leaderboard_day_paginator.tscn" id="13_w48gk"]
 [ext_resource type="PackedScene" path="res://scenes/screens/game_over_screen/leaderboard_paginator_arrow.tscn" id="15_lswjr"]
 [ext_resource type="Script" uid="uid://c2oywrx8xbqfx" path="res://addons/mega_text/MegaRichTextLabel.cs" id="22_k4pmi"]
 
@@ -53,6 +53,7 @@ grow_vertical = 2
 script = ExtResource("1_gvldw")
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
+metadata/_edit_horizontal_guides_ = [106.0]
 
 [node name="Panel" type="Control" parent="."]
 layout_mode = 1
@@ -80,6 +81,7 @@ theme_override_constants/separation = 0
 
 [node name="NoScoresIndicator" type="Label" parent="Panel"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -103,6 +105,7 @@ AutoSizeEnabled = false
 
 [node name="NoFriendsIndicator" type="Label" parent="Panel"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

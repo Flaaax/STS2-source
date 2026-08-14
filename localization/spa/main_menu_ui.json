@@ -94,6 +94,8 @@
   "INVALID_SAVE_POPUP.dismiss": "Ocultar",
   "INVALID_SAVE_POPUP.title": "¡Archivo de guardado corrupto!",
   "INVITE": "Invitar",
+  "INVITE.DISABLED.steam.description": "La interfaz superpuesta de Steam está desactivada.\n\nActívala o invita manualmente a tus amigos a través de tu lista de amigos de Steam.",
+  "INVITE.DISABLED.steam.title": "Interfaz superpuesta de Steam desactivada",
   "JOIN.description": "Únete a una partida creada por un amigo.",
   "JOIN.title": "Unirse a partida",
   "JOIN_FRIENDS_MENU.noFriends": "Ninguno de tus amigos está jugando al multijugador.",

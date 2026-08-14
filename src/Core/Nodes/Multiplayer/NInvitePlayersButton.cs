@@ -1,9 +1,10 @@
 using Godot;
 using MegaCrit.Sts2.addons.mega_text;
 using MegaCrit.Sts2.Core.ControllerInput;
-using MegaCrit.Sts2.Core.Entities.Multiplayer;
+using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Multiplayer.Game.Lobby;
+using MegaCrit.Sts2.Core.Nodes.CommonUi;
 using MegaCrit.Sts2.Core.Nodes.GodotExtensions;
 using MegaCrit.Sts2.Core.Platform;
 
@@ -37,41 +38,41 @@ public partial class NInvitePlayersButton : NButton
 	public void Initialize(StartRunLobby lobby)
 	{
 		_startRunLobby = lobby;
-		_startRunLobby.PlayerConnected += OnPlayerConnected;
-		_startRunLobby.PlayerDisconnected += OnPlayerDisconnected;
 		UpdateVisibility();
 	}
 
-	public override void _ExitTree()
+	/// <summary>
+	/// Main menu screens are cached and only hidden, never freed, so the button outlives the lobby.
+	/// </summary>
+	public void Cleanup()
 	{
-		base._ExitTree();
-		if (_startRunLobby != null)
-		{
-			_startRunLobby.PlayerConnected -= OnPlayerConnected;
-			_startRunLobby.PlayerDisconnected -= OnPlayerDisconnected;
-		}
-	}
-
-	private void OnPlayerConnected(StartRunLobbyPlayer player)
-	{
-		UpdateVisibility();
-	}
-
-	private void OnPlayerDisconnected(StartRunLobbyPlayer player)
-	{
+		_startRunLobby = null;
 		UpdateVisibility();
 	}
 
 	private void UpdateVisibility()
 	{
-		_container.Visible = _startRunLobby != null && PlatformUtil.SupportsInviteDialog(_startRunLobby.NetService.Platform) && _startRunLobby.Players.Count < _startRunLobby.MaxPlayers;
+		_container.Visible = _startRunLobby != null && PlatformUtil.SupportsInviteDialog(_startRunLobby.NetService.Platform);
 	}
 
 	protected override void OnRelease()
 	{
-		if (_startRunLobby != null)
+		if (_startRunLobby == null || !IsVisibleInTree() || PlatformUtil.TryOpenInviteDialog(_startRunLobby.NetService))
 		{
-			PlatformUtil.OpenInviteDialog(_startRunLobby.NetService);
+			return;
+		}
+		string text = StringHelper.SnakeCase(_startRunLobby.NetService.Platform.ToString());
+		NErrorPopup nErrorPopup = NErrorPopup.Create(new LocString("main_menu_ui", "INVITE.DISABLED." + text + ".title").GetFormattedText(), new LocString("main_menu_ui", "INVITE.DISABLED." + text + ".description").GetFormattedText(), showReportBugButton: false);
+		if (nErrorPopup != null)
+		{
+			if (NModalContainer.Instance.OpenModal != null)
+			{
+				nErrorPopup.QueueFreeSafely();
+			}
+			else
+			{
+				NModalContainer.Instance.Add(nErrorPopup);
+			}
 		}
 	}
 

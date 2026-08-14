@@ -76,6 +76,7 @@ public partial class NRun : Control
 	{
 		NRun nRun = PreloadManager.Cache.GetScene("res://scenes/run.tscn").Instantiate<NRun>(PackedScene.GenEditState.Disabled);
 		nRun._state = state;
+		NHotkeyManager.Instance?.ClearHotkeys();
 		return nRun;
 	}
 

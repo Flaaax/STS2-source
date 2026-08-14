@@ -51,7 +51,7 @@ public sealed class SoulFysh : MonsterModel
 
 	public override int MaxInitialHp => MinInitialHp;
 
-	private int DeGasDamage => AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies, 17, 16);
+	private int DeGasDamage => AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies, 18, 16);
 
 	private int ScreamDamage => AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies, 15, 13);
 

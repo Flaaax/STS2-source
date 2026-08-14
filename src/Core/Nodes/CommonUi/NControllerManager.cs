@@ -40,13 +40,6 @@ public partial class NControllerManager : Node
 	private Vector2 _lastMousePosition;
 
 	/// <summary>
-	/// Number of frames to ignore mouse motion events after warping the cursor offscreen.
-	/// WarpMouse generates a synthetic InputEventMouseMotion (via OS event queue, arriving next
-	/// frame) that would otherwise immediately flip us back to mouse mode.
-	/// </summary>
-	private int _skipMouseCheckFrames;
-
-	/// <summary>
 	/// Minimum relative displacement (squared) to consider a mouse motion event as a warp artifact
 	/// rather than real user input. No human mouse movement covers 500+ pixels in a single frame.
 	/// </summary>
@@ -181,7 +174,7 @@ public partial class NControllerManager : Node
 	private void CheckForMouseInput(InputEvent inputEvent)
 	{
 		bool flag = inputEvent is InputEventMouseButton;
-		bool flag2 = inputEvent is InputEventMouseMotion { Velocity: var velocity } inputEventMouseMotion && velocity.LengthSquared() > 100f && _skipMouseCheckFrames <= 0 && inputEventMouseMotion.Relative.LengthSquared() <= 250000f;
+		bool flag2 = inputEvent is InputEventMouseMotion { Velocity: var velocity } inputEventMouseMotion && velocity.LengthSquared() > 100f && inputEventMouseMotion.Relative.LengthSquared() <= 250000f;
 		if (flag || flag2)
 		{
 			SwitchToMouseMode();

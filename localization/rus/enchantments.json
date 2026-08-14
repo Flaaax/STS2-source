@@ -18,7 +18,7 @@
   "IMBUED.description": "В начале каждого боя эта карта разыгрывается автоматически.",
   "IMBUED.extraCardText": "Знаковая.",
   "IMBUED.title": "Знаковая",
-  "INKY.description": "Эта карта наносит на [blue]{Damage}[/blue] больше урона и накладывает [blue]{WeakPower}[/blue] [gold]слабости[/gold].",
+  "INKY.description": "Эта карта накладывает [blue]{WeakPower}[/blue] [gold]слабости[/gold].",
   "INKY.extraCardText": "Накладывает [blue]{WeakPower}[/blue] [gold]слабости[/gold]{TargetType:choose(AllEnemies): на ВСЕХ врагов|}.",
   "INKY.title": "Чернильная",
   "INSTINCT.description": "Эта карта наносит двойной урон.",

@@ -121,7 +121,7 @@ public class NodePool<T> : INodePool where T : Node, IPoolable
 	private void DisconnectSignal(Callable callable, Signal signal)
 	{
 		GodotObject target = callable.Target;
-		if ((target == null && callable.Method == null) || (target != null && !GodotObject.IsInstanceValid(target)))
+		if ((target == null && callable.Method == null && (object)callable.Delegate == null) || (target != null && !GodotObject.IsInstanceValid(target)))
 		{
 			return;
 		}

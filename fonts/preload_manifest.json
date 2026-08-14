@@ -1,0 +1,98 @@
+{
+  "fonts/jpn/NotoSansCJKjp-Bold.otf.import": {
+    "corpus_hash": "c00d413dda973452",
+    "glyph_hash": "cab95ef35b385a1e",
+    "glyphs": 834,
+    "sources": [
+      [
+        "jpn",
+        "bold"
+      ]
+    ]
+  },
+  "fonts/jpn/NotoSansCJKjp-Medium.otf.import": {
+    "corpus_hash": "6b00243f6982d63c",
+    "glyph_hash": "ced96f184027d661",
+    "glyphs": 129,
+    "sources": [
+      [
+        "jpn",
+        "italic"
+      ]
+    ]
+  },
+  "fonts/rus/FiraSansExtraCondensed-Bold.ttf.import": {
+    "corpus_hash": "1d2bca03b7f8935f",
+    "glyph_hash": "ea2b49f1d2635884",
+    "glyphs": 153,
+    "sources": [
+      [
+        "pol",
+        "bold"
+      ],
+      [
+        "rus",
+        "bold"
+      ]
+    ]
+  },
+  "fonts/rus/FiraSansExtraCondensed-Italic.ttf.import": {
+    "corpus_hash": "8a1899448ed287e3",
+    "glyph_hash": "dfd3fd011425a01c",
+    "glyphs": 92,
+    "sources": [
+      [
+        "pol",
+        "italic"
+      ],
+      [
+        "rus",
+        "italic"
+      ]
+    ]
+  },
+  "fonts/zhs/SourceHanSerifSC-Bold.otf.import": {
+    "corpus_hash": "7219c6cdd06b2b9c",
+    "glyph_hash": "d53aad13109448c2",
+    "glyphs": 1147,
+    "sources": [
+      [
+        "zhs",
+        "bold"
+      ]
+    ]
+  },
+  "fonts/zhs/SourceHanSerifSC-Medium.otf.import": {
+    "corpus_hash": "180313106e4e61bd",
+    "glyph_hash": "9a9a08c423cded52",
+    "glyphs": 129,
+    "sources": [
+      [
+        "zhs",
+        "italic"
+      ]
+    ]
+  },
+  "fonts/zht/SourceHanSerifTC-Bold.otf.import": {
+    "corpus_hash": "dc48888a6cced773",
+    "glyph_hash": "f064c17ca8c08ac2",
+    "glyphs": 1095,
+    "sources": [
+      [
+        "zht",
+        "bold"
+      ]
+    ]
+  },
+  "fonts/zht/SourceHanSerifTC-Medium.otf.import": {
+    "corpus_hash": "d5918b2c1c6e1cc9",
+    "glyph_hash": "84f74f2a47840f3e",
+    "glyphs": 130,
+    "sources": [
+      [
+        "zht",
+        "italic"
+      ]
+    ]
+  }
+}

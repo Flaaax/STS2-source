@@ -153,6 +153,7 @@
   "TEXT_EFFECTS": "Text Effects",
   "TEXT_EFFECTS_DESCRIPTION": "Controls whether text effects, such as wavy or shaky text, are enabled.",
   "TEXT_SIZE": "Text Size",
+  "TOAST_CANNOT_REMAP_INPUT": "Cannot set an input for {Hotkey} for {ControlType}.",
   "TOAST_FAST_MODE_OFF": "Combat actions and screen transitions will be slower.",
   "TOAST_FAST_MODE_ON": "Combat actions and screen transitions will be faster.",
   "TOAST_GAMEPLAY_DATA_OFF": "Gameplay metrics and error logs will not be uploaded.",

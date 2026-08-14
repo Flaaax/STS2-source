@@ -1,5 +1,4 @@
 using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Multiplayer;
 using MegaCrit.Sts2.Core.Multiplayer.Serialization;
 using MegaCrit.Sts2.Core.Unlocks;
 
@@ -17,7 +16,7 @@ public struct StartRunLobbyPlayer : IPacketSerializable
 
 	public int maxMultiplayerAscensionUnlocked;
 
-	public PeerVersionInfo versionInfo;
+	public bool isModded;
 
 	public bool isReady;
 
@@ -28,7 +27,7 @@ public struct StartRunLobbyPlayer : IPacketSerializable
 		writer.WriteModel(character);
 		writer.Write(unlockState);
 		writer.WriteInt(maxMultiplayerAscensionUnlocked);
-		writer.Write(versionInfo);
+		writer.WriteBool(isModded);
 		writer.WriteBool(isReady);
 	}
 
@@ -39,7 +38,7 @@ public struct StartRunLobbyPlayer : IPacketSerializable
 		character = reader.ReadModel<CharacterModel>();
 		unlockState = reader.Read<SerializableUnlockState>();
 		maxMultiplayerAscensionUnlocked = reader.ReadInt();
-		versionInfo = reader.Read<PeerVersionInfo>();
+		isModded = reader.ReadBool();
 		isReady = reader.ReadBool();
 	}
 

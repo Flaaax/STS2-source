@@ -94,6 +94,8 @@
   "INVALID_SAVE_POPUP.dismiss": "Yok Say",
   "INVALID_SAVE_POPUP.title": "Bozuk Kayıt Dosyası!",
   "INVITE": "Davet Et",
+  "INVITE.DISABLED.steam.description": "Steam Arayüzü devre dışı.\n\nArayüzü etkinleştirin veya masaüstünüzde Steam Arkadaşlar menüsünden arkadaşlarınızı direkt olarak davet edin.",
+  "INVITE.DISABLED.steam.title": "Steam Arayüzü Devre Dışı",
   "JOIN.description": "Arkadaşın tarafından oluşturulmuş bir oyuna katıl.",
   "JOIN.title": "Katıl",
   "JOIN_FRIENDS_MENU.noFriends": "Hiçbir arkadaşın şu anda çok oyunculu modda oynamıyor.",

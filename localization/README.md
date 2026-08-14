@@ -9,6 +9,7 @@ localization/
   eng/          # English (source)
   deu/          # German
   esp/          # Spanish
+  ind/          # Indonesian
   ita/          # Italian
   jpn/          # Japanese
   kor/          # Korean

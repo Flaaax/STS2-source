@@ -24,7 +24,7 @@ public sealed class Null : CardModel
 	protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlyArray<DynamicVar>(new DynamicVar[2]
 	{
 		new DamageVar(10m, ValueProp.Move),
-		new PowerVar<WeakPower>(2m)
+		new PowerVar<WeakPower>(1m)
 	});
 
 	public Null()

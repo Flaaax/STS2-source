@@ -12,7 +12,6 @@ using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Multiplayer;
 using MegaCrit.Sts2.Core.Multiplayer.Game;
 using MegaCrit.Sts2.Core.Multiplayer.Game.Lobby;
 using MegaCrit.Sts2.Core.Multiplayer.Messages.Lobby;
@@ -180,9 +179,10 @@ public partial class NCustomRunLoadScreen : NSubmenu, ILoadRunLobbyListener
 		}
 	}
 
-	private void RemoteClientFailedToConnectToLocalHost(ClientConnectionFailedMessage message, ulong sender)
+	private void RemoteClientFailedToConnectToLocalHost(ulong sender, NetErrorInfo info)
 	{
-		string formattedText = message.GetLocString(PeerVersionInfo.LocalDefault()).GetFormattedText();
+		bool showReportBugButton;
+		string formattedText = NErrorPopup.LocStringFromNetError(info, out showReportBugButton).GetFormattedText();
 		LocString locString = new LocString("main_menu_ui", "NETWORK_ERROR.HOST.PREFIX.body");
 		locString.Add("playerName", PlatformUtil.GetPlayerName(_lobby.NetService.Platform, sender));
 		locString.Add("info", formattedText);

@@ -12,6 +12,7 @@ using MegaCrit.Sts2.Core.Nodes.GodotExtensions;
 using MegaCrit.Sts2.Core.Nodes.Screens.ScreenContext;
 using MegaCrit.Sts2.Core.Nodes.Vfx.Ui;
 using MegaCrit.Sts2.Core.Saves;
+using MegaCrit.Sts2.Core.Settings;
 using MegaCrit.Sts2.Core.Timeline;
 
 namespace MegaCrit.Sts2.Core.Nodes.Screens.Timeline;
@@ -316,7 +317,7 @@ public partial class NEpochInspectScreen : NClickableControl, IScreenContext
 	/// Is called when the player opens the Epoch inspect screen by clicking on a locked node in the Timeline.
 	/// </summary>
 	/// <param name="epoch"></param>
-	public async Task UnlockAnimation(EpochModel epoch)
+	private async Task UnlockAnimation(EpochModel epoch)
 	{
 		HidePaginators();
 		epoch.QueueUnlocks();
@@ -331,30 +332,31 @@ public partial class NEpochInspectScreen : NClickableControl, IScreenContext
 		_chains.Visible = true;
 		_chains.Modulate = Colors.White;
 		_chains.SelfModulate = Colors.White;
-		_portraitFlash.Modulate = new Color(1f, 1f, 1f, 0f);
+		_portraitFlash.Modulate = StsColors.transparentWhite;
+		bool isFast = SaveManager.Instance.PrefsSave.FastMode == FastModeType.Fast;
 		_unlockTween?.Kill();
 		_unlockTween = CreateTween().SetParallel();
-		_unlockTween.TweenProperty(_chains, "scale", Vector2.One * 0.98f, 0.5).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Expo)
-			.SetDelay(0.5);
+		_unlockTween.TweenProperty(_chains, "scale", Vector2.One * 0.98f, isFast ? 0.25 : 0.5).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Expo)
+			.SetDelay(isFast ? 0.25 : 0.5);
 		if (await _unlockTween.AwaitFinished(this))
 		{
 			_chains.Unlock();
 			await _chains.AwaitSignal(NEpochChains.SignalName.OnAnimationFinished, this);
 			_portraitFlash.Modulate = Colors.White;
 			_unlockTween = CreateTween().SetParallel();
-			_unlockTween.TweenProperty(_portraitFlash, "modulate:a", 0f, 0.5);
-			_unlockTween.TweenMethod(Callable.From<float>(UpdateShaderS), _portraitHsv.GetShaderParameter(_s), 1f, 1.0).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Expo);
-			_unlockTween.TweenMethod(Callable.From<float>(UpdateShaderV), _portraitHsv.GetShaderParameter(_v), 1f, 1.0).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Expo);
+			_unlockTween.TweenProperty(_portraitFlash, "modulate:a", 0f, isFast ? 0.25 : 0.5);
+			_unlockTween.TweenMethod(Callable.From<float>(UpdateShaderS), _portraitHsv.GetShaderParameter(_s), 1f, isFast ? 0.5 : 1.0).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Expo);
+			_unlockTween.TweenMethod(Callable.From<float>(UpdateShaderV), _portraitHsv.GetShaderParameter(_v), 1f, isFast ? 0.5 : 1.0).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Expo);
 			_textTween?.Kill();
 			_textTween = CreateTween().SetParallel();
-			_textTween.TweenProperty(_fancyText, "modulate:a", 1f, 2.0).SetDelay(0.25);
-			_textTween.TweenProperty(_fancyText, "visible_ratio", 1f, (double)_fancyText.GetTotalCharacterCount() * 0.015).SetDelay(0.5);
+			_textTween.TweenProperty(_fancyText, "modulate:a", 1f, isFast ? 1.0 : 2.0).SetDelay(isFast ? 0.1 : 0.25);
+			_textTween.TweenProperty(_fancyText, "visible_ratio", 1f, (double)_fancyText.GetTotalCharacterCount() * 0.015).SetDelay(isFast ? 0.25 : 0.5);
 			_buttonTween?.Kill();
 			_buttonTween = CreateTween().SetParallel();
 			_buttonTween.TweenProperty(_closeButton, "modulate:a", 1f, 0.3).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic)
-				.SetDelay(1.0);
+				.SetDelay(isFast ? 0.5 : 1.0);
 			_buttonTween.TweenProperty(_closeButton, "position:y", _closeButtonY - 180f, 0.3).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Back)
-				.SetDelay(1.0);
+				.SetDelay(isFast ? 0.5 : 1.0);
 			_buttonTween.TweenCallback(Callable.From(_closeButton.Enable));
 			await _unlockTween.AwaitFinished(this);
 		}

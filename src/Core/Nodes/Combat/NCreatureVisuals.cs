@@ -26,12 +26,6 @@ public partial class NCreatureVisuals : Node2D
 
 	private Node2D? _phobiaModeBody;
 
-	/// <summary>
-	/// Control to hold Form Card Vfx for characters (ie Demon Form, Void Form, Serpent Form)
-	/// We do this so we can easily track what form vfx we have and destroy old ones as we apply new ones
-	/// </summary>
-	public Control? _formVfxHolder;
-
 	private float _hue = 1f;
 
 	private double _liquidOverlayTimer;
@@ -66,6 +60,12 @@ public partial class NCreatureVisuals : Node2D
 
 	public bool IsUsingPhobiaModeBody => _phobiaModeBody == GetCurrentBody();
 
+	/// <summary>
+	/// Control to hold Form Card Vfx for characters (ie Demon Form, Void Form, Serpent Form)
+	/// We do this so we can easily track what form vfx we have and destroy old ones as we apply new ones
+	/// </summary>
+	public Control? FormVfxHolder { get; private set; }
+
 	public MegaSprite? SpineBody { get; private set; }
 
 	public SpineAnimationAccess SpineAnimation => new SpineAnimationAccess(SpineBody);
@@ -93,7 +93,7 @@ public partial class NCreatureVisuals : Node2D
 	{
 		_body = GetNode<Node2D>("%Visuals");
 		_phobiaModeBody = GetNodeOrNull<Node2D>("%PhobiaModeVisuals");
-		_formVfxHolder = GetNodeOrNull<Control>("%FormVfx");
+		FormVfxHolder = GetNodeOrNull<Control>("%FormVfx");
 		Bounds = GetNode<Control>("%Bounds");
 		IntentPosition = GetNode<Marker2D>("%IntentPos");
 		VfxSpawnPosition = GetNode<Marker2D>("%CenterPos");
@@ -114,22 +114,22 @@ public partial class NCreatureVisuals : Node2D
 
 	public void AddFormVfx(NFormVfx formVfx)
 	{
-		if (_formVfxHolder == null)
+		if (FormVfxHolder == null)
 		{
 			throw new InvalidOperationException("This creature has no form holder to put this form vfx");
 		}
-		_formVfxHolder.FreeChildren();
-		_formVfxHolder.AddChildSafely(formVfx);
+		FormVfxHolder.FreeChildren();
+		FormVfxHolder.AddChildSafely(formVfx);
 		formVfx.Position = Vector2.Zero;
 	}
 
 	public void RemoveFormVfx()
 	{
-		if (_formVfxHolder == null)
+		if (FormVfxHolder == null)
 		{
 			throw new InvalidOperationException("This creature has no form holder to put this form vfx");
 		}
-		_formVfxHolder.FreeChildren();
+		FormVfxHolder.FreeChildren();
 	}
 
 	public override void _EnterTree()
@@ -197,6 +197,15 @@ public partial class NCreatureVisuals : Node2D
 	public bool IsPlayingHurtAnimation()
 	{
 		return SpineAnimation.GetCurrentAnimationName() == "hurt";
+	}
+
+	public bool IsPlayingIdleAnimation()
+	{
+		if (!(SpineAnimation.GetCurrentAnimationName() == "idle_loop"))
+		{
+			return SpineAnimation.GetCurrentAnimationName() == "low_health_loop";
+		}
+		return true;
 	}
 
 	public void TryApplyLiquidOverlay(Color tint)

@@ -175,7 +175,7 @@ public partial class NCreature : Control
 		{
 			if (Entity.Player != null)
 			{
-				_spineAnimator = Entity.Player.Character.GenerateAnimator(Visuals.SpineBody);
+				_spineAnimator = Entity.Player.Character.GenerateAnimator(Visuals.SpineBody, Entity);
 			}
 			else
 			{

@@ -94,6 +94,8 @@
   "INVALID_SAVE_POPUP.dismiss": "닫기",
   "INVALID_SAVE_POPUP.title": "세이브 손상!",
   "INVITE": "초대",
+  "INVITE.DISABLED.steam.description": "스팀 오버레이가 비활성화되어 있습니다.\n\n활성화하거나, 데스크톱의 스팀 친구 메뉴를 통해 친구를 직접 초대하세요.",
+  "INVITE.DISABLED.steam.title": "스팀 오버레이 비활성화됨",
   "JOIN.description": "친구가 호스팅하는 게임에 참여합니다.",
   "JOIN.title": "참여",
   "JOIN_FRIENDS_MENU.noFriends": "현재 멀티플레이 중인\n친구가 없습니다.",

@@ -94,6 +94,8 @@
   "INVALID_SAVE_POPUP.dismiss": "閉じる",
   "INVALID_SAVE_POPUP.title": "セーブデータ破損！",
   "INVITE": "招待",
+  "INVITE.DISABLED.steam.description": "Steamオーバーレイが無効化されました\n\nオーバーレイを有効化するか、デスクトップのSteamのフレンド機能から手動で招待してください。",
+  "INVITE.DISABLED.steam.title": "Steamオーバーレイ無効化",
   "JOIN.description": "フレンドのゲームに参加します。",
   "JOIN.title": "参加",
   "JOIN_FRIENDS_MENU.noFriends": "現在マルチプレイ中のフレンドはいません。",

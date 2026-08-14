@@ -75,14 +75,17 @@ public static class IMigrationSubtypes
 	[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicParameterlessConstructor)]
 	private static readonly Type _t20 = typeof(SettingsSaveV6ToV7);
 
-	private static readonly Type[] _subtypes = new Type[21]
+	[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicParameterlessConstructor)]
+	private static readonly Type _t21 = typeof(SettingsSaveV7ToV8);
+
+	private static readonly Type[] _subtypes = new Type[22]
 	{
 		_t0, _t1, _t2, _t3, _t4, _t5, _t6, _t7, _t8, _t9,
 		_t10, _t11, _t12, _t13, _t14, _t15, _t16, _t17, _t18, _t19,
-		_t20
+		_t20, _t21
 	};
 
-	public static int Count => 21;
+	public static int Count => 22;
 
 	public static IReadOnlyList<Type> All => _subtypes;
 

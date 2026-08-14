@@ -566,35 +566,19 @@ public partial class NGameOverScreen : NClickableControl, IOverlayScreen, IScree
 	}
 
 	/// <summary>
-	/// Lookup table of score thresholds based on the total number of unlocks the player has completed.
-	/// Must have one entry per epoch in <see cref="P:MegaCrit.Sts2.Core.Timeline.EpochModel.AgnosticUnlockOrder" />.
+	/// The score the player needs for their next unlock, given how many they have left to earn.
+	/// Returns 0 once they have them all, which is what hides the score bar.
 	/// </summary>
-	/// <param name="unlocksRemaining"></param>
-	/// <returns></returns>
-	private int GetScoreThreshold(int unlocksRemaining)
+	/// <param name="unlocksRemaining">Unlocks the player has still to earn.</param>
+	/// <returns>Score needed for the next unlock, or 0 if there is no next unlock.</returns>
+	public static int GetScoreThreshold(int unlocksRemaining)
 	{
-		return (SaveManager.TotalAgnosticUnlocks - unlocksRemaining) switch
+		int num = SaveManager.TotalAgnosticUnlocks - unlocksRemaining;
+		if (num < 0 || num >= EpochModel.AgnosticUnlocks.Count)
 		{
-			0 => 200, 
-			1 => 500, 
-			2 => 750, 
-			3 => 1000, 
-			4 => 1250, 
-			5 => 1500, 
-			6 => 1600, 
-			7 => 1700, 
-			8 => 1800, 
-			9 => 1900, 
-			10 => 2000, 
-			11 => 2100, 
-			12 => 2200, 
-			13 => 2300, 
-			14 => 2400, 
-			15 => 2500, 
-			16 => 2500, 
-			17 => 2500, 
-			_ => 0, 
-		};
+			return 0;
+		}
+		return EpochModel.AgnosticUnlocks[num].ScoreThreshold;
 	}
 
 	private void ShowLeaderboard(NButton _)

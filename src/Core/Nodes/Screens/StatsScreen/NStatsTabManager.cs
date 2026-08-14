@@ -19,12 +19,9 @@ public partial class NStatsTabManager : Control
 	{
 		_tabContainer = GetNode<Control>("TabContainer");
 		_tabs = _tabContainer.GetChildren().OfType<NSettingsTab>().ToList();
-		foreach (NSettingsTab nSettingsTab in _tabs)
+		foreach (NSettingsTab tab in _tabs)
 		{
-			nSettingsTab.Connect(NClickableControl.SignalName.Released, Callable.From<NClickableControl>(delegate
-			{
-				SwitchToTab(nSettingsTab);
-			}));
+			tab.Connect(NClickableControl.SignalName.Released, Callable.From<NSettingsTab>(SwitchToTab));
 		}
 	}
 

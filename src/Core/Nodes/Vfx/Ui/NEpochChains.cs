@@ -4,6 +4,8 @@ using Godot.Collections;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Nodes.GodotExtensions;
 using MegaCrit.Sts2.Core.Nodes.Vfx.Utilities;
+using MegaCrit.Sts2.Core.Saves;
+using MegaCrit.Sts2.Core.Settings;
 
 namespace MegaCrit.Sts2.Core.Nodes.Vfx.Ui;
 
@@ -74,10 +76,11 @@ public partial class NEpochChains : TextureRect
 
 	public void Unlock()
 	{
-		TaskHelper.RunSafely(Unlocking());
+		bool flag = SaveManager.Instance.PrefsSave.FastMode == FastModeType.Fast;
+		TaskHelper.RunSafely(Unlocking(flag ? (_duration * 0.5f) : _duration));
 	}
 
-	public async Task Unlocking()
+	public async Task Unlocking(float duration)
 	{
 		_previousParticleIndex = -1;
 		base.SelfModulate = Colors.White;
@@ -86,9 +89,9 @@ public partial class NEpochChains : TextureRect
 		_asShaderMaterial = (ShaderMaterial)originalMaterial.Duplicate(deep: true);
 		base.Material = _asShaderMaterial;
 		SetProperties(0f);
-		while (timer < (double)_duration)
+		while (timer < (double)duration)
 		{
-			float num = (float)timer / _duration;
+			float num = (float)timer / duration;
 			float s = _particlesCurve.Sample(num);
 			SetProperties(num);
 			UpdateParticles(Mathf.FloorToInt(s));
@@ -98,7 +101,7 @@ public partial class NEpochChains : TextureRect
 		SetProperties(1f);
 		base.Material = originalMaterial;
 		_asShaderMaterial.Dispose();
-		base.SelfModulate = new Color(1f, 1f, 1f, 0f);
+		base.SelfModulate = StsColors.transparentWhite;
 		_endParticles.Restart();
 		EmitSignal(SignalName.OnAnimationFinished);
 	}

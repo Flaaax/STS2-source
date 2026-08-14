@@ -18,7 +18,7 @@
   "IMBUED.description": "戦闘開始時、自動的にプレイする。",
   "IMBUED.extraCardText": "刻印されている。",
   "IMBUED.title": "刻印",
-  "INKY.description": "このカードは追加で[blue]{Damage}[/blue]ダメージを与え、[gold]脱力[/gold][blue]{WeakPower}[/blue]を付与する。",
+  "INKY.description": "このカードは[gold]脱力[/gold][blue]{WeakPower}[/blue]を付与する。",
   "INKY.extraCardText": "{TargetType:choose(AllEnemies): すべての敵に|}[gold]脱力[/gold][blue]{WeakPower}[/blue]を付与する。",
   "INKY.title": "墨塗り",
   "INSTINCT.description": "このカードのアタックダメージが2倍になる。",

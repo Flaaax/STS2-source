@@ -18,7 +18,7 @@
   "IMBUED.description": "이 카드는 매 전투 시작 시 자동으로 사용됩니다.",
   "IMBUED.extraCardText": "주입.",
   "IMBUED.title": "주입",
-  "INKY.description": "이 카드의 피해량이 [blue]{Damage}[/blue] 증가하고, [gold]약화[/gold] 를 [blue]{WeakPower}[/blue] 부여합니다.",
+  "INKY.description": "이 카드가 [gold]약화[/gold] 를 [blue]{WeakPower}[/blue] 부여합니다.",
   "INKY.extraCardText": "{TargetType:choose(AllEnemies):모든 적에게 |}[gold]약화[/gold]를 [blue]{WeakPower}[/blue] 부여합니다.",
   "INKY.title": "잉크투성이",
   "INSTINCT.description": "이 카드의 공격 피해량이 2배가 됩니다.",

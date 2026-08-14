@@ -1,6 +1,7 @@
 using Godot;
 using MegaCrit.Sts2.Core.Bindings.MegaSpine;
-using MegaCrit.Sts2.Core.Nodes.Vfx;
+
+namespace MegaCrit.Sts2.Core.Nodes.Vfx;
 
 public partial class NSoulNexusVfx : Node
 {

@@ -44,39 +44,38 @@ public class CombatRoomHandler : IRoomHandler, IHandler
 		await PowerCmd.Apply<PlatingPower>(new ThrowingPlayerChoiceContext(), playerCreature, 999m, playerCreature, null);
 		await PowerCmd.Apply<RegenPower>(new ThrowingPlayerChoiceContext(), playerCreature, 999m, playerCreature, null);
 		int turnCount = 0;
+		int lastPlayedTurnNumber = 0;
 		while (CombatManager.Instance.IsInProgress && turnCount < 100)
 		{
 			ct.ThrowIfCancellationRequested();
 			turnCount++;
-			await WaitHelper.Until(delegate
-			{
-				PlayerCombatState? playerCombatState3 = player.PlayerCombatState;
-				return (playerCombatState3 != null && playerCombatState3.Phase == PlayerTurnPhase.Play) || !CombatManager.Instance.IsInProgress;
-			}, ct, TimeSpan.FromSeconds(30L), "Play phase not started");
+			AutoSlayer.CurrentWatchdog?.Reset($"Waiting for a playable turn after turn {lastPlayedTurnNumber}");
+			await WaitHelper.Until(() => IsPlayableTurnAfter(player, lastPlayedTurnNumber) || !CombatManager.Instance.IsInProgress, ct, TimeSpan.FromSeconds(28L), () => $"No playable turn after turn {lastPlayedTurnNumber} (phase={player.PlayerCombatState?.Phase}, turnNumber={player.PlayerCombatState?.TurnNumber})");
 			if (!CombatManager.Instance.IsInProgress)
 			{
 				break;
 			}
-			AutoSlayer.CurrentWatchdog?.Reset($"Combat turn {turnCount}");
-			if (turnCount >= 3)
+			int playingTurnNumber = (lastPlayedTurnNumber = player.PlayerCombatState.TurnNumber);
+			AutoSlayer.CurrentWatchdog?.Reset($"Combat turn {playingTurnNumber}");
+			if (playingTurnNumber >= 3)
 			{
 				await PowerCmd.Apply<StrengthPower>(new ThrowingPlayerChoiceContext(), playerCreature, 200m, playerCreature, null);
 			}
-			AutoSlayLog.Action($"Turn {turnCount}: playing cards");
+			AutoSlayLog.Action($"Turn {playingTurnNumber}: playing cards");
 			await UseAllPotions(player, random, ct);
 			int cardsPlayed = 0;
 			HashSet<CardModel> attemptedCards = new HashSet<CardModel>();
 			while (cardsPlayed < 50)
 			{
 				PlayerCombatState? playerCombatState = player.PlayerCombatState;
-				if (playerCombatState == null || playerCombatState.Phase != PlayerTurnPhase.Play)
+				if (playerCombatState == null || playerCombatState.Phase != PlayerTurnPhase.Play || player.PlayerCombatState.TurnNumber != playingTurnNumber)
 				{
 					break;
 				}
 				ct.ThrowIfCancellationRequested();
 				if (cardsPlayed > 0 && cardsPlayed % 10 == 0)
 				{
-					AutoSlayer.CurrentWatchdog?.Reset($"Combat turn {turnCount}, played {cardsPlayed} cards");
+					AutoSlayer.CurrentWatchdog?.Reset($"Combat turn {playingTurnNumber}, played {cardsPlayed} cards");
 				}
 				CardPile pile = PileType.Hand.GetPile(player);
 				UnplayableReason reason;
@@ -95,14 +94,33 @@ public class CombatRoomHandler : IRoomHandler, IHandler
 				cardsPlayed++;
 				await Task.Delay(100, ct);
 			}
+			if (!CombatManager.Instance.IsInProgress)
+			{
+				break;
+			}
 			PlayerCombatState? playerCombatState2 = player.PlayerCombatState;
-			if (playerCombatState2 != null && playerCombatState2.Phase == PlayerTurnPhase.Play && CombatManager.Instance.IsInProgress)
+			if (playerCombatState2 != null && playerCombatState2.Phase == PlayerTurnPhase.Play && player.PlayerCombatState.TurnNumber == playingTurnNumber)
 			{
 				PlayerCmd.EndTurn(player, canBackOut: false);
+				continue;
 			}
+			AutoSlayLog.Action($"Turn {playingTurnNumber} was ended by the game, not by AutoSlay");
 		}
-		await WaitHelper.Until(() => !CombatManager.Instance.IsInProgress, ct, TimeSpan.FromSeconds(30L), "Combat did not end");
+		AutoSlayer.CurrentWatchdog?.Reset("Waiting for combat to end");
+		await WaitHelper.Until(() => !CombatManager.Instance.IsInProgress, ct, TimeSpan.FromSeconds(28L), () => $"Combat did not end after {turnCount} turns (phase={player.PlayerCombatState?.Phase}, turnNumber={player.PlayerCombatState?.TurnNumber})");
 		AutoSlayLog.Action("Combat finished");
+	}
+
+	/// <summary>True when the game is ready for AutoSlay to act in a turn it has not played yet.</summary>
+	/// <remarks>Greater-than, not not-equal: TurnNumber restarts at 1 each combat (Player.ResetCombatState).</remarks>
+	private static bool IsPlayableTurnAfter(Player player, int lastPlayedTurnNumber)
+	{
+		PlayerCombatState playerCombatState = player.PlayerCombatState;
+		if (playerCombatState != null && playerCombatState.Phase == PlayerTurnPhase.Play)
+		{
+			return playerCombatState.TurnNumber > lastPlayedTurnNumber;
+		}
+		return false;
 	}
 
 	private static Creature? GetRandomTarget(CardModel card, Rng random)

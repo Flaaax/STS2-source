@@ -33,6 +33,13 @@ public partial class NHotkeyManager : Node
 		}
 	}
 
+	public void ClearHotkeys()
+	{
+		_hotkeyPressedBindings.Clear();
+		_hotkeyReleasedBindings.Clear();
+		_blockingScreens.Clear();
+	}
+
 	public void PushHotkeyPressedBinding(string hotkey, Action action)
 	{
 		if (!_hotkeyPressedBindings.ContainsKey(hotkey))

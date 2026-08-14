@@ -1,4 +1,8 @@
+using System;
 using System.Collections.Generic;
+using Godot;
+using MegaCrit.Sts2.Core.Debug;
+using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Modding;
 using MegaCrit.Sts2.Core.Multiplayer.Serialization;
 using MegaCrit.Sts2.Core.Nodes;
@@ -6,7 +10,12 @@ using MegaCrit.Sts2.Core.Platform;
 
 namespace MegaCrit.Sts2.Core.Multiplayer;
 
-public struct PeerVersionInfo : IPacketSerializable
+/// <summary>
+/// Sent during the handshake between host and client.
+/// This is the only struct of its kind that must NOT change format significantly. It must stay stable enough between
+/// versions that we can detect version mismatches, i.e. we should only add to this and never remove.
+/// </summary>
+public struct PeerVersionInfo
 {
 	/// <summary>
 	/// The version of the game the host is running.
@@ -76,28 +85,56 @@ public struct PeerVersionInfo : IPacketSerializable
 		}
 	}
 
-	public void Deserialize(PacketReader reader)
+	public bool TryDeserialize(PacketReader reader)
 	{
-		version = reader.ReadString();
-		branch = reader.ReadEnum<PlatformBranch>();
-		idDatabaseHash = reader.ReadUInt();
-		if (reader.ReadBool())
+		try
 		{
-			int num = reader.ReadInt();
-			gameplayAffectingMods = new List<string>();
-			for (int i = 0; i < num; i++)
+			version = reader.ReadString();
+			if (!SemanticVersion.TryFromString(version, out SemanticVersion _) && !OS.HasFeature("editor"))
 			{
-				gameplayAffectingMods.Add(reader.ReadString());
+				return false;
 			}
+			branch = reader.ReadEnum<PlatformBranch>();
+			idDatabaseHash = reader.ReadUInt();
+			if (reader.ReadBool())
+			{
+				int num = reader.ReadInt();
+				gameplayAffectingMods = new List<string>();
+				for (int i = 0; i < num; i++)
+				{
+					gameplayAffectingMods.Add(reader.ReadString());
+				}
+			}
+			if (reader.ReadBool())
+			{
+				int num2 = reader.ReadInt();
+				otherMods = new List<string>();
+				for (int j = 0; j < num2; j++)
+				{
+					otherMods.Add(reader.ReadString());
+				}
+			}
+			return true;
 		}
-		if (reader.ReadBool())
+		catch (Exception value)
 		{
-			int num2 = reader.ReadInt();
-			otherMods = new List<string>();
-			for (int j = 0; j < num2; j++)
-			{
-				otherMods.Add(reader.ReadString());
-			}
+			Log.Error($"Failed to deserialize ${"PeerVersionInfo"}! Attempting to proceed with a partial read. Exception: {value}");
+			return false;
 		}
+	}
+
+	public bool IsModded()
+	{
+		List<string>? list = gameplayAffectingMods;
+		if (list == null || list.Count <= 0)
+		{
+			List<string>? list2 = otherMods;
+			if (list2 == null)
+			{
+				return false;
+			}
+			return list2.Count > 0;
+		}
+		return true;
 	}
 }

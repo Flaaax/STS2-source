@@ -1,5 +1,7 @@
 using Godot;
 
+namespace MegaCrit.Sts2.Core.Nodes.Vfx.Utilities;
+
 public partial class NShaker : Node
 {
 	[Export(PropertyHint.None, "")]

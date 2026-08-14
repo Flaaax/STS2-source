@@ -254,7 +254,7 @@ public partial class NMultiplayerTest : Control, IStartRunLobbyListener
 			_game.DebugSeedOverride = _settings.Seed;
 		}
 		Disconnect(NetError.Quit);
-		NetHostGameService netService = new NetHostGameService();
+		NetHostGameService netService = new NetHostGameService(PeerVersionInfo.LocalDefault());
 		NetErrorInfo? value = ((!steam) ? netService.StartENetHost(33771, 4) : (await netService.StartSteamHost(4)));
 		if (!value.HasValue)
 		{
@@ -279,7 +279,7 @@ public partial class NMultiplayerTest : Control, IStartRunLobbyListener
 			_game.DebugSeedOverride = _settings.Seed;
 		}
 		Disconnect(NetError.Quit);
-		JoinFlow joinFlow = new JoinFlow(new NetClientGameService());
+		JoinFlow joinFlow = new JoinFlow(new NetClientGameService(PeerVersionInfo.LocalDefault()));
 		try
 		{
 			JoinResult joinResult = await joinFlow.Begin(initializer, GetTree());

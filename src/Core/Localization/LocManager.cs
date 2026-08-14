@@ -4,7 +4,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using Godot;
@@ -61,6 +60,7 @@ public class LocManager
 		{ "es", "spa" },
 		{ "es_LATAM", "esp" },
 		{ "fr", "fra" },
+		{ "id", "ind" },
 		{ "it", "ita" },
 		{ "ja", "jpn" },
 		{ "ko", "kor" },
@@ -98,7 +98,29 @@ public class LocManager
 
 	private readonly List<LocaleChangeCallback> _localeChangeCallbacks = new List<LocaleChangeCallback>();
 
-	private static readonly CultureInfo _englishCultureInfo;
+	private static readonly (string Language, string CultureCode)[] _supportedLanguages = new(string, string)[16]
+	{
+		("eng", "en"),
+		("zhs", "zh-hans"),
+		("zht", "zh-hant"),
+		("deu", "de"),
+		("esp", "es-419"),
+		("fra", "fr"),
+		("ind", "id"),
+		("ita", "it"),
+		("jpn", "ja"),
+		("kor", "ko"),
+		("pol", "pl"),
+		("ptb", "pt-br"),
+		("rus", "ru"),
+		("spa", "es-ES"),
+		("tha", "th"),
+		("tur", "tr")
+	};
+
+	private static readonly Dictionary<string, string> _cultureCodeByLanguage = _supportedLanguages.ToDictionary(((string Language, string CultureCode) entry) => entry.Language, ((string Language, string CultureCode) entry) => entry.CultureCode);
+
+	private static readonly CultureInfo _englishCultureInfo = GetCultureInfoSafe("en");
 
 	public static LocManager Instance { get; private set; } = null;
 
@@ -118,7 +140,7 @@ public class LocManager
 
 	public string Language { get; private set; }
 
-	public static List<string> Languages { get; }
+	public static List<string> Languages { get; } = _supportedLanguages.Select(((string Language, string CultureCode) entry) => entry.Language).ToList();
 
 	public CultureInfo CultureInfo { get; private set; }
 
@@ -190,33 +212,15 @@ public class LocManager
 	/// </summary>
 	private CultureInfo CultureInfoFromThreeLetterCode(string language)
 	{
-		string text = language switch
+		string valueOrDefault = _cultureCodeByLanguage.GetValueOrDefault(language);
+		if (valueOrDefault == null)
 		{
-			"eng" => "en", 
-			"zhs" => "zh-hans", 
-			"zht" => "zh-hant", 
-			"deu" => "de", 
-			"esp" => "es-419", 
-			"fra" => "fr", 
-			"ita" => "it", 
-			"jpn" => "ja", 
-			"kor" => "ko", 
-			"pol" => "pl", 
-			"ptb" => "pt-br", 
-			"rus" => "ru", 
-			"spa" => "es-ES", 
-			"tha" => "th", 
-			"tur" => "tr", 
-			_ => null, 
-		};
-		if (text == null)
-		{
-			string text2 = "Language code " + language + " could not be mapped to CultureInfo! Add a new manual mapping";
-			Log.Error(text2);
-			SentryService.CaptureMessage(text2);
+			string text = "Language code " + language + " could not be mapped to CultureInfo! Add a new manual mapping";
+			Log.Error(text);
+			SentryService.CaptureMessage(text);
 			return GetCultureInfoSafe("en");
 		}
-		return GetCultureInfoSafe(text);
+		return GetCultureInfoSafe(valueOrDefault);
 	}
 
 	/// <summary>
@@ -608,45 +612,5 @@ public class LocManager
 			localeChangeCallback();
 		}
 		GC.Collect();
-	}
-
-	static LocManager()
-	{
-		int num = 15;
-		List<string> list = new List<string>(num);
-		CollectionsMarshal.SetCount(list, num);
-		Span<string> span = CollectionsMarshal.AsSpan(list);
-		int num2 = 0;
-		span[num2] = "eng";
-		num2++;
-		span[num2] = "zhs";
-		num2++;
-		span[num2] = "zht";
-		num2++;
-		span[num2] = "deu";
-		num2++;
-		span[num2] = "esp";
-		num2++;
-		span[num2] = "fra";
-		num2++;
-		span[num2] = "ita";
-		num2++;
-		span[num2] = "jpn";
-		num2++;
-		span[num2] = "kor";
-		num2++;
-		span[num2] = "pol";
-		num2++;
-		span[num2] = "ptb";
-		num2++;
-		span[num2] = "rus";
-		num2++;
-		span[num2] = "spa";
-		num2++;
-		span[num2] = "tha";
-		num2++;
-		span[num2] = "tur";
-		Languages = list;
-		_englishCultureInfo = GetCultureInfoSafe("en");
 	}
 }

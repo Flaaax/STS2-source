@@ -1,8 +1,5 @@
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using MegaCrit.Sts2.Core.Combat;
-using MegaCrit.Sts2.Core.Combat.History.Entries;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -16,8 +13,6 @@ namespace MegaCrit.Sts2.Core.Models.Cards;
 
 public sealed class ForgottenRitual : CardModel
 {
-	protected override bool ShouldGlowGoldInternal => WasCardExhaustedThisTurn;
-
 	public override IEnumerable<CardKeyword> CanonicalKeywords => new global::_003C_003Ez__ReadOnlySingleElementList<CardKeyword>(CardKeyword.Exhaust);
 
 	protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new EnergyVar(3));
@@ -30,8 +25,6 @@ public sealed class ForgottenRitual : CardModel
 
 	protected override IEnumerable<string> ExtraRunAssetPaths => NGroundFireVfx.AssetPaths;
 
-	private bool WasCardExhaustedThisTurn => CombatManager.Instance.History.Entries.OfType<CardExhaustedEntry>().Any((CardExhaustedEntry e) => e.HappenedThisTurn(base.CombatState) && e.Actor == base.Owner.Creature);
-
 	public ForgottenRitual()
 		: base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 	{
@@ -39,13 +32,10 @@ public sealed class ForgottenRitual : CardModel
 
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
 	{
-		if (WasCardExhaustedThisTurn)
-		{
-			NGroundFireVfx child = NGroundFireVfx.Create(base.Owner.Creature, VfxColor.Purple);
-			NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(child);
-			await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
-			await PlayerCmd.GainEnergy(base.DynamicVars.Energy.IntValue, base.Owner);
-		}
+		NGroundFireVfx child = NGroundFireVfx.Create(base.Owner.Creature, VfxColor.Purple);
+		NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(child);
+		await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
+		await PlayerCmd.GainEnergy(base.DynamicVars.Energy.IntValue, base.Owner);
 	}
 
 	protected override void OnUpgrade()

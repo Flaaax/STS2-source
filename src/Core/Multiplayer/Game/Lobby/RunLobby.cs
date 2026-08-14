@@ -36,7 +36,7 @@ public class RunLobby
 
 	/// <summary>
 	/// Set to true if any player in the session was playing with mods.
-	/// This cannot be derived from <see cref="F:MegaCrit.Sts2.Core.Entities.Multiplayer.RunLobbyPlayer.versionInfo" /> because errors that occur during
+	/// This cannot be derived from <see cref="F:MegaCrit.Sts2.Core.Entities.Multiplayer.RunLobbyPlayer.isModded" /> because errors that occur during
 	/// disconnection are emitted after the player has already left, which means they've been removed from
 	/// <see cref="P:MegaCrit.Sts2.Core.Multiplayer.Game.Lobby.RunLobby.Players" />.
 	/// </summary>
@@ -66,11 +66,10 @@ public class RunLobby
 		_playerCollection = playerCollection;
 		_logger = new Logger("RunLobby", LogType.Network);
 		Players = players.ToList();
-		AnyPlayerHadMods = Players.Any((RunLobbyPlayer p) => p.versionInfo.gameplayAffectingMods != null || p.versionInfo.otherMods != null);
+		AnyPlayerHadMods = Players.Any((RunLobbyPlayer p) => p.isModded);
 		_netService.RegisterMessageHandler<ClientLobbyJoinRequestMessage>(HandleClientLobbyJoinRequestMessage);
 		_netService.RegisterMessageHandler<ClientLoadJoinRequestMessage>(HandleClientLoadJoinRequestMessage);
 		_netService.RegisterMessageHandler<ClientRejoinRequestMessage>(HandleClientRejoinRequestMessage);
-		_netService.RegisterMessageHandler<ClientConnectionFailedMessage>(HandleClientDisconnectionMessage);
 		_netService.RegisterMessageHandler<PlayerRejoinedMessage>(HandlePlayerRejoinedMessage);
 		_netService.RegisterMessageHandler<PlayerLeftMessage>(HandlePlayerLeftMessage);
 		_netService.RegisterMessageHandler<RunAbandonedMessage>(HandleRunAbandonedMessage);
@@ -90,7 +89,6 @@ public class RunLobby
 		_netService.UnregisterMessageHandler<ClientLobbyJoinRequestMessage>(HandleClientLobbyJoinRequestMessage);
 		_netService.UnregisterMessageHandler<ClientLoadJoinRequestMessage>(HandleClientLoadJoinRequestMessage);
 		_netService.UnregisterMessageHandler<ClientRejoinRequestMessage>(HandleClientRejoinRequestMessage);
-		_netService.UnregisterMessageHandler<ClientConnectionFailedMessage>(HandleClientDisconnectionMessage);
 		_netService.UnregisterMessageHandler<PlayerRejoinedMessage>(HandlePlayerRejoinedMessage);
 		_netService.UnregisterMessageHandler<PlayerLeftMessage>(HandlePlayerLeftMessage);
 		_netService.UnregisterMessageHandler<RunAbandonedMessage>(HandleRunAbandonedMessage);
@@ -121,18 +119,18 @@ public class RunLobby
 		RunLobbyPlayer runLobbyPlayer = new RunLobbyPlayer
 		{
 			id = senderId,
-			versionInfo = message.versionInfo
+			isModded = netHostGameService.GetVersionInfoForPeer(senderId).Value.IsModded()
 		};
 		Players.Add(runLobbyPlayer);
 		PlayerRejoinedMessage message2 = new PlayerRejoinedMessage
 		{
 			player = runLobbyPlayer
 		};
-		foreach (NetClientData connectedPeer in netHostGameService.ConnectedPeers)
+		foreach (RunLobbyPlayer player in Players)
 		{
-			if (connectedPeer.readyForBroadcasting && connectedPeer.peerId != senderId)
+			if (player.id != _netService.NetId && player.id != runLobbyPlayer.id)
 			{
-				netHostGameService.SendMessage(message2, connectedPeer.peerId);
+				netHostGameService.SendMessage(message2, player.id);
 			}
 		}
 		this.PlayerRejoined?.Invoke(runLobbyPlayer);
@@ -167,11 +165,6 @@ public class RunLobby
 		this.PlayerRejoined?.Invoke(message.player);
 	}
 
-	private void HandleClientDisconnectionMessage(ClientConnectionFailedMessage message, ulong senderId)
-	{
-		_logger.Info($"Received invalid ClientDisconnectionMessage for {senderId} in RunLobby, which is invalid - ignoring");
-	}
-
 	private void HandlePlayerLeftMessage(PlayerLeftMessage message, ulong _)
 	{
 		_logger.Debug($"Received PlayerLeftMessage for {message.playerId}");
@@ -204,7 +197,6 @@ public class RunLobby
 		_logger.Info($"Player {playerId} connected to host.");
 		InitialGameInfoMessage message = new InitialGameInfoMessage
 		{
-			versionInfo = PeerVersionInfo.LocalDefault(),
 			sessionState = RunSessionState.Running,
 			gameMode = GameMode
 		};

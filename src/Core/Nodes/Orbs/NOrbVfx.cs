@@ -9,6 +9,8 @@ using MegaCrit.Sts2.Core.Nodes.Combat;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.Nodes.Vfx.Utilities;
 
+namespace MegaCrit.Sts2.Core.Nodes.Orbs;
+
 public partial class NOrbVfx : Node2D
 {
 	[Export(PropertyHint.None, "")]

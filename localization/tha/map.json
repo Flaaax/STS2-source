@@ -37,5 +37,12 @@
   "LEGEND_UNKNOWN.hoverTip.description": "ห้องปริศนา\n\nอาจเจอเหตุการณ์, ศัตรู, ร้านค้า, หรือสมบัติ",
   "LEGEND_UNKNOWN.hoverTip.title": "???",
   "LEGEND_UNKNOWN.title": "ปริศนา",
+  "SHARE.description.other": "ถ่ายภาพหน้าจอแผนที่ทั้งหมดเพื่อแบ่งปันให้เพื่อนๆ",
+  "SHARE.description.steam": "ถ่ายภาพหน้าจอแผนที่ทั้งหมดเพื่อแบ่งปันให้เพื่อนๆ บน Steam",
+  "SHARE.title": "แบ่งปัน",
+  "SHARE_POPUP.description": "[gold]บันทึกภาพหน้าจอไปยัง:[/gold]\n\n{path}",
+  "SHARE_POPUP.open": "เปิด",
+  "SHARE_POPUP.title": "บันทึกภาพหน้าจอแล้ว!",
+  "SHARE_TOAST.description.steam": "บันทึกภาพหน้าจอแล้ว!",
   "STARTING_ROOM_PROMPT": "เลือกห้องเริ่มต้น"
 }

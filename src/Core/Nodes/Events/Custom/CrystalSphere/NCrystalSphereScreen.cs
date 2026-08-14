@@ -127,10 +127,7 @@ public partial class NCrystalSphereScreen : Control, IOverlayScreen, IScreenCont
 				{
 					TaskHelper.RunSafely(OnCellClicked(cell));
 				}));
-				cell.Connect(NClickableControl.SignalName.Released, Callable.From<NClickableControl>(delegate
-				{
-					TaskHelper.RunSafely(OnCellClicked(cell));
-				}));
+				cell.Connect(NClickableControl.SignalName.Released, Callable.From<NCrystalSphereCell>(OnCellReleased));
 			}
 		}
 		foreach (CrystalSphereItem item in _entity.Items)
@@ -204,6 +201,11 @@ public partial class NCrystalSphereScreen : Control, IOverlayScreen, IScreenCont
 		{
 			_dialogue.PlayBad();
 		}
+	}
+
+	private void OnCellReleased(NCrystalSphereCell cell)
+	{
+		TaskHelper.RunSafely(OnCellClicked(cell));
 	}
 
 	private async Task OnCellClicked(NCrystalSphereCell cell)

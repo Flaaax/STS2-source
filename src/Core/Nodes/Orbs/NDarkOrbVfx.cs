@@ -1,7 +1,8 @@
 using Godot;
 using MegaCrit.Sts2.Core.Helpers;
-using MegaCrit.Sts2.Core.Nodes.Vfx;
 using MegaCrit.Sts2.Core.Nodes.Vfx.Utilities;
+
+namespace MegaCrit.Sts2.Core.Nodes.Orbs;
 
 public partial class NDarkOrbVfx : NOrbVfx
 {

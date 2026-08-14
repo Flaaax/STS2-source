@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.Animation;
 using MegaCrit.Sts2.Core.Assets;
 using MegaCrit.Sts2.Core.Bindings.MegaSpine;
 using MegaCrit.Sts2.Core.Entities.Characters;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Nodes.Combat;
@@ -217,6 +218,20 @@ public abstract class CharacterModel : AbstractModel
 
 	public virtual string CharacterTransitionSfx => "event:/sfx/ui/wipe_" + base.Id.Entry.ToLowerInvariant();
 
+	protected Func<Creature, bool> IsLowHealth => (Creature creature) => creature.GetHpPercentRemaining() <= 0.25;
+
+	/// <summary>
+	/// These are the standard animations based on the animation trigger.
+	/// These animations always transition back to an idle.
+	/// </summary>
+	protected virtual List<(AnimState, string)> AnimationStates => new List<(AnimState, string)>
+	{
+		(new AnimState("cast"), "Cast"),
+		(new AnimState("attack"), "Attack"),
+		(new AnimState("hurt"), "Hit"),
+		(new AnimState("cast"), "PowerUp")
+	};
+
 	public override bool ShouldReceiveCombatHooks => false;
 
 	public NCreatureVisuals CreateVisuals()
@@ -229,26 +244,23 @@ public abstract class CharacterModel : AbstractModel
 	/// </summary>
 	public abstract List<string> GetArchitectAttackVfx();
 
-	public virtual CreatureAnimator GenerateAnimator(MegaSprite controller)
+	public virtual CreatureAnimator GenerateAnimator(MegaSprite controller, Creature creature)
 	{
 		AnimState animState = new AnimState("idle_loop", isLooping: true);
-		AnimState animState2 = new AnimState("cast");
-		AnimState animState3 = new AnimState("attack");
-		AnimState animState4 = new AnimState("hurt");
 		AnimState state = new AnimState("die");
-		AnimState animState5 = new AnimState("relaxed_loop", isLooping: true);
-		animState2.NextState = animState;
-		animState3.NextState = animState;
-		animState4.NextState = animState;
-		animState5.AddBranch("Idle", animState);
-		CreatureAnimator creatureAnimator = new CreatureAnimator(animState, controller);
-		creatureAnimator.AddAnyState("Idle", animState);
+		AnimState animState2 = new AnimState("low_health_loop", isLooping: true);
+		AnimState state2 = new AnimState("relaxed_loop", isLooping: true);
+		CreatureAnimator creatureAnimator = new CreatureAnimator(IsLowHealth(creature) ? animState2 : animState, controller);
+		creatureAnimator.AddAnyState("Idle", animState, () => !IsLowHealth(creature));
+		creatureAnimator.AddAnyState("Idle", animState2, () => IsLowHealth(creature));
+		creatureAnimator.AddAnyState("Relaxed", state2);
 		creatureAnimator.AddAnyState("Dead", state);
-		creatureAnimator.AddAnyState("Hit", animState4);
-		creatureAnimator.AddAnyState("Attack", animState3);
-		creatureAnimator.AddAnyState("Cast", animState2);
-		creatureAnimator.AddAnyState("PowerUp", animState2);
-		creatureAnimator.AddAnyState("Relaxed", animState5);
+		foreach (var animationState in AnimationStates)
+		{
+			animationState.Item1.AddNextState(animState, () => !IsLowHealth(creature));
+			animationState.Item1.AddNextState(animState2, () => IsLowHealth(creature));
+			creatureAnimator.AddAnyState(animationState.Item2, animationState.Item1);
+		}
 		return creatureAnimator;
 	}
 

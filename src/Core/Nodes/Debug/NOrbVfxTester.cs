@@ -1,5 +1,8 @@
 using System;
 using Godot;
+using MegaCrit.Sts2.Core.Nodes.Orbs;
+
+namespace MegaCrit.Sts2.Core.Nodes.Debug;
 
 public partial class NOrbVfxTester : Control
 {

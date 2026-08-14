@@ -10,7 +10,7 @@ bounds:520,14,38,11
 bod
 bounds:790,132,54,57
 bottm fist
-bounds:584,12,24,29
+bounds:648,12,24,29
 rotate:90
 bottom arm 1
 bounds:686,15,33,60
@@ -31,9 +31,10 @@ bottom hand
 bounds:818,105,24,25
 offsets:6,0,30,25
 bottom hand freaked
-bounds:159,4,29,41
+bounds:903,9,29,41
 offsets:0,0,30,41
-rotate:90
+bubble
+bounds:133,2,31,31
 chain
 bounds:929,471,33,15
 rotate:90
@@ -44,16 +45,15 @@ fist swish
 bounds:416,4,23,55
 rotate:90
 half eye
-bounds:239,2,20,14
+bounds:229,2,20,14
 offsets:1,1,22,16
 rotate:90
 hand
 bounds:473,2,45,23
 offsets:0,1,45,24
 hand copy
-bounds:615,9,27,28
+bounds:619,8,27,28
 offsets:0,1,28,29
-rotate:90
 head
 bounds:499,63,69,106
 rotate:90
@@ -62,7 +62,7 @@ bounds:851,188,83,77
 offsets:0,0,91,80
 rotate:90
 l shoulder
-bounds:133,2,31,24
+bounds:166,2,31,24
 offsets:0,0,32,24
 rotate:90
 left guy
@@ -91,16 +91,15 @@ bounds:499,27,34,83
 offsets:53,0,87,105
 rotate:90
 mad eye
-bounds:202,2,20,18
+bounds:192,2,20,18
 offsets:1,1,22,20
 rotate:90
 minion sweat
-bounds:829,2,9,5
-rotate:90
+bounds:903,2,9,5
 neck
 bounds:916,111,34,34
 normal eye
-bounds:222,2,20,15
+bounds:212,2,20,15
 offsets:1,1,23,17
 rotate:90
 r shoulder
@@ -165,7 +164,7 @@ top arm 2 flipped
 bounds:686,50,43,69
 offsets:0,0,43,77
 top fist
-bounds:903,22,33,28
+bounds:584,8,33,28
 top hand 1
 bounds:918,81,32,28
 offsets:1,3,33,31

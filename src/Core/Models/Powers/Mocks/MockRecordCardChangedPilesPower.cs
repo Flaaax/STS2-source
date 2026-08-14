@@ -11,7 +11,7 @@ public sealed class MockRecordCardChangedPilesPower : PowerModel
 	/// Records every AfterCardChangedPiles call this power receives, as (oldPileType, newPileType).
 	/// Static so a test can read it regardless of canonical/mutable model copying. Test-only: clear before use.
 	/// </summary>
-	public static readonly List<(PileType oldPileType, PileType? newPileType)> Records = new List<(PileType, PileType?)>();
+	public static readonly List<(PileType oldPileType, PileType? newPileType)> records = new List<(PileType, PileType?)>();
 
 	public override bool IsMock => true;
 
@@ -21,7 +21,7 @@ public sealed class MockRecordCardChangedPilesPower : PowerModel
 
 	public override Task AfterCardChangedPiles(CardModel card, PileType oldPileType, AbstractModel? clonedBy)
 	{
-		Records.Add((oldPileType, card.Pile?.Type));
+		records.Add((oldPileType, card.Pile?.Type));
 		return Task.CompletedTask;
 	}
 }

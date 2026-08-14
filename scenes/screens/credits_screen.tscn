@@ -506,7 +506,7 @@ metadata/_custom_type_script = "uid://c2oywrx8xbqfx"
 
 [node name="zhsHeader" type="Label" parent="ScreenContents/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 160)
+custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.9372549, 0.78431374, 0.31764707, 1)
 theme_override_fonts/font = ExtResource("2_t1765")
@@ -573,9 +573,48 @@ AutoSizeEnabled = false
 MaxFontSize = 24
 metadata/_custom_type_script = "uid://c2oywrx8xbqfx"
 
+[node name="zhtHeader" type="Label" parent="ScreenContents/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9372549, 0.78431374, 0.31764707, 1)
+theme_override_fonts/font = ExtResource("2_t1765")
+theme_override_font_sizes/font_size = 28
+text = "?Traditional Chinese"
+horizontal_alignment = 1
+vertical_alignment = 2
+script = ExtResource("2_k2vtp")
+MaxFontSize = 28
+metadata/_custom_type_script = "uid://dtfio45agppyj"
+
+[node name="zhtNames" type="RichTextLabel" parent="ScreenContents/VBoxContainer"]
+unique_name_in_owner = true
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 0.9647059, 0.8862745, 1)
+theme_override_constants/paragraph_separation = 2
+theme_override_fonts/normal_font = ExtResource("2_t1765")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 32
+theme_override_font_sizes/bold_italics_font_size = 32
+theme_override_font_sizes/italics_font_size = 32
+theme_override_font_sizes/mono_font_size = 32
+text = "?DK Liao (HexaLoc Labbo)"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("4_g42y5")
+AutoSizeEnabled = false
+MaxFontSize = 24
+metadata/_custom_type_script = "uid://c2oywrx8xbqfx"
+
 [node name="fraHeader" type="Label" parent="ScreenContents/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 160)
+custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.9372549, 0.78431374, 0.31764707, 1)
 theme_override_fonts/font = ExtResource("2_t1765")
@@ -779,6 +818,45 @@ AutoSizeEnabled = false
 MaxFontSize = 24
 metadata/_custom_type_script = "uid://c2oywrx8xbqfx"
 
+[node name="indHeader" type="Label" parent="ScreenContents/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9372549, 0.78431374, 0.31764707, 1)
+theme_override_fonts/font = ExtResource("2_t1765")
+theme_override_font_sizes/font_size = 28
+text = "?Indonesian"
+horizontal_alignment = 1
+vertical_alignment = 2
+script = ExtResource("2_k2vtp")
+MaxFontSize = 28
+metadata/_custom_type_script = "uid://dtfio45agppyj"
+
+[node name="indNames" type="RichTextLabel" parent="ScreenContents/VBoxContainer"]
+unique_name_in_owner = true
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 0.9647059, 0.8862745, 1)
+theme_override_constants/paragraph_separation = 2
+theme_override_fonts/normal_font = ExtResource("2_t1765")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 32
+theme_override_font_sizes/bold_italics_font_size = 32
+theme_override_font_sizes/italics_font_size = 32
+theme_override_font_sizes/mono_font_size = 32
+text = "?IndonesianTranslatorGoesHere"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("4_g42y5")
+AutoSizeEnabled = false
+MaxFontSize = 24
+metadata/_custom_type_script = "uid://c2oywrx8xbqfx"
+
 [node name="jpnHeader" type="Label" parent="ScreenContents/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 120)
@@ -899,7 +977,7 @@ metadata/_custom_type_script = "uid://c2oywrx8xbqfx"
 
 [node name="rusHeader" type="Label" parent="ScreenContents/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 160)
+custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.9372549, 0.78431374, 0.31764707, 1)
 theme_override_fonts/font = ExtResource("2_t1765")

@@ -33,6 +33,8 @@ public abstract partial class NCardsViewScreen : Control, ICapstoneScreen, IScre
 
 	protected List<CardModel> _cards;
 
+	private NInspectCardScreen? _inspectCardScreen;
+
 	protected LocString _infoText;
 
 	public abstract NetScreenType ScreenType { get; }
@@ -76,13 +78,22 @@ public abstract partial class NCardsViewScreen : Control, ICapstoneScreen, IScre
 		List<CardModel> list = _grid.CurrentlyDisplayedCards.ToList();
 		NInspectCardScreen inspectCardScreen = NGame.Instance.GetInspectCardScreen();
 		inspectCardScreen.Open(list, list.IndexOf(cardModel), _grid.IsShowingUpgrades);
-		inspectCardScreen.Connect(CanvasItem.SignalName.VisibilityChanged, Callable.From(delegate
+		Callable callable = Callable.From(OnInspectVisibilityChanged);
+		if (inspectCardScreen.IsConnected(CanvasItem.SignalName.VisibilityChanged, callable))
 		{
-			if (!inspectCardScreen.Visible)
-			{
-				OnInspectCardHidden();
-			}
-		}), 4u);
+			inspectCardScreen.Disconnect(CanvasItem.SignalName.VisibilityChanged, callable);
+		}
+		_inspectCardScreen = inspectCardScreen;
+		inspectCardScreen.Connect(CanvasItem.SignalName.VisibilityChanged, callable, 4u);
+	}
+
+	private void OnInspectVisibilityChanged()
+	{
+		NInspectCardScreen inspectCardScreen = _inspectCardScreen;
+		if (inspectCardScreen != null && !inspectCardScreen.Visible)
+		{
+			OnInspectCardHidden();
+		}
 	}
 
 	protected virtual void OnInspectCardHidden()

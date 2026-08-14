@@ -7,8 +7,13 @@
   "ACTION_NAME.revive": "ชุบชีวิต",
   "ACTION_NAME.stun": "สตัน",
   "DESCRIPTION.placeholder": "รอการเปิดเผยข้อมูลของมอนสเตอร์ตัวนี้...",
+  "EVENTS.title": "เหตุการณ์",
   "LOCKED.monsterName": "[lb]ล็อก[rb]",
   "LOCKED.monsterTitle": "ล็อก",
+  "MODE.viewActions": "ดูการกระทำ",
+  "MODE.viewStats": "ดูค่าพลัง",
+  "QUOTE_PLACEHOLDER": "[red][i](ยังเขียนบทสนทนาของตัวละครไม่เสร็จ)[/i][/red]",
+  "STATS.layout": "พบเจอ: [blue]{total}[/blue]\nฆ่า: [green]{kills}[/green]\nตาย: [red]{deaths}[/red]\nอัตราการชนะ: [gold]{winrate}%[/gold]",
   "UNDER_CONSTRUCTION": "อยู่ระหว่างจัดทำ",
   "UNSEEN.monsterName": "[lb]ปริศนา[rb]"
 }

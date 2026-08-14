@@ -86,7 +86,7 @@
   "CHAINS_OF_BINDING_POWER.description": "Las primeras [blue]3[/blue] cartas robadas en cada turno tendrán la aflicción [gold]vínculo[/gold].",
   "CHAINS_OF_BINDING_POWER.smartDescription": "Las primeras [blue]{Amount}[/blue] cartas robadas en cada turno tendrán la aflicción [gold]vínculo[/gold].",
   "CHAINS_OF_BINDING_POWER.title": "Cadenas de vínculo",
-  "CHILD_OF_THE_STARS_POWER.description": "Brinda [blue]4[/blue] de [gold]bloqueo[/gold] por cada {singleStarIcon} que gastes.",
+  "CHILD_OF_THE_STARS_POWER.description": "Brinda [blue]2[/blue] de [gold]bloqueo[/gold] por cada {singleStarIcon} que gastes.",
   "CHILD_OF_THE_STARS_POWER.smartDescription": "Brinda [blue]{Amount}[/blue] de [gold]bloqueo[/gold] por cada {singleStarIcon} que gastes.",
   "CHILD_OF_THE_STARS_POWER.title": "Vástago estelar",
   "CLARITY_POWER.description": "Al comienzo de tu próximo turno, robas [blue]1[/blue] carta adicional.",

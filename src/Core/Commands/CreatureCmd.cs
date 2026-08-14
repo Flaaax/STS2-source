@@ -741,8 +741,8 @@ public static class CreatureCmd
 		{
 			return;
 		}
-		bool isDead = creature.IsDead;
-		decimal num = Math.Min(amount, creature.MaxHp - creature.CurrentHp);
+		bool wasDead = creature.IsDead;
+		decimal amountHealed = Math.Min(amount, creature.MaxHp - creature.CurrentHp);
 		if (creature == null || !(creature.Monster is Osty))
 		{
 			SfxCmd.Play("event:/sfx/heal");
@@ -760,8 +760,16 @@ public static class CreatureCmd
 				{
 					VfxCmd.PlayOnCreatureCenter(creature, "vfx/vfx_cross_heal");
 				}
+				if (creature.IsPlayer)
+				{
+					NCreature creatureNode = creature.GetCreatureNode();
+					if (creatureNode != null && creatureNode.Visuals.IsPlayingIdleAnimation())
+					{
+						await TriggerAnim(creature, "Idle", 0f);
+					}
+				}
 				creature.GetVfxContainer()?.AddChildSafely(NHealNumVfx.Create(creature, amount));
-				if (isDead)
+				if (wasDead)
 				{
 					NCombatRoom.Instance?.GetCreatureNode(creature)?.StartReviveAnim();
 				}
@@ -787,9 +795,9 @@ public static class CreatureCmd
 			}
 		}
 		MapPointHistoryEntry mapPointHistoryEntry = creature.Player?.RunState.CurrentMapPointHistoryEntry;
-		if (mapPointHistoryEntry != null && num > 0m)
+		if (mapPointHistoryEntry != null && amountHealed > 0m)
 		{
-			mapPointHistoryEntry.GetEntry(creature.Player.NetId).HpHealed += (int)num;
+			mapPointHistoryEntry.GetEntry(creature.Player.NetId).HpHealed += (int)amountHealed;
 		}
 		if (CombatManager.Instance.IsInProgress)
 		{

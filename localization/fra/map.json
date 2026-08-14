@@ -37,5 +37,12 @@
   "LEGEND_UNKNOWN.hoverTip.description": "Une salle mystère.\n\nVous pouvez y trouver un événement, des ennemis, une boutique, ou un trésor.",
   "LEGEND_UNKNOWN.hoverTip.title": "???",
   "LEGEND_UNKNOWN.title": "Inconnu",
+  "SHARE.description.other": "Enregistrez une capture d'écran de la carte entière pour la partager avec vos amis.",
+  "SHARE.description.steam": "Enregistrez une capture d'écran Steam de la carte entière pour la partager avec vos amis.",
+  "SHARE.title": "Partager",
+  "SHARE_POPUP.description": "[gold]Capture d'écran enregistrée dans :[/gold]\n\n{path}",
+  "SHARE_POPUP.open": "Ouvrir",
+  "SHARE_POPUP.title": "Capture d'écran enregistrée !",
+  "SHARE_TOAST.description.steam": "Capture d'écran enregistrée !",
   "STARTING_ROOM_PROMPT": "Choisissez une salle de départ"
 }

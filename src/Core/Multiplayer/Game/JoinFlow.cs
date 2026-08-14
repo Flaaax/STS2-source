@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Godot;
@@ -8,7 +7,6 @@ using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Multiplayer.Connection;
 using MegaCrit.Sts2.Core.Multiplayer.Messages.Lobby;
-using MegaCrit.Sts2.Core.Multiplayer.Serialization;
 using MegaCrit.Sts2.Core.Saves;
 using MegaCrit.Sts2.Core.Unlocks;
 
@@ -29,15 +27,12 @@ public class JoinFlow
 
 	private readonly MegaCrit.Sts2.Core.Logging.Logger _logger = new MegaCrit.Sts2.Core.Logging.Logger("JoinFlow", LogType.Network);
 
-	private readonly PeerVersionInfo? _mockInfo;
-
 	public INetClientGameService NetService { get; }
 
 	public CancellationTokenSource CancelToken { get; } = new CancellationTokenSource();
 
-	public JoinFlow(INetClientGameService netService, PeerVersionInfo? mockInfo = null)
+	public JoinFlow(INetClientGameService netService)
 	{
-		_mockInfo = mockInfo;
 		NetService = netService;
 	}
 
@@ -78,52 +73,17 @@ public class JoinFlow
 				NetService.RegisterMessageHandler<ClientLoadJoinResponseMessage>(HandleLoadJoinResponseMessage);
 				NetService.RegisterMessageHandler<ClientRejoinResponseMessage>(HandleRejoinResponseMessage);
 				NetService.Disconnected += OnDisconnected;
+				NetService.ConnectionFailed += OnFailedToConnectToHost;
 				_connectCompletion = new TaskCompletionSource<InitialGameInfoMessage>();
 				NetErrorInfo? value = await initializer.Connect(NetService, CancelToken.Token);
 				if (value.HasValue)
 				{
 					_logger.Info($"Connection failed: {value}");
-					throw new ClientConnectionFailedException("Could not connect", ConnectionFailureReason.None, null);
+					throw new ClientConnectionFailedException("Could not connect", value.Value);
 				}
 				_logger.Info("Initializer connection completed, awaiting initial game info message");
 				InitialGameInfoMessage initialMessage = await _connectCompletion.Task;
-				PeerVersionInfo versionInfo = initialMessage.versionInfo;
-				PeerVersionInfo localInfo = _mockInfo ?? PeerVersionInfo.LocalDefault();
-				ConnectionFailureExtraInfo connectionFailureExtraInfo = new ConnectionFailureExtraInfo
-				{
-					localInfo = localInfo,
-					remoteInfo = versionInfo,
-					localIsHost = false
-				};
-				if (initialMessage.connectionFailureReason.HasValue)
-				{
-					_logger.Info($"Received initial join message with failure: {initialMessage.connectionFailureReason}");
-					throw new ClientConnectionFailedException("Got connection failure from host", initialMessage.connectionFailureReason.Value, connectionFailureExtraInfo);
-				}
 				RunSessionState state = initialMessage.sessionState;
-				_logger.Info($"Got initial game info message. Version: {versionInfo.version} Hash: {versionInfo.idDatabaseHash} Type: {initialMessage.gameMode} State: {state}");
-				if (versionInfo.version != localInfo.version)
-				{
-					throw new ClientConnectionFailedException($"Version mismatch. Host: {versionInfo.version} Ours: {localInfo.version} Host branch: {versionInfo.branch}", ConnectionFailureReason.VersionMismatch, connectionFailureExtraInfo);
-				}
-				List<string> missingModsOnRemote = connectionFailureExtraInfo.GetMissingModsOnRemote(nonGameplay: false);
-				List<string> missingModsOnLocal = connectionFailureExtraInfo.GetMissingModsOnLocal(nonGameplay: false);
-				if (missingModsOnLocal.Count > 0 || missingModsOnRemote.Count > 0)
-				{
-					_logger.Warn($"Mismatch in gameplay-relevant mods with the host!\nMods that host has that we don't: {string.Join(",", missingModsOnLocal)}.\nMods that we have that host doesn't: {string.Join(",", missingModsOnRemote)}.");
-					throw new ClientConnectionFailedException("Mod mismatch. Host mods: " + string.Join(",", versionInfo.gameplayAffectingMods ?? new List<string>()) + " Local mods: " + string.Join(",", localInfo.gameplayAffectingMods ?? new List<string>()), ConnectionFailureReason.ModMismatch, connectionFailureExtraInfo);
-				}
-				if (versionInfo.idDatabaseHash != localInfo.idDatabaseHash)
-				{
-					_logger.Warn("Our version " + localInfo.version + " matches the host's, but our Model ID hash does not! Disconnecting");
-					throw new ClientConnectionFailedException($"ModelDb hash mismatch. Host: {versionInfo.idDatabaseHash} Ours: {ModelIdSerializationCache.Hash}", ConnectionFailureReason.VersionMismatch, connectionFailureExtraInfo);
-				}
-				List<string> missingModsOnRemote2 = connectionFailureExtraInfo.GetMissingModsOnRemote(nonGameplay: true);
-				List<string> missingModsOnLocal2 = connectionFailureExtraInfo.GetMissingModsOnLocal(nonGameplay: true);
-				if (missingModsOnRemote2.Count > 0 || missingModsOnLocal2.Count > 0)
-				{
-					_logger.Warn($"Mismatch in non-gameplay relevant mods. This is allowed, but it's up to the mod authors to guarantee that it doesn't break anything.\nNon-gameplay relevant mods that host has that we don't: {string.Join(",", missingModsOnLocal2)}.\nNon-gameplay relevant mods that we have that host doesn't: {string.Join(",", missingModsOnRemote2)}.");
-				}
 				switch (state)
 				{
 				case RunSessionState.InLobby:
@@ -168,21 +128,7 @@ public class JoinFlow
 			{
 				if (NetService.IsConnected)
 				{
-					NetError reason;
-					if (ex is ClientConnectionFailedException ex2)
-					{
-						ClientConnectionFailedMessage message = new ClientConnectionFailedMessage
-						{
-							disconnectionReason = ex2.rawReason,
-							versionInfo = (ex2.info.ConnectionExtraInfo?.localInfo ?? PeerVersionInfo.LocalDefault())
-						};
-						NetService.SendMessage(message);
-						reason = ex2.info.GetReason();
-					}
-					else
-					{
-						reason = ((ex is OperationCanceledException) ? NetError.CancelledJoin : NetError.InternalError);
-					}
+					NetError reason = ((!(ex is ClientConnectionFailedException ex2)) ? ((ex is OperationCanceledException) ? NetError.CancelledJoin : NetError.InternalError) : ex2.info.GetReason());
 					NetService.Disconnected -= OnDisconnected;
 					SetDisconnectionException(ex);
 					NetService.Disconnect(reason);
@@ -229,8 +175,7 @@ public class JoinFlow
 		ClientLobbyJoinRequestMessage message = new ClientLobbyJoinRequestMessage
 		{
 			maxAscensionUnlocked = SaveManager.Instance.Progress.MaxMultiplayerAscension,
-			unlockState = unlockState.ToSerializable(),
-			versionInfo = PeerVersionInfo.LocalDefault()
+			unlockState = unlockState.ToSerializable()
 		};
 		NetService.SendMessage(message);
 		ClientLobbyJoinResponseMessage clientLobbyJoinResponseMessage = await _joinCompletion.Task;
@@ -242,11 +187,7 @@ public class JoinFlow
 	{
 		_loadJoinCompletion = new TaskCompletionSource<ClientLoadJoinResponseMessage>();
 		_logger.Info("Sending ClientLoadJoinRequestMessage and waiting for rejoin response message");
-		ClientLoadJoinRequestMessage message = new ClientLoadJoinRequestMessage
-		{
-			versionInfo = PeerVersionInfo.LocalDefault()
-		};
-		NetService.SendMessage(message);
+		NetService.SendMessage(default(ClientLoadJoinRequestMessage));
 		ClientLoadJoinResponseMessage clientLoadJoinResponseMessage = await _loadJoinCompletion.Task;
 		_logger.Info($"Received ClientLoadJoinResponseMessage: {clientLoadJoinResponseMessage}");
 		return clientLoadJoinResponseMessage;
@@ -256,11 +197,7 @@ public class JoinFlow
 	{
 		_rejoinCompletion = new TaskCompletionSource<ClientRejoinResponseMessage>();
 		_logger.Info("Sending ClientRequestRejoinMessage and waiting for rejoin response message");
-		ClientRejoinRequestMessage message = new ClientRejoinRequestMessage
-		{
-			versionInfo = PeerVersionInfo.LocalDefault()
-		};
-		NetService.SendMessage(message);
+		NetService.SendMessage(default(ClientRejoinRequestMessage));
 		ClientRejoinResponseMessage clientRejoinResponseMessage = await _rejoinCompletion.Task;
 		_logger.Info($"Received ClientRejoinResponseMessage: {clientRejoinResponseMessage}");
 		return clientRejoinResponseMessage;
@@ -318,6 +255,13 @@ public class JoinFlow
 	{
 		_logger.Info($"Disconnected during join flow, reason: {info.GetReason()}. Failing with an exception");
 		ClientConnectionFailedException disconnectionException = new ClientConnectionFailedException($"Unexpectedly disconnected from host while joining. Reason: {info.GetReason()}", info);
+		SetDisconnectionException(disconnectionException);
+	}
+
+	private void OnFailedToConnectToHost(NetErrorInfo info)
+	{
+		_logger.Info($"Failed to connect to the host. Reason: {info.GetReason()}.");
+		ClientConnectionFailedException disconnectionException = new ClientConnectionFailedException($"Failed to connect to the host. Reason: {info.GetReason()}", info);
 		SetDisconnectionException(disconnectionException);
 	}
 

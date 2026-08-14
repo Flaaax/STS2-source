@@ -411,8 +411,8 @@ public partial class NMainMenu : Control, IScreenContext
 		}
 		catch (Exception)
 		{
-			DisplayLoadSaveError();
 			RunManager.Instance.CleanUp();
+			DisplayLoadSaveError();
 			throw;
 		}
 	}

@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Commands.Builders;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models.Monsters;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace MegaCrit.Sts2.Core.Models.Cards.Mocks;
@@ -99,9 +100,9 @@ public sealed class MockAttackCard : MockCardModel
 		AttackCommand attackCommand = DamageCmd.Attack(_fromOsty ? base.DynamicVars.OstyDamage.BaseValue : base.DynamicVars.Damage.BaseValue).WithHitCount(hitCount);
 		if (_fromOsty)
 		{
-			if (base.Owner.Osty == null)
+			if (Osty.CheckMissingWithAnim(base.Owner))
 			{
-				throw new InvalidOperationException("Must summon Osty before using osty attack!");
+				return;
 			}
 			attackCommand = attackCommand.FromOsty(base.Owner.Osty, this, cardPlay);
 		}

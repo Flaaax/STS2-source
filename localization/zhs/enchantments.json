@@ -18,7 +18,7 @@
   "IMBUED.description": "这张牌在每场战斗开始时自动打出。",
   "IMBUED.extraCardText": "注能。",
   "IMBUED.title": "注能",
-  "INKY.description": "这张牌额外造成[blue]{Damage}[/blue]点伤害，并造成[blue]{WeakPower}[/blue]层[gold]虚弱[/gold]。",
+  "INKY.description": "这张牌造成[blue]{WeakPower}[/blue]层[gold]虚弱[/gold]。",
   "INKY.extraCardText": "{TargetType:choose(AllEnemies):对所有敌人|}造成[blue]{WeakPower}[/blue]层[gold]虚弱[/gold]。",
   "INKY.title": "墨影",
   "INSTINCT.description": "这张牌的攻击伤害翻倍。",

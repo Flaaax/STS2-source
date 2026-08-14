@@ -27,14 +27,14 @@ public sealed class CacophonyPower : PowerModel
 		InvokeDisplayAmountChanged();
 		if (base.DynamicVars.Cards.IntValue <= 0)
 		{
-			await Cmd.Wait(0.5f);
-			Creature creature = base.Owner.Player.RunState.Rng.CombatTargets.NextItem(base.CombatState.HittableEnemies);
-			if (creature != null)
-			{
-				await CreatureCmd.Damage(choiceContext, creature, base.Amount, ValueProp.Unpowered, base.Owner);
-			}
+			Creature enemy = base.Owner.Player.RunState.Rng.CombatTargets.NextItem(base.CombatState.HittableEnemies);
 			base.DynamicVars.Cards.BaseValue = 33m;
 			InvokeDisplayAmountChanged();
+			await Cmd.Wait(0.5f);
+			if (enemy != null)
+			{
+				await CreatureCmd.Damage(choiceContext, enemy, base.Amount, ValueProp.Unpowered, base.Owner);
+			}
 		}
 	}
 }

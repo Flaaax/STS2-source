@@ -18,7 +18,7 @@
   "IMBUED.description": "每場戰鬥開始時會自動打出此牌。",
   "IMBUED.extraCardText": "灌注。",
   "IMBUED.title": "灌注",
-  "INKY.description": "此牌額外造成 [blue]{Damage}[/blue] 點傷害，並施加 [blue]{WeakPower}[/blue] 層[gold]虛弱[/gold]。",
+  "INKY.description": "此牌會施加 [blue]{WeakPower}[/blue] 層[gold]虛弱[/gold]。",
   "INKY.extraCardText": "{TargetType:choose(AllEnemies):對所有敵人|}施加 [blue]{WeakPower}[/blue] 層[gold]虛弱[/gold]。",
   "INKY.title": "墨影",
   "INSTINCT.description": "此牌的攻擊傷害加倍。",

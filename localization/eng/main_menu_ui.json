@@ -94,6 +94,8 @@
   "INVALID_SAVE_POPUP.dismiss": "Dismiss",
   "INVALID_SAVE_POPUP.title": "Corrupt Save!",
   "INVITE": "Invite",
+  "INVITE.DISABLED.steam.description": "The Steam Overlay is disabled.\n\nEnable it, or manually invite friends through the Steam Friends menu on your desktop.",
+  "INVITE.DISABLED.steam.title": "Steam Overlay Disabled",
   "JOIN.description": "Join a game hosted by a friend.",
   "JOIN.title": "Join",
   "JOIN_FRIENDS_MENU.noFriends": "No friends currently playing multiplayer.",

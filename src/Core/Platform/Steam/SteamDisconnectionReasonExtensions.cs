@@ -42,7 +42,7 @@ public static class SteamDisconnectionReasonExtensions
 				case SteamDisconnectionReason.BadCert:
 					return NetError.SecureConnectionFailed;
 				default:
-					goto IL_00b1;
+					goto IL_00c0;
 				}
 			}
 			return NetError.NoInternet;
@@ -51,8 +51,8 @@ public static class SteamDisconnectionReasonExtensions
 		{
 			return NetError.None;
 		}
-		goto IL_00b1;
-		IL_00b1:
+		goto IL_00c0;
+		IL_00c0:
 		return NetError.UnknownNetworkError;
 	}
 }

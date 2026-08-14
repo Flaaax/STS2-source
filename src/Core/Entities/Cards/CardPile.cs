@@ -131,7 +131,7 @@ public class CardPile
 		}
 		if (!silent)
 		{
-			this.CardRemoved?.Invoke(card);
+			InvokeCardRemoved(card);
 			InvokeContentsChanged();
 			InvokeCardRemoveFinished();
 		}
@@ -180,6 +180,11 @@ public class CardPile
 			RemoveInternal(item, silent);
 		}
 		_cards.Clear();
+	}
+
+	public void InvokeCardRemoved(CardModel card)
+	{
+		this.CardRemoved?.Invoke(card);
 	}
 
 	public void InvokeCardAddFinished()

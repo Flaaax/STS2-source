@@ -170,8 +170,13 @@ public partial class NGame : Control
 		HitStop = GetNode<NHitStop>("HitStop");
 		Transition = GetNode<NTransition>("%GameTransitionRect");
 		_mainThreadId = System.Environment.CurrentManagedThreadId;
-		GetWindow().Connect(Window.SignalName.FilesDropped, Callable.From<string[]>(FileDropHandler.OnFilesDropped));
+		GetWindow().Connect(Window.SignalName.FilesDropped, Callable.From<string[]>(OnFilesDropped));
 		TaskHelper.RunSafely(GameStartupWrapper());
+	}
+
+	private void OnFilesDropped(string[] files)
+	{
+		FileDropHandler.OnFilesDropped(files);
 	}
 
 	public override void _Ready()
@@ -402,14 +407,14 @@ public partial class NGame : Control
 			Log.Info("First time setup for display settings...");
 			settingsSave.TargetDisplay = DisplayServer.GetPrimaryScreen();
 		}
-		bool flag2 = settingsSave.Fullscreen;
-		if (PlatformUtil.GetSupportedWindowMode().ShouldForceFullscreen())
+		bool flag2 = PlatformUtil.GetSupportedWindowMode().ResolveFullscreen(settingsSave.Fullscreen, DebugSettings.DevWindowed);
+		if (flag2 && !settingsSave.Fullscreen)
 		{
-			if (!flag2)
-			{
-				Log.Warn($"Settings has fullscreen set to false, but we're forcing fullscreen because the platform reports our supported window mode as {PlatformUtil.GetSupportedWindowMode()}");
-			}
-			flag2 = true;
+			Log.Warn($"Settings has fullscreen set to false, but we're forcing fullscreen because the platform reports our supported window mode as {PlatformUtil.GetSupportedWindowMode()}");
+		}
+		else if (!flag2 && settingsSave.Fullscreen)
+		{
+			Log.Info("[Display] STS2_DEV_WINDOWED is set. Forcing windowed mode for this launch.");
 		}
 		Log.Info($"Applying display settings...\n  FULLSCREEN: {flag2}\n  ASPECT_RATIO: ({settingsSave.AspectRatioSetting})\n  TARGET_DISPLAY: ({settingsSave.TargetDisplay})\n  WINDOW_SIZE: {settingsSave.WindowSize}\n  POSITION: {settingsSave.WindowPosition}");
 		Log.Info($"[Display] Min size: {DisplayServer.WindowGetMinSize()} Max size: {DisplayServer.WindowGetMaxSize()}");
@@ -732,6 +737,7 @@ public partial class NGame : Control
 			}
 		}
 		NMainMenu currentScene = NMainMenu.Create(openTimeline);
+		NHotkeyManager.Instance?.ClearHotkeys();
 		RootSceneContainer.SetCurrentScene(currentScene);
 	}
 

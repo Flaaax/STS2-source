@@ -20,7 +20,7 @@
 [ext_resource type="Script" uid="uid://drm4tcwtxrx7u" path="res://src/Core/Nodes/Screens/DailyRun/NDailyRunScoreWarning.cs" id="19_y2b5y"]
 [ext_resource type="FontVariation" uid="uid://bhyxo1pcdm73o" path="res://themes/bitter_medium_italic_glyph_space_one.tres" id="20_n50pb"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_y2b5y"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3babs"]
 resource_local_to_scene = true
 shader = ExtResource("9_15d8j")
 shader_parameter/h = 0.171
@@ -226,6 +226,27 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 1
 
+[node name="ScoreWarning" type="TextureRect" parent="."]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_3babs")
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -116.0
+offset_top = -448.0
+offset_right = -22.0
+offset_bottom = -369.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset = Vector2(47, 39)
+texture = ExtResource("11_54yx2")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("19_y2b5y")
+
 [node name="ReadyAndWaitingPanel" type="Control" parent="."]
 unique_name_in_owner = true
 layout_mode = 1
@@ -274,27 +295,6 @@ vertical_alignment = 1
 script = ExtResource("2_hw2l2")
 MinFontSize = 28
 MaxFontSize = 42
-
-[node name="ScoreWarning" type="TextureRect" parent="."]
-unique_name_in_owner = true
-material = SubResource("ShaderMaterial_y2b5y")
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -116.0
-offset_top = -448.0
-offset_right = -22.0
-offset_bottom = -369.0
-grow_horizontal = 0
-grow_vertical = 0
-pivot_offset = Vector2(47, 39)
-texture = ExtResource("11_54yx2")
-expand_mode = 1
-stretch_mode = 5
-script = ExtResource("19_y2b5y")
 
 [node name="ConfirmButton" parent="." instance=ExtResource("10_15d8j")]
 unique_name_in_owner = true

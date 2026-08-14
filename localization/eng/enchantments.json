@@ -18,7 +18,7 @@
   "IMBUED.description": "This card is played automatically at the start of each combat.",
   "IMBUED.extraCardText": "Imbued.",
   "IMBUED.title": "Imbued",
-  "INKY.description": "This card deals [blue]{Damage}[/blue] additional damage and applies [blue]{WeakPower}[/blue] [gold]Weak[/gold].",
+  "INKY.description": "This card applies [blue]{WeakPower}[/blue] [gold]Weak[/gold].",
   "INKY.extraCardText": "Apply [blue]{WeakPower}[/blue] [gold]Weak[/gold]{TargetType:choose(AllEnemies): to ALL enemies|}.",
   "INKY.title": "Inky",
   "INSTINCT.description": "This card's attack damage is doubled.",

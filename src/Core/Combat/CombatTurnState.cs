@@ -15,9 +15,8 @@ namespace MegaCrit.Sts2.Core.Combat;
 /// cancelled token instead of adopting the next combat's fresh one.
 ///
 /// Internal, along with the signal records above: the single-owner model depends on exactly one turn state existing
-/// per combat, so nothing outside this assembly should be able to build one and hand it to the manager. We also want
-/// to turn on InternalsVisibleTo for the test assembly, and once that happens the DebugOnly* members on
-/// <see cref="T:MegaCrit.Sts2.Core.Combat.CombatManager" /> can stop being public too.
+/// per combat, so nothing outside this assembly should be able to build one and hand it to the manager. Tests get in
+/// through InternalsVisibleTo (sts2.csproj), not through public API.
 /// </summary>
 internal sealed class CombatTurnState
 {

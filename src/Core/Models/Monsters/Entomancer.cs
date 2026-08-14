@@ -20,7 +20,7 @@ public sealed class Entomancer : MonsterModel
 
 	private const string _attackRangedSfx = "event:/sfx/enemy/enemy_attacks/entomancer/entomancer_attack_ranged";
 
-	public override int MinInitialHp => AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 155, 145);
+	public override int MinInitialHp => AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 165, 145);
 
 	public override int MaxInitialHp => MinInitialHp;
 

@@ -109,14 +109,19 @@ public class CreatureAnimator
 		{
 			this.BoundsUpdated?.Invoke(state.BoundsContainer);
 		}
-		if (state.NextState != null)
+		AnimState nextState = _currentState.GetNextState();
+		if (nextState != null)
 		{
-			AddNextState(state.NextState);
+			AddNextState(nextState);
 		}
 	}
 
-	private void AddNextState(AnimState state)
+	private void AddNextState(AnimState? state)
 	{
+		if (state == null)
+		{
+			return;
+		}
 		if (!_spineController.HasAnimation(state.Id))
 		{
 			string value = (_spineController.BoundObject as Node)?.Name.ToString() ?? "unknown";
@@ -133,9 +138,10 @@ public class CreatureAnimator
 		{
 			animationState.AddAnimation(state.Id, 0f, state.IsLooping);
 		}
-		if (state.NextState != null)
+		AnimState nextState = state.GetNextState();
+		if (nextState != null)
 		{
-			AddNextState(state.NextState);
+			AddNextState(nextState);
 		}
 	}
 
@@ -160,9 +166,10 @@ public class CreatureAnimator
 		{
 			_currentState.MarkHasLooped();
 		}
-		if (_currentState.NextState != null)
+		AnimState nextState = _currentState.GetNextState();
+		if (nextState != null)
 		{
-			_currentState = _currentState.NextState;
+			_currentState = nextState;
 		}
 	}
 

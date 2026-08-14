@@ -86,7 +86,7 @@
   "CHAINS_OF_BINDING_POWER.description": "Her tur çekilen ilk [blue]3[/blue] kart, [gold]Bağlı[/gold] tarafından etkilenmiştir.",
   "CHAINS_OF_BINDING_POWER.smartDescription": "Her tur çekilen ilk [blue]{Amount}[/blue] kart, [gold]Bağlı[/gold] tarafından etkilenmiştir.",
   "CHAINS_OF_BINDING_POWER.title": "Mühürleyen Zincirler",
-  "CHILD_OF_THE_STARS_POWER.description": "Harcanan her {singleStarIcon} için [blue]1[/blue] [gold]Blok[/gold] elde et.",
+  "CHILD_OF_THE_STARS_POWER.description": "Harcanan her {singleStarIcon} için [blue]2[/blue] [gold]Blok[/gold] elde et.",
   "CHILD_OF_THE_STARS_POWER.smartDescription": "Harcanan her {singleStarIcon} için [blue]{Amount}[/blue] [gold]Blok[/gold] elde et.",
   "CHILD_OF_THE_STARS_POWER.title": "Yıldızların Evladı",
   "CLARITY_POWER.description": "Sonraki turunun başında fazladan [blue]1[/blue] kart çek.",

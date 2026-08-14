@@ -1,177 +1,206 @@
 necrobinder.png
-size:1841,523
+size:745,523
 filter:Linear,Linear
 scale:0.359
 back flame neck
-bounds:1795,39,44,54
+bounds:270,82,44,54
+back_flame_temp
+bounds:174,76,60,95
+rotate:90
 belt top
-bounds:1078,91,46,20
+bounds:582,1,46,20
 belts
-bounds:1104,43,46,20
+bounds:315,90,46,20
 rotate:90
 bottom shoulder
-bounds:1810,454,29,67
+bounds:714,235,29,67
 bottom sleeve
-bounds:1630,455,41,165
-rotate:90
+bounds:336,141,41,165
 chest
-bounds:1744,40,44,48
-rotate:90
-death/l shoulder
-bounds:886,14,73,29
-rotate:90
-death/pink sleeve
-bounds:917,16,71,28
-offsets:0,1,72,29
-rotate:90
-death/r shoulder
-bounds:1729,197,67,25
-death/ribcage
-bounds:1698,38,55,44
-offsets:0,0,56,45
-rotate:90
-death/ribcage shadow
-bounds:1630,23,88,25
-offsets:1,0,89,25
-rotate:90
-death/skirt
-bounds:657,11,203,74
-death/skull
-bounds:1744,86,49,46
-death/skull shadow
-bounds:1684,162,60,42
+bounds:174,31,44,48
 rotate:90
 eye_flame_l
-bounds:862,2,9,43
-rotate:90
+bounds:426,210,9,43
 eye_flame_r
-bounds:657,3,6,39
-rotate:90
+bounds:428,267,6,39
 eye_glow_l
-bounds:1698,105,26,55
+bounds:174,159,26,55
+rotate:90
 eye_glow_r
-bounds:1783,14,23,51
+bounds:174,7,23,51
+rotate:90
+eye_glow_r copy 4
+bounds:174,137,21,49
+offsets:1,1,23,51
 rotate:90
 flame_extra
-bounds:1806,341,31,45
+bounds:404,95,31,45
 offsets:1,1,33,47
+flames_placeholder
+bounds:336,20,67,120
+offsets:40,10,144,144
 glow
-bounds:1480,19,92,116
+bounds:650,115,92,116
 offsets:6,10,108,138
-rotate:90
 glow_head
-bounds:1729,134,61,65
+bounds:1,25,61,65
 offsets:5,7,69,77
 rotate:90
 head
-bounds:1619,113,47,50
-rotate:90
+bounds:378,203,47,50
 l foot
-bounds:1104,2,15,39
+bounds:353,4,15,39
+rotate:90
 l hand
-bounds:1806,294,23,30
+bounds:113,12,23,30
 offsets:0,1,23,31
 rotate:90
 l hand_back
-bounds:1557,4,13,18
+bounds:636,71,13,18
 offsets:1,0,14,18
+l index
+bounds:54,2,22,11
 rotate:90
 l index_back
-bounds:1065,89,22,11
+bounds:54,2,22,11
 rotate:90
 l lower arm
-bounds:1630,3,18,48
+bounds:304,1,18,48
 rotate:90
 l lower leg
-bounds:633,7,22,78
+bounds:67,8,22,78
+l middle finger
+bounds:90,3,24,8
 l middle finger_back
-bounds:1357,3,24,8
+bounds:90,3,24,8
+l pinky
+bounds:66,1,19,6
+offsets:0,0,20,6
 l pinky_back
-bounds:698,3,20,6
+bounds:629,2,20,6
+rotate:90
+l ring finger
+bounds:656,3,25,8
+offsets:1,0,26,8
 l ring finger_back
-bounds:1330,3,25,8
+bounds:656,3,25,8
 offsets:1,0,26,8
 l shoulder
-bounds:1796,95,43,61
+bounds:378,141,43,61
 l shoulder bottom
-bounds:1806,388,33,64
+bounds:270,17,33,64
 offsets:1,0,34,64
 l sleeve bottom
-bounds:955,2,16,147
+bounds:434,5,16,147
 rotate:90
 l sleeve top
-bounds:1630,498,23,178
-rotate:90
+bounds:150,7,23,178
 l upper arm
-bounds:1729,13,23,52
+bounds:1,1,23,52
 offsets:0,0,24,52
 rotate:90
 l upper leg
-bounds:1297,9,31,102
+bounds:650,12,31,102
 offsets:1,0,32,102
 l_chill_hand
-bounds:1806,319,20,31
+bounds:226,10,20,31
 rotate:90
 open_hand
-bounds:1806,204,29,39
+bounds:404,7,29,39
 r foot
-bounds:1798,158,27,44
+bounds:223,31,27,44
 r hand
-bounds:1535,4,13,20
-rotate:90
+bounds:422,154,13,20
 r index
-bounds:720,4,5,24
-rotate:90
+bounds:739,5,5,24
 r lower arm
-bounds:1680,4,47,27
-r lower leg
-bounds:862,13,22,74
-r middle finger
-bounds:1577,6,11,24
+bounds:304,34,47,27
 rotate:90
+r lower leg
+bounds:90,12,22,74
+r middle finger
+bounds:636,20,11,24
 r pinky
-bounds:907,3,9,19
+bounds:636,2,9,19
 rotate:90
 r ring finger
-bounds:928,3,11,25
-rotate:90
+bounds:636,45,11,25
 r upper arm
-bounds:1806,245,47,29
+bounds:404,47,47,29
 rotate:90
 r upper leg
-bounds:1598,20,30,91
+bounds:714,303,30,91
 offsets:0,0,32,91
 r_chill_hand
-bounds:1480,3,14,24
-rotate:90
+bounds:251,51,14,24
 scythe
-bounds:633,87,215,434
+bounds:1,307,215,434
+rotate:90
 scythe_glow
-bounds:1684,224,120,229
+bounds:1,186,120,229
+rotate:90
 shadow
-bounds:1619,162,290,63
+bounds:650,232,290,63
 rotate:90
 skirt back
-bounds:1330,13,98,148
+bounds:1,87,98,148
 rotate:90
 skirt flap
-bounds:1671,33,25,127
+bounds:714,395,25,127
 skirt top
-bounds:1126,7,104,169
-rotate:90
-slash
-bounds:2,2,519,629
-offsets:508,0,1027,629
-rotate:90
-slashHoles
-bounds:1065,113,552,408
-offsets:438,121,1027,629
+bounds:231,137,104,169
 sleeve_l_extended
-bounds:947,20,67,155
+bounds:434,22,67,155
 rotate:90
 spine
-bounds:1506,4,13,27
-rotate:90
+bounds:422,175,13,27
 sythe_dissolve
-bounds:850,89,213,432
+bounds:436,90,213,432
 offsets:2,0,215,432
+thumb1
+bounds:378,254,52,49
+rotate:90
+thumb2
+bounds:590,23,45,66
+offsets:0,0,46,66
+thumb3
+bounds:682,1,28,56
+rotate:90
+webbing
+bounds:113,36,50,34
+rotate:90
+wrist
+bounds:682,30,84,62
+rotate:90
+
+necrobinder_2.png
+size:16,74
+filter:Linear,Linear
+scale:0.359
+attack_slash/slash_placeholder
+bounds:1,1,14,72
+
+necrobinder_3.png
+size:443,77
+filter:Linear,Linear
+scale:0.359
+death/l shoulder
+bounds:205,21,73,29
+death/pink sleeve
+bounds:294,48,71,28
+offsets:0,1,72,29
+death/r shoulder
+bounds:366,51,67,25
+death/ribcage
+bounds:340,3,55,44
+offsets:0,0,56,45
+death/ribcage shadow
+bounds:205,51,88,25
+offsets:1,0,89,25
+death/skirt
+bounds:1,2,203,74
+death/skull
+bounds:396,1,49,46
+rotate:90
+death/skull shadow
+bounds:279,5,60,42

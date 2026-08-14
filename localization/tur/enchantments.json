@@ -18,7 +18,7 @@
   "IMBUED.description": "Bu kart her savaşın başında otomatik olarak oynanır.",
   "IMBUED.extraCardText": "İşlenmiş.",
   "IMBUED.title": "İşlenmiş",
-  "INKY.description": "Bu kart fazladan [blue]{Damage}[/blue] hasar verir ve [blue]{WeakPower}[/blue] [gold]Zayıf[/gold] uygular.",
+  "INKY.description": "Bu kart [blue]{WeakPower}[/blue] [gold]Zayıf[/gold] uygular.",
   "INKY.extraCardText": "{TargetType:choose(AllEnemies):TÜM düşmanlara |}[blue]{WeakPower}[/blue] [gold]Zayıf[/gold] uygula.",
   "INKY.title": "Mürekkepli",
   "INSTINCT.description": "Bu kartın saldırı hasarı iki katına çıkar.",

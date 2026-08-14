@@ -86,7 +86,7 @@
   "CHAINS_OF_BINDING_POWER.description": "Le prime [blue]3[/blue] carte pescate in ogni turno hanno l'afflizione [gold]Vincolo[/gold].",
   "CHAINS_OF_BINDING_POWER.smartDescription": "Le prime [blue]{Amount}[/blue] carte pescate in ogni turno hanno l'afflizione [gold]Vincolo[/gold].",
   "CHAINS_OF_BINDING_POWER.title": "Catene del vincolo",
-  "CHILD_OF_THE_STARS_POWER.description": "Ottieni [blue]1[/blue] di [gold]Blocco[/gold] per ogni {singleStarIcon} che hai consumato.",
+  "CHILD_OF_THE_STARS_POWER.description": "Ottieni [blue]2[/blue] di [gold]Blocco[/gold] per ogni {singleStarIcon} che hai consumato.",
   "CHILD_OF_THE_STARS_POWER.smartDescription": "Ottieni [blue]{Amount}[/blue] di [gold]Blocco[/gold] per ogni {singleStarIcon} che hai consumato.",
   "CHILD_OF_THE_STARS_POWER.title": "Figlio delle Stelle",
   "CLARITY_POWER.description": "All'inizio del tuo prossimo turno, peschi [blue]1[/blue] carta in più.",

@@ -9,7 +9,7 @@
   "CHANNELING.title": "Canaliser",
   "COMPENDIUM.description": "Consultez toutes les cartes, les potions, et les reliques que vous avez découvertes dans la Tour.",
   "COMPENDIUM.title": "Compendium",
-  "COOK.description": "[gold]Retirez[/gold] [blue]2[/blue] cartes de votre [gold]Deck[/gold] et gagnez [green]9[/green] PV Max à un [gold]Site de repos[/gold].",
+  "COOK.description": "[gold]Retirez[/gold] [blue]2[/blue] cartes de votre [gold]Deck[/gold] et gagnez [green]5[/green] PV Max à un [gold]Site de repos[/gold].",
   "COOK.title": "Cuisiner",
   "DECK.description": "Visionnez toutes les cartes de votre deck.",
   "DECK.title": "Deck {Hotkey:choose(None):| ({})}",

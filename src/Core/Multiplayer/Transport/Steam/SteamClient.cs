@@ -103,7 +103,7 @@ public class SteamClient : NetClient
 					{
 						_logger.Error("Got different connection back from OnNetStatusChanged than we expected!");
 						SteamNetworkingSockets.CloseConnection(connectionResult.connection.Value, 0, null, bEnableLinger: false);
-						CleanupConnection(1017, "Invalid OnNetStatusChanged hConn");
+						CleanupConnection(1202, "Invalid OnNetStatusChanged hConn");
 						result = new NetErrorInfo(NetError.InternalError, selfInitiated: false);
 					}
 					else

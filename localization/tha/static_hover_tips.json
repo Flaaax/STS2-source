@@ -9,7 +9,7 @@
   "CHANNELING.title": "ปลุกเสก",
   "COMPENDIUM.description": "ดูข้อมูลการ์ด, ขวดยา, และเครื่องรางทั้งหมดที่พบทั่วทั้งสไปร์",
   "COMPENDIUM.title": "สารานุกรม",
-  "COOK.description": "[gold]กำจัด[/gold] [blue]2[/blue] การ์ดจาก[gold]กองการ์ด[/gold] แล้วได้รับ [green]9[/green] HP สูงสุด ที่ [gold]จุดพัก[/gold]",
+  "COOK.description": "[gold]กำจัด[/gold]การ์ด [blue]2[/blue] ใบจาก[gold]กองการ์ด[/gold] และได้รับ [green]5[/green] HP สูงสุด ที่[gold]จุดพัก[/gold]",
   "COOK.title": "ปรุงอาหาร",
   "DECK.description": "ดูการ์ดทั้งหมดในกองการ์ด",
   "DECK.title": "กองการ์ด {Hotkey:choose(None):| ({})}",

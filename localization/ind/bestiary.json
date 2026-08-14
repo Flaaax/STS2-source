@@ -1,0 +1,19 @@
+{
+  "ACTIONS.header": "Tindakan",
+  "ACTION_NAME.attack": "Serangan",
+  "ACTION_NAME.cast": "Rapal",
+  "ACTION_NAME.die": "Tewas",
+  "ACTION_NAME.hurt": "Diserang",
+  "ACTION_NAME.revive": "Hidup Lagi",
+  "ACTION_NAME.stun": "Linglung",
+  "DESCRIPTION.placeholder": "Informasi mengenai musuh ini belum terungkap...",
+  "EVENTS.title": "Event",
+  "LOCKED.monsterName": "[lb]Terkunci[rb]",
+  "LOCKED.monsterTitle": "Terkunci",
+  "MODE.viewActions": "Lihat Tindakan",
+  "MODE.viewStats": "Lihat Statistik",
+  "QUOTE_PLACEHOLDER": "[red][i](Dialog karakter belum ditulis)[/i][/red]",
+  "STATS.layout": "Pertemuan: [blue]{total}[/blue]\nPembunuhan: [green]{kills}[/green]\nKematian: [red]{deaths}[/red]\nPeluang Menang: [gold]{winrate}%[/gold]",
+  "UNDER_CONSTRUCTION": "Dalam Pembangunan",
+  "UNSEEN.monsterName": "[lb]Tak Diketahui[rb]"
+}

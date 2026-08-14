@@ -132,7 +132,7 @@ public static class ModManager
 		}
 		State = ModManagerState.Initialized;
 		bool flag = false;
-		if (_settings != null)
+		if (_settings != null && _settings.PlayerAgreedToModLoading)
 		{
 			List<SettingsSaveMod> list = new List<SettingsSaveMod>();
 			foreach (Mod mod in _mods)
@@ -145,10 +145,14 @@ public static class ModManager
 			flag = _settings.ModList.Count == 0;
 			_settings.ModList = list;
 		}
-		if (flag)
+		else if (_settings != null)
+		{
+			_settings.ModList = new List<SettingsSaveMod>();
+		}
+		if (IsRunningModded() && flag)
 		{
 			Log.Info("Player is playing modded for the first time. Checking if we need to copy unmodded save files");
-			CopyUnmoddedSaveFilesIfNeeded();
+			CopyUnmoddedSaveFilesIfNeeded(fileIo);
 		}
 	}
 
@@ -1105,71 +1109,70 @@ public static class ModManager
 		_steamItemInstalledCallback?.Dispose();
 	}
 
-	public static void CopyUnmoddedSaveFilesIfNeeded()
+	public static void CopyUnmoddedSaveFilesIfNeeded(IModManagerFileIo fileIo)
 	{
 		string accountScopedBasePath = UserDataPathProvider.GetAccountScopedBasePath(null);
 		string accountScopedBasePath2 = UserDataPathProvider.GetAccountScopedBasePath("modded/");
 		string profileSavePath = ProfileSaveManager.GetProfileSavePath(false);
 		string profileSavePath2 = ProfileSaveManager.GetProfileSavePath(true);
-		if (DirAccess.DirExistsAbsolute(accountScopedBasePath2))
+		if (fileIo.DirectoryExists(accountScopedBasePath2))
 		{
-			if (!Godot.FileAccess.FileExists(accountScopedBasePath.PathJoin(profileSavePath2)))
+			if (!fileIo.FileExists(accountScopedBasePath.PathJoin(profileSavePath2)))
 			{
 				Log.Info("Modded saves exist, but profile.save wasn't present. Copying profile.save from unmodded to modded");
-				Copy(accountScopedBasePath, profileSavePath, profileSavePath2);
+				Copy(fileIo, accountScopedBasePath, profileSavePath, profileSavePath2);
 			}
 			Log.Info("Modded saves exist. Skipping first-time save copy");
 			return;
 		}
-		DirAccess.MakeDirRecursiveAbsolute(accountScopedBasePath2);
-		if (!Godot.FileAccess.FileExists(accountScopedBasePath.PathJoin(profileSavePath)))
+		if (!fileIo.FileExists(accountScopedBasePath.PathJoin(profileSavePath)))
 		{
 			Log.Info("Modded saves don't exist, but neither do unmodded saves. Skipping first-time copy");
 			return;
 		}
+		fileIo.MakeDirRecursive(accountScopedBasePath2);
 		Log.Info("Copying all unmodded saves to the modded save location. Base path: " + accountScopedBasePath);
-		Copy(accountScopedBasePath, profileSavePath, profileSavePath2);
+		Copy(fileIo, accountScopedBasePath, profileSavePath, profileSavePath2);
 		for (int i = 1; i <= 3; i++)
 		{
 			string progressPathForProfile = ProgressSaveManager.GetProgressPathForProfile(i, false);
 			string progressPathForProfile2 = ProgressSaveManager.GetProgressPathForProfile(i, true);
-			Copy(accountScopedBasePath, progressPathForProfile, progressPathForProfile2);
+			Copy(fileIo, accountScopedBasePath, progressPathForProfile, progressPathForProfile2);
 			string runSavePath = RunSaveManager.GetRunSavePath(i, "current_run.save", false);
 			string runSavePath2 = RunSaveManager.GetRunSavePath(i, "current_run.save", true);
-			Copy(accountScopedBasePath, runSavePath, runSavePath2);
+			Copy(fileIo, accountScopedBasePath, runSavePath, runSavePath2);
 			string runSavePath3 = RunSaveManager.GetRunSavePath(i, "current_run_mp.save", false);
 			string runSavePath4 = RunSaveManager.GetRunSavePath(i, "current_run_mp.save", true);
-			Copy(accountScopedBasePath, runSavePath3, runSavePath4);
+			Copy(fileIo, accountScopedBasePath, runSavePath3, runSavePath4);
 			string prefsPath = PrefsSaveManager.GetPrefsPath(i, false);
 			string prefsPath2 = PrefsSaveManager.GetPrefsPath(i, true);
-			Copy(accountScopedBasePath, prefsPath, prefsPath2);
+			Copy(fileIo, accountScopedBasePath, prefsPath, prefsPath2);
 			string historyPath = RunHistorySaveManager.GetHistoryPath(i, false);
-			DirAccess dirAccess = DirAccess.Open(accountScopedBasePath.PathJoin(historyPath));
-			if (dirAccess != null)
+			if (fileIo.DirectoryExists(accountScopedBasePath.PathJoin(historyPath)))
 			{
 				string historyPath2 = RunHistorySaveManager.GetHistoryPath(i, true);
-				DirAccess.MakeDirRecursiveAbsolute(accountScopedBasePath.PathJoin(historyPath2));
-				string[] files = dirAccess.GetFiles();
-				foreach (string file in files)
+				fileIo.MakeDirRecursive(accountScopedBasePath.PathJoin(historyPath2));
+				string[] filesAt = fileIo.GetFilesAt(accountScopedBasePath.PathJoin(historyPath));
+				foreach (string file in filesAt)
 				{
 					string sourceFile = historyPath.PathJoin(file);
 					string targetFile = historyPath2.PathJoin(file);
-					Copy(accountScopedBasePath, sourceFile, targetFile);
+					Copy(fileIo, accountScopedBasePath, sourceFile, targetFile);
 				}
 			}
 		}
 		UnmoddedSavesWereCopied = true;
 	}
 
-	public static void Copy(string baseDir, string sourceFile, string targetFile)
+	public static void Copy(IModManagerFileIo fileIo, string baseDir, string sourceFile, string targetFile)
 	{
 		string text = baseDir.PathJoin(sourceFile);
-		if (Godot.FileAccess.FileExists(text))
+		if (fileIo.FileExists(text))
 		{
 			string text2 = baseDir.PathJoin(targetFile);
 			Log.Info("Copying " + sourceFile + " -> " + targetFile);
-			DirAccess.MakeDirRecursiveAbsolute(text2.GetBaseDir());
-			Error error = DirAccess.CopyAbsolute(text, text2);
+			fileIo.MakeDirRecursive(text2.GetBaseDir());
+			Error error = fileIo.CopyFile(text, text2);
 			if (error != Error.Ok)
 			{
 				Log.Error($"Error: {error}");

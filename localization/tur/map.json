@@ -37,12 +37,12 @@
   "LEGEND_UNKNOWN.hoverTip.description": "Bilinmeyen bir oda.\n\nBir etkinlikle, düşmanla, dükkanla veya hazineyle karşılaş.",
   "LEGEND_UNKNOWN.hoverTip.title": "???",
   "LEGEND_UNKNOWN.title": "Bilinmeyen",
-  "SHARE.description.other": "Tüm haritanın bir ekran görüntüsünü cihazına kaydet.",
-  "SHARE.description.steam": "Tüm haritanın bir ekran görüntüsünü Steam ekran görüntülerine kaydet.",
+  "SHARE.description.other": "Tüm haritanın bir ekran görüntüsünü arkadaşlarınla paylaşmak için kaydet.",
+  "SHARE.description.steam": "Tüm haritanın bir Steam ekran görüntüsünü arkadaşlarınla paylaşmak için kaydet.",
   "SHARE.title": "Paylaş",
-  "SHARE_POPUP.description": "Ekran görüntüsünün kaydedildiği yer:\n\n{path}.",
+  "SHARE_POPUP.description": "[gold]Ekran görüntüsünün kaydedildiği yer:[/gold]\n\n{path}",
   "SHARE_POPUP.open": "Aç",
-  "SHARE_POPUP.title": "Harita Ekran Görüntüsü Kaydedildi",
-  "SHARE_TOAST.description.steam": "Ekran görüntüsü Steam'e kaydedildi!",
+  "SHARE_POPUP.title": "Ekran Görüntüsü Kaydedildi!",
+  "SHARE_TOAST.description.steam": "Ekran Görüntüsü Kaydedildi!",
   "STARTING_ROOM_PROMPT": "Bir Başlangıç Odası Seç"
 }

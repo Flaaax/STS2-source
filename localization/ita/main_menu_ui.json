@@ -94,6 +94,8 @@
   "INVALID_SAVE_POPUP.dismiss": "Ignora",
   "INVALID_SAVE_POPUP.title": "Salvataggio corrotto!",
   "INVITE": "Invita",
+  "INVITE.DISABLED.steam.description": "L'Overlay di Steam è disattivato.\n\nAttivalo oppure invita manualmente gli amici tramite il menu Amici di Steam sul tuo computer.",
+  "INVITE.DISABLED.steam.title": "Overlay di Steam disattivato",
   "JOIN.description": "Unisciti a una partita creata da un amico.",
   "JOIN.title": "Unisciti",
   "JOIN_FRIENDS_MENU.noFriends": "Nessun amico al momento sta giocando in modalità multigiocatore.",

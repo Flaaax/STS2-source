@@ -136,10 +136,7 @@ public partial class NTreasureRoomRelicCollection : Control, IScreenContext
 			SingleplayerRelicHolder.Initialize(currentRelics[0], _runState);
 			SingleplayerRelicHolder.Visible = true;
 			SingleplayerRelicHolder.Index = 0;
-			SingleplayerRelicHolder.Connect(NClickableControl.SignalName.Released, Callable.From<NTreasureRoomRelicHolder>(delegate
-			{
-				PickRelic(SingleplayerRelicHolder);
-			}));
+			SingleplayerRelicHolder.Connect(NClickableControl.SignalName.Released, Callable.From<NTreasureRoomRelicHolder>(PickRelic));
 			int num = 1;
 			List<NTreasureRoomRelicHolder> list = new List<NTreasureRoomRelicHolder>(num);
 			CollectionsMarshal.SetCount(list, num);
@@ -156,45 +153,42 @@ public partial class NTreasureRoomRelicCollection : Control, IScreenContext
 			}
 		}
 		SingleplayerRelicHolder.Visible = false;
-		for (int num2 = 0; num2 < _multiplayerHolders.Count; num2++)
+		for (int i = 0; i < _multiplayerHolders.Count; i++)
 		{
-			NTreasureRoomRelicHolder holder = _multiplayerHolders[num2];
-			if (num2 < currentRelics.Count)
+			NTreasureRoomRelicHolder nTreasureRoomRelicHolder = _multiplayerHolders[i];
+			if (i < currentRelics.Count)
 			{
-				holder.Visible = true;
-				holder.Relic.Model = currentRelics[num2];
-				holder.Initialize(currentRelics[num2], _runState);
+				nTreasureRoomRelicHolder.Visible = true;
+				nTreasureRoomRelicHolder.Relic.Model = currentRelics[i];
+				nTreasureRoomRelicHolder.Initialize(currentRelics[i], _runState);
 			}
 			else
 			{
-				holder.Visible = false;
+				nTreasureRoomRelicHolder.Visible = false;
 			}
-			holder.Index = num2;
-			holder.Connect(NClickableControl.SignalName.Released, Callable.From<NTreasureRoomRelicHolder>(delegate
-			{
-				PickRelic(holder);
-			}));
-			_holdersInUse.Add(holder);
-			holder.VoteContainer.RefreshPlayerVotes();
+			nTreasureRoomRelicHolder.Index = i;
+			nTreasureRoomRelicHolder.Connect(NClickableControl.SignalName.Released, Callable.From<NTreasureRoomRelicHolder>(PickRelic));
+			_holdersInUse.Add(nTreasureRoomRelicHolder);
+			nTreasureRoomRelicHolder.VoteContainer.RefreshPlayerVotes();
 		}
-		for (int num3 = 0; num3 < _holdersInUse.Count; num3++)
+		for (int j = 0; j < _holdersInUse.Count; j++)
 		{
-			_holdersInUse[num3].SetFocusMode(FocusModeEnum.All);
-			_holdersInUse[num3].FocusNeighborTop = _holdersInUse[num3].GetPath();
-			_holdersInUse[num3].FocusNeighborBottom = _holdersInUse[num3].GetPath();
-			NTreasureRoomRelicHolder nTreasureRoomRelicHolder = _holdersInUse[num3];
+			_holdersInUse[j].SetFocusMode(FocusModeEnum.All);
+			_holdersInUse[j].FocusNeighborTop = _holdersInUse[j].GetPath();
+			_holdersInUse[j].FocusNeighborBottom = _holdersInUse[j].GetPath();
+			NTreasureRoomRelicHolder nTreasureRoomRelicHolder2 = _holdersInUse[j];
 			NodePath path;
-			if (num3 <= 0)
+			if (j <= 0)
 			{
 				List<NTreasureRoomRelicHolder> holdersInUse = _holdersInUse;
 				path = holdersInUse[holdersInUse.Count - 1].GetPath();
 			}
 			else
 			{
-				path = _holdersInUse[num3 - 1].GetPath();
+				path = _holdersInUse[j - 1].GetPath();
 			}
-			nTreasureRoomRelicHolder.FocusNeighborLeft = path;
-			_holdersInUse[num3].FocusNeighborRight = ((num3 < _holdersInUse.Count - 1) ? _holdersInUse[num3 + 1].GetPath() : _holdersInUse[0].GetPath());
+			nTreasureRoomRelicHolder2.FocusNeighborLeft = path;
+			_holdersInUse[j].FocusNeighborRight = ((j < _holdersInUse.Count - 1) ? _holdersInUse[j + 1].GetPath() : _holdersInUse[0].GetPath());
 		}
 		if (currentRelics.Count == 2)
 		{
@@ -321,7 +315,7 @@ public partial class NTreasureRoomRelicCollection : Control, IScreenContext
 	{
 		foreach (NTreasureRoomRelicHolder item in _holdersInUse)
 		{
-			item.SetFocusMode(FocusModeEnum.None);
+			item.Disable();
 		}
 		_relicPickingBeganTaskCompletionSource.SetResult();
 		foreach (Player player in _runState.Players)
@@ -382,7 +376,6 @@ public partial class NTreasureRoomRelicCollection : Control, IScreenContext
 		{
 			NTreasureRoomRelicHolder nTreasureRoomRelicHolder = _holdersInUse.First((NTreasureRoomRelicHolder h) => h.Relic.Model == result2.relic);
 			RelicModel relic = result2.relic.ToMutable();
-			nTreasureRoomRelicHolder.Disable();
 			if (result2.type != RelicPickingResultType.Skipped)
 			{
 				TaskHelper.RunSafely(RelicCmd.Obtain(relic, result2.player));

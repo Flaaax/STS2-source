@@ -137,7 +137,7 @@ public class Rng
 		return _random.NextULong();
 	}
 
-	public ulong NextUnsignedLong(ulong maxExclusive = ulong.MaxValue)
+	public ulong NextUnsignedLong(ulong maxExclusive)
 	{
 		if (maxExclusive == ulong.MaxValue)
 		{

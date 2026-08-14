@@ -40,11 +40,15 @@ public static class DailyRunUtility
 	/// Figures out whether we should upload a score to the passed leaderboard.
 	/// If any player in the run has already submitted a score, then this returns false.
 	/// </summary>
-	public static async Task<bool> ShouldUploadScore(ILeaderboardHandle? handle, IReadOnlyList<ulong> playerIdsInRun, CancellationToken cancelToken = default(CancellationToken))
+	public static async Task<bool> ShouldUploadScore(ILeaderboardHandle? handle, List<ulong> playerIdsInRun, CancellationToken cancelToken = default(CancellationToken))
 	{
 		if (handle == null)
 		{
 			return true;
+		}
+		if (playerIdsInRun != null && playerIdsInRun.Count == 1 && playerIdsInRun[0] == 1)
+		{
+			playerIdsInRun[0] = PlatformUtil.GetLocalPlayerId(LeaderboardManager.CurrentPlatform);
 		}
 		return (await LeaderboardManager.QueryLeaderboardForUsers(handle, playerIdsInRun, cancelToken)).Count <= 0;
 	}

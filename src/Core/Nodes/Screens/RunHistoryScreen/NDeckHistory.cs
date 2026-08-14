@@ -89,20 +89,24 @@ public partial class NDeckHistory : VBoxContainer
 			CardModel cardModel = CardModel.FromSerializable(item.Key);
 			cardModel.Owner = player;
 			_allCards.Add(cardModel);
-			NDeckHistoryEntry entry = NDeckHistoryEntry.Create(cardModel, item.Count(), from c in item
+			NDeckHistoryEntry nDeckHistoryEntry = NDeckHistoryEntry.Create(cardModel, item.Count(), from c in item
 				where c.FloorAddedToDeck.HasValue
 				select c.FloorAddedToDeck.Value);
-			entry.Connect(NDeckHistoryEntry.SignalName.Clicked, Callable.From<NDeckHistoryEntry>(ShowEntry));
-			entry.Connect(NClickableControl.SignalName.Focused, Callable.From<NClickableControl>(delegate
-			{
-				EmitSignal(SignalName.Hovered, entry);
-			}));
-			entry.Connect(NClickableControl.SignalName.Unfocused, Callable.From<NClickableControl>(delegate
-			{
-				EmitSignal(SignalName.Unhovered, entry);
-			}));
-			_cardContainer.AddChildSafely(entry);
+			nDeckHistoryEntry.Connect(NDeckHistoryEntry.SignalName.Clicked, Callable.From<NDeckHistoryEntry>(ShowEntry));
+			nDeckHistoryEntry.Connect(NClickableControl.SignalName.Focused, Callable.From<NDeckHistoryEntry>(OnEntryFocused));
+			nDeckHistoryEntry.Connect(NClickableControl.SignalName.Unfocused, Callable.From<NDeckHistoryEntry>(OnEntryUnfocused));
+			_cardContainer.AddChildSafely(nDeckHistoryEntry);
 		}
+	}
+
+	private void OnEntryFocused(NDeckHistoryEntry entry)
+	{
+		EmitSignal(SignalName.Hovered, entry);
+	}
+
+	private void OnEntryUnfocused(NDeckHistoryEntry entry)
+	{
+		EmitSignal(SignalName.Unhovered, entry);
 	}
 
 	private void ShowEntry(NDeckHistoryEntry entry)

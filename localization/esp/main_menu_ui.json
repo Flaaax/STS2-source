@@ -94,6 +94,8 @@
   "INVALID_SAVE_POPUP.dismiss": "Ignorar",
   "INVALID_SAVE_POPUP.title": "¡Archivo dañado!",
   "INVITE": "Invitar",
+  "INVITE.DISABLED.steam.description": "La superposición de Steam está desactivada.\n\nActívala o invita manualmente a tus amigos a través del menú Amigos de Steam en tu escritorio.",
+  "INVITE.DISABLED.steam.title": "Superposición de Steam desactivada",
   "JOIN.description": "Únete a una partida creada por tus amistades.",
   "JOIN.title": "Unirse",
   "JOIN_FRIENDS_MENU.noFriends": "No hay camaradas en este modo de juego.",

@@ -1,0 +1,11 @@
+{
+  "ANCIENT": "[gold][font_size=28][b]Ancient:[/b][/font_size][/gold] Pusaka ditawarkan oleh para Ancient.",
+  "ANCIENT_SUBCATEGORY": "[blue][font_size=28][b]{Ancient}:[/b][/font_size][/blue]",
+  "COMMON": "[gold][font_size=28][b]Biasa:[/b][/font_size][/gold] Pusaka lemah yang sering dijumpai.",
+  "EVENT": "[gold][font_size=28][b]Event:[/b][/font_size][/gold] Pusaka yang hanya bisa ditemukan melalui event.",
+  "RARE": "[gold][font_size=28][b]Langka:[/b][/font_size][/gold] Pusaka unik dan kuat yang jarang dijumpai",
+  "SHOP": "[gold][font_size=28][b]Toko:[/b][/font_size][/gold] Pusaka yang hanya bisa dibeli dari Pedagang.",
+  "STARTER": "[gold][font_size=28][b]Awalan:[/b][/font_size][/gold] Karakter memulai perjalanan mereka dengan pusaka-pusaka ini.",
+  "UNCOMMON": "[gold][font_size=28][b]Tidak Biasa:[/b][/font_size][/gold] Pusaka lebih kuat yang dijumpai lebih jarang dari pusaka biasa.",
+  "UNKNOWN_ANCIENT": "???"
+}

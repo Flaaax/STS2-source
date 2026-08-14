@@ -104,6 +104,10 @@ public static class PreloadManager
 
 	public static async Task LoadRoomCombatAssets(EncounterModel encounter, IRunState runState)
 	{
+		if (!encounter.HaveMonstersBeenGenerated)
+		{
+			throw new InvalidOperationException($"Monsters must be generated before preloading combat assets for encounter {encounter.Id}.");
+		}
 		await LoadRoomAssets("Combat Room", GetCombatAssetPaths(encounter, runState));
 	}
 

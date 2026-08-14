@@ -115,9 +115,10 @@ public partial class NMapShareButton : NButton
 			Log.Error("Tried to take map screenshot when share button wasn't ready yet!");
 			return;
 		}
-		Control topBar = NRun.Instance.GlobalUi.TopBar;
-		Control debugInfo = NRun.Instance.GlobalUi.DebugInfo;
-		NRelicInventory relicInventory = NRun.Instance.GlobalUi.RelicInventory;
+		NGlobalUi globalUi = NRun.Instance.GlobalUi;
+		Control topBar = globalUi.TopBar;
+		Control debugInfo = globalUi.DebugInfo;
+		NRelicInventory relicInventory = globalUi.RelicInventory;
 		float topBarSize = relicInventory.GetBottomOfInventory().Y;
 		_subViewport = new SubViewport();
 		_subViewport.Size = new Vector2I(Mathf.RoundToInt(_mapBgContainer.Size.X), Mathf.RoundToInt(_mapBgContainer.Size.Y + topBarSize));

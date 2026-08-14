@@ -121,9 +121,9 @@ public sealed class Nibbit : MonsterModel
 		AnimState animState3 = new AnimState("attack");
 		AnimState animState4 = new AnimState("hurt");
 		AnimState state = new AnimState("die");
-		animState2.NextState = animState;
-		animState3.NextState = animState;
-		animState4.NextState = animState;
+		animState2.AddNextState(animState);
+		animState3.AddNextState(animState);
+		animState4.AddNextState(animState);
 		CreatureAnimator creatureAnimator = new CreatureAnimator(animState, controller);
 		creatureAnimator.AddAnyState("Cast", animState2);
 		creatureAnimator.AddAnyState("Attack", animState3);

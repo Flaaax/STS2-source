@@ -18,9 +18,9 @@ public class NetMessageBus
 		public object originalHandler;
 	}
 
-	private readonly PacketReader _reader = new PacketReader();
+	private readonly PacketReader _reader;
 
-	private readonly PacketWriter _writer = new PacketWriter();
+	private readonly PacketWriter _writer;
 
 	private readonly Logger _logger = new Logger("NetMessageBus", LogType.Network);
 
@@ -34,13 +34,19 @@ public class NetMessageBus
 
 	private readonly List<(INetMessage, ulong)> _bufferedMessages = new List<(INetMessage, ulong)>();
 
+	public NetMessageBus(PacketReader reader, PacketWriter writer)
+	{
+		_reader = reader;
+		_writer = writer;
+	}
+
 	public byte[] SerializeMessage<T>(ulong senderId, T message, out int length) where T : INetMessage
 	{
 		_writer.Reset();
 		_writer.WriteByte((byte)message.ToId());
 		_writer.WriteULong(senderId);
 		message.Serialize(_writer);
-		length = (int)Math.Ceiling((float)_writer.BitPosition / 8f);
+		length = _writer.BytePosition;
 		return _writer.Buffer;
 	}
 

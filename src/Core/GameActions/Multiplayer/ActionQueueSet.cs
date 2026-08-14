@@ -25,13 +25,15 @@ public class ActionQueueSet
 
 		public ulong ownerId;
 
-		public bool isCancellingPlayCardActions;
+		public GameAction? actionCancellingPlayCardActions;
 
 		public bool isCancellingPlayerDrivenCombatActions;
 
 		public bool isCancellingCombatActions = true;
 
 		public bool isPaused;
+
+		public bool IsCancellingPlayCardActions => actionCancellingPlayCardActions != null;
 	}
 
 	private struct ActionWaitingForResumption
@@ -119,7 +121,7 @@ public class ActionQueueSet
 			Log.Error($"Exception encountered in ActionEnqueued for action {gameAction}: {ex}");
 			SentryService.CaptureException(ex);
 		}
-		if (queue.isCancellingPlayCardActions && gameAction is PlayCardAction)
+		if (queue.IsCancellingPlayCardActions && gameAction is PlayCardAction)
 		{
 			_logger.Debug($"Attempted to enqueue PlayCardAction {gameAction} to player queue owned by {gameAction.OwnerId}, but it's currently cancelling all play card actions due to player choice");
 			gameAction.Cancel();
@@ -278,14 +280,14 @@ public class ActionQueueSet
 		if (options.HasFlag(PlayerChoiceOptions.CancelPlayCardActions))
 		{
 			CancelNonExecutingActionsOfType<PlayCardAction>(action.OwnerId, actionWaitingForResumption?.newId);
-			queue.isCancellingPlayCardActions = true;
+			queue.actionCancellingPlayCardActions = action;
 		}
 		this.ActionQueueChanged?.Invoke();
 		if (actionWaitingForResumption.HasValue)
 		{
 			_logger.Debug($"Immediately resuming action {action} - already had resumption waiting");
 			action.ResumeAfterGatheringPlayerChoice(actionWaitingForResumption.Value.newId);
-			queue.isCancellingPlayCardActions = false;
+			queue.actionCancellingPlayCardActions = null;
 			this.ActionQueueChanged?.Invoke();
 		}
 	}
@@ -394,7 +396,7 @@ public class ActionQueueSet
 					_logger.VeryDebug($"Not cancelling action {gameAction}, type: {gameAction.ActionType}, state: {gameAction.State}");
 				}
 			}
-			actionQueue.isCancellingPlayCardActions = false;
+			actionQueue.actionCancellingPlayCardActions = null;
 			actionQueue.isCancellingPlayerDrivenCombatActions = false;
 			actionQueue.isCancellingCombatActions = true;
 		}
@@ -501,7 +503,7 @@ public class ActionQueueSet
 		if (TryGetAction(id, out GameAction gameAction, out ActionQueue queue) && gameAction.State == GameActionState.GatheringPlayerChoice)
 		{
 			_logger.Debug($"Resuming action {gameAction} after player choice");
-			queue.isCancellingPlayCardActions = false;
+			queue.actionCancellingPlayCardActions = null;
 			gameAction.ResumeAfterGatheringPlayerChoice(andIncrementActionId);
 			this.ActionQueueChanged?.Invoke();
 		}
@@ -572,6 +574,11 @@ public class ActionQueueSet
 			{
 				flag = true;
 				actionQueue.actions.RemoveAt(0);
+				if (actionQueue.actionCancellingPlayCardActions == action)
+				{
+					_logger.Debug($"Action {action} left the queue while still cancelling play card actions. No longer cancelling them.");
+					actionQueue.actionCancellingPlayCardActions = null;
+				}
 				continue;
 			}
 			foreach (GameAction action2 in actionQueue.actions)

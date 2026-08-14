@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Nodes.Vfx;
 using MegaCrit.Sts2.Core.Nodes.Vfx.Ui;
+using MegaCrit.Sts2.Core.Nodes.Vfx.Utilities;
 
 namespace MegaCrit.Sts2.Core.Debug;
 

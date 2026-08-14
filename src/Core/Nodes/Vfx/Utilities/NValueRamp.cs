@@ -1,5 +1,7 @@
 using Godot;
 
+namespace MegaCrit.Sts2.Core.Nodes.Vfx.Utilities;
+
 public partial class NValueRamp : Node
 {
 	[Export(PropertyHint.None, "")]
@@ -8,25 +10,27 @@ public partial class NValueRamp : Node
 	[Export(PropertyHint.None, "")]
 	private Curve _rampCurve;
 
-	private float _previousValue = -1f;
-
 	private float _currentValue;
 
 	private bool _isIncreasing;
 
-	private bool _didForceValueThisFrame;
+	private bool _didForceValueThisFrame = true;
 
 	public bool TryProcess(double delta, out float returnValue)
 	{
-		_currentValue += (float)delta * _rampSpeed * (_isIncreasing ? 1f : (-1f));
-		_currentValue = Mathf.Clamp(_currentValue, 0f, 1f);
-		if (_currentValue != _previousValue || _didForceValueThisFrame)
+		bool didForceValueThisFrame = _didForceValueThisFrame;
+		_didForceValueThisFrame = false;
+		float num = (float)delta * _rampSpeed * (_isIncreasing ? 1f : (-1f));
+		bool flag = ((num > 0f) ? (_currentValue >= 1f) : (!(num < 0f) || _currentValue <= 0f));
+		bool flag2 = flag;
+		if (!didForceValueThisFrame && flag2)
 		{
-			returnValue = _rampCurve.Sample(_currentValue);
-			return true;
+			returnValue = 0f;
+			return false;
 		}
-		returnValue = 0f;
-		return false;
+		_currentValue = Mathf.Clamp(_currentValue + num, 0f, 1f);
+		returnValue = _rampCurve.Sample(_currentValue);
+		return true;
 	}
 
 	public void SetIncreasing(bool isIncreasing)
@@ -37,5 +41,6 @@ public partial class NValueRamp : Node
 	public void ForceValue(float forcedValue)
 	{
 		_currentValue = forcedValue;
+		_didForceValueThisFrame = true;
 	}
 }

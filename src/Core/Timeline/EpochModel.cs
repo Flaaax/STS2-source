@@ -25,6 +25,16 @@ namespace MegaCrit.Sts2.Core.Timeline;
 public abstract class EpochModel
 {
 	/// <summary>
+	/// One end-of-run score bar unlock: an epoch and the score it takes to earn it.
+	/// </summary>
+	/// <param name="EpochId">The agnostic epoch this unlock grants.</param>
+	/// <param name="ScoreThreshold">
+	/// Score the player needs to earn it. Must be above 0: the score bar reads 0 as "no unlocks left",
+	/// so an unlock with a threshold of 0 is granted for free.
+	/// </param>
+	public readonly record struct AgnosticUnlock(string EpochId, int ScoreThreshold);
+
+	/// <summary>
 	/// List of all valid epochs currently in the game
 	/// </summary>
 	private static readonly List<Type> _allEpochs;
@@ -32,6 +42,8 @@ public abstract class EpochModel
 	private static List<string>? _allEpochIds;
 
 	private static HashSet<string>? _epochIdsHashSet;
+
+	private static List<AgnosticUnlock>? _agnosticUnlocks;
 
 	private static List<string>? _agnosticUnlockOrder;
 
@@ -48,9 +60,10 @@ public abstract class EpochModel
 	public static IReadOnlySet<string> EpochIdsHashSet => _epochIdsHashSet ?? (_epochIdsHashSet = AllEpochIds.ToHashSet());
 
 	/// <summary>
-	/// The character-agnostic epoch IDs in the order the end-of-run score bar grants them.
-	/// <see cref="M:MegaCrit.Sts2.Core.Saves.ProgressState.GrantNextUnlock" /> hands out the first one the player is missing, and
-	/// <see cref="P:MegaCrit.Sts2.Core.Saves.ProgressState.TotalUnlocks" /> counts how many of them they have.
+	/// The character-agnostic unlocks in the order the end-of-run score bar grants them, each with the
+	/// score it takes. The epoch and its threshold are stored together so neither can be added without
+	/// the other: they used to be a list here and a switch in the game over screen, and adding an epoch
+	/// to only one of them made the score bar treat the new unlock as already earned.
 	/// Append only: the v23 to v24 migration reads a prefix of this list to work out which unlocks an
 	/// old save had earned, so reordering it changes what those saves resolve to.
 	/// </summary>
@@ -58,58 +71,65 @@ public abstract class EpochModel
 	/// Lazily built rather than a field initializer: static field initializers run before the static
 	/// constructor that populates the ID dictionaries <see cref="M:MegaCrit.Sts2.Core.Timeline.EpochModel.GetId``1" /> reads.
 	/// </remarks>
-	public static IReadOnlyList<string> AgnosticUnlockOrder
+	public static IReadOnlyList<AgnosticUnlock> AgnosticUnlocks
 	{
 		get
 		{
-			List<string> list = _agnosticUnlockOrder;
+			List<AgnosticUnlock> list = _agnosticUnlocks;
 			if (list == null)
 			{
 				int num = 18;
-				list = new List<string>(num);
+				list = new List<AgnosticUnlock>(num);
 				CollectionsMarshal.SetCount(list, num);
-				Span<string> span = CollectionsMarshal.AsSpan(list);
+				Span<AgnosticUnlock> span = CollectionsMarshal.AsSpan(list);
 				int num2 = 0;
-				span[num2] = GetId<Colorless1Epoch>();
+				span[num2] = new AgnosticUnlock(GetId<Colorless1Epoch>(), 200);
 				num2++;
-				span[num2] = GetId<Relic1Epoch>();
+				span[num2] = new AgnosticUnlock(GetId<Relic1Epoch>(), 500);
 				num2++;
-				span[num2] = GetId<Potion1Epoch>();
+				span[num2] = new AgnosticUnlock(GetId<Potion1Epoch>(), 750);
 				num2++;
-				span[num2] = GetId<UnderdocksEpoch>();
+				span[num2] = new AgnosticUnlock(GetId<UnderdocksEpoch>(), 1000);
 				num2++;
-				span[num2] = GetId<Colorless2Epoch>();
+				span[num2] = new AgnosticUnlock(GetId<Colorless2Epoch>(), 1250);
 				num2++;
-				span[num2] = GetId<Relic2Epoch>();
+				span[num2] = new AgnosticUnlock(GetId<Relic2Epoch>(), 1500);
 				num2++;
-				span[num2] = GetId<Potion2Epoch>();
+				span[num2] = new AgnosticUnlock(GetId<Potion2Epoch>(), 1600);
 				num2++;
-				span[num2] = GetId<Act2BEpoch>();
+				span[num2] = new AgnosticUnlock(GetId<Act2BEpoch>(), 1700);
 				num2++;
-				span[num2] = GetId<Colorless3Epoch>();
+				span[num2] = new AgnosticUnlock(GetId<Colorless3Epoch>(), 1800);
 				num2++;
-				span[num2] = GetId<Relic3Epoch>();
+				span[num2] = new AgnosticUnlock(GetId<Relic3Epoch>(), 1900);
 				num2++;
-				span[num2] = GetId<Act3BEpoch>();
+				span[num2] = new AgnosticUnlock(GetId<Act3BEpoch>(), 2000);
 				num2++;
-				span[num2] = GetId<Colorless4Epoch>();
+				span[num2] = new AgnosticUnlock(GetId<Colorless4Epoch>(), 2100);
 				num2++;
-				span[num2] = GetId<Relic4Epoch>();
+				span[num2] = new AgnosticUnlock(GetId<Relic4Epoch>(), 2200);
 				num2++;
-				span[num2] = GetId<Event1Epoch>();
+				span[num2] = new AgnosticUnlock(GetId<Event1Epoch>(), 2300);
 				num2++;
-				span[num2] = GetId<Colorless5Epoch>();
+				span[num2] = new AgnosticUnlock(GetId<Colorless5Epoch>(), 2400);
 				num2++;
-				span[num2] = GetId<Relic5Epoch>();
+				span[num2] = new AgnosticUnlock(GetId<Relic5Epoch>(), 2500);
 				num2++;
-				span[num2] = GetId<Event2Epoch>();
+				span[num2] = new AgnosticUnlock(GetId<Event2Epoch>(), 2500);
 				num2++;
-				span[num2] = GetId<Event3Epoch>();
-				_agnosticUnlockOrder = list;
+				span[num2] = new AgnosticUnlock(GetId<Event3Epoch>(), 2500);
+				_agnosticUnlocks = list;
 			}
 			return list;
 		}
 	}
+
+	/// <summary>
+	/// Just the epoch IDs from <see cref="P:MegaCrit.Sts2.Core.Timeline.EpochModel.AgnosticUnlocks" />, in the same order.
+	/// <see cref="M:MegaCrit.Sts2.Core.Saves.ProgressState.GrantNextUnlock" /> hands out the first one the player is missing, and
+	/// <see cref="P:MegaCrit.Sts2.Core.Saves.ProgressState.TotalUnlocks" /> counts how many of them they have.
+	/// </summary>
+	public static IReadOnlyList<string> AgnosticUnlockOrder => _agnosticUnlockOrder ?? (_agnosticUnlockOrder = AgnosticUnlocks.Select((AgnosticUnlock u) => u.EpochId).ToList());
 
 	public abstract string Id { get; }
 

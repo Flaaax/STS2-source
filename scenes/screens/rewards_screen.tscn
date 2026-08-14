@@ -15,6 +15,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+focus_mode = 2
 script = ExtResource("1_h01gt")
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
@@ -108,7 +113,7 @@ flip_v = true
 
 [node name="RewardsContainer" type="VBoxContainer" parent="Rewards/RewardContainerMask"]
 unique_name_in_owner = true
-layout_mode = 2
+layout_mode = 0
 offset_left = 36.0
 offset_top = 35.0
 offset_right = 438.0
@@ -128,6 +133,15 @@ offset_top = 140.0
 offset_right = 31.0
 offset_bottom = -55.0
 grow_horizontal = 0
+focus_behavior_recursive = 0
+mouse_behavior_recursive = 0
+accessibility_name = ""
+accessibility_description = ""
+accessibility_live = 0
+accessibility_controls_nodes = Array[NodePath]([])
+accessibility_described_by_nodes = Array[NodePath]([])
+accessibility_labeled_by_nodes = Array[NodePath]([])
+accessibility_flow_to_nodes = Array[NodePath]([])
 
 [node name="ProceedButton" parent="." instance=ExtResource("5_iok5l")]
 layout_mode = 1

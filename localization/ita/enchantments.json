@@ -18,7 +18,6 @@
   "IMBUED.description": "Questa carta viene giocata automaticamente all'inizio di ogni combattimento.",
   "IMBUED.extraCardText": "Infusione.",
   "IMBUED.title": "Infusione",
-  "INKY.description": "Questa carta infligge [blue]{Damage}[/blue] di danno extra e applica [blue]{WeakPower}[/blue] di [gold]Debolezza[/gold].",
   "INKY.extraCardText": "Applichi [blue]{WeakPower}[/blue] di [gold]Debolezza[/gold]{TargetType:choose(AllEnemies): a TUTTI i nemici|}.",
   "INKY.title": "Inchiostratura",
   "INSTINCT.description": "Il danno dell'attacco di questa carta viene raddoppiato.",

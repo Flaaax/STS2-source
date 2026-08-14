@@ -15,6 +15,12 @@ public class PrefsSaveManager
 
 	public PrefsSave Prefs { get; set; }
 
+	/// <summary>
+	/// Whether <see cref="P:MegaCrit.Sts2.Core.Saves.Managers.PrefsSaveManager.Prefs" /> has been read. It is null until <see cref="M:MegaCrit.Sts2.Core.Saves.Managers.PrefsSaveManager.LoadPrefs" /> runs despite
+	/// the non-nullable annotation, so early-boot callers have to check this first.
+	/// </summary>
+	public bool IsLoaded { get; private set; }
+
 	public PrefsSaveManager(int profileId, ISaveStore saveStore, MigrationManager migrationManager)
 		: this(saveStore, migrationManager, new StaticProfileIdProvider(profileId))
 	{
@@ -51,6 +57,7 @@ public class PrefsSaveManager
 		{
 			Prefs = readSaveResult.SaveData;
 		}
+		IsLoaded = true;
 		return readSaveResult;
 	}
 }

@@ -78,7 +78,7 @@ public partial class NEpochSlot : NButton
 
 	private static readonly Color _highlightSlotColor = StsColors.purple;
 
-	private static readonly Color _defaultSlotOutlineColor = new Color("70a0ff18");
+	private static readonly Color _defaultSlotOutlineColor = new Color("70A0FF18");
 
 	private IHoverTip? _hoverTip;
 

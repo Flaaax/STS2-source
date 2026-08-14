@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Godot;
 using MegaCrit.Sts2.Core.Achievements;
 using MegaCrit.Sts2.Core.Combat.History;
 using MegaCrit.Sts2.Core.Commands;
@@ -30,6 +31,7 @@ using MegaCrit.Sts2.Core.Nodes.Screens.Map;
 using MegaCrit.Sts2.Core.Rooms;
 using MegaCrit.Sts2.Core.Runs;
 using MegaCrit.Sts2.Core.Saves;
+using MegaCrit.Sts2.Core.Settings;
 using Sentry;
 
 namespace MegaCrit.Sts2.Core.Combat;
@@ -71,13 +73,20 @@ public class CombatManager
 	/// previous turn loop is genuinely stuck on a suspension that teardown could not cancel, in which case we log
 	/// loudly and proceed, degrading to the unsequenced behavior instead of introducing a new hang class.
 	/// </summary>
-	private static readonly TimeSpan PreviousTurnLoopTimeout = TimeSpan.FromSeconds(10L);
+	private static readonly TimeSpan _previousTurnLoopTimeout = TimeSpan.FromSeconds(10L);
 
 	/// <summary>
 	/// Whether the previous turn loop watchdog has already reported to Sentry this session. The watchdog can fire on
 	/// every combat start, so it reports once and lets the log carry the rest.
 	/// </summary>
 	private static bool _turnLoopWaitTimeoutReported;
+
+	/// <summary>
+	/// Whether the stale player-turn-end transition in <see cref="M:MegaCrit.Sts2.Core.Combat.CombatManager.AfterAllPlayersReadyToEndTurn(MegaCrit.Sts2.Core.Combat.CombatTurnState,MegaCrit.Sts2.Core.Combat.EndTurnSignal)" /> has already
+	/// reported to Sentry this session. Reported once for the same reason as
+	/// <see cref="F:MegaCrit.Sts2.Core.Combat.CombatManager._turnLoopWaitTimeoutReported" />.
+	/// </summary>
+	private static bool _staleTurnEndReported;
 
 	public static CombatManager Instance { get; } = new CombatManager();
 
@@ -227,7 +236,7 @@ public class CombatManager
 	/// The task that currently owns the turn loop. Exposed so a test can hold the outgoing turn loop across a
 	/// teardown and read whether it is still alive, instead of inferring that from log output.
 	/// </summary>
-	public Task? DebugOnlyCurrentTurnLoopTask => _turnLoopTask;
+	internal Task? DebugOnlyCurrentTurnLoopTask => _turnLoopTask;
 
 	/// <summary>
 	/// Fired after combat is set up.
@@ -336,6 +345,19 @@ public class CombatManager
 			return null;
 		}
 		return turnState;
+	}
+
+	/// <summary>
+	/// Is <paramref name="combatId" /> the combat that is running right now? Use this from work that can be suspended
+	/// past the end of its own combat, to drop the work rather than apply it to the next combat.
+	///
+	/// Testing the id alone is not enough. A combat that has ended keeps its <see cref="T:MegaCrit.Sts2.Core.Combat.CombatId" /> until
+	/// <see cref="M:MegaCrit.Sts2.Core.Combat.CombatManager.Reset(System.Boolean)" /> runs, because <c>EndCombatInternal</c> only clears
+	/// <see cref="P:MegaCrit.Sts2.Core.Combat.CombatTurnState.IsInProgress" />, so in that window the id still matches. This checks both.
+	/// </summary>
+	public bool IsCurrentLiveCombat(CombatId? combatId)
+	{
+		return LiveTurnStateFor(combatId) != null;
 	}
 
 	/// <summary>
@@ -463,7 +485,7 @@ public class CombatManager
 	/// A turn loop that skips the wait never suspends, so the task never completes. That is what a missing wait
 	/// looks like, so bound the wait and report the timeout as that failure.
 	/// </summary>
-	public Task DebugOnlyWhenNextTurnLoopWaitsForPrevious()
+	internal Task DebugOnlyWhenNextTurnLoopWaitsForPrevious()
 	{
 		return (_turnLoopWaitingForPreviousSource = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously)).Task;
 	}
@@ -491,11 +513,17 @@ public class CombatManager
 			Log.Debug($"Combat #{turnState?.Id} turn loop died of cancellation (combat torn down)");
 			throw;
 		}
-		catch (Exception value)
+		catch (Exception ex2)
 		{
+			Exception e = ex2;
 			if (turnState != null && turnState.IsLive && _turnState == turnState)
 			{
-				Log.Error($"Combat #{turnState.Id} turn loop died while its combat is in progress; the combat is stuck until the room is restarted: {value}");
+				Log.Error($"Combat #{turnState.Id} turn loop died while its combat is in progress; the combat is stuck until the room is restarted: {e}");
+				SentryService.CaptureException(new StuckCombatException("Combat turn loop died while its combat was in progress", e), delegate(Scope scope)
+				{
+					scope.SetFingerprint("StuckCombat", e.GetType().Name);
+					scope.SetExtra("combatId", turnState.Id.Value);
+				});
 			}
 			throw;
 		}
@@ -518,11 +546,11 @@ public class CombatManager
 		_turnLoopWaitingForPreviousSource?.TrySetResult();
 		try
 		{
-			await previousTurnLoopTask.WaitAsync(PreviousTurnLoopTimeout);
+			await previousTurnLoopTask.WaitAsync(_previousTurnLoopTimeout);
 		}
 		catch (TimeoutException)
 		{
-			string text = $"The previous combat's turn loop is still running {PreviousTurnLoopTimeout.TotalSeconds:0}s after its combat was torn down; starting combat #{turnState?.Id} without waiting for it.";
+			string text = $"The previous combat's turn loop is still running {_previousTurnLoopTimeout.TotalSeconds:0}s after its combat was torn down; starting combat #{turnState?.Id} without waiting for it.";
 			Log.Error(text);
 			if (!_turnLoopWaitTimeoutReported)
 			{
@@ -1239,7 +1267,7 @@ public class CombatManager
 		CombatTurnState turnState = _turnState;
 		if (turnState != null && !(turnState.PendingLoss != null))
 		{
-			turnState.PendingLoss = new PendingLossState(turnState.State, (CombatRoom)turnState.State.RunState.CurrentRoom);
+			turnState.PendingLoss = new PendingLossState((CombatRoom)turnState.State.RunState.CurrentRoom);
 		}
 	}
 
@@ -1258,9 +1286,9 @@ public class CombatManager
 	}
 
 	/// <summary>
-	/// DO NOT CALL THIS unless you're in this class or ModelTest.
+	/// Prefer ModelTest.WinCombat.
 	/// </summary>
-	public async Task EndCombatInternal()
+	internal async Task EndCombatInternal()
 	{
 		CombatTurnState turnState = _turnState;
 		if (turnState != null)
@@ -1417,8 +1445,17 @@ public class CombatManager
 		}
 		if ((signal.ScheduledPlayer.PlayerCombatState?.TurnNumber ?? (-1)) != signal.ScheduledTurnNumber)
 		{
-			Log.Info($"Combat #{turnState.Id}: dropping stale player-turn-end transition for player {signal.ScheduledPlayer.NetId}: the turn it was scheduled for has ended");
-			return;
+			Log.Error($"Combat #{turnState.Id}: stale player-turn-end transition for player {signal.ScheduledPlayer.NetId}: the turn it was scheduled for has ended. Running it anyway; only the turn loop advances turns, so something has resumed a turn the turn loop did not.");
+			if (!_staleTurnEndReported)
+			{
+				_staleTurnEndReported = true;
+				SentryService.CaptureMessage("Ran a stale player-turn-end transition; the turn it was scheduled for had ended", SentryLevel.Error, delegate(Scope scope)
+				{
+					scope.SetExtra("combatId", turnState.Id.Value);
+					scope.SetExtra("scheduledTurnNumber", signal.ScheduledTurnNumber);
+					scope.SetExtra("currentTurnNumber", signal.ScheduledPlayer.PlayerCombatState?.TurnNumber ?? (-1));
+				});
+			}
 		}
 		turnState.Ct.ThrowIfCancellationRequested();
 		turnState.EndingPlayerTurnPhaseOne = true;
@@ -1466,10 +1503,10 @@ public class CombatManager
 	}
 
 	/// <summary>
-	/// DO NOT CALL THIS unless you're in this class or ModelTest.
-	/// This calls all end-of-turn hooks that could require player choices to be made.
+	/// Calls all end-of-turn hooks that could require player choices to be made.
+	/// Prefer ModelTest.PassToEnemyTurn, whose doc comment covers when the bypass is safe.
 	/// </summary>
-	public async Task EndPlayerTurnPhaseOneInternal()
+	internal async Task EndPlayerTurnPhaseOneInternal()
 	{
 		CombatTurnState turnState = _turnState;
 		if (turnState != null)
@@ -1559,6 +1596,9 @@ public class CombatManager
 	/// If player choice occurs during this method, it uses the passed choice context. This way, each player's turn end
 	/// runs independently of all others.
 	/// </summary>
+	/// <param name="turnState">The turn state for the current combat.</param>
+	/// <param name="player">The player whose turn is ending.</param>
+	/// <param name="choiceContext">The context to use for any player choices.</param>
 	private async Task DoTurnEnd(CombatTurnState turnState, Player player, PlayerChoiceContext choiceContext)
 	{
 		await player.PlayerCombatState.OrbQueue.BeforeTurnEnd(choiceContext);
@@ -1584,9 +1624,67 @@ public class CombatManager
 		{
 			await CardCmd.Exhaust(choiceContext, item, causedByEthereal: true);
 		}
-		foreach (CardModel item2 in turnEndCards)
+		await DoTurnEndCards(turnState, turnEndCards, choiceContext);
+	}
+
+	/// <summary>
+	/// Invokes turn end effects on all cards in hand with such an effect.
+	/// Does some timing trickery so that the cards don't fly in one-by-one with linear timing.
+	/// Player choices can happen in between turn end resolutions. It is very rare, so I've ignored it for now, but the
+	/// UX for it is a little weird. Ideally it should pause the entire sequence.
+	/// </summary>
+	private async Task DoTurnEndCards(CombatTurnState turnState, List<CardModel> turnEndCards, PlayerChoiceContext choiceContext)
+	{
+		Task task = null;
+		List<Task> list = new List<Task>();
+		float num = 0f;
+		int num2 = 0;
+		foreach (CardModel turnEndCard in turnEndCards)
 		{
-			await item2.OnTurnEndInHandWrapper(choiceContext);
+			Task task2 = AddTurnEndCardToPlayPileWithDelay(turnEndCard, num);
+			Task waitTask = task2;
+			if (task != null)
+			{
+				global::_003C_003Ey__InlineArray2<Task> buffer = default(global::_003C_003Ey__InlineArray2<Task>);
+				global::_003CPrivateImplementationDetails_003E.InlineArrayElementRef<global::_003C_003Ey__InlineArray2<Task>, Task>(ref buffer, 0) = task2;
+				global::_003CPrivateImplementationDetails_003E.InlineArrayElementRef<global::_003C_003Ey__InlineArray2<Task>, Task>(ref buffer, 1) = task;
+				waitTask = Task.WhenAll(global::_003CPrivateImplementationDetails_003E.InlineArrayAsReadOnlySpan<global::_003C_003Ey__InlineArray2<Task>, Task>(in buffer, 2));
+			}
+			Task<CardPileAddResult?> task3 = ResolveTurnEndCardEffects(turnEndCard, choiceContext, waitTask);
+			Task item = TweenTurnEndCardToResultPile(turnState, task3);
+			list.Add(item);
+			task = task3;
+			float num3 = 1f - (float)num2 / ((float)num2 + 3f);
+			float num4 = (LocalContext.IsMine(turnEndCard) ? ((SaveManager.Instance.PrefsSave.FastMode == FastModeType.Fast) ? 0.4f : 0.8f) : 0.3f);
+			num += num4 * num3;
+			num2++;
+		}
+		await Task.WhenAll(list);
+	}
+
+	private async Task AddTurnEndCardToPlayPileWithDelay(CardModel card, float delay)
+	{
+		await Cmd.Wait(delay);
+		await CardPileCmd.Add(card, PileType.Play);
+	}
+
+	private async Task<CardPileAddResult?> ResolveTurnEndCardEffects(CardModel card, PlayerChoiceContext choiceContext, Task waitTask)
+	{
+		await waitTask;
+		await card.OnTurnEndInHandWrapper(choiceContext);
+		return (!card.Keywords.Contains(CardKeyword.Ethereal)) ? new CardPileAddResult?(await CardPileCmd.Add(card, PileType.Discard.GetPile(card.Owner), CardPilePosition.Bottom, null, skipVisuals: true)) : (await CardCmd.Exhaust(choiceContext, card, causedByEthereal: true, skipVisuals: true));
+	}
+
+	private async Task TweenTurnEndCardToResultPile(CombatTurnState turnState, Task<CardPileAddResult?> resultTask)
+	{
+		CardPileAddResult? cardPileAddResult = await resultTask;
+		if (cardPileAddResult.HasValue && cardPileAddResult.GetValueOrDefault().success)
+		{
+			Tween item = CardPileCmd.GetTweenForCardsChangingPiles(new global::_003C_003Ez__ReadOnlySingleElementList<CardPileAddResult>(cardPileAddResult.Value), fromSilentAdd: true).Item1;
+			if (item != null)
+			{
+				await item.AwaitFinished(turnState.Ct);
+			}
 		}
 	}
 
@@ -1627,11 +1725,11 @@ public class CombatManager
 	}
 
 	/// <summary>
-	/// DO NOT CALL THIS unless you're in this class or ModelTest.
-	/// This does all the player state cleanup for the end of their turn. It must not call any hooks that might cause
+	/// Does all the player state cleanup for the end of their turn. It must not call any hooks that might cause
 	/// player choices to occur.
+	/// Prefer ModelTest.PassToEnemyTurn, whose doc comment covers when the bypass is safe.
 	/// </summary>
-	public async Task EndPlayerTurnPhaseTwoInternal()
+	internal async Task EndPlayerTurnPhaseTwoInternal()
 	{
 		CombatTurnState turnState = _turnState;
 		if (turnState != null)
@@ -1716,19 +1814,9 @@ public class CombatManager
 	}
 
 	/// <summary>
-	/// DO NOT CALL THIS unless you're in this class or ModelTest.
-	/// This switches from the player side to the enemy side, handling extra player turns if necessary. It only
-	/// performs the switch; the turn loop (or the calling test, manually) runs the turn on the new side.
+	/// Switches from the player side to the enemy side, handling extra player turns if necessary. It only performs the
+	/// switch; the turn loop runs the turn on the new side.
 	/// </summary>
-	public async Task SwitchFromPlayerToEnemySide()
-	{
-		CombatTurnState turnState = _turnState;
-		if (turnState != null)
-		{
-			await SwitchFromPlayerToEnemySide(turnState);
-		}
-	}
-
 	private async Task SwitchFromPlayerToEnemySide(CombatTurnState turnState)
 	{
 		if (turnState.Ct.IsCancellationRequested)

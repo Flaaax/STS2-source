@@ -1680,22 +1680,12 @@ public abstract class CardModel : AbstractModel
 		return Task.CompletedTask;
 	}
 
-	public async Task OnTurnEndInHandWrapper(PlayerChoiceContext choiceContext)
+	/// <summary>
+	/// This can probably get removed if it stays this way, but I didn't want to change OnTurnEndInHand to public.
+	/// </summary>
+	public Task OnTurnEndInHandWrapper(PlayerChoiceContext choiceContext)
 	{
-		await CardPileCmd.Add(this, PileType.Play);
-		if (LocalContext.IsMe(Owner))
-		{
-			await Cmd.CustomScaledWait(0.3f, 0.6f);
-		}
-		await OnTurnEndInHand(choiceContext);
-		if (Keywords.Contains(CardKeyword.Ethereal))
-		{
-			await CardCmd.Exhaust(choiceContext, this, causedByEthereal: true);
-		}
-		else
-		{
-			await CardPileCmd.Add(this, PileType.Discard.GetPile(Owner));
-		}
+		return OnTurnEndInHand(choiceContext);
 	}
 
 	/// <summary>
@@ -1934,7 +1924,10 @@ public abstract class CardModel : AbstractModel
 					PlayCount = playCount
 				};
 				await Hook.BeforeCardPlayed(combatState, cardPlay);
-				CombatManager.Instance.History.CardPlayStarted(combatState, cardPlay);
+				if (CombatManager.Instance.IsCurrentLiveCombat(effectCombatId))
+				{
+					CombatManager.Instance.History.CardPlayStarted(combatState, cardPlay);
+				}
 				BranchingPlayerChoiceContext branchingPlayerChoiceContext = new BranchingPlayerChoiceContext(this, LocalContext.NetId.Value, GameActionType.Combat, choiceContext);
 				branchingPlayerChoiceContext.PushModel(this);
 				Task task = OnPlay(branchingPlayerChoiceContext, cardPlay);
@@ -1963,7 +1956,10 @@ public abstract class CardModel : AbstractModel
 					}
 					affliction.InvokeExecutionFinished();
 				}
-				CombatManager.Instance.History.CardPlayFinished(combatState, cardPlay);
+				if (CombatManager.Instance.IsCurrentLiveCombat(effectCombatId))
+				{
+					CombatManager.Instance.History.CardPlayFinished(combatState, cardPlay);
+				}
 				if (CombatManager.Instance.IsInProgress)
 				{
 					await Hook.AfterCardPlayed(combatState, choiceContext, cardPlay);
@@ -1984,24 +1980,27 @@ public abstract class CardModel : AbstractModel
 			await Cmd.CustomScaledWait(0.15f - num, 0.3f - num);
 		}
 		Player originalOwner = Owner;
-		if (originalOwner != resultLocation.player && resultLocation.pileType != PileType.None)
+		if (CombatManager.Instance.CurrentCombatId == effectCombatId)
 		{
-			await CardPileCmd.GiveToAnotherPlayer(this, resultLocation.player, resultLocation.pileType, resultLocation.position);
-		}
-		CardPile? pile = Pile;
-		if (pile != null && pile.Type == PileType.Play)
-		{
-			switch (resultLocation.pileType)
+			if (originalOwner != resultLocation.player && resultLocation.pileType != PileType.None)
 			{
-			case PileType.None:
-				await CardPileCmd.RemoveFromCombat(this, skipCardPileVisuals);
-				break;
-			case PileType.Exhaust:
-				await CardCmd.Exhaust(choiceContext, this, causedByEthereal: false, skipCardPileVisuals);
-				break;
-			default:
-				await CardPileCmd.Add(this, resultLocation.pileType, resultLocation.position, null, skipCardPileVisuals);
-				break;
+				await CardPileCmd.GiveToAnotherPlayer(this, resultLocation.player, resultLocation.pileType, resultLocation.position);
+			}
+			CardPile? pile = Pile;
+			if (pile != null && pile.Type == PileType.Play)
+			{
+				switch (resultLocation.pileType)
+				{
+				case PileType.None:
+					await CardPileCmd.RemoveFromCombat(this, skipCardPileVisuals);
+					break;
+				case PileType.Exhaust:
+					await CardCmd.Exhaust(choiceContext, this, causedByEthereal: false, skipCardPileVisuals);
+					break;
+				default:
+					await CardPileCmd.Add(this, resultLocation.pileType, resultLocation.position, null, skipCardPileVisuals);
+					break;
+				}
 			}
 		}
 		await CombatManager.Instance.CheckForEmptyHand(effectCombatId, choiceContext, originalOwner);

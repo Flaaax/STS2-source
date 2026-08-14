@@ -64,7 +64,7 @@ public partial class NInspectCardScreen : Control, IScreenContext
 
 	private bool IsShowingUpgradedCard => _upgradeTickbox.IsTicked;
 
-	public Control? DefaultFocusedControl => this;
+	public Control DefaultFocusedControl => this;
 
 	public static NInspectCardScreen? Create()
 	{
@@ -135,6 +135,7 @@ public partial class NInspectCardScreen : Control, IScreenContext
 			.SetDelay(0.1);
 		ActiveScreenContext.Instance.Update();
 		NHotkeyManager.Instance.AddBlockingScreen(this);
+		SetProcessInput(enable: true);
 		_rightButton.Enable();
 		_leftButton.Enable();
 		_upgradeTickbox.Enable();
@@ -153,7 +154,7 @@ public partial class NInspectCardScreen : Control, IScreenContext
 			_leftButton.Disable();
 			_upgradeTickbox.Disable();
 			NHoverTipSet.Clear();
-			SetProcessUnhandledInput(enable: false);
+			SetProcessInput(enable: false);
 			_openTween?.Kill();
 			_openTween = CreateTween().SetParallel();
 			_openTween.TweenProperty(_backstop, "modulate:a", 0f, 0.25);

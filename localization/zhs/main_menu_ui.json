@@ -94,6 +94,8 @@
   "INVALID_SAVE_POPUP.dismiss": "无视",
   "INVALID_SAVE_POPUP.title": "失效存档！",
   "INVITE": "邀请",
+  "INVITE.DISABLED.steam.description": "Steam叠加界面已被关闭。\n\n你可以将其开启，或是通过桌面上的Steam好友菜单手动邀请好友。",
+  "INVITE.DISABLED.steam.title": "Steam叠加界面已关闭",
   "JOIN.description": "加入好友所创建的游戏。",
   "JOIN.title": "加入",
   "JOIN_FRIENDS_MENU.noFriends": "目前没有好友在玩多人模式。",

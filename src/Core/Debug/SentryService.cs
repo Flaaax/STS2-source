@@ -605,7 +605,7 @@ public static class SentryService
 		{
 			return false;
 		}
-		if (SaveManager.Instance.IsProfileInitialized && !SaveManager.Instance.PrefsSave.UploadData)
+		if (SaveManager.Instance.IsPrefsLoaded && !SaveManager.Instance.PrefsSave.UploadData)
 		{
 			return false;
 		}

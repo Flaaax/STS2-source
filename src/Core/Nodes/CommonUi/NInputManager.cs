@@ -114,7 +114,6 @@ public partial class NInputManager : Node
 	{
 		MegaInput.cancel,
 		MegaInput.viewMap,
-		MegaInput.topPanel,
 		MegaInput.viewDeckAndTabLeft,
 		MegaInput.viewDrawPile,
 		MegaInput.viewDiscardPile,
@@ -212,7 +211,7 @@ public partial class NInputManager : Node
 		},
 		{
 			MegaInput.confirm,
-			Key.Enter
+			Key.E
 		},
 		{
 			MegaInput.viewDiscardPile,
@@ -635,12 +634,29 @@ public partial class NInputManager : Node
 		KeyValuePair<StringName, Key> keyValuePair = _mKbInputMap.FirstOrDefault<KeyValuePair<StringName, Key>>((KeyValuePair<StringName, Key> kvp) => kvp.Value == shortcutKey && remappableMKbInputs.Contains(kvp.Key));
 		if (keyValuePair.Key != null)
 		{
-			Key value = _mKbInputMap[input];
-			_mKbInputMap[keyValuePair.Key] = value;
+			Key key = _mKbInputMap[input];
+			_mKbInputMap[keyValuePair.Key] = key;
+			EnsureEndTurnAndConfirmMkbKeyAreTheSame(keyValuePair.Key, key);
 		}
 		_mKbInputMap[input] = shortcutKey;
+		EnsureEndTurnAndConfirmMkbKeyAreTheSame(input, shortcutKey);
 		SaveMKbInputMapping();
 		EmitSignalInputRebound();
+	}
+
+	/// <summary>
+	/// Ensures that in Mkb mapping, the input for confirm is the same as the input for end turn
+	/// </summary>
+	private void EnsureEndTurnAndConfirmMkbKeyAreTheSame(StringName input, Key shortcutKey)
+	{
+		if (input == MegaInput.confirm)
+		{
+			_mKbInputMap[MegaInput.endTurn] = shortcutKey;
+		}
+		else if (input == MegaInput.endTurn)
+		{
+			_mKbInputMap[MegaInput.confirm] = shortcutKey;
+		}
 	}
 
 	public void ModifyKbOnlyKey(StringName input, Key shortcutKey)
@@ -661,10 +677,21 @@ public partial class NInputManager : Node
 		KeyValuePair<StringName, StringName> keyValuePair = _controllerInputMap.FirstOrDefault<KeyValuePair<StringName, StringName>>((KeyValuePair<StringName, StringName> kvp) => kvp.Value == controllerInput && remappableControllerInputs.Contains(kvp.Key));
 		if (keyValuePair.Key != null)
 		{
-			StringName value = _controllerInputMap[input];
-			_controllerInputMap[keyValuePair.Key] = value;
+			StringName stringName = _controllerInputMap[input];
+			_controllerInputMap[keyValuePair.Key] = stringName;
+			EnsureEndTurnAndConfirmControllerInputAreTheSame(keyValuePair.Key, stringName);
 		}
 		_controllerInputMap[input] = controllerInput;
+		EnsureEndTurnAndConfirmControllerInputAreTheSame(input, controllerInput);
+		SaveControllerInputMapping();
+		EmitSignalInputRebound();
+	}
+
+	/// <summary>
+	/// Ensures that in Controller Input mapping, the input for confirm is the same as the input for end turn
+	/// </summary>
+	private void EnsureEndTurnAndConfirmControllerInputAreTheSame(StringName input, StringName controllerInput)
+	{
 		if (input == MegaInput.confirm)
 		{
 			_controllerInputMap[MegaInput.endTurn] = controllerInput;
@@ -673,8 +700,6 @@ public partial class NInputManager : Node
 		{
 			_controllerInputMap[MegaInput.confirm] = controllerInput;
 		}
-		SaveControllerInputMapping();
-		EmitSignalInputRebound();
 	}
 
 	public void ResetToDefaults()

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Godot;
 
@@ -49,7 +50,7 @@ public class MegaAnimationState : MegaSpineBinding
 	public MegaTrackEntry? GetCurrent(int trackIndex)
 	{
 		using Variant native = Call("get_current", trackIndex);
-		if (native.VariantType != Variant.Type.Object)
+		if (native.VariantType != Variant.Type.Object || native.AsGodotObject() == null)
 		{
 			return null;
 		}
@@ -65,6 +66,17 @@ public class MegaAnimationState : MegaSpineBinding
 	{
 		using MegaTrackEntry megaTrackEntry = GetCurrent(trackIndex);
 		return megaTrackEntry?.GetAnimationName();
+	}
+
+	/// <summary>
+	/// Animation names on the given track in playback order: the one playing now, then everything queued
+	/// behind it by AddAnimation. Empty if the track is inactive. Value-only so no transient wrapper
+	/// escapes; see <see cref="M:MegaCrit.Sts2.Core.Bindings.MegaSpine.MegaAnimationState.GetCurrentAnimationName(System.Int32)" />.
+	/// </summary>
+	public IReadOnlyList<string> GetQueuedAnimationNames(int trackIndex = 0)
+	{
+		using MegaTrackEntry megaTrackEntry = GetCurrent(trackIndex);
+		return megaTrackEntry?.GetQueuedAnimationNames() ?? Array.Empty<string>();
 	}
 
 	/// <summary>

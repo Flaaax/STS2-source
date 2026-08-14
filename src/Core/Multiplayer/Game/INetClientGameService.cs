@@ -1,3 +1,5 @@
+using System;
+using MegaCrit.Sts2.Core.Entities.Multiplayer;
 using MegaCrit.Sts2.Core.Multiplayer.Transport;
 
 namespace MegaCrit.Sts2.Core.Multiplayer.Game;
@@ -8,4 +10,6 @@ namespace MegaCrit.Sts2.Core.Multiplayer.Game;
 public interface INetClientGameService : INetGameService, INetClientHandler, INetHandler
 {
 	NetClient? NetClient { get; }
+
+	event Action<NetErrorInfo>? ConnectionFailed;
 }

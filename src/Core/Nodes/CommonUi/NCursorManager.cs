@@ -51,14 +51,18 @@ public partial class NCursorManager : Node
 
 	public override void _Ready()
 	{
-		NControllerManager.Instance.Connect(NControllerManager.SignalName.ControllerDetected, Callable.From(delegate
-		{
-			SetIsUsingController(isUsingController: true);
-		}));
-		NControllerManager.Instance.Connect(NControllerManager.SignalName.MouseDetected, Callable.From(delegate
-		{
-			SetIsUsingController(isUsingController: false);
-		}));
+		NControllerManager.Instance.Connect(NControllerManager.SignalName.ControllerDetected, Callable.From(OnControllerDetected));
+		NControllerManager.Instance.Connect(NControllerManager.SignalName.MouseDetected, Callable.From(OnMouseDetected));
+	}
+
+	private void OnControllerDetected()
+	{
+		SetIsUsingController(isUsingController: true);
+	}
+
+	private void OnMouseDetected()
+	{
+		SetIsUsingController(isUsingController: false);
 	}
 
 	public override void _Input(InputEvent inputEvent)

@@ -94,6 +94,8 @@
   "INVALID_SAVE_POPUP.dismiss": "Скрыть",
   "INVALID_SAVE_POPUP.title": "Поврежденное сохранение!",
   "INVITE": "Пригласить",
+  "INVITE.DISABLED.steam.description": "Оверлей сообщества Steam отключен.\n\nВключите его, или пригласите друзей вручную через меню друзей Steam на рабочем столе.",
+  "INVITE.DISABLED.steam.title": "Оверлей сообщества Steam отключен",
   "JOIN.description": "Присоединиться к игре друга.",
   "JOIN.title": "Присоединиться",
   "JOIN_FRIENDS_MENU.noFriends": "Никто из ваших друзей сейчас не играет.",

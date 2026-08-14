@@ -18,7 +18,6 @@
   "IMBUED.description": "Esta carta se juega automáticamente al comienzo de cada combate.",
   "IMBUED.extraCardText": "Infusión",
   "IMBUED.title": "Infusión",
-  "INKY.description": "Esta carta inflige [blue]{Damage}[/blue] de daño adicional y aplica [blue]{WeakPower}[/blue] de [gold]Debilidad[/gold].",
   "INKY.extraCardText": "Aplica [blue]{WeakPower}[/blue] de [gold]Debilidad[/gold]{TargetType:choose(AllEnemies): a TODOS los enemigos|}.",
   "INKY.title": "Tinta",
   "INSTINCT.description": "Duplica el daño de ataque de esta carta.",

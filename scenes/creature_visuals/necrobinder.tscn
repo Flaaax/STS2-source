@@ -1,10 +1,13 @@
-[gd_scene load_steps=57 format=3 uid="uid://b68kp3o7yapam"]
+[gd_scene load_steps=77 format=3 uid="uid://b68kp3o7yapam"]
 
 [ext_resource type="Script" uid="uid://cghtlla3sw0po" path="res://src/Core/Nodes/Combat/NCreatureVisuals.cs" id="1_ol0mx"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://bnmu48daoyepk" path="res://animations/characters/necrobinder/necrobinder_skel_data.tres" id="2_sp1yx"]
 [ext_resource type="Script" uid="uid://dsq50myoa0fc3" path="res://src/Core/Nodes/Vfx/NNecrobinderVfx.cs" id="3_yjmd8"]
 [ext_resource type="Texture2D" uid="uid://c65hcljas0pyo" path="res://images/vfx/fire/triangle_noise_tile.png" id="4_1tvp6"]
+[ext_resource type="Shader" uid="uid://dfgtak7it7exn" path="res://images/vfx/slash_shader_flat.tres" id="6_4fsds"]
+[ext_resource type="Texture2D" uid="uid://w0xvxuir58oi" path="res://images/vfx/characters/necro_slash_texture.png" id="7_fkoas"]
 [ext_resource type="Texture2D" uid="uid://cv34jqejd8qm4" path="res://images/vfx/characters/necro_fire_bottom_mask.png" id="7_mqr2m"]
+[ext_resource type="Texture2D" uid="uid://ctia3rua3hmm8" path="res://images/vfx/environment/fire/basic_fire_gradient.png" id="8_j02vo"]
 [ext_resource type="Texture2D" uid="uid://1epaordiol6u" path="res://images/vfx/fire/zigzag_fire_distortion.png" id="8_lsqku"]
 [ext_resource type="Texture2D" uid="uid://nabb7hx4fxat" path="res://images/vfx/fire/fire_bottom_mask.png" id="9_4lqkt"]
 [ext_resource type="Texture2D" uid="uid://d3ymohgo6fgl" path="res://images/vfx/characters/necro_fire_shape.png" id="9_ecaf8"]
@@ -13,37 +16,45 @@
 [ext_resource type="Shader" uid="uid://citjsgmko2rak" path="res://shaders/vfx/vfx_stepped_shader_fire_dark.tres" id="13_exby0"]
 [ext_resource type="Texture2D" uid="uid://dtaovewempx07" path="res://images/vfx/tileable_noise_1.png" id="13_fijpa"]
 [ext_resource type="Texture2D" uid="uid://dcvu5sxac5xwc" path="res://images/vfx/fire/flame_paricle_tex.png" id="14_4fsds"]
+[ext_resource type="Texture2D" uid="uid://54aqwjijquem" path="res://images/vfx/tiny_spark_particle.png" id="18_j02vo"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_luk1i"]
-shader = ExtResource("13_exby0")
-shader_parameter/GlobalOffset = Vector2(0, 0)
-shader_parameter/OuterColor = Color(0.17, 0.612667, 1, 1)
-shader_parameter/InnerColorStep = Vector2(0.52, 0.92)
-shader_parameter/Noise2Strength = 0.51
-shader_parameter/Noise2Scaling = Vector2(3, 3)
-shader_parameter/Noise2Panning = Vector2(-0.2, 1.4)
-shader_parameter/Noise2Texture = ExtResource("10_1uy2t")
-shader_parameter/Noise1Strength = 0.87
-shader_parameter/Noise1Scaling = Vector2(2.2, 2.2)
-shader_parameter/Noise1Panning = Vector2(0.8, 1.3)
-shader_parameter/Noise1Texture = ExtResource("4_1tvp6")
-shader_parameter/InvertNoiseMask = true
-shader_parameter/NoiseMaskScale = Vector2(1, 0.91)
-shader_parameter/NoiseMaskOffset = Vector2(0, -0.015)
-shader_parameter/NoiseMask = ExtResource("9_4lqkt")
-shader_parameter/Distortion2Scale = Vector2(1, 0.8)
-shader_parameter/Distortion2Panning = Vector2(0, 0.5)
-shader_parameter/Distortion2Texture = ExtResource("8_lsqku")
-shader_parameter/Distortion2Strength = 0.15
-shader_parameter/Distortion1Scale = Vector2(1, 1)
-shader_parameter/Distortion1Panning = Vector2(0.03, 0.6)
-shader_parameter/Distortion1Texture = ExtResource("4_1tvp6")
-shader_parameter/Distortion1Strength = 0.125
-shader_parameter/DistortionMaskScale = Vector2(1, 0.88)
-shader_parameter/DistortionMaskOffset = Vector2(0, 0.125)
-shader_parameter/DistortionMask = ExtResource("7_mqr2m")
-shader_parameter/InnerColor = Color(0, 0.0373333, 0.08, 1)
-shader_parameter/OuterStep = Vector2(0.025, 0.045)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fkoas"]
+shader = ExtResource("12_425vr")
+shader_parameter/Step = Vector2(0.14, 0.495)
+shader_parameter/mask_scale = Vector2(0.75, 0.75)
+shader_parameter/mask_panning = Vector2(0.2, 0.7)
+shader_parameter/noise_tex = ExtResource("13_fijpa")
+shader_parameter/mask2_scale = Vector2(1, 1)
+shader_parameter/mask2_panning = Vector2(0.2, 0.3)
+
+[sub_resource type="Curve" id="Curve_425vr"]
+_data = [Vector2(0.012089811, 1), 0.0, 0.0, 0, 0, Vector2(0.7564767, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.0019036531), -7.7610064, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_fijpa"]
+curve = SubResource("Curve_425vr")
+
+[sub_resource type="Curve" id="Curve_4fsds"]
+_data = [Vector2(0, 0.31535542), 0.0, 1.2792903, 0, 0, Vector2(0.6044905, 1), 0.0, 0.0, 0, 0, Vector2(0.91191715, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.01015234), -22.288227, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_fkoas"]
+curve = SubResource("Curve_4fsds")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t4h2i"]
+lifetime_randomness = 0.4
+particle_flag_disable_z = true
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+direction = Vector3(0, 1, 0)
+spread = 4.0
+initial_velocity_min = 700.0
+initial_velocity_max = 1000.0
+gravity = Vector3(0, 98, 0)
+scale_min = 0.59999996
+scale_curve = SubResource("CurveTexture_fkoas")
+color = Color(0.5684, 0.78792006, 0.98, 1)
+alpha_curve = SubResource("CurveTexture_fijpa")
 
 [sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_425vr"]
 output_port_for_preview = 0
@@ -390,43 +401,144 @@ scale_curve = SubResource("CurveTexture_mt3s4")
 color = Color(0.5684, 0.78792006, 0.98, 1)
 alpha_curve = SubResource("CurveTexture_hmvym")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fkoas"]
-shader = ExtResource("12_425vr")
-shader_parameter/Step = Vector2(0.14, 0.495)
-shader_parameter/mask_scale = Vector2(0.75, 0.75)
-shader_parameter/mask_panning = Vector2(0.2, 0.7)
-shader_parameter/noise_tex = ExtResource("13_fijpa")
-shader_parameter/mask2_scale = Vector2(1, 1)
-shader_parameter/mask2_panning = Vector2(0.2, 0.3)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t4h2i"]
+shader = ExtResource("6_4fsds")
+shader_parameter/ColorParameter = Color(0.17351875, 0.56981087, 0.8880476, 1)
+shader_parameter/step = Vector2(0.2, 0.21)
+shader_parameter/master_step = 0.085
+shader_parameter/noise_1_strength = 1.0
+shader_parameter/noise_1_scale = Vector2(1, 1)
+shader_parameter/noise_1_panning = Vector2(0, 0)
+shader_parameter/noise_1_tex = ExtResource("7_fkoas")
+shader_parameter/noise_2_scale = Vector2(1, 0.13)
+shader_parameter/noise_2_panning = Vector2(0, 0)
+shader_parameter/noise_2_tex = ExtResource("8_j02vo")
+shader_parameter/noise_2_strength = 0.1
+shader_parameter/opacity = 0.25
 
-[sub_resource type="Curve" id="Curve_425vr"]
-_data = [Vector2(0.012089811, 1), 0.0, 0.0, 0, 0, Vector2(0.7564767, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.0019036531), -7.7610064, 0.0, 0, 0]
-point_count = 3
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_luk1i"]
+shader = ExtResource("13_exby0")
+shader_parameter/GlobalOffset = Vector2(0, 0)
+shader_parameter/OuterColor = Color(0.17, 0.612667, 1, 1)
+shader_parameter/InnerColorStep = Vector2(0.52, 0.92)
+shader_parameter/Noise2Strength = 0.51
+shader_parameter/Noise2Scaling = Vector2(3, 3)
+shader_parameter/Noise2Panning = Vector2(-0.2, 1.4)
+shader_parameter/Noise2Texture = ExtResource("10_1uy2t")
+shader_parameter/Noise1Strength = 0.87
+shader_parameter/Noise1Scaling = Vector2(2.2, 2.2)
+shader_parameter/Noise1Panning = Vector2(0.8, 1.3)
+shader_parameter/Noise1Texture = ExtResource("4_1tvp6")
+shader_parameter/InvertNoiseMask = true
+shader_parameter/NoiseMaskScale = Vector2(1, 0.91)
+shader_parameter/NoiseMaskOffset = Vector2(0, -0.015)
+shader_parameter/NoiseMask = ExtResource("9_4lqkt")
+shader_parameter/Distortion2Scale = Vector2(1, 0.8)
+shader_parameter/Distortion2Panning = Vector2(0, 0.5)
+shader_parameter/Distortion2Texture = ExtResource("8_lsqku")
+shader_parameter/Distortion2Strength = 0.15
+shader_parameter/Distortion1Scale = Vector2(1, 1)
+shader_parameter/Distortion1Panning = Vector2(0.03, 0.6)
+shader_parameter/Distortion1Texture = ExtResource("4_1tvp6")
+shader_parameter/Distortion1Strength = 0.125
+shader_parameter/DistortionMaskScale = Vector2(1, 0.88)
+shader_parameter/DistortionMaskOffset = Vector2(0, 0.125)
+shader_parameter/DistortionMask = ExtResource("7_mqr2m")
+shader_parameter/InnerColor = Color(0, 0.0373333, 0.08, 1)
+shader_parameter/OuterStep = Vector2(0.025, 0.045)
 
-[sub_resource type="CurveTexture" id="CurveTexture_fijpa"]
-curve = SubResource("Curve_425vr")
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_t4h2i"]
+blend_mode = 1
 
-[sub_resource type="Curve" id="Curve_4fsds"]
-_data = [Vector2(0, 0.31535542), 0.0, 1.2792903, 0, 0, Vector2(0.6044905, 1), 0.0, 0.0, 0, 0, Vector2(0.91191715, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.01015234), -22.288227, 0.0, 0, 0]
-point_count = 4
+[sub_resource type="Gradient" id="Gradient_j02vo"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.37155962)
+colors = PackedColorArray(1, 0.43137255, 0.8862745, 1, 0.28921148, 0.5783364, 1, 1)
 
-[sub_resource type="CurveTexture" id="CurveTexture_fkoas"]
-curve = SubResource("Curve_4fsds")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_t4h2i"]
+gradient = SubResource("Gradient_j02vo")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t4h2i"]
-lifetime_randomness = 0.4
+[sub_resource type="Curve" id="Curve_mt3s4"]
+_data = [Vector2(0, 0.7612244), 0.0, 0.0, 0, 0, Vector2(0.07359307, 1), 0.0, 0.0, 0, 0, Vector2(0.1991342, 0.60204077), 0.0, 0.0, 0, 0, Vector2(0.3225108, 1), 0.0, 0.0, 0, 0, Vector2(0.482684, 0.55428565), 0.0, 0.0, 0, 0, Vector2(0.61038965, 0.8885714), 0.0, 0.0, 0, 0, Vector2(0.73376626, 0.31551015), 0.0, 0.0, 0, 0, Vector2(0.8549784, 0.6338775), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.094787, 0.0, 0, 0]
+point_count = 9
+
+[sub_resource type="CurveTexture" id="CurveTexture_cw5u8"]
+curve = SubResource("Curve_mt3s4")
+
+[sub_resource type="Curve" id="Curve_hmvym"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.3924051, 0.613402), 0.0, 0.0, 0, 0, Vector2(0.68565404, 0.12886596), 0.0, 0.0, 0, 0, Vector2(0.8839663, 0.6391752), -0.122164145, -0.122164145, 0, 0, Vector2(0.99789035, 0), -13.96175, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_cici4"]
+curve = SubResource("Curve_hmvym")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mt3s4"]
+lifetime_randomness = 0.5
+particle_flag_align_y = true
 particle_flag_disable_z = true
-angle_min = 1.0728835e-05
-angle_max = 360.00003
-direction = Vector3(0, 1, 0)
-spread = 4.0
-initial_velocity_min = 700.0
-initial_velocity_max = 1000.0
-gravity = Vector3(0, 98, 0)
-scale_min = 0.59999996
-scale_curve = SubResource("CurveTexture_fkoas")
-color = Color(0.5684, 0.78792006, 0.98, 1)
-alpha_curve = SubResource("CurveTexture_fijpa")
+direction = Vector3(-0.5, -1, 0)
+spread = 20.0
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = 300.0
+radial_accel_max = 400.0
+scale_min = 0.5
+scale_max = 0.59999996
+scale_curve = SubResource("CurveTexture_cw5u8")
+color_initial_ramp = SubResource("GradientTexture1D_t4h2i")
+turbulence_enabled = true
+turbulence_noise_strength = 18.38
+turbulence_noise_scale = 9.126
+turbulence_noise_speed = Vector3(2.325, 0, 0)
+turbulence_noise_speed_random = 1.66
+turbulence_influence_max = 0.335
+turbulence_influence_over_life = SubResource("CurveTexture_cici4")
+
+[sub_resource type="Gradient" id="Gradient_t4h2i"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.48394495)
+colors = PackedColorArray(0.963886, 0.43753672, 0.89179224, 1, 0.3328327, 0.569233, 0.9930038, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4fjxs"]
+gradient = SubResource("Gradient_t4h2i")
+
+[sub_resource type="Curve" id="Curve_cw5u8"]
+_data = [Vector2(0, 0.7612244), 0.0, 0.0, 0, 0, Vector2(0.103896104, 0.4906122), 0.0, 0.0, 0, 0, Vector2(0.21645021, 1), 0.0, 0.0, 0, 0, Vector2(0.33766234, 0.4906122), 0.0, 0.0, 0, 0, Vector2(0.43506494, 0.93632644), 0.0, 0.0, 0, 0, Vector2(0.54545456, 0.35265303), 0.0, 0.0, 0, 0, Vector2(0.6298702, 0.84081626), 0.0, 0.0, 0, 0, Vector2(0.74242425, 0.2253061), 0.0, 0.0, 0, 0, Vector2(0.85064936, 0.4481632), 0.0, 0.0, 0, 0, Vector2(1, 0), -5.4514327, 0.0, 0, 0]
+point_count = 10
+
+[sub_resource type="CurveTexture" id="CurveTexture_4sr75"]
+curve = SubResource("Curve_cw5u8")
+
+[sub_resource type="Curve" id="Curve_l1ld3"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.39873418, 0.5876288), 0.0, 0.0, 0, 0, Vector2(0.58860767, 0.25257725), 0.0, 0.0, 0, 0, Vector2(0.80801696, 0.6752577), -0.122164145, -0.122164145, 0, 0, Vector2(1, 0.24226797), -0.13573894, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_e214l"]
+curve = SubResource("Curve_l1ld3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5wdke"]
+lifetime_randomness = 0.5
+particle_flag_align_y = true
+particle_flag_disable_z = true
+direction = Vector3(-1, -0.2, 0)
+spread = 100.0
+initial_velocity_min = 500.0
+initial_velocity_max = 600.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = 200.0
+radial_accel_max = 249.99998
+scale_min = 0.5
+scale_max = 0.59999996
+scale_curve = SubResource("CurveTexture_4sr75")
+color_initial_ramp = SubResource("GradientTexture1D_4fjxs")
+turbulence_enabled = true
+turbulence_noise_strength = 18.38
+turbulence_noise_scale = 9.126
+turbulence_noise_speed = Vector3(2.325, 0, 0)
+turbulence_noise_speed_random = 1.66
+turbulence_influence_max = 0.335
+turbulence_influence_over_life = SubResource("CurveTexture_e214l")
 
 [node name="Necrobinder" type="Node2D"]
 script = ExtResource("1_ol0mx")
@@ -440,51 +552,19 @@ anchors_preset = 0
 [node name="Visuals" type="SpineSprite" parent="."]
 skeleton_data_res = ExtResource("2_sp1yx")
 preview_skin = "Default"
-preview_animation = "cast_mighty"
-preview_frame = true
-preview_time = 0.6
+preview_animation = "low_health_loop"
+preview_frame = false
+preview_time = 0.3
 unique_name_in_owner = true
 position = Vector2(-2, -6)
 scale = Vector2(0.27, 0.27)
 metadata/_edit_lock_ = true
 
-[node name="HeadBoneNode" type="SpineSlotNode" parent="Visuals"]
-slot_name = "flameattach"
-show_behind_parent = true
-position = Vector2(-1.1363292, -1130.279)
-rotation = -0.52146184
-
-[node name="SteppedFireMix_dark" type="Sprite2D" parent="Visuals/HeadBoneNode"]
-show_behind_parent = true
-material = SubResource("ShaderMaterial_luk1i")
-position = Vector2(-4.03905, 72.364)
-rotation = -0.076478
-scale = Vector2(0.904831, 0.904343)
-texture = ExtResource("9_ecaf8")
-
-[node name="ScytheVfxSlot2" type="SpineSlotNode" parent="Visuals"]
-slot_name = "scythe_vfx_attach_2"
-show_behind_parent = true
-position = Vector2(-157.06512, -1694.6093)
-rotation = -1.8201157
-scale = Vector2(0.99999994, 0.99999994)
-
-[node name="ScytheParticles" type="GPUParticles2D" parent="Visuals/ScytheVfxSlot2"]
-material = SubResource("ShaderMaterial_8qnhc")
-position = Vector2(-18.562044, -41.878777)
-rotation = -1.4705148
-amount = 20
-texture = ExtResource("14_4fsds")
-lifetime = 0.5
-local_coords = true
-process_material = SubResource("ParticleProcessMaterial_j02vo")
-
 [node name="ScytheVfxSlot1" type="SpineSlotNode" parent="Visuals"]
 slot_name = "scythe_vfx_attach_1"
 show_behind_parent = true
-position = Vector2(-204.12262, -1126.5785)
-rotation = -1.8201157
-scale = Vector2(0.99999994, 0.99999994)
+position = Vector2(-271.3371, -808.03436)
+rotation = -1.8038394
 
 [node name="ScytheParticles" type="GPUParticles2D" parent="Visuals/ScytheVfxSlot1"]
 material = SubResource("ShaderMaterial_fkoas")
@@ -496,6 +576,68 @@ lifetime = 0.8
 fixed_fps = 0
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_t4h2i")
+
+[node name="ScytheVfxSlot2" type="SpineSlotNode" parent="Visuals"]
+slot_name = "scythe_vfx_attach_2"
+show_behind_parent = true
+position = Vector2(-215.04083, -1375.2241)
+rotation = -1.8038394
+
+[node name="ScytheParticles" type="GPUParticles2D" parent="Visuals/ScytheVfxSlot2"]
+material = SubResource("ShaderMaterial_8qnhc")
+position = Vector2(-18.562044, -41.878777)
+rotation = -1.4705148
+amount = 20
+texture = ExtResource("14_4fsds")
+lifetime = 0.5
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_j02vo")
+
+[node name="SlashVfxSlot" type="SpineSlotNode" parent="Visuals"]
+normal_material = SubResource("ShaderMaterial_t4h2i")
+slot_name = "slash"
+show_behind_parent = true
+position = Vector2(1247.2562, -685.3119)
+
+[node name="HeadBoneNode" type="SpineSlotNode" parent="Visuals"]
+slot_name = "flameattach"
+show_behind_parent = true
+position = Vector2(74.69312, -1003.2004)
+rotation = -0.069521174
+scale = Vector2(1, 0.9999999)
+
+[node name="SteppedFireMix_dark" type="Sprite2D" parent="Visuals/HeadBoneNode"]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_luk1i")
+position = Vector2(-4.03905, 72.364)
+rotation = -0.076478
+scale = Vector2(0.904831, 0.904343)
+texture = ExtResource("9_ecaf8")
+
+[node name="LowHealthParticles" type="GPUParticles2D" parent="Visuals/HeadBoneNode"]
+material = SubResource("CanvasItemMaterial_t4h2i")
+position = Vector2(33.196613, 200.83427)
+amount = 4
+texture = ExtResource("18_j02vo")
+lifetime = 1.5
+explosiveness = 0.16
+trail_lifetime = 0.1
+trail_sections = 4
+trail_section_subdivisions = 2
+process_material = SubResource("ParticleProcessMaterial_mt3s4")
+
+[node name="HurtParticles" type="GPUParticles2D" parent="Visuals/HeadBoneNode"]
+material = SubResource("CanvasItemMaterial_t4h2i")
+position = Vector2(33.196613, 200.83427)
+amount = 10
+texture = ExtResource("18_j02vo")
+lifetime = 1.5
+speed_scale = 1.2
+explosiveness = 0.98
+trail_lifetime = 0.1
+trail_sections = 4
+trail_section_subdivisions = 2
+process_material = SubResource("ParticleProcessMaterial_5wdke")
 
 [node name="NNecrobinderFlameVfx" type="Node" parent="Visuals"]
 script = ExtResource("3_yjmd8")

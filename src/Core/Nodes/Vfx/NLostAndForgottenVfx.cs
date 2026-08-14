@@ -18,12 +18,21 @@ public partial class NLostAndForgottenVfx : Node
 		_parent = GetParent<Node2D>();
 		_animController = new MegaSprite(_parent);
 		_animController.ConnectAnimationEvent(Callable.From<GodotObject, GodotObject, GodotObject, GodotObject>(OnAnimationEvent));
+		_animController.ConnectAnimationStarted(Callable.From<GodotObject, GodotObject, GodotObject>(OnAnimationStart));
 		_dustParticles = _parent.GetNode<GpuParticles2D>("GranuleEmitterBone/DustParticles");
 		_dustParticles.Emitting = false;
 		this.RunWhenSpineReady(_animController, delegate(MegaAnimationState animState)
 		{
 			animState.SetAnimation("die");
 		});
+	}
+
+	private void OnAnimationStart(GodotObject spineSprite, GodotObject animationState, GodotObject trackEntry)
+	{
+		if (new MegaAnimationState(animationState).GetCurrentAnimationName() != "die")
+		{
+			OnDustStop();
+		}
 	}
 
 	private void OnAnimationEvent(GodotObject _, GodotObject __, GodotObject ___, GodotObject spineEvent)

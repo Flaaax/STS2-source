@@ -145,6 +145,8 @@ public partial class NRunHistory : NSubmenu
 		_nextButton = GetNode<NRunHistoryArrowButton>("RightArrow");
 		_nextButton.Connect(NClickableControl.SignalName.Released, Callable.From<NButton>(OnRightButtonButtonReleased));
 		_prevButton.IsLeft = true;
+		_prevButton.Disable();
+		_nextButton.Disable();
 		_mapPointHistory.SetDeckHistory(_deckHistory);
 		_mapPointHistory.SetRelicHistory(_relicHistory);
 		_screenContents.DisableScrollingIfContentFits();
@@ -193,10 +195,14 @@ public partial class NRunHistory : NSubmenu
 		_screenTween?.Kill();
 		_screenTween = CreateTween();
 		_screenTween.TweenProperty(_screenContents, "modulate:a", 1f, 0.4).From(0f);
+		_prevButton.SetEnabled(_index < _runNames.Count - 1);
+		_nextButton.SetEnabled(_index > 0);
 	}
 
 	protected override void OnSubmenuHidden()
 	{
+		_prevButton.Disable();
+		_nextButton.Disable();
 		_screenTween?.Kill();
 	}
 
@@ -286,27 +292,24 @@ public partial class NRunHistory : NSubmenu
 		NRunHistoryPlayerIcon nRunHistoryPlayerIcon = null;
 		foreach (RunHistoryPlayer player in history.Players)
 		{
-			NRunHistoryPlayerIcon playerIcon = PreloadManager.Cache.GetScene(NRunHistoryPlayerIcon.scenePath).Instantiate<NRunHistoryPlayerIcon>(PackedScene.GenEditState.Disabled);
+			NRunHistoryPlayerIcon nRunHistoryPlayerIcon2 = PreloadManager.Cache.GetScene(NRunHistoryPlayerIcon.scenePath).Instantiate<NRunHistoryPlayerIcon>(PackedScene.GenEditState.Disabled);
 			if (nRunHistoryPlayerIcon == null)
 			{
-				nRunHistoryPlayerIcon = playerIcon;
+				nRunHistoryPlayerIcon = nRunHistoryPlayerIcon2;
 			}
-			_playerIconContainer.AddChildSafely(playerIcon);
-			playerIcon.LoadRun(player, history);
-			playerIcon.Connect(NClickableControl.SignalName.Released, Callable.From<NClickableControl>(delegate
-			{
-				SelectPlayer(playerIcon);
-			}));
+			_playerIconContainer.AddChildSafely(nRunHistoryPlayerIcon2);
+			nRunHistoryPlayerIcon2.LoadRun(player, history);
+			nRunHistoryPlayerIcon2.Connect(NClickableControl.SignalName.Released, Callable.From<NRunHistoryPlayerIcon>(SelectPlayer));
 			if (player.Id == localPlayerId)
 			{
 				flag = true;
-				SelectPlayer(playerIcon);
+				SelectPlayer(nRunHistoryPlayerIcon2);
 			}
 		}
-		for (int num = 0; num < _playerIconContainer.GetChildCount(); num++)
+		for (int i = 0; i < _playerIconContainer.GetChildCount(); i++)
 		{
-			_playerIconContainer.GetChild<Control>(num).FocusNeighborLeft = ((num > 0) ? _playerIconContainer.GetChild<Control>(num - 1).GetPath() : _playerIconContainer.GetChild<Control>(_playerIconContainer.GetChildCount() - 1).GetPath());
-			_playerIconContainer.GetChild<Control>(num).FocusNeighborRight = ((num < _playerIconContainer.GetChildCount() - 1) ? _playerIconContainer.GetChild<Control>(num + 1).GetPath() : _playerIconContainer.GetChild<Control>(0).GetPath());
+			_playerIconContainer.GetChild<Control>(i).FocusNeighborLeft = ((i > 0) ? _playerIconContainer.GetChild<Control>(i - 1).GetPath() : _playerIconContainer.GetChild<Control>(_playerIconContainer.GetChildCount() - 1).GetPath());
+			_playerIconContainer.GetChild<Control>(i).FocusNeighborRight = ((i < _playerIconContainer.GetChildCount() - 1) ? _playerIconContainer.GetChild<Control>(i + 1).GetPath() : _playerIconContainer.GetChild<Control>(0).GetPath());
 		}
 		if (!flag)
 		{

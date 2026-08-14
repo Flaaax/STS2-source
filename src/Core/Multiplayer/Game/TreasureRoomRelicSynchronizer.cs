@@ -158,7 +158,8 @@ public class TreasureRoomRelicSynchronizer
 		}
 		if (_currentRelics == null)
 		{
-			throw new InvalidOperationException("Attempted to pick relic while relic picking is not active!");
+			_logger.Warn("Attempted to pick relic while relic picking is not active!");
+			return;
 		}
 		_predictedVote = new PlayerVote
 		{

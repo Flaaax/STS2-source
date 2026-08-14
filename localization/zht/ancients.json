@@ -380,7 +380,7 @@
   "VAKUU.epithet": "第一個惡魔",
   "VAKUU.loss": "{character} 和[gold]瓦庫[/gold]做了一筆糟糕的交易。",
   "VAKUU.talk.ANY.0-0r.ancient": "想在尖塔中追求榮耀，是嗎？我有幾項提議……",
-  "VAKUU.talk.ANY.1-0r.ancient": "{Visits}。你已經來過 {Visits} 次了。",
+  "VAKUU.talk.ANY.1-0r.ancient": "{Visits} 次。你已經來過 {Visits} 次了。",
   "VAKUU.talk.ANY.2-0r.ancient": "你明白這一切[sine]永遠[/sine]不會結束嗎？",
   "VAKUU.talk.DEFECT.0-0.ancient": "殘破之物，讓我使你臻於[sine]完美[/sine]。",
   "VAKUU.talk.DEFECT.1-0r.ancient": "其他構造體同胞都想要你的命，你不覺得奇怪嗎？",

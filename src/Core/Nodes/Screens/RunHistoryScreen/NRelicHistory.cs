@@ -84,10 +84,7 @@ public partial class NRelicHistory : VBoxContainer
 			{
 				EmitSignal(SignalName.Unhovered, holder);
 			}));
-			holder.Connect(NClickableControl.SignalName.Released, Callable.From<NButton>(delegate
-			{
-				OnRelicClicked(holder.Relic);
-			}));
+			holder.Connect(NClickableControl.SignalName.Released, Callable.From<NRelicBasicHolder>(OnRelicHolderReleased));
 			dictionary[relicModel.Rarity]++;
 		}
 		_relicHeader.Add("totalRelics", list.Count);
@@ -103,6 +100,11 @@ public partial class NRelicHistory : VBoxContainer
 		stringBuilder2.Append(ref handler);
 		stringBuilder.Append(_relicCategories.GetFormattedText().Trim(','));
 		_headerLabel.Text = stringBuilder.ToString();
+	}
+
+	private void OnRelicHolderReleased(NRelicBasicHolder holder)
+	{
+		OnRelicClicked(holder.Relic);
 	}
 
 	/// <summary>

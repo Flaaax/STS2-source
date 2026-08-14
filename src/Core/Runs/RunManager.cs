@@ -304,7 +304,7 @@ public class RunManager : IRunLobbyListener
 		IEnumerable<RunLobbyPlayer> players = new global::_003C_003Ez__ReadOnlySingleElementList<RunLobbyPlayer>(new RunLobbyPlayer
 		{
 			id = netGameService.NetId,
-			versionInfo = PeerVersionInfo.LocalDefault()
+			isModded = netGameService.LocalVersion.IsModded()
 		});
 		InitializeRunLobby(netGameService, state, players);
 		InitializeNewRun();
@@ -336,7 +336,7 @@ public class RunManager : IRunLobbyListener
 		IEnumerable<RunLobbyPlayer> players = lobby.Players.Select((StartRunLobbyPlayer p) => new RunLobbyPlayer
 		{
 			id = p.id,
-			versionInfo = p.versionInfo
+			isModded = p.isModded
 		});
 		InitializeRunLobby(lobby.NetService, state, players);
 		InitializeNewRun();
@@ -364,7 +364,7 @@ public class RunManager : IRunLobbyListener
 		IEnumerable<RunLobbyPlayer> players = new global::_003C_003Ez__ReadOnlySingleElementList<RunLobbyPlayer>(new RunLobbyPlayer
 		{
 			id = netGameService.NetId,
-			versionInfo = PeerVersionInfo.LocalDefault()
+			isModded = netGameService.LocalVersion.IsModded()
 		});
 		InitializeRunLobby(netGameService, state, players);
 		InitializeSavedRun(save);
@@ -393,7 +393,7 @@ public class RunManager : IRunLobbyListener
 		IEnumerable<RunLobbyPlayer> players = lobby.Players.Select((LoadRunLobbyPlayer p) => new RunLobbyPlayer
 		{
 			id = p.id,
-			versionInfo = p.versionInfo
+			isModded = p.isModded
 		});
 		InitializeRunLobby(lobby.NetService, state, players);
 		InitializeSavedRun(save);
@@ -423,7 +423,7 @@ public class RunManager : IRunLobbyListener
 		IEnumerable<RunLobbyPlayer> players = state.Players.Select((Player p) => new RunLobbyPlayer
 		{
 			id = p.NetId,
-			versionInfo = PeerVersionInfo.LocalDefault()
+			isModded = netService.LocalVersion.IsModded()
 		});
 		InitializeRunLobby(netService, state, players);
 		InitializeSavedRun(serializableRun);
@@ -454,7 +454,7 @@ public class RunManager : IRunLobbyListener
 		IEnumerable<RunLobbyPlayer> players = state.Players.Select((Player p) => new RunLobbyPlayer
 		{
 			id = p.NetId,
-			versionInfo = PeerVersionInfo.LocalDefault()
+			isModded = gameService.LocalVersion.IsModded()
 		});
 		InitializeRunLobby(gameService, state, players);
 		CombatStateSynchronizer.IsDisabled = disableCombatStateSync;
@@ -1607,6 +1607,7 @@ public class RunManager : IRunLobbyListener
 		}
 		finally
 		{
+			NHotkeyManager.Instance?.ClearHotkeys();
 			IsCleaningUp = false;
 			LocalContext.NetId = null;
 			State = null;

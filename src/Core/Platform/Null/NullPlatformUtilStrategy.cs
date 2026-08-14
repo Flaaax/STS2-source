@@ -70,9 +70,9 @@ public class NullPlatformUtilStrategy : IPlatformUtilStrategy
 		return Task.FromResult((IEnumerable<ulong>)Array.Empty<ulong>());
 	}
 
-	public void OpenInviteDialog(INetGameService netService)
+	public bool TryOpenInviteDialog(INetGameService netService)
 	{
-		throw new NotImplementedException();
+		return false;
 	}
 
 	public void OpenUrl(string url)

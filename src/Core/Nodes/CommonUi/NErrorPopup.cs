@@ -119,7 +119,7 @@ public partial class NErrorPopup : NVerticalPopup, IScreenContext
 		bool flag2 = flag;
 		if (flag2)
 		{
-			bool flag3 = ((reason == NetError.None || reason == NetError.StateDivergence || (uint)(reason - 17) <= 1u) ? true : false);
+			bool flag3 = ((reason == NetError.None || reason == NetError.StateDivergence || (uint)(reason - 202) <= 1u) ? true : false);
 			flag2 = flag3;
 		}
 		showReportBugButton = flag2;
@@ -207,6 +207,12 @@ public partial class NErrorPopup : NVerticalPopup, IScreenContext
 			break;
 		case NetError.VersionMismatch:
 			text2 = "VERSION_MISMATCH.body";
+			break;
+		case NetError.InvalidHandshake:
+			text2 = "VERSION_MISMATCH.body";
+			break;
+		case NetError.LobbyJoinTimeout:
+			text2 = "TIMEOUT.body";
 			break;
 		default:
 			throw new System.Runtime.CompilerServices.SwitchExpressionException(reason);

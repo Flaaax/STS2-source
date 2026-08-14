@@ -94,6 +94,8 @@
   "INVALID_SAVE_POPUP.dismiss": "Dispensar",
   "INVALID_SAVE_POPUP.title": "Salvamento Corrompido!",
   "INVITE": "Convidar",
+  "INVITE.DISABLED.steam.description": "O Painel Steam está desativado.\n\nAtive o Painel Steam ou convide amigos manualmente através da Lista de Amigos Steam.",
+  "INVITE.DISABLED.steam.title": "Painel Steam Desativado",
   "JOIN.description": "Junte-se a um jogo hospedado por um amigo.",
   "JOIN.title": "Juntar-se",
   "JOIN_FRIENDS_MENU.noFriends": "Não há amigos em modo multijogador no momento.",

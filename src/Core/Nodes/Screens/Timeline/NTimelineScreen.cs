@@ -608,11 +608,6 @@ public partial class NTimelineScreen : NSubmenu
 		return _queuedInspectScreen != null;
 	}
 
-	private async Task SpawnEraLabel(EpochEra era)
-	{
-		await _uniqueEpochEras[era].SpawnNameAndYear();
-	}
-
 	/// <summary>
 	/// Animates in the Header and Actions Available UI.
 	/// Called during the first timeline expansion or on screen open (if any Epochs are slotted)

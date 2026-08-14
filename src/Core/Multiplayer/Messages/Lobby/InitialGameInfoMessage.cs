@@ -12,11 +12,6 @@ namespace MegaCrit.Sts2.Core.Multiplayer.Messages.Lobby;
 public struct InitialGameInfoMessage : INetMessage, IPacketSerializable
 {
 	/// <summary>
-	/// Information about the version of STS2 the host is running.
-	/// </summary>
-	public PeerVersionInfo versionInfo;
-
-	/// <summary>
 	/// What state the run is currently in.
 	/// </summary>
 	public RunSessionState sessionState;
@@ -41,7 +36,6 @@ public struct InitialGameInfoMessage : INetMessage, IPacketSerializable
 
 	public void Serialize(PacketWriter writer)
 	{
-		writer.Write(versionInfo);
 		writer.WriteEnum(sessionState);
 		writer.WriteEnum(gameMode);
 		writer.WriteBool(connectionFailureReason.HasValue);
@@ -53,7 +47,6 @@ public struct InitialGameInfoMessage : INetMessage, IPacketSerializable
 
 	public void Deserialize(PacketReader reader)
 	{
-		versionInfo = reader.Read<PeerVersionInfo>();
 		sessionState = reader.ReadEnum<RunSessionState>();
 		gameMode = reader.ReadEnum<GameMode>();
 		if (reader.ReadBool())

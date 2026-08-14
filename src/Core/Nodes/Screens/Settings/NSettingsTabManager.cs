@@ -71,12 +71,9 @@ public partial class NSettingsTabManager : Control
 		node = GetNode<NSettingsTab>("Input");
 		node.SetLabel(new LocString("settings_ui", "TAB_INPUT").GetFormattedText());
 		_tabs.Add(node, GetNode<NSettingsPanel>("%InputSettings"));
-		foreach (NSettingsTab tab in _tabs.Keys)
+		foreach (NSettingsTab key in _tabs.Keys)
 		{
-			tab.Connect(NClickableControl.SignalName.Released, Callable.From<NButton>(delegate
-			{
-				SwitchTabTo(tab);
-			}));
+			key.Connect(NClickableControl.SignalName.Released, Callable.From<NSettingsTab>(SwitchTabTo));
 		}
 		NControllerManager.Instance.Connect(NControllerManager.SignalName.MouseDetected, Callable.From(UpdateControllerButton));
 		NControllerManager.Instance.Connect(NControllerManager.SignalName.ControllerDetected, Callable.From(UpdateControllerButton));
