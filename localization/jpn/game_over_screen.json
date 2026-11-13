@@ -48,10 +48,11 @@
   "SCORE.unlocksRemaining": "残りのアンロック: {UnlockCount}",
   "SCORE_LINE.ascension": "アセンション: {AscensionLevel}",
   "SCORE_LINE.bossesSlain": "倒したボスの数: {BossCount}",
+  "SCORE_LINE.dread": "ドレッド",
   "SCORE_LINE.elitesKilled": "倒したエリートの数: {EliteCount}",
   "SCORE_LINE.floorsClimbed": "到達階: {FloorCount}",
   "SCORE_LINE.goldGained": "獲得ゴールド: {GoldAmount}",
   "VICTORY_DAMAGE": "アーキテクトに[green]{PlayerDamage:n()}[/green]ダメージを与えた……しかし、それでは足りなかった……\nあなたはアーキテクトに合計[green]{PersonalDamage:n()}[/green]ダメージを与えている。\nアーキテクトは、挑んだすべての者から[green]{TotalDamage:n()}[/green]のダメージを受けている。だが、未だに倒れる気配はない。",
   "VICTORY_DAMAGE_LOCAL": "アーキテクトに [green]{PlayerDamage:n()}[/green] のダメージを与えた……しかし、それでは足りなかった……\nあなたはアーキテクトに合計[green]{PersonalDamage:n()}[/green]ダメージを与えている。",
-  "VICTORY_UNLOCKED_ASCENSION": "[blue]アセンション {AscensionLevel} をアンロック！[/blue]"
+  "VICTORY_UNLOCKED_ASCENSION": "[blue]{IsMultiplayer:マルチプレイ・|}アセンション {AscensionLevel} をアンロック！[/blue]"
 }

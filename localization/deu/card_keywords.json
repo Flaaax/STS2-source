@@ -10,7 +10,7 @@
   "PERIOD": ".",
   "RETAIN.description": "Behaltene Karten werden am Ende des Zuges nicht abgeworfen.",
   "RETAIN.title": "Behalten",
-  "SLY.description": "Falls diese Karte vor dem Ende deines Zuges aus deiner [gold]Hand[/gold] abgeworfen wird, spiele sie kostenlos aus.",
+  "SLY.description": "Falls diese Karte aus deiner [gold]Hand[/gold] abgeworfen wird, bevor dein Zug endet, spiele sie kostenlos aus.",
   "SLY.title": "Listig",
   "UNPLAYABLE.description": "Unspielbare Karten können nicht ausgespielt werden.",
   "UNPLAYABLE.title": "Unspielbar"

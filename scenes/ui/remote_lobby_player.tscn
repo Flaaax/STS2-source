@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ccuh52gdq1any" path="res://src/Core/Nodes/Multiplayer/NRemoteLobbyPlayer.cs" id="1_q56be"]
 [ext_resource type="Texture2D" uid="uid://x2neryjvbtwy" path="res://images/ui/top_panel/character_icon_ironclad.png" id="2_ms0h5"]
-[ext_resource type="Texture2D" path="res://images/atlases/compressed.sprites/confirm_button_tick.tres" id="3_xl7u7"]
+[ext_resource type="Texture2D" uid="uid://yqkcb4" path="res://images/atlases/compressed_atlas.sprites/confirm_button_tick.tres" id="3_xl7u7"]
 [ext_resource type="Texture2D" uid="uid://c12dyo14pjm62" path="res://images/ui/disconnected.png" id="4_jaky3"]
 [ext_resource type="FontVariation" uid="uid://ux4d708e7mk6" path="res://themes/kreon_bold_glyph_space_one.tres" id="6_55jve"]
 [ext_resource type="FontVariation" uid="uid://c6wnuvk3exmk5" path="res://themes/kreon_regular_shared.tres" id="7_5u3px"]

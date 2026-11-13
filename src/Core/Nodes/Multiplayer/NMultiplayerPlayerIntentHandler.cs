@@ -313,7 +313,7 @@ public partial class NMultiplayerPlayerIntentHandler : Control
 			{
 				nCard.PlayPileTween?.FastForwardToCompletion();
 				Tween tween = nCard.CreateTween();
-				tween.Parallel().TweenProperty(nCard, "position", _cardIntent.GlobalPosition + _cardIntent.Size / 2f, (SaveManager.Instance.PrefsSave.FastMode == FastModeType.Fast) ? 0.2f : 0.3f);
+				tween.Parallel().TweenProperty(nCard, "position", _cardIntent.GlobalPosition + _cardIntent.Size * 0.5f, (SaveManager.Instance.PrefsSave.FastMode == FastModeType.Fast) ? 0.2f : 0.3f);
 				tween.Parallel().TweenProperty(nCard, "scale", Vector2.One * 0.25f, (SaveManager.Instance.PrefsSave.FastMode == FastModeType.Fast) ? 0.2f : 0.3f);
 				_cardInPlayAwaitingPlayerChoice = nCard;
 				_cardThinkyDots.Reparent(nCard.GetParent());

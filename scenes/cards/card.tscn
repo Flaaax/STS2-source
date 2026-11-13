@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://ewa1gwt3sc0o"]
+[gd_scene load_steps=43 format=3 uid="uid://ewa1gwt3sc0o"]
 
 [ext_resource type="Script" uid="uid://25r0evybyc66" path="res://src/Core/Nodes/Cards/NCard.cs" id="1_e48db"]
 [ext_resource type="Script" uid="uid://c2oywrx8xbqfx" path="res://addons/mega_text/MegaRichTextLabel.cs" id="2_j55du"]
@@ -9,35 +9,32 @@
 [ext_resource type="Script" uid="uid://dtfio45agppyj" path="res://addons/mega_text/MegaLabel.cs" id="4_b02pp"]
 [ext_resource type="FontVariation" uid="uid://c6wnuvk3exmk5" path="res://themes/kreon_regular_shared.tres" id="4_k4ply"]
 [ext_resource type="Script" uid="uid://chqgs2yb0k8qx" path="res://src/Core/Nodes/Cards/NCardHighlight.cs" id="5_2pfqi"]
-[ext_resource type="Shader" uid="uid://djpxn0s2sqemq" path="res://shaders/vfx/debug/debug_ancient_card_border_overlay.gdshader" id="7_unm0i"]
-[ext_resource type="Texture2D" uid="uid://51xjmcgxedwl" path="res://images/vfx/ui/card/ancient/ui_card_ancient_border_main.png" id="8_0uvsl"]
-[ext_resource type="Texture2D" uid="uid://ddouphww0r8d6" path="res://images/vfx/ui/ui_card_mask.png" id="9_5kkxq"]
 [ext_resource type="Texture2D" uid="uid://ds8lq43wgq2jy" path="res://images/packed/common_ui/locked_card.png" id="13_5kkxq"]
 [ext_resource type="Material" uid="uid://bfbsbl4t3kkur" path="res://materials/cards/frames/card_frame_red_mat.tres" id="13_ullg4"]
 [ext_resource type="Material" uid="uid://d2pb6adjuojnh" path="res://materials/cards/banners/card_banner_common_mat.tres" id="13_ur8yw"]
-[ext_resource type="Texture2D" uid="uid://6y8t4" path="res://images/atlases/compressed.sprites/card_template/ancient_flame/ancient_card_flame_0.tres" id="15_50hcv"]
-[ext_resource type="Texture2D" uid="uid://b2axy3" path="res://images/atlases/compressed.sprites/card_template/ancient_flame/ancient_card_flame_1.tres" id="16_gt61a"]
-[ext_resource type="Texture2D" uid="uid://cwkn42" path="res://images/atlases/compressed.sprites/card_template/ancient_flame/ancient_card_flame_2.tres" id="17_wfyvd"]
+[ext_resource type="Texture2D" uid="uid://siro8q" path="res://images/atlases/compressed_atlas.sprites/ancient_card_flame_0.tres" id="15_50hcv"]
+[ext_resource type="Texture2D" uid="uid://td2fep" path="res://images/atlases/compressed_atlas.sprites/ancient_card_flame_1.tres" id="16_gt61a"]
+[ext_resource type="Texture2D" uid="uid://t8c4jo" path="res://images/atlases/compressed_atlas.sprites/ancient_card_flame_2.tres" id="17_wfyvd"]
 [ext_resource type="Texture2D" uid="uid://0o70qg" path="res://images/atlases/ui_atlas.sprites/card/card_portrait_border_attack_s.tres" id="18_ot5sw"]
-[ext_resource type="Texture2D" uid="uid://druea1" path="res://images/atlases/compressed.sprites/card_template/ancient_flame/ancient_card_flame_3.tres" id="18_unm0i"]
-[ext_resource type="Texture2D" uid="uid://em43f0" path="res://images/atlases/compressed.sprites/card_template/ancient_flame/ancient_card_flame_4.tres" id="19_0uvsl"]
+[ext_resource type="Texture2D" uid="uid://u3mton" path="res://images/atlases/compressed_atlas.sprites/ancient_card_flame_3.tres" id="18_unm0i"]
+[ext_resource type="Texture2D" uid="uid://vxwjtm" path="res://images/atlases/compressed_atlas.sprites/ancient_card_flame_4.tres" id="19_0uvsl"]
 [ext_resource type="Texture2D" uid="uid://qmqejd" path="res://images/atlases/ui_atlas.sprites/card/card_banner.tres" id="19_ot5sw"]
 [ext_resource type="Shader" uid="uid://c66gb6g7tup3n" path="res://shaders/hsv.gdshader" id="19_u22xx"]
-[ext_resource type="Texture2D" uid="uid://fifsky" path="res://images/atlases/compressed.sprites/card_template/ancient_flame/ancient_card_flame_5.tres" id="20_5kkxq"]
+[ext_resource type="Texture2D" uid="uid://ws68yl" path="res://images/atlases/compressed_atlas.sprites/ancient_card_flame_5.tres" id="20_5kkxq"]
 [ext_resource type="Texture2D" uid="uid://wwlp2akfrqsp" path="res://images/ui/combat/energy_star.png" id="21_bcecb"]
-[ext_resource type="Texture2D" uid="uid://gdpipx" path="res://images/atlases/compressed.sprites/card_template/ancient_flame/ancient_card_flame_6.tres" id="21_ot5sw"]
+[ext_resource type="Texture2D" uid="uid://xohx4k" path="res://images/atlases/compressed_atlas.sprites/ancient_card_flame_6.tres" id="21_ot5sw"]
 [ext_resource type="Texture2D" uid="uid://bssd8ar" path="res://images/atlases/ui_atlas.sprites/card/ancient_banner.tres" id="21_sh66y"]
 [ext_resource type="FontVariation" uid="uid://ux4d708e7mk6" path="res://themes/kreon_bold_glyph_space_one.tres" id="22_bls6v"]
-[ext_resource type="Texture2D" uid="uid://g7y7uw" path="res://images/atlases/compressed.sprites/card_template/ancient_flame/ancient_card_flame_7.tres" id="22_sh66y"]
-[ext_resource type="Texture2D" uid="uid://h3aw0v" path="res://images/atlases/compressed.sprites/card_template/ancient_flame/ancient_card_flame_8.tres" id="23_bc7ph"]
+[ext_resource type="Texture2D" uid="uid://yjroaj" path="res://images/atlases/compressed_atlas.sprites/ancient_card_flame_7.tres" id="22_sh66y"]
+[ext_resource type="Texture2D" uid="uid://0e2efi" path="res://images/atlases/compressed_atlas.sprites/ancient_card_flame_8.tres" id="23_bc7ph"]
 [ext_resource type="PackedScene" uid="uid://cimeloj78lsfl" path="res://scenes/vfx/card_sparkles_vfx.tscn" id="24_74k4a"]
-[ext_resource type="Texture2D" uid="uid://ixkm5u" path="res://images/atlases/compressed.sprites/card_template/ancient_flame/ancient_card_flame_9.tres" id="24_fi5qf"]
+[ext_resource type="Texture2D" uid="uid://1ac3kh" path="res://images/atlases/compressed_atlas.sprites/ancient_card_flame_9.tres" id="24_fi5qf"]
 [ext_resource type="Texture2D" uid="uid://bapstexgysxtc" path="res://images/enchantments/slither.png" id="24_x2rwh"]
 [ext_resource type="Texture2D" uid="uid://bnyc46tq4jfbg" path="res://images/ui/cards/card_portrait_border_plaque2.png" id="32_5kkxq"]
 [ext_resource type="Texture2D" uid="uid://o5lbua" path="res://images/atlases/ui_atlas.sprites/card/card_unplayable_icon.tres" id="36_bc7ph"]
 [ext_resource type="Texture2D" uid="uid://g1g8kd" path="res://images/atlases/ui_atlas.sprites/card/energy_ironclad.tres" id="36_sh66y"]
 [ext_resource type="Texture2D" uid="uid://hfvemc" path="res://images/atlases/ui_atlas.sprites/card/card_enchant_s.tres" id="39_ot5sw"]
-[ext_resource type="Shader" uid="uid://dm6w56nj2deyj" path="res://shaders/enchantment_tab_appear.gdshader" id="41_ot5sw"]
+[ext_resource type="Shader" path="res://shaders/enchantment_tab_appear.gdshader" id="41_ot5sw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7ivyc"]
 resource_local_to_scene = true
@@ -46,14 +43,6 @@ shader_parameter/ease = 0.005
 shader_parameter/modulo_width = 0.02
 shader_parameter/width = 0.0
 shader_parameter/ripple_speed = 0.03
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ot5sw"]
-shader = ExtResource("7_unm0i")
-shader_parameter/blur_amount = 0.0
-shader_parameter/add_amount = 0.15
-shader_parameter/mask = ExtResource("8_0uvsl")
-shader_parameter/corner_color = Color(1, 1, 1, 1)
-shader_parameter/corner_weight = 0.20000000298024
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wfyvd"]
 blend_mode = 1
@@ -200,25 +189,6 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
 mouse_filter = 2
-expand_mode = 1
-
-[node name="AncientBorderGlassOverlay" type="TextureRect" parent="CardContainer"]
-unique_name_in_owner = true
-visible = false
-material = SubResource("ShaderMaterial_ot5sw")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -148.46497
-offset_top = -210.71002
-offset_right = 442.08002
-offset_bottom = 621.3
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.5, 0.5)
-mouse_filter = 2
-texture = ExtResource("9_5kkxq")
 expand_mode = 1
 
 [node name="AncientBorder" type="TextureRect" parent="CardContainer"]
@@ -406,7 +376,7 @@ expand_mode = 1
 stretch_mode = 6
 
 [node name="Fire" type="AnimatedSprite2D" parent="CardContainer/AncientBanner"]
-position = Vector2(164, -10)
+position = Vector2(165, -5)
 scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_1rlg0")
 autoplay = "default"

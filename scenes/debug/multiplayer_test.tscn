@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b517f7v8u4ohr" path="res://src/Core/Nodes/Debug/Multiplayer/NMultiplayerTest.cs" id="1_avr30"]
 [ext_resource type="Script" uid="uid://cd4hs175xrwsg" path="res://src/Core/Nodes/Debug/Multiplayer/NMultiplayerTestCharacterPaginator.cs" id="3_1of3f"]
 [ext_resource type="FontVariation" uid="uid://c6wnuvk3exmk5" path="res://themes/kreon_regular_shared.tres" id="3_jbxpj"]
-[ext_resource type="Texture2D" uid="uid://cp3mg3t" path="res://images/atlases/compressed.sprites/confirm_button_tick.tres" id="4_8rmve"]
+[ext_resource type="Texture2D" uid="uid://yqkcb4" path="res://images/atlases/compressed_atlas.sprites/confirm_button_tick.tres" id="4_8rmve"]
 [ext_resource type="PackedScene" uid="uid://c42e8hjphxta7" path="res://scenes/screens/paginator.tscn" id="5_ox08s"]
 [ext_resource type="Script" uid="uid://dtfio45agppyj" path="res://addons/mega_text/MegaLabel.cs" id="23_ooqc8"]
 [ext_resource type="FontVariation" uid="uid://bg85h22rkxs6g" path="res://themes/kreon_bold_shared.tres" id="36_t6k81"]

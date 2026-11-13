@@ -20,7 +20,14 @@ public partial class NCardTrailVfx : Node2D
 
 	private bool _updateSprites = true;
 
-	private Tween? _tween;
+	private Tween? _introTween;
+
+	private readonly OwnerFreeingTween _fadeOut;
+
+	public NCardTrailVfx()
+	{
+		_fadeOut = new OwnerFreeingTween(this);
+	}
 
 	public static NCardTrailVfx? Create(Control card, string characterTrailPath)
 	{
@@ -41,11 +48,11 @@ public partial class NCardTrailVfx : Node2D
 		}
 		_sprites = GetNode<Node2D>("Sprites");
 		_sprites.Modulate = StsColors.transparentWhite;
-		_tween = CreateTween().SetParallel();
-		_tween.TweenProperty(_sprites, "scale", Vector2.One * 0.5f, 0.5).SetEase(Tween.EaseType.In).SetTrans(Tween.TransitionType.Cubic)
+		_introTween = CreateTween().SetParallel();
+		_introTween.TweenProperty(_sprites, "scale", Vector2.One * 0.5f, 0.5).SetEase(Tween.EaseType.In).SetTrans(Tween.TransitionType.Cubic)
 			.SetDelay(0.25);
-		_tween.TweenProperty(_nodeToFollow, "modulate:a", 0.75f, 0.5).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);
-		_tween.TweenProperty(_sprites, "modulate:a", 1f, 1.0).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);
+		_introTween.TweenProperty(_nodeToFollow, "modulate:a", 0.75f, 0.5).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);
+		_introTween.TweenProperty(_sprites, "modulate:a", 1f, 1.0).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);
 	}
 
 	public override void _Process(double delta)
@@ -57,14 +64,15 @@ public partial class NCardTrailVfx : Node2D
 		}
 	}
 
-	public async Task FadeOut()
+	public Task FadeOut()
 	{
 		_updateSprites = false;
-		_tween = CreateTween().SetParallel();
-		_tween.TweenProperty(this, "modulate:a", 0f, 0.5);
-		StopParticles(_tween);
-		await _tween.AwaitFinished(this);
-		this.QueueFreeSafely();
+		return _fadeOut.Play(delegate(Tween tween)
+		{
+			tween.SetParallel();
+			tween.TweenProperty(this, "modulate:a", 0f, 0.5);
+			StopParticles(tween);
+		});
 	}
 
 	/// <summary>
@@ -83,6 +91,6 @@ public partial class NCardTrailVfx : Node2D
 
 	public override void _ExitTree()
 	{
-		_tween?.Kill();
+		_introTween?.Kill();
 	}
 }

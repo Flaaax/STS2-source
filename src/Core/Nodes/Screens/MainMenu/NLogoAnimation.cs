@@ -67,7 +67,7 @@ public partial class NLogoAnimation : Control, IScreenContext
 		}
 		_tween = CreateTween();
 		_tween.TweenInterval(1.0);
-		if (!(await _tween.AwaitFinished(this)))
+		if (await _tween.AwaitFinished(this) != TweenOutcome.Finished)
 		{
 			return;
 		}
@@ -102,7 +102,7 @@ public partial class NLogoAnimation : Control, IScreenContext
 				_tween.Kill();
 				_tween = CreateTween().SetParallel();
 				_tween.TweenProperty(_logoContainer, "modulate", StsColors.transparentWhite, 0.25).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Expo);
-				if (await _tween.AwaitFinished(this))
+				if (await _tween.AwaitFinished(this) == TweenOutcome.Finished)
 				{
 					break;
 				}

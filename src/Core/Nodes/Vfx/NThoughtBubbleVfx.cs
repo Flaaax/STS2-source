@@ -9,6 +9,7 @@ using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Helpers;
+using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Nodes.Combat;
 using MegaCrit.Sts2.Core.Nodes.GodotExtensions;
 using MegaCrit.Sts2.Core.Nodes.Vfx.Utilities;
@@ -50,11 +51,18 @@ public partial class NThoughtBubbleVfx : Control
 
 	private double? _secondsToDisplay;
 
-	private Tween? _tween;
+	private Tween? _fadeInTween;
+
+	private readonly OwnerFreeingTween _fadeOut;
 
 	private CancellationTokenSource? _cts;
 
 	public static IEnumerable<string> AssetPaths => new global::_003C_003Ez__ReadOnlySingleElementList<string>("res://scenes/vfx/vfx_thought_bubble.tscn");
+
+	public NThoughtBubbleVfx()
+	{
+		_fadeOut = new OwnerFreeingTween(this);
+	}
 
 	/// <summary>
 	/// Creates a thought bubble given a creature. Use this when you want creatures to think out loud during combat!
@@ -104,6 +112,7 @@ public partial class NThoughtBubbleVfx : Control
 		_contents = GetNode<Node2D>("%Contents");
 		_container = GetNode<Control>("%Container");
 		_label = GetNode<MegaRichTextLabel>("%Text");
+		_label.ApplyRtlText();
 		_textureRect = GetNode<TextureRect>("%Image");
 		_tail = GetNode<Node2D>("%Tail");
 		if (_startPos.HasValue)
@@ -120,7 +129,7 @@ public partial class NThoughtBubbleVfx : Control
 
 	private async Task AnimateThoughtBubble()
 	{
-		_tween = CreateTween().SetParallel();
+		_fadeInTween = CreateTween().SetParallel();
 		float value = 30f * ((_side == DialogueSide.Left) ? (-1f) : 1f);
 		if (_text != null)
 		{
@@ -134,10 +143,10 @@ public partial class NThoughtBubbleVfx : Control
 		_textureRect.Visible = _texture != null;
 		base.Scale = Vector2.One * 0.75f;
 		base.Modulate = StsColors.transparentWhite;
-		_tween.TweenProperty(_label, "visible_ratio", 1f, 0.4).From(0f);
-		_tween.TweenProperty(_textureRect, "modulate:a", 1f, 0.4).From(0f);
-		_tween.TweenProperty(this, "modulate:a", 1f, 0.25).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);
-		_tween.TweenProperty(this, "scale", Vector2.One, 0.25).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Back);
+		_fadeInTween.TweenProperty(_label, "visible_ratio", 1f, 0.4).From(0f);
+		_fadeInTween.TweenProperty(_textureRect, "modulate:a", 1f, 0.4).From(0f);
+		_fadeInTween.TweenProperty(this, "modulate:a", 1f, 0.25).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);
+		_fadeInTween.TweenProperty(this, "scale", Vector2.One, 0.25).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Back);
 		if (_secondsToDisplay.HasValue)
 		{
 			double num = Math.Max(_secondsToDisplay.Value, 1.0);
@@ -149,7 +158,7 @@ public partial class NThoughtBubbleVfx : Control
 
 	public override void _ExitTree()
 	{
-		_tween?.Kill();
+		_fadeInTween?.Kill();
 		_cts?.Cancel();
 	}
 
@@ -157,11 +166,11 @@ public partial class NThoughtBubbleVfx : Control
 	{
 		if (GodotObject.IsInstanceValid(this))
 		{
-			_tween?.Kill();
-			_tween = CreateTween();
-			_tween.TweenProperty(this, "modulate:a", 0f, 0.4).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Sine);
-			await _tween.AwaitFinished(this);
-			this.QueueFreeSafely();
+			_fadeInTween?.Kill();
+			await _fadeOut.Play(delegate(Tween tween)
+			{
+				tween.TweenProperty(this, "modulate:a", 0f, 0.4).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Sine);
+			});
 		}
 	}
 

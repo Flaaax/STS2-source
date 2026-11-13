@@ -85,11 +85,12 @@ public class RewardsSet
 	public RewardsSet WithRewardsFromRoom(AbstractRoom room)
 	{
 		Room = room;
-		if (room.RoomType == RoomType.Boss && Player.RunState.CurrentActIndex >= Player.RunState.Acts.Count - 1)
+		List<Reward> list = new List<Reward>();
+		if (Hook.TryReplaceDefaultRoomRewards(Player.RunState, Player, list, room))
 		{
-			return this;
+			Rewards.AddRange(list);
 		}
-		if (!TryGenerateTutorialRewards(Player, room))
+		else if ((room.RoomType != RoomType.Boss || Player.RunState.CurrentActIndex < Player.RunState.Acts.Count - 1) && !TryGenerateTutorialRewards(Player, room))
 		{
 			Rewards.AddRange(GenerateRewardsFor(Player, room));
 		}

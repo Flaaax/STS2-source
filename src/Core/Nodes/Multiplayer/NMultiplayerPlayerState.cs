@@ -51,6 +51,8 @@ public partial class NMultiplayerPlayerState : Control
 
 	private TextureRect _characterIcon;
 
+	private TextureRect _characterOutline;
+
 	private MegaLabel _nameplateLabel;
 
 	private HBoxContainer _topContainer;
@@ -115,6 +117,7 @@ public partial class NMultiplayerPlayerState : Control
 		_nameplateLabel = GetNode<MegaLabel>("%NameplateLabel");
 		_healthBar = GetNode<NHealthBar>("%HealthBar");
 		_characterIcon = GetNode<TextureRect>("%CharacterIcon");
+		_characterOutline = GetNode<TextureRect>("%CharacterOutline");
 		_turnEndIndicator = GetNode<TextureRect>("%TurnEndIndicator");
 		_disconnectedIndicator = GetNode<TextureRect>("%DisconnectedIndicator");
 		_networkProblemIndicator = GetNode<NMultiplayerNetworkProblemIndicator>("%NetworkProblemIndicator");
@@ -133,6 +136,7 @@ public partial class NMultiplayerPlayerState : Control
 		_cardCount = _cardContainer.GetNode<MegaLabel>("CardCount");
 		_selectionReticle.Visible = true;
 		_characterIcon.Texture = Player.Character.IconTexture;
+		_characterOutline.Texture = Player.Character.IconOutlineTexture;
 		_nameplateLabel.SetTextAutoSize(PlatformUtil.GetPlayerNameRaw(RunManager.Instance.NetService.Platform, Player.NetId));
 		_healthBar.SetCreature(Player.Creature);
 		_networkProblemIndicator.Initialize(Player.NetId);
@@ -163,10 +167,10 @@ public partial class NMultiplayerPlayerState : Control
 		CombatManager.Instance.TurnStarted += OnTurnStarted;
 		CombatManager.Instance.CombatSetUp += OnCombatSetUp;
 		CombatManager.Instance.CombatEnded += OnCombatEnded;
-		RunManager.Instance.FlavorSynchronizer.OnEndTurnPingReceived += OnPlayerEndTurnPing;
+		RunManager.Instance.FlavorSynchronizer.EndTurnPingReceived += OnPlayerEndTurnPing;
 		RunManager.Instance.InputSynchronizer.ScreenChanged += OnPlayerScreenChanged;
 		RunManager.Instance.MapSelectionSynchronizer.PlayerVoteChanged += OnPlayerVoteChanged;
-		RunManager.Instance.MapSelectionSynchronizer.PlayerVoteCancelled += RefreshPlayerReadyIndicator;
+		RunManager.Instance.MapSelectionSynchronizer.PlayerVoteCancelled += OnPlayerVoteCancelled;
 		RunManager.Instance.MapSelectionSynchronizer.PlayerVotesCleared += OnPlayerVotesCleared;
 		if (RunManager.Instance.RunLobby != null)
 		{
@@ -202,10 +206,10 @@ public partial class NMultiplayerPlayerState : Control
 		CombatManager.Instance.TurnStarted -= OnTurnStarted;
 		CombatManager.Instance.CombatSetUp -= OnCombatSetUp;
 		CombatManager.Instance.CombatEnded -= OnCombatEnded;
-		RunManager.Instance.FlavorSynchronizer.OnEndTurnPingReceived -= OnPlayerEndTurnPing;
+		RunManager.Instance.FlavorSynchronizer.EndTurnPingReceived -= OnPlayerEndTurnPing;
 		RunManager.Instance.InputSynchronizer.ScreenChanged -= OnPlayerScreenChanged;
 		RunManager.Instance.MapSelectionSynchronizer.PlayerVoteChanged -= OnPlayerVoteChanged;
-		RunManager.Instance.MapSelectionSynchronizer.PlayerVoteCancelled -= RefreshPlayerReadyIndicator;
+		RunManager.Instance.MapSelectionSynchronizer.PlayerVoteCancelled -= OnPlayerVoteCancelled;
 		RunManager.Instance.MapSelectionSynchronizer.PlayerVotesCleared -= OnPlayerVotesCleared;
 		if (RunManager.Instance.RunLobby != null)
 		{
@@ -552,6 +556,11 @@ public partial class NMultiplayerPlayerState : Control
 	}
 
 	private void OnPlayerVoteChanged(Player player, MapVote? _, MapVote? __)
+	{
+		RefreshPlayerReadyIndicator(player);
+	}
+
+	private void OnPlayerVoteCancelled(Player player, MapVote? _)
 	{
 		RefreshPlayerReadyIndicator(player);
 	}

@@ -157,7 +157,7 @@ public partial class NControllerManager : Node
 			}
 			if (InputType != InputType.KeyboardOnlyMode)
 			{
-				CheckForArrowKeyInput(inputEvent);
+				CheckForDirectionalKeyInput(inputEvent);
 			}
 		}
 	}
@@ -199,11 +199,17 @@ public partial class NControllerManager : Node
 		}
 	}
 
-	private void CheckForArrowKeyInput(InputEvent inputEvent)
+	/// <summary>
+	/// Switches input type when the player presses a directional key. Which keys those are comes
+	/// from the keyboard-only bindings, so remapping the directions moves this along with them.
+	/// <see cref="M:MegaCrit.Sts2.Core.Nodes.CommonUi.NControllerManager._Input(Godot.InputEvent)" /> skips this while we are already in keyboard-only mode, so this only
+	/// ever moves us into keyboard-only mode or out of controller mode, never out of keyboard-only
+	/// mode.
+	/// </summary>
+	private void CheckForDirectionalKeyInput(InputEvent inputEvent)
 	{
-		if (NGame.IsGameFocusedWindow() && inputEvent is InputEventKey inputEventKey && inputEventKey.IsPressed() && (inputEventKey.Keycode == Key.Up || inputEventKey.Keycode == Key.Down || inputEventKey.Keycode == Key.Left || inputEventKey.Keycode == Key.Right))
+		if (NGame.IsGameFocusedWindow() && inputEvent is InputEventKey inputEventKey && inputEventKey.IsPressed() && NInputManager.Instance.IsKbOnlyDirectionalKey(inputEventKey.Keycode))
 		{
-			Viewport viewport = GetViewport();
 			if (SaveManager.Instance.PrefsSave.KeyboardMode)
 			{
 				InputType = InputType.KeyboardOnlyMode;
@@ -211,7 +217,7 @@ public partial class NControllerManager : Node
 				ActiveScreenContext.Instance.FocusOnDefaultControl();
 				EmitSignal(SignalName.ControllerDetected);
 				ControlModeChanged();
-				viewport?.SetInputAsHandled();
+				GetViewport()?.SetInputAsHandled();
 			}
 			else if (InputType == InputType.Controller)
 			{

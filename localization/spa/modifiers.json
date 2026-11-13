@@ -22,6 +22,7 @@
   "MURDEROUS.description": "Tanto tú como todos tus enemigos comenzáis cada combate con [blue]3[/blue] de [gold]Fuerza[/gold].",
   "MURDEROUS.title": "Esteroides",
   "NIGHT_TERRORS.additionalRestSiteHealText": "+{Heal} PV de Terrores nocturnos.\nPierdes [red]5[/red] PV máx.",
+  "NIGHT_TERRORS.additionalRestSiteMendText": "Te cura por completo de los Terrores nocturnos.\nPierdes [red]{MaxHpLoss}[/red] PV máx.",
   "NIGHT_TERRORS.description": "Descansar en [gold]Lugares de descanso[/gold] cura todos tus PV, pero cuesta [red]5[/red] PV máx.",
   "NIGHT_TERRORS.title": "Terrores nocturnos",
   "SEALED_DECK.description": "Elige [blue]10[/blue] de entre [blue]30[/blue] cartas para reemplazar tu mazo inicial.",

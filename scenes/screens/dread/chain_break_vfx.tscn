@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://7n63lkn7j6jk"]
+
+[ext_resource type="Texture2D" uid="uid://c0kl3so8v3h8w" path="res://images/vfx/shared_use/blur_diamond_vfx.png" id="1_6vwsr"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8e8ix"]
+resource_local_to_scene = true
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_mjrnb"]
+_data = [Vector2(0.354167, 1), 5.2717e-07, 5.2717e-07, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_eore6"]
+curve = SubResource("Curve_mjrnb")
+
+[sub_resource type="Curve" id="Curve_f4rsf"]
+_limits = [0.0, 100.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.62030077, 4.081627), 0.0, 0.0, 0, 0, Vector2(1, 100), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_sn134"]
+curve = SubResource("Curve_f4rsf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ltc2v"]
+lifetime_randomness = 0.75
+particle_flag_align_y = true
+particle_flag_disable_z = true
+angle_min = 1.0728835e-05
+angle_max = 90.000015
+initial_velocity_min = 500.0
+initial_velocity_max = 800.0
+gravity = Vector3(0, 0, 0)
+damping_min = 40.0
+damping_max = 50.000004
+damping_curve = SubResource("CurveTexture_sn134")
+scale_min = 0.05
+scale_max = 0.5
+color = Color(0.68, 1, 0.984, 1)
+alpha_curve = SubResource("CurveTexture_eore6")
+hue_variation_min = -0.020000022
+hue_variation_max = 0.019999977
+turbulence_noise_strength = 0.5
+turbulence_noise_scale = 5.0
+
+[node name="ChainBreakVfx" type="Node2D"]
+
+[node name="Vfx" type="GPUParticles2D" parent="."]
+modulate = Color(1, 1, 1, 0.75)
+material = SubResource("CanvasItemMaterial_8e8ix")
+emitting = false
+amount = 14
+texture = ExtResource("1_6vwsr")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+randomness = 0.15
+process_material = SubResource("ParticleProcessMaterial_ltc2v")

@@ -52,6 +52,11 @@ public partial class NMerchantDialogue : Node2D
 		ShowRandom(_dialogueSet.OpenInventoryLines);
 	}
 
+	public void ShowForBlitzFinished()
+	{
+		ShowRandom(_dialogueSet.BlitzFinishedLines);
+	}
+
 	public void ShowForPurchaseAttempt(PurchaseStatus status)
 	{
 		ShowRandom(_dialogueSet.GetPurchaseSuccessLines(status));

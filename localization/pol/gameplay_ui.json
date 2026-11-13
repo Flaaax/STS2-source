@@ -30,6 +30,8 @@
   "COMBAT_REWARD_ADD_SPECIAL_CARD": "Dodaj {Card} do talii.",
   "COMBAT_REWARD_CARD_REMOVAL": "Usuń kartę z talii.",
   "COMBAT_REWARD_CARD_REMOVAL.selectionScreenPrompt": "Wybierz kartę do usunięcia z talii.",
+  "COMBAT_REWARD_CARD_UPGRADE": "Ulepsz kartę.",
+  "COMBAT_REWARD_CARD_UPGRADE.selectionScreenPrompt": "Wybierz kartę do ulepszenia.",
   "COMBAT_REWARD_GOLD": "{gold} szt. Złota",
   "COMBAT_REWARD_GOLD_STOLEN": "{gold} szt. Złota (odzyskane)",
   "COMBAT_REWARD_HEADER_LOOT": "Łupy!",

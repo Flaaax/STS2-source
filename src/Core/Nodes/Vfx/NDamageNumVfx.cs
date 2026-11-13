@@ -43,7 +43,7 @@ public partial class NDamageNumVfx : Node2D
 			return null;
 		}
 		int num = result.UnblockedDamage;
-		if (!(target.Monster is Osty))
+		if (!(target.Monster is Osty) && !(target.Monster is Wuppy))
 		{
 			num += result.OverkillDamage;
 		}

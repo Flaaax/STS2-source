@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://fmmmk2blulyg"]
+[gd_scene load_steps=15 format=3 uid="uid://fmmmk2blulyg"]
 
 [ext_resource type="Script" uid="uid://b62swm62gosow" path="res://src/Core/Nodes/Screens/CharacterSelect/NCharacterSelectButton.cs" id="1_pqep5"]
 [ext_resource type="Shader" uid="uid://c66gb6g7tup3n" path="res://shaders/hsv.gdshader" id="2_55hao"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://d1um26e63xyd7" path="res://images/packed/character_select/char_select_outline_remote.png" id="4_vvknp"]
 [ext_resource type="Texture2D" uid="uid://ce7b7u8onx64l" path="res://images/packed/character_select/char_select_lock3.png" id="6_jlyta"]
 [ext_resource type="Texture2D" uid="uid://dbwd23pi4r266" path="res://images/vfx/vfx_dramatic_stab/sparks.png" id="8_3fr0h"]
+[ext_resource type="Texture2D" uid="uid://d0j4xwh3huahn" path="res://images/ui/main_menu/rotating_character.png" id="10_uvwor"]
 [ext_resource type="Material" uid="uid://c4ycqv0gdxvmr" path="res://themes/canvas_item_material_additive_shared.tres" id="shared_additive_mat"]
 
 [sub_resource type="Curve" id="Curve_uvwor"]
@@ -220,6 +221,26 @@ grow_vertical = 2
 scale = Vector2(0.6, 0.6)
 pivot_offset = Vector2(50, 74)
 texture = ExtResource("6_jlyta")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Rotating" type="TextureRect" parent="."]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_oc1nw")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(40, 40)
+texture = ExtResource("10_uvwor")
 expand_mode = 1
 stretch_mode = 5
 

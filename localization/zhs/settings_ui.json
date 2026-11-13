@@ -153,6 +153,7 @@
   "TEXT_EFFECTS": "文字特效",
   "TEXT_EFFECTS_DESCRIPTION": "控制是否启用文本特效（如波浪或抖动效果）。",
   "TEXT_SIZE": "字体大小",
+  "TOAST_CANNOT_REMAP_INPUT": "无法将{Hotkey}设置为{ControlType}的输入。",
   "TOAST_FAST_MODE_OFF": "战斗动画和转场的速度将会更慢。",
   "TOAST_FAST_MODE_ON": "战斗动画和转场的速度将会更快。",
   "TOAST_GAMEPLAY_DATA_OFF": "游玩数据和错误报告将不会被上传。",

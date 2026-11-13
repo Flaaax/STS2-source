@@ -48,10 +48,11 @@
   "SCORE.unlocksRemaining": "Übrige Freischaltungen: {UnlockCount}",
   "SCORE_LINE.ascension": "Aufstieg: {AscensionLevel}",
   "SCORE_LINE.bossesSlain": "Bosse besiegt: {BossCount}",
+  "SCORE_LINE.dread": "Grauen",
   "SCORE_LINE.elitesKilled": "Eliten getötet: {EliteCount}",
   "SCORE_LINE.floorsClimbed": "Ebenen geklettert: {FloorCount}",
   "SCORE_LINE.goldGained": "Gold erhalten: {GoldAmount}",
   "VICTORY_DAMAGE": "Du hast dem Architekten [green]{PlayerDamage:n()}[/green] Schaden zugefügt... aber es war nicht genug...\nInsgesamt hast du dem Architekten bisher [green]{PersonalDamage:n()}[/green] Schaden zugefügt.\nDer Architekt hält weiter stand, obwohl er von allen, die ihm begegnet sind, [green]{TotalDamage:n()}[/green] Schaden genommen hat.",
   "VICTORY_DAMAGE_LOCAL": "Du hast dem Architekten [green]{PlayerDamage:n()}[/green] Schaden zugefügt... aber es hat nicht gereicht...\nInsgesamt hast du dem Architekten bisher [green]{PersonalDamage:n()}[/green] Schaden zugefügt.",
-  "VICTORY_UNLOCKED_ASCENSION": "[blue]Aufstieg {AscensionLevel} freigeschaltet![/blue]"
+  "VICTORY_UNLOCKED_ASCENSION": "[blue]{IsMultiplayer:Mehrspieler-|}Aufstieg {AscensionLevel} freigeschaltet![/blue]"
 }

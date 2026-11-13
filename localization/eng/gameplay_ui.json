@@ -30,6 +30,8 @@
   "COMBAT_REWARD_ADD_SPECIAL_CARD": "Add {Card} to your deck.",
   "COMBAT_REWARD_CARD_REMOVAL": "Remove a card from your deck.",
   "COMBAT_REWARD_CARD_REMOVAL.selectionScreenPrompt": "Choose a card to remove from your deck.",
+  "COMBAT_REWARD_CARD_UPGRADE": "Upgrade a card.",
+  "COMBAT_REWARD_CARD_UPGRADE.selectionScreenPrompt": "Choose a card to upgrade.",
   "COMBAT_REWARD_GOLD": "{gold} Gold",
   "COMBAT_REWARD_GOLD_STOLEN": "{gold} Gold (stolen back)",
   "COMBAT_REWARD_HEADER_LOOT": "Loot!",

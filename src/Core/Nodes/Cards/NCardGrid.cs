@@ -187,6 +187,12 @@ public partial class NCardGrid : Control
 	public IEnumerable<CardModel> CurrentlyDisplayedCards => CurrentlyDisplayedCardHolders.Select((NGridCardHolder h) => h.CardModel);
 
 	/// <summary>
+	/// All of the cards in the grid, in the order the grid displays them.
+	/// Unlike <see cref="P:MegaCrit.Sts2.Core.Nodes.Cards.NCardGrid.CurrentlyDisplayedCards" />, this is not limited to the chunk that currently has holders.
+	/// </summary>
+	public IReadOnlyList<CardModel> SortedCards => _cards;
+
+	/// <summary>
 	/// True when the card library is animating or has animated out all cards that were displayed.
 	/// </summary>
 	public bool IsAnimatingOut
@@ -597,13 +603,14 @@ public partial class NCardGrid : Control
 				.SetDelay(num2);
 		}
 		_setCardsCancellation = new CancellationTokenSource();
+		CancellationToken ct = _cts.Token;
 		while (tween.IsRunning())
 		{
 			if (_setCardsCancellation.IsCancellationRequested)
 			{
 				tween.Kill();
 			}
-			await this.AwaitProcessFrame(_cts.Token);
+			await this.AwaitProcessFrame(ct);
 		}
 	}
 

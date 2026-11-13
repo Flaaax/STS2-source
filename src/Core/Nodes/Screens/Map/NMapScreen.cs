@@ -12,12 +12,12 @@ using MegaCrit.Sts2.Core.Context;
 using MegaCrit.Sts2.Core.ControllerInput;
 using MegaCrit.Sts2.Core.Debug;
 using MegaCrit.Sts2.Core.Entities.Players;
-using MegaCrit.Sts2.Core.GameActions;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Map;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Multiplayer.Game;
 using MegaCrit.Sts2.Core.Multiplayer.Game.PeerInput;
 using MegaCrit.Sts2.Core.Nodes.CommonUi;
@@ -106,10 +106,6 @@ public partial class NMapScreen : Control, IScreenContext, INetCursorPositionTra
 
 	private const float _totalWidth = 1050f;
 
-	private float _distX;
-
-	private float _distY;
-
 	private const float _pointJitterX = 21f;
 
 	private const float _pointJitterY = 25f;
@@ -153,8 +149,6 @@ public partial class NMapScreen : Control, IScreenContext, INetCursorPositionTra
 	private float MapLegendX => base.Size.X * 0.8f;
 
 	public bool IsTraveling { get; set; }
-
-	public Dictionary<Player, MapCoord?> PlayerVoteDictionary { get; } = new Dictionary<Player, MapCoord?>();
 
 	public NMapDrawings Drawings { get; private set; }
 
@@ -211,6 +205,7 @@ public partial class NMapScreen : Control, IScreenContext, INetCursorPositionTra
 		_shareButton.Initialize(this, _mapContainer, _mapBgContainer);
 		RunManager.Instance.MapSelectionSynchronizer.PlayerVoteChanged += OnPlayerVoteChanged;
 		RunManager.Instance.MapSelectionSynchronizer.PlayerVoteCancelled += OnPlayerVoteCancelled;
+		RunManager.Instance.FlavorSynchronizer.MapPingReceived += PingMapCoord;
 		base.ProcessMode = (ProcessModeEnum)(base.Visible ? 0 : 4);
 		Connect(CanvasItem.SignalName.VisibilityChanged, Callable.From(OnVisibilityChanged));
 		Callable.From(() => NCapstoneContainer.Instance.Connect(NCapstoneContainer.SignalName.Changed, Callable.From(OnCapstoneChanged))).CallDeferred();
@@ -233,6 +228,7 @@ public partial class NMapScreen : Control, IScreenContext, INetCursorPositionTra
 		{
 			RunManager.Instance.MapSelectionSynchronizer.PlayerVoteChanged -= OnPlayerVoteChanged;
 			RunManager.Instance.MapSelectionSynchronizer.PlayerVoteCancelled -= OnPlayerVoteCancelled;
+			RunManager.Instance.FlavorSynchronizer.MapPingReceived -= PingMapCoord;
 		}
 	}
 
@@ -242,6 +238,12 @@ public partial class NMapScreen : Control, IScreenContext, INetCursorPositionTra
 		Drawings.Initialize(RunManager.Instance.NetService, _runState, RunManager.Instance.InputSynchronizer);
 		_marker.Initialize(LocalContext.GetMe(_runState));
 		_mapBgContainer.Initialize(_runState);
+		RunManager.Instance.MapChanged += OnMapChanged;
+	}
+
+	private void OnMapChanged(bool clearDrawings)
+	{
+		SetMap(_runState.Map, _runState.Rng.Seed, clearDrawings);
 	}
 
 	/// <summary>
@@ -264,31 +266,50 @@ public partial class NMapScreen : Control, IScreenContext, INetCursorPositionTra
 		_hasPlayedAnimation = false;
 		int rowCount = map.GetRowCount();
 		int columnCount = map.GetColumnCount();
-		float num = ((map.SecondBossMapPoint != null) ? 0.9f : 1f);
-		_distY = 2325f / (float)(rowCount - 1) * num;
-		_distX = 1050f / (float)columnCount;
-		Rng rng = new Rng(seed, $"map_jitter_{_runState.CurrentActIndex}");
-		Vector2 vector = new Vector2(-500f, 740f);
-		Vector2 vector2 = new Vector2(_distX, 0f - _distY);
+		List<NMapPoint> list = new List<NMapPoint>();
+		float[] array = new float[rowCount];
 		foreach (MapPoint allMapPoint in map.GetAllMapPoints())
 		{
-			NNormalMapPoint nNormalMapPoint = NNormalMapPoint.Create(allMapPoint, this, _runState);
-			nNormalMapPoint.Position = new Vector2(allMapPoint.coord.col, allMapPoint.coord.row) * vector2 + vector;
-			float x = rng.NextFloat(-21f, 21f);
-			float y = rng.NextFloat(-25f, 25f);
-			nNormalMapPoint.Position += new Vector2(x, y);
-			_mapPointDictionary.Add(allMapPoint.coord, nNormalMapPoint);
-			_points.AddChildSafely(nNormalMapPoint);
-			nNormalMapPoint.SetAngle(Rng.Chaotic.NextGaussianFloat(0f, 8f));
+			NMapPoint nMapPoint = NNormalMapPoint.Create(allMapPoint, this, _runState);
+			float val = array[allMapPoint.coord.row];
+			val = Math.Max(val, nMapPoint.Size.Y * nMapPoint.Scale.Y);
+			array[allMapPoint.coord.row] = val;
+			list.Add(nMapPoint);
 		}
-		_bossPointNode = NBossMapPoint.Create(map.BossMapPoint, this, _runState);
+		float num = ((map.SecondBossMapPoint != null) ? 0.9f : 1f);
+		float num2 = array.Sum();
+		Vector2 vector = new Vector2(1050f / (float)columnCount, (2325f * num - num2) / (float)(rowCount - 1));
+		Rng rng = new Rng(seed, $"map_jitter_{_runState.CurrentActIndex}");
+		bool flag = map is BlitzActMap;
+		Vector2 vector2 = new Vector2(flag ? 530f : 460f, 1280f);
+		foreach (NMapPoint item in list)
+		{
+			_mapPointDictionary.Add(item.Point.coord, item);
+			_points.AddChildSafely(item);
+			float num3 = vector.Y * (float)item.Point.coord.row + array.Take(item.Point.coord.row).Sum() + item.PivotOffset.Y;
+			item.Position = ToCenterAnchoredPosition(vector2 + (float)item.Point.coord.col * vector.X * Vector2.Right + num3 * Vector2.Up - item.PivotOffset, _points.Size);
+			if (item is NNormalMapPoint)
+			{
+				Vector2 vector3 = new Vector2(21f, 25f * (flag ? 0.5f : 1f));
+				float x = rng.NextFloat(0f - vector3.X, vector3.X);
+				float y = rng.NextFloat(0f - vector3.Y, vector3.Y);
+				item.Position += new Vector2(x, y);
+			}
+			if (item is NNormalMapPoint nNormalMapPoint)
+			{
+				nNormalMapPoint.SetAngle(Rng.Chaotic.NextGaussianFloat(0f, 8f));
+			}
+		}
+		ActModel act = _runState.Act;
+		ActModel act2 = _runState.Act;
+		_bossPointNode = NBossMapPoint.Create(map.BossMapPoint, this, act2.BossEncounter, _runState);
 		_bossPointNode.Position = new Vector2(-200f, -1980f * num);
 		_points.AddChildSafely(_bossPointNode);
 		_mapPointDictionary[map.BossMapPoint.coord] = _bossPointNode;
 		if (map.SecondBossMapPoint != null)
 		{
 			_bossPointNode.Scale = new Vector2(0.75f, 0.75f);
-			_secondBossPointNode = NBossMapPoint.Create(map.SecondBossMapPoint, this, _runState);
+			_secondBossPointNode = NBossMapPoint.Create(map.SecondBossMapPoint, this, act2.SecondBossEncounter, _runState);
 			_secondBossPointNode.Position = new Vector2(-200f, -2280f * num);
 			_secondBossPointNode.Scale = new Vector2(0.75f, 0.75f);
 			_points.AddChildSafely(_secondBossPointNode);
@@ -296,13 +317,13 @@ public partial class NMapScreen : Control, IScreenContext, INetCursorPositionTra
 		}
 		if (map.StartingMapPoint.PointType == MapPointType.Ancient)
 		{
-			_startingPointNode = NAncientMapPoint.Create(map.StartingMapPoint, this, _runState);
-			_startingPointNode.Position = new Vector2(-80f, (float)map.StartingMapPoint.coord.row * (0f - _distY) + 720f);
+			_startingPointNode = NAncientMapPoint.Create(map.StartingMapPoint, this, act.Ancient, _runState);
+			_startingPointNode.Position = new Vector2(-80f, (float)map.StartingMapPoint.coord.row * (0f - vector.Y) + 720f);
 		}
 		else
 		{
 			_startingPointNode = NNormalMapPoint.Create(map.StartingMapPoint, this, _runState);
-			_startingPointNode.Position = new Vector2(-80f, (float)map.StartingMapPoint.coord.row * (0f - _distY) + 800f);
+			_startingPointNode.Position = new Vector2(-80f, (float)map.StartingMapPoint.coord.row * (0f - vector.Y) + 800f);
 		}
 		_points.AddChildSafely(_startingPointNode);
 		_mapPointDictionary[map.StartingMapPoint.coord] = _startingPointNode;
@@ -319,10 +340,10 @@ public partial class NMapScreen : Control, IScreenContext, INetCursorPositionTra
 			{
 				continue;
 			}
-			foreach (TextureRect item in value)
+			foreach (TextureRect item2 in value)
 			{
-				item.Modulate = _runState.Act.MapTraveledColor;
-				item.Scale = _tickTraveledScale;
+				item2.Modulate = _runState.Act.MapTraveledColor;
+				item2.Scale = _tickTraveledScale;
 			}
 		}
 		InitMapVotes();
@@ -330,13 +351,13 @@ public partial class NMapScreen : Control, IScreenContext, INetCursorPositionTra
 		for (int j = 0; j < map.GetRowCount(); j++)
 		{
 			IEnumerable<MapPoint> pointsInRow = map.GetPointsInRow(j);
-			List<NMapPoint> list = pointsInRow.Select((MapPoint p) => _mapPointDictionary[p.coord]).ToList();
-			for (int num2 = 0; num2 < list.Count; num2++)
+			List<NMapPoint> list2 = pointsInRow.Select((MapPoint p) => _mapPointDictionary[p.coord]).ToList();
+			for (int num4 = 0; num4 < list2.Count; num4++)
 			{
-				list[num2].FocusNeighborLeft = ((num2 > 0) ? list[num2 - 1].GetPath() : list[num2].GetPath());
-				list[num2].FocusNeighborRight = ((num2 < list.Count - 1) ? list[num2 + 1].GetPath() : list[num2].GetPath());
-				list[num2].FocusNeighborTop = list[num2].GetPath();
-				list[num2].FocusNeighborBottom = list[num2].GetPath();
+				list2[num4].FocusNeighborLeft = ((num4 > 0) ? list2[num4 - 1].GetPath() : list2[num4].GetPath());
+				list2[num4].FocusNeighborRight = ((num4 < list2.Count - 1) ? list2[num4 + 1].GetPath() : list2[num4].GetPath());
+				list2[num4].FocusNeighborTop = list2[num4].GetPath();
+				list2[num4].FocusNeighborBottom = list2[num4].GetPath();
 			}
 		}
 		_startingPointNode.FocusNeighborLeft = _startingPointNode.GetPath();
@@ -375,18 +396,25 @@ public partial class NMapScreen : Control, IScreenContext, INetCursorPositionTra
 			}
 			Vector2 lineEndpoint = GetLineEndpoint(mapPointNode);
 			Vector2 lineEndpoint2 = GetLineEndpoint(value);
-			IReadOnlyList<TextureRect> value2 = CreatePath(lineEndpoint, lineEndpoint2);
+			IReadOnlyList<TextureRect> value2 = CreatePath(lineEndpoint, lineEndpoint2, _pathsContainer, _runState.Act.MapUntraveledColor);
 			_paths.Add((mapPoint.coord, child.coord), value2);
 		}
 	}
 
+	/// <summary>
+	/// Map points are anchored to the center of their container, so a position assigned to one moves by half of any
+	/// later change in the container's size. The layout in SetMap is authored for a 1920x1080 container. This returns
+	/// the position to assign now so the point lands where it would have if the map had been laid out at
+	/// 1920x1080, whatever size the container is when the run starts.
+	/// </summary>
+	private static Vector2 ToCenterAnchoredPosition(Vector2 layoutPosition, Vector2 containerSize)
+	{
+		return layoutPosition + (containerSize - NGame.devResolution) * 0.5f;
+	}
+
 	private Vector2 GetLineEndpoint(NMapPoint point)
 	{
-		if (point is NNormalMapPoint)
-		{
-			return point.Position;
-		}
-		return point.Position + point.Size * 0.5f;
+		return point.Position + point.PivotOffset;
 	}
 
 	private void RecalculateTravelability()
@@ -453,17 +481,10 @@ public partial class NMapScreen : Control, IScreenContext, INetCursorPositionTra
 	public void OnMapPointSelectedLocally(NMapPoint point)
 	{
 		Player me = LocalContext.GetMe(_runState);
-		if (!PlayerVoteDictionary.TryGetValue(me, out var value) || value != point.Point.coord)
+		MapVote? vote = RunManager.Instance.MapSelectionSynchronizer.GetVote(me);
+		if (!vote.HasValue || vote.Value.coord != point.Point.coord)
 		{
-			OnPlayerVoteChangedInternal(me, RunManager.Instance.MapSelectionSynchronizer.GetVote(me)?.coord, point.Point.coord);
-			MapLocation source = new MapLocation(_runState.CurrentMapCoord, _runState.CurrentActIndex);
-			MapVote value2 = new MapVote
-			{
-				coord = point.Point.coord,
-				mapGenerationCount = RunManager.Instance.MapSelectionSynchronizer.MapGenerationCount
-			};
-			VoteForMapCoordAction action = new VoteForMapCoordAction(LocalContext.GetMe(_runState), source, value2);
-			RunManager.Instance.ActionQueueSynchronizer.RequestEnqueue(action);
+			RunManager.Instance.MapSelectionSynchronizer.OnLocalPlayerVotedFor(point.Point.coord);
 		}
 		else if (_runState.Players.Count > 1)
 		{
@@ -474,23 +495,19 @@ public partial class NMapScreen : Control, IScreenContext, INetCursorPositionTra
 	private void OnPlayerVoteChanged(Player player, MapVote? oldLocation, MapVote? newLocation)
 	{
 		Log.Info($"Player vote changed for {player.NetId}: {oldLocation}->{newLocation}");
-		if (!LocalContext.IsMe(player))
-		{
-			OnPlayerVoteChangedInternal(player, oldLocation?.coord, newLocation?.coord);
-		}
+		OnPlayerVoteChangedInternal(player, oldLocation?.coord, newLocation?.coord);
 	}
 
-	private void OnPlayerVoteCancelled(Player player)
+	private void OnPlayerVoteCancelled(Player player, MapVote? oldLocation)
 	{
 		Log.Info($"Player vote cancelled for {player.NetId}");
-		OnPlayerVoteChangedInternal(player, PlayerVoteDictionary[player], null);
+		OnPlayerVoteChangedInternal(player, oldLocation?.coord, null);
 	}
 
 	private void OnPlayerVoteChangedInternal(Player player, MapCoord? oldCoord, MapCoord? newCoord)
 	{
 		if (_runState.Players.Count > 1)
 		{
-			PlayerVoteDictionary[player] = newCoord;
 			if (oldCoord.HasValue)
 			{
 				NMapPoint nMapPoint = _mapPointDictionary[oldCoord.Value];
@@ -587,7 +604,6 @@ public partial class NMapScreen : Control, IScreenContext, INetCursorPositionTra
 		await RunManager.Instance.EnterMapCoord(coord);
 		TaskHelper.RunSafely(RunManager.Instance.FadeIn());
 		RefreshAllPointVisuals();
-		PlayerVoteDictionary.Clear();
 		RefreshAllMapPointVotes();
 	}
 
@@ -614,9 +630,7 @@ public partial class NMapScreen : Control, IScreenContext, INetCursorPositionTra
 	/// <summary>
 	/// Creates a bunch of dots to form a path from start to end
 	/// </summary>
-	/// <param name="start"></param>
-	/// <param name="end"></param>
-	private IReadOnlyList<TextureRect> CreatePath(Vector2 start, Vector2 end)
+	public static IReadOnlyList<TextureRect> CreatePath(Vector2 start, Vector2 end, Control owner, Color modulate)
 	{
 		List<TextureRect> list = new List<TextureRect>();
 		Vector2 vector = (end - start).Normalized();
@@ -627,13 +641,12 @@ public partial class NMapScreen : Control, IScreenContext, INetCursorPositionTra
 		{
 			float num4 = (float)i * 22f;
 			TextureRect textureRect = PreloadManager.Cache.GetScene("res://scenes/ui/map_dot.tscn").Instantiate<TextureRect>(PackedScene.GenEditState.Disabled);
-			textureRect.Position = start + vector * num4;
-			textureRect.Position -= new Vector2(base.Size.X * 0.5f - 20f, base.Size.Y * 0.5f - 20f);
+			owner.AddChildSafely(textureRect);
+			textureRect.Position = start + vector * num4 - textureRect.Size * 0.5f;
 			textureRect.Position += new Vector2(Rng.Chaotic.NextFloat(-3f, 3f), Rng.Chaotic.NextFloat(-3f, 3f));
 			textureRect.FlipH = Rng.Chaotic.NextBool();
 			textureRect.Rotation = num + Rng.Chaotic.NextGaussianFloat(0f, 0.1f);
-			textureRect.Modulate = _runState.Act.MapUntraveledColor;
-			_pathsContainer.AddChildSafely(textureRect);
+			textureRect.Modulate = modulate;
 			list.Add(textureRect);
 		}
 		return list;
@@ -783,8 +796,8 @@ public partial class NMapScreen : Control, IScreenContext, INetCursorPositionTra
 				_targetDragPos = new Vector2(0f, -600f);
 				return;
 			}
-			int num = _runState.CurrentMapCoord?.row ?? 0;
-			_targetDragPos = new Vector2(0f, -600f + (float)num * _distY);
+			float rowScrollPos = GetRowScrollPos(_runState.CurrentMapCoord?.row ?? 0);
+			_targetDragPos = new Vector2(0f, rowScrollPos);
 		}
 	}
 
@@ -836,7 +849,7 @@ public partial class NMapScreen : Control, IScreenContext, INetCursorPositionTra
 		_actAnimTween.TweenProperty(_mapContainer, "position:y", -600f, _mapAnimDuration).SetEase(Tween.EaseType.InOut).SetTrans(Tween.TransitionType.Expo);
 		_actAnimTween.TweenCallback(Callable.From(SetInterruptable)).SetDelay(_mapAnimDuration * 0.25);
 		_targetDragPos = targetDragPos;
-		if (await _actAnimTween.AwaitFinished(this))
+		if (await _actAnimTween.AwaitFinished(this) == TweenOutcome.Finished)
 		{
 			_actAnimTween = null;
 			InitMapPrompt();
@@ -986,7 +999,7 @@ public partial class NMapScreen : Control, IScreenContext, INetCursorPositionTra
 		_tween.TweenProperty(_mapLegend, "modulate:a", 0f, 0.15);
 		_tween.TweenProperty(_mapLegend, "position:x", MapLegendX + 120f, 0.25).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);
 		_tween.TweenProperty(_drawingTools, "modulate:a", 0f, 0.15);
-		if (await _tween.AwaitFinished(this))
+		if (await _tween.AwaitFinished(this) == TweenOutcome.Finished)
 		{
 			base.Visible = false;
 			base.ProcessMode = ProcessModeEnum.Disabled;
@@ -1008,8 +1021,8 @@ public partial class NMapScreen : Control, IScreenContext, INetCursorPositionTra
 		IsOpen = true;
 		base.Visible = true;
 		_backButton.MoveToHidePosition();
-		NHotkeyManager.Instance.PushHotkeyPressedBinding(MegaInput.confirm, OnLegendHotkeyPressed);
-		NHotkeyManager.Instance.PushHotkeyPressedBinding(MegaInput.viewExhaustPileAndTabRight, OnDrawingToolsHotkeyPressed);
+		NHotkeyManager.Instance.PushHotkeyPressedBinding(MegaInput.confirm, OnLegendHotkeyPressed, 0L);
+		NHotkeyManager.Instance.PushHotkeyPressedBinding(MegaInput.viewExhaustPileAndTabRight, OnDrawingToolsHotkeyPressed, 0L);
 		if (_runState.ActFloor > 0)
 		{
 			_backButton.Enable();
@@ -1041,9 +1054,9 @@ public partial class NMapScreen : Control, IScreenContext, INetCursorPositionTra
 		}
 		else
 		{
-			int num = _runState.CurrentMapCoord?.row ?? 0;
-			_targetDragPos = new Vector2(0f, -600f + (float)num * _distY);
-			_mapContainer.Position = new Vector2(0f, -600f + (float)num * _distY);
+			float rowScrollPos = GetRowScrollPos(_runState.CurrentMapCoord?.row ?? 0);
+			_targetDragPos = new Vector2(0f, rowScrollPos);
+			_mapContainer.Position = new Vector2(0f, rowScrollPos);
 			Control points = _points;
 			modulate = _points.Modulate;
 			modulate.A = 0f;
@@ -1104,6 +1117,39 @@ public partial class NMapScreen : Control, IScreenContext, INetCursorPositionTra
 	private void OnBackButtonPressed(NButton _)
 	{
 		Close();
+	}
+
+	/// <summary>
+	/// Returns the Y position which _mapContainer should be set to in order to center the map on the specified row.
+	/// </summary>
+	private float GetRowScrollPos(int row)
+	{
+		IEnumerable<MapPoint> source = _map.GetPointsInRow(row);
+		if (!source.Any())
+		{
+			if (_map.StartingMapPoint.coord.row == row)
+			{
+				source = new global::_003C_003Ez__ReadOnlySingleElementList<MapPoint>(_map.StartingMapPoint);
+			}
+			else if (_map.BossMapPoint.coord.row == row)
+			{
+				source = new global::_003C_003Ez__ReadOnlySingleElementList<MapPoint>(_map.BossMapPoint);
+			}
+			else
+			{
+				MapPoint? secondBossMapPoint = _map.SecondBossMapPoint;
+				if (secondBossMapPoint == null || secondBossMapPoint.coord.row != row)
+				{
+					Log.Warn($"Tried to scroll to row {row}, but no points were found in that row. Scrolling to bottom");
+					return -600f;
+				}
+				source = new global::_003C_003Ez__ReadOnlySingleElementList<MapPoint>(_map.SecondBossMapPoint);
+			}
+		}
+		float num = source.Sum((MapPoint p) => _mapPointDictionary[p.coord].Position.Y);
+		float num2 = source.Max((MapPoint p) => _mapPointDictionary[p.coord].Size.Y);
+		float num3 = 150f;
+		return Mathf.Clamp(base.Size.Y * 0.5f - num2 * 0.5f - num / (float)source.Count() + num3, -600f, 1800f);
 	}
 
 	public override void _Input(InputEvent inputEvent)
@@ -1182,22 +1228,25 @@ public partial class NMapScreen : Control, IScreenContext, INetCursorPositionTra
 		this.PointTypeHighlighted?.Invoke(pointType);
 	}
 
-	public void PingMapCoord(MapCoord coord, Player player)
+	private void PingMapCoord(Player player, MapCoord coord)
 	{
-		if (!_mapPointDictionary.TryGetValue(coord, out NMapPoint value))
+		if (player.RunState.GameMode != GameMode.Blitz)
 		{
-			Log.Error($"Someone tried to ping map coord {coord} that doesn't exist!");
-			return;
+			if (!_mapPointDictionary.TryGetValue(coord, out NMapPoint value))
+			{
+				Log.Error($"Someone tried to ping map coord {coord} that doesn't exist!");
+				return;
+			}
+			NMapPingVfx nMapPingVfx = NMapPingVfx.Create();
+			nMapPingVfx.Modulate = player.Character.MapDrawingColor;
+			value.AddChildSafely(nMapPingVfx);
+			value.MoveChildSafely(nMapPingVfx, 0);
+			nMapPingVfx.Position = Vector2.Zero;
+			nMapPingVfx.Size *= value.Size.X * (1f / 64f);
+			nMapPingVfx.PivotOffset = nMapPingVfx.Size * 0.5f;
+			NRun.Instance.GlobalUi.MultiplayerPlayerContainer.FlashPlayerReady(player);
+			NDebugAudioManager.Instance.Play("map_ping.mp3", 1f, PitchVariance.Medium);
 		}
-		NMapPingVfx nMapPingVfx = NMapPingVfx.Create();
-		nMapPingVfx.Modulate = player.Character.MapDrawingColor;
-		value.AddChildSafely(nMapPingVfx);
-		value.MoveChildSafely(nMapPingVfx, 0);
-		nMapPingVfx.Position = Vector2.Zero;
-		nMapPingVfx.Size *= value.Size.X * (1f / 64f);
-		nMapPingVfx.PivotOffset = nMapPingVfx.Size * 0.5f;
-		NRun.Instance.GlobalUi.MultiplayerPlayerContainer.FlashPlayerReady(player);
-		NDebugAudioManager.Instance.Play("map_ping.mp3", 1f, PitchVariance.Medium);
 	}
 
 	private void OnLegendHotkeyPressed()
@@ -1276,6 +1325,7 @@ public partial class NMapScreen : Control, IScreenContext, INetCursorPositionTra
 		{
 			CombatManager.Instance.Unpause();
 		}
+		RunManager.Instance.MapChanged -= OnMapChanged;
 	}
 
 	private void UpdateHotkeyDisplay()

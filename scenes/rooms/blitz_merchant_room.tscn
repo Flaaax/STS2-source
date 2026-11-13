@@ -1,0 +1,148 @@
+[gd_scene load_steps=13 format=3 uid="uid://43k6dninta31"]
+
+[ext_resource type="Script" uid="uid://bqh7q07wks282" path="res://src/Core/Nodes/Rooms/NBlitzMerchantRoom.cs" id="1_bkq6d"]
+[ext_resource type="Texture2D" uid="uid://bxa6vlqeby20" path="res://images/vfx/light.png" id="9_bkq6d"]
+[ext_resource type="Material" uid="uid://c4ycqv0gdxvmr" path="res://themes/canvas_item_material_additive_shared.tres" id="11_5hacx"]
+[ext_resource type="Script" uid="uid://8tp7h0nkic6u" path="res://scenes/backgrounds/little_light_script.gd" id="14_86gaj"]
+[ext_resource type="Texture2D" uid="uid://d2srbops1xqm0" path="res://images/vfx/dot.png" id="16_ryv0l"]
+[ext_resource type="PackedScene" path="res://scenes/rooms/blitz_merchant_button.tscn" id="17_biovk"]
+[ext_resource type="PackedScene" uid="uid://dk7qbpbg2o0ea" path="res://scenes/ui/proceed_button.tscn" id="19_c7x18"]
+[ext_resource type="PackedScene" uid="uid://cm4ocv4456kaq" path="res://scenes/merchant/merchant_inventory.tscn" id="20_5w3vu"]
+[ext_resource type="PackedScene" uid="uid://cciqup5nyc2wd" path="res://scenes/screens/inspect_card_screen.tscn" id="21_qv4wy"]
+
+[sub_resource type="Curve" id="Curve_1k2mj"]
+_data = [Vector2(0, 0.996333), 0.0, 0.0, 0, 0, Vector2(0.503344, 0.976164), 0.0, 0.0, 0, 0, Vector2(1, 0.996333), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_20xy5"]
+offsets = PackedFloat32Array(0, 0.607407, 0.994413)
+colors = PackedColorArray(0.720467, 0.720468, 0.720467, 1, 1, 1, 1, 1, 0.721569, 0.721569, 0.721569, 1)
+
+[sub_resource type="Gradient" id="Gradient_c8n4j"]
+offsets = PackedFloat32Array(0, 0.258845, 1)
+colors = PackedColorArray(0.847059, 0.803922, 0.301961, 0, 1, 1, 1, 1, 0.780392, 0.65098, 0.403922, 0)
+
+[node name="BlitzMerchantRoom" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+focus_mode = 2
+script = ExtResource("1_bkq6d")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="SceneContainer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BgContainer" type="Control" parent="SceneContainer"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 23.0
+offset_right = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+mouse_filter = 2
+
+[node name="CharacterContainer" type="Control" parent="SceneContainer"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -396.0
+offset_top = 226.0
+offset_right = -396.0
+offset_bottom = 226.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="light_small5" type="CPUParticles2D" parent="SceneContainer"]
+material = ExtResource("11_5hacx")
+position = Vector2(-267, -7)
+rotation = 3.1032
+scale = Vector2(1.01, 1.01)
+amount = 1
+texture = ExtResource("9_bkq6d")
+lifetime = 3.0
+local_coords = true
+gravity = Vector2(0, 0)
+scale_amount_min = 10.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_1k2mj")
+color = Color(0.882353, 0.305882, 0.317647, 0.301961)
+color_ramp = SubResource("Gradient_20xy5")
+script = ExtResource("14_86gaj")
+
+[node name="light_small6" type="CPUParticles2D" parent="SceneContainer"]
+material = ExtResource("11_5hacx")
+position = Vector2(2248, 1165)
+rotation = 3.1032
+scale = Vector2(1.01, 1.01)
+amount = 1
+texture = ExtResource("9_bkq6d")
+lifetime = 3.0
+local_coords = true
+gravity = Vector2(0, 0)
+scale_amount_min = 10.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_1k2mj")
+color = Color(0.415686, 0.305882, 0.658824, 0.301961)
+color_ramp = SubResource("Gradient_20xy5")
+script = ExtResource("14_86gaj")
+
+[node name="stars" type="CPUParticles2D" parent="SceneContainer"]
+position = Vector2(925, 626)
+scale = Vector2(1.01, 1.01)
+amount = 300
+texture = ExtResource("16_ryv0l")
+lifetime = 3.0
+preprocess = 5.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(1500, 1000)
+gravity = Vector2(0, -10)
+scale_amount_min = 0.01
+scale_amount_max = 0.03
+color = Color(0.878431, 0.498039, 0.392157, 0.611765)
+color_ramp = SubResource("Gradient_c8n4j")
+
+[node name="MerchantButton" parent="SceneContainer" instance=ExtResource("17_biovk")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 215.0
+offset_top = -189.0
+offset_right = 566.0
+offset_bottom = 274.0
+
+[node name="ProceedButton" parent="." instance=ExtResource("19_c7x18")]
+unique_name_in_owner = true
+layout_mode = 1
+
+[node name="Inventory" parent="." instance=ExtResource("20_5w3vu")]
+unique_name_in_owner = true
+layout_mode = 1
+
+[node name="CardDetailScreen" parent="." instance=ExtResource("21_qv4wy")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1

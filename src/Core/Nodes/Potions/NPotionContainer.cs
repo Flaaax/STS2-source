@@ -41,9 +41,7 @@ public partial class NPotionContainer : Control
 
 	private NPotionHolder? _focusedHolder;
 
-	public Control? FirstPotionControl => _holders.FirstOrDefault();
-
-	public Control? LastPotionControl => _holders.LastOrDefault();
+	public IReadOnlyList<NPotionHolder> Holders => _holders;
 
 	public override void _Ready()
 	{
@@ -53,7 +51,6 @@ public partial class NPotionContainer : Control
 		_potionErrorBg.Modulate = Colors.Transparent;
 		_potionShortcutButton.Connect(NClickableControl.SignalName.Released, Callable.From<NButton>(OnPotionShortcutPressed));
 		CombatManager.Instance.CombatSetUp += OnCombatSetUp;
-		Callable.From(UpdateNavigation).CallDeferred();
 		ConnectPlayerEvents();
 	}
 
@@ -98,8 +95,6 @@ public partial class NPotionContainer : Control
 			_player.UsedPotionRemoved += OnUsedPotionRemoved;
 			_player.PotionDiscarded += Discard;
 			_player.MaxPotionCountChanged += GrowPotionHolders;
-			_player.RelicObtained += OnRelicsUpdated;
-			_player.RelicRemoved += OnRelicsUpdated;
 		}
 	}
 
@@ -112,8 +107,6 @@ public partial class NPotionContainer : Control
 			_player.UsedPotionRemoved -= OnUsedPotionRemoved;
 			_player.PotionDiscarded -= Discard;
 			_player.MaxPotionCountChanged -= GrowPotionHolders;
-			_player.RelicObtained -= OnRelicsUpdated;
-			_player.RelicRemoved -= OnRelicsUpdated;
 		}
 	}
 
@@ -140,27 +133,6 @@ public partial class NPotionContainer : Control
 			{
 				OnPotionHolderUnfocused(node);
 			}));
-		}
-		UpdateNavigation();
-	}
-
-	private void OnRelicsUpdated(RelicModel _)
-	{
-		Callable.From(UpdateNavigation).CallDeferred();
-	}
-
-	private void UpdateNavigation()
-	{
-		Control control = NRun.Instance?.GlobalUi.RelicInventory.RelicNodes.FirstOrDefault();
-		if (control != null)
-		{
-			for (int i = 0; i < _holders.Count; i++)
-			{
-				_holders[i].FocusNeighborLeft = ((i > 0) ? _holders[i - 1].GetPath() : NRun.Instance?.GlobalUi.TopBar.Gold.GetPath());
-				_holders[i].FocusNeighborRight = ((i < _holders.Count - 1) ? _holders[i + 1].GetPath() : NRun.Instance?.GlobalUi.TopBar.RoomIcon.GetPath());
-				_holders[i].FocusNeighborBottom = control.GetPath();
-				_holders[i].FocusNeighborTop = _holders[i].GetPath();
-			}
 		}
 	}
 

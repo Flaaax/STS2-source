@@ -64,7 +64,13 @@ public struct NetErrorInfo
 	/// Extra info about the disconnection.
 	/// You usually do not need to access this directly; use GetErrorString and show that to the user.
 	/// </summary>
-	public ConnectionFailureExtraInfo? ConnectionExtraInfo { get; }
+	public ConnectionFailureExtraInfo? ConnectionExtraInfo { get; set; }
+
+	/// <summary>
+	/// Extra info about a join failure.
+	/// This is only set if the disconnection occurs on a client during the join flow.
+	/// </summary>
+	public JoinFailureExtraInfo? JoinExtraInfo { get; set; }
 
 	/// <summary>
 	/// Set to true if ANYONE in the session has mods.
@@ -81,6 +87,7 @@ public struct NetErrorInfo
 		_debugReason = null;
 		_godotError = null;
 		ConnectionExtraInfo = null;
+		JoinExtraInfo = null;
 		IsModded = false;
 		_reason = reason;
 		SelfInitiated = selfInitiated;
@@ -94,6 +101,7 @@ public struct NetErrorInfo
 		_lobbyEnterResponse = null;
 		_debugReason = null;
 		_godotError = null;
+		JoinExtraInfo = null;
 		IsModded = false;
 		_connectionReason = reason;
 		ConnectionExtraInfo = extraInfo;
@@ -108,6 +116,7 @@ public struct NetErrorInfo
 		_lobbyEnterResponse = null;
 		_godotError = null;
 		ConnectionExtraInfo = null;
+		JoinExtraInfo = null;
 		IsModded = false;
 		_steamReason = steamReason;
 		_debugReason = debugReason;
@@ -123,6 +132,7 @@ public struct NetErrorInfo
 		_debugReason = null;
 		_godotError = null;
 		ConnectionExtraInfo = null;
+		JoinExtraInfo = null;
 		IsModded = false;
 		_lobbyEnterResponse = lobbyEnterResponse;
 		SelfInitiated = true;
@@ -137,6 +147,7 @@ public struct NetErrorInfo
 		_debugReason = null;
 		_godotError = null;
 		ConnectionExtraInfo = null;
+		JoinExtraInfo = null;
 		IsModded = false;
 		_lobbyCreationResult = lobbyCreationResult;
 		SelfInitiated = true;
@@ -151,6 +162,7 @@ public struct NetErrorInfo
 		_lobbyEnterResponse = null;
 		_debugReason = null;
 		ConnectionExtraInfo = null;
+		JoinExtraInfo = null;
 		IsModded = false;
 		_godotError = error;
 		SelfInitiated = true;

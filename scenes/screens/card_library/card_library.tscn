@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://dbv1hvti5nub6"]
+[gd_scene load_steps=55 format=3 uid="uid://dbv1hvti5nub6"]
 
 [ext_resource type="Script" uid="uid://emcv2heu6j04" path="res://src/Core/Nodes/Screens/CardLibrary/NCardLibrary.cs" id="1_tgsvk"]
 [ext_resource type="PackedScene" uid="uid://bl4mbjqjfffa3" path="res://scenes/ui/back_button.tscn" id="2_e1uqt"]
@@ -7,7 +7,7 @@
 [ext_resource type="FontVariation" uid="uid://c6wnuvk3exmk5" path="res://themes/kreon_regular_shared.tres" id="3_1sl0p"]
 [ext_resource type="Script" uid="uid://dmpp1qcet6qvk" path="res://src/Core/Nodes/GodotExtensions/NMegaLineEdit.cs" id="4_rnoju"]
 [ext_resource type="Script" uid="uid://ylx5eqt8x13v" path="res://src/Core/Nodes/Screens/CardLibrary/NClearSearchButton.cs" id="5_rnoju"]
-[ext_resource type="Texture2D" uid="uid://q1y4ux" path="res://images/atlases/compressed.sprites/back_button_x.tres" id="5_y50fw"]
+[ext_resource type="Texture2D" uid="uid://bjwgjm2" path="res://images/atlases/compressed_atlas.sprites/back_button_x.tres" id="5_y50fw"]
 [ext_resource type="PackedScene" uid="uid://c0eif6msrle3b" path="res://scenes/screens/card_library/library_pool_toggle.tscn" id="6_s720e"]
 [ext_resource type="Shader" uid="uid://c66gb6g7tup3n" path="res://shaders/hsv.gdshader" id="7_4h2n7"]
 [ext_resource type="Texture2D" uid="uid://x2neryjvbtwy" path="res://images/ui/top_panel/character_icon_ironclad.png" id="7_wog6y"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://b2tghoxhxi8p8" path="res://images/ui/run_history/neow.png" id="13_88vqa"]
 [ext_resource type="Texture2D" uid="uid://pmu8305ub80w" path="res://images/packed/card_library/pool_filter_other.png" id="14_ebwtg"]
 [ext_resource type="Script" uid="uid://b2tbya1t08xyw" path="res://src/Core/Nodes/Screens/CardLibrary/NCardLibraryGrid.cs" id="15_8kta8"]
+[ext_resource type="Texture2D" uid="uid://4cb1pixtvyrx" path="res://images/ui/top_panel/character_icon_fool.png" id="16_4h2n7"]
 [ext_resource type="Texture2D" uid="uid://d2oga4" path="res://images/atlases/ui_atlas.sprites/card/energy_colorless.tres" id="16_kuhdt"]
 [ext_resource type="PackedScene" uid="uid://c5h4pu2vdm4xr" path="res://scenes/screens/card_library/card_type_tickbox.tscn" id="19_aasey"]
 [ext_resource type="Texture2D" uid="uid://bes65f3s6d5y0" path="res://images/packed/card_library/type_sort_skill.png" id="20_5eb4s"]
@@ -29,6 +30,20 @@
 [ext_resource type="PackedScene" uid="uid://cdyfypvscsvs4" path="res://scenes/screens/card_library/library_sort_button.tscn" id="24_d4x8x"]
 [ext_resource type="FontVariation" uid="uid://bg85h22rkxs6g" path="res://themes/kreon_bold_shared.tres" id="28_kuhdt"]
 [ext_resource type="Script" uid="uid://c2oywrx8xbqfx" path="res://addons/mega_text/MegaRichTextLabel.cs" id="29_4h2n7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_search"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nufny"]
 resource_local_to_scene = true
@@ -59,6 +74,13 @@ shader_parameter/s = 0.3
 shader_parameter/v = 0.55
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wqgy3"]
+resource_local_to_scene = true
+shader = ExtResource("7_4h2n7")
+shader_parameter/h = 1.0
+shader_parameter/s = 0.3
+shader_parameter/v = 0.55
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fg7tv"]
 resource_local_to_scene = true
 shader = ExtResource("7_4h2n7")
 shader_parameter/h = 1.0
@@ -244,17 +266,6 @@ script = ExtResource("15_8kta8")
 offset_left = 50.0
 offset_right = -150.0
 
-[node name="Scrollbar" parent="CardGrid" index="1"]
-focus_behavior_recursive = 0
-mouse_behavior_recursive = 0
-accessibility_name = ""
-accessibility_description = ""
-accessibility_live = 0
-accessibility_controls_nodes = Array[NodePath]([])
-accessibility_described_by_nodes = Array[NodePath]([])
-accessibility_labeled_by_nodes = Array[NodePath]([])
-accessibility_flow_to_nodes = Array[NodePath]([])
-
 [node name="Sidebar" type="Control" parent="."]
 custom_minimum_size = Vector2(0.04, 0)
 layout_mode = 1
@@ -303,7 +314,7 @@ theme_override_constants/separation = 0
 
 [node name="SearchBar" type="Control" parent="Sidebar/MarginContainer/TopVBox"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 48)
+custom_minimum_size = Vector2(0, 44)
 layout_mode = 2
 script = ExtResource("2_qpkob")
 
@@ -318,8 +329,12 @@ focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath(".")
 focus_neighbor_right = NodePath("../ClearButton")
 focus_neighbor_bottom = NodePath("../../PoolFilters/IroncladPool")
+theme_override_colors/font_color = Color(1, 0.964706, 0.886275, 1)
+theme_override_colors/font_placeholder_color = Color(1, 0.964706, 0.886275, 0.6)
+theme_override_colors/caret_color = Color(1, 0.964706, 0.886275, 1)
 theme_override_fonts/font = ExtResource("3_1sl0p")
 theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_search")
 placeholder_text = "NOT_SET"
 script = ExtResource("4_rnoju")
 
@@ -359,7 +374,7 @@ texture = ExtResource("5_y50fw")
 expand_mode = 1
 
 [node name="Spacer2" type="Control" parent="Sidebar/MarginContainer/TopVBox"]
-custom_minimum_size = Vector2(0, 12)
+custom_minimum_size = Vector2(0, 6)
 layout_mode = 2
 
 [node name="PoolFilters" type="GridContainer" parent="Sidebar/MarginContainer/TopVBox"]
@@ -418,7 +433,6 @@ texture = ExtResource("11_kfc6l")
 [node name="DefectPool" parent="Sidebar/MarginContainer/TopVBox/PoolFilters" instance=ExtResource("6_s720e")]
 unique_name_in_owner = true
 layout_mode = 2
-focus_neighbor_top = NodePath("../../SearchBar/TextArea")
 
 [node name="Image" parent="Sidebar/MarginContainer/TopVBox/PoolFilters/DefectPool" index="0"]
 material = SubResource("ShaderMaterial_wqgy3")
@@ -426,6 +440,17 @@ texture = ExtResource("9_ngdd2")
 
 [node name="Shadow" parent="Sidebar/MarginContainer/TopVBox/PoolFilters/DefectPool/Image" index="0"]
 texture = ExtResource("9_ngdd2")
+
+[node name="FoolPool" parent="Sidebar/MarginContainer/TopVBox/PoolFilters" instance=ExtResource("6_s720e")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Image" parent="Sidebar/MarginContainer/TopVBox/PoolFilters/FoolPool" index="0"]
+material = SubResource("ShaderMaterial_fg7tv")
+texture = ExtResource("16_4h2n7")
+
+[node name="Shadow" parent="Sidebar/MarginContainer/TopVBox/PoolFilters/FoolPool/Image" index="0"]
+texture = ExtResource("16_4h2n7")
 
 [node name="ColorlessPool" parent="Sidebar/MarginContainer/TopVBox/PoolFilters" instance=ExtResource("6_s720e")]
 unique_name_in_owner = true
@@ -461,7 +486,7 @@ texture = ExtResource("14_ebwtg")
 texture = ExtResource("14_ebwtg")
 
 [node name="Spacer" type="Control" parent="Sidebar/MarginContainer/TopVBox"]
-custom_minimum_size = Vector2(0, 12)
+custom_minimum_size = Vector2(0, 6)
 layout_mode = 2
 
 [node name="CardTypeModule" type="VBoxContainer" parent="Sidebar/MarginContainer/TopVBox"]
@@ -513,7 +538,7 @@ material = SubResource("ShaderMaterial_qbo2o")
 texture = ExtResource("23_5xa24")
 
 [node name="Spacer" type="Control" parent="Sidebar/MarginContainer/TopVBox/CardTypeModule"]
-custom_minimum_size = Vector2(0, 18)
+custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 
 [node name="RarityModule" type="VBoxContainer" parent="Sidebar/MarginContainer/TopVBox"]
@@ -569,7 +594,7 @@ theme_override_font_sizes/font_size = 22
 text = "Other"
 
 [node name="Spacer" type="Control" parent="Sidebar/MarginContainer/TopVBox/RarityModule"]
-custom_minimum_size = Vector2(0, 18)
+custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 
 [node name="CostModule" type="VBoxContainer" parent="Sidebar/MarginContainer/TopVBox"]
@@ -634,7 +659,7 @@ material = SubResource("ShaderMaterial_4enqc")
 text = "X"
 
 [node name="Spacer" type="Control" parent="Sidebar/MarginContainer/TopVBox/CostModule"]
-custom_minimum_size = Vector2(0, 18)
+custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 
 [node name="AlphabetSorter" parent="Sidebar/MarginContainer/TopVBox" instance=ExtResource("24_d4x8x")]
@@ -759,6 +784,7 @@ layout_mode = 1
 [editable path="Sidebar/MarginContainer/TopVBox/PoolFilters/RegentPool"]
 [editable path="Sidebar/MarginContainer/TopVBox/PoolFilters/NecrobinderPool"]
 [editable path="Sidebar/MarginContainer/TopVBox/PoolFilters/DefectPool"]
+[editable path="Sidebar/MarginContainer/TopVBox/PoolFilters/FoolPool"]
 [editable path="Sidebar/MarginContainer/TopVBox/PoolFilters/ColorlessPool"]
 [editable path="Sidebar/MarginContainer/TopVBox/PoolFilters/AncientsPool"]
 [editable path="Sidebar/MarginContainer/TopVBox/PoolFilters/MiscPool"]

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using Godot;
 using MegaCrit.Sts2.Core.Entities.Ancients;
+using MegaCrit.Sts2.Core.Entities.Characters;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Events;
 using MegaCrit.Sts2.Core.Extensions;
@@ -46,6 +47,8 @@ public class Darv : AncientEventModel
 	private const string _sfxIntroduction = "event:/sfx/npcs/darv/darv_introduction";
 
 	private static readonly List<ValidRelicSet> _validRelicSets;
+
+	public override FoolPronounGuess FoolPronounGuess => FoolPronounGuess.Feminine;
 
 	public override Color ButtonColor => new Color(0.06f, 0f, 0.08f, 0.5f);
 
@@ -146,9 +149,9 @@ public class Darv : AncientEventModel
 
 	protected override IReadOnlyList<EventOption> GenerateInitialOptions()
 	{
-		List<EventOption> source = (from rs in _validRelicSets
+		List<EventOption> source = AllowedOptions(from rs in _validRelicSets
 			where rs.filter(base.Owner)
-			select RelicOption(base.Rng.NextItem(rs.relics).ToMutable())).ToList().UnstableShuffle(base.Rng);
+			select RelicOption(base.Rng.NextItem(rs.relics).ToMutable())).UnstableShuffle(base.Rng);
 		List<EventOption> list;
 		if (base.Rng.NextBool())
 		{
@@ -158,7 +161,7 @@ public class Darv : AncientEventModel
 			{
 				dustyTome.SetupForPlayer(base.Owner);
 			}
-			list.Add(RelicOption(dustyTome));
+			list.AddRange(AllowedOptions(new global::_003C_003Ez__ReadOnlySingleElementList<EventOption>(RelicOption(dustyTome))));
 		}
 		else
 		{

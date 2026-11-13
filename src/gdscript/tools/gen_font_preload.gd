@@ -16,12 +16,29 @@ extends SceneTree
 
 
 
+
+
+
+
+
+
 const MSDF_SIZE: = 48
 const MANIFEST: = "res://fonts/preload_manifest.json"
 const WEIGHT_TEXT: = "res://preload_weight_text.json"
 
 
+
+
+
+const SHAPED_REGULAR_LOCALES: = ["ara"]
+
+
 const LOCALE_FONTS: = {
+    "ara": {
+        "regular": "res://themes/fonts/ara/alyamama_regular_shared.tres", 
+        "bold": "res://themes/fonts/ara/alyamama_bold_shared.tres", 
+        "italic": "res://themes/fonts/ara/alyamama_regular_shared.tres", 
+    }, 
     "jpn": {
         "regular": "res://themes/fonts/jpn/noto_sans_cjkjp_regular_shared.tres", 
         "bold": "res://themes/fonts/jpn/noto_sans_cjkjp_bold_shared.tres", 
@@ -80,9 +97,11 @@ func _init() -> void :
 
 
 
+
     var regular_fonts: = {}
     for lang in LOCALE_FONTS:
-        regular_fonts[LOCALE_FONTS[lang]["regular"]] = true
+        if lang not in SHAPED_REGULAR_LOCALES:
+            regular_fonts[LOCALE_FONTS[lang]["regular"]] = true
 
 
 
@@ -130,6 +149,7 @@ func _init() -> void :
             "glyphs": glyphs.size(), 
             "corpus_hash": _corpus_hash(sources), 
             "glyph_hash": _glyph_hash(glyphs), 
+            "font_hash": _font_hash(import_path), 
         }
         print("%-56s %5d glyphs  %s" % [import_path.replace("res://fonts/", ""), glyphs.size(), _describe(sources)])
 
@@ -215,6 +235,13 @@ func _write_glyphs(import_path: String, glyphs: Array) -> bool:
     f.store_string(text.substr(0, m.get_start()) + "\"glyphs\": [" + ", ".join(parts) + "]" + text.substr(m.get_end()))
     f.close()
     return true
+
+
+func _font_hash(import_path: String) -> String:
+
+
+
+    return FileAccess.get_sha256(import_path.trim_suffix(".import")).substr(0, 16)
 
 
 func _glyph_hash(glyphs: Array) -> String:

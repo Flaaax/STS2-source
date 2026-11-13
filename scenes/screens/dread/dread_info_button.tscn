@@ -1,0 +1,79 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdtbn6lx312pq"]
+
+[ext_resource type="Script" uid="uid://i5koe7ah7x8k" path="res://src/Core/Nodes/Screens/Dread/NDreadInfoButton.cs" id="1_ppixg"]
+[ext_resource type="PackedScene" uid="uid://ddb8daodx7qsl" path="res://scenes/ui/hotkey_icon.tscn" id="2_m2wlo"]
+[ext_resource type="Texture2D" uid="uid://dxynm5q7011ro" path="res://images/packed/character_select/dread_question_mark.png" id="3_x1sba"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fsieq"]
+blend_mode = 1
+
+[node name="DreadInfoButton" type="Control"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -88.0
+offset_top = 16.0
+offset_right = -24.0
+offset_bottom = 80.0
+grow_horizontal = 0
+pivot_offset = Vector2(32, 32)
+script = ExtResource("1_ppixg")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="HotkeyIcon" parent="." instance=ExtResource("2_m2wlo")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+
+[node name="Icon" type="TextureRect" parent="."]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0.5019608)
+material = SubResource("CanvasItemMaterial_fsieq")
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(24, 24)
+texture = ExtResource("3_x1sba")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Shadow" type="TextureRect" parent="Icon"]
+modulate = Color(0, 0, 0, 0.2509804)
+show_behind_parent = true
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_x1sba")
+expand_mode = 1
+stretch_mode = 5

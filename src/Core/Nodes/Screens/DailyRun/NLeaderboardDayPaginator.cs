@@ -1,7 +1,6 @@
 using System;
 using Godot;
 using MegaCrit.Sts2.addons.mega_text;
-using MegaCrit.Sts2.Core.ControllerInput;
 using MegaCrit.Sts2.Core.Daily;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Nodes.Combat;
@@ -20,9 +19,9 @@ public partial class NLeaderboardDayPaginator : Control
 
 	private MegaLabel _vfxLabel;
 
-	private NLeaderboardPageArrow _leftArrow;
+	private NLeaderboardDayArrow _leftArrow;
 
-	private NLeaderboardPageArrow _rightArrow;
+	private NLeaderboardDayArrow _rightArrow;
 
 	private NSelectionReticle _selectionReticle;
 
@@ -36,60 +35,62 @@ public partial class NLeaderboardDayPaginator : Control
 
 	private NDailyRunLeaderboard? _leaderboard;
 
+	private bool _canPageLeft;
+
+	private bool _canPageRight;
+
+	private bool _paginationAllowed = true;
+
 	public override void _Ready()
 	{
 		_label = GetNode<MegaLabel>("LabelContainer/Mask/Label");
 		_vfxLabel = GetNode<MegaLabel>("LabelContainer/Mask/VfxLabel");
 		_selectionReticle = GetNode<NSelectionReticle>("SelectionReticle");
-		_leftArrow = GetNode<NLeaderboardPageArrow>("LeftArrow");
-		_rightArrow = GetNode<NLeaderboardPageArrow>("RightArrow");
+		_leftArrow = GetNode<NLeaderboardDayArrow>("LeftArrow");
+		_rightArrow = GetNode<NLeaderboardDayArrow>("RightArrow");
 		Connect(Control.SignalName.FocusEntered, Callable.From(OnFocus));
 		Connect(Control.SignalName.FocusExited, Callable.From(OnUnfocus));
 		_leftArrow.Connect(PageLeft);
 		_rightArrow.Connect(PageRight);
+		SetEnabled(leftArrowEnabled: false, rightArrowEnabled: false);
 	}
 
-	public void Initialize(NDailyRunLeaderboard leaderboard, DateTimeOffset dateTime, bool showArrows)
+	public void Initialize(NDailyRunLeaderboard leaderboard, DateTimeOffset dateTime, bool allowPagination)
 	{
 		_currentDay = dateTime;
 		_leaderboard = leaderboard;
+		_paginationAllowed = allowPagination;
 		OnDayChanged(changeLeaderboardDay: false);
-		_leftArrow.Visible = showArrows;
-		_rightArrow.Visible = showArrows;
-	}
-
-	public override void _GuiInput(InputEvent input)
-	{
-		base._GuiInput(input);
-		if (input.IsActionPressed(MegaInput.left))
-		{
-			PageLeft();
-		}
-		if (input.IsActionPressed(MegaInput.right))
-		{
-			PageRight();
-		}
+		_leftArrow.Visible = allowPagination;
+		_rightArrow.Visible = allowPagination;
+		base.FocusMode = (FocusModeEnum)(allowPagination ? 2 : 0);
 	}
 
 	private void PageLeft()
 	{
-		DateTimeOffset? dateTimeOffset = DailyRunUtility.AddLeaderboardDays(_currentDay, -1);
-		if (dateTimeOffset.HasValue)
+		if (_paginationAllowed && _canPageLeft && _leaderboard != null)
 		{
-			DateTimeOffset valueOrDefault = dateTimeOffset.GetValueOrDefault();
-			_currentDay = valueOrDefault;
-			DayChangeHelper(pagedLeft: true);
+			DateTimeOffset? dateTimeOffset = DailyRunUtility.AddLeaderboardDays(_currentDay, -1);
+			if (dateTimeOffset.HasValue)
+			{
+				DateTimeOffset valueOrDefault = dateTimeOffset.GetValueOrDefault();
+				_currentDay = valueOrDefault;
+				DayChangeHelper(pagedLeft: true);
+			}
 		}
 	}
 
 	private void PageRight()
 	{
-		DateTimeOffset? dateTimeOffset = DailyRunUtility.AddLeaderboardDays(_currentDay, 1);
-		if (dateTimeOffset.HasValue)
+		if (_paginationAllowed && _canPageRight && _leaderboard != null)
 		{
-			DateTimeOffset valueOrDefault = dateTimeOffset.GetValueOrDefault();
-			_currentDay = valueOrDefault;
-			DayChangeHelper(pagedLeft: false);
+			DateTimeOffset? dateTimeOffset = DailyRunUtility.AddLeaderboardDays(_currentDay, 1);
+			if (dateTimeOffset.HasValue)
+			{
+				DateTimeOffset valueOrDefault = dateTimeOffset.GetValueOrDefault();
+				_currentDay = valueOrDefault;
+				DayChangeHelper(pagedLeft: false);
+			}
 		}
 	}
 
@@ -117,22 +118,12 @@ public partial class NLeaderboardDayPaginator : Control
 		}
 	}
 
-	public void Disable()
+	public void SetEnabled(bool leftArrowEnabled, bool rightArrowEnabled)
 	{
-		_leftArrow.Disable();
-		_rightArrow.Disable();
-	}
-
-	public void Enable(bool leftArrowEnabled, bool rightArrowEnabled)
-	{
-		if (leftArrowEnabled)
-		{
-			_leftArrow.Enable();
-		}
-		if (rightArrowEnabled)
-		{
-			_rightArrow.Enable();
-		}
+		_canPageLeft = leftArrowEnabled && _paginationAllowed;
+		_canPageRight = rightArrowEnabled && _paginationAllowed;
+		_leftArrow.SetEnabled(_canPageLeft);
+		_rightArrow.SetEnabled(_canPageRight);
 	}
 
 	private void OnFocus()

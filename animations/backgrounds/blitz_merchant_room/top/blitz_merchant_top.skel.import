@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://t4o337vja1wk"
+path="res://.godot/imported/blitz_merchant_top.skel-ff026402f8c9914be5a8535fff9a8398.spskel"
+
+[deps]
+
+source_file="res://animations/backgrounds/blitz_merchant_room/top/blitz_merchant_top.skel"
+dest_files=["res://.godot/imported/blitz_merchant_top.skel-ff026402f8c9914be5a8535fff9a8398.spskel"]
+
+[params]
+

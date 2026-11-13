@@ -6,18 +6,19 @@ using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Localization.Fonts;
 using MegaCrit.Sts2.Core.Logging;
+using MegaCrit.Sts2.Core.Nodes.CommonUi;
 using MegaCrit.Sts2.Core.Nodes.GodotExtensions;
 
 namespace MegaCrit.Sts2.Core.Nodes.Screens.MainMenu;
 
 /// <summary>
-/// The huge submenu buttons you see in the MainMenu.
+/// The smaller submenu buttons you see in the Compendium.
 /// </summary>
 public partial class NShortSubmenuButton : NButton
 {
 	private Control _bgPanel;
 
-	private TextureRect _icon;
+	private NSubmenuPortrait _portrait;
 
 	private MegaLabel _title;
 
@@ -27,9 +28,9 @@ public partial class NShortSubmenuButton : NButton
 
 	private ShaderMaterial _hsv;
 
-	private static readonly StringName _v = new StringName("v");
-
 	private static readonly StringName _s = new StringName("s");
+
+	private static readonly StringName _v = new StringName("v");
 
 	private float _defaultV;
 
@@ -39,14 +40,15 @@ public partial class NShortSubmenuButton : NButton
 
 	private Tween? _tween;
 
-	public static string? GetImagePath(string key)
+	private static string GetImagePath(string key)
 	{
-		string imagePath = ImageHelper.GetImagePath("packed/main_menu/submenu_icon_" + key.ToLowerInvariant() + ".png");
-		if (ResourceLoader.Exists(imagePath))
+		string iconPath = NSubmenuPortrait.GetIconPath(key);
+		if (ResourceLoader.Exists(iconPath))
 		{
-			return imagePath;
+			return iconPath;
 		}
-		return null;
+		Log.Warn("MISSING ICON: " + iconPath);
+		return NSubmenuPortrait.GetIconPath("unknown");
 	}
 
 	public override void _Ready()
@@ -63,7 +65,7 @@ public partial class NShortSubmenuButton : NButton
 		base.ConnectSignals();
 		_bgPanel = GetNode<Control>("BgPanel");
 		_hsv = (ShaderMaterial)_bgPanel.Material;
-		_icon = GetNode<TextureRect>("Icon");
+		_portrait = GetNode<NSubmenuPortrait>("%SubmenuPortrait");
 		_title = GetNode<MegaLabel>("%Title");
 		_description = GetNode<MegaRichTextLabel>("%Description");
 		_defaultV = (float)_hsv.GetShaderParameter(_v);
@@ -75,11 +77,7 @@ public partial class NShortSubmenuButton : NButton
 	{
 		_locKeyPrefix = locKeyPrefix;
 		RefreshLabels();
-		string imagePath = GetImagePath(locKeyPrefix);
-		if (imagePath != null)
-		{
-			_icon.Texture = PreloadManager.Cache.GetCompressedTexture2D(imagePath);
-		}
+		_portrait.SetTexture(PreloadManager.Cache.GetCompressedTexture2D(GetImagePath(locKeyPrefix)));
 	}
 
 	public override void _Notification(int what)
@@ -121,17 +119,15 @@ public partial class NShortSubmenuButton : NButton
 	protected override void OnEnable()
 	{
 		base.Modulate = Colors.White;
-		GetNode<Control>("%Lock").Visible = false;
 		_hsv.SetShaderParameter(_s, 1f);
-		_icon.Modulate = Colors.White;
+		_portrait.SetUnlocked();
 	}
 
 	protected override void OnDisable()
 	{
 		base.Modulate = Colors.DarkGray;
-		GetNode<Control>("%Lock").Visible = true;
 		_hsv.SetShaderParameter(_s, 0f);
-		_icon.Modulate = new Color(0.5f, 0.5f, 0.5f, 0.5f);
+		_portrait.SetLocked();
 	}
 
 	protected override void OnFocus()

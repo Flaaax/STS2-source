@@ -4,7 +4,7 @@
   "DRAWING_BUTTON.description": "Zeichne auf der Karte.",
   "DRAWING_BUTTON.title_controller": "Zeichnen",
   "DRAWING_BUTTON.title_mkb": "Zeichnen (Rechtsklick)",
-  "ERASING_BUTTON.description": "Radiere deine zuvor gezeichneten Linien.",
+  "ERASING_BUTTON.description": "Radiere deine bisher gezeichneten Linien.",
   "ERASING_BUTTON.title_controller": "Radieren",
   "ERASING_BUTTON.title_mkb": "Radieren (Mittlere Maustaste)",
   "EVENT.title": "Ereignis",

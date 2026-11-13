@@ -1,1557 +1,1825 @@
 {
-	"textures": [
-		{
-			"image": "ui_atlas_0.png",
-			"size": {
-				"w": 2048,
-				"h": 2048
-			},
-			"sprites": [
-				{
-					"filename": "top_bar/top_bar.png",
-					"region": {
-						"x": 1,
-						"y": 1,
-						"w": 2046,
-						"h": 80
-					},
-					"margin": {
-						"x": 0,
-						"y": 0,
-						"w": 0,
-						"h": 0
-					}
-				},
-				{
-					"filename": "popup_vertical.png",
-					"region": {
-						"x": 1,
-						"y": 83,
-						"w": 716,
-						"h": 816
-					},
-					"margin": {
-						"x": 0,
-						"y": 0,
-						"w": 0,
-						"h": 0
-					}
-				},
-				{
-					"filename": "card/card_frame_ancient_s.png",
-					"region": {
-						"x": 1,
-						"y": 901,
-						"w": 618,
-						"h": 862
-					},
-					"margin": {
-						"x": 29,
-						"y": 4,
-						"w": 55,
-						"h": 4
-					}
-				},
-				{
-					"filename": "card/card_frame_quest_s.png",
-					"region": {
-						"x": 719,
-						"y": 83,
-						"w": 599,
-						"h": 844
-					},
-					"margin": {
-						"x": 0,
-						"y": 0,
-						"w": 0,
-						"h": 0
-					}
-				},
-				{
-					"filename": "card/card_frame_attack_s.png",
-					"region": {
-						"x": 1320,
-						"y": 83,
-						"w": 598,
-						"h": 844
-					},
-					"margin": {
-						"x": 0,
-						"y": 0,
-						"w": 0,
-						"h": 0
-					}
-				},
-				{
-					"filename": "card/card_frame_power_s.png",
-					"region": {
-						"x": 621,
-						"y": 929,
-						"w": 598,
-						"h": 844
-					},
-					"margin": {
-						"x": 0,
-						"y": 0,
-						"w": 0,
-						"h": 0
-					}
-				},
-				{
-					"filename": "card/card_frame_skill_s.png",
-					"region": {
-						"x": 1221,
-						"y": 929,
-						"w": 598,
-						"h": 844
-					},
-					"margin": {
-						"x": 0,
-						"y": 0,
-						"w": 0,
-						"h": 0
-					}
-				},
-				{
-					"filename": "settings_tab_stroke.png",
-					"region": {
-						"x": 1,
-						"y": 1765,
-						"w": 515,
-						"h": 181
-					},
-					"margin": {
-						"x": 0,
-						"y": 0,
-						"w": 0,
-						"h": 0
-					}
-				},
-				{
-					"filename": "map/map_eraser_2.png",
-					"region": {
-						"x": 518,
-						"y": 1775,
-						"w": 272,
-						"h": 272
-					},
-					"margin": {
-						"x": 0,
-						"y": 0,
-						"w": 0,
-						"h": 0
-					}
-				},
-				{
-					"filename": "map/map_pencil_2.png",
-					"region": {
-						"x": 792,
-						"y": 1775,
-						"w": 272,
-						"h": 272
-					},
-					"margin": {
-						"x": 0,
-						"y": 0,
-						"w": 0,
-						"h": 0
-					}
-				},
-				{
-					"filename": "settings_tab_selected.png",
-					"region": {
-						"x": 1066,
-						"y": 1775,
-						"w": 505,
-						"h": 171
-					},
-					"margin": {
-						"x": 5,
-						"y": 5,
-						"w": 10,
-						"h": 10
-					}
-				},
-				{
-					"filename": "map/icons/map_node_background.png",
-					"region": {
-						"x": 1573,
-						"y": 1775,
-						"w": 256,
-						"h": 256
-					},
-					"margin": {
-						"x": 0,
-						"y": 0,
-						"w": 0,
-						"h": 0
-					}
-				},
-				{
-					"filename": "map/placeholder/waterfall_giant_boss_icon.png",
-					"region": {
-						"x": 1821,
-						"y": 929,
-						"w": 204,
-						"h": 211
-					},
-					"margin": {
-						"x": 58,
-						"y": 49,
-						"w": 96,
-						"h": 89
-					}
-				},
-				{
-					"filename": "map/ancients/ancient_node_darv_outline.png",
-					"region": {
-						"x": 1821,
-						"y": 1142,
-						"w": 207,
-						"h": 208
-					},
-					"margin": {
-						"x": 1,
-						"y": 0,
-						"w": 1,
-						"h": 0
-					}
-				},
-				{
-					"filename": "map/ancients/ancient_node_pael_outline.png",
-					"region": {
-						"x": 1821,
-						"y": 1352,
-						"w": 202,
-						"h": 208
-					},
-					"margin": {
-						"x": 2,
-						"y": 0,
-						"w": 6,
-						"h": 0
-					}
-				},
-				{
-					"filename": "map/ancients/ancient_node_darv.png",
-					"region": {
-						"x": 1821,
-						"y": 1562,
-						"w": 203,
-						"h": 205
-					},
-					"margin": {
-						"x": 4,
-						"y": 1,
-						"w": 5,
-						"h": 3
-					}
-				},
-				{
-					"filename": "map/ancients/ancient_node_vakuu_outline.png",
-					"region": {
-						"x": 1831,
-						"y": 1769,
-						"w": 196,
-						"h": 208
-					},
-					"margin": {
-						"x": 4,
-						"y": 0,
-						"w": 12,
-						"h": 0
-					}
-				},
-				{
-					"filename": "popup_confirm_button.png",
-					"region": {
-						"x": 1,
-						"y": 1948,
-						"w": 194,
-						"h": 85
-					},
-					"margin": {
-						"x": 2,
-						"y": 3,
-						"w": 4,
-						"h": 11
-					}
-				},
-				{
-					"filename": "popup_cancel_button.png",
-					"region": {
-						"x": 1066,
-						"y": 1948,
-						"w": 191,
-						"h": 84
-					},
-					"margin": {
-						"x": 2,
-						"y": 3,
-						"w": 5,
-						"h": 12
-					}
-				},
-				{
-					"filename": "settings_tiny_left_arrow.png",
-					"region": {
-						"x": 1920,
-						"y": 83,
-						"w": 109,
-						"h": 120
-					},
-					"margin": {
-						"x": 8,
-						"y": 4,
-						"w": 19,
-						"h": 8
-					}
-				},
-				{
-					"filename": "top_bar/top_bar_settings.png",
-					"region": {
-						"x": 1920,
-						"y": 205,
-						"w": 114,
-						"h": 110
-					},
-					"margin": {
-						"x": 0,
-						"y": 0,
-						"w": 0,
-						"h": 0
-					}
-				},
-				{
-					"filename": "top_bar/top_bar_map.png",
-					"region": {
-						"x": 1920,
-						"y": 317,
-						"w": 114,
-						"h": 104
-					},
-					"margin": {
-						"x": 0,
-						"y": 0,
-						"w": 0,
-						"h": 0
-					}
-				},
-				{
-					"filename": "top_bar/top_bar_deck.png",
-					"region": {
-						"x": 1920,
-						"y": 423,
-						"w": 114,
-						"h": 98
-					},
-					"margin": {
-						"x": 0,
-						"y": 0,
-						"w": 0,
-						"h": 0
-					}
-				},
-				{
-					"filename": "card/card_unplayable_icon.png",
-					"region": {
-						"x": 1920,
-						"y": 523,
-						"w": 102,
-						"h": 102
-					},
-					"margin": {
-						"x": 1,
-						"y": 1,
-						"w": 2,
-						"h": 2
-					}
-				},
-				{
-					"filename": "card/card_portrait_border_plaque_s.png",
-					"region": {
-						"x": 197,
-						"y": 1948,
-						"w": 123,
-						"h": 75
-					},
-					"margin": {
-						"x": 0,
-						"y": 0,
-						"w": 0,
-						"h": 0
-					}
-				},
-				{
-					"filename": "map/icons/map_monster.png",
-					"region": {
-						"x": 1831,
-						"y": 1979,
-						"w": 66,
-						"h": 68
-					},
-					"margin": {
-						"x": 30,
-						"y": 29,
-						"w": 62,
-						"h": 60
-					}
-				},
-				{
-					"filename": "map/icons/map_unknown_monster.png",
-					"region": {
-						"x": 1899,
-						"y": 1979,
-						"w": 66,
-						"h": 68
-					},
-					"margin": {
-						"x": 30,
-						"y": 29,
-						"w": 62,
-						"h": 60
-					}
-				},
-				{
-					"filename": "top_bar/top_bar_char_backdrop.png",
-					"region": {
-						"x": 1920,
-						"y": 627,
-						"w": 90,
-						"h": 85
-					},
-					"margin": {
-						"x": 0,
-						"y": 0,
-						"w": 0,
-						"h": 0
-					}
-				},
-				{
-					"filename": "top_bar/top_bar_heart.png",
-					"region": {
-						"x": 1259,
-						"y": 1948,
-						"w": 93,
-						"h": 77
-					},
-					"margin": {
-						"x": 7,
-						"y": 3,
-						"w": 7,
-						"h": 3
-					}
-				},
-				{
-					"filename": "map/icons/map_elite.png",
-					"region": {
-						"x": 322,
-						"y": 1948,
-						"w": 89,
-						"h": 70
-					},
-					"margin": {
-						"x": 19,
-						"y": 27,
-						"w": 39,
-						"h": 58
-					}
-				},
-				{
-					"filename": "top_bar/top_bar_gold.png",
-					"region": {
-						"x": 1920,
-						"y": 714,
-						"w": 81,
-						"h": 75
-					},
-					"margin": {
-						"x": 8,
-						"y": 1,
-						"w": 9,
-						"h": 2
-					}
-				},
-				{
-					"filename": "map/icons/map_chest_boss.png",
-					"region": {
-						"x": 1354,
-						"y": 1948,
-						"w": 84,
-						"h": 71
-					},
-					"margin": {
-						"x": 23,
-						"y": 22,
-						"w": 44,
-						"h": 57
-					}
-				},
-				{
-					"filename": "sort_descending.png",
-					"region": {
-						"x": 413,
-						"y": 1948,
-						"w": 89,
-						"h": 64
-					},
-					"margin": {
-						"x": 0,
-						"y": 0,
-						"w": 0,
-						"h": 0
-					}
-				},
-				{
-					"filename": "map/icons/map_rest.png",
-					"region": {
-						"x": 1920,
-						"y": 791,
-						"w": 61,
-						"h": 90
-					},
-					"margin": {
-						"x": 33,
-						"y": 18,
-						"w": 67,
-						"h": 38
-					}
-				},
-				{
-					"filename": "checkbox_ticked.png",
-					"region": {
-						"x": 1983,
-						"y": 791,
-						"w": 64,
-						"h": 64
-					},
-					"margin": {
-						"x": 0,
-						"y": 0,
-						"w": 0,
-						"h": 0
-					}
-				},
-				{
-					"filename": "checkbox_unticked.png",
-					"region": {
-						"x": 1983,
-						"y": 857,
-						"w": 64,
-						"h": 64
-					},
-					"margin": {
-						"x": 0,
-						"y": 0,
-						"w": 0,
-						"h": 0
-					}
-				},
-				{
-					"filename": "card/energy_ironclad.png",
-					"region": {
-						"x": 1440,
-						"y": 1948,
-						"w": 74,
-						"h": 74
-					},
-					"margin": {
-						"x": 0,
-						"y": 0,
-						"w": 0,
-						"h": 0
-					}
-				},
-				{
-					"filename": "scrollbar_track_center.png",
-					"region": {
-						"x": 1967,
-						"y": 1979,
-						"w": 60,
-						"h": 64
-					},
-					"margin": {
-						"x": 2,
-						"y": 0,
-						"w": 4,
-						"h": 0
-					}
-				},
-				{
-					"filename": "map/icons/map_marker_silent.png",
-					"region": {
-						"x": 1516,
-						"y": 1948,
-						"w": 43,
-						"h": 60
-					},
-					"margin": {
-						"x": 2,
-						"y": 0,
-						"w": 3,
-						"h": 0
-					}
-				},
-				{
-					"filename": "small_scrollbar_track_edge.png",
-					"region": {
-						"x": 1920,
-						"y": 883,
-						"w": 32,
-						"h": 32
-					},
-					"margin": {
-						"x": 0,
-						"y": 0,
-						"w": 0,
-						"h": 0
-					}
-				}
-			]
-		},
-		{
-			"image": "ui_atlas_1.png",
-			"size": {
-				"w": 2048,
-				"h": 2048
-			},
-			"sprites": [
-				{
-					"filename": "card/ancient_banner.png",
-					"region": {
-						"x": 1,
-						"y": 1,
-						"w": 671,
-						"h": 182
-					},
-					"margin": {
-						"x": 0,
-						"y": 0,
-						"w": 0,
-						"h": 0
-					}
-				},
-				{
-					"filename": "card/card_banner.png",
-					"region": {
-						"x": 674,
-						"y": 1,
-						"w": 653,
-						"h": 145
-					},
-					"margin": {
-						"x": 1,
-						"y": 23,
-						"w": 2,
-						"h": 25
-					}
-				},
-				{
-					"filename": "card/card_portrait_border_attack_s.png",
-					"region": {
-						"x": 1329,
-						"y": 1,
-						"w": 551,
-						"h": 420
-					},
-					"margin": {
-						"x": 0,
-						"y": 0,
-						"w": 0,
-						"h": 0
-					}
-				},
-				{
-					"filename": "compendium.png",
-					"region": {
-						"x": 1882,
-						"y": 1,
-						"w": 140,
-						"h": 149
-					},
-					"margin": {
-						"x": 6,
-						"y": 0,
-						"w": 14,
-						"h": 0
-					}
-				},
-				{
-					"filename": "map/icons/map_ping.png",
-					"region": {
-						"x": 1882,
-						"y": 152,
-						"w": 128,
-						"h": 128
-					},
-					"margin": {
-						"x": 0,
-						"y": 0,
-						"w": 0,
-						"h": 0
-					}
-				},
-				{
-					"filename": "small_scrollbar_track_center.png",
-					"region": {
-						"x": 2012,
-						"y": 152,
-						"w": 32,
-						"h": 32
-					},
-					"margin": {
-						"x": 0,
-						"y": 0,
-						"w": 0,
-						"h": 0
-					}
-				},
-				{
-					"filename": "small_scrollbar_train.png",
-					"region": {
-						"x": 2012,
-						"y": 186,
-						"w": 28,
-						"h": 52
-					},
-					"margin": {
-						"x": 0,
-						"y": 0,
-						"w": 0,
-						"h": 0
-					}
-				},
-				{
-					"filename": "settings_tiny_right_arrow.png",
-					"region": {
-						"x": 1882,
-						"y": 282,
-						"w": 109,
-						"h": 120
-					},
-					"margin": {
-						"x": 11,
-						"y": 4,
-						"w": 19,
-						"h": 8
-					}
-				},
-				{
-					"filename": "map/icons/map_marker_ironclad.png",
-					"region": {
-						"x": 1993,
-						"y": 282,
-						"w": 46,
-						"h": 52
-					},
-					"margin": {
-						"x": 0,
-						"y": 5,
-						"w": 0,
-						"h": 8
-					}
-				},
-				{
-					"filename": "map/icons/map_marker_defect.png",
-					"region": {
-						"x": 1993,
-						"y": 336,
-						"w": 43,
-						"h": 60
-					},
-					"margin": {
-						"x": 1,
-						"y": 0,
-						"w": 3,
-						"h": 0
-					}
-				},
-				{
-					"filename": "map/icons/map_marker_necrobinder.png",
-					"region": {
-						"x": 1993,
-						"y": 398,
-						"w": 38,
-						"h": 60
-					},
-					"margin": {
-						"x": 5,
-						"y": 0,
-						"w": 8,
-						"h": 0
-					}
-				},
-				{
-					"filename": "card/card_enchant_s.png",
-					"region": {
-						"x": 1882,
-						"y": 404,
-						"w": 100,
-						"h": 76
-					},
-					"margin": {
-						"x": 0,
-						"y": 0,
-						"w": 0,
-						"h": 0
-					}
-				},
-				{
-					"filename": "cursor_eraser_tilted.png",
-					"region": {
-						"x": 1984,
-						"y": 460,
-						"w": 63,
-						"h": 57
-					},
-					"margin": {
-						"x": 0,
-						"y": 0,
-						"w": 1,
-						"h": 7
-					}
-				},
-				{
-					"filename": "card/card_portrait_border_power_s.png",
-					"region": {
-						"x": 674,
-						"y": 148,
-						"w": 551,
-						"h": 420
-					},
-					"margin": {
-						"x": 0,
-						"y": 0,
-						"w": 0,
-						"h": 0
-					}
-				},
-				{
-					"filename": "map/icons/map_unknown_elite.png",
-					"region": {
-						"x": 1227,
-						"y": 148,
-						"w": 89,
-						"h": 70
-					},
-					"margin": {
-						"x": 19,
-						"y": 27,
-						"w": 39,
-						"h": 58
-					}
-				},
-				{
-					"filename": "top_bar/top_bar_ascension.png",
-					"region": {
-						"x": 1227,
-						"y": 220,
-						"w": 88,
-						"h": 128
-					},
-					"margin": {
-						"x": 0,
-						"y": 0,
-						"w": 0,
-						"h": 0
-					}
-				},
-				{
-					"filename": "map/icons/map_chest.png",
-					"region": {
-						"x": 1227,
-						"y": 350,
-						"w": 84,
-						"h": 59
-					},
-					"margin": {
-						"x": 23,
-						"y": 34,
-						"w": 44,
-						"h": 69
-					}
-				},
-				{
-					"filename": "map/icons/map_unknown_chest.png",
-					"region": {
-						"x": 1227,
-						"y": 411,
-						"w": 84,
-						"h": 59
-					},
-					"margin": {
-						"x": 23,
-						"y": 34,
-						"w": 44,
-						"h": 69
-					}
-				},
-				{
-					"filename": "card/card_portrait_border_skill_s.png",
-					"region": {
-						"x": 1313,
-						"y": 423,
-						"w": 551,
-						"h": 420
-					},
-					"margin": {
-						"x": 0,
-						"y": 0,
-						"w": 0,
-						"h": 0
-					}
-				},
-				{
-					"filename": "map/icons/map_burly_monster.png",
-					"region": {
-						"x": 1866,
-						"y": 519,
-						"w": 180,
-						"h": 185
-					},
-					"margin": {
-						"x": 37,
-						"y": 8,
-						"w": 76,
-						"h": 71
-					}
-				},
-				{
-					"filename": "top_bar/timer_icon.png",
-					"region": {
-						"x": 1227,
-						"y": 472,
-						"w": 80,
-						"h": 79
-					},
-					"margin": {
-						"x": 0,
-						"y": 0,
-						"w": 0,
-						"h": 0
-					}
-				},
-				{
-					"filename": "top_bar/top_bar_floor.png",
-					"region": {
-						"x": 1227,
-						"y": 553,
-						"w": 80,
-						"h": 75
-					},
-					"margin": {
-						"x": 16,
-						"y": 18,
-						"w": 26,
-						"h": 31
-					}
-				},
-				{
-					"filename": "peek_button.png",
-					"region": {
-						"x": 1866,
-						"y": 706,
-						"w": 166,
-						"h": 121
-					},
-					"margin": {
-						"x": 2,
-						"y": 22,
-						"w": 4,
-						"h": 49
-					}
-				},
-				{
-					"filename": "card/energy_quest.png",
-					"region": {
-						"x": 1866,
-						"y": 829,
-						"w": 74,
-						"h": 74
-					},
-					"margin": {
-						"x": 0,
-						"y": 0,
-						"w": 0,
-						"h": 0
-					}
-				},
-				{
-					"filename": "card/energy_regent.png",
-					"region": {
-						"x": 1942,
-						"y": 829,
-						"w": 74,
-						"h": 74
-					},
-					"margin": {
-						"x": 0,
-						"y": 0,
-						"w": 0,
-						"h": 0
-					}
-				},
-				{
-					"filename": "proceed_button.png",
-					"region": {
-						"x": 1,
-						"y": 185,
-						"w": 381,
-						"h": 178
-					},
-					"margin": {
-						"x": 6,
-						"y": 7,
-						"w": 12,
-						"h": 14
-					}
-				},
-				{
-					"filename": "map/placeholder/lagavulin_matriarch_boss_icon.png",
-					"region": {
-						"x": 384,
-						"y": 185,
-						"w": 288,
-						"h": 245
-					},
-					"margin": {
-						"x": 0,
-						"y": 27,
-						"w": 12,
-						"h": 55
-					}
-				},
-				{
-					"filename": "map/map_legend.png",
-					"region": {
-						"x": 1,
-						"y": 365,
-						"w": 368,
-						"h": 512
-					},
-					"margin": {
-						"x": 0,
-						"y": 0,
-						"w": 0,
-						"h": 0
-					}
-				},
-				{
-					"filename": "map/placeholder/the_kin_boss_icon.png",
-					"region": {
-						"x": 371,
-						"y": 432,
-						"w": 282,
-						"h": 259
-					},
-					"margin": {
-						"x": 8,
-						"y": 22,
-						"w": 18,
-						"h": 41
-					}
-				},
-				{
-					"filename": "map/placeholder/knowledge_demon_boss_icon.png",
-					"region": {
-						"x": 655,
-						"y": 570,
-						"w": 267,
-						"h": 229
-					},
-					"margin": {
-						"x": 18,
-						"y": 44,
-						"w": 33,
-						"h": 71
-					}
-				},
-				{
-					"filename": "confirm_button.png",
-					"region": {
-						"x": 371,
-						"y": 693,
-						"w": 257,
-						"h": 132
-					},
-					"margin": {
-						"x": 43,
-						"y": 25,
-						"w": 43,
-						"h": 70
-					}
-				},
-				{
-					"filename": "map/icons/map_spoils_map_marker.png",
-					"region": {
-						"x": 924,
-						"y": 570,
-						"w": 256,
-						"h": 256
-					},
-					"margin": {
-						"x": 0,
-						"y": 0,
-						"w": 0,
-						"h": 0
-					}
-				},
-				{
-					"filename": "back_button.png",
-					"region": {
-						"x": 630,
-						"y": 801,
-						"w": 256,
-						"h": 131
-					},
-					"margin": {
-						"x": 0,
-						"y": 26,
-						"w": 44,
-						"h": 71
-					}
-				},
-				{
-					"filename": "map/placeholder/test_subject_boss_icon.png",
-					"region": {
-						"x": 371,
-						"y": 827,
-						"w": 250,
-						"h": 229
-					},
-					"margin": {
-						"x": 35,
-						"y": 45,
-						"w": 50,
-						"h": 71
-					}
-				},
-				{
-					"filename": "card/energy_silent.png",
-					"region": {
-						"x": 1182,
-						"y": 630,
-						"w": 74,
-						"h": 74
-					},
-					"margin": {
-						"x": 0,
-						"y": 0,
-						"w": 0,
-						"h": 0
-					}
-				},
-				{
-					"filename": "card/energy_necrobinder.png",
-					"region": {
-						"x": 1182,
-						"y": 706,
-						"w": 74,
-						"h": 69
-					},
-					"margin": {
-						"x": 0,
-						"y": 3,
-						"w": 0,
-						"h": 5
-					}
-				},
-				{
-					"filename": "map/icons/map_unknown.png",
-					"region": {
-						"x": 1182,
-						"y": 777,
-						"w": 73,
-						"h": 72
-					},
-					"margin": {
-						"x": 27,
-						"y": 28,
-						"w": 55,
-						"h": 56
-					}
-				},
-				{
-					"filename": "map/placeholder/vantom_boss_icon.png",
-					"region": {
-						"x": 888,
-						"y": 828,
-						"w": 250,
-						"h": 114
-					},
-					"margin": {
-						"x": 2,
-						"y": 73,
-						"w": 6,
-						"h": 142
-					}
-				},
-				{
-					"filename": "map/placeholder/infested_boss_icon.png",
-					"region": {
-						"x": 623,
-						"y": 934,
-						"w": 234,
-						"h": 168
-					},
-					"margin": {
-						"x": 34,
-						"y": 66,
-						"w": 66,
-						"h": 132
-					}
-				},
-				{
-					"filename": "map/placeholder/soul_fysh_boss_icon.png",
-					"region": {
-						"x": 1,
-						"y": 879,
-						"w": 234,
-						"h": 168
-					},
-					"margin": {
-						"x": 34,
-						"y": 66,
-						"w": 66,
-						"h": 132
-					}
-				},
-				{
-					"filename": "card/energy_defect.png",
-					"region": {
-						"x": 237,
-						"y": 879,
-						"w": 71,
-						"h": 72
-					},
-					"margin": {
-						"x": 1,
-						"y": 1,
-						"w": 3,
-						"h": 2
-					}
-				},
-				{
-					"filename": "cursor_pencil.png",
-					"region": {
-						"x": 310,
-						"y": 879,
-						"w": 59,
-						"h": 64
-					},
-					"margin": {
-						"x": 0,
-						"y": 0,
-						"w": 5,
-						"h": 0
-					}
-				},
-				{
-					"filename": "scrollbar_train_large.png",
-					"region": {
-						"x": 310,
-						"y": 945,
-						"w": 58,
-						"h": 89
-					},
-					"margin": {
-						"x": 3,
-						"y": 3,
-						"w": 6,
-						"h": 6
-					}
-				},
-				{
-					"filename": "card/energy_colorless.png",
-					"region": {
-						"x": 237,
-						"y": 953,
-						"w": 71,
-						"h": 71
-					},
-					"margin": {
-						"x": 1,
-						"y": 2,
-						"w": 3,
-						"h": 3
-					}
-				},
-				{
-					"filename": "map/icons/map_shop.png",
-					"region": {
-						"x": 237,
-						"y": 1026,
-						"w": 69,
-						"h": 72
-					},
-					"margin": {
-						"x": 29,
-						"y": 30,
-						"w": 59,
-						"h": 56
-					}
-				},
-				{
-					"filename": "cursor_eraser.png",
-					"region": {
-						"x": 308,
-						"y": 1036,
-						"w": 60,
-						"h": 62
-					},
-					"margin": {
-						"x": 1,
-						"y": 0,
-						"w": 4,
-						"h": 2
-					}
-				},
-				{
-					"filename": "map/ancients/ancient_node_tezcatara_outline.png",
-					"region": {
-						"x": 1,
-						"y": 1049,
-						"w": 208,
-						"h": 189
-					},
-					"margin": {
-						"x": 0,
-						"y": 13,
-						"w": 0,
-						"h": 19
-					}
-				},
-				{
-					"filename": "map/ancients/ancient_node_neow_outline.png",
-					"region": {
-						"x": 370,
-						"y": 1058,
-						"w": 208,
-						"h": 172
-					},
-					"margin": {
-						"x": 0,
-						"y": 18,
-						"w": 0,
-						"h": 36
-					}
-				},
-				{
-					"filename": "map/icons/map_unknown_shop.png",
-					"region": {
-						"x": 211,
-						"y": 1100,
-						"w": 69,
-						"h": 72
-					},
-					"margin": {
-						"x": 29,
-						"y": 30,
-						"w": 59,
-						"h": 56
-					}
-				},
-				{
-					"filename": "cursor_pencil_tilted.png",
-					"region": {
-						"x": 282,
-						"y": 1100,
-						"w": 64,
-						"h": 62
-					},
-					"margin": {
-						"x": 0,
-						"y": 0,
-						"w": 0,
-						"h": 2
-					}
-				},
-				{
-					"filename": "scrollbar_track_edge2.png",
-					"region": {
-						"x": 282,
-						"y": 1164,
-						"w": 60,
-						"h": 36
-					},
-					"margin": {
-						"x": 2,
-						"y": 28,
-						"w": 4,
-						"h": 28
-					}
-				},
-				{
-					"filename": "map/ancients/ancient_node_neow.png",
-					"region": {
-						"x": 1257,
-						"y": 845,
-						"w": 204,
-						"h": 166
-					},
-					"margin": {
-						"x": 2,
-						"y": 21,
-						"w": 4,
-						"h": 42
-					}
-				},
-				{
-					"filename": "map/ancients/ancient_node_tezcatara.png",
-					"region": {
-						"x": 859,
-						"y": 944,
-						"w": 203,
-						"h": 183
-					},
-					"margin": {
-						"x": 3,
-						"y": 16,
-						"w": 5,
-						"h": 25
-					}
-				},
-				{
-					"filename": "map/ancients/ancient_node_vakuu.png",
-					"region": {
-						"x": 1064,
-						"y": 944,
-						"w": 190,
-						"h": 202
-					},
-					"margin": {
-						"x": 7,
-						"y": 3,
-						"w": 18,
-						"h": 6
-					}
-				},
-				{
-					"filename": "map/ancients/ancient_node_tanx_outline.png",
-					"region": {
-						"x": 580,
-						"y": 1104,
-						"w": 202,
-						"h": 205
-					},
-					"margin": {
-						"x": 3,
-						"y": 0,
-						"w": 6,
-						"h": 3
-					}
-				},
-				{
-					"filename": "map/map_eraser_1.png",
-					"region": {
-						"x": 784,
-						"y": 1129,
-						"w": 202,
-						"h": 202
-					},
-					"margin": {
-						"x": 35,
-						"y": 35,
-						"w": 70,
-						"h": 70
-					}
-				},
-				{
-					"filename": "map/map_pencil_1.png",
-					"region": {
-						"x": 211,
-						"y": 1232,
-						"w": 202,
-						"h": 202
-					},
-					"margin": {
-						"x": 35,
-						"y": 35,
-						"w": 70,
-						"h": 70
-					}
-				},
-				{
-					"filename": "map/map_clean_up.png",
-					"region": {
-						"x": 1,
-						"y": 1240,
-						"w": 200,
-						"h": 200
-					},
-					"margin": {
-						"x": 0,
-						"y": 0,
-						"w": 0,
-						"h": 0
-					}
-				},
-				{
-					"filename": "map/ancients/ancient_node_pael.png",
-					"region": {
-						"x": 415,
-						"y": 1311,
-						"w": 196,
-						"h": 202
-					},
-					"margin": {
-						"x": 5,
-						"y": 3,
-						"w": 12,
-						"h": 6
-					}
-				},
-				{
-					"filename": "map/ancients/ancient_node_tanx.png",
-					"region": {
-						"x": 203,
-						"y": 1436,
-						"w": 196,
-						"h": 200
-					},
-					"margin": {
-						"x": 6,
-						"y": 2,
-						"w": 12,
-						"h": 8
-					}
-				},
-				{
-					"filename": "map/ancients/ancient_node_orobas_outline.png",
-					"region": {
-						"x": 1,
-						"y": 1442,
-						"w": 192,
-						"h": 201
-					},
-					"margin": {
-						"x": 4,
-						"y": 2,
-						"w": 16,
-						"h": 7
-					}
-				},
-				{
-					"filename": "map/ancients/ancient_node_orobas.png",
-					"region": {
-						"x": 1,
-						"y": 1645,
-						"w": 185,
-						"h": 194
-					},
-					"margin": {
-						"x": 7,
-						"y": 5,
-						"w": 23,
-						"h": 14
-					}
-				}
-			]
-		}
-	],
-	"meta": {
-		"app": "https://www.codeandweb.com/texturepacker",
-		"version": "1.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:430ac67df3a9beeb6466dddc6563e623:d4fed7b8efeea56ab9163c377e467cda:0e8860db28aba0ea6b9f2fe5f306a18f$"
-	}
+  "textures": [
+    {
+      "image": "ui_atlas.png",
+      "size": {
+        "w": 2056,
+        "h": 4060
+      },
+      "sprites": [
+        {
+          "filename": "submenu_panel.png",
+          "region": {
+            "x": 4,
+            "y": 4,
+            "w": 649,
+            "h": 1388
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "35ea53697f15d7b2"
+        },
+        {
+          "filename": "popup_vertical.png",
+          "region": {
+            "x": 664,
+            "y": 4,
+            "w": 716,
+            "h": 816
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "a70313a9dc8d4140"
+        },
+        {
+          "filename": "card/card_frame_ancient_s.png",
+          "region": {
+            "x": 4,
+            "y": 1400,
+            "w": 618,
+            "h": 862
+          },
+          "margin": {
+            "x": 29,
+            "y": 4,
+            "w": 55,
+            "h": 4
+          },
+          "pixel_hash": "4d1bf5f93fc38b51"
+        },
+        {
+          "filename": "card/card_frame_quest_s.png",
+          "region": {
+            "x": 4,
+            "y": 2272,
+            "w": 599,
+            "h": 844
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "cba9266eb9833c76"
+        },
+        {
+          "filename": "card/card_frame_attack_s.png",
+          "region": {
+            "x": 4,
+            "y": 3124,
+            "w": 598,
+            "h": 844
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "74b2bd6ed6ab553b"
+        },
+        {
+          "filename": "card/card_frame_power_s.png",
+          "region": {
+            "x": 1388,
+            "y": 4,
+            "w": 598,
+            "h": 844
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "eb792feb1a5a328d"
+        },
+        {
+          "filename": "card/card_frame_skill_s.png",
+          "region": {
+            "x": 664,
+            "y": 828,
+            "w": 598,
+            "h": 844
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "822c0b2dbccc5e30"
+        },
+        {
+          "filename": "submenu_panel_short.png",
+          "region": {
+            "x": 632,
+            "y": 1680,
+            "w": 489,
+            "h": 660
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 1,
+            "h": 0
+          },
+          "pixel_hash": "0fb6dc74d5a49959"
+        },
+        {
+          "filename": "card/card_portrait_border_attack_s.png",
+          "region": {
+            "x": 612,
+            "y": 2348,
+            "w": 551,
+            "h": 420
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "b8892d4bbb168eec"
+        },
+        {
+          "filename": "card/card_portrait_border_power_s.png",
+          "region": {
+            "x": 612,
+            "y": 2776,
+            "w": 551,
+            "h": 420
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "877c6adab7287825"
+        },
+        {
+          "filename": "card/card_portrait_border_skill_s.png",
+          "region": {
+            "x": 612,
+            "y": 3204,
+            "w": 551,
+            "h": 420
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "07adf83e7e8d145a"
+        },
+        {
+          "filename": "map/map_legend.png",
+          "region": {
+            "x": 1272,
+            "y": 856,
+            "w": 368,
+            "h": 512
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "2c39fff08a7d57dd"
+        },
+        {
+          "filename": "top_bar/top_bar.png",
+          "region": {
+            "x": 4,
+            "y": 3976,
+            "w": 2046,
+            "h": 80
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "9db7ea5889f67505"
+        },
+        {
+          "filename": "card/ancient_banner.png",
+          "region": {
+            "x": 612,
+            "y": 3632,
+            "w": 671,
+            "h": 182
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "f35a8c8eefc91b88"
+        },
+        {
+          "filename": "submenu_compendium_button.png",
+          "region": {
+            "x": 1272,
+            "y": 1376,
+            "w": 369,
+            "h": 259
+          },
+          "margin": {
+            "x": 3,
+            "y": 5,
+            "w": 3,
+            "h": 5
+          },
+          "pixel_hash": "c39d856967232853"
+        },
+        {
+          "filename": "card/card_banner.png",
+          "region": {
+            "x": 1272,
+            "y": 1644,
+            "w": 653,
+            "h": 145
+          },
+          "margin": {
+            "x": 1,
+            "y": 23,
+            "w": 2,
+            "h": 25
+          },
+          "pixel_hash": "8842c89646f56689"
+        },
+        {
+          "filename": "settings_tab_stroke.png",
+          "region": {
+            "x": 1132,
+            "y": 1800,
+            "w": 515,
+            "h": 181
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "f9d4ad3cf6f41407"
+        },
+        {
+          "filename": "settings_tab_selected.png",
+          "region": {
+            "x": 1132,
+            "y": 1992,
+            "w": 505,
+            "h": 171
+          },
+          "margin": {
+            "x": 5,
+            "y": 5,
+            "w": 10,
+            "h": 10
+          },
+          "pixel_hash": "4601e087de4b3312"
+        },
+        {
+          "filename": "map/ancients/ancient_node_nonupeipe_outline.png",
+          "region": {
+            "x": 1648,
+            "y": 856,
+            "w": 278,
+            "h": 274
+          },
+          "margin": {
+            "x": 0,
+            "y": 4,
+            "w": 0,
+            "h": 4
+          },
+          "pixel_hash": "65586d754ab6d34e"
+        },
+        {
+          "filename": "map/ancients/ancient_node_vakuu_outline.png",
+          "region": {
+            "x": 1656,
+            "y": 1800,
+            "w": 277,
+            "h": 266
+          },
+          "margin": {
+            "x": 0,
+            "y": 9,
+            "w": 1,
+            "h": 12
+          },
+          "pixel_hash": "4a0de343ec6f761c"
+        },
+        {
+          "filename": "map/ancients/ancient_node_nonupeipe.png",
+          "region": {
+            "x": 1172,
+            "y": 2172,
+            "w": 273,
+            "h": 269
+          },
+          "margin": {
+            "x": 2,
+            "y": 9,
+            "w": 5,
+            "h": 9
+          },
+          "pixel_hash": "a80ed99fc09a92d8"
+        },
+        {
+          "filename": "map/ancients/ancient_node_vakuu.png",
+          "region": {
+            "x": 1172,
+            "y": 2452,
+            "w": 272,
+            "h": 257
+          },
+          "margin": {
+            "x": 1,
+            "y": 13,
+            "w": 6,
+            "h": 21
+          },
+          "pixel_hash": "fde14c37e979bead"
+        },
+        {
+          "filename": "proceed_button.png",
+          "region": {
+            "x": 1648,
+            "y": 1140,
+            "w": 381,
+            "h": 178
+          },
+          "margin": {
+            "x": 6,
+            "y": 7,
+            "w": 12,
+            "h": 14
+          },
+          "pixel_hash": "263f70d1782638ae"
+        },
+        {
+          "filename": "map/icons/map_node_background.png",
+          "region": {
+            "x": 1172,
+            "y": 2720,
+            "w": 256,
+            "h": 256
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "555755fecf0b7870"
+        },
+        {
+          "filename": "map/icons/map_spoils_map_marker.png",
+          "region": {
+            "x": 1172,
+            "y": 2984,
+            "w": 256,
+            "h": 256
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "35b9a21bd63d2e76"
+        },
+        {
+          "filename": "network_problem_indicator.png",
+          "region": {
+            "x": 1172,
+            "y": 3248,
+            "w": 256,
+            "h": 253
+          },
+          "margin": {
+            "x": 0,
+            "y": 3,
+            "w": 0,
+            "h": 3
+          },
+          "pixel_hash": "6e10060f3d5e9a76"
+        },
+        {
+          "filename": "peek_button_sdf.png",
+          "region": {
+            "x": 1652,
+            "y": 1328,
+            "w": 244,
+            "h": 204
+          },
+          "margin": {
+            "x": 5,
+            "y": 26,
+            "w": 12,
+            "h": 52
+          },
+          "pixel_hash": "e6e6840a7f9e988d"
+        },
+        {
+          "filename": "locked_card.png",
+          "region": {
+            "x": 1456,
+            "y": 2172,
+            "w": 250,
+            "h": 190
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "9ffaddee5805ddc6"
+        },
+        {
+          "filename": "map/ancients/ancient_node_darv_outline.png",
+          "region": {
+            "x": 1716,
+            "y": 2076,
+            "w": 207,
+            "h": 208
+          },
+          "margin": {
+            "x": 1,
+            "y": 0,
+            "w": 1,
+            "h": 0
+          },
+          "pixel_hash": "a724d4e92f1b910f"
+        },
+        {
+          "filename": "event_button_sdf.png",
+          "region": {
+            "x": 612,
+            "y": 3824,
+            "w": 310,
+            "h": 136
+          },
+          "margin": {
+            "x": 101,
+            "y": 188,
+            "w": 202,
+            "h": 376
+          },
+          "pixel_hash": "240e927ee0bfdcf5"
+        },
+        {
+          "filename": "map/ancients/ancient_node_pael_outline.png",
+          "region": {
+            "x": 1456,
+            "y": 2372,
+            "w": 202,
+            "h": 208
+          },
+          "margin": {
+            "x": 2,
+            "y": 0,
+            "w": 6,
+            "h": 0
+          },
+          "pixel_hash": "ec1dd48e0207bba4"
+        },
+        {
+          "filename": "map/ancients/ancient_node_darv.png",
+          "region": {
+            "x": 1452,
+            "y": 2588,
+            "w": 203,
+            "h": 205
+          },
+          "margin": {
+            "x": 4,
+            "y": 1,
+            "w": 5,
+            "h": 3
+          },
+          "pixel_hash": "a7cdf646878f2b8e"
+        },
+        {
+          "filename": "map/ancients/ancient_node_tanx_outline.png",
+          "region": {
+            "x": 1436,
+            "y": 2804,
+            "w": 202,
+            "h": 205
+          },
+          "margin": {
+            "x": 3,
+            "y": 0,
+            "w": 6,
+            "h": 3
+          },
+          "pixel_hash": "163992965faf4190"
+        },
+        {
+          "filename": "map/ancients/ancient_node_zlatir_outline.png",
+          "region": {
+            "x": 1436,
+            "y": 3020,
+            "w": 196,
+            "h": 208
+          },
+          "margin": {
+            "x": 4,
+            "y": 0,
+            "w": 12,
+            "h": 0
+          },
+          "pixel_hash": "d3bae1a1815a94d0"
+        },
+        {
+          "filename": "map/ancients/ancient_node_pael.png",
+          "region": {
+            "x": 1436,
+            "y": 3236,
+            "w": 196,
+            "h": 202
+          },
+          "margin": {
+            "x": 5,
+            "y": 3,
+            "w": 12,
+            "h": 6
+          },
+          "pixel_hash": "01c565c462d63d81"
+        },
+        {
+          "filename": "map/ancients/ancient_node_tezcatara_outline.png",
+          "region": {
+            "x": 1716,
+            "y": 2292,
+            "w": 208,
+            "h": 189
+          },
+          "margin": {
+            "x": 0,
+            "y": 13,
+            "w": 0,
+            "h": 19
+          },
+          "pixel_hash": "288c7187a30ac4c1"
+        },
+        {
+          "filename": "map/ancients/ancient_node_tanx.png",
+          "region": {
+            "x": 1436,
+            "y": 3448,
+            "w": 196,
+            "h": 200
+          },
+          "margin": {
+            "x": 6,
+            "y": 2,
+            "w": 12,
+            "h": 8
+          },
+          "pixel_hash": "0cd9c13b0f35956a"
+        },
+        {
+          "filename": "map/ancients/ancient_node_orobas_outline.png",
+          "region": {
+            "x": 1668,
+            "y": 2492,
+            "w": 192,
+            "h": 201
+          },
+          "margin": {
+            "x": 4,
+            "y": 2,
+            "w": 16,
+            "h": 7
+          },
+          "pixel_hash": "0864adaf323f3c79"
+        },
+        {
+          "filename": "map/ancients/ancient_node_zlatir.png",
+          "region": {
+            "x": 1664,
+            "y": 2704,
+            "w": 190,
+            "h": 202
+          },
+          "margin": {
+            "x": 7,
+            "y": 3,
+            "w": 18,
+            "h": 6
+          },
+          "pixel_hash": "b15e4c9864bbf93c"
+        },
+        {
+          "filename": "map/ancients/ancient_node_tezcatara.png",
+          "region": {
+            "x": 1648,
+            "y": 2916,
+            "w": 203,
+            "h": 183
+          },
+          "margin": {
+            "x": 3,
+            "y": 16,
+            "w": 5,
+            "h": 25
+          },
+          "pixel_hash": "8091e3be937ac8c9"
+        },
+        {
+          "filename": "map/ancients/ancient_node_orobas.png",
+          "region": {
+            "x": 1864,
+            "y": 2704,
+            "w": 185,
+            "h": 194
+          },
+          "margin": {
+            "x": 7,
+            "y": 5,
+            "w": 23,
+            "h": 14
+          },
+          "pixel_hash": "b255eb772ff64770"
+        },
+        {
+          "filename": "map/ancients/ancient_node_neow_outline.png",
+          "region": {
+            "x": 1640,
+            "y": 3108,
+            "w": 208,
+            "h": 172
+          },
+          "margin": {
+            "x": 0,
+            "y": 18,
+            "w": 0,
+            "h": 36
+          },
+          "pixel_hash": "ba3a707c339da9a9"
+        },
+        {
+          "filename": "confirm_button.png",
+          "region": {
+            "x": 932,
+            "y": 3824,
+            "w": 257,
+            "h": 132
+          },
+          "margin": {
+            "x": 43,
+            "y": 25,
+            "w": 43,
+            "h": 70
+          },
+          "pixel_hash": "9b3690877ab1f80b"
+        },
+        {
+          "filename": "map/ancients/ancient_node_neow.png",
+          "region": {
+            "x": 1640,
+            "y": 3288,
+            "w": 204,
+            "h": 166
+          },
+          "margin": {
+            "x": 2,
+            "y": 21,
+            "w": 4,
+            "h": 42
+          },
+          "pixel_hash": "128db113727d68a4"
+        },
+        {
+          "filename": "back_button.png",
+          "region": {
+            "x": 1640,
+            "y": 3464,
+            "w": 256,
+            "h": 131
+          },
+          "margin": {
+            "x": 0,
+            "y": 26,
+            "w": 44,
+            "h": 71
+          },
+          "pixel_hash": "a473f0191545cccb"
+        },
+        {
+          "filename": "map/icons/map_burly_monster.png",
+          "region": {
+            "x": 1868,
+            "y": 2492,
+            "w": 180,
+            "h": 185
+          },
+          "margin": {
+            "x": 37,
+            "y": 8,
+            "w": 76,
+            "h": 71
+          },
+          "pixel_hash": "bf7d110b56bfa6d9"
+        },
+        {
+          "filename": "event_button_outline.png",
+          "region": {
+            "x": 1640,
+            "y": 3604,
+            "w": 284,
+            "h": 110
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "6be12496e1ea1436"
+        },
+        {
+          "filename": "event_button.png",
+          "region": {
+            "x": 1292,
+            "y": 3656,
+            "w": 272,
+            "h": 98
+          },
+          "margin": {
+            "x": 6,
+            "y": 6,
+            "w": 12,
+            "h": 12
+          },
+          "pixel_hash": "9fbe260adc7182fc"
+        },
+        {
+          "filename": "top_bar/top_bar_room_icon_placeholder.png",
+          "region": {
+            "x": 1292,
+            "y": 3764,
+            "w": 158,
+            "h": 156
+          },
+          "margin": {
+            "x": 48,
+            "y": 50,
+            "w": 98,
+            "h": 100
+          },
+          "pixel_hash": "9c5ff945713b4b83"
+        },
+        {
+          "filename": "peek_button.png",
+          "region": {
+            "x": 1460,
+            "y": 3764,
+            "w": 166,
+            "h": 121
+          },
+          "margin": {
+            "x": 2,
+            "y": 22,
+            "w": 4,
+            "h": 49
+          },
+          "pixel_hash": "d4dda1277ee4f2ba"
+        },
+        {
+          "filename": "popup_confirm_button.png",
+          "region": {
+            "x": 1652,
+            "y": 1540,
+            "w": 194,
+            "h": 85
+          },
+          "margin": {
+            "x": 2,
+            "y": 3,
+            "w": 4,
+            "h": 11
+          },
+          "pixel_hash": "367ad56911992247"
+        },
+        {
+          "filename": "map/icons/map_ping.png",
+          "region": {
+            "x": 1904,
+            "y": 1328,
+            "w": 128,
+            "h": 128
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "d17526afe18ea748"
+        },
+        {
+          "filename": "popup_cancel_button.png",
+          "region": {
+            "x": 1172,
+            "y": 3512,
+            "w": 191,
+            "h": 84
+          },
+          "margin": {
+            "x": 2,
+            "y": 3,
+            "w": 5,
+            "h": 12
+          },
+          "pixel_hash": "2637dfc4bd73bd21"
+        },
+        {
+          "filename": "map/icons/map_monster_traversed.png",
+          "region": {
+            "x": 1936,
+            "y": 856,
+            "w": 114,
+            "h": 119
+          },
+          "margin": {
+            "x": 70,
+            "y": 67,
+            "w": 142,
+            "h": 137
+          },
+          "pixel_hash": "06db9540674b68be"
+        },
+        {
+          "filename": "settings_tiny_left_arrow.png",
+          "region": {
+            "x": 1936,
+            "y": 984,
+            "w": 109,
+            "h": 120
+          },
+          "margin": {
+            "x": 8,
+            "y": 4,
+            "w": 19,
+            "h": 8
+          },
+          "pixel_hash": "f63be5867845ac8e"
+        },
+        {
+          "filename": "settings_tiny_right_arrow.png",
+          "region": {
+            "x": 1636,
+            "y": 3724,
+            "w": 109,
+            "h": 120
+          },
+          "margin": {
+            "x": 11,
+            "y": 4,
+            "w": 19,
+            "h": 8
+          },
+          "pixel_hash": "3572a706bb269215"
+        },
+        {
+          "filename": "top_bar/top_bar_settings.png",
+          "region": {
+            "x": 1132,
+            "y": 1680,
+            "w": 114,
+            "h": 110
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "c540d815b9feadeb"
+        },
+        {
+          "filename": "ancient_event_option_button_outline.png",
+          "region": {
+            "x": 1756,
+            "y": 3724,
+            "w": 112,
+            "h": 111
+          },
+          "margin": {
+            "x": 4,
+            "y": 5,
+            "w": 8,
+            "h": 9
+          },
+          "pixel_hash": "3c7b015c49278580"
+        },
+        {
+          "filename": "top_bar/top_bar_map.png",
+          "region": {
+            "x": 1936,
+            "y": 1464,
+            "w": 114,
+            "h": 104
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "1d83ada84f3c7197"
+        },
+        {
+          "filename": "top_bar/top_bar_ascension.png",
+          "region": {
+            "x": 1876,
+            "y": 3724,
+            "w": 88,
+            "h": 128
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "66a51c7fe949fc07"
+        },
+        {
+          "filename": "top_bar/top_bar_deck.png",
+          "region": {
+            "x": 1936,
+            "y": 1576,
+            "w": 114,
+            "h": 98
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "dfed7987a2b16f78"
+        },
+        {
+          "filename": "card/card_unplayable_icon.png",
+          "region": {
+            "x": 1936,
+            "y": 1684,
+            "w": 102,
+            "h": 102
+          },
+          "margin": {
+            "x": 1,
+            "y": 1,
+            "w": 2,
+            "h": 2
+          },
+          "pixel_hash": "eb8ba3a484a8ce0a"
+        },
+        {
+          "filename": "ancient_event_option_button.png",
+          "region": {
+            "x": 1944,
+            "y": 1796,
+            "w": 97,
+            "h": 96
+          },
+          "margin": {
+            "x": 1,
+            "y": 2,
+            "w": 3,
+            "h": 4
+          },
+          "pixel_hash": "4d4b31c1c977dd8b"
+        },
+        {
+          "filename": "card/card_portrait_border_plaque_s.png",
+          "region": {
+            "x": 1636,
+            "y": 3852,
+            "w": 123,
+            "h": 75
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "b6f4277a425c67ec"
+        },
+        {
+          "filename": "top_bar/top_bar_char_backdrop.png",
+          "region": {
+            "x": 1944,
+            "y": 1900,
+            "w": 90,
+            "h": 85
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "0b09b12906df72ad"
+        },
+        {
+          "filename": "card/card_enchant_s.png",
+          "region": {
+            "x": 1768,
+            "y": 3844,
+            "w": 100,
+            "h": 76
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "545062c79556b0d0"
+        },
+        {
+          "filename": "top_bar/top_bar_heart.png",
+          "region": {
+            "x": 1944,
+            "y": 1996,
+            "w": 93,
+            "h": 77
+          },
+          "margin": {
+            "x": 7,
+            "y": 3,
+            "w": 7,
+            "h": 3
+          },
+          "pixel_hash": "f7891625a99ba49b"
+        },
+        {
+          "filename": "locked_model.png",
+          "region": {
+            "x": 1856,
+            "y": 1540,
+            "w": 72,
+            "h": 88
+          },
+          "margin": {
+            "x": 9,
+            "y": 1,
+            "w": 18,
+            "h": 2
+          },
+          "pixel_hash": "a68c644e62a85b8d"
+        },
+        {
+          "filename": "top_bar/timer_icon.png",
+          "region": {
+            "x": 1200,
+            "y": 3824,
+            "w": 80,
+            "h": 79
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "6ef90342b091ceb0"
+        },
+        {
+          "filename": "map/icons/map_elite.png",
+          "region": {
+            "x": 1460,
+            "y": 3896,
+            "w": 89,
+            "h": 70
+          },
+          "margin": {
+            "x": 19,
+            "y": 27,
+            "w": 39,
+            "h": 58
+          },
+          "pixel_hash": "41c4f82b6fd19430"
+        },
+        {
+          "filename": "map/icons/map_unknown_elite.png",
+          "region": {
+            "x": 1932,
+            "y": 2084,
+            "w": 89,
+            "h": 70
+          },
+          "margin": {
+            "x": 19,
+            "y": 27,
+            "w": 39,
+            "h": 58
+          },
+          "pixel_hash": "9b0326d4491abce2"
+        },
+        {
+          "filename": "top_bar/top_bar_gold.png",
+          "region": {
+            "x": 1932,
+            "y": 2164,
+            "w": 81,
+            "h": 75
+          },
+          "margin": {
+            "x": 8,
+            "y": 1,
+            "w": 9,
+            "h": 2
+          },
+          "pixel_hash": "5b6621989f8ba5df"
+        },
+        {
+          "filename": "top_bar/top_bar_floor.png",
+          "region": {
+            "x": 1972,
+            "y": 2908,
+            "w": 80,
+            "h": 75
+          },
+          "margin": {
+            "x": 16,
+            "y": 18,
+            "w": 26,
+            "h": 31
+          },
+          "pixel_hash": "ee7b460c3ee00752"
+        },
+        {
+          "filename": "map/icons/map_chest_boss.png",
+          "region": {
+            "x": 1932,
+            "y": 2248,
+            "w": 84,
+            "h": 71
+          },
+          "margin": {
+            "x": 23,
+            "y": 22,
+            "w": 44,
+            "h": 57
+          },
+          "pixel_hash": "209675b78ad277d5"
+        },
+        {
+          "filename": "sort_descending.png",
+          "region": {
+            "x": 1876,
+            "y": 3860,
+            "w": 89,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "5df68a7d3ee122a3"
+        },
+        {
+          "filename": "map/icons/map_rest.png",
+          "region": {
+            "x": 1932,
+            "y": 2328,
+            "w": 61,
+            "h": 90
+          },
+          "margin": {
+            "x": 33,
+            "y": 18,
+            "w": 67,
+            "h": 38
+          },
+          "pixel_hash": "57705b2827fe4fdf"
+        },
+        {
+          "filename": "card/energy_ironclad.png",
+          "region": {
+            "x": 1976,
+            "y": 2992,
+            "w": 74,
+            "h": 74
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "449bea408dd7dc5b"
+        },
+        {
+          "filename": "card/energy_quest.png",
+          "region": {
+            "x": 1976,
+            "y": 3076,
+            "w": 74,
+            "h": 74
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "a2c203d7e1cf4844"
+        },
+        {
+          "filename": "card/energy_regent.png",
+          "region": {
+            "x": 1976,
+            "y": 3160,
+            "w": 74,
+            "h": 74
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "cce0258457bfb333"
+        },
+        {
+          "filename": "card/energy_silent.png",
+          "region": {
+            "x": 1976,
+            "y": 3244,
+            "w": 74,
+            "h": 74
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "870b0562c50eba19"
+        },
+        {
+          "filename": "map/icons/map_unknown.png",
+          "region": {
+            "x": 1976,
+            "y": 3328,
+            "w": 73,
+            "h": 72
+          },
+          "margin": {
+            "x": 27,
+            "y": 28,
+            "w": 55,
+            "h": 56
+          },
+          "pixel_hash": "4a066b674931e2d5"
+        },
+        {
+          "filename": "scrollbar_train_large.png",
+          "region": {
+            "x": 1904,
+            "y": 2908,
+            "w": 58,
+            "h": 89
+          },
+          "margin": {
+            "x": 3,
+            "y": 3,
+            "w": 6,
+            "h": 6
+          },
+          "pixel_hash": "a52d5c77ca37ab72"
+        },
+        {
+          "filename": "card/energy_defect.png",
+          "region": {
+            "x": 1860,
+            "y": 3008,
+            "w": 71,
+            "h": 72
+          },
+          "margin": {
+            "x": 1,
+            "y": 1,
+            "w": 3,
+            "h": 2
+          },
+          "pixel_hash": "f3f3d3392df4da18"
+        },
+        {
+          "filename": "card/energy_necrobinder.png",
+          "region": {
+            "x": 1976,
+            "y": 3408,
+            "w": 74,
+            "h": 69
+          },
+          "margin": {
+            "x": 0,
+            "y": 3,
+            "w": 0,
+            "h": 5
+          },
+          "pixel_hash": "d1d9011ab50e3d8f"
+        },
+        {
+          "filename": "card/energy_colorless.png",
+          "region": {
+            "x": 1860,
+            "y": 3088,
+            "w": 71,
+            "h": 71
+          },
+          "margin": {
+            "x": 1,
+            "y": 2,
+            "w": 3,
+            "h": 3
+          },
+          "pixel_hash": "e7b951509e85c1e5"
+        },
+        {
+          "filename": "map/icons/map_shop.png",
+          "region": {
+            "x": 1856,
+            "y": 3168,
+            "w": 69,
+            "h": 72
+          },
+          "margin": {
+            "x": 29,
+            "y": 30,
+            "w": 59,
+            "h": 56
+          },
+          "pixel_hash": "f53c1e5204b22f75"
+        },
+        {
+          "filename": "map/icons/map_unknown_shop.png",
+          "region": {
+            "x": 1856,
+            "y": 3248,
+            "w": 69,
+            "h": 72
+          },
+          "margin": {
+            "x": 29,
+            "y": 30,
+            "w": 59,
+            "h": 56
+          },
+          "pixel_hash": "555ec62205291ed2"
+        },
+        {
+          "filename": "map/icons/map_chest.png",
+          "region": {
+            "x": 1852,
+            "y": 3328,
+            "w": 84,
+            "h": 59
+          },
+          "margin": {
+            "x": 23,
+            "y": 34,
+            "w": 44,
+            "h": 69
+          },
+          "pixel_hash": "34f20a1b7d08fe73"
+        },
+        {
+          "filename": "map/icons/map_unknown_chest.png",
+          "region": {
+            "x": 1852,
+            "y": 3396,
+            "w": 84,
+            "h": 59
+          },
+          "margin": {
+            "x": 23,
+            "y": 34,
+            "w": 44,
+            "h": 69
+          },
+          "pixel_hash": "00e12a0033a2ccdc"
+        },
+        {
+          "filename": "map/icons/map_monster.png",
+          "region": {
+            "x": 1560,
+            "y": 3896,
+            "w": 66,
+            "h": 68
+          },
+          "margin": {
+            "x": 30,
+            "y": 29,
+            "w": 62,
+            "h": 60
+          },
+          "pixel_hash": "508892f1b17af7d2"
+        },
+        {
+          "filename": "map/icons/map_unknown_monster.png",
+          "region": {
+            "x": 1904,
+            "y": 3488,
+            "w": 66,
+            "h": 68
+          },
+          "margin": {
+            "x": 30,
+            "y": 29,
+            "w": 62,
+            "h": 60
+          },
+          "pixel_hash": "3accc3c70ad8fc24"
+        },
+        {
+          "filename": "checkbox_ticked.png",
+          "region": {
+            "x": 1980,
+            "y": 3488,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "3d802fe9d086ebb0"
+        },
+        {
+          "filename": "checkbox_unticked.png",
+          "region": {
+            "x": 1932,
+            "y": 3564,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "3e58bb6f52b2d6de"
+        },
+        {
+          "filename": "cursor_inspect.png",
+          "region": {
+            "x": 1932,
+            "y": 3636,
+            "w": 63,
+            "h": 62
+          },
+          "margin": {
+            "x": 1,
+            "y": 2,
+            "w": 1,
+            "h": 2
+          },
+          "pixel_hash": "99ff5a3777479775"
+        },
+        {
+          "filename": "scrollbar_track_center.png",
+          "region": {
+            "x": 1648,
+            "y": 2076,
+            "w": 60,
+            "h": 64
+          },
+          "margin": {
+            "x": 2,
+            "y": 0,
+            "w": 4,
+            "h": 0
+          },
+          "pixel_hash": "402ed79b60819ea1"
+        },
+        {
+          "filename": "cursor_eraser.png",
+          "region": {
+            "x": 1572,
+            "y": 3656,
+            "w": 59,
+            "h": 60
+          },
+          "margin": {
+            "x": 2,
+            "y": 3,
+            "w": 5,
+            "h": 4
+          },
+          "pixel_hash": "e63e6c1e10acd6be"
+        },
+        {
+          "filename": "cursor_eraser_tilted.png",
+          "region": {
+            "x": 1932,
+            "y": 2428,
+            "w": 59,
+            "h": 56
+          },
+          "margin": {
+            "x": 2,
+            "y": 7,
+            "w": 5,
+            "h": 8
+          },
+          "pixel_hash": "4fed0d1a4e393f7e"
+        },
+        {
+          "filename": "cursor_quill.png",
+          "region": {
+            "x": 1200,
+            "y": 3912,
+            "w": 59,
+            "h": 56
+          },
+          "margin": {
+            "x": 0,
+            "y": 5,
+            "w": 5,
+            "h": 8
+          },
+          "pixel_hash": "d4b3e37c165b228a"
+        },
+        {
+          "filename": "cursor_tilted.png",
+          "region": {
+            "x": 1372,
+            "y": 3512,
+            "w": 55,
+            "h": 59
+          },
+          "margin": {
+            "x": 3,
+            "y": 5,
+            "w": 9,
+            "h": 5
+          },
+          "pixel_hash": "051e7ddca039dd48"
+        },
+        {
+          "filename": "notification_dot2.png",
+          "region": {
+            "x": 1996,
+            "y": 4,
+            "w": 54,
+            "h": 56
+          },
+          "margin": {
+            "x": 7,
+            "y": 6,
+            "w": 14,
+            "h": 12
+          },
+          "pixel_hash": "7ccfcfae8ffcbe9f"
+        },
+        {
+          "filename": "cursor_quill_tilted.png",
+          "region": {
+            "x": 1972,
+            "y": 3708,
+            "w": 64,
+            "h": 47
+          },
+          "margin": {
+            "x": 0,
+            "y": 14,
+            "w": 0,
+            "h": 17
+          },
+          "pixel_hash": "97418696cbdcc7ff"
+        },
+        {
+          "filename": "map/icons/map_marker_defect.png",
+          "region": {
+            "x": 1996,
+            "y": 68,
+            "w": 43,
+            "h": 60
+          },
+          "margin": {
+            "x": 1,
+            "y": 0,
+            "w": 3,
+            "h": 0
+          },
+          "pixel_hash": "ca55f41206e9f7d3"
+        },
+        {
+          "filename": "map/icons/map_marker_silent.png",
+          "region": {
+            "x": 1972,
+            "y": 3764,
+            "w": 43,
+            "h": 60
+          },
+          "margin": {
+            "x": 2,
+            "y": 0,
+            "w": 3,
+            "h": 0
+          },
+          "pixel_hash": "6f08df1b880bd957"
+        },
+        {
+          "filename": "cursor_default.png",
+          "region": {
+            "x": 1996,
+            "y": 136,
+            "w": 44,
+            "h": 58
+          },
+          "margin": {
+            "x": 10,
+            "y": 3,
+            "w": 20,
+            "h": 6
+          },
+          "pixel_hash": "e61738ea064705b1"
+        },
+        {
+          "filename": "map/icons/map_marker_ironclad.png",
+          "region": {
+            "x": 2004,
+            "y": 3560,
+            "w": 46,
+            "h": 52
+          },
+          "margin": {
+            "x": 0,
+            "y": 5,
+            "w": 0,
+            "h": 8
+          },
+          "pixel_hash": "f2cb325cf1bbf433"
+        },
+        {
+          "filename": "map/icons/map_marker_necrobinder.png",
+          "region": {
+            "x": 1668,
+            "y": 2372,
+            "w": 38,
+            "h": 60
+          },
+          "margin": {
+            "x": 5,
+            "y": 0,
+            "w": 8,
+            "h": 0
+          },
+          "pixel_hash": "9f01d820ce282811"
+        },
+        {
+          "filename": "scrollbar_track_edge2.png",
+          "region": {
+            "x": 1268,
+            "y": 3928,
+            "w": 60,
+            "h": 36
+          },
+          "margin": {
+            "x": 2,
+            "y": 28,
+            "w": 4,
+            "h": 28
+          },
+          "pixel_hash": "2b9fb88ccb13938d"
+        },
+        {
+          "filename": "small_scrollbar_train.png",
+          "region": {
+            "x": 1940,
+            "y": 3008,
+            "w": 28,
+            "h": 52
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "823e51f24ec53845"
+        },
+        {
+          "filename": "bestiary_pointer.png",
+          "region": {
+            "x": 1336,
+            "y": 3928,
+            "w": 34,
+            "h": 39
+          },
+          "margin": {
+            "x": 3,
+            "y": 1,
+            "w": 6,
+            "h": 1
+          },
+          "pixel_hash": "0239f0e22ebe4c49"
+        },
+        {
+          "filename": "little_arrow.png",
+          "region": {
+            "x": 1380,
+            "y": 3928,
+            "w": 34,
+            "h": 39
+          },
+          "margin": {
+            "x": 3,
+            "y": 1,
+            "w": 6,
+            "h": 1
+          },
+          "pixel_hash": "ecb6446a1d8cb2a9"
+        },
+        {
+          "filename": "small_scrollbar_track_center.png",
+          "region": {
+            "x": 1132,
+            "y": 2172,
+            "w": 32,
+            "h": 32
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "1676f5fffffb0a25"
+        },
+        {
+          "filename": "small_scrollbar_track_edge.png",
+          "region": {
+            "x": 1572,
+            "y": 3724,
+            "w": 32,
+            "h": 32
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "2170d30d635e59d5"
+        },
+        {
+          "filename": "map/map_dot.png",
+          "region": {
+            "x": 1612,
+            "y": 3724,
+            "w": 14,
+            "h": 25
+          },
+          "margin": {
+            "x": 9,
+            "y": 3,
+            "w": 18,
+            "h": 7
+          },
+          "pixel_hash": "cdb7d31b2f681532"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "app": "bento",
+    "version": "1.0"
+  }
 }

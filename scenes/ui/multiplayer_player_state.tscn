@@ -1,17 +1,18 @@
-[gd_scene load_steps=17 format=3 uid="uid://b2fsawjryxgqq"]
+[gd_scene load_steps=18 format=3 uid="uid://b2fsawjryxgqq"]
 
 [ext_resource type="Texture2D" uid="uid://x2neryjvbtwy" path="res://images/ui/top_panel/character_icon_ironclad.png" id="1_0gipw"]
 [ext_resource type="Script" uid="uid://5mqhpnjhhwua" path="res://src/Core/Nodes/Multiplayer/NMultiplayerPlayerState.cs" id="1_vnlb4"]
-[ext_resource type="Texture2D" path="res://images/atlases/compressed.sprites/confirm_button_tick.tres" id="3_yhjj3"]
+[ext_resource type="Texture2D" uid="uid://btejrjhccqeho" path="res://images/ui/top_panel/character_icon_ironclad_outline.png" id="3_be0qs"]
+[ext_resource type="Texture2D" uid="uid://yqkcb4" path="res://images/atlases/compressed_atlas.sprites/confirm_button_tick.tres" id="3_yhjj3"]
 [ext_resource type="Texture2D" uid="uid://csoo65671w1jn" path="res://images/ui/disconnected2.png" id="4_mam52"]
 [ext_resource type="Texture2D" uid="uid://cocaj7qjgglsd" path="res://images/packed/common_ui/network_problem_indicator.png" id="5_ku0hw"]
 [ext_resource type="PackedScene" uid="uid://i0agyocasfdy" path="res://scenes/combat/health_bar.tscn" id="5_xk48s"]
 [ext_resource type="Script" uid="uid://bmms4khdrykdc" path="res://src/Core/Nodes/Multiplayer/NMultiplayerNetworkProblemIndicator.cs" id="6_k77dw"]
 [ext_resource type="PackedScene" uid="uid://bgy88bk44xxvk" path="res://scenes/ui/selection_reticle.tscn" id="7_ad2fc"]
-[ext_resource type="Texture2D" path="res://images/atlases/ui_atlas.sprites/card/energy_ironclad.tres" id="7_yhjj3"]
+[ext_resource type="Texture2D" uid="uid://g1g8kd" path="res://images/atlases/ui_atlas.sprites/card/energy_ironclad.tres" id="7_yhjj3"]
 [ext_resource type="Texture2D" uid="uid://wwlp2akfrqsp" path="res://images/ui/combat/energy_star.png" id="10_yhjj3"]
 [ext_resource type="FontVariation" uid="uid://bg85h22rkxs6g" path="res://themes/kreon_bold_shared.tres" id="11_rago0"]
-[ext_resource type="Texture2D" path="res://images/atlases/ui_atlas.sprites/top_bar/top_bar_map.tres" id="11_yhjj3"]
+[ext_resource type="Texture2D" uid="uid://bqsbmj4" path="res://images/atlases/ui_atlas.sprites/top_bar/top_bar_map.tres" id="11_yhjj3"]
 [ext_resource type="PackedScene" uid="uid://bqrwdpvdn5vr2" path="res://scenes/cards/tiny_card.tscn" id="12_i5r12"]
 [ext_resource type="FontVariation" uid="uid://ux4d708e7mk6" path="res://themes/kreon_bold_glyph_space_one.tres" id="13_t5w83"]
 [ext_resource type="Script" uid="uid://deak8m0w1rrex" path="res://src/Core/Nodes/GodotExtensions/NButton.cs" id="13_yhjj3"]
@@ -38,6 +39,19 @@ offset_top = 10.0
 offset_right = 62.0
 offset_bottom = 58.0
 texture = ExtResource("1_0gipw")
+expand_mode = 1
+
+[node name="CharacterOutline" type="TextureRect" parent="CharacterIcon"]
+unique_name_in_owner = true
+self_modulate = Color(0, 0, 0, 0.5019608)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_be0qs")
 expand_mode = 1
 
 [node name="TurnEndIndicator" type="TextureRect" parent="CharacterIcon"]
@@ -271,7 +285,7 @@ offset_right = 173.0
 offset_bottom = 15.0
 
 [node name="HpBackground" parent="HealthBar/HpBarContainer" index="0"]
-modulate = Color(0, 0.0666667, 0.2, 0.7529412)
+modulate = Color(0.16470589, 0.3764706, 0.41960785, 0.7529412)
 
 [node name="HpLabel" parent="HealthBar/HpBarContainer" index="3"]
 theme_override_constants/shadow_offset_x = 2
@@ -288,7 +302,6 @@ offset_bottom = 12.5
 
 [node name="BlockContainer" parent="HealthBar" index="1"]
 visible = true
-layout_mode = 0
 offset_left = -22.0
 offset_top = -14.0
 offset_right = 22.0

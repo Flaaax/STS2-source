@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://bf8o57uj6f0r"
+path="res://.godot/imported/blitz_merchant_top.atlas-fee3fa8a90cda607c740cda70924227d.spatlas"
+
+[deps]
+
+source_file="res://animations/backgrounds/blitz_merchant_room/top/blitz_merchant_top.atlas"
+dest_files=["res://.godot/imported/blitz_merchant_top.atlas-fee3fa8a90cda607c740cda70924227d.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

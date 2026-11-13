@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://5ledu61ujnxa"]
+
+[ext_resource type="Script" uid="uid://dcrk3ukoqml2x" path="res://src/Core/Nodes/Vfx/Utilities/NByrdineAttackVfx.cs" id="1_rxno0"]
+[ext_resource type="SpineSkeletonDataResource" uid="uid://hr6p4vjtqwo6" path="res://animations/vfx/vfx_byrdine_overlay/byrdine_overlay_skel_data.tres" id="2_x7r8s"]
+[ext_resource type="Shader" uid="uid://citjsgmko2rak" path="res://shaders/vfx/vfx_stepped_shader_fire_dark.tres" id="3_x7r8s"]
+[ext_resource type="Texture2D" uid="uid://bid56elmy6fr6" path="res://images/vfx/tileable_noise_4.png" id="4_lut6d"]
+[ext_resource type="Texture2D" uid="uid://c65hcljas0pyo" path="res://images/vfx/fire/triangle_noise_tile.png" id="5_rgx4b"]
+[ext_resource type="Texture2D" uid="uid://dtaovewempx07" path="res://images/vfx/tileable_noise_1.png" id="7_qi7dj"]
+[ext_resource type="Texture2D" uid="uid://fjnqd255toyt" path="res://images/vfx/monsters/byrdine/byrdine_attack_streak_shape.png" id="7_x7r8s"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_svjal"]
+shader = ExtResource("3_x7r8s")
+shader_parameter/GlobalOffset = Vector2(0, 0)
+shader_parameter/OuterColor = Color(0.9990863, 0.2717168, 0.15981382, 0.98039216)
+shader_parameter/InnerColorStep = Vector2(0.075, 0.165)
+shader_parameter/Noise2Strength = 0.925
+shader_parameter/Noise2Scaling = Vector2(2, 2)
+shader_parameter/Noise2Panning = Vector2(1.5, 0.1)
+shader_parameter/Noise2Texture = ExtResource("7_qi7dj")
+shader_parameter/Noise1Strength = 0.62
+shader_parameter/Noise1Scaling = Vector2(2, 2)
+shader_parameter/Noise1Panning = Vector2(2, -0.15)
+shader_parameter/Noise1Texture = ExtResource("5_rgx4b")
+shader_parameter/InvertNoiseMask = false
+shader_parameter/NoiseMaskScale = Vector2(1, 1)
+shader_parameter/NoiseMaskOffset = Vector2(0, 0)
+shader_parameter/NoiseMask = ExtResource("7_x7r8s")
+shader_parameter/Distortion2Scale = Vector2(1, 1)
+shader_parameter/Distortion2Panning = Vector2(1, -1)
+shader_parameter/Distortion2Texture = ExtResource("4_lut6d")
+shader_parameter/Distortion2Strength = 0.02
+shader_parameter/Distortion1Scale = Vector2(1, 1)
+shader_parameter/Distortion1Panning = Vector2(1, 1)
+shader_parameter/Distortion1Strength = 0.02
+shader_parameter/DistortionMaskScale = Vector2(1, 1)
+shader_parameter/DistortionMaskOffset = Vector2(0, 0)
+shader_parameter/InnerColor = Color(1, 0.35833335, 0.23000002, 1)
+shader_parameter/OuterStep = Vector2(0.4, 0.5)
+
+[node name="ByrdineOverlayVfx" type="Node2D"]
+script = ExtResource("1_rxno0")
+
+[node name="SpineSprite" type="SpineSprite" parent="."]
+skeleton_data_res = ExtResource("2_x7r8s")
+preview_skin = "hair/v2"
+preview_animation = "attack_overlay"
+preview_frame = true
+preview_time = 0.22
+scale = Vector2(0.25, 0.25)
+
+[node name="VfxSlot" type="SpineSlotNode" parent="SpineSprite"]
+normal_material = SubResource("ShaderMaterial_svjal")
+slot_name = "fx_placeholder"
+show_behind_parent = true
+position = Vector2(-226.33203, -173.50446)
+rotation = 0.48769826
+scale = Vector2(1.9601823, 2.3943534)
+skew = -0.19358277

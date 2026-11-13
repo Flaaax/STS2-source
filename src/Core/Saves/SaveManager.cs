@@ -7,6 +7,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Debug;
 using MegaCrit.Sts2.Core.Entities.Players;
+using MegaCrit.Sts2.Core.Entities.Save;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Multiplayer.Game;
@@ -334,9 +335,9 @@ public class SaveManager : IProfileIdProvider
 	/// </summary>
 	/// <param name="serializableRun">The serialized run data.</param>
 	/// <param name="victory">Whether or not the run ended in a victory.</param>
-	public void UpdateProgressWithRunData(SerializableRun serializableRun, bool victory)
+	public PostRunProgressUpdateResult UpdateProgressWithRunData(SerializableRun serializableRun, bool victory)
 	{
-		_progressSaveManager.UpdateWithRunData(serializableRun, victory);
+		return _progressSaveManager.UpdateWithRunData(serializableRun, victory);
 	}
 
 	/// <summary>
@@ -740,7 +741,8 @@ public class SaveManager : IProfileIdProvider
 
 	/// <summary>
 	/// Load and validate the current multiplayer run save.
-	/// Performs deep validation to ensure all save content is valid and handles corruption automatically.
+	/// Performs deep validation to ensure all save content is valid. A save that fails it returns ValidationFailed and
+	/// is left in place.
 	/// If the save contains deprecated content, the model IDs are automatically replaced with the deprecated versions.
 	/// </summary>
 	/// <param name="localPlayerId">The local player ID to validate against</param>
@@ -892,6 +894,11 @@ public class SaveManager : IProfileIdProvider
 		Progress.ObtainEpochOverride(epochId, state);
 	}
 
+	public void ObtainFoolEpochIfDefectRunCompleted()
+	{
+		_progressSaveManager.ObtainFoolEpochIfDefectRunCompleted();
+	}
+
 	/// <summary>
 	/// Reveals an Epoch. Sets an Epoch to IsComplete.
 	/// Occurs when the player clicks on an Obtained Epoch in the Timeline screen.
@@ -951,7 +958,7 @@ public class SaveManager : IProfileIdProvider
 	/// </summary>
 	private static string[] GetCardUnlockEpochIds()
 	{
-		return new string[20]
+		return new string[23]
 		{
 			EpochModel.GetId<Colorless1Epoch>(),
 			EpochModel.GetId<Colorless2Epoch>(),
@@ -972,7 +979,10 @@ public class SaveManager : IProfileIdProvider
 			EpochModel.GetId<Defect7Epoch>(),
 			EpochModel.GetId<Necrobinder2Epoch>(),
 			EpochModel.GetId<Necrobinder5Epoch>(),
-			EpochModel.GetId<Necrobinder7Epoch>()
+			EpochModel.GetId<Necrobinder7Epoch>(),
+			EpochModel.GetId<Fool2Epoch>(),
+			EpochModel.GetId<Fool5Epoch>(),
+			EpochModel.GetId<Fool7Epoch>()
 		};
 	}
 
@@ -992,7 +1002,7 @@ public class SaveManager : IProfileIdProvider
 	/// </summary>
 	private static string[] GetRelicUnlockEpochIds()
 	{
-		return new string[15]
+		return new string[17]
 		{
 			EpochModel.GetId<Relic1Epoch>(),
 			EpochModel.GetId<Relic2Epoch>(),
@@ -1008,7 +1018,9 @@ public class SaveManager : IProfileIdProvider
 			EpochModel.GetId<Defect3Epoch>(),
 			EpochModel.GetId<Defect6Epoch>(),
 			EpochModel.GetId<Necrobinder3Epoch>(),
-			EpochModel.GetId<Necrobinder6Epoch>()
+			EpochModel.GetId<Necrobinder6Epoch>(),
+			EpochModel.GetId<Fool3Epoch>(),
+			EpochModel.GetId<Fool6Epoch>()
 		};
 	}
 
@@ -1028,7 +1040,7 @@ public class SaveManager : IProfileIdProvider
 	/// </summary>
 	private static string[] GetPotionUnlockEpochIds()
 	{
-		return new string[7]
+		return new string[8]
 		{
 			EpochModel.GetId<Potion1Epoch>(),
 			EpochModel.GetId<Potion2Epoch>(),
@@ -1036,7 +1048,8 @@ public class SaveManager : IProfileIdProvider
 			EpochModel.GetId<Silent4Epoch>(),
 			EpochModel.GetId<Regent4Epoch>(),
 			EpochModel.GetId<Defect4Epoch>(),
-			EpochModel.GetId<Necrobinder4Epoch>()
+			EpochModel.GetId<Necrobinder4Epoch>(),
+			EpochModel.GetId<Fool4Epoch>()
 		};
 	}
 
@@ -1099,7 +1112,7 @@ public class SaveManager : IProfileIdProvider
 	/// <see cref="P:MegaCrit.Sts2.Core.Timeline.EpochModel.AgnosticUnlockOrder" />, or returns null once the player has them all.
 	/// </summary>
 	/// <remarks>
-	/// NOTE: This path ignores the <see cref="M:MegaCrit.Sts2.Core.Runs.GameModeExtension.AreAchievementsAndEpochsLocked(MegaCrit.Sts2.Core.Runs.GameMode)" /> check
+	/// NOTE: This path ignores the <see cref="M:MegaCrit.Sts2.Core.Helpers.GameModeHelper.AreAchievementsAndEpochsLocked(MegaCrit.Sts2.Core.Runs.GameMode,System.Boolean)" /> check
 	/// that the mid-run and post-run grants respect.
 	/// </remarks>
 	public EpochModel? GrantNextUnlock()

@@ -5,7 +5,7 @@ using Godot;
 using MegaCrit.Sts2.Core.Assets;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Helpers;
-using MegaCrit.Sts2.Core.Nodes.Rooms;
+using MegaCrit.Sts2.Core.Nodes.Combat;
 using MegaCrit.Sts2.Core.TestSupport;
 
 namespace MegaCrit.Sts2.Core.Nodes.Vfx;
@@ -36,8 +36,18 @@ public partial class NFireSmokePuffVfx : Node2D
 		{
 			return null;
 		}
+		NCreature creatureNode = target.GetCreatureNode();
+		return Create(creatureNode.VfxSpawnPosition);
+	}
+
+	public static NFireSmokePuffVfx? Create(Vector2 position)
+	{
+		if (TestMode.IsOn)
+		{
+			return null;
+		}
 		NFireSmokePuffVfx nFireSmokePuffVfx = PreloadManager.Cache.GetScene(ScenePath).Instantiate<NFireSmokePuffVfx>(PackedScene.GenEditState.Disabled);
-		nFireSmokePuffVfx.GlobalPosition = NCombatRoom.Instance.GetCreatureNode(target).VfxSpawnPosition;
+		nFireSmokePuffVfx.GlobalPosition = position;
 		return nFireSmokePuffVfx;
 	}
 

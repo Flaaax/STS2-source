@@ -16,7 +16,7 @@ public class NullPlatformUtilStrategy : IPlatformUtilStrategy
 {
 	private const string _multiplayerNamesFile = "mp_names.json";
 
-	private List<NullMultiplayerName>? _mpNames;
+	private readonly List<NullMultiplayerName>? _mpNames;
 
 	public ulong LocalPlayerId { get; } = 1uL;
 

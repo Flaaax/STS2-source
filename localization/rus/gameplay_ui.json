@@ -30,6 +30,8 @@
   "COMBAT_REWARD_ADD_SPECIAL_CARD": "Добавить карту «{Card}» в колоду",
   "COMBAT_REWARD_CARD_REMOVAL": "Удалить карту из колоды.",
   "COMBAT_REWARD_CARD_REMOVAL.selectionScreenPrompt": "Выберите карту, которую хотите удалить из колоды.",
+  "COMBAT_REWARD_CARD_UPGRADE": "Улучшите карту.",
+  "COMBAT_REWARD_CARD_UPGRADE.selectionScreenPrompt": "Выберите карту, которую хотите улучшить.",
   "COMBAT_REWARD_GOLD": "{gold} золота",
   "COMBAT_REWARD_GOLD_STOLEN": "{gold} украденного золота",
   "COMBAT_REWARD_HEADER_LOOT": "Награда!",

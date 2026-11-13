@@ -99,7 +99,7 @@ public sealed class MadScience : CardModel
 		new BlockVar(8m, ValueProp.Move),
 		new PowerVar<WeakPower>("SappingWeak", 2m),
 		new PowerVar<VulnerablePower>("SappingVulnerable", 2m),
-		new DynamicVar("ViolenceHits", 3m),
+		new HitCountVar("ViolenceHits", 3),
 		new PowerVar<StranglePower>("ChokingDamage", 6m),
 		new EnergyVar("EnergizedEnergy", 2),
 		new CardsVar("WisdomCards", 3),

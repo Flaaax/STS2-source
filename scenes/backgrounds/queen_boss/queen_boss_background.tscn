@@ -395,7 +395,7 @@ position = Vector2(1006, -659)
 amount = 30
 texture = ExtResource("16_l0fbx")
 lifetime = 14.0
-preprocess = 15.0
+preprocess = 14.0
 process_material = SubResource("ParticleProcessMaterial_rwffw")
 
 [node name="twinkle_star_specks" type="GPUParticles2D" parent="."]
@@ -404,7 +404,7 @@ position = Vector2(1003, -659)
 amount = 30
 texture = ExtResource("17_xt51v")
 lifetime = 12.0
-preprocess = 18.0
+preprocess = 12.0
 process_material = SubResource("ParticleProcessMaterial_rwffw")
 
 [node name="square_specks2" type="GPUParticles2D" parent="."]
@@ -413,7 +413,7 @@ position = Vector2(-1015, -646)
 amount = 30
 texture = ExtResource("16_l0fbx")
 lifetime = 14.0
-preprocess = 15.0
+preprocess = 14.0
 process_material = SubResource("ParticleProcessMaterial_rwffw")
 
 [node name="twinkle_star_specks2" type="GPUParticles2D" parent="."]
@@ -422,7 +422,7 @@ position = Vector2(-1018, -646)
 amount = 30
 texture = ExtResource("17_xt51v")
 lifetime = 12.0
-preprocess = 18.0
+preprocess = 12.0
 process_material = SubResource("ParticleProcessMaterial_rwffw")
 
 [node name="Foreground" type="Control" parent="."]

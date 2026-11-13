@@ -1,0 +1,17 @@
+{
+  "ETERNAL.description": "لا يمكن إزالة هذه البطاقة أو تحويلها من [gold]مجموعتك[/gold].",
+  "ETERNAL.title": "أبدية",
+  "ETHEREAL.description": "إذا كانت هذه البطاقة في يدك عند نهاية الدور، يتم استهلاكها.",
+  "ETHEREAL.title": "زائلة",
+  "EXHAUST.description": "تُزال حتى نهاية المعركة.",
+  "EXHAUST.title": "استهلاك",
+  "INNATE.description": "تبدأ كل معركة بهذه البطاقة في يدك.",
+  "INNATE.title": "فطرية",
+  "PERIOD": ".",
+  "RETAIN.description": "البطاقات المحتفظ بها لا تُرمى في نهاية الدور.",
+  "RETAIN.title": "احتفاظ",
+  "SLY.description": "إذا تم التخلص من هذه البطاقة من يدك قبل نهاية الدور، يتم لعبها مجانًا.",
+  "SLY.title": "مخادعة",
+  "UNPLAYABLE.description": "لا يمكن لعب هذه البطاقة.",
+  "UNPLAYABLE.title": "غير قابلة للعب"
+}

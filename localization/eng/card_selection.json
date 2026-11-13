@@ -1,4 +1,5 @@
 {
+  "TO_ABSORB": "Choose {Amount:plural:a card|[blue]{}[/blue] cards} to [gold]Absorb[/gold].",
   "TO_DISCARD": "Choose {Amount:plural:a card|[blue]{}[/blue] cards} to [gold]Discard[/gold].",
   "TO_ENCHANT": "Choose {Amount:plural:a card|[blue]{}[/blue] cards} to [purple]Enchant[/purple].",
   "TO_EXHAUST": "Choose {Amount:plural:a card|[blue]{}[/blue] cards} to [gold]Exhaust[/gold].",

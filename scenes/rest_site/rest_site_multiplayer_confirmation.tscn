@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dtlpmsptpdlu" path="res://images/ui/rest_site/option_outline.png" id="1_f8rdj"]
 [ext_resource type="Shader" uid="uid://c66gb6g7tup3n" path="res://shaders/hsv.gdshader" id="2_efb5i"]
 [ext_resource type="Texture2D" uid="uid://csnmk8134aw6" path="res://images/ui/rest_site/option_heal.png" id="3_ynf8q"]
-[ext_resource type="Texture2D" path="res://images/atlases/compressed.sprites/confirm_button_tick.tres" id="4_c4pdi"]
+[ext_resource type="Texture2D" uid="uid://yqkcb4" path="res://images/atlases/compressed_atlas.sprites/confirm_button_tick.tres" id="4_c4pdi"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f8rdj"]
 resource_local_to_scene = true

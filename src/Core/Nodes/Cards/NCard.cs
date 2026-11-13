@@ -45,11 +45,15 @@ public partial class NCard : Control, IPoolable
 
 	private const float _typePlaqueMinXSize = 61f;
 
-	private static readonly StringName _v = new StringName("v");
+	private static readonly StringName _h = new StringName("h");
 
 	private static readonly StringName _s = new StringName("s");
 
-	private static readonly StringName _h = new StringName("h");
+	private static readonly StringName _v = new StringName("v");
+
+	private static readonly StringName _blurUvRegion = new StringName("uv_region");
+
+	private static readonly StringName _blurRadiusScale = new StringName("radius_scale");
 
 	public static readonly Vector2 defaultSize = new Vector2(300f, 422f);
 
@@ -66,8 +70,6 @@ public partial class NCard : Control, IPoolable
 	private TextureRect _portrait;
 
 	private TextureRect _frame;
-
-	private TextureRect _ancientBorderGlassOverlay;
 
 	private TextureRect _ancientBorder;
 
@@ -228,7 +230,6 @@ public partial class NCard : Control, IPoolable
 		_titleLabel = GetNode<MegaLabel>("%TitleLabel");
 		_descriptionLabel = GetNode<MegaRichTextLabel>("%DescriptionLabel");
 		_frame = GetNode<TextureRect>("%Frame");
-		_ancientBorderGlassOverlay = GetNode<TextureRect>("%AncientBorderGlassOverlay");
 		_ancientBorder = GetNode<TextureRect>("%AncientBorder");
 		_ancientTextBg = GetNode<TextureRect>("%AncientTextBg");
 		_ancientBanner = GetNode<Control>("%AncientBanner");
@@ -438,6 +439,7 @@ public partial class NCard : Control, IPoolable
 			}
 		}
 		string text = ((previewMode != CardPreviewMode.Upgrade) ? Model.GetDescriptionForPile(pileType, target) : Model.GetDescriptionForUpgradePreview());
+		_descriptionLabel.TextDirection = (TextDirection)(LocManager.Instance.IsRtl ? 2 : 0);
 		switch (Visibility)
 		{
 		case ModelVisibility.Visible:
@@ -740,7 +742,6 @@ public partial class NCard : Control, IPoolable
 		_portrait.Visible = !flag;
 		_frame.Visible = !flag;
 		_ancientPortrait.Visible = flag;
-		_ancientBorderGlassOverlay.Visible = flag;
 		_ancientBorder.Visible = flag;
 		_ancientTextBg.Visible = flag;
 		_ancientBanner.Visible = flag;
@@ -814,6 +815,48 @@ public partial class NCard : Control, IPoolable
 				_ancientPortrait.Texture = portrait;
 				_banner.Material = null;
 			}
+			UpdatePortraitBlurParams();
+		}
+	}
+
+	/// <summary>
+	/// The portrait blur shader needs to know each portrait's atlas region (so its taps don't bleed in neighboring
+	/// sprites) and the portrait's scale within the canvas group (so both blur passes use the same radius).
+	/// These are per-instance shader parameters, so the blur material stays shared and batchable.
+	/// </summary>
+	private void UpdatePortraitBlurParams()
+	{
+		if (Visibility != ModelVisibility.Visible)
+		{
+			SetBlurParams(_portrait);
+			SetBlurParams(_ancientPortrait);
+		}
+	}
+
+	private static void SetBlurParams(TextureRect portrait)
+	{
+		portrait.SetInstanceShaderParameter(_blurUvRegion, ImageHelper.GetAtlasUvRegion(portrait.Texture));
+		portrait.SetInstanceShaderParameter(_blurRadiusScale, 1f / portrait.Scale.X);
+	}
+
+	/// <summary>
+	/// Overrides the currently displayed portrait texture, e.g. to swap in the full-resolution
+	/// <see cref="P:MegaCrit.Sts2.Core.Models.CardModel.BigPortrait" /> for the Inspect Card screen. Does not affect
+	/// <see cref="T:MegaCrit.Sts2.Core.Models.CardModel" />, so normal pooled usage (hand/piles/combat) is unaffected.
+	/// </summary>
+	public void SetPortraitTexture(Texture2D texture)
+	{
+		if (Model != null)
+		{
+			if (Model.Rarity != CardRarity.Ancient)
+			{
+				_portrait.Texture = texture;
+			}
+			else
+			{
+				_ancientPortrait.Texture = texture;
+			}
+			UpdatePortraitBlurParams();
 		}
 	}
 

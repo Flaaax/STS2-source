@@ -9,7 +9,6 @@ using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.Cards.Holders;
-using MegaCrit.Sts2.Core.Nodes.CommonUi;
 using MegaCrit.Sts2.Core.Nodes.GodotExtensions;
 using MegaCrit.Sts2.Core.Nodes.HoverTips;
 using MegaCrit.Sts2.Core.Nodes.Multiplayer;
@@ -121,22 +120,9 @@ public partial class NMouseCardPlay : NCardPlay
 		TaskHelper.RunSafely(StartAsync());
 	}
 
-	public override void _EnterTree()
-	{
-		if (NControllerManager.Instance != null)
-		{
-			NControllerManager.Instance.Connect(NControllerManager.SignalName.MouseDetected, Callable.From(base.CancelPlayCard));
-			NControllerManager.Instance.Connect(NControllerManager.SignalName.ControllerDetected, Callable.From(base.CancelPlayCard));
-		}
-	}
-
 	public override void _ExitTree()
 	{
-		if (NControllerManager.Instance != null)
-		{
-			NControllerManager.Instance.Disconnect(NControllerManager.SignalName.MouseDetected, Callable.From(base.CancelPlayCard));
-			NControllerManager.Instance.Disconnect(NControllerManager.SignalName.ControllerDetected, Callable.From(base.CancelPlayCard));
-		}
+		base._ExitTree();
 		_cancellationTokenSource.Cancel();
 		DisconnectTargetingSignals();
 	}

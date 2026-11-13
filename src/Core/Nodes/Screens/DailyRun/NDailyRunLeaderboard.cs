@@ -47,6 +47,10 @@ public partial class NDailyRunLeaderboard : Control
 
 	private DateTimeOffset _todaysDailyTime;
 
+	private TimeServerResult? _timeServerResult;
+
+	private bool _allowPagination;
+
 	private DateTimeOffset? _leaderboardTime;
 
 	private readonly List<ulong> _playersInRun = new List<ulong>();
@@ -89,6 +93,9 @@ public partial class NDailyRunLeaderboard : Control
 		{
 			ChangePage(_currentIndex -= 10);
 		});
+		_rightArrow.Disable();
+		_leftArrow.Disable();
+		_globalTickbox.Disable();
 	}
 
 	private void ToggleGlobalRank(NTickbox tickbox)
@@ -100,7 +107,7 @@ public partial class NDailyRunLeaderboard : Control
 			{
 				DateTimeOffset valueOrDefault = leaderboardTime.GetValueOrDefault();
 				_currentIndex = -4;
-				TaskHelper.RunSafely(LoadLeaderboard(valueOrDefault, _currentPage, LeaderboardQueryType.AroundUser, initialLoad: true));
+				TaskHelper.RunSafely(LoadLeaderboard(valueOrDefault, _currentPage, LeaderboardQueryType.AroundUser, isFirstTimeOpeningLeaderboard: true));
 			}
 		}
 		else
@@ -122,11 +129,15 @@ public partial class NDailyRunLeaderboard : Control
 		_loadCts = null;
 		_leftArrow.Visible = false;
 		_rightArrow.Visible = false;
+		_rightArrow.Disable();
+		_leftArrow.Disable();
+		_paginator.SetEnabled(leftArrowEnabled: false, rightArrowEnabled: false);
 		_loadingIndicator.Visible = false;
 		_noScoresIndicator.Visible = false;
 		_noFriendsIndicator.Visible = false;
 		_paginator.Visible = false;
 		_globalTickbox.Visible = false;
+		_globalTickbox.Disable();
 		_currentIndex = -4;
 		_leaderboardTime = null;
 		if (_noScoreUploadIndicator != null)
@@ -144,6 +155,7 @@ public partial class NDailyRunLeaderboard : Control
 	{
 		_playersInRun.Clear();
 		_playersInRun.AddRange(playersInRun);
+		_allowPagination = allowPagination;
 		_paginator.Initialize(this, dateTime, allowPagination);
 		_paginator.Visible = true;
 		_todaysDailyTime = dateTime;
@@ -163,7 +175,7 @@ public partial class NDailyRunLeaderboard : Control
 		}
 		else
 		{
-			TaskHelper.RunSafely(LoadLeaderboard(dateTime, _currentPage, LeaderboardQueryType.AroundUser, initialLoad: true));
+			TaskHelper.RunSafely(LoadLeaderboard(dateTime, _currentPage, LeaderboardQueryType.AroundUser, isFirstTimeOpeningLeaderboard: true));
 		}
 	}
 
@@ -179,7 +191,7 @@ public partial class NDailyRunLeaderboard : Control
 		{
 			DateTimeOffset valueOrDefault = leaderboardTime.GetValueOrDefault();
 			_currentPage = page;
-			TaskHelper.RunSafely(LoadLeaderboard(valueOrDefault, _currentPage, LeaderboardQueryType.FriendsOnly, initialLoad: false));
+			TaskHelper.RunSafely(LoadLeaderboard(valueOrDefault, _currentPage, LeaderboardQueryType.FriendsOnly, isFirstTimeOpeningLeaderboard: false));
 		}
 	}
 
@@ -193,11 +205,11 @@ public partial class NDailyRunLeaderboard : Control
 		if (leaderboardTime.HasValue)
 		{
 			DateTimeOffset valueOrDefault = leaderboardTime.GetValueOrDefault();
-			TaskHelper.RunSafely(LoadLeaderboard(valueOrDefault, _currentPage, LeaderboardQueryType.AroundUser, initialLoad: false));
+			TaskHelper.RunSafely(LoadLeaderboard(valueOrDefault, _currentPage, LeaderboardQueryType.AroundUser, isFirstTimeOpeningLeaderboard: false));
 		}
 	}
 
-	private async Task LoadLeaderboard(DateTimeOffset dateTime, int page, LeaderboardQueryType queryType, bool initialLoad)
+	private async Task LoadLeaderboard(DateTimeOffset dateTime, int page, LeaderboardQueryType queryType, bool isFirstTimeOpeningLeaderboard)
 	{
 		if (_loadCts != null)
 		{
@@ -208,24 +220,36 @@ public partial class NDailyRunLeaderboard : Control
 		ClearEntries();
 		_rightArrow.Disable();
 		_leftArrow.Disable();
-		_paginator.Disable();
+		_paginator.SetEnabled(leftArrowEnabled: false, rightArrowEnabled: false);
 		_noFriendsIndicator.Visible = false;
 		_noScoresIndicator.Visible = false;
 		_loadingIndicator.Visible = true;
 		_separators.Visible = false;
 		_globalTickbox.Visible = false;
+		_globalTickbox.Disable();
 		_noScoreUploadIndicator?.SetVisible(visible: false);
+		DateTimeOffset? currentTime = null;
+		if (_allowPagination)
+		{
+			DateTimeOffset? dateTimeOffset = await GetServerRelativeTime(ct);
+			if (!dateTimeOffset.HasValue)
+			{
+				return;
+			}
+			DateTimeOffset valueOrDefault = dateTimeOffset.GetValueOrDefault();
+			currentTime = valueOrDefault;
+		}
 		try
 		{
 			string leaderboardName = DailyRunUtility.GetLeaderboardName(dateTime, _playersInRun.Count);
-			DateTimeOffset? dateTimeOffset = DailyRunUtility.AddLeaderboardDays(dateTime, -1);
-			DateTimeOffset? rightLeaderboardTime = DailyRunUtility.AddLeaderboardDays(dateTime, 1);
+			DateTimeOffset? dateTimeOffset2 = (_allowPagination ? DailyRunUtility.AddLeaderboardDays(dateTime, -1) : ((DateTimeOffset?)null));
+			DateTimeOffset? rightLeaderboardTime = (_allowPagination ? DailyRunUtility.AddLeaderboardDays(dateTime, 1) : ((DateTimeOffset?)null));
 			Task<ILeaderboardHandle?> mainTask = LeaderboardManager.GetLeaderboard(leaderboardName, ct);
 			Task<ILeaderboardHandle> task;
-			if (dateTimeOffset.HasValue)
+			if (dateTimeOffset2.HasValue)
 			{
-				DateTimeOffset valueOrDefault = dateTimeOffset.GetValueOrDefault();
-				task = LeaderboardManager.GetLeaderboard(DailyRunUtility.GetLeaderboardName(valueOrDefault, _playersInRun.Count), ct);
+				DateTimeOffset valueOrDefault2 = dateTimeOffset2.GetValueOrDefault();
+				task = LeaderboardManager.GetLeaderboard(DailyRunUtility.GetLeaderboardName(valueOrDefault2, _playersInRun.Count), ct);
 			}
 			else
 			{
@@ -233,15 +257,22 @@ public partial class NDailyRunLeaderboard : Control
 			}
 			Task<ILeaderboardHandle?> leftTask = task;
 			Task<ILeaderboardHandle> task2;
-			if (rightLeaderboardTime.HasValue)
+			if (currentTime.HasValue)
 			{
-				DateTimeOffset valueOrDefault2 = rightLeaderboardTime.GetValueOrDefault();
-				task2 = LeaderboardManager.GetLeaderboard(DailyRunUtility.GetLeaderboardName(valueOrDefault2, _playersInRun.Count), ct);
+				DateTimeOffset valueOrDefault3 = currentTime.GetValueOrDefault();
+				if (rightLeaderboardTime.HasValue)
+				{
+					DateTimeOffset valueOrDefault4 = rightLeaderboardTime.GetValueOrDefault();
+					if (!DailyRunUtility.IsFutureLeaderboardDay(valueOrDefault4, valueOrDefault3))
+					{
+						task2 = LeaderboardManager.GetLeaderboard(DailyRunUtility.GetLeaderboardName(valueOrDefault4, _playersInRun.Count), ct);
+						goto IL_0321;
+					}
+				}
 			}
-			else
-			{
-				task2 = Task.FromResult<ILeaderboardHandle>(null);
-			}
+			task2 = Task.FromResult<ILeaderboardHandle>(null);
+			goto IL_0321;
+			IL_0321:
 			Task<ILeaderboardHandle?> rightTask = task2;
 			global::_003C_003Ey__InlineArray3<Task<ILeaderboardHandle>> buffer = default(global::_003C_003Ey__InlineArray3<Task<ILeaderboardHandle>>);
 			global::_003CPrivateImplementationDetails_003E.InlineArrayElementRef<global::_003C_003Ey__InlineArray3<Task<ILeaderboardHandle>>, Task<ILeaderboardHandle>>(ref buffer, 0) = mainTask;
@@ -261,7 +292,7 @@ public partial class NDailyRunLeaderboard : Control
 					await QueryFriendScores(handle, dateTime, page, ct);
 					break;
 				case LeaderboardQueryType.AroundUser:
-					await QueryGlobalScores(handle, dateTime, initialLoad, ct);
+					await QueryGlobalScores(handle, dateTime, isFirstTimeOpeningLeaderboard, ct);
 					break;
 				}
 				if (ct.IsCancellationRequested)
@@ -269,6 +300,7 @@ public partial class NDailyRunLeaderboard : Control
 					return;
 				}
 				_globalTickbox.Visible = true;
+				_globalTickbox.Enable();
 			}
 			else
 			{
@@ -279,9 +311,30 @@ public partial class NDailyRunLeaderboard : Control
 				_globalTickbox.Visible = false;
 			}
 			bool hasLeftLeaderboard = await leftTask != null;
-			bool rightArrowEnabled = await rightTask != null || rightLeaderboardTime == _todaysDailyTime;
+			int num;
+			if (await rightTask == null)
+			{
+				if (currentTime.HasValue)
+				{
+					DateTimeOffset valueOrDefault5 = currentTime.GetValueOrDefault();
+					if (rightLeaderboardTime.HasValue)
+					{
+						DateTimeOffset valueOrDefault6 = rightLeaderboardTime.GetValueOrDefault();
+						num = (DailyRunUtility.IsCurrentLeaderboardDay(valueOrDefault6, valueOrDefault5) ? 1 : 0);
+						goto IL_06bf;
+					}
+				}
+				num = 0;
+			}
+			else
+			{
+				num = 1;
+			}
+			goto IL_06bf;
+			IL_06bf:
+			bool rightArrowEnabled = (byte)num != 0;
 			_currentPage = page;
-			_paginator.Enable(hasLeftLeaderboard, rightArrowEnabled);
+			_paginator.SetEnabled(hasLeftLeaderboard, rightArrowEnabled);
 			_loadingIndicator.Visible = false;
 			if (_noScoreUploadIndicator != null && _todaysDailyTime == dateTime)
 			{
@@ -295,6 +348,23 @@ public partial class NDailyRunLeaderboard : Control
 		catch (OperationCanceledException)
 		{
 		}
+	}
+
+	/// <summary>
+	/// Returns the time on the Mega Crit time server.
+	/// </summary>
+	private async Task<DateTimeOffset?> GetServerRelativeTime(CancellationToken ct)
+	{
+		if (!_timeServerResult.HasValue)
+		{
+			TimeServerResult value = await DailyRunUtility.GetTimeServerTime();
+			if (ct.IsCancellationRequested)
+			{
+				return null;
+			}
+			_timeServerResult = value;
+		}
+		return _timeServerResult.Value.serverTime + (DateTimeOffset.UtcNow - _timeServerResult.Value.localReceivedTime);
 	}
 
 	private async Task QueryFriendScores(ILeaderboardHandle handle, DateTimeOffset dateTime, int page, CancellationToken ct)
@@ -318,7 +388,7 @@ public partial class NDailyRunLeaderboard : Control
 		}
 	}
 
-	private async Task QueryGlobalScores(ILeaderboardHandle handle, DateTimeOffset dateTime, bool initialLoad, CancellationToken ct)
+	private async Task QueryGlobalScores(ILeaderboardHandle handle, DateTimeOffset dateTime, bool isFirstTimeOpeningLeaderboard, CancellationToken ct)
 	{
 		List<LeaderboardEntry> list = await LeaderboardManager.QueryLeaderboard(handle, LeaderboardQueryType.AroundUser, _currentIndex, 10, ct);
 		if (ct.IsCancellationRequested)
@@ -327,7 +397,7 @@ public partial class NDailyRunLeaderboard : Control
 		}
 		if (list.Count <= 0)
 		{
-			if (initialLoad)
+			if (isFirstTimeOpeningLeaderboard)
 			{
 				_currentIndex = 0;
 			}

@@ -30,7 +30,7 @@ public sealed class SereTalon : RelicModel
 
 	public override async Task AfterObtained()
 	{
-		await CreatureCmd.LoseMaxHp(new ThrowingPlayerChoiceContext(), base.Owner.Creature, base.DynamicVars.HpLoss.BaseValue, isFromCard: false);
+		await CreatureCmd.LoseMaxHp(new ThrowingPlayerChoiceContext(), base.Owner.Creature, base.DynamicVars.HpLoss.BaseValue, null);
 		List<CardPileAddResult> wishResults = new List<CardPileAddResult>();
 		for (int i = 0; i < base.DynamicVars["Wishes"].IntValue; i++)
 		{

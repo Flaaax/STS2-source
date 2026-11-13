@@ -11,7 +11,7 @@ public partial class NCardPreviewContainer : Control
 
 	private void ReformatElements(Node _)
 	{
-		Vector2 vector = base.Size / 2f + Vector2.Down * 50f;
+		Vector2 vector = base.Size * 0.5f + Vector2.Down * 50f;
 		int childCount = GetChildCount();
 		for (int i = 0; i < childCount; i++)
 		{

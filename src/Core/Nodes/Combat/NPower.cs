@@ -26,6 +26,8 @@ public partial class NPower : Control
 
 	private Tween? _animInTween;
 
+	private Tween? _hoverTween;
+
 	public NPowerContainer Container { get; set; }
 
 	private static string ScenePath => SceneHelper.GetScenePath("combat/power");
@@ -140,14 +142,18 @@ public partial class NPower : Control
 	private void OnHovered()
 	{
 		NCombatRoom.Instance?.GetCreatureNode(Model.Owner)?.ShowHoverTips(Model.HoverTips);
-		_icon.Scale = Vector2.One * 1.1f;
+		_hoverTween?.Kill();
+		_hoverTween = CreateTween();
+		_hoverTween.TweenProperty(_icon, "scale", Vector2.One * 1.2f, 0.05);
 		CombatManager.Instance.StateTracker.CombatStateChanged += ShowPowerHoverTips;
 	}
 
 	private void OnUnhovered()
 	{
 		NCombatRoom.Instance?.GetCreatureNode(Model.Owner)?.HideHoverTips();
-		_icon.Scale = Vector2.One * 1f;
+		_hoverTween?.Kill();
+		_hoverTween = CreateTween();
+		_hoverTween.TweenProperty(_icon, "scale", Vector2.One, 1.0).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Expo);
 		CombatManager.Instance.StateTracker.CombatStateChanged -= ShowPowerHoverTips;
 	}
 

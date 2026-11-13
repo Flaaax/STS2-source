@@ -30,6 +30,8 @@ public partial class NDropdown : NClickableControl
 
 	private bool _isOpen;
 
+	protected bool IsOpen => _isOpen;
+
 	public override void _Ready()
 	{
 		if (GetType() != typeof(NDropdown))

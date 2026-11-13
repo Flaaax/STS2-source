@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Godot;
 using MegaCrit.Sts2.addons.mega_text;
@@ -9,6 +10,7 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.ControllerInput;
 using MegaCrit.Sts2.Core.Debug;
 using MegaCrit.Sts2.Core.Entities.Multiplayer;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.UI;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Localization;
@@ -24,12 +26,15 @@ using MegaCrit.Sts2.Core.Nodes.GodotExtensions;
 using MegaCrit.Sts2.Core.Nodes.Multiplayer;
 using MegaCrit.Sts2.Core.Nodes.Screens.CharacterSelect;
 using MegaCrit.Sts2.Core.Nodes.Screens.MainMenu;
+using MegaCrit.Sts2.Core.Nodes.Screens.Settings;
 using MegaCrit.Sts2.Core.Nodes.Vfx.Ui;
 using MegaCrit.Sts2.Core.Platform;
 using MegaCrit.Sts2.Core.Random;
 using MegaCrit.Sts2.Core.Runs;
 using MegaCrit.Sts2.Core.Saves;
 using MegaCrit.Sts2.Core.TestSupport;
+using MegaCrit.Sts2.Core.Timeline;
+using MegaCrit.Sts2.Core.Timeline.Epochs;
 using MegaCrit.Sts2.Core.Unlocks;
 
 namespace MegaCrit.Sts2.Core.Nodes.Screens.CustomRun;
@@ -69,6 +74,10 @@ public partial class NCustomRunScreen : NSubmenu, IStartRunLobbyListener, IChara
 
 	private NHotkeyIcon _modifiersHotkeyIcon;
 
+	private NDropdownPositioner _gameModeDropdownPositioner;
+
+	private NCustomGameModeDropdown _gameModeDropdown;
+
 	private StartRunLobby _lobby;
 
 	private MultiplayerUiMode _uiMode;
@@ -105,6 +114,8 @@ public partial class NCustomRunScreen : NSubmenu, IStartRunLobbyListener, IChara
 		_backButton = GetNode<NBackButton>("BackButton");
 		_unreadyButton = GetNode<NBackButton>("UnreadyButton");
 		_modifiersHotkeyIcon = GetNode<NHotkeyIcon>("%ModifiersHotkeyIcon");
+		_gameModeDropdownPositioner = GetNode<NDropdownPositioner>("%GameModeDropdownContainer");
+		_gameModeDropdown = GetNode<NCustomGameModeDropdown>("%GameModeDropdown");
 		_randomizeButton.Connect(NClickableControl.SignalName.Released, Callable.From<NButton>(OnRandomizePressed));
 		_confirmButton.Connect(NClickableControl.SignalName.Released, Callable.From<NButton>(OnEmbarkPressed));
 		_unreadyButton.Connect(NClickableControl.SignalName.Released, Callable.From<NButton>(OnUnreadyPressed));
@@ -117,6 +128,10 @@ public partial class NCustomRunScreen : NSubmenu, IStartRunLobbyListener, IChara
 		_seedInput.PlaceholderText = new LocString("main_menu_ui", "CUSTOM_RUN_SCREEN.SEED_RANDOM_PLACEHOLDER").GetFormattedText();
 		_seedInput.Connect(LineEdit.SignalName.TextChanged, Callable.From<string>(OnSeedInputSubmitted));
 		InitCharacterButtons();
+		_gameModeDropdownPositioner.FocusNeighborLeft = _gameModeDropdown.GetPath();
+		_gameModeDropdownPositioner.FocusNeighborRight = _seedInput.GetPath();
+		_gameModeDropdownPositioner.FocusNeighborTop = _gameModeDropdown.GetPath();
+		_gameModeDropdown.Connect(NCustomGameModeDropdown.SignalName.GameModeUpdated, Callable.From(OnGameModeDropdownChanged));
 		NControllerManager.Instance.Connect(NControllerManager.SignalName.MouseDetected, Callable.From(UpdateControllerButton));
 		NControllerManager.Instance.Connect(NControllerManager.SignalName.ControllerDetected, Callable.From(UpdateControllerButton));
 		NInputManager.Instance.Connect(NInputManager.SignalName.InputRebound, Callable.From(UpdateControllerButton));
@@ -128,10 +143,10 @@ public partial class NCustomRunScreen : NSubmenu, IStartRunLobbyListener, IChara
 		{
 			throw new InvalidOperationException($"Initialized character select screen with GameService of type {gameService.Type} when hosting!");
 		}
-		_lobby = new StartRunLobby(GameMode.Custom, gameService, this, maxPlayers);
-		_ascensionPanel.Initialize(MultiplayerUiMode.Host);
+		_lobby = new StartRunLobby(_gameModeDropdown.SelectedGameMode, isCustom: true, gameService, this, maxPlayers);
+		_ascensionPanel.Initialize(MultiplayerUiMode.Host, _gameModeDropdown.SelectedGameMode);
 		_modifiersList.Initialize(MultiplayerUiMode.Host);
-		_lobby.AddLocalHostPlayer(new UnlockState(SaveManager.Instance.Progress), SaveManager.Instance.Progress.MaxMultiplayerAscension);
+		_lobby.AddLocalHostPlayer(new UnlockState(SaveManager.Instance.Progress), SaveManager.Instance.Progress.MaxMultiplayerAscension, SaveManager.Instance.Progress.MaxBlitzAscension);
 		_uiMode = MultiplayerUiMode.Host;
 		_remotePlayerContainer.Visible = true;
 		UpdateControllerButton();
@@ -145,26 +160,28 @@ public partial class NCustomRunScreen : NSubmenu, IStartRunLobbyListener, IChara
 		{
 			throw new InvalidOperationException($"Initialized character select screen with GameService of type {gameService.Type} when joining!");
 		}
-		_lobby = new StartRunLobby(GameMode.Custom, gameService, this, -1);
-		_ascensionPanel.Initialize(MultiplayerUiMode.Client);
+		_lobby = new StartRunLobby(_gameModeDropdown.SelectedGameMode, isCustom: true, gameService, this, -1);
+		_ascensionPanel.Initialize(MultiplayerUiMode.Client, _gameModeDropdown.SelectedGameMode);
 		_modifiersList.Initialize(MultiplayerUiMode.Client);
 		_lobby.InitializeFromMessage(message);
 		_seedInput.Editable = false;
 		_randomizeButton.Disable();
 		_uiMode = MultiplayerUiMode.Client;
 		UpdateControllerButton();
+		GameModeChanged();
 		AfterInitialized();
 	}
 
 	public void InitializeSingleplayer()
 	{
-		_lobby = new StartRunLobby(GameMode.Custom, new NetSingleplayerGameService(), this, 1);
+		_lobby = new StartRunLobby(_gameModeDropdown.SelectedGameMode, isCustom: true, new NetSingleplayerGameService(), this, 1);
 		_remotePlayerContainer.Visible = false;
-		_ascensionPanel.Initialize(MultiplayerUiMode.Singleplayer);
+		_ascensionPanel.Initialize(MultiplayerUiMode.Singleplayer, _gameModeDropdown.SelectedGameMode);
 		_modifiersList.Initialize(MultiplayerUiMode.Singleplayer);
-		_lobby.AddLocalHostPlayer(new UnlockState(SaveManager.Instance.Progress), 0);
+		_lobby.AddLocalHostPlayer(new UnlockState(SaveManager.Instance.Progress), 0, SaveManager.Instance.Progress.MaxBlitzAscension);
 		_uiMode = MultiplayerUiMode.Singleplayer;
 		UpdateControllerButton();
+		OnAscensionPanelLevelChanged();
 		AfterInitialized();
 	}
 
@@ -243,7 +260,7 @@ public partial class NCustomRunScreen : NSubmenu, IStartRunLobbyListener, IChara
 		{
 			RefreshButtonSelectionForPlayer(player);
 		}
-		NHotkeyManager.Instance.PushHotkeyPressedBinding(ModifiersHotkey, TryFocusOnModifiersList);
+		NHotkeyManager.Instance.PushHotkeyPressedBinding(ModifiersHotkey, TryFocusOnModifiersList, 0L);
 	}
 
 	public override void OnSubmenuClosed()
@@ -275,7 +292,7 @@ public partial class NCustomRunScreen : NSubmenu, IStartRunLobbyListener, IChara
 
 	/// <summary>
 	/// Randomly selects one of the unlocked characters for the local player only. Selecting through the button routes
-	/// to <see cref="M:MegaCrit.Sts2.Core.Nodes.Screens.CustomRun.NCustomRunScreen.SelectCharacter(MegaCrit.Sts2.Core.Nodes.Screens.CharacterSelect.NCharacterSelectButton,MegaCrit.Sts2.Core.Models.CharacterModel)" /> -&gt; SetLocalCharacter, so other players in a multiplayer lobby keep their own
+	/// to <see cref="M:MegaCrit.Sts2.Core.Nodes.Screens.CustomRun.NCustomRunScreen.SelectCharacter(MegaCrit.Sts2.Core.Nodes.Screens.CharacterSelect.NCharacterSelectButton)" /> -&gt; SetLocalCharacter, so other players in a multiplayer lobby keep their own
 	/// selections.
 	/// </summary>
 	private void RandomizeLocalCharacter()
@@ -358,9 +375,11 @@ public partial class NCustomRunScreen : NSubmenu, IStartRunLobbyListener, IChara
 		try
 		{
 			Log.Info($"Embarking on a CUSTOM {_lobby.LocalPlayer.character.Id.Entry} run. Ascension: {_lobby.Ascension} Seed: {_lobby.Seed} Modifiers: {GetModifiersString()}");
-			SfxCmd.Play(_lobby.LocalPlayer.character.CharacterTransitionSfx);
-			await NGame.Instance.Transition.FadeOut(0.8f, _lobby.LocalPlayer.character.CharacterSelectTransitionPath);
-			await NGame.Instance.StartNewSingleplayerRun(_lobby.LocalPlayer.character, shouldSave: true, acts, modifiers, seed, GameMode.Custom, _lobby.Ascension);
+			Player player = _lobby.GeneratePlayers(seed)[0];
+			SfxCmd.Play(player.Character.CharacterTransitionSfx);
+			await NGame.Instance.Transition.FadeOut(0.8f, player.Character.CharacterSelectTransitionPath);
+			int ascensionLevel = ((_lobby.GameMode == GameMode.Dread) ? 10 : _lobby.Ascension);
+			await NGame.Instance.StartNewSingleplayerRun(player, shouldSave: true, acts, modifiers, seed, _lobby.GameMode, isCustomGame: true, ascensionLevel);
 		}
 		catch (Exception ex)
 		{
@@ -377,9 +396,12 @@ public partial class NCustomRunScreen : NSubmenu, IStartRunLobbyListener, IChara
 		try
 		{
 			Log.Info($"Embarking on a CUSTOM multiplayer run. Players: {string.Join(",", _lobby.Players)}. Ascension: {_lobby.Ascension} Seed: {_lobby.Seed} Modifiers: {GetModifiersString()}");
-			SfxCmd.Play(_lobby.LocalPlayer.character.CharacterTransitionSfx);
-			await NGame.Instance.Transition.FadeOut(0.8f, _lobby.LocalPlayer.character.CharacterSelectTransitionPath);
-			await NGame.Instance.StartNewMultiplayerRun(_lobby, shouldSave: true, acts, modifiers, seed, _lobby.Ascension);
+			List<Player> players = _lobby.GeneratePlayers(seed);
+			Player player = players.First((Player p) => p.NetId == _lobby.LocalPlayer.id);
+			SfxCmd.Play(player.Character.CharacterTransitionSfx);
+			await NGame.Instance.Transition.FadeOut(0.8f, player.Character.CharacterSelectTransitionPath);
+			int ascensionLevel = ((_lobby.GameMode == GameMode.Dread) ? 10 : _lobby.Ascension);
+			await NGame.Instance.StartNewMultiplayerRun(players, _lobby, shouldSave: true, acts, modifiers, seed, ascensionLevel);
 		}
 		catch (Exception ex)
 		{
@@ -396,13 +418,14 @@ public partial class NCustomRunScreen : NSubmenu, IStartRunLobbyListener, IChara
 		return string.Join(",", _lobby.Modifiers.Select((ModifierModel m) => m.Id));
 	}
 
-	public void SelectCharacter(NCharacterSelectButton charSelectButton, CharacterModel characterModel)
+	public void SelectCharacter(NCharacterSelectButton charSelectButton)
 	{
 		if (_lobby == null)
 		{
 			throw new InvalidOperationException("Cannot select character while loading!");
 		}
-		SfxCmd.Play(characterModel.CharacterSelectSfx);
+		CharacterModel character = charSelectButton.Character;
+		SfxCmd.Play(character.CharacterSelectSfx);
 		_selectedButton = charSelectButton;
 		foreach (NCharacterSelectButton item in _charButtonContainer.GetChildren().OfType<NCharacterSelectButton>())
 		{
@@ -411,7 +434,8 @@ public partial class NCustomRunScreen : NSubmenu, IStartRunLobbyListener, IChara
 				item.Deselect();
 			}
 		}
-		_lobby.SetLocalCharacter(characterModel);
+		_lobby.SetLocalCharacter(character);
+		_gameModeDropdown.FocusNeighborBottom = _selectedButton.GetPath();
 	}
 
 	/// <summary>
@@ -456,15 +480,12 @@ public partial class NCustomRunScreen : NSubmenu, IStartRunLobbyListener, IChara
 	{
 		_remotePlayerContainer.OnPlayerConnected(player);
 		RefreshButtonSelectionForPlayer(player);
+		UpdateGameModeDropdownOptionsAndVisibility();
 		UpdateRichPresence();
 	}
 
-	public void PlayerChanged(StartRunLobbyPlayer player, bool isRandomCharacterResolution)
+	public void PlayerChanged(StartRunLobbyPlayer player)
 	{
-		if (isRandomCharacterResolution)
-		{
-			throw new InvalidOperationException("Random character is not currently allowed in custom!");
-		}
 		_remotePlayerContainer.OnPlayerChanged(player);
 		RefreshButtonSelectionForPlayer(player);
 	}
@@ -490,10 +511,6 @@ public partial class NCustomRunScreen : NSubmenu, IStartRunLobbyListener, IChara
 
 	public void AscensionChanged()
 	{
-		if (_lobby.NetService.Type == NetGameType.Client)
-		{
-			_ascensionPanel.Visible = _lobby.Ascension > 0;
-		}
 		_ascensionPanel.SetAscensionLevel(_lobby.Ascension);
 	}
 
@@ -515,6 +532,14 @@ public partial class NCustomRunScreen : NSubmenu, IStartRunLobbyListener, IChara
 		}
 	}
 
+	public void GameModeChanged()
+	{
+		_gameModeDropdown.SetSelectedGameMode(_lobby.GameMode);
+		_ascensionPanel.SwitchGameMode(_lobby.GameMode);
+		_ascensionPanel.SetAscensionLevel(_lobby.Ascension);
+		_ascensionPanel.SetMaxAscension(_lobby.MaxAscension);
+	}
+
 	public void RemotePlayerDisconnected(StartRunLobbyPlayer player)
 	{
 		_remotePlayerContainer.OnPlayerDisconnected(player);
@@ -526,6 +551,7 @@ public partial class NCustomRunScreen : NSubmenu, IStartRunLobbyListener, IChara
 			}
 		}
 		UpdateRichPresence();
+		UpdateGameModeDropdownOptionsAndVisibility();
 	}
 
 	public void BeginRun(string seed, List<ActModel> acts, IReadOnlyList<ModifierModel> modifiers)
@@ -563,6 +589,57 @@ public partial class NCustomRunScreen : NSubmenu, IStartRunLobbyListener, IChara
 		}
 	}
 
+	private void OnGameModeDropdownChanged()
+	{
+		if (_lobby.NetService.Type != NetGameType.Client)
+		{
+			Lobby.SetGameMode(_gameModeDropdown.SelectedGameMode);
+		}
+	}
+
+	private void UpdateGameModeDropdownOptionsAndVisibility()
+	{
+		if (_lobby.NetService.Type == NetGameType.Client)
+		{
+			_gameModeDropdown.Disable();
+		}
+		int num = 1;
+		List<GameMode> list = new List<GameMode>(num);
+		CollectionsMarshal.SetCount(list, num);
+		Span<GameMode> span = CollectionsMarshal.AsSpan(list);
+		int index = 0;
+		span[index] = GameMode.Standard;
+		List<GameMode> list2 = list;
+		if (_lobby.Players.All((StartRunLobbyPlayer p) => p.unlockState.UnlockedEpochs.Contains(EpochModel.GetId<BlitzEpoch>())))
+		{
+			list2.Add(GameMode.Blitz);
+		}
+		if (_lobby.Players.All((StartRunLobbyPlayer p) => p.unlockState.UnlockedEpochs.Contains(EpochModel.GetId<DreadEpoch>())))
+		{
+			list2.Add(GameMode.Dread);
+		}
+		_gameModeDropdown.SetOptions(list2);
+		_gameModeDropdownPositioner.Visible = list2.Count > 1;
+		_gameModeDropdown.Visible = list2.Count > 1;
+		if (_gameModeDropdown.Visible)
+		{
+			_gameModeDropdown.FocusNeighborBottom = _charButtonContainer.GetChild<NCharacterSelectButton>(0).GetPath();
+			_seedInput.FocusNeighborLeft = _gameModeDropdown.GetPath();
+			{
+				foreach (NCharacterSelectButton item in _charButtonContainer.GetChildren().OfType<NCharacterSelectButton>())
+				{
+					item.FocusNeighborTop = _gameModeDropdown.GetPath();
+				}
+				return;
+			}
+		}
+		_seedInput.FocusNeighborLeft = _seedInput.GetPath();
+		foreach (NCharacterSelectButton item2 in _charButtonContainer.GetChildren().OfType<NCharacterSelectButton>())
+		{
+			item2.FocusNeighborTop = _seedInput.GetPath();
+		}
+	}
+
 	private void AfterInitialized()
 	{
 		NGame.Instance.RemoteCursorContainer.Initialize(_lobby.InputSynchronizer, _lobby.Players.Select((StartRunLobbyPlayer p) => p.id));
@@ -570,6 +647,7 @@ public partial class NCustomRunScreen : NSubmenu, IStartRunLobbyListener, IChara
 		NGame.Instance.TimeoutOverlay.Initialize(_lobby.NetService, isGameLevel: true);
 		_lobby.PlayerFailedToConnect += RemoteClientFailedToConnectToLocalHost;
 		UpdateRichPresence();
+		UpdateGameModeDropdownOptionsAndVisibility();
 		if (!string.IsNullOrEmpty(_seedInput.Text))
 		{
 			_lobby.SetSeed(_seedInput.Text);

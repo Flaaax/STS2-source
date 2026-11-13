@@ -48,10 +48,11 @@
   "SCORE.unlocksRemaining": "Desbloqueos restantes: {UnlockCount}",
   "SCORE_LINE.ascension": "Ascensión: {AscensionLevel}",
   "SCORE_LINE.bossesSlain": "Jefes derrotados: {BossCount}",
+  "SCORE_LINE.dread": "Terror",
   "SCORE_LINE.elitesKilled": "Élites asesinados: {EliteCount}",
   "SCORE_LINE.floorsClimbed": "Pisos completados: {FloorCount}",
   "SCORE_LINE.goldGained": "Oro obtenido: {GoldAmount}",
   "VICTORY_DAMAGE": "Le infligiste [green]{PlayerDamage:n()}[/green] de daño a El Artífice... Pero no fue suficiente...\nLe infligiste un total de [green]{PersonalDamage:n()}[/green] daño a El Artífice.\nSigue en pie a pesar de haber recibido [green]{TotalDamage:n()}[/green] de daño de quienes lo enfrentaron...",
   "VICTORY_DAMAGE_LOCAL": "Le infligiste [green]{PlayerDamage:n()}[/green] de daño a El Artífice... pero no fue suficiente...\nLe infligiste un total de [green]{PersonalDamage:n()}[/green] de daño a El Artífice.",
-  "VICTORY_UNLOCKED_ASCENSION": "[blue]¡Ascensión {AscensionLevel} desbloqueada![/blue]"
+  "VICTORY_UNLOCKED_ASCENSION": "[blue]¡Ascensión {AscensionLevel} {IsMultiplayer:del modo cooperativo|} desbloqueada![/blue]"
 }

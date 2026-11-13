@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://btjc3p508sth1" path="res://images/ui/fuzzy_nine_patch_char_select.png" id="12_dhp82"]
 [ext_resource type="FontVariation" uid="uid://c71uw4aqpsn1b" path="res://themes/spectral_glphy_space_two.tres" id="13_8yyew"]
 [ext_resource type="Shader" uid="uid://c66gb6g7tup3n" path="res://shaders/hsv.gdshader" id="14_ung58"]
-[ext_resource type="Texture2D" uid="uid://q1y4ux" path="res://images/atlases/compressed.sprites/back_button_x.tres" id="15_81gto"]
+[ext_resource type="Texture2D" uid="uid://bjwgjm2" path="res://images/atlases/compressed_atlas.sprites/back_button_x.tres" id="15_81gto"]
 [ext_resource type="Texture2D" uid="uid://ft7c6dms8rrf" path="res://images/ui/emote/exclaim.png" id="15_uiv6n"]
 [ext_resource type="Script" uid="uid://drm4tcwtxrx7u" path="res://src/Core/Nodes/Screens/DailyRun/NDailyRunScoreWarning.cs" id="16_is2rd"]
 [ext_resource type="PackedScene" uid="uid://bl460ab2i4mkx" path="res://scenes/ui/confirm_button.tscn" id="17_hv4ty"]

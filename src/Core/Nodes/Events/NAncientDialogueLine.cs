@@ -43,8 +43,9 @@ public partial class NAncientDialogueLine : NButton
 	public override void _Ready()
 	{
 		ConnectSignals();
+		this.ApplyRtlLayout();
 		LocString lineText = _line.LineText;
-		_character.AddDetailsTo(lineText);
+		_character.AddDetailsTo(lineText, _ancient.FoolPronounGuess);
 		_ancient.DynamicVars.AddTo(lineText);
 		GetNode<MegaRichTextLabel>("%Text").Text = lineText.GetFormattedText();
 		switch (_line.Speaker)
@@ -58,6 +59,7 @@ public partial class NAncientDialogueLine : NButton
 		default:
 			throw new ArgumentOutOfRangeException();
 		}
+		GetNode<MarginContainer>("%TextContainer").ApplyRtlMargins();
 		base.Modulate = StsColors.transparentWhite;
 	}
 
@@ -72,8 +74,8 @@ public partial class NAncientDialogueLine : NButton
 		node.GetNode<TextureRect>("Icon").Texture = _ancient.RunHistoryIcon;
 		node.GetNode<TextureRect>("Icon/Outline").Texture = _ancient.RunHistoryIconOutline;
 		_iconNode = node;
-		Control node2 = GetNode<Control>("%DialogueTailLeft");
-		node2.Visible = true;
+		TextureRect node2 = GetNode<TextureRect>("%DialogueTailLeft");
+		ShowTail(node2);
 		MarginContainer node3 = GetNode<MarginContainer>("%TextContainer");
 		node3.AddThemeConstantOverride(ThemeConstants.MarginContainer.MarginLeft, 48);
 		GetNode<Control>("%Bubble").SelfModulate = _ancient.DialogueColor;
@@ -86,12 +88,26 @@ public partial class NAncientDialogueLine : NButton
 		node.GetNode<TextureRect>("Icon").Texture = _character.IconTexture;
 		node.GetNode<TextureRect>("Icon/Outline").Texture = _character.IconOutlineTexture;
 		_iconNode = node;
-		Control node2 = GetNode<Control>("%DialogueTailRight");
-		node2.Visible = true;
+		TextureRect node2 = GetNode<TextureRect>("%DialogueTailRight");
+		ShowTail(node2);
 		MarginContainer node3 = GetNode<MarginContainer>("%TextContainer");
 		node3.AddThemeConstantOverride(ThemeConstants.MarginContainer.MarginRight, 46);
 		GetNode<Control>("%Bubble").SelfModulate = _character.DialogueColor;
 		node2.SelfModulate = _character.DialogueColor;
+	}
+
+	/// <summary>
+	/// A mirrored line puts the tail on the other side of the bubble, so it needs to point the other way too.
+	/// </summary>
+	private void ShowTail(TextureRect tail)
+	{
+		tail.Visible = true;
+		if (IsLayoutRtl())
+		{
+			TextureRect node = tail.GetNode<TextureRect>("Shadow");
+			tail.FlipH = !tail.FlipH;
+			node.FlipH = !node.FlipH;
+		}
 	}
 
 	/// <summary>

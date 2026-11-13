@@ -21,8 +21,6 @@ public partial class NMapBg : VBoxContainer
 
 	private NMapDrawings _drawings;
 
-	private Window _window;
-
 	private const float _sixteenByNine = 1.7777778f;
 
 	private const float _fourByThree = 1.3333334f;
@@ -39,9 +37,8 @@ public partial class NMapBg : VBoxContainer
 		_mapMid = GetNode<TextureRect>("MapMid");
 		_mapBot = GetNode<TextureRect>("MapBot");
 		_drawings = GetNode<NMapDrawings>("%Drawings");
-		_window = GetTree().Root;
-		_window.Connect(Viewport.SignalName.SizeChanged, Callable.From(OnWindowChange));
-		OnWindowChange();
+		GetViewport().Connect(Viewport.SignalName.SizeChanged, Callable.From(OnViewportChange));
+		OnViewportChange();
 		_offsetX = base.Position.X;
 		Connect(CanvasItem.SignalName.VisibilityChanged, Callable.From(OnVisibilityChanged));
 	}
@@ -59,9 +56,10 @@ public partial class NMapBg : VBoxContainer
 		_mapBot.Texture = act.MapBotBg;
 	}
 
-	private void OnWindowChange()
+	private void OnViewportChange()
 	{
-		float num = Math.Max(1.3333334f, (float)_window.Size.X / (float)_window.Size.Y);
+		Rect2 viewportRect = GetViewportRect();
+		float num = Math.Max(1.3333334f, viewportRect.Size.X / viewportRect.Size.Y);
 		if (num < 1.7777778f)
 		{
 			float p = (num - 1.3333334f) / 0.44444442f;

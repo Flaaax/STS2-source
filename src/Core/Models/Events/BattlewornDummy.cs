@@ -84,8 +84,8 @@ public sealed class BattlewornDummy : EventModel
 			{
 				if (battlewornDummyEventEncounter is BattlewornDummyEventV3Encounter)
 				{
-					RelicModel relic = RelicFactory.PullNextRelicFromFront(base.Owner).ToMutable();
-					list.Add(new RelicReward(relic, base.Owner));
+					RelicModel relic = RelicFactory.PullNextRelicFromFront(base.Owner, base.Rng).ToMutable();
+					list.Add(new RelicReward(relic, base.Owner, base.Rng));
 				}
 			}
 			else

@@ -44,8 +44,6 @@ colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_58mr1"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ou856"]
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_83tjy"]
 shader = ExtResource("3_yu580")
 shader_parameter/GlobalOffset = Vector2(0, 0)
@@ -108,6 +106,8 @@ shader_parameter/DistortionMask = ExtResource("6_gqt44")
 shader_parameter/InnerColor = Color(0.23, 0.0851, 0.12857, 1)
 shader_parameter/OuterStep = Vector2(0.06, 0.07)
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ou856"]
+
 [sub_resource type="Curve" id="Curve_v6omp"]
 _data = [Vector2(0, 0.417635), 0.0, 0.0, 0, 0, Vector2(0.502521, 0.507939), 0.0, 0.0, 0, 0, Vector2(1, 0.423164), 0.0, 0.0, 0, 0]
 point_count = 3
@@ -116,7 +116,7 @@ point_count = 3
 offsets = PackedFloat32Array(0, 0.607407, 0.994413)
 colors = PackedColorArray(0.427493, 0.427493, 0.427493, 1, 1, 1, 1, 1, 0.427451, 0.427451, 0.427451, 1)
 
-[node name="SilentBg" type="Control"]
+[node name="NecrobinderBg" type="Control"]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -186,6 +186,52 @@ preview_frame = false
 preview_time = 0.0
 position = Vector2(-185, -20)
 scale = Vector2(0.46, 0.46)
+
+[node name="OstyFireSlot" type="SpineSlotNode" parent="SpineSprite"]
+slot_name = "osty_fire_slot"
+show_behind_parent = true
+position = Vector2(2662.5974, 1491.1503)
+
+[node name="TextureRect" type="TextureRect" parent="SpineSprite/OstyFireSlot"]
+material = SubResource("ShaderMaterial_83tjy")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -344.18222
+offset_top = -955.37744
+offset_right = 262.25632
+offset_bottom = -376.7071
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.51138145
+scale = Vector2(3.766, 3.411)
+pivot_offset = Vector2(250, 250)
+texture = ExtResource("3_x8qgy")
+
+[node name="HeadFireSlot" type="SpineSlotNode" parent="SpineSprite"]
+slot_name = "head_fire_slot"
+show_behind_parent = true
+position = Vector2(3684.882, 965.1228)
+
+[node name="TextureRect" type="TextureRect" parent="SpineSprite/HeadFireSlot"]
+material = SubResource("ShaderMaterial_1k1li")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -165.362
+offset_top = -595.692
+offset_right = 334.638
+offset_bottom = -95.6924
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.298805
+scale = Vector2(3.31628, 3.31628)
+pivot_offset = Vector2(250, 250)
+texture = ExtResource("10_0jf6d")
 
 [node name="_SpineMesh2D_148096" type="SpineMesh2D" parent="SpineSprite"]
 show_behind_parent = true
@@ -334,52 +380,6 @@ material = SubResource("CanvasItemMaterial_ou856")
 [node name="NSpineAutoPlayer" type="Node" parent="SpineSprite"]
 script = ExtResource("14_lrlla")
 metadata/_custom_type_script = "uid://b0oho7pjc1dtg"
-
-[node name="OstyFireSlot" type="SpineSlotNode" parent="SpineSprite"]
-slot_name = "osty_fire_slot"
-show_behind_parent = true
-position = Vector2(2455.4214, 1479.5167)
-
-[node name="TextureRect" type="TextureRect" parent="SpineSprite/OstyFireSlot"]
-material = SubResource("ShaderMaterial_83tjy")
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -344.18222
-offset_top = -955.37744
-offset_right = 262.25632
-offset_bottom = -376.7071
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 0.51138145
-scale = Vector2(3.766, 3.411)
-pivot_offset = Vector2(250, 250)
-texture = ExtResource("3_x8qgy")
-
-[node name="HeadFireSlot" type="SpineSlotNode" parent="SpineSprite"]
-slot_name = "head_fire_slot"
-show_behind_parent = true
-position = Vector2(3654.2163, 964.05914)
-
-[node name="TextureRect" type="TextureRect" parent="SpineSprite/HeadFireSlot"]
-material = SubResource("ShaderMaterial_1k1li")
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -165.362
-offset_top = -595.692
-offset_right = 334.638
-offset_bottom = -95.6924
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 0.298805
-scale = Vector2(3.31628, 3.31628)
-pivot_offset = Vector2(250, 250)
-texture = ExtResource("10_0jf6d")
 
 [node name="light_small2" type="CPUParticles2D" parent="."]
 material = ExtResource("shared_additive_mat")

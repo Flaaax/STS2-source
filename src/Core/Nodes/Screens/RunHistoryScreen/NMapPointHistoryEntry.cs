@@ -195,7 +195,7 @@ public partial class NMapPointHistoryEntry : NClickableControl
 		}
 		Highlight();
 		HoverTipAlignment alignment = HoverTip.GetHoverTipAlignment(this);
-		NHoverTipSet tip = NHoverTipSet.CreateAndShowMapPointHistory(this, NMapPointHistoryHoverTip.Create(FloorNum, _player.Id, _entry));
+		NHoverTipSet tip = NHoverTipSet.CreateAndShowMapPointHistory(this, NMapPointHistoryHoverTip.Create(FloorNum, _player.Id, _entry, _runHistory.GameMode));
 		Callable.From(delegate
 		{
 			tip.SetAlignment(this, alignment);

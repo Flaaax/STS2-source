@@ -1,0 +1,15 @@
+[gd_resource type="SpineSkeletonDataResource" load_steps=4 format=3 uid="uid://chg2s4tw30dp1"]
+
+[ext_resource type="SpineAtlasResource" uid="uid://bf8o57uj6f0r" path="res://animations/backgrounds/blitz_merchant_room/top/blitz_merchant_top.atlas" id="1_xyrr3"]
+[ext_resource type="SpineSkeletonFileResource" uid="uid://t4o337vja1wk" path="res://animations/backgrounds/blitz_merchant_room/top/blitz_merchant_top.skel" id="2_aixng"]
+
+[sub_resource type="SpineAnimationMix" id="SpineAnimationMix_xyrr3"]
+from = "done"
+to = "done_loop"
+mix = 0.03
+
+[resource]
+atlas_res = ExtResource("1_xyrr3")
+skeleton_file_res = ExtResource("2_aixng")
+default_mix = 0.1
+animation_mixes = [SubResource("SpineAnimationMix_xyrr3")]

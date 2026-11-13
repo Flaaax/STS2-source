@@ -42,6 +42,7 @@ public partial class NPaginator : Control
 
 	protected void ConnectSignals()
 	{
+		base.LayoutDirection = LayoutDirectionEnum.Ltr;
 		_label = GetNode<MegaLabel>("%Label");
 		_vfxLabel = GetNode<MegaLabel>("%VfxLabel");
 		_selectionReticle = GetNode<NSelectionReticle>("SelectionReticle");

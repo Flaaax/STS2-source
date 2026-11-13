@@ -73,6 +73,7 @@ public partial class NScrollableContainer : Control
 	{
 		_content = GetNodeOrNull<Control>("Content") ?? GetNodeOrNull<Control>("Mask/Content");
 		Scrollbar = GetNode<NScrollbar>("Scrollbar");
+		Scrollbar.LayoutDirection = LayoutDirectionEnum.Ltr;
 		SetContent(_content);
 		Scrollbar.Visible = false;
 		Scrollbar.Connect(NScrollbar.SignalName.MousePressed, Callable.From<InputEvent>(delegate

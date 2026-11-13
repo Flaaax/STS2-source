@@ -1,0 +1,23 @@
+{
+  "ACKNOWLEDGE_BUTTON": "متابعة",
+  "EPOCH_INSPECT.chapterFormat": "الفصل {ChapterIndex} - {ChapterName}",
+  "EPOCH_INSPECT.closeButton": "إغلاق",
+  "EPOCH_INSPECT.continueButton": "متابعة",
+  "EPOCH_INSPECT.unlockButton": "فتح",
+  "PLACEHOLDER_PORTRAIT": "عنصر مؤقت",
+  "REMINDER_TEXT": "{RevealableEpochCount} {RevealableEpochCount:plural:حقبة تنتظر الكشف|حقب تنتظر الكشف}...",
+  "REVEAL_TIP_HEADER": "المتطلب",
+  "TUTORIAL_TEXT": "في [blue]الخط الزمني[/blue]، اكشف [gold]الحقب[/gold] لفتح بطاقات وآثار والمزيد...",
+  "UNLOCK_ANCIENT": "تم فتح القديم: دارف، المكتنز، سيظهر الآن في جولاتك القادمة...",
+  "UNLOCK_CARDS": "البطاقات التالية ستظهر في الجولات القادمة.",
+  "UNLOCK_CARDS_BANNER": "تم فتح البطاقات!",
+  "UNLOCK_CONFIRM": "تأكيد",
+  "UNLOCK_EPOCHS": "الخط الزمني يتمدد...",
+  "UNLOCK_POTIONS": "الجرعات التالية ستظهر في الجولات القادمة.",
+  "UNLOCK_POTIONS_BANNER": "تم فتح الجرعات!",
+  "UNLOCK_RELICS": "الآثار التالية ستظهر في الجولات القادمة.",
+  "UNLOCK_RELICS_BANNER": "تم فتح الآثار!",
+  "UNLOCK_TEXT.cards": "تم فتح البطاقات: {Card1}، {Card2}، و {Card3}.",
+  "UNLOCK_TEXT.potions": "تم فتح الجرعات: {Potion1}، {Potion2}، و {Potion3}.",
+  "UNLOCK_TEXT.relics": "تم فتح الآثار: {Relic1}، {Relic2}، و {Relic3}."
+}

@@ -3,20 +3,21 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ef6me1hn1dav"
-path="res://.godot/imported/sparkle.png-b07f292923dc420ce97f898efaa68b67.ctex"
+path.bptc="res://.godot/imported/sparkle.png-b07f292923dc420ce97f898efaa68b67.bptc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://images/vfx/vfx_power_up/sparkle.png"
-dest_files=["res://.godot/imported/sparkle.png-b07f292923dc420ce97f898efaa68b67.ctex"]
+dest_files=["res://.godot/imported/sparkle.png-b07f292923dc420ce97f898efaa68b67.bptc.ctex"]
 
 [params]
 
-compress/mode=0
-compress/high_quality=false
+compress/mode=2
+compress/high_quality=true
 compress/lossy_quality=1.0
 compress/uastc_level=2
 compress/rdo_quality_loss=0
@@ -24,7 +25,7 @@ compress/hdr_compression=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
-mipmaps/limit=9
+mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
 process/fix_alpha_border=false

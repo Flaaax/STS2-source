@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Models.Acts;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Characters;
+using MegaCrit.Sts2.Core.Models.Dread;
 using MegaCrit.Sts2.Core.Models.Encounters;
 using MegaCrit.Sts2.Core.Models.Events;
 using MegaCrit.Sts2.Core.Models.Exceptions;
@@ -142,24 +143,26 @@ public static class ModelDb
 	/// <summary>
 	/// Get all the characters in the game (ignores Unlocks/Epoch state).
 	/// </summary>
-	public static IEnumerable<CharacterModel> AllCharacters => new global::_003C_003Ez__ReadOnlyArray<CharacterModel>(new CharacterModel[5]
+	public static IEnumerable<CharacterModel> AllCharacters => new global::_003C_003Ez__ReadOnlyArray<CharacterModel>(new CharacterModel[6]
 	{
 		Character<Ironclad>(),
 		Character<Silent>(),
 		Character<Regent>(),
 		Character<Necrobinder>(),
-		Character<Defect>()
+		Character<Defect>(),
+		Character<Fool>()
 	});
 
 	/// <summary>
 	/// Get all the events in the game that don't belong to a specific act.
 	/// </summary>
-	public static IEnumerable<EventModel> AllSharedEvents => _allSharedEvents ?? (_allSharedEvents = new global::_003C_003Ez__ReadOnlyArray<EventModel>(new EventModel[18]
+	public static IEnumerable<EventModel> AllSharedEvents => _allSharedEvents ?? (_allSharedEvents = new global::_003C_003Ez__ReadOnlyArray<EventModel>(new EventModel[19]
 	{
 		Event<BrainLeech>(),
 		Event<CrystalSphere>(),
 		Event<DollRoom>(),
 		Event<FakeMerchant>(),
+		Event<MuseumOfTorture>(),
 		Event<PotionCourier>(),
 		Event<RanwidTheElder>(),
 		Event<RelicTrader>(),
@@ -283,12 +286,13 @@ public static class ModelDb
 		RelicPool<SharedRelicPool>()
 	});
 
-	public static IEnumerable<OrbModel> Orbs => new global::_003C_003Ez__ReadOnlyArray<OrbModel>(new OrbModel[4]
+	public static IEnumerable<OrbModel> Orbs => new global::_003C_003Ez__ReadOnlyArray<OrbModel>(new OrbModel[5]
 	{
 		Orb<LightningOrb>(),
 		Orb<FrostOrb>(),
 		Orb<DarkOrb>(),
-		Orb<PlasmaOrb>()
+		Orb<PlasmaOrb>(),
+		Orb<GlassOrb>()
 	});
 
 	/// <summary>
@@ -458,11 +462,35 @@ public static class ModelDb
 	/// <summary>
 	/// Only called in tests.
 	/// Remove all content from the DB.
+	/// Clears the memoized collections as well. A following <see cref="M:MegaCrit.Sts2.Core.Models.ModelDb.Init(System.Type[])" /> with no argument constructs a
+	/// new instance of every model, so a collection left populated would still return instances the database
+	/// no longer holds, and any later comparison by reference rather than by <see cref="T:MegaCrit.Sts2.Core.Models.ModelId" /> would
+	/// evaluate false. Note that a following <see cref="M:MegaCrit.Sts2.Core.Models.ModelDb.Init(System.Type[])" /> with an explicit subset rebuilds a
+	/// partial database, and touching one of these collections in that window now throws rather than
+	/// returning what it held before the reset.
 	/// </summary>
 	public static void ResetForTest()
 	{
 		_allAbstractModelSubtypes = null;
 		_contentById.Clear();
+		_achievements = null;
+		_acts = null;
+		_actsByIndex = null;
+		_allCardPools = null;
+		_allCards = null;
+		_allCharacterCardPools = null;
+		_allCharacterPotionPools = null;
+		_allCharacterRelicPools = null;
+		_allEncounters = null;
+		_allEvents = null;
+		_allPotionPools = null;
+		_allPotions = null;
+		_allPowers = null;
+		_allRelics = null;
+		_allSharedEvents = null;
+		_allSharedPotionPools = null;
+		_badges = null;
+		_eventEncounters = null;
 	}
 
 	/// <summary>
@@ -673,7 +701,12 @@ public static class ModelDb
 		return Get<T>();
 	}
 
-	public static T Singleton<T>() where T : SingletonModel
+	public static T RunModel<T>() where T : RunModel
+	{
+		return Get<T>();
+	}
+
+	public static T Dominion<T>() where T : DominionModel
 	{
 		return Get<T>();
 	}

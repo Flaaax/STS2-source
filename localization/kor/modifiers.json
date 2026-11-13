@@ -22,6 +22,7 @@
   "MURDEROUS.description": "매 전투 시작 시 [gold]힘[/gold]을 [blue]3[/blue] 얻습니다. 모든 적이 전투 시작 시 [gold]힘[/gold]을 [blue]3[/blue] 얻습니다.",
   "MURDEROUS.title": "살의",
   "NIGHT_TERRORS.additionalRestSiteHealText": "밤의 공포로 인해 체력을 추가로 {Heal} 회복합니다.\n최대 체력을 [red]5[/red] 잃습니다.",
+  "NIGHT_TERRORS.additionalRestSiteMendText": "밤의 공포로 인해 체력이 모두 회복됩니다.\n최대 체력을 [red]{MaxHpLoss}[/red] 잃습니다.",
   "NIGHT_TERRORS.description": "[gold]휴식 장소[/gold]에서 휴식을 선택 시 체력이 모두 회복되지만, 최대 체력이 [red]5[/red] 감소합니다.",
   "NIGHT_TERRORS.title": "밤의 공포",
   "SEALED_DECK.description": "카드 [blue]30[/blue]장 중 [blue]10[/blue]장을 선택해 시작 덱과 교체합니다.",

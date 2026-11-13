@@ -145,7 +145,7 @@ public static class PowerCmd
 			{
 				await Cmd.CustomScaledWait(0.1f, 0.25f);
 			}
-			if (target.Side == CombatSide.Player && power.Type == PowerType.Debuff)
+			if (target.Side == CombatSide.Player && combatState.CurrentSide == CombatSide.Enemy && power.Type == PowerType.Debuff)
 			{
 				power.SkipNextDurationTick = true;
 			}

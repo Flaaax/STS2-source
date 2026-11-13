@@ -110,6 +110,18 @@ public partial class NInputManager : Node
 		}
 	};
 
+	/// <summary>
+	/// The inputs that move the focus. Kept separate from the remappable lists because these four
+	/// also decide which input type we are in.
+	/// </summary>
+	public static readonly IReadOnlyList<StringName> directionalInputs = new List<StringName>
+	{
+		MegaInput.up,
+		MegaInput.down,
+		MegaInput.left,
+		MegaInput.right
+	};
+
 	public static readonly IReadOnlyList<StringName> remappableMKbInputs = new List<StringName>
 	{
 		MegaInput.cancel,
@@ -618,6 +630,39 @@ public partial class NInputManager : Node
 			return Key.None;
 		}
 		return value;
+	}
+
+	/// <summary>
+	/// Whether the key moves the focus, using the keyboard-only bindings. Used when deciding
+	/// whether to enter keyboard-only mode, and to spot a directional press while in controller
+	/// mode.
+	/// </summary>
+	public bool IsKbOnlyDirectionalKey(Key keycode)
+	{
+		return IsDirectionalKey(keycode, _fKbInputMap);
+	}
+
+	/// <summary>
+	/// Whether the key is one of the four directions in <paramref name="bindings" />. Only the
+	/// bindings count, so a player who remaps the directions away from the arrow keys gets the
+	/// keys they chose and not the arrow keys.
+	/// An unbound direction never counts, so a key event that carries no keycode is not read as a
+	/// direction.
+	/// </summary>
+	public static bool IsDirectionalKey(Key keycode, IReadOnlyDictionary<StringName, Key> bindings)
+	{
+		if (keycode == Key.None)
+		{
+			return false;
+		}
+		foreach (StringName directionalInput in directionalInputs)
+		{
+			if (bindings.TryGetValue(directionalInput, out var value) && value == keycode)
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public Texture2D? GetHotkeyIcon(string hotkey)

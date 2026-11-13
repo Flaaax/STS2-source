@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dsn8m6d5vwtlf" path="res://src/Core/Nodes/Events/Custom/NFakeMerchant.cs" id="1_w55kg"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://d21uk8ttwm127" path="res://animations/backgrounds/fake_merchant_room/bottom/shop_fake_merchant_bottom.tres" id="2_ke2yh"]
 [ext_resource type="Texture2D" uid="uid://dydejju6qx4gr" path="res://images/packed/vfx/generic/square_speck.png" id="7_c30jd"]
-[ext_resource type="PackedScene" uid="uid://demyfeth8kxct" path="res://scenes/events/custom/fake_merchant_button.tscn" id="10_c3r1u"]
+[ext_resource type="PackedScene" path="res://scenes/events/custom/fake_merchant_button.tscn" id="10_c3r1u"]
 [ext_resource type="Texture2D" uid="uid://bxa6vlqeby20" path="res://images/vfx/light.png" id="12_s66e7"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://ds76ggixdairx" path="res://animations/backgrounds/fake_merchant_room/bottom/shop_fake_merchant_bottom_cutter.tres" id="12_uelo1"]
 [ext_resource type="Script" uid="uid://8tp7h0nkic6u" path="res://scenes/backgrounds/little_light_script.gd" id="13_j7l41"]

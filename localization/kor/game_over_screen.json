@@ -48,10 +48,11 @@
   "SCORE.unlocksRemaining": "남은 해금: {UnlockCount}",
   "SCORE_LINE.ascension": "승천: {AscensionLevel}",
   "SCORE_LINE.bossesSlain": "보스 처치: {BossCount}",
+  "SCORE_LINE.dread": "드레드",
   "SCORE_LINE.elitesKilled": "엘리트 처치: {EliteCount}",
   "SCORE_LINE.floorsClimbed": "오른 층: {FloorCount}",
   "SCORE_LINE.goldGained": "획득 골드: {GoldAmount}",
   "VICTORY_DAMAGE": "당신은 아키텍트에게 [green]{PlayerDamage:n()}[/green]의 피해를 줬지만... 충분하지 않았습니다...\n당신은 지금까지 아키텍트에게 [green]{PersonalDamage:n()}[/green]의 피해를 줬습니다.\n아키텍트를 상대한 수많은 도전자들은 지금까지 [green]{TotalDamage:n()}[/green]의 피해를 줬지만, 그는 여전히 쓰러지지 않았습니다.",
   "VICTORY_DAMAGE_LOCAL": "당신은 아키텍트에게 [green]{PlayerDamage:n()}[/green]의 피해를 줬지만... 충분하지 않았습니다...\n당신은 지금까지 아키텍트에게 [green]{PersonalDamage:n()}[/green]의 피해를 줬습니다.",
-  "VICTORY_UNLOCKED_ASCENSION": "[blue]승천 {AscensionLevel} 해금![/blue]"
+  "VICTORY_UNLOCKED_ASCENSION": "[blue]{IsMultiplayer:멀티플레이 |}승천 {AscensionLevel} 해금![/blue]"
 }

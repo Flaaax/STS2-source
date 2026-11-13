@@ -14,9 +14,7 @@
   "OPTION_KINDLE.name": "จุดเทียน",
   "OPTION_LIFT.description": "เริ่มการต่อสู้ด้วย +1 ความแข็งแรง (เหลือ {LiftsLeft})",
   "OPTION_LIFT.name": "ฝึกซ้อม",
-  "OPTION_MEND.description": "ฟื้นฟู {HasTarget:{Name}|คนอื่น} เป็นจำนวน 30% ของ HP สูงสุดของเป้าหมาย {HasTarget: ({Heal})|}",
-  "OPTION_MEND.name": "ดูแล",
-  "OPTION_SMITH.description": "[gold]พัฒนา[/gold]การ์ด {Count:choose(1):1|{}} ใบจาก[gold]กองการ์ด[/gold]",
+  "OPTION_MEND.name": "รักษา",
   "OPTION_SMITH.descriptionDisabled": "[red]ไม่มีการ์ดให้พัฒนา[/red]",
   "OPTION_SMITH.name": "ตีบวก",
   "PROMPT": "ทำอะไรดี?"

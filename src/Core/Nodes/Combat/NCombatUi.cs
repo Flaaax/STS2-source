@@ -29,6 +29,8 @@ public partial class NCombatUi : Control
 
 	private NCombatPilesContainer _combatPilesContainer;
 
+	private NFoolCombatUi _foolCombatUi;
+
 	/// <summary>
 	/// When switching into peek mode, we move the play container cards off to the side for better visibility.
 	/// When switching back out, we use the positions in this dictionary to move them back to their original positions.
@@ -101,6 +103,7 @@ public partial class NCombatUi : Control
 	{
 		EnergyCounterContainer = GetNode<Control>("%EnergyCounterContainer");
 		_starCounter = GetNode<NStarCounter>("%StarCounter");
+		_foolCombatUi = GetNode<NFoolCombatUi>("%FoolCombatUi");
 		EndTurnButton = GetNode<NEndTurnButton>("%EndTurnButton");
 		PingButton = GetNode<NPingButton>("%PingButton");
 		_combatPilesContainer = GetNode<NCombatPilesContainer>("%CombatPileContainer");
@@ -136,6 +139,7 @@ public partial class NCombatUi : Control
 		Player me = LocalContext.GetMe(_state);
 		_combatPilesContainer.Initialize(me);
 		_starCounter.Initialize(me);
+		_foolCombatUi.Initialize(me);
 		EndTurnButton.Initialize(state);
 		if (me.Character.ShouldAlwaysShowStarCounter)
 		{
@@ -192,7 +196,7 @@ public partial class NCombatUi : Control
 	public async Task ProceedWithoutRewards()
 	{
 		await Cmd.Wait(1f, _cts.Token);
-		await RunManager.Instance.ProceedFromTerminalRewardsScreen();
+		await RunManager.Instance.ProceedFromTerminalRewardsScreenAsync();
 	}
 
 	private async Task ShowRewards(CombatRoom room)

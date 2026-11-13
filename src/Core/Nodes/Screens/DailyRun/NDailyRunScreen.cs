@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
 using System.Threading.Tasks;
 using Godot;
 using MegaCrit.Sts2.addons.mega_text;
@@ -9,6 +8,7 @@ using MegaCrit.Sts2.Core.Assets;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Daily;
 using MegaCrit.Sts2.Core.Entities.Multiplayer;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Logging;
@@ -76,6 +76,8 @@ public partial class NDailyRunScreen : NSubmenu, IStartRunLobbyListener
 
 	private StartRunLobby? _lobby;
 
+	private bool _closed;
+
 	private int? _lastSetTimeLeftSecond;
 
 	public static string[] AssetPaths => new string[1] { _scenePath };
@@ -131,6 +133,7 @@ public partial class NDailyRunScreen : NSubmenu, IStartRunLobbyListener
 			throw new InvalidOperationException($"Initialized character select screen with GameService of type {gameService.Type} when hosting!");
 		}
 		_netService = gameService;
+		_closed = false;
 	}
 
 	public void InitializeMultiplayerAsClient(INetGameService gameService, ClientLobbyJoinResponseMessage message)
@@ -140,7 +143,8 @@ public partial class NDailyRunScreen : NSubmenu, IStartRunLobbyListener
 			throw new InvalidOperationException($"Initialized character select screen with GameService of type {gameService.Type} when joining!");
 		}
 		_netService = gameService;
-		_lobby = new StartRunLobby(GameMode.Daily, gameService, this, message.dailyTime.Value, -1);
+		_closed = false;
+		_lobby = new StartRunLobby(GameMode.Daily, isCustom: false, gameService, this, message.dailyTime.Value, -1);
 		_lobby.InitializeFromMessage(message);
 		SetupLobbyParams(_lobby);
 		AfterLobbyInitialized();
@@ -149,6 +153,7 @@ public partial class NDailyRunScreen : NSubmenu, IStartRunLobbyListener
 	public void InitializeSingleplayer()
 	{
 		_netService = new NetSingleplayerGameService();
+		_closed = false;
 	}
 
 	public override void OnSubmenuOpened()
@@ -167,6 +172,7 @@ public partial class NDailyRunScreen : NSubmenu, IStartRunLobbyListener
 
 	public override void OnSubmenuClosed()
 	{
+		_closed = true;
 		_embarkButton.Disable();
 		_remotePlayerContainer.Cleanup();
 		_leaderboard.Cleanup();
@@ -182,10 +188,24 @@ public partial class NDailyRunScreen : NSubmenu, IStartRunLobbyListener
 	/// This is called:
 	/// - Once when the screen is shown
 	/// - Anytime when the player count changes
+	/// - Anytime the seed changes, which includes the daily rolling over
 	/// </summary>
 	private void InitializeLeaderboard()
 	{
-		_leaderboard.Initialize(_lobby.DailyTime.Value.serverTime, _lobby.Players.Select((StartRunLobbyPlayer p) => p.id), allowPagination: true);
+		_leaderboard.Initialize(GetDailyOfSeed(_lobby.Seed), _lobby.Players.Select((StartRunLobbyPlayer p) => p.id), allowPagination: true);
+	}
+
+	/// <summary>
+	/// Returns the day whose daily leaderboard the run on <paramref name="seed" /> belongs to.
+	/// </summary>
+	private DateTimeOffset GetDailyOfSeed(string? seed)
+	{
+		if (DailyRunUtility.TryGetDailySeedDate(seed, out var day))
+		{
+			return day;
+		}
+		Log.Warn("Daily run seed '" + seed + "' does not carry a date, falling back to the current server time");
+		return GetServerRelativeTime();
 	}
 
 	/// <summary>
@@ -200,65 +220,17 @@ public partial class NDailyRunScreen : NSubmenu, IStartRunLobbyListener
 			throw new InvalidOperationException("Should only be called as host or singleplayer!");
 		}
 		SetIsLoading(isLoading: true);
-		TimeServerResult timeServerResult = await GetTimeServerTime();
-		if (GodotObject.IsInstanceValid(this))
+		TimeServerResult timeServerResult = await DailyRunUtility.GetTimeServerTime();
+		if (GodotObject.IsInstanceValid(this) && !_closed)
 		{
-			_lobby = new StartRunLobby(GameMode.Daily, _netService, this, timeServerResult, 4);
-			_lobby.AddLocalHostPlayer(new UnlockState(SaveManager.Instance.Progress), SaveManager.Instance.Progress.MaxMultiplayerAscension);
+			_lobby = new StartRunLobby(GameMode.Daily, isCustom: false, _netService, this, timeServerResult, 4);
+			_lobby.AddLocalHostPlayer(new UnlockState(SaveManager.Instance.Progress), SaveManager.Instance.Progress.MaxMultiplayerAscension, SaveManager.Instance.Progress.MaxBlitzAscension);
+			_lobby.AdmitClientsConnectedBeforeLobbyExisted();
 			SetupLobbyParams(_lobby);
 			AfterLobbyInitialized();
 			SetIsLoading(isLoading: false);
 			Log.Info($"Daily initialized with seed: {_lobby.Seed} time: {GetServerRelativeTime()}");
 		}
-	}
-
-	/// <summary>
-	/// Attempt to get the time from the time server.
-	/// If any time server request succeeded in the past, this uses the cached time server time. Otherwise, it requests
-	/// a new time. Falls back to local time if the server is unreachable.
-	/// </summary>
-	private async Task<TimeServerResult> GetTimeServerTime()
-	{
-		TimeServerResult? result = null;
-		if (TimeServer.RequestTimeTask?.IsCompleted ?? false)
-		{
-			if (!TimeServer.RequestTimeTask.IsFaulted)
-			{
-				result = await TimeServer.RequestTimeTask;
-			}
-			if (!result.HasValue)
-			{
-				try
-				{
-					result = await TimeServer.FetchDailyTime();
-				}
-				catch (Exception ex) when (((ex is HttpRequestException || ex is TaskCanceledException) ? 1 : 0) != 0)
-				{
-					Log.Error(ex.ToString());
-				}
-			}
-		}
-		else
-		{
-			try
-			{
-				result = await TimeServer.FetchDailyTime();
-			}
-			catch (Exception ex2) when (((ex2 is HttpRequestException || ex2 is TaskCanceledException) ? 1 : 0) != 0)
-			{
-				Log.Error(ex2.ToString());
-			}
-		}
-		if (!result.HasValue)
-		{
-			Log.Info("Couldn't retrieve time from time server, using local time");
-			result = new TimeServerResult
-			{
-				serverTime = DateTimeOffset.UtcNow,
-				localReceivedTime = DateTimeOffset.UtcNow
-			};
-		}
-		return result.Value;
 	}
 
 	/// <summary>
@@ -276,10 +248,11 @@ public partial class NDailyRunScreen : NSubmenu, IStartRunLobbyListener
 	/// </summary>
 	private void SetupLobbyParams(StartRunLobby lobby)
 	{
-		DateTimeOffset serverRelativeTime = GetServerRelativeTime();
-		string str = SeedHelper.CanonicalizeSeed(serverRelativeTime.ToString("dd_MM_yyyy"));
-		string text = SeedHelper.CanonicalizeSeed(serverRelativeTime.ToString($"dd_MM_yyyy_{lobby.Players.Count}p"));
-		Rng rng = new Rng(StringHelper.GetDeterministicHashCode(str));
+		DateTimeOffset day;
+		DateTimeOffset dayServerTime = ((lobby.NetService.Type == NetGameType.Client && DailyRunUtility.TryGetDailySeedDate(lobby.Seed, out day)) ? day : GetServerRelativeTime());
+		string dailySeedDate = DailyRunUtility.GetDailySeedDate(dayServerTime);
+		string dailySeed = DailyRunUtility.GetDailySeed(dayServerTime, lobby.Players.Count);
+		Rng rng = new Rng(StringHelper.GetDeterministicHashCode(dailySeedDate));
 		Rng rng2 = new Rng(rng.NextUnsignedLong());
 		Rng rng3 = new Rng(rng.NextUnsignedLong());
 		Rng rng4 = new Rng(rng.NextUnsignedLong());
@@ -297,9 +270,9 @@ public partial class NDailyRunScreen : NSubmenu, IStartRunLobbyListener
 		NetGameType type = lobby.NetService.Type;
 		if ((uint)(type - 1) <= 1u)
 		{
-			if (lobby.Seed != text)
+			if (lobby.Seed != dailySeed)
 			{
-				lobby.SetSeed(text);
+				lobby.SetSeed(dailySeed);
 			}
 			if (lobby.Ascension != num)
 			{
@@ -359,6 +332,10 @@ public partial class NDailyRunScreen : NSubmenu, IStartRunLobbyListener
 
 	public override void _Process(double delta)
 	{
+		if (_netService.IsConnected)
+		{
+			_netService.Update();
+		}
 		if (_lobby != null)
 		{
 			DateTimeOffset serverRelativeTime = GetServerRelativeTime();
@@ -374,10 +351,6 @@ public partial class NDailyRunScreen : NSubmenu, IStartRunLobbyListener
 				_timeLeftLabel.Text = _timeLeftLoc.GetFormattedText();
 				_lastSetTimeLeftSecond = timeSpan.Seconds;
 			}
-			if (_lobby.NetService.IsConnected)
-			{
-				_lobby.NetService.Update();
-			}
 		}
 	}
 
@@ -389,12 +362,8 @@ public partial class NDailyRunScreen : NSubmenu, IStartRunLobbyListener
 		UpdateRichPresence();
 	}
 
-	public void PlayerChanged(StartRunLobbyPlayer player, bool isRandomCharacterResolution)
+	public void PlayerChanged(StartRunLobbyPlayer player)
 	{
-		if (isRandomCharacterResolution)
-		{
-			throw new InvalidOperationException("Random character is not currently allowed in daily!");
-		}
 		_remotePlayerContainer.OnPlayerChanged(player);
 		if (player.id == _netService.NetId && _netService.Type.IsMultiplayer())
 		{
@@ -413,11 +382,21 @@ public partial class NDailyRunScreen : NSubmenu, IStartRunLobbyListener
 
 	public void SeedChanged()
 	{
+		if (_lobby.NetService.Type == NetGameType.Client)
+		{
+			SetupLobbyParams(_lobby);
+		}
+		InitializeLeaderboard();
 	}
 
 	public void ModifiersChanged()
 	{
 		InitializeDisplay();
+	}
+
+	public void GameModeChanged()
+	{
+		throw new NotImplementedException("Game mode should not be changed in Daily!");
 	}
 
 	public void RemotePlayerDisconnected(StartRunLobbyPlayer player)
@@ -498,9 +477,10 @@ public partial class NDailyRunScreen : NSubmenu, IStartRunLobbyListener
 		try
 		{
 			Log.Info($"Embarking on a DAILY {_lobby.LocalPlayer.character.Id.Entry} run with {_lobby.Players.Count} players. Ascension: {_lobby.Ascension} Seed: {seed}");
-			SfxCmd.Play(_lobby.LocalPlayer.character.CharacterTransitionSfx);
-			await NGame.Instance.Transition.FadeOut(0.8f, _lobby.LocalPlayer.character.CharacterSelectTransitionPath);
-			await NGame.Instance.StartNewSingleplayerRun(_lobby.LocalPlayer.character, shouldSave: true, acts, modifiers, seed, GameMode.Daily, _lobby.Ascension, _lobby.DailyTime.Value.serverTime);
+			Player player = _lobby.GeneratePlayers(seed)[0];
+			SfxCmd.Play(player.Character.CharacterTransitionSfx);
+			await NGame.Instance.Transition.FadeOut(0.8f, player.Character.CharacterSelectTransitionPath);
+			await NGame.Instance.StartNewSingleplayerRun(player, shouldSave: true, acts, modifiers, seed, GameMode.Daily, isCustomGame: false, _lobby.Ascension, GetDailyOfSeed(seed));
 		}
 		catch (Exception ex)
 		{
@@ -517,9 +497,11 @@ public partial class NDailyRunScreen : NSubmenu, IStartRunLobbyListener
 		try
 		{
 			Log.Info($"Embarking on a DAILY multiplayer run. Players: {string.Join(",", _lobby.Players)}. Ascension: {_lobby.Ascension} Seed: {seed}");
-			SfxCmd.Play(_lobby.LocalPlayer.character.CharacterTransitionSfx);
-			await NGame.Instance.Transition.FadeOut(0.8f, _lobby.LocalPlayer.character.CharacterSelectTransitionPath);
-			await NGame.Instance.StartNewMultiplayerRun(_lobby, shouldSave: true, acts, modifiers, seed, _lobby.Ascension, _lobby.DailyTime.Value.serverTime);
+			List<Player> players = _lobby.GeneratePlayers(seed);
+			Player player = players.First((Player p) => p.NetId == _lobby.LocalPlayer.id);
+			SfxCmd.Play(player.Character.CharacterTransitionSfx);
+			await NGame.Instance.Transition.FadeOut(0.8f, player.Character.CharacterSelectTransitionPath);
+			await NGame.Instance.StartNewMultiplayerRun(players, _lobby, shouldSave: true, acts, modifiers, seed, _lobby.Ascension, GetDailyOfSeed(seed));
 		}
 		catch (Exception ex)
 		{
@@ -541,13 +523,17 @@ public partial class NDailyRunScreen : NSubmenu, IStartRunLobbyListener
 		this.AddChildSafely(NFailedJoinVfx.Create(locString.GetFormattedText()));
 	}
 
-	private void CleanUpLobby(bool disconnectSession, NetError error = NetError.Quit)
+	internal void CleanUpLobby(bool disconnectSession, NetError error = NetError.Quit)
 	{
 		if (_lobby != null)
 		{
 			_lobby.PlayerFailedToConnect -= RemoteClientFailedToConnectToLocalHost;
 			_lobby.CleanUp(disconnectSession, error);
 			_lobby = null;
+		}
+		else if (disconnectSession && _netService.IsConnected)
+		{
+			_netService.Disconnect(error);
 		}
 	}
 

@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Map;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Rooms;
+using MegaCrit.Sts2.Core.Runs;
 using MegaCrit.Sts2.SourceGeneration;
 
 namespace MegaCrit.Sts2.Core.Nodes.Debug;
@@ -38,6 +39,10 @@ public interface IBootstrapSettings
 	string? Language => null;
 
 	int? ReplayPlayerIndex => null;
+
+	GameMode GameMode => GameMode.Standard;
+
+	EncounterModel? ForcedBoss => null;
 
 	MapPointType MapPointType
 	{
@@ -74,5 +79,5 @@ public interface IBootstrapSettings
 		}
 	}
 
-	Task Setup(Player localPlayer);
+	Task Setup(Player player);
 }

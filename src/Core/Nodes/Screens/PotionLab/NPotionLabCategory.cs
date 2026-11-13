@@ -32,6 +32,7 @@ public partial class NPotionLabCategory : VBoxContainer
 	public override void _Ready()
 	{
 		_headerLabel = GetNode<MegaRichTextLabel>("Header");
+		_headerLabel.ApplyRtlText();
 		_potionContainer = GetNode<GridContainer>("%PotionsContainer");
 	}
 

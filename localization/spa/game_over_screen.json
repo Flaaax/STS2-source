@@ -46,10 +46,11 @@
   "SCORE.unlocksRemaining": "Desbloqueos restantes: {UnlockCount}",
   "SCORE_LINE.ascension": "Ascensión: {AscensionLevel}",
   "SCORE_LINE.bossesSlain": "Jefes derrotados: {BossCount}",
+  "SCORE_LINE.dread": "Pesadilla",
   "SCORE_LINE.elitesKilled": "Élites derrotados: {EliteCount}",
   "SCORE_LINE.floorsClimbed": "Pisos ascendidos: {FloorCount}",
   "SCORE_LINE.goldGained": "Oro obtenido: {GoldAmount}",
   "VICTORY_DAMAGE": "Le infliges [green]{PlayerDamage:n()}[/green] de daño al Arquitecto... pero no es suficiente...\nLe has inflijido un total de [green]{PersonalDamage:n()}[/green] de daño al Arquitecto.\nEl Arquitecto sigue en pie pese a recibir [green]{TotalDamage:n()}[/green] de daño de todas las almas valientes que se han enfrentado a él.",
   "VICTORY_DAMAGE_LOCAL": "Le infliges [green]{PlayerDamage:n()}[/green] de daño al Arquitecto... pero no es suficiente...\nLe has inflijido un total de [green]{PersonalDamage:n()}[/green] de daño al Arquitecto.",
-  "VICTORY_UNLOCKED_ASCENSION": "[blue]¡Ascensión {AscensionLevel} desbloqueada![/blue]"
+  "VICTORY_UNLOCKED_ASCENSION": "[blue]¡Ascensión {AscensionLevel} {IsMultiplayer:del modo multijugador |}desbloqueada![/blue]"
 }

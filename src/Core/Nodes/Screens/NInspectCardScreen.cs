@@ -139,8 +139,8 @@ public partial class NInspectCardScreen : Control, IScreenContext
 		_rightButton.Enable();
 		_leftButton.Enable();
 		_upgradeTickbox.Enable();
-		NHotkeyManager.Instance.PushHotkeyPressedBinding(MegaInput.cancel, Close);
-		NHotkeyManager.Instance.PushHotkeyPressedBinding(MegaInput.pauseAndBack, Close);
+		NHotkeyManager.Instance.PushHotkeyPressedBinding(MegaInput.cancel, Close, 0L);
+		NHotkeyManager.Instance.PushHotkeyPressedBinding(MegaInput.pauseAndBack, Close, 0L);
 	}
 
 	public void Close()
@@ -244,6 +244,7 @@ public partial class NInspectCardScreen : Control, IScreenContext
 			_card.Model = cardModel2;
 			_card.UpdateVisuals(PileType.None, CardPreviewMode.Normal);
 		}
+		_card.SetPortraitTexture(cardModel2.BigPortrait);
 		NHoverTipSet.Clear();
 		NHoverTipSet.CreateAndShow(this, cardModel2.HoverTips)?.SetAlignment(_hoverTipRect, HoverTip.GetHoverTipAlignment(this));
 	}

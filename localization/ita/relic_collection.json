@@ -5,7 +5,7 @@
   "EVENT": "[gold][font_size=28][b]Evento:[/b][/font_size][/gold] reliquie che si ottengono solo con gli eventi.",
   "RARE": "[gold][font_size=28][b]Rare:[/b][/font_size][/gold] reliquie uniche e potenti che si trovano di rado.",
   "SHOP": "[gold][font_size=28][b]Negozio:[/b][/font_size][/gold] reliquie che si possono comprare solo dal mercante.",
-  "STARTER": "[gold][font_size=28][b]Iniziali:[/b][/font_size][/gold] i personaggi possiedono queste reliquie fin dall'inizio della partita.",
+  "STARTER": "[gold][font_size=28][b]Iniziali:[/b][/font_size][/gold] i personaggi possiedono queste reliquie fin dall'inizio della sessione.",
   "UNCOMMON": "[gold][font_size=28][b]Non comuni:[/b][/font_size][/gold] reliquie più forti che si trovano con meno frequenza di quelle comuni.",
   "UNKNOWN_ANCIENT": "???"
 }

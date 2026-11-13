@@ -17,6 +17,7 @@ public partial class NDailyRunScreenModifier : Control
 	{
 		_icon = GetNode<TextureRect>("Icon");
 		_description = GetNode<MegaRichTextLabel>("Description");
+		this.ApplyRtlLayout();
 	}
 
 	public void Fill(ModifierModel modifier)

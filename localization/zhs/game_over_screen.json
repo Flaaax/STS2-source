@@ -48,10 +48,11 @@
   "SCORE.unlocksRemaining": "剩余解锁：{UnlockCount}",
   "SCORE_LINE.ascension": "进阶：{AscensionLevel}",
   "SCORE_LINE.bossesSlain": "击杀Boss：{BossCount}",
+  "SCORE_LINE.dread": "恐惧",
   "SCORE_LINE.elitesKilled": "击杀精英：{EliteCount}",
   "SCORE_LINE.floorsClimbed": "攀爬楼层：{FloorCount}",
   "SCORE_LINE.goldGained": "获得金币：{GoldAmount}",
   "VICTORY_DAMAGE": "你对建筑师造成了[green]{PlayerDamage:n()}[/green]点伤害...但这还不及其皮毛...\n你已累计对建筑师造成了[green]{PersonalDamage:n()}[/green]点伤害。\n即便承受了所有挑战者合力造成的[green]{TotalDamage:n()}[/green]点伤害，建筑师依然屹立不倒。",
   "VICTORY_DAMAGE_LOCAL": "你对建筑师造成了[green]{PlayerDamage:n()}[/green]点伤害...但这还不及其皮毛...\n你已累计对建筑师造成了[green]{PersonalDamage:n()}[/green]点伤害。",
-  "VICTORY_UNLOCKED_ASCENSION": "[blue]解锁进阶{AscensionLevel}！[/blue]"
+  "VICTORY_UNLOCKED_ASCENSION": "[blue]解锁{IsMultiplayer:多人|}进阶{AscensionLevel}！[/blue]"
 }

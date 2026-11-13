@@ -6,7 +6,7 @@ namespace MegaCrit.Sts2.Core.Nodes.Pooling;
 
 public class NodePool
 {
-	private static Dictionary<Type, INodePool> _pools = new Dictionary<Type, INodePool>();
+	private static readonly Dictionary<Type, INodePool> _pools = new Dictionary<Type, INodePool>();
 
 	public static NodePool<T> Init<T>(string scenePath, int prewarmCount) where T : Node, IPoolable
 	{

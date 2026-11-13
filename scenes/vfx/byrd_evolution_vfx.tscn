@@ -1,0 +1,148 @@
+[gd_scene load_steps=16 format=3 uid="uid://d1hskjib4ason"]
+
+[ext_resource type="Texture2D" uid="uid://b2i5ldnfqap5e" path="res://images/packed/vfx/generic/sparkle_2.png" id="2_cjs0t"]
+[ext_resource type="Texture2D" uid="uid://dmh3bilnwb17o" path="res://images/vfx/shared_use/motion_line.png" id="2_qjgay"]
+[ext_resource type="SpineSkeletonDataResource" uid="uid://hr6p4vjtqwo6" path="res://animations/vfx/vfx_byrdine_overlay/byrdine_overlay_skel_data.tres" id="2_uhdpq"]
+[ext_resource type="Script" uid="uid://dggn4gtqe64d6" path="res://src/Core/Nodes/Vfx/NByrdEvolutionVfx.cs" id="3_nqd2t"]
+[ext_resource type="SpineSkeletonDataResource" uid="uid://cin0ok230u04y" path="res://animations/vfx/vfx_byrd_evolution/byrdpip_evolution_skel_data.tres" id="5_my1x7"]
+
+[sub_resource type="Curve" id="Curve_wr5jj"]
+_data = [Vector2(0, 0), 0.0, 0.6403241, 0, 0, Vector2(0.7380074, 1), 0.0, 0.0, 0, 0, Vector2(0.78413284, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -12.57881, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_sfhm2"]
+curve = SubResource("Curve_wr5jj")
+
+[sub_resource type="Curve" id="Curve_um60g"]
+_data = [Vector2(0, 0.48088735), 0.0, 0.0, 0, 0, Vector2(1, 0.18805456), -0.620589, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_iv3f7"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 1.1365185), 0.0, 0.0, 0, 0, Vector2(1, 2.933447), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_l3wd3"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_pd1bo"]
+curve_x = SubResource("Curve_um60g")
+curve_y = SubResource("Curve_iv3f7")
+curve_z = SubResource("Curve_l3wd3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6g1ah"]
+lifetime_randomness = 0.5
+particle_flag_align_y = true
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 1200.0
+emission_ring_inner_radius = 873.24
+emission_ring_cone_angle = 90.0
+radial_velocity_min = -30.000021
+radial_velocity_max = -10.000022
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -35.0
+radial_accel_max = -5.000002
+scale_curve = SubResource("CurveXYZTexture_pd1bo")
+alpha_curve = SubResource("CurveTexture_sfhm2")
+
+[sub_resource type="Curve" id="Curve_cjs0t"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.084870845, 0.79146755), 0.0, 0.0, 0, 0, Vector2(0.15313654, 0.98668945), 0.0, 0.0, 0, 0, Vector2(0.19372694, 0.7870307), 0.0, 0.0, 0, 0, Vector2(0.24723248, 0.9334471), 0.0, 0.0, 0, 0, Vector2(0.30996308, 0.7426621), 0.0, 0.0, 0, 0, Vector2(0.36346862, 0.9334471), 0.0, 0.0, 0, 0, Vector2(0.41328412, 0.747099), 0.0, 0.0, 0, 0, Vector2(0.46309963, 0.90238905), 0.0, 0.0, 0, 0, Vector2(0.4907749, 0.72491467), -0.43723294, -0.43723294, 0, 0, Vector2(0.54243547, 0.9290103), 0.16396174, 0.16396174, 0, 0, Vector2(0.599631, 0.70273036), 0.0, 0.0, 0, 0, Vector2(0.65313655, 0.89351535), 0.0, 0.0, 0, 0, Vector2(0.6845019, 0.67167234), 0.0, 0.0, 0, 0, Vector2(0.74354243, 0.7870307), 0.0, 0.0, 0, 0, Vector2(1, 0.010580182), -4.9945326, 0.0, 0, 0]
+point_count = 16
+
+[sub_resource type="CurveTexture" id="CurveTexture_qjgay"]
+curve = SubResource("Curve_cjs0t")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qjgay"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 158.34
+emission_ring_inner_radius = 115.39
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, -1, 0)
+spread = 180.0
+radial_velocity_min = 299.99997
+radial_velocity_max = 1999.9999
+gravity = Vector3(0, 500, 0)
+scale_min = 0.39999998
+scale_max = 0.79999995
+scale_curve = SubResource("CurveTexture_qjgay")
+
+[node name="ByrdEvolutionVfx" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+focus_mode = 2
+script = ExtResource("3_nqd2t")
+
+[node name="VfxPosition" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ByrdEvolutionVfx" type="Node2D" parent="VfxPosition"]
+
+[node name="PowerParticles" type="GPUParticles2D" parent="VfxPosition"]
+unique_name_in_owner = true
+position = Vector2(0, 7)
+amount = 40
+texture = ExtResource("2_qjgay")
+lifetime = 5.0
+speed_scale = 2.0
+process_material = SubResource("ParticleProcessMaterial_6g1ah")
+
+[node name="FinaleParticles" type="GPUParticles2D" parent="VfxPosition"]
+unique_name_in_owner = true
+position = Vector2(0, -4)
+amount = 80
+texture = ExtResource("2_cjs0t")
+lifetime = 2.0
+explosiveness = 1.0
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_qjgay")
+
+[node name="ByrdineContainer" type="Node2D" parent="VfxPosition"]
+unique_name_in_owner = true
+
+[node name="ByrdineSprite" type="SpineSprite" parent="VfxPosition/ByrdineContainer"]
+skeleton_data_res = ExtResource("2_uhdpq")
+preview_skin = "hair/v2"
+preview_animation = "stand_still"
+preview_frame = false
+preview_time = 0.0
+unique_name_in_owner = true
+position = Vector2(0, 144.99998)
+scale = Vector2(0.7, 0.7)
+
+[node name="ByrdpipContainer" type="Node2D" parent="VfxPosition"]
+unique_name_in_owner = true
+
+[node name="ByrdpipSprite" type="SpineSprite" parent="VfxPosition/ByrdpipContainer"]
+skeleton_data_res = ExtResource("5_my1x7")
+preview_skin = "Default"
+preview_animation = "stand_still"
+preview_frame = false
+preview_time = 0.0
+unique_name_in_owner = true
+position = Vector2(0, 76)
+scale = Vector2(0.5, 0.5)

@@ -1,9 +1,11 @@
 using System;
 using Godot;
 using MegaCrit.Sts2.addons.mega_text;
+using MegaCrit.Sts2.Core.Assets;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Localization.Fonts;
 using MegaCrit.Sts2.Core.Logging;
+using MegaCrit.Sts2.Core.Nodes.CommonUi;
 using MegaCrit.Sts2.Core.Nodes.GodotExtensions;
 
 namespace MegaCrit.Sts2.Core.Nodes.Screens.MainMenu;
@@ -21,7 +23,7 @@ public partial class NSubmenuButton : NButton
 
 	private Control _bgPanel;
 
-	private TextureRect _icon;
+	private NSubmenuPortrait _portrait;
 
 	private MegaLabel _title;
 
@@ -51,16 +53,32 @@ public partial class NSubmenuButton : NButton
 		base.ConnectSignals();
 		_bgPanel = GetNode<Control>("BgPanel");
 		_hsv = (ShaderMaterial)_bgPanel.Material;
-		_icon = GetNode<TextureRect>("Icon");
+		_portrait = GetNode<NSubmenuPortrait>("%SubmenuPortrait");
 		_title = GetNode<MegaLabel>("%Title");
 		_description = GetNode<MegaRichTextLabel>("%Description");
 		_defaultV = (float)_hsv.GetShaderParameter(_v);
 	}
 
-	public void SetIconAndLocalization(string locKeyPrefix)
+	public void SetLocalization(string locKeyPrefix)
 	{
 		_locKeyPrefix = locKeyPrefix;
 		RefreshLabels();
+	}
+
+	public void SetIcon(string fileName)
+	{
+		_portrait.SetTexture(PreloadManager.Cache.GetCompressedTexture2D(GetImagePath(fileName)));
+	}
+
+	private string GetImagePath(string fileName)
+	{
+		string iconPath = NSubmenuPortrait.GetIconPath(fileName);
+		if (ResourceLoader.Exists(iconPath))
+		{
+			return iconPath;
+		}
+		Log.Warn("MISSING ICON: " + fileName);
+		return NSubmenuPortrait.GetIconPath("unknown");
 	}
 
 	public override void _Notification(int what)
@@ -71,23 +89,24 @@ public partial class NSubmenuButton : NButton
 		}
 	}
 
-	public void RefreshLabels()
+	public void RefreshLabels(string? locKeyOverride = null)
 	{
-		LocString locString = new LocString("main_menu_ui", _locKeyPrefix + ".title");
+		string text = locKeyOverride ?? _locKeyPrefix;
+		LocString locString = new LocString("main_menu_ui", text + ".title");
 		_title.SetTextAutoSize(locString.GetFormattedText());
 		_title.ApplyLocaleFontSubstitution(FontType.Regular, ThemeConstants.Label.Font);
 		LocString locString2;
 		if (base.IsEnabled)
 		{
-			locString2 = new LocString("main_menu_ui", _locKeyPrefix + ".description");
+			locString2 = new LocString("main_menu_ui", text + ".description");
 		}
 		else
 		{
-			locString2 = new LocString("main_menu_ui", _locKeyPrefix + ".LOCKED.description");
+			locString2 = new LocString("main_menu_ui", text + ".LOCKED.description");
 			if (!locString2.Exists())
 			{
-				Log.Warn($"Submenu button {base.Name} tried to find locked description for {_locKeyPrefix} but couldn't");
-				locString2 = new LocString("main_menu_ui", _locKeyPrefix + ".description");
+				Log.Warn($"Submenu button {base.Name} tried to find locked description for {text} but couldn't");
+				locString2 = new LocString("main_menu_ui", text + ".description");
 			}
 		}
 		_description.Text = locString2.GetFormattedText();
@@ -99,17 +118,18 @@ public partial class NSubmenuButton : NButton
 	protected override void OnEnable()
 	{
 		base.Modulate = Colors.White;
-		GetNode<TextureRect>("%Lock").Visible = false;
 		_hsv.SetShaderParameter(_s, 1f);
-		_icon.Modulate = Colors.White;
+		_portrait.SetUnlocked();
 	}
 
+	/// <summary>
+	/// Sets this button to be locked.
+	/// </summary>
 	protected override void OnDisable()
 	{
 		base.Modulate = Colors.DarkGray;
-		GetNode<TextureRect>("%Lock").Visible = true;
+		_portrait.SetLocked();
 		_hsv.SetShaderParameter(_s, 0f);
-		_icon.Modulate = new Color(0.5f, 0.5f, 0.5f, 0.5f);
 	}
 
 	protected override void OnFocus()

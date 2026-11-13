@@ -48,10 +48,11 @@
   "SCORE.unlocksRemaining": "Açılmayı Bekleyenler: {UnlockCount}",
   "SCORE_LINE.ascension": "Yükseliş: {AscensionLevel}",
   "SCORE_LINE.bossesSlain": "Katledilen Boss: {BossCount}",
+  "SCORE_LINE.dread": "Dehşet",
   "SCORE_LINE.elitesKilled": "Öldürülen Elit: {EliteCount}",
   "SCORE_LINE.floorsClimbed": "Tırmanılan Kat: {FloorCount}",
   "SCORE_LINE.goldGained": "Elde Edilen Altın: {GoldAmount}",
   "VICTORY_DAMAGE": "Mimar'a [green]{PlayerDamage:n()}[/green] hasar verdin; ama bu yeterli değildi...\nMimar'a şu ana kadar toplam [green]{PersonalDamage:n()}[/green] hasar verdin.\nMimar, onunla yüzleşen herkesten [green]{TotalDamage:n()}[/green] hasar almasına rağmen hâlâ dimdik ayakta duruyor.",
   "VICTORY_DAMAGE_LOCAL": "Mimar'a [green]{PlayerDamage:n()}[/green] hasar verdin; ama bu yeterli değildi...\nMimar'a şu ana kadar toplam [green]{PersonalDamage:n()}[/green] hasar verdin.",
-  "VICTORY_UNLOCKED_ASCENSION": "[blue]Yükseliş {AscensionLevel} açıldı! [/blue]"
+  "VICTORY_UNLOCKED_ASCENSION": "[blue]{IsMultiplayer:Çok Oyunculu |}Yükseliş {AscensionLevel} açıldı! [/blue]"
 }

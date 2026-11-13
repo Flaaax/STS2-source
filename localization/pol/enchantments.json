@@ -18,6 +18,7 @@
   "IMBUED.description": "Karta zostaje zagrana od razu na początku walki.",
   "IMBUED.extraCardText": "Przeszczep.",
   "IMBUED.title": "Przeszczep",
+  "INKY.description": "Karta nakłada [blue]{WeakPower}[/blue] pkt. [gold]Słabości[/gold].",
   "INKY.extraCardText": "Nałóż [blue]{WeakPower}[/blue] pkt. [gold]Słabości[/gold]{TargetType:choose(AllEnemies): na WSZYSTKICH przeciwników|}.",
   "INKY.title": "Atrament",
   "INSTINCT.description": "Karta zadaje podwójne obrażenia.",

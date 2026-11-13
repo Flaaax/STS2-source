@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://dt1klai8yvsxn"
+path="res://.godot/imported/character_select_fool_bg.skel-daf1a3d75b7b08d982b8147e2f5c0fca.spskel"
+
+[deps]
+
+source_file="res://animations/character_select/fool/character_select_fool_bg.skel"
+dest_files=["res://.godot/imported/character_select_fool_bg.skel-daf1a3d75b7b08d982b8147e2f5c0fca.spskel"]
+
+[params]
+

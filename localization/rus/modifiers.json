@@ -22,6 +22,7 @@
   "MURDEROUS.description": "Вы начинаете каждый бой с [blue]+3[/blue] [gold]силы[/gold]. Все враги начинают бой с [blue]+3[/blue] [gold]силы[/gold].",
   "MURDEROUS.title": "Резня",
   "NIGHT_TERRORS.additionalRestSiteHealText": "Ночные кошмары дают +{Heal} ОЗ.\nВы теряете [red]5[/red] макс. ОЗ.",
+  "NIGHT_TERRORS.additionalRestSiteMendText": "Полностью излечивает от Ночных кошмаров.\nИгрок потеряет [red]{MaxHpLoss}[/red] максимальных ОЗ.",
   "NIGHT_TERRORS.description": "Отдых в [gold]лагере[/gold] будет восполнять все ОЗ, но отнимать [red]5[/red] максимальных ОЗ.",
   "NIGHT_TERRORS.title": "Ночные кошмары",
   "SEALED_DECK.description": "Выберите [blue]10[/blue] из [blue]30[/blue] карт, они станут вашей стартовой колодой.",

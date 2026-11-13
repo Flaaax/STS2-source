@@ -1,0 +1,80 @@
+byrdpip_evolution.png
+size:889,523
+filter:Linear,Linear
+scale:0.665
+beak bottom
+bounds:228,2,38,30
+offsets:0,1,38,32
+rotate:90
+beak top
+bounds:832,371,47,52
+offsets:0,1,47,53
+bod
+bounds:260,41,179,148
+bottom foot
+bounds:333,20,38,19
+offsets:1,0,39,19
+bottom leg 1
+bounds:832,425,55,96
+bottom leg 2
+bounds:260,11,28,71
+offsets:0,0,29,71
+rotate:90
+butt_feather
+bounds:820,119,90,51
+rotate:90
+extra_feather
+bounds:228,42,57,30
+rotate:90
+eyes
+bounds:494,192,19,11
+head
+bounds:543,7,96,78
+neck
+bounds:825,27,55,90
+shadow
+bounds:2,101,256,88
+offsets:2,1,259,90
+skin_egg1
+bounds:249,191,243,330
+skin_egg2
+bounds:2,191,245,330
+skin_egg3
+bounds:494,205,247,316
+offsets:0,0,247,330
+skin_hair 1
+bounds:641,12,87,99
+rotate:90
+skin_hair 2
+bounds:441,58,131,100
+rotate:90
+skin_hair 3
+bounds:637,101,97,102
+offsets:1,0,98,102
+skin_hair 4
+bounds:543,87,92,116
+offsets:0,8,92,124
+top foot
+bounds:373,18,34,21
+top leg 1
+bounds:742,16,81,84
+offsets:115,1,196,252
+top leg 2
+bounds:441,24,32,90
+offsets:1,1,33,92
+rotate:90
+wing 3
+bounds:743,354,167,87
+offsets:1,0,169,88
+rotate:90
+wing 4
+bounds:2,2,224,97
+offsets:0,0,224,98
+wing copy 2
+bounds:736,102,101,82
+offsets:1,2,106,84
+rotate:90
+wing copy 3
+bounds:743,211,141,100
+offsets:2,2,145,102
+rotate:90

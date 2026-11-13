@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://b6nko387cwp7n"]
 
 [ext_resource type="Script" uid="uid://bffgbm0dyb2ie" path="res://src/Core/Nodes/GodotExtensions/NScrollbar.cs" id="1_afh1t"]
-[ext_resource type="Texture2D" path="res://images/atlases/ui_atlas.sprites/scrollbar_track_center.tres" id="2_givnx"]
-[ext_resource type="Texture2D" path="res://images/atlases/ui_atlas.sprites/scrollbar_track_edge2.tres" id="3_p0e8y"]
-[ext_resource type="Texture2D" path="res://images/atlases/ui_atlas.sprites/scrollbar_train_large.tres" id="4_givnx"]
+[ext_resource type="Texture2D" uid="uid://d0jj4jspq5awr" path="res://images/packed/common_ui/scrollbar_track_center.png" id="2_givnx"]
+[ext_resource type="Texture2D" uid="uid://ctaxtrf" path="res://images/atlases/ui_atlas.sprites/scrollbar_track_edge2.tres" id="3_p0e8y"]
+[ext_resource type="Texture2D" uid="uid://5a8465" path="res://images/atlases/ui_atlas.sprites/scrollbar_train_large.tres" id="4_givnx"]
 [ext_resource type="Script" uid="uid://cb0u665omr07o" path="res://src/Core/Nodes/CommonUi/NScrollbarTrain.cs" id="5_5cjlh"]
 
 [sub_resource type="Theme" id="Theme_8ls4l"]
@@ -64,9 +64,18 @@ focus_neighbor_bottom = NodePath("")
 focus_next = NodePath("")
 focus_previous = NodePath("")
 focus_mode = 0
+focus_behavior_recursive = 0
 mouse_filter = 0
+mouse_behavior_recursive = 0
 mouse_force_pass_scroll_events = true
 mouse_default_cursor_shape = 0
+accessibility_name = ""
+accessibility_description = ""
+accessibility_live = 0
+accessibility_controls_nodes = Array[NodePath]([])
+accessibility_described_by_nodes = Array[NodePath]([])
+accessibility_labeled_by_nodes = Array[NodePath]([])
+accessibility_flow_to_nodes = Array[NodePath]([])
 theme = SubResource("Theme_8ls4l")
 theme_type_variation = &""
 min_value = 0.0

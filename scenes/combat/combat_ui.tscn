@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bylx12ikbsu6w"]
+[gd_scene load_steps=11 format=3 uid="uid://bylx12ikbsu6w"]
 
 [ext_resource type="Script" uid="uid://boi7a7dcdm6r2" path="res://src/Core/Nodes/Combat/NCombatUi.cs" id="1_8bqby"]
 [ext_resource type="PackedScene" uid="uid://bbw67f6yb0yr8" path="res://scenes/combat/energy_counters/star_counter.tscn" id="2_47ykd"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://b536tb4ekbwyp" path="res://src/Core/Nodes/CommonUi/NCardPreviewContainer.cs" id="8_106yw"]
 [ext_resource type="Script" uid="uid://dljxijy12lds2" path="res://src/Core/Nodes/CommonUi/NMessyCardPreviewContainer.cs" id="9_sv3j0"]
 [ext_resource type="Script" uid="uid://krrr5l7pgq7c" path="res://src/Core/Nodes/Combat/NCardPlayQueue.cs" id="9_u72tk"]
+[ext_resource type="PackedScene" uid="uid://dhxr2v2qav1sc" path="res://scenes/combat/fool_combat_ui.tscn" id="10_npbv8"]
 
 [node name="CombatUi" type="Control"]
 layout_mode = 3
@@ -35,6 +36,10 @@ offset_bottom = -252.0
 grow_vertical = 0
 
 [node name="StarCounter" parent="." instance=ExtResource("2_47ykd")]
+unique_name_in_owner = true
+layout_mode = 1
+
+[node name="FoolCombatUi" parent="." instance=ExtResource("10_npbv8")]
 unique_name_in_owner = true
 layout_mode = 1
 

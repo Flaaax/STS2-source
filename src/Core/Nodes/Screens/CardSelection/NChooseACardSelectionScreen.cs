@@ -32,7 +32,7 @@ namespace MegaCrit.Sts2.Core.Nodes.Screens.CardSelection;
 /// </summary>
 /// TODO: this is very similar to NCardRewardScreen... if we have a 3rd screen set up like this, might be
 /// worth having them inherit from a common class.
-public partial class NChooseACardSelectionScreen : Control, IOverlayScreen, IScreenContext, ICardSelector
+public partial class NChooseACardSelectionScreen : Control, IOverlayScreen, IScreenContext, ICardSelectionScreen
 {
 	private const float _cardXSpacing = 340f;
 

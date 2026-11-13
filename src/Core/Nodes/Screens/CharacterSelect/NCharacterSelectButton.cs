@@ -35,11 +35,11 @@ public partial class NCharacterSelectButton : NButton
 		SelectedRemotely
 	}
 
-	private static readonly StringName _v = new StringName("v");
+	private static readonly StringName _h = new StringName("h");
 
 	private static readonly StringName _s = new StringName("s");
 
-	private static readonly StringName _h = new StringName("h");
+	private static readonly StringName _v = new StringName("v");
 
 	private static readonly string _playerIconScenePath = SceneHelper.GetScenePath("screens/char_select/char_select_player_icon");
 
@@ -50,6 +50,8 @@ public partial class NCharacterSelectButton : NButton
 	private TextureRect _iconAdd;
 
 	private TextureRect _lock;
+
+	private TextureRect _rotating;
 
 	private Control _outlineLocal;
 
@@ -101,6 +103,8 @@ public partial class NCharacterSelectButton : NButton
 
 	private const float _notSelectedValue = 0.4f;
 
+	private Tween? _rotatingTween;
+
 	public static IEnumerable<string> AssetPaths => new global::_003C_003Ez__ReadOnlyArray<string>(new string[2] { _playerIconScenePath, _unlockedIconPath });
 
 	public bool IsRandom { get; private set; }
@@ -119,11 +123,13 @@ public partial class NCharacterSelectButton : NButton
 		_icon = GetNode<TextureRect>("%Icon");
 		_iconAdd = GetNode<TextureRect>("%IconAdd");
 		_lock = GetNode<TextureRect>("%Lock");
+		_rotating = GetNode<TextureRect>("%Rotating");
 		_outlineLocal = GetNode<Control>("%OutlineLocal");
 		_outlineRemote = GetNode<Control>("%OutlineRemote");
 		_outlineMixed = GetNode<Control>("%OutlineMixed");
 		_shadow = GetNode<Control>("%Shadow");
 		_playerIconContainer = GetNode<Control>("%PlayerIconContainer");
+		_rotating.Visible = false;
 		_hsv = (ShaderMaterial)_icon.Material;
 		_hsv.SetShaderParameter(_s, 0.2f);
 		_hsv.SetShaderParameter(_v, 0.4f);
@@ -137,13 +143,9 @@ public partial class NCharacterSelectButton : NButton
 		UnlockState unlockState = SaveManager.Instance.GenerateUnlockStateFromProgress();
 		if (character is RandomCharacter)
 		{
-			IsRandom = true;
-			_isLocked = ModelDb.AllCharacters.Any((CharacterModel c) => !unlockState.Characters.Contains(c));
+			throw new InvalidOperationException("You should use InitAsRandom or InitAsRotating for the random character!");
 		}
-		else
-		{
-			_isLocked = !unlockState.Characters.Contains(_character);
-		}
+		_isLocked = !unlockState.Characters.Contains(_character);
 		if (_isLocked)
 		{
 			_icon.Texture = character.CharacterSelectLockedIcon;
@@ -155,6 +157,40 @@ public partial class NCharacterSelectButton : NButton
 		}
 	}
 
+	/// <summary>
+	/// The button is locked unless the local player has unlocked every character.
+	/// Most of the time, the caller should hide the button in this case, but in the special case of multiplayer where
+	/// one person has unlocked random but not other players, the locked button will be shown.
+	/// </summary>
+	public void InitAsRandom(ICharacterSelectButtonDelegate del)
+	{
+		_delegate = del;
+		_character = ModelDb.Character<RandomCharacter>();
+		UnlockState unlockState = SaveManager.Instance.GenerateUnlockStateFromProgress();
+		IsRandom = true;
+		_isLocked = ModelDb.AllCharacters.Any((CharacterModel c) => !unlockState.Characters.Contains(c));
+		_icon.Texture = (_isLocked ? _character.CharacterSelectLockedIcon : _character.CharacterSelectIcon);
+		_lock.Visible = _isLocked;
+	}
+
+	/// <summary>
+	/// This function assumes that the button is always unlocked. Call InitAsRotatingLocked to show it as locked.
+	/// </summary>
+	public void InitAsRotating(CharacterModel resolved, ICharacterSelectButtonDelegate del)
+	{
+		_delegate = del;
+		_character = ModelDb.Character<RotatingCharacter>();
+		IsRandom = true;
+		_isLocked = false;
+		_icon.Texture = resolved.CharacterSelectIcon;
+		_lock.Visible = false;
+		_rotating.Visible = true;
+		_rotatingTween = CreateTween();
+		_rotatingTween.TweenProperty(_rotating, "rotation", (float)Math.PI * 2f, 10.0).From(0f).SetTrans(Tween.TransitionType.Linear);
+		_rotatingTween.SetLoops();
+		_rotatingTween.Pause();
+	}
+
 	protected override void OnFocus()
 	{
 		if (!_isSelected)
@@ -163,6 +199,7 @@ public partial class NCharacterSelectButton : NButton
 			base.Scale = _hoverScale;
 			_hsv.SetShaderParameter(_s, 1f);
 			_hsv.SetShaderParameter(_v, 1.1f);
+			_rotatingTween?.Play();
 			if (_isLocked)
 			{
 				HoverTip hoverTip = new HoverTip(new LocString("main_menu_ui", "CHARACTER_SELECT.locked.title"), _character.GetUnlockText());
@@ -181,6 +218,10 @@ public partial class NCharacterSelectButton : NButton
 		_hoverTween?.Kill();
 		_hoverTween = CreateTween().SetParallel();
 		_hoverTween.TweenProperty(this, "scale", Vector2.One, 0.5).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Expo);
+		if (!_isSelected)
+		{
+			_rotatingTween?.Pause();
+		}
 		NHoverTipSet.Remove(this);
 		AnimateSaturationToCurrentState(_hoverTween);
 	}
@@ -288,7 +329,8 @@ public partial class NCharacterSelectButton : NButton
 		{
 			_hoverTween?.Kill();
 			_isSelected = true;
-			_delegate.SelectCharacter(this, _character);
+			_rotatingTween?.Play();
+			_delegate.SelectCharacter(this);
 			RefreshState();
 		}
 	}
@@ -300,6 +342,10 @@ public partial class NCharacterSelectButton : NButton
 	{
 		_isSelected = false;
 		RefreshState();
+		if (!base.IsFocused)
+		{
+			_rotatingTween?.Pause();
+		}
 	}
 
 	private void RefreshState()

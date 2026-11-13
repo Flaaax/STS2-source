@@ -6,7 +6,6 @@ using Godot;
 using MegaCrit.Sts2.addons.mega_text;
 using MegaCrit.Sts2.Core.Assets;
 using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Context;
 using MegaCrit.Sts2.Core.ControllerInput;
 using MegaCrit.Sts2.Core.Debug;
 using MegaCrit.Sts2.Core.Entities.Multiplayer;
@@ -15,16 +14,13 @@ using MegaCrit.Sts2.Core.Entities.UI;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Logging;
-using MegaCrit.Sts2.Core.Map;
 using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Models.Characters;
 using MegaCrit.Sts2.Core.Multiplayer;
 using MegaCrit.Sts2.Core.Multiplayer.Game;
 using MegaCrit.Sts2.Core.Multiplayer.Game.Lobby;
 using MegaCrit.Sts2.Core.Multiplayer.Messages.Lobby;
 using MegaCrit.Sts2.Core.Nodes.Audio;
 using MegaCrit.Sts2.Core.Nodes.CommonUi;
-using MegaCrit.Sts2.Core.Nodes.Debug;
 using MegaCrit.Sts2.Core.Nodes.Ftue;
 using MegaCrit.Sts2.Core.Nodes.GodotExtensions;
 using MegaCrit.Sts2.Core.Nodes.Multiplayer;
@@ -32,7 +28,6 @@ using MegaCrit.Sts2.Core.Nodes.Screens.MainMenu;
 using MegaCrit.Sts2.Core.Nodes.Vfx.Ui;
 using MegaCrit.Sts2.Core.Nodes.Vfx.Utilities;
 using MegaCrit.Sts2.Core.Platform;
-using MegaCrit.Sts2.Core.Rooms;
 using MegaCrit.Sts2.Core.Runs;
 using MegaCrit.Sts2.Core.Saves;
 using MegaCrit.Sts2.Core.TestSupport;
@@ -94,12 +89,8 @@ public partial class NCharacterSelectScreen : NSubmenu, IStartRunLobbyListener, 
 
 	private const string _sceneCharSelectButtonPath = "res://scenes/screens/char_select/char_select_button.tscn";
 
-	private bool _delayEmbarkForCharacterSelect;
-
 	[Export(PropertyHint.None, "")]
 	private PackedScene _charSelectButtonScene;
-
-	private IBootstrapSettings? _settings;
 
 	private StartRunLobby _lobby;
 
@@ -117,18 +108,9 @@ public partial class NCharacterSelectScreen : NSubmenu, IStartRunLobbyListener, 
 		}
 	}
 
-	protected override Control InitialFocusedControl => _charButtonContainer.GetChild<Control>(0);
+	protected override Control InitialFocusedControl => _selectedButton ?? _charButtonContainer.GetChild<Control>(0);
 
 	private bool ShouldShowActDropdown => false;
-
-	public static NCharacterSelectScreen? Create()
-	{
-		if (TestMode.IsOn)
-		{
-			return null;
-		}
-		return ResourceLoader.Load<PackedScene>(_scenePath, null, ResourceLoader.CacheMode.Reuse).Instantiate<NCharacterSelectScreen>(PackedScene.GenEditState.Disabled);
-	}
 
 	public override void _Ready()
 	{
@@ -160,12 +142,6 @@ public partial class NCharacterSelectScreen : NSubmenu, IStartRunLobbyListener, 
 		_unreadyButton.Connect(NClickableControl.SignalName.Released, Callable.From<NButton>(OnUnreadyPressed));
 		_unreadyButton.Disable();
 		InitCharacterButtons();
-		Type type = BootstrapSettingsUtil.Get();
-		if (type != null)
-		{
-			_settings = (IBootstrapSettings)Activator.CreateInstance(type);
-			PreloadManager.Enabled = _settings.DoPreloading;
-		}
 	}
 
 	public void InitializeMultiplayerAsHost(INetGameService gameService, int maxPlayers)
@@ -174,9 +150,9 @@ public partial class NCharacterSelectScreen : NSubmenu, IStartRunLobbyListener, 
 		{
 			throw new InvalidOperationException($"Initialized character select screen with GameService of type {gameService.Type} when hosting!");
 		}
-		_lobby = new StartRunLobby(GameMode.Standard, gameService, this, maxPlayers);
-		_ascensionPanel.Initialize(MultiplayerUiMode.Host);
-		_lobby.AddLocalHostPlayer(new UnlockState(SaveManager.Instance.Progress), SaveManager.Instance.Progress.MaxMultiplayerAscension);
+		_lobby = new StartRunLobby(GameMode.Standard, isCustom: false, gameService, this, maxPlayers);
+		_ascensionPanel.Initialize(MultiplayerUiMode.Host, GameMode.Standard);
+		_lobby.AddLocalHostPlayer(new UnlockState(SaveManager.Instance.Progress), SaveManager.Instance.Progress.MaxMultiplayerAscension, SaveManager.Instance.Progress.MaxBlitzAscension);
 		OnAscensionPanelLevelChanged();
 		CheckForMultiplayerAscensionPopup();
 		AfterInitialized();
@@ -188,8 +164,8 @@ public partial class NCharacterSelectScreen : NSubmenu, IStartRunLobbyListener, 
 		{
 			throw new InvalidOperationException($"Initialized character select screen with GameService of type {gameService.Type} when joining!");
 		}
-		_lobby = new StartRunLobby(GameMode.Standard, gameService, this, -1);
-		_ascensionPanel.Initialize(MultiplayerUiMode.Client);
+		_lobby = new StartRunLobby(GameMode.Standard, isCustom: false, gameService, this, -1);
+		_ascensionPanel.Initialize(MultiplayerUiMode.Client, GameMode.Standard);
 		_lobby.InitializeFromMessage(message);
 		CheckForMultiplayerAscensionPopup();
 		AfterInitialized();
@@ -210,14 +186,11 @@ public partial class NCharacterSelectScreen : NSubmenu, IStartRunLobbyListener, 
 		}
 	}
 
-	/// <summary>
-	/// Opens this screen
-	/// </summary>
 	public void InitializeSingleplayer()
 	{
-		_lobby = new StartRunLobby(GameMode.Standard, new NetSingleplayerGameService(), this, 1);
-		_ascensionPanel.Initialize(MultiplayerUiMode.Singleplayer);
-		_lobby.AddLocalHostPlayer(new UnlockState(SaveManager.Instance.Progress), 0);
+		_lobby = new StartRunLobby(GameMode.Standard, isCustom: false, new NetSingleplayerGameService(), this, 1);
+		_ascensionPanel.Initialize(MultiplayerUiMode.Singleplayer, GameMode.Standard);
+		_lobby.AddLocalHostPlayer(new UnlockState(SaveManager.Instance.Progress), 0, SaveManager.Instance.Progress.MaxBlitzAscension);
 		AfterInitialized();
 	}
 
@@ -226,13 +199,12 @@ public partial class NCharacterSelectScreen : NSubmenu, IStartRunLobbyListener, 
 		foreach (CharacterModel allCharacter in ModelDb.AllCharacters)
 		{
 			NCharacterSelectButton nCharacterSelectButton = _charSelectButtonScene.Instantiate<NCharacterSelectButton>(PackedScene.GenEditState.Disabled);
-			nCharacterSelectButton.Name = allCharacter.Id.Entry + "_button";
 			_charButtonContainer.AddChildSafely(nCharacterSelectButton);
 			nCharacterSelectButton.Init(allCharacter, this);
 		}
 		_randomCharacterButton = _charSelectButtonScene.Instantiate<NCharacterSelectButton>(PackedScene.GenEditState.Disabled);
 		_charButtonContainer.AddChildSafely(_randomCharacterButton);
-		_randomCharacterButton.Init(ModelDb.Character<RandomCharacter>(), this);
+		_randomCharacterButton.InitAsRandom(this);
 		UpdateRandomCharacterVisibility();
 		List<NCharacterSelectButton> list = (from c in _charButtonContainer.GetChildren().OfType<NCharacterSelectButton>()
 			where c.Visible
@@ -318,7 +290,7 @@ public partial class NCharacterSelectScreen : NSubmenu, IStartRunLobbyListener, 
 		_embarkButton.Enable();
 		if (SaveManager.Instance.Progress.PendingCharacterUnlock == ModelId.none)
 		{
-			_charButtonContainer.GetChild<NCharacterSelectButton>(0).Select();
+			(GetPreferredCharacterButton() ?? _charButtonContainer.GetChild<NCharacterSelectButton>(0)).Select();
 		}
 		else
 		{
@@ -361,6 +333,54 @@ public partial class NCharacterSelectScreen : NSubmenu, IStartRunLobbyListener, 
 		_backButton.Enable();
 		_embarkButton.Enable();
 		SaveManager.Instance.Progress.PendingCharacterUnlock = ModelId.none;
+		TryShowAscensionSinglePlayerFtue();
+	}
+
+	/// <summary>
+	/// Returns the button for the character we last embarked with in Standard mode. Singleplayer and multiplayer are
+	/// tracked separately. Returns null if there is no preference or the preferred character isn't selectable.
+	/// </summary>
+	private NCharacterSelectButton? GetPreferredCharacterButton()
+	{
+		ModelId preferredCharacterId = ((_lobby.NetService.Type == NetGameType.Singleplayer) ? SaveManager.Instance.Progress.PreferredStandardCharacter : SaveManager.Instance.Progress.PreferredMultiplayerStandardCharacter);
+		if (preferredCharacterId == ModelId.none)
+		{
+			return null;
+		}
+		return _charButtonContainer.GetChildren().OfType<NCharacterSelectButton>().FirstOrDefault((NCharacterSelectButton button) => !button.IsLocked && button.Visible && button.Character.Id == preferredCharacterId);
+	}
+
+	/// <summary>
+	/// Saves the character the local player is embarking with so that it's selected the next time this screen opens.
+	/// If the player chose the random character button, we remember that rather than the character it rolled.
+	/// </summary>
+	private void UpdatePreferredStandardCharacter()
+	{
+		if (_selectedButton == null)
+		{
+			return;
+		}
+		ModelId id = _selectedButton.Character.Id;
+		ProgressState progress = SaveManager.Instance.Progress;
+		if (_lobby.NetService.Type == NetGameType.Singleplayer)
+		{
+			if (progress.PreferredStandardCharacter == id)
+			{
+				return;
+			}
+			Log.Info($"Setting preferred Standard character to {id}");
+			progress.PreferredStandardCharacter = id;
+		}
+		else
+		{
+			if (progress.PreferredMultiplayerStandardCharacter == id)
+			{
+				return;
+			}
+			Log.Info($"Setting preferred multiplayer Standard character to {id}");
+			progress.PreferredMultiplayerStandardCharacter = id;
+		}
+		SaveManager.Instance.SaveProgressFile();
 	}
 
 	public override void OnSubmenuClosed()
@@ -420,30 +440,29 @@ public partial class NCharacterSelectScreen : NSubmenu, IStartRunLobbyListener, 
 		_lobby = null;
 	}
 
-	private void OnLocalCharacterChangedForRandom(CharacterModel characterModel)
+	private async Task DoRandomCharacterChange(Player player)
 	{
 		NGame.Instance?.ScreenShake(ShakeStrength.Weak, ShakeDuration.Short, 90f);
-		SfxCmd.Play(characterModel.CharacterSelectSfx);
-		Control control = PreloadManager.Cache.GetScene(characterModel.CharacterSelectBg).Instantiate<Control>(PackedScene.GenEditState.Disabled);
-		control.Name = characterModel.Id.Entry + "_bg";
-		_bgContainer.AddChildSafely(control);
-		_delayEmbarkForCharacterSelect = true;
+		SfxCmd.Play(player.Character.CharacterSelectSfx);
+		Control child = PreloadManager.Cache.GetScene(player.Character.CharacterSelectBg).Instantiate<Control>(PackedScene.GenEditState.Disabled);
+		_bgContainer.AddChildSafely(child);
+		await Cmd.Wait(1f);
 	}
 
 	private async Task StartNewSingleplayerRun(string seed, List<ActModel> acts)
 	{
 		Log.Info($"Embarking on a singleplayer {_lobby.LocalPlayer.character.Id.Entry} run. Ascension: {_lobby.Ascension} Seed: {seed}");
+		Player player = _lobby.GeneratePlayers(seed)[0];
 		int ascensionToEmbark = _lobby.Ascension;
-		if (_delayEmbarkForCharacterSelect)
+		if (_randomCharacterButton.IsSelected)
 		{
-			await Cmd.Wait(1f);
-			_delayEmbarkForCharacterSelect = false;
+			await DoRandomCharacterChange(player);
 		}
 		try
 		{
-			SfxCmd.Play(_lobby.LocalPlayer.character.CharacterTransitionSfx);
-			await NGame.Instance.Transition.FadeOut(0.8f, _lobby.LocalPlayer.character.CharacterSelectTransitionPath);
-			await NGame.Instance.StartNewSingleplayerRun(_lobby.LocalPlayer.character, shouldSave: true, acts, Array.Empty<ModifierModel>(), seed, GameMode.Standard, ascensionToEmbark);
+			SfxCmd.Play(player.Character.CharacterTransitionSfx);
+			await NGame.Instance.Transition.FadeOut(0.8f, player.Character.CharacterSelectTransitionPath);
+			await NGame.Instance.StartNewSingleplayerRun(player, shouldSave: true, acts, Array.Empty<ModifierModel>(), seed, GameMode.Standard, isCustomGame: false, ascensionToEmbark);
 		}
 		catch (Exception ex)
 		{
@@ -458,30 +477,26 @@ public partial class NCharacterSelectScreen : NSubmenu, IStartRunLobbyListener, 
 	private async Task StartNewMultiplayerRun(string seed, List<ActModel> acts)
 	{
 		Log.Info($"Embarking on a multiplayer run. Players: {string.Join(",", _lobby.Players)}. Ascension: {_lobby.Ascension} Seed: {seed}");
-		if (_delayEmbarkForCharacterSelect)
+		List<Player> players = _lobby.GeneratePlayers(seed);
+		Player localPlayer = players.First((Player p) => p.NetId == _lobby.LocalPlayer.id);
+		if (_randomCharacterButton.IsSelected)
 		{
-			await Cmd.Wait(1f);
-			_delayEmbarkForCharacterSelect = false;
+			await DoRandomCharacterChange(localPlayer);
 		}
-		SfxCmd.Play(_lobby.LocalPlayer.character.CharacterTransitionSfx);
-		await NGame.Instance.Transition.FadeOut(0.8f, _lobby.LocalPlayer.character.CharacterSelectTransitionPath);
-		IBootstrapSettings settings = _settings;
-		if (settings != null && settings.BootstrapInMultiplayer)
+		SfxCmd.Play(localPlayer.Character.CharacterTransitionSfx);
+		await NGame.Instance.Transition.FadeOut(0.8f, localPlayer.Character.CharacterSelectTransitionPath);
+		if (Bootstrapper.Settings?.BootstrapInMultiplayer ?? false)
 		{
 			using (new NetLoadingHandle(_lobby.NetService))
 			{
-				acts[0] = _settings.Act;
-				RunState runState;
+				Bootstrapper bootstrapper = new Bootstrapper().WithActs(acts).WithPlayers(players).WithRunManagerSetup(delegate(RunState r, bool s)
+				{
+					RunManager.Instance.SetUpNewMultiplayer(r, _lobby, s);
+				})
+					.WithSeed(seed);
 				try
 				{
-					runState = RunState.CreateForNewRun(_lobby.Players.Select((StartRunLobbyPlayer p) => Player.CreateForNewRun(p.character, UnlockState.FromSerializable(p.unlockState), p.id)).ToList(), acts.Select((ActModel a) => a.ToMutable()).ToList(), _settings.Modifiers, GameMode.Standard, _lobby.Ascension, seed);
-					RunManager.Instance.SetUpNewMultiplayer(runState, _lobby, _settings.SaveRunHistory);
-					await PreloadManager.LoadRunAssets(runState.Players.Select((Player p) => p.Character));
-					await RunManager.Instance.FinalizeStartingRelics();
-					RunManager.Instance.Launch();
-					NGame.Instance.RootSceneContainer.SetCurrentScene(NRun.Create(runState));
-					await RunManager.Instance.SetActInternal(0);
-					await SaveManager.Instance.SaveRun(null);
+					await bootstrapper.SetupRun();
 				}
 				catch (Exception ex)
 				{
@@ -491,32 +506,14 @@ public partial class NCharacterSelectScreen : NSubmenu, IStartRunLobbyListener, 
 					return;
 				}
 				CleanUpLobby(disconnectSession: false);
-				await _settings.Setup(LocalContext.GetMe(runState));
-				switch (_settings.RoomType)
-				{
-				case RoomType.Unassigned:
-					await RunManager.Instance.EnterAct(0);
-					break;
-				case RoomType.Treasure:
-				case RoomType.Shop:
-				case RoomType.RestSite:
-					await RunManager.Instance.EnterRoomDebug(_settings.RoomType, MapPointType.Unassigned, null, showTransition: false);
-					RunManager.Instance.ActionExecutor.Unpause();
-					break;
-				case RoomType.Event:
-					await RunManager.Instance.EnterRoomDebug(_settings.RoomType, MapPointType.Unassigned, _settings.Event, showTransition: false);
-					break;
-				default:
-					await RunManager.Instance.EnterRoomDebug(_settings.RoomType, MapPointType.Unassigned, _settings.RoomType.IsCombatRoom() ? _settings.Encounter.ToMutable() : null, showTransition: false);
-					break;
-				}
+				await bootstrapper.EnterFirstRoom();
 			}
 		}
 		else
 		{
 			try
 			{
-				await NGame.Instance.StartNewMultiplayerRun(_lobby, shouldSave: true, acts, Array.Empty<ModifierModel>(), seed, _lobby.Ascension);
+				await NGame.Instance.StartNewMultiplayerRun(players, _lobby, shouldSave: true, acts, Array.Empty<ModifierModel>(), seed, _lobby.Ascension);
 			}
 			catch (Exception ex2)
 			{
@@ -542,11 +539,12 @@ public partial class NCharacterSelectScreen : NSubmenu, IStartRunLobbyListener, 
 	/// <summary>
 	/// Called when the player selects a Character! Also called when you open the character select screen.
 	/// </summary>
-	public void SelectCharacter(NCharacterSelectButton charSelectButton, CharacterModel characterModel)
+	public void SelectCharacter(NCharacterSelectButton charSelectButton)
 	{
+		CharacterModel character = charSelectButton.Character;
 		if (!charSelectButton.IsRandom)
 		{
-			SfxCmd.Play(characterModel.CharacterSelectSfx);
+			SfxCmd.Play(character.CharacterSelectSfx);
 		}
 		NGame.Instance?.ScreenShake(ShakeStrength.Weak, ShakeDuration.Short, 90f);
 		if (_infoPanelTween != null)
@@ -567,17 +565,17 @@ public partial class NCharacterSelectScreen : NSubmenu, IStartRunLobbyListener, 
 		if (!charSelectButton.IsLocked)
 		{
 			_embarkButton.Enable();
-			Control control = PreloadManager.Cache.GetScene(characterModel.CharacterSelectBg).Instantiate<Control>(PackedScene.GenEditState.Disabled);
-			control.Name = characterModel.Id.Entry + "_bg";
+			Control control = PreloadManager.Cache.GetScene(character.CharacterSelectBg).Instantiate<Control>(PackedScene.GenEditState.Disabled);
+			control.Name = character.Id.Entry + "_bg";
 			_bgContainer.AddChildSafely(control);
-			string formattedText = new LocString("characters", characterModel.CharacterSelectTitle).GetFormattedText();
+			string formattedText = new LocString("characters", character.CharacterSelectTitle).GetFormattedText();
 			_name.SetTextAutoSize(formattedText);
-			_description.Text = new LocString("characters", characterModel.CharacterSelectDesc).GetFormattedText();
+			_description.Text = new LocString("characters", character.CharacterSelectDesc).GetFormattedText();
 			if (!_selectedButton.IsRandom)
 			{
-				_hp.SetTextAutoSize($"{characterModel.StartingHp}/{characterModel.StartingHp}");
-				_gold.SetTextAutoSize($"{characterModel.StartingGold}");
-				RelicModel relicModel = characterModel.StartingRelics[0];
+				_hp.SetTextAutoSize($"{character.StartingHp}/{character.StartingHp}");
+				_gold.SetTextAutoSize($"{character.StartingGold}");
+				RelicModel relicModel = character.StartingRelics[0];
 				_relicTitle.Text = relicModel.Title.GetFormattedText();
 				_relicDescription.Text = relicModel.DynamicDescription.GetFormattedText();
 				_relicIcon.Texture = relicModel.Icon;
@@ -594,10 +592,14 @@ public partial class NCharacterSelectScreen : NSubmenu, IStartRunLobbyListener, 
 				_relicTitle.Text = string.Empty;
 				_relicDescription.Text = string.Empty;
 			}
-			_lobby.SetLocalCharacter(characterModel);
+			_lobby.SetLocalCharacter(character);
 			if (!_lobby.NetService.Type.IsMultiplayer())
 			{
 				_ascensionPanel.AnimIn();
+				if (SaveManager.Instance.Progress.PendingCharacterUnlock == ModelId.none)
+				{
+					TryShowAscensionSinglePlayerFtue();
+				}
 			}
 		}
 		else
@@ -605,12 +607,12 @@ public partial class NCharacterSelectScreen : NSubmenu, IStartRunLobbyListener, 
 			_embarkButton.Disable();
 			string formattedText2 = new LocString("main_menu_ui", "CHARACTER_SELECT.locked.title").GetFormattedText();
 			_name.SetTextAutoSize(formattedText2);
-			_description.Text = characterModel.GetUnlockText().GetFormattedText();
+			_description.Text = character.GetUnlockText().GetFormattedText();
 			_hp.SetTextAutoSize("??/??");
 			_gold.SetTextAutoSize("???");
 			if (!_selectedButton.IsRandom)
 			{
-				RelicModel relicModel2 = characterModel.StartingRelics[0];
+				RelicModel relicModel2 = character.StartingRelics[0];
 				_relicTitle.Text = new LocString("main_menu_ui", "CHARACTER_SELECT.lockedRelic.title").GetFormattedText();
 				_relicDescription.Text = new LocString("main_menu_ui", "CHARACTER_SELECT.lockedRelic.description").GetFormattedText();
 				_relicIcon.Texture = relicModel2.Icon;
@@ -693,12 +695,8 @@ public partial class NCharacterSelectScreen : NSubmenu, IStartRunLobbyListener, 
 		UpdateRandomCharacterVisibility();
 	}
 
-	public void PlayerChanged(StartRunLobbyPlayer player, bool isRandomCharacterResolution)
+	public void PlayerChanged(StartRunLobbyPlayer player)
 	{
-		if (player.id == _lobby.LocalPlayer.id && isRandomCharacterResolution)
-		{
-			OnLocalCharacterChangedForRandom(player.character);
-		}
 		_remotePlayerContainer.OnPlayerChanged(player);
 		RefreshButtonSelectionForPlayer(player);
 	}
@@ -724,10 +722,6 @@ public partial class NCharacterSelectScreen : NSubmenu, IStartRunLobbyListener, 
 
 	public void AscensionChanged()
 	{
-		if (_lobby.NetService.Type == NetGameType.Client)
-		{
-			_ascensionPanel.Visible = _lobby.Ascension > 0;
-		}
 		_ascensionPanel.SetAscensionLevel(_lobby.Ascension);
 	}
 
@@ -739,6 +733,11 @@ public partial class NCharacterSelectScreen : NSubmenu, IStartRunLobbyListener, 
 	public void ModifiersChanged()
 	{
 		throw new NotImplementedException("Modifiers should not be changed in standard mode!");
+	}
+
+	public void GameModeChanged()
+	{
+		throw new NotImplementedException("Game mode should not be changed in standard mode!");
 	}
 
 	public void RemotePlayerDisconnected(StartRunLobbyPlayer player)
@@ -766,6 +765,7 @@ public partial class NCharacterSelectScreen : NSubmenu, IStartRunLobbyListener, 
 		_ascensionPanel.Disable();
 		_embarkButton.Disable();
 		_unreadyButton.Disable();
+		UpdatePreferredStandardCharacter();
 		if (_lobby.NetService.Type == NetGameType.Singleplayer)
 		{
 			TaskHelper.RunSafely(StartNewSingleplayerRun(seed, acts));
@@ -807,15 +807,18 @@ public partial class NCharacterSelectScreen : NSubmenu, IStartRunLobbyListener, 
 		MegaCrit.Sts2.Core.Logging.Logger.logLevelTypeMap[LogType.Network] = ((_lobby.NetService.Type == NetGameType.Singleplayer) ? LogLevel.Info : LogLevel.Debug);
 		MegaCrit.Sts2.Core.Logging.Logger.logLevelTypeMap[LogType.Actions] = ((_lobby.NetService.Type == NetGameType.Singleplayer) ? LogLevel.Info : LogLevel.VeryDebug);
 		MegaCrit.Sts2.Core.Logging.Logger.logLevelTypeMap[LogType.GameSync] = ((_lobby.NetService.Type == NetGameType.Singleplayer) ? LogLevel.Info : LogLevel.VeryDebug);
-		if (_lobby.NetService.Type != NetGameType.Singleplayer)
+		NGame.Instance.InitDebugSeedFromBootstrap(_lobby.NetService.Type != NetGameType.Singleplayer);
+	}
+
+	public void TryShowAscensionSinglePlayerFtue()
+	{
+		if (_lobby.GameMode == GameMode.Standard && _lobby.GetMaxAscensionAcrossAllCharacters() > 0 && !SaveManager.Instance.SeenPopup("ascension_singleplayer_ftue") && !_lobby.NetService.Type.IsMultiplayer())
 		{
-			IBootstrapSettings? settings = _settings;
-			if (settings != null && settings.BootstrapInMultiplayer)
+			NAscensionSingleplayerFtue nAscensionSingleplayerFtue = NAscensionSingleplayerFtue.Create();
+			if (nAscensionSingleplayerFtue != null)
 			{
-				NGame.Instance.DebugSeedOverride = _settings.Seed;
-				return;
+				NModalContainer.Instance.Add(nAscensionSingleplayerFtue);
 			}
 		}
-		NGame.Instance.DebugSeedOverride = null;
 	}
 }

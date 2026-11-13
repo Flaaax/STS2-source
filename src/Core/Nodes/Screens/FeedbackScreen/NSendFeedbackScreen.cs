@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Runtime.InteropServices;
@@ -36,11 +37,6 @@ public partial class NSendFeedbackScreen : Control, IScreenContext
 	private const string _defaultUrl = "https://feedback.sts2.megacrit.com/feedback";
 
 	private static readonly string _url = System.Environment.GetEnvironmentVariable("STS2_FEEDBACK_URL") ?? "https://feedback.sts2.megacrit.com/feedback";
-
-	private static readonly System.Net.Http.HttpClient _httpClient = new System.Net.Http.HttpClient
-	{
-		Timeout = TimeSpan.FromSeconds(10L)
-	};
 
 	private const int _maxDescriptionChars = 8000;
 
@@ -164,7 +160,7 @@ public partial class NSendFeedbackScreen : Control, IScreenContext
 		_returnToGameButton.Connect(NClickableControl.SignalName.Released, Callable.From<NButton>(ReturnToGameSelected));
 		_returnToGameButton.Connect(NClickableControl.SignalName.Focused, Callable.From<NClickableControl>(ReturnToGameFocused));
 		_returnToGameButton.Connect(NClickableControl.SignalName.Unfocused, Callable.From<NClickableControl>(ReturnToGameUnfocused));
-		_descriptionInput.Connect(TextEdit.SignalName.TextChanged, Callable.From(OnDescriptionChanged));
+		_descriptionInput.TextEdit.Connect(TextEdit.SignalName.TextChanged, Callable.From(OnDescriptionChanged));
 		_returnToGameHoverLabel.Visible = false;
 		_sendButton.FocusNeighborTop = _categoryDropdown.GetPath();
 		_sendButton.FocusNeighborLeft = _emojiButtons.Last().GetPath();
@@ -194,7 +190,7 @@ public partial class NSendFeedbackScreen : Control, IScreenContext
 
 	public void Relocalize()
 	{
-		_descriptionInput.PlaceholderText = new LocString("settings_ui", "FEEDBACK_DESCRIPTION_PLACEHOLDER").GetFormattedText();
+		_descriptionInput.TextEdit.PlaceholderText = new LocString("settings_ui", "FEEDBACK_DESCRIPTION_PLACEHOLDER").GetFormattedText();
 		_categoryLabel.SetTextAutoSize(new LocString("settings_ui", "FEEDBACK_CATEGORY_LABEL").GetFormattedText());
 		_emojiLabel.SetTextAutoSize(new LocString("settings_ui", "FEEDBACK_EMOJI_LABEL").GetFormattedText());
 		_sendLabel.SetTextAutoSize(new LocString("settings_ui", "FEEDBACK_SEND_BUTTON_LABEL").GetFormattedText());
@@ -209,17 +205,17 @@ public partial class NSendFeedbackScreen : Control, IScreenContext
 	/// </summary>
 	private void OnDescriptionChanged()
 	{
-		if (_descriptionInput.Text.Length > 8000)
+		if (_descriptionInput.TextEdit.Text.Length > 8000)
 		{
-			_descriptionInput.Text = _descriptionText;
-			_descriptionInput.SetCaretLine(_descriptionCaretLine);
-			_descriptionInput.SetCaretColumn(_descriptionCaretColumn);
+			_descriptionInput.TextEdit.Text = _descriptionText;
+			_descriptionInput.TextEdit.SetCaretLine(_descriptionCaretLine);
+			_descriptionInput.TextEdit.SetCaretColumn(_descriptionCaretColumn);
 		}
 		else
 		{
-			_descriptionText = _descriptionInput.Text;
-			_descriptionCaretLine = _descriptionInput.GetCaretLine();
-			_descriptionCaretColumn = _descriptionInput.GetCaretColumn();
+			_descriptionText = _descriptionInput.TextEdit.Text;
+			_descriptionCaretLine = _descriptionInput.TextEdit.GetCaretLine();
+			_descriptionCaretColumn = _descriptionInput.TextEdit.GetCaretColumn();
 		}
 	}
 
@@ -230,18 +226,21 @@ public partial class NSendFeedbackScreen : Control, IScreenContext
 	/// <param name="screenshot"></param>
 	public void SetScreenshot(Image screenshot)
 	{
-		int width = screenshot.GetWidth();
-		int height = screenshot.GetHeight();
-		float num = (float)width / (float)height;
-		if (width > 1280)
+		Vector2I uploadedScreenshotSize = GetUploadedScreenshotSize(screenshot.GetWidth(), screenshot.GetHeight());
+		if (uploadedScreenshotSize != screenshot.GetSize())
 		{
-			screenshot.Resize(1280, Mathf.RoundToInt(1280f / num), Image.Interpolation.Bilinear);
-		}
-		if (height > 720)
-		{
-			screenshot.Resize(Mathf.RoundToInt(720f * num), 720, Image.Interpolation.Bilinear);
+			screenshot.Resize(uploadedScreenshotSize.X, uploadedScreenshotSize.Y, Image.Interpolation.Bilinear);
 		}
 		_screenshotBytes = screenshot.SavePngToBuffer();
+	}
+
+	/// <summary>
+	/// Returns the size that a screenshot of the given size is scaled to before it is uploaded.
+	/// </summary>
+	public static Vector2I GetUploadedScreenshotSize(int width, int height)
+	{
+		float num = Mathf.Min(1f, Mathf.Min(1280f / (float)width, 720f / (float)height));
+		return new Vector2I(Mathf.Max(1, Mathf.RoundToInt((float)width * num)), Mathf.Max(1, Mathf.RoundToInt((float)height * num)));
 	}
 
 	private void EmojiButtonSelected(NButton button)
@@ -301,7 +300,7 @@ public partial class NSendFeedbackScreen : Control, IScreenContext
 
 	private void ClearInput()
 	{
-		_descriptionInput.Text = string.Empty;
+		_descriptionInput.TextEdit.Text = string.Empty;
 		_descriptionText = string.Empty;
 		SetSelectedEmoji(null);
 	}
@@ -363,13 +362,9 @@ public partial class NSendFeedbackScreen : Control, IScreenContext
 			isFullConsole = SaveManager.Instance.SettingsSave.FullConsole,
 			lang = LocManager.Instance.Language
 		};
-		MemoryStream screenshotStream = new MemoryStream(_screenshotBytes);
-		int currentProfileId = SaveManager.Instance.CurrentProfileId;
-		MemoryStream memoryStream = new MemoryStream();
-		GetLogsConsoleCmd.ZipFeedbackLogs(memoryStream, currentProfileId);
-		memoryStream.Seek(0L, SeekOrigin.Begin);
+		FeedbackLogFiles logFiles = GetLogsConsoleCmd.CollectFeedbackLogFiles(SaveManager.Instance.CurrentProfileId);
 		_runInBackgroundTaskSource = new TaskCompletionSource();
-		Task<bool> sendTask = SendFeedback(data, screenshotStream, memoryStream);
+		Task<bool> sendTask = SendFeedback(data, _screenshotBytes, logFiles, PutWithNewClient);
 		_sendBackstop.Visible = true;
 		_sendingLabel.Visible = true;
 		_failedLabel.Visible = false;
@@ -407,50 +402,92 @@ public partial class NSendFeedbackScreen : Control, IScreenContext
 	/// Send feedback and log after close.
 	/// This is purposefully static so that we ensure that nothing from the screen is used, as it can be deallocated
 	/// before the method completes.
+	/// After a 413 or a timeout, the next zip is written without the largest attachment that the failed attempt
+	/// included. Any other failure retries the same zip. The attachment budget keeps a zip with attachments under the
+	/// server's current limit, so a 413 with attachments only happens if that limit drops or a proxy in front of the
+	/// server has a lower one. Over HTTP/1.1 a body that is too large fails as a network error, because the server
+	/// closes the connection without reading it, so after an attempt without attachments fails in any way, the next
+	/// zip is also written without the older logs.
 	/// </summary>
-	private static async Task<bool> SendFeedback(FeedbackData data, Stream screenshotStream, Stream logsMemoryStream)
+	/// <param name="data">The report payload.</param>
+	/// <param name="screenshotBytes">The PNG screenshot.</param>
+	/// <param name="logFiles">Disposed when the send is done.</param>
+	/// <param name="put">Sends one attempt.</param>
+	/// <param name="retryDelaysMs">The wait before each retry. The last value is used for any further retries.</param>
+	public static async Task<bool> SendFeedback(FeedbackData data, byte[] screenshotBytes, FeedbackLogFiles logFiles, Func<HttpContent, Task<HttpResponseMessage>> put, IReadOnlyList<int>? retryDelaysMs = null)
 	{
-		_ = 2;
-		try
+		using (logFiles)
 		{
-			using MultipartFormDataContent formContent = BuildMultipartContent(data, screenshotStream, logsMemoryStream);
-			int[] delaysMs = new int[3] { 500, 1000, 2000 };
-			string sentryMessage = null;
-			for (int attempt = 0; attempt < 3; attempt++)
+			if (retryDelaysMs == null)
 			{
+				retryDelaysMs = new global::_003C_003Ez__ReadOnlyArray<int>(new int[3] { 500, 1000, 2000 });
+			}
+			int maxAttempts = Math.Max(3, logFiles.Attachments.Count + 1 + ((logFiles.OlderLogs.Count > 0) ? 1 : 0));
+			int maxAttachments = logFiles.Attachments.Count;
+			bool includeOlderLogs = true;
+			string sentryMessage = null;
+			for (int attempt = 0; attempt < maxAttempts; attempt++)
+			{
+				MemoryStream logsStream = new MemoryStream();
 				try
 				{
-					using HttpResponseMessage response = await _httpClient.PutAsync(_url, formContent);
-					if (response.IsSuccessStatusCode)
+					int attachmentLimit = maxAttachments;
+					bool withOlderLogs = includeOlderLogs;
+					List<int> written = await Task.Run(() => GetLogsConsoleCmd.WriteFeedbackZip(logsStream, logFiles, attachmentLimit, withOlderLogs, 41943040L));
+					logsStream.Seek(0L, SeekOrigin.Begin);
+					using MemoryStream screenshotStream = new MemoryStream(screenshotBytes);
+					using MultipartFormDataContent formContent = BuildMultipartContent(data, screenshotStream, logsStream);
+					Log.Info($"Feedback attempt {attempt + 1}/{maxAttempts} is {formContent.Headers.ContentLength} bytes (logs {logsStream.Length}, screenshot {screenshotStream.Length}), with attachments: {string.Join(", ", written.Select((int i) => logFiles.Attachments[i].EntryName))}{(withOlderLogs ? "" : ", without older logs")}");
+					bool flag;
+					try
 					{
-						Log.Info("Feedback successfully posted!");
-						return true;
+						using HttpResponseMessage response = await put(formContent);
+						if (response.IsSuccessStatusCode)
+						{
+							Log.Info("Feedback successfully posted!");
+							return true;
+						}
+						int statusCode = (int)response.StatusCode;
+						if (statusCode >= 400 && statusCode < 500 && statusCode != 429 && statusCode != 413)
+						{
+							string value = await response.Content.ReadAsStringAsync();
+							Log.Warn($"Feedback rejected ({response.StatusCode}): {value}");
+							SentrySdk.CaptureMessage($"Feedback rejected: Response status code {response.StatusCode}");
+							return false;
+						}
+						flag = statusCode == 413;
+						sentryMessage = $"Response status code {response.StatusCode}";
+						Log.Warn($"Feedback attempt {attempt + 1}/{maxAttempts} failed: {response.StatusCode} over HTTP/{response.Version}");
 					}
-					int statusCode = (int)response.StatusCode;
-					if (statusCode >= 400 && statusCode < 500 && statusCode != 429)
+					catch (Exception ex) when (((ex is HttpRequestException || ex is TaskCanceledException) ? 1 : 0) != 0)
 					{
-						string value = await response.Content.ReadAsStringAsync();
-						Log.Warn($"Feedback rejected ({response.StatusCode}): {value}");
-						SentrySdk.CaptureMessage($"Feedback rejected: Response status code {response.StatusCode}");
-						return false;
+						flag = ex is TaskCanceledException;
+						string text = $"Feedback attempt {attempt + 1}/{maxAttempts} network error: {ex}\n Inner messages: {ExceptionMessageWithInner(ex)}";
+						if (ex is HttpRequestException { HttpRequestError: not HttpRequestError.NameResolutionError })
+						{
+							sentryMessage = ex.GetType().Name + ": " + ExceptionMessageWithInner(ex);
+						}
+						Log.Warn(text);
 					}
-					sentryMessage = $"Response status code {response.StatusCode}";
-					Log.Warn($"Feedback attempt {attempt + 1}/{3} failed: {response.StatusCode}");
+					if (written.Count == 0)
+					{
+						includeOlderLogs = false;
+					}
+					else if (flag)
+					{
+						maxAttachments = written[written.Count - 1];
+					}
+					if (attempt < maxAttempts - 1)
+					{
+						await Task.Delay(retryDelaysMs[Math.Min(attempt, retryDelaysMs.Count - 1)]);
+					}
 				}
-				catch (Exception ex) when (((ex is HttpRequestException || ex is TaskCanceledException) ? 1 : 0) != 0)
+				finally
 				{
-					string text = $"Feedback attempt {attempt + 1}/{3} network error: {ex}\n Inner messages: {ExceptionMessageWithInner(ex)}";
-					if (ex is HttpRequestException { HttpRequestError: not HttpRequestError.NameResolutionError })
+					if (logsStream != null)
 					{
-						sentryMessage = ex.GetType().Name + ": " + ExceptionMessageWithInner(ex);
+						((IDisposable)logsStream).Dispose();
 					}
-					Log.Warn(text);
-				}
-				if (attempt < 2)
-				{
-					await Task.Delay(delaysMs[attempt]);
-					screenshotStream.Seek(0L, SeekOrigin.Begin);
-					logsMemoryStream.Seek(0L, SeekOrigin.Begin);
 				}
 			}
 			Log.Warn("Feedback send failed after all retry attempts");
@@ -460,11 +497,26 @@ public partial class NSendFeedbackScreen : Control, IScreenContext
 			}
 			return false;
 		}
-		finally
+	}
+
+	/// <summary>
+	/// Sends one upload attempt on a new HTTP client.
+	/// Over HTTP/1.1 the server's 413 for a body that is too large reaches the game as a broken connection while it is
+	/// still sending. Over HTTP/2 the game reads the 413. Some proxies only allow HTTP/1.1, so fall back to it. Over
+	/// plain http://, such as a local STS2_FEEDBACK_URL, this client uses HTTP/1.1.
+	/// Each attempt gets its own client because a request that times out over HTTP/2 only cancels its stream: a
+	/// connection that stopped passing data would stay in a shared client's pool, and every retry would wait on it
+	/// until the timeout.
+	/// </summary>
+	private static async Task<HttpResponseMessage> PutWithNewClient(HttpContent content)
+	{
+		using System.Net.Http.HttpClient client = new System.Net.Http.HttpClient
 		{
-			screenshotStream.Close();
-			logsMemoryStream.Close();
-		}
+			Timeout = TimeSpan.FromSeconds(10L),
+			DefaultRequestVersion = HttpVersion.Version20,
+			DefaultVersionPolicy = HttpVersionPolicy.RequestVersionOrLower
+		};
+		return await client.PutAsync(_url, content);
 	}
 
 	private static string ExceptionMessageWithInner(Exception ex)

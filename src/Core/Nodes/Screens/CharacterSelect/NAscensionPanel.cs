@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Nodes.CommonUi;
 using MegaCrit.Sts2.Core.Nodes.GodotExtensions;
+using MegaCrit.Sts2.Core.Runs;
 using MegaCrit.Sts2.Core.Saves;
 
 namespace MegaCrit.Sts2.Core.Nodes.Screens.CharacterSelect;
@@ -44,11 +45,17 @@ public partial class NAscensionPanel : Control
 
 	private NHotkeyIcon _rightTabIcon;
 
-	private ShaderMaterial _iconHsv;
+	private TextureRect _standardIcon;
+
+	private TextureRect _blitzIcon;
+
+	private ShaderMaterial _standardIconHsv;
 
 	private bool _arrowsVisible = true;
 
-	private MultiplayerUiMode _mode = MultiplayerUiMode.Singleplayer;
+	private GameMode _gameMode = GameMode.Standard;
+
+	private MultiplayerUiMode _uiMode = MultiplayerUiMode.Singleplayer;
 
 	private Tween? _tween;
 
@@ -60,9 +67,11 @@ public partial class NAscensionPanel : Control
 		_rightTabIcon = GetNode<NHotkeyIcon>("%RightTabIcon");
 		_leftArrow = GetNode<NButton>("HBoxContainer/LeftArrowContainer/LeftArrow");
 		_rightArrow = GetNode<NButton>("HBoxContainer/RightArrowContainer/RightArrow");
-		_ascensionLevel = GetNode<MegaLabel>("HBoxContainer/AscensionIconContainer/AscensionIcon/AscensionLevel");
+		_ascensionLevel = GetNode<MegaLabel>("HBoxContainer/AscensionContainer/AscensionLevel");
 		_info = GetNode<MegaRichTextLabel>("HBoxContainer/AscensionDescription/Description");
-		_iconHsv = (ShaderMaterial)GetNode<Control>("%AscensionIcon").Material;
+		_standardIcon = GetNode<TextureRect>("%AscensionIconStandard");
+		_blitzIcon = GetNode<TextureRect>("%AscensionIconBlitz");
+		_standardIconHsv = (ShaderMaterial)_standardIcon.Material;
 		_leftArrow.Connect(NClickableControl.SignalName.Released, Callable.From<NButton>(delegate
 		{
 			DecrementAscension();
@@ -77,31 +86,48 @@ public partial class NAscensionPanel : Control
 		UpdateControllerButton();
 	}
 
-	public void Initialize(MultiplayerUiMode mode)
+	public void Initialize(MultiplayerUiMode mode, GameMode gameMode)
 	{
-		_mode = mode;
-		if (_mode == MultiplayerUiMode.Host)
+		_uiMode = mode;
+		SwitchGameMode(gameMode);
+		if (_uiMode == MultiplayerUiMode.Host)
 		{
 			SetFireBlue();
 			_arrowsVisible = true;
-			SetMaxAscension(SaveManager.Instance.Progress.MaxMultiplayerAscension);
-			SetAscensionLevel(Math.Min(_maxAscension, SaveManager.Instance.Progress.PreferredMultiplayerAscension));
-			NHotkeyManager.Instance.PushHotkeyPressedBinding(_tabLeftHotkey, DecrementAscension);
-			NHotkeyManager.Instance.PushHotkeyPressedBinding(_tabRightHotkey, IncrementAscension);
+			if (_gameMode != GameMode.Blitz)
+			{
+				SetMaxAscension(SaveManager.Instance.Progress.MaxMultiplayerAscension);
+				SetAscensionLevel(Math.Min(_maxAscension, SaveManager.Instance.Progress.PreferredMultiplayerAscension));
+			}
+			else
+			{
+				SetMaxAscension(SaveManager.Instance.Progress.MaxBlitzAscension);
+				SetAscensionLevel(Math.Min(_maxAscension, SaveManager.Instance.Progress.PreferredBlitzAscension));
+			}
+			NHotkeyManager.Instance.PushHotkeyPressedBinding(_tabLeftHotkey, DecrementAscension, 0L);
+			NHotkeyManager.Instance.PushHotkeyPressedBinding(_tabRightHotkey, IncrementAscension, 0L);
 		}
-		else if (_mode == MultiplayerUiMode.Singleplayer)
+		else if (_uiMode == MultiplayerUiMode.Singleplayer)
 		{
 			SetFireRed();
 			_arrowsVisible = true;
-			SetMaxAscension(0);
-			SetAscensionLevel(0);
-			NHotkeyManager.Instance.PushHotkeyPressedBinding(_tabLeftHotkey, DecrementAscension);
-			NHotkeyManager.Instance.PushHotkeyPressedBinding(_tabRightHotkey, IncrementAscension);
+			if (_gameMode != GameMode.Blitz)
+			{
+				SetMaxAscension(0);
+				SetAscensionLevel(0);
+			}
+			else
+			{
+				SetMaxAscension(SaveManager.Instance.Progress.MaxBlitzAscension);
+				SetAscensionLevel(Math.Min(_maxAscension, SaveManager.Instance.Progress.PreferredBlitzAscension));
+			}
+			NHotkeyManager.Instance.PushHotkeyPressedBinding(_tabLeftHotkey, DecrementAscension, 0L);
+			NHotkeyManager.Instance.PushHotkeyPressedBinding(_tabRightHotkey, IncrementAscension, 0L);
 		}
 		else
 		{
-			MultiplayerUiMode mode2 = _mode;
-			if ((uint)(mode2 - 3) <= 1u)
+			MultiplayerUiMode uiMode = _uiMode;
+			if ((uint)(uiMode - 3) <= 1u)
 			{
 				SetFireBlue();
 				_arrowsVisible = false;
@@ -110,24 +136,31 @@ public partial class NAscensionPanel : Control
 		}
 	}
 
+	public void SwitchGameMode(GameMode gameMode)
+	{
+		_gameMode = gameMode;
+		_blitzIcon.Visible = gameMode == GameMode.Blitz;
+		_standardIcon.Visible = gameMode != GameMode.Blitz;
+	}
+
 	private void SetFireBlue()
 	{
-		_iconHsv.SetShaderParameter(_h, 0.52f);
-		_iconHsv.SetShaderParameter(_v, 1.2f);
+		_standardIconHsv.SetShaderParameter(_h, 0.52f);
+		_standardIconHsv.SetShaderParameter(_v, 1.2f);
 		_ascensionLevel.AddThemeColorOverride(_fontOutlineTheme, _blueLabelOutline);
 	}
 
 	private void SetFireRed()
 	{
-		_iconHsv.SetShaderParameter(_h, 1f);
-		_iconHsv.SetShaderParameter(_v, 1f);
+		_standardIconHsv.SetShaderParameter(_h, 1f);
+		_standardIconHsv.SetShaderParameter(_v, 1f);
 		_ascensionLevel.AddThemeColorOverride(_fontOutlineTheme, _redLabelOutline);
 	}
 
 	public void Cleanup()
 	{
-		MultiplayerUiMode mode = _mode;
-		if ((uint)(mode - 1) <= 1u)
+		MultiplayerUiMode uiMode = _uiMode;
+		if ((uint)(uiMode - 1) <= 1u)
 		{
 			NHotkeyManager.Instance.RemoveHotkeyPressedBinding(_tabLeftHotkey, DecrementAscension);
 			NHotkeyManager.Instance.RemoveHotkeyPressedBinding(_tabRightHotkey, IncrementAscension);
@@ -163,8 +196,8 @@ public partial class NAscensionPanel : Control
 
 	private void RefreshArrowVisibility()
 	{
-		_leftArrow.Visible = _arrowsVisible && Ascension != 0;
-		_rightArrow.Visible = _arrowsVisible && Ascension != _maxAscension;
+		_leftArrow.Visible = _arrowsVisible && Ascension != 0 && _gameMode != GameMode.Dread;
+		_rightArrow.Visible = _arrowsVisible && Ascension != _maxAscension && _gameMode != GameMode.Dread;
 	}
 
 	public void SetMaxAscension(int maxAscension)
@@ -182,8 +215,8 @@ public partial class NAscensionPanel : Control
 	private void RefreshAscensionText()
 	{
 		_ascensionLevel.SetTextAutoSize(Ascension.ToString());
-		string formattedText = AscensionHelper.GetTitle(Ascension).GetFormattedText();
-		string formattedText2 = AscensionHelper.GetDescription(Ascension).GetFormattedText();
+		string formattedText = AscensionHelper.GetTitle(Ascension, _gameMode).GetFormattedText();
+		string formattedText2 = AscensionHelper.GetDescription(Ascension, _gameMode).GetFormattedText();
 		_info.Text = "[b][gold]" + formattedText + "[/gold][/b]\n" + formattedText2;
 	}
 
@@ -204,8 +237,8 @@ public partial class NAscensionPanel : Control
 
 	private void UpdateControllerButton()
 	{
-		MultiplayerUiMode mode = _mode;
-		if ((uint)(mode - 1) <= 1u)
+		MultiplayerUiMode uiMode = _uiMode;
+		if ((uint)(uiMode - 1) <= 1u)
 		{
 			_leftTabIcon.Visible = NControllerManager.Instance.IsUsingDirectionalNavigation;
 			_rightTabIcon.Visible = NControllerManager.Instance.IsUsingDirectionalNavigation;

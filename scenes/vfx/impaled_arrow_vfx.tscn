@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwfosg5pkg50y"]
+
+[ext_resource type="Script" uid="uid://cqc0ojade5htm" path="res://src/Core/Nodes/Vfx/NImpaledArrowVfx.cs" id="1_jclq5"]
+[ext_resource type="Texture2D" uid="uid://cmqbuqiumj6rh" path="res://images/vfx/arrow_fg.png" id="1_m5nus"]
+[ext_resource type="Texture2D" uid="uid://c21sx0o64ugwr" path="res://images/vfx/arrow_bg.png" id="2_jclq5"]
+
+[node name="ImpaledArrowVfx" type="Node2D"]
+script = ExtResource("1_jclq5")
+
+[node name="BackArrow" type="Node2D" parent="."]
+show_behind_parent = true
+position = Vector2(-2, 5)
+
+[node name="ArrowBg" type="Sprite2D" parent="BackArrow"]
+position = Vector2(44.5, -5)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_jclq5")
+
+[node name="FrontArrow" type="Node2D" parent="."]
+position = Vector2(-2, 5)
+
+[node name="ArrowFg" type="Sprite2D" parent="FrontArrow"]
+show_behind_parent = true
+position = Vector2(44.5, -5)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_m5nus")

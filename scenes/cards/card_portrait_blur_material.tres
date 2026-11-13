@@ -4,5 +4,4 @@
 
 [resource]
 shader = ExtResource("1_jyhuj")
-shader_parameter/step = Vector2(1, 0)
-shader_parameter/radius = 32.0
+shader_parameter/radius = 16.0

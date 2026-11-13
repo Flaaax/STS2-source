@@ -20,7 +20,9 @@ namespace MegaCrit.Sts2.Core.Nodes.Screens.Timeline;
 
 public partial class NEpochSlot : NButton
 {
-	private static readonly StringName _lod = new StringName("lod");
+	private static readonly StringName _blurUvRegion = new StringName("uv_region");
+
+	private static readonly StringName _blurRadiusScale = new StringName("radius_scale");
 
 	private static readonly StringName _v = new StringName("v");
 
@@ -44,17 +46,11 @@ public partial class NEpochSlot : NButton
 
 	private TextureRect _outline;
 
-	private Control _blur;
-
-	private ShaderMaterial _blurShader;
-
 	private NSelectionReticle _selectionReticle;
 
 	private NEpochOffscreenVfx? _offscreenVfx;
 
 	private Control? _highlightVfx;
-
-	private SubViewportContainer _subViewportContainer;
 
 	private SubViewport _subViewport;
 
@@ -109,9 +105,7 @@ public partial class NEpochSlot : NButton
 		_hsv = (ShaderMaterial)_portrait.GetMaterial();
 		_blurPortrait = GetNode<TextureRect>("%BlurPortrait");
 		_outline = GetNode<TextureRect>("%Outline");
-		_subViewportContainer = GetNode<SubViewportContainer>("%SubViewportContainer");
 		_subViewport = GetNode<SubViewport>("%SubViewport");
-		_blurShader = (ShaderMaterial)GetNode<Control>("%Blur").GetMaterial();
 		_selectionReticle = GetNode<NSelectionReticle>("%SelectionReticle");
 		if (!NGame.IsReleaseGame())
 		{
@@ -205,7 +199,7 @@ public partial class NEpochSlot : NButton
 		}
 		else
 		{
-			_hoverTween.TweenMethod(Callable.From<float>(UpdateShaderS), _hsv.GetShaderParameter(_s), 0.25f, 0.05);
+			_hoverTween.TweenMethod(Callable.From<float>(UpdateShaderS), _hsv.GetShaderParameter(_s), 0f, 0.05);
 			_hoverTween.TweenMethod(Callable.From<float>(UpdateShaderV), _hsv.GetShaderParameter(_v), 1.2f, 0.05);
 			LocString unlockInfo3 = model.UnlockInfo;
 			unlockInfo3.Add("IsRevealed", variable: false);
@@ -250,7 +244,7 @@ public partial class NEpochSlot : NButton
 		}
 		else
 		{
-			_hoverTween.TweenMethod(Callable.From<float>(UpdateShaderS), _hsv.GetShaderParameter(_s), 0.25f, 0.5).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Expo);
+			_hoverTween.TweenMethod(Callable.From<float>(UpdateShaderS), _hsv.GetShaderParameter(_s), 0f, 0.5).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Expo);
 			_hoverTween.TweenMethod(Callable.From<float>(UpdateShaderV), _hsv.GetShaderParameter(_v), 1.1f, 0.5).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Expo);
 		}
 		NHoverTipSet.Remove(this);
@@ -291,7 +285,7 @@ public partial class NEpochSlot : NButton
 		_spawnTween.TweenProperty(_outline, "position", Vector2.Zero, 0.5).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Back)
 			.From(new Vector2(0f, 64f));
 		_spawnTween.TweenProperty(_slotImage, "self_modulate:a", 1f, 0.5).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);
-		if (await _spawnTween.AwaitFinished(this))
+		if (await _spawnTween.AwaitFinished(this) == TweenOutcome.Finished)
 		{
 			HasSpawned = true;
 			if (State == EpochSlotState.Obtained)
@@ -363,11 +357,12 @@ public partial class NEpochSlot : NButton
 		}
 		else if (State == EpochSlotState.NotObtained)
 		{
-			_blurShader.SetShaderParameter(_lod, 2f);
-			UpdateShaderS(0.25f);
+			UpdateShaderS(0f);
 			UpdateShaderV(1f);
 			_blurPortrait.Texture = model.Portrait;
-			_subViewportContainer.Visible = true;
+			_blurPortrait.SetInstanceShaderParameter(_blurUvRegion, ImageHelper.GetAtlasUvRegion(_blurPortrait.Texture));
+			_blurPortrait.SetInstanceShaderParameter(_blurRadiusScale, 1f);
+			_subViewport.RenderTargetUpdateMode = SubViewport.UpdateMode.Once;
 			_portrait.Texture = _subViewport.GetTexture();
 		}
 		base.MouseDefaultCursorShape = (CursorShape)((State == EpochSlotState.Complete) ? 16 : 0);
@@ -381,10 +376,5 @@ public partial class NEpochSlot : NButton
 	private void UpdateShaderV(float value)
 	{
 		_hsv.SetShaderParameter(_v, value);
-	}
-
-	private void UpdateBlurLod(float value)
-	{
-		_blurShader.SetShaderParameter(_lod, value);
 	}
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bc1i6k0yppvpi"]
+[gd_scene load_steps=29 format=3 uid="uid://bc1i6k0yppvpi"]
 
 [ext_resource type="Script" uid="uid://3llx5mppaxag" path="res://src/Core/Nodes/Screens/MainMenu/NMainMenu.cs" id="1_mf3d1"]
 [ext_resource type="PackedScene" uid="uid://b7h703c8cnsc1" path="res://scenes/backgrounds/main_menu_bg.tscn" id="2_5mogb"]
@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://dk0y4pcjbr73p" path="res://scenes/screens/main_menu/patch_notes_button.tscn" id="14_qrgvl"]
 [ext_resource type="FontVariation" uid="uid://db2l475v4scfm" path="res://themes/source_code_pro_semibold_shared.tres" id="15_flmdy"]
 [ext_resource type="Shader" uid="uid://cmylquha3cjx4" path="res://shaders/dark_blur.gdshader" id="17_v3pup"]
+[ext_resource type="PackedScene" uid="uid://c5p4i6oqplsy0" path="res://scenes/screens/dread/dread_screen.tscn" id="19_858gm"]
+[ext_resource type="PackedScene" uid="uid://bbl5vkc8qope3" path="res://scenes/screens/blitz/blitz_screen.tscn" id="20_qrgvl"]
 [ext_resource type="PackedScene" uid="uid://c51qbkbks3pae" path="res://scenes/screens/patch_notes_screen.tscn" id="21_858gm"]
 [ext_resource type="Script" uid="uid://dd5se1cp23f17" path="res://src/Core/Nodes/Screens/MainMenu/NMainMenuSubmenuStack.cs" id="24_qrgvl"]
 [ext_resource type="PackedScene" uid="uid://dws30qiqcim2u" path="res://scenes/screens/settings_screen.tscn" id="25_settings"]
@@ -443,6 +445,8 @@ mouse_filter = 2
 script = ExtResource("24_qrgvl")
 _settingsScreenScene = ExtResource("25_settings")
 _characterSelectScreenScene = ExtResource("26_pcknc")
+_dreadScreenScene = ExtResource("19_858gm")
+_blitzScreenScene = ExtResource("20_qrgvl")
 
 [node name="Fps" parent="." instance=ExtResource("47_mpnyt")]
 layout_mode = 0

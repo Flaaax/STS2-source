@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using Godot;
 using MegaCrit.Sts2.addons.mega_text;
@@ -6,6 +7,7 @@ using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Runs;
 using MegaCrit.Sts2.Core.Saves;
 using MegaCrit.Sts2.Core.Saves.Runs;
 
@@ -25,6 +27,8 @@ public partial class NContinueRunInfo : Control
 	private Control _errorContainer;
 
 	private MegaRichTextLabel _dateLabel;
+
+	private TextureRect _goldIcon;
 
 	private MegaRichTextLabel _goldLabel;
 
@@ -47,6 +51,7 @@ public partial class NContinueRunInfo : Control
 		_runInfoContainer = GetNode<VBoxContainer>("%RunInfoContainer");
 		_errorContainer = GetNode<Control>("%ErrorContainer");
 		_dateLabel = GetNode<MegaRichTextLabel>("%DateLabel");
+		_goldIcon = GetNode<TextureRect>("%GoldIcon");
 		_goldLabel = GetNode<MegaRichTextLabel>("%GoldLabel");
 		_healthLabel = GetNode<MegaRichTextLabel>("%HealthLabel");
 		_progressLabel = GetNode<MegaRichTextLabel>("%ProgressLabel");
@@ -58,8 +63,8 @@ public partial class NContinueRunInfo : Control
 	{
 		_visTween?.Kill();
 		_visTween = CreateTween().SetParallel();
-		_visTween.TweenProperty(this, "position", _initPosition + new Vector2(0f, -20f), 0.20000000298023224).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Back);
-		_visTween.TweenProperty(this, "modulate:a", 1f, 0.20000000298023224);
+		_visTween.TweenProperty(this, "position", _initPosition + new Vector2(0f, -20f), 0.2).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Back);
+		_visTween.TweenProperty(this, "modulate:a", 1f, 0.2);
 		_isShown = true;
 	}
 
@@ -69,8 +74,8 @@ public partial class NContinueRunInfo : Control
 		{
 			_visTween?.Kill();
 			_visTween = CreateTween().SetParallel();
-			_visTween.TweenProperty(this, "position", _initPosition, 0.20000000298023224);
-			_visTween.TweenProperty(this, "modulate:a", 0f, 0.20000000298023224);
+			_visTween.TweenProperty(this, "position", _initPosition, 0.2);
+			_visTween.TweenProperty(this, "modulate:a", 0f, 0.2);
 			_isShown = false;
 		}
 	}
@@ -106,15 +111,46 @@ public partial class NContinueRunInfo : Control
 		string variable = dateTime.ToString(rawText, dateTimeFormat);
 		LocString locString = new LocString("main_menu_ui", "CONTINUE_RUN_INFO.saved");
 		locString.Add("LastSavedTime", variable);
-		_dateLabel.Text = locString.GetFormattedText();
-		if (save.Ascension > 0)
+		_dateLabel.SetTextAutoSize(locString.GetFormattedText());
+		if (save.GameMode == GameMode.Dread)
 		{
-			LocString locString2 = new LocString("main_menu_ui", "CONTINUE_RUN_INFO.ascension");
-			_ascensionLabel.Text = $"{locString2.GetFormattedText()} {save.Ascension}";
+			List<string> list = new List<string>();
+			LocString locString2 = new LocString("main_menu_ui", "CONTINUE_RUN_INFO.dread");
+			list.Add("[aqua]" + locString2.GetFormattedText() + "[/aqua]");
+			if (save.IsCustomGame)
+			{
+				list.Add(new LocString("main_menu_ui", "CONTINUE_RUN_INFO.custom").GetFormattedText());
+			}
+			_ascensionLabel.SetTextAutoSize(string.Join(" ", list));
 		}
 		else
 		{
-			_ascensionLabel.Visible = false;
+			List<string> list2 = new List<string>();
+			GameMode gameMode = save.GameMode;
+			if ((gameMode == GameMode.Daily || gameMode == GameMode.Blitz) ? true : false)
+			{
+				GameMode gameMode2 = save.GameMode;
+				string text = ((gameMode2 != GameMode.Daily) ? "CONTINUE_RUN_INFO.blitz" : "CONTINUE_RUN_INFO.daily");
+				string locEntryKey = text;
+				list2.Add(new LocString("main_menu_ui", locEntryKey).GetFormattedText());
+			}
+			if (save.IsCustomGame)
+			{
+				list2.Add(new LocString("main_menu_ui", "CONTINUE_RUN_INFO.custom").GetFormattedText());
+			}
+			if (save.Ascension > 0)
+			{
+				LocString locString3 = new LocString("main_menu_ui", "CONTINUE_RUN_INFO.ascension");
+				list2.Add($"[orange]{locString3.GetFormattedText()} {save.Ascension}[/orange]");
+			}
+			if (list2.Count > 0)
+			{
+				_ascensionLabel.SetTextAutoSize(string.Join(" ", list2));
+			}
+			else
+			{
+				_ascensionLabel.Visible = false;
+			}
 		}
 		ActModel byId = ModelDb.GetById<ActModel>(save.Acts[save.CurrentActIndex].Id);
 		SerializablePlayer serializablePlayer = save.Players[0];
@@ -124,11 +160,17 @@ public partial class NContinueRunInfo : Control
 		int num = save.VisitedMapCoords.Count;
 		for (int i = 0; i < save.CurrentActIndex; i++)
 		{
-			num += ModelDb.GetById<ActModel>(save.Acts[i].Id).GetNumberOfFloors(save.Players.Count > 1);
+			num += save.MapPointHistory[i].Count;
 		}
-		_progressLabel.Text = $"{formattedText} [blue]- {formattedText2} {num}[/blue]";
-		_healthLabel.Text = $"[red]{serializablePlayer.CurrentHp}/{serializablePlayer.MaxHp}[/red]";
-		_goldLabel.Text = $"[gold]{serializablePlayer.Gold}[/gold]";
+		_progressLabel.SetTextAutoSize($"{formattedText} [blue]- {formattedText2} {num}[/blue]");
+		_healthLabel.SetTextAutoSize($"[red]{serializablePlayer.CurrentHp}/{serializablePlayer.MaxHp}[/red]");
+		bool flag = save.GameMode != GameMode.Blitz;
+		_goldIcon.Visible = flag;
+		_goldLabel.Visible = flag;
+		if (flag)
+		{
+			_goldLabel.SetTextAutoSize($"[gold]{serializablePlayer.Gold}[/gold]");
+		}
 	}
 
 	private void ShowError()

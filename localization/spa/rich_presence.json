@@ -1,6 +1,10 @@
 {
+  "BLITZ_MP_LOBBY": "Sala de Relámpago",
   "CUSTOM_MP_LOBBY": "Sala personalizada",
   "DAILY_MP_LOBBY": "Sala diaria",
+  "DREAD_MP_LOBBY": "Sala de Pesadilla",
+  "IN_BLITZ_RUN": "Relámpago: {#%Character%_title} - {#%Act%_title} A%Ascension%",
+  "IN_DREAD_RUN": "Pesadilla: {#%Character%_title} - {#%Act%_title} D%DreadStreak%",
   "IN_RUN": "{#%Character%_title} - {#%Act%_title} A%Ascension%",
   "LOADING_MP_LOBBY": "Sala de partida guardada",
   "MAIN_MENU": "Menú principal",

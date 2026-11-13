@@ -21,7 +21,7 @@ public class SteamPlatformUtilStrategy : IPlatformUtilStrategy
 
 	private bool _isPlatformOverlayOpen;
 
-	private Callback<GameOverlayActivated_t>? _steamOverlayCallback;
+	private readonly Callback<GameOverlayActivated_t>? _steamOverlayCallback;
 
 	public bool SupportsInviteDialog => true;
 

@@ -18,7 +18,7 @@ public partial class NFastModeHoverTip : Control
 
 	private void OnHovered()
 	{
-		NHoverTipSet.CreateAndShow(this, _hoverTip)?.SetGlobalPosition(base.GlobalPosition + NSettingsScreen.settingTipsOffset);
+		NHoverTipSet.CreateAndShow(this, _hoverTip)?.SetGlobalPosition(NSettingsScreen.GetSettingTipPosition(this));
 	}
 
 	private void OnUnhovered()

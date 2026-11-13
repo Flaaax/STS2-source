@@ -41,6 +41,7 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 pivot_offset = Vector2(20, 20)
+mouse_filter = 2
 expand_mode = 1
 stretch_mode = 4
 

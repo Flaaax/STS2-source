@@ -1,6 +1,10 @@
 {
+  "BLITZ_MP_LOBBY": "블리츠 로비",
   "CUSTOM_MP_LOBBY": "커스텀 로비",
   "DAILY_MP_LOBBY": "일일 도전 로비",
+  "DREAD_MP_LOBBY": "드레드 로비",
+  "IN_BLITZ_RUN": "블리츠: {#%Character%_title} - {#%Act%_title} 승천 %Ascension%",
+  "IN_DREAD_RUN": "드레드: {#%Character%_title} - {#%Act%_title} 드레드 %DreadStreak%",
   "IN_RUN": "{#%Character%_title} - {#%Act%_title} 승천 %Ascension%",
   "LOADING_MP_LOBBY": "저장된 게임 로비",
   "MAIN_MENU": "메인 메뉴",

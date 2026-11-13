@@ -1,0 +1,100 @@
+[gd_scene load_steps=5 format=3 uid="uid://coatr4hubdjls"]
+
+[ext_resource type="Script" uid="uid://bc38bb8gj5ekm" path="res://src/Core/Nodes/CommonUi/NBlitzTopBarMapPoint.cs" id="1_xy4ab"]
+[ext_resource type="Texture2D" uid="uid://b4vyq55" path="res://images/atlases/ui_atlas.sprites/map/icons/map_monster.tres" id="3_xu667"]
+[ext_resource type="Texture2D" uid="uid://cntbsyy" path="res://images/atlases/compressed_atlas.sprites/map_monster_outline.tres" id="4_6uuk6"]
+[ext_resource type="PackedScene" uid="uid://bgy88bk44xxvk" path="res://scenes/ui/selection_reticle.tscn" id="6_f1n2s"]
+
+[node name="BlitzMapPoint" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -980.0
+offset_top = -560.0
+offset_right = -940.0
+offset_bottom = -520.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(20, 20)
+focus_mode = 2
+mouse_filter = 1
+script = ExtResource("1_xy4ab")
+metadata/_edit_group_ = true
+
+[node name="IconContainer" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(28, 28)
+mouse_filter = 2
+
+[node name="Icon" type="TextureRect" parent="IconContainer"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(46, 46)
+mouse_filter = 2
+texture = ExtResource("3_xu667")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Outline" type="TextureRect" parent="IconContainer/Icon"]
+unique_name_in_owner = true
+modulate = Color(0, 0, 0, 0.2509804)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(46, 46)
+mouse_filter = 2
+texture = ExtResource("4_6uuk6")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SelectionReticle" parent="." instance=ExtResource("6_f1n2s")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(30, 30)
+
+[node name="Shadow" parent="SelectionReticle/Border" index="0"]
+self_modulate = Color(0, 0, 0, 0.35000002)
+
+[node name="Shadow2" parent="SelectionReticle/Border2" index="0"]
+self_modulate = Color(0, 0, 0, 0.35000002)
+
+[node name="Shadow3" parent="SelectionReticle/Border3" index="0"]
+self_modulate = Color(0, 0, 0, 0.35000002)
+
+[node name="Shadow4" parent="SelectionReticle/Border4" index="0"]
+self_modulate = Color(0, 0, 0, 0.35000002)
+
+[editable path="SelectionReticle"]

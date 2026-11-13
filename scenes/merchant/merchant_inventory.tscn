@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cm4ocv4456kaq"]
+[gd_scene load_steps=15 format=3 uid="uid://cm4ocv4456kaq"]
 
 [ext_resource type="Script" uid="uid://b8ll880lwpf2n" path="res://src/Core/Nodes/Screens/Shops/NMerchantInventory.cs" id="1_ypdbi"]
 [ext_resource type="Texture2D" uid="uid://dmnu2gbfrnee4" path="res://images/rooms/merchant_room/shop_rug.png" id="2_sw1qd"]
@@ -6,10 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://bro6sn3uqyhfr" path="res://scenes/merchant/merchant_relic.tscn" id="4_hw4i6"]
 [ext_resource type="PackedScene" uid="uid://lnojwtr7mw70" path="res://scenes/merchant/merchant_potion.tscn" id="5_cg3tn"]
 [ext_resource type="PackedScene" uid="uid://ca1bm16oq4u5v" path="res://scenes/merchant/merchant_card_removal.tscn" id="6_2p75s"]
+[ext_resource type="PackedScene" uid="uid://bt2nwjl6x7oyo" path="res://scenes/merchant/blitz_merchant_entry.tscn" id="7_2fujk"]
 [ext_resource type="PackedScene" uid="uid://bl4mbjqjfffa3" path="res://scenes/ui/back_button.tscn" id="7_qbecm"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://cf07xueehrjqk" path="res://animations/backgrounds/merchant_room/hand/merchant_hand_skel_data.tres" id="8_bkfru"]
 [ext_resource type="Script" uid="uid://p34nsajneq80" path="res://src/Core/Nodes/Screens/Shops/NMerchantHand.cs" id="9_fems6"]
 [ext_resource type="PackedScene" uid="uid://slvrtr0urml" path="res://scenes/merchant/merchant_rug_dialogue.tscn" id="10_37ef2"]
+[ext_resource type="Script" uid="uid://c2oywrx8xbqfx" path="res://addons/mega_text/MegaRichTextLabel.cs" id="12_cj2i2"]
+[ext_resource type="FontVariation" uid="uid://cfurftqxyn4mn" path="res://themes/kreon_regular_glyph_space_one.tres" id="12_grgsy"]
+[ext_resource type="FontVariation" uid="uid://ux4d708e7mk6" path="res://themes/kreon_bold_glyph_space_one.tres" id="13_fmc88"]
 
 [node name="MerchantInventory" type="Control"]
 layout_mode = 3
@@ -86,9 +90,9 @@ offset_bottom = 419.0
 [node name="ColorlessCards" type="Control" parent="SlotsContainer"]
 unique_name_in_owner = true
 anchors_preset = 0
-offset_left = 397.0
+offset_left = 349.0
 offset_top = 676.0
-offset_right = 397.0
+offset_right = 349.0
 offset_bottom = 676.0
 
 [node name="MerchantCardHolder" parent="SlotsContainer/ColorlessCards" instance=ExtResource("3_uu80r")]
@@ -104,10 +108,10 @@ offset_right = 561.0
 [node name="Relics" type="Control" parent="SlotsContainer"]
 unique_name_in_owner = true
 anchors_preset = 0
-offset_left = 871.0
-offset_top = 595.0
-offset_right = 911.0
-offset_bottom = 635.0
+offset_left = 839.0
+offset_top = 603.0
+offset_right = 879.0
+offset_bottom = 643.0
 
 [node name="MerchantRelic" parent="SlotsContainer/Relics" instance=ExtResource("4_hw4i6")]
 layout_mode = 0
@@ -125,10 +129,10 @@ offset_right = 422.0
 [node name="Potions" type="Control" parent="SlotsContainer"]
 unique_name_in_owner = true
 anchors_preset = 0
-offset_left = 871.0
-offset_top = 739.0
-offset_right = 911.0
-offset_bottom = 779.0
+offset_left = 839.0
+offset_top = 747.0
+offset_right = 879.0
+offset_bottom = 787.0
 
 [node name="MerchantPotion" parent="SlotsContainer/Potions" instance=ExtResource("5_cg3tn")]
 layout_mode = 0
@@ -146,10 +150,97 @@ offset_right = 422.0
 [node name="MerchantCardRemoval" parent="SlotsContainer" instance=ExtResource("6_2p75s")]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 1370.0
-offset_top = 678.0
-offset_right = 1588.0
-offset_bottom = 896.0
+offset_left = 1351.0
+offset_top = 630.0
+offset_right = 1569.0
+offset_bottom = 848.0
+
+[node name="BlitzSlots" type="Control" parent="SlotsContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MerchantBlitzEntry" parent="SlotsContainer/BlitzSlots" instance=ExtResource("7_2fujk")]
+layout_mode = 0
+offset_left = 415.0
+offset_top = 320.0
+offset_right = 415.0
+offset_bottom = 320.0
+
+[node name="MerchantBlitzEntry2" parent="SlotsContainer/BlitzSlots" instance=ExtResource("7_2fujk")]
+layout_mode = 0
+offset_left = 896.0
+offset_top = 293.0
+offset_right = 896.0
+offset_bottom = 293.0
+
+[node name="MerchantBlitzEntry3" parent="SlotsContainer/BlitzSlots" instance=ExtResource("7_2fujk")]
+layout_mode = 0
+offset_left = 1291.0
+offset_top = 355.0
+offset_right = 1291.0
+offset_bottom = 355.0
+
+[node name="MerchantBlitzEntry4" parent="SlotsContainer/BlitzSlots" instance=ExtResource("7_2fujk")]
+layout_mode = 0
+offset_left = 437.0
+offset_top = 679.0
+offset_right = 437.0
+offset_bottom = 679.0
+
+[node name="MerchantBlitzEntry5" parent="SlotsContainer/BlitzSlots" instance=ExtResource("7_2fujk")]
+layout_mode = 0
+offset_left = 831.0
+offset_top = 637.0
+offset_right = 831.0
+offset_bottom = 637.0
+
+[node name="MerchantBlitzEntry6" parent="SlotsContainer/BlitzSlots" instance=ExtResource("7_2fujk")]
+layout_mode = 0
+offset_left = 1247.0
+offset_top = 689.0
+offset_right = 1247.0
+offset_bottom = 689.0
+
+[node name="BlitzSelectionText" type="RichTextLabel" parent="SlotsContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1400, 36)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.48700002
+anchor_top = 0.93700004
+anchor_right = 0.48700002
+anchor_bottom = 0.93700004
+offset_left = -699.78906
+offset_top = -34.386047
+offset_right = 700.21094
+offset_bottom = 1.6139526
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/default_color = Color(1, 0.964706, 0.886275, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.5019608)
+theme_override_constants/outline_size = 12
+theme_override_fonts/normal_font = ExtResource("12_grgsy")
+theme_override_fonts/bold_font = ExtResource("13_fmc88")
+theme_override_font_sizes/normal_font_size = 28
+theme_override_font_sizes/bold_font_size = 28
+bbcode_enabled = true
+text = "You may choose [blue]3[/blue] more items."
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("12_cj2i2")
+AutoSizeEnabled = false
+MinFontSize = 24
+MaxFontSize = 24
+metadata/_custom_type_script = "uid://c2oywrx8xbqfx"
 
 [node name="BackButton" parent="." instance=ExtResource("7_qbecm")]
 unique_name_in_owner = true

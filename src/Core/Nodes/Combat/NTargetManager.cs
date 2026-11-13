@@ -335,7 +335,7 @@ public partial class NTargetManager : Node2D
 			}
 			else
 			{
-				_targetingArrow.UpdateDrawingTo(nMultiplayerPlayerState.GlobalPosition + Vector2.Right * nMultiplayerPlayerState.Hitbox.Size.X + Vector2.Down * nMultiplayerPlayerState.Hitbox.Size.Y / 2f);
+				_targetingArrow.UpdateDrawingTo(nMultiplayerPlayerState.GlobalPosition + Vector2.Right * nMultiplayerPlayerState.Hitbox.Size.X + Vector2.Down * nMultiplayerPlayerState.Hitbox.Size.Y * 0.5f);
 			}
 		}
 		EmitSignal(SignalName.NodeHovered, node);

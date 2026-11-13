@@ -30,6 +30,8 @@
   "COMBAT_REWARD_ADD_SPECIAL_CARD": "Ajoutez {Card} à votre deck.",
   "COMBAT_REWARD_CARD_REMOVAL": "Retirez une carte de votre deck.",
   "COMBAT_REWARD_CARD_REMOVAL.selectionScreenPrompt": "Choisissez une carte à retirer de votre deck.",
+  "COMBAT_REWARD_CARD_UPGRADE": "Améliorez une carte.",
+  "COMBAT_REWARD_CARD_UPGRADE.selectionScreenPrompt": "Choisissez une carte à améliorer.",
   "COMBAT_REWARD_GOLD": "{gold} Pièces d'or",
   "COMBAT_REWARD_GOLD_STOLEN": "{gold} Pièces d'or (récupérées)",
   "COMBAT_REWARD_HEADER_LOOT": "Du butin !",

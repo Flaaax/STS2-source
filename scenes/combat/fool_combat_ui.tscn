@@ -1,0 +1,66 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhxr2v2qav1sc"]
+
+[ext_resource type="Script" uid="uid://dscnb267wyqb6" path="res://src/Core/Nodes/Combat/NFoolCombatUi.cs" id="1_1qlfm"]
+[ext_resource type="Texture2D" uid="uid://dun0w50r2at0t" path="res://images/packed/fool/bow.png" id="2_5rg5s"]
+
+[node name="FoolCombatUi" type="Control"]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+script = ExtResource("1_1qlfm")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="Bow" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(89, 240)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 23.0
+offset_top = -465.0
+offset_right = 112.0
+offset_bottom = -225.0
+grow_vertical = 0
+texture = ExtResource("2_5rg5s")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Pos0" type="Node2D" parent="Bow"]
+unique_name_in_owner = true
+position = Vector2(14, 65)
+
+[node name="Pos1" type="Node2D" parent="Bow"]
+unique_name_in_owner = true
+position = Vector2(26, 86)
+
+[node name="Pos2" type="Node2D" parent="Bow"]
+unique_name_in_owner = true
+position = Vector2(41, 120)
+
+[node name="Pos3" type="Node2D" parent="Bow"]
+unique_name_in_owner = true
+position = Vector2(26, 155)
+
+[node name="Pos4" type="Node2D" parent="Bow"]
+unique_name_in_owner = true
+position = Vector2(14, 173)
+
+[node name="SymbolContainer" type="Control" parent="Bow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ArrowContainer" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 117.0
+offset_top = -458.0
+offset_right = 293.0
+offset_bottom = -262.0
+theme_override_constants/separation = 0

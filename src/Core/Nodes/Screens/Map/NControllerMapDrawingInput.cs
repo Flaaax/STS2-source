@@ -11,9 +11,9 @@ public partial class NControllerMapDrawingInput : NMapDrawingInput
 {
 	private const string _scenePath = "res://scenes/screens/map/controller_map_drawing_input.tscn";
 
-	private Vector2 _eraserIconPos = new Vector2(-34f, -76f);
+	private static readonly Vector2 _eraserIconPos = new Vector2(-34f, -76f);
 
-	private Vector2 _drawingIconPos = new Vector2(-10f, -76f);
+	private static readonly Vector2 _drawingIconPos = new Vector2(-10f, -76f);
 
 	private bool _isPressed;
 
@@ -22,6 +22,8 @@ public partial class NControllerMapDrawingInput : NMapDrawingInput
 	private Texture2D _cursorTiltedTex;
 
 	private Control _cursor;
+
+	private TextureRect _cursorIcon;
 
 	private Vector2 _direction;
 
@@ -34,6 +36,7 @@ public partial class NControllerMapDrawingInput : NMapDrawingInput
 	{
 		base._Ready();
 		_cursor = GetNode<Control>("%Cursor");
+		_cursorIcon = _cursor.GetNode<TextureRect>("TextureRect");
 		this.TryGrabFocus();
 		GetViewport().Connect(Viewport.SignalName.GuiFocusChanged, Callable.From<Control>(OnGuiFocusChanged));
 		if (base.DrawingMode == DrawingMode.Drawing)
@@ -46,8 +49,8 @@ public partial class NControllerMapDrawingInput : NMapDrawingInput
 			_cursorTex = ImageTexture.CreateFromImage(PreloadManager.Cache.GetAsset<Image>("res://images/packed/common_ui/cursor_eraser.png"));
 			_cursorTiltedTex = ImageTexture.CreateFromImage(PreloadManager.Cache.GetAsset<Image>("res://images/packed/common_ui/cursor_eraser_tilted.png"));
 		}
-		_cursor.GetNode<TextureRect>("TextureRect").Texture = _cursorTex;
-		_cursor.GetNode<TextureRect>("TextureRect").Position = ((base.DrawingMode == DrawingMode.Drawing) ? _drawingIconPos : _eraserIconPos);
+		_cursorIcon.Texture = _cursorTex;
+		_cursorIcon.Position = ((base.DrawingMode == DrawingMode.Drawing) ? _drawingIconPos : _eraserIconPos);
 	}
 
 	private void OnGuiFocusChanged(Control _)
@@ -62,18 +65,18 @@ public partial class NControllerMapDrawingInput : NMapDrawingInput
 			if (!_isPressed)
 			{
 				_drawings.BeginLineLocal(_drawings.GetGlobalTransform().Inverse() * _cursor.GlobalPosition, null);
-				_cursor.GetNode<TextureRect>("TextureRect").Texture = _cursorTiltedTex;
+				_cursorIcon.Texture = _cursorTiltedTex;
 				_isPressed = true;
 			}
 		}
 		else if (_isPressed)
 		{
 			_drawings.StopLineLocal();
-			_cursor.GetNode<TextureRect>("TextureRect").Texture = _cursorTex;
+			_cursorIcon.Texture = _cursorTex;
 			_isPressed = false;
 		}
 		_direction = NControllerManager.Instance.GetLeftAnalogStickDirection();
-		if (_direction.Length() < 0.1f)
+		if (_direction.LengthSquared() < 0.010000001f)
 		{
 			if (NControllerManager.Instance.InputType == InputType.KeyboardOnlyMode)
 			{
@@ -84,7 +87,7 @@ public partial class NControllerMapDrawingInput : NMapDrawingInput
 				_direction += Input.GetVector(Controller.dPadLeft, Controller.dPadRight, Controller.dPadUp, Controller.dPadDown);
 			}
 		}
-		if (_direction.Length() > 0f)
+		if (_direction != Vector2.Zero)
 		{
 			_cursor.GlobalPosition += _direction * 700f * (float)delta;
 			_cursor.GlobalPosition = _cursor.GlobalPosition.Clamp(NGame.Instance.GlobalPosition, NGame.Instance.GlobalPosition + NGame.Instance.Size);

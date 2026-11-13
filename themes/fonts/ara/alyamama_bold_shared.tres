@@ -1,0 +1,7 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://dafhveimf00ds"]
+
+[ext_resource type="FontFile" uid="uid://b5ulbwdp0fdc5" path="res://fonts/ara/alyamama_bold.ttf" id="1_arab"]
+
+[resource]
+base_font = ExtResource("1_arab")
+baseline_offset = 0.1

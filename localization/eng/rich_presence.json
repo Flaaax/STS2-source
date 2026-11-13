@@ -1,6 +1,10 @@
 {
+  "BLITZ_MP_LOBBY": "Blitz Lobby",
   "CUSTOM_MP_LOBBY": "Custom Lobby",
   "DAILY_MP_LOBBY": "Daily Lobby",
+  "DREAD_MP_LOBBY": "Dread Lobby",
+  "IN_BLITZ_RUN": "Blitz: {#%Character%_title} - {#%Act%_title} A%Ascension%",
+  "IN_DREAD_RUN": "Dread: {#%Character%_title} - {#%Act%_title} D%DreadStreak%",
   "IN_RUN": "{#%Character%_title} - {#%Act%_title} A%Ascension%",
   "LOADING_MP_LOBBY": "Saved Game Lobby",
   "MAIN_MENU": "Main Menu",

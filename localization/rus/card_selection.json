@@ -1,4 +1,5 @@
 {
+  "TO_ABSORB": "Выберите {Amount:plural(ru):карту|[blue]{}[/blue] карты|[blue]{}[/blue] карт}, чтобы [gold]поглотить[/gold].",
   "TO_DISCARD": "Выберите {Amount:plural(ru):карту, которую|[blue]{}[/blue] карты, которые|[blue]{}[/blue] карт, которые} хотите [gold]сбросить[/gold].",
   "TO_ENCHANT": "Выберите {Amount:plural(ru):карту, которую|[blue]{}[/blue] карты, которые|[blue]{}[/blue] карт, которые} хотите [purple]зачаровать[/purple].",
   "TO_EXHAUST": "Выберите {Amount:plural(ru):карту, которую|[blue]{}[/blue] карты, которые|[blue]{}[/blue] карт, которые} хотите [gold]сжечь[/gold].",

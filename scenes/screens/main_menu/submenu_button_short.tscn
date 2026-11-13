@@ -7,8 +7,7 @@
 [ext_resource type="FontVariation" uid="uid://cfurftqxyn4mn" path="res://themes/kreon_regular_glyph_space_one.tres" id="3_lijnw"]
 [ext_resource type="Script" uid="uid://dtfio45agppyj" path="res://addons/mega_text/MegaLabel.cs" id="3_xyx3e"]
 [ext_resource type="Script" uid="uid://c2oywrx8xbqfx" path="res://addons/mega_text/MegaRichTextLabel.cs" id="4_newu6"]
-[ext_resource type="Texture2D" uid="uid://d4l6kr43g6mc4" path="res://images/ui/main_menu/submenu_card_library.png" id="8_f3b56"]
-[ext_resource type="Texture2D" uid="uid://cipv0cjrdxslw" path="res://images/ui/main_menu/submenu_lock.png" id="9_fqpfe"]
+[ext_resource type="PackedScene" uid="uid://tajr0ykregm4" path="res://scenes/screens/main_menu/submenu_portrait.tscn" id="8_fqpfe"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fqpfe"]
 resource_local_to_scene = true
@@ -16,6 +15,13 @@ shader = ExtResource("2_f3b56")
 shader_parameter/h = 0.4130000196175
 shader_parameter/s = 0.90000004275
 shader_parameter/v = 0.8
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mpvot"]
+resource_local_to_scene = true
+shader = ExtResource("2_f3b56")
+shader_parameter/h = 1.0
+shader_parameter/s = 1.0
+shader_parameter/v = 1.0
 
 [node name="SubmenuButtonShort" type="Control"]
 custom_minimum_size = Vector2(368, 490)
@@ -49,7 +55,7 @@ anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = 20.0
 offset_top = -207.0
-offset_right = -34.0
+offset_right = -32.0
 offset_bottom = -154.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -105,40 +111,11 @@ MinFontSize = 18
 MaxFontSize = 24
 metadata/_custom_type_script = "uid://c2oywrx8xbqfx"
 
-[node name="Icon" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.48200002
-anchor_top = 0.367
-anchor_right = 0.48200002
-anchor_bottom = 0.367
-offset_left = -130.6481
-offset_top = -88.83
-offset_right = 130.89609
-offset_bottom = 109.17
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("8_f3b56")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Lock" type="TextureRect" parent="."]
+[node name="SubmenuPortrait" parent="." instance=ExtResource("8_fqpfe")]
 unique_name_in_owner = true
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.48200002
-anchor_top = 0.367
-anchor_right = 0.48200002
-anchor_bottom = 0.367
-offset_left = -130.6481
-offset_top = -88.83
-offset_right = 130.89609
-offset_bottom = 109.17
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("9_fqpfe")
-expand_mode = 1
-stretch_mode = 5
+material = SubResource("ShaderMaterial_mpvot")
+layout_mode = 0
+offset_left = 52.0
+offset_top = 94.0
+offset_right = 304.0
+offset_bottom = 286.0

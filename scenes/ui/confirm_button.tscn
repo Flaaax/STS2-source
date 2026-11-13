@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://bl460ab2i4mkx"]
 
 [ext_resource type="Script" uid="uid://bhwbc36rjhdsl" path="res://src/Core/Nodes/CommonUi/NConfirmButton.cs" id="1_oepry"]
-[ext_resource type="Texture2D" uid="uid://cp3mg3t" path="res://images/atlases/compressed.sprites/confirm_button_tick.tres" id="2_gyo8o"]
+[ext_resource type="Texture2D" uid="uid://yqkcb4" path="res://images/atlases/compressed_atlas.sprites/confirm_button_tick.tres" id="2_gyo8o"]
 [ext_resource type="Texture2D" uid="uid://yefjak" path="res://images/atlases/ui_atlas.sprites/confirm_button.tres" id="2_mgyux"]
-[ext_resource type="Texture2D" uid="uid://b1ommqi" path="res://images/atlases/compressed.sprites/confirm_button_outline.tres" id="3_p1qi5"]
+[ext_resource type="Texture2D" uid="uid://chfhmye" path="res://images/atlases/compressed_atlas.sprites/confirm_button_outline.tres" id="3_p1qi5"]
 [ext_resource type="PackedScene" uid="uid://ddb8daodx7qsl" path="res://scenes/ui/hotkey_icon.tscn" id="6_p1qi5"]
 [ext_resource type="Material" uid="uid://c4ycqv0gdxvmr" path="res://themes/canvas_item_material_additive_shared.tres" id="shared_additive_mat"]
 

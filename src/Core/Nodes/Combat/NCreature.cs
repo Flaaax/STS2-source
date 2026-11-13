@@ -53,9 +53,15 @@ public partial class NCreature : Control
 
 	private bool _isInBestiary;
 
+	private bool _interactionAllowed = true;
+
+	private bool _interactionAllowedBecauseAlive = true;
+
 	private float _tempScale = 1f;
 
 	private Tween? _scaleTween;
+
+	private OwnedTween? _wuppyTween;
 
 	private bool _isInMultiselect;
 
@@ -104,6 +110,20 @@ public partial class NCreature : Control
 	public bool HasSpineAnimation => Visuals.HasSpineAnimation;
 
 	public SpineAnimationAccess SpineAnimation => Visuals.SpineAnimation;
+
+	public bool HasSpineArrowSlots
+	{
+		get
+		{
+			if (!HasSpineAnimation || Visuals.IsUsingPhobiaModeBody)
+			{
+				return false;
+			}
+			MegaSkeleton skeleton = Visuals.SpineAnimation.GetSkeleton();
+			MegaSlot megaSlot = skeleton.FindSlot("ARROW_HIT_FRONT");
+			return megaSlot != null;
+		}
+	}
 
 	public bool IsFocused { get; private set; }
 
@@ -169,7 +189,14 @@ public partial class NCreature : Control
 		else
 		{
 			bool flag3 = NCombatRoom.Instance != null && Time.GetTicksMsec() - NCombatRoom.Instance.CreatedMsec < 1000;
-			_stateDisplay.AnimateIn(flag3 ? HealthBarAnimMode.SpawnedAtCombatStart : HealthBarAnimMode.SpawnedDuringCombat);
+			if (flag3 && Entity.CurrentHp <= 0)
+			{
+				_stateDisplay.HideImmediately();
+			}
+			else
+			{
+				_stateDisplay.AnimateIn(flag3 ? HealthBarAnimMode.SpawnedAtCombatStart : HealthBarAnimMode.SpawnedDuringCombat);
+			}
 		}
 		if (HasSpineAnimation)
 		{
@@ -190,13 +217,14 @@ public partial class NCreature : Control
 				megaTrackEntry?.SetTrackTime(megaTrackEntry.GetAnimationEnd());
 			}
 		}
-		SetOrbManagerPosition();
-		if (Entity.Monster != null)
+		if (Entity.IsDead)
 		{
-			ToggleIsInteractable(Entity.Monster.IsHealthBarVisible);
+			DisableInteractionForDeath();
 		}
+		SetOrbManagerPosition();
 		UpdateBounds(Visuals);
 		UpdatePhobiaMode();
+		UpdateInteractability(changeVisibilityImmediately: true);
 	}
 
 	public override void _EnterTree()
@@ -556,43 +584,65 @@ public partial class NCreature : Control
 		return megaTrackEntry.GetTrackComplete() - megaTrackEntry.GetTrackTime();
 	}
 
-	public void ToggleIsInteractable(bool on)
+	private void UpdateInteractability(bool changeVisibilityImmediately)
+	{
+		if (Entity.Monster != null && !Entity.Monster.IsInteractable)
+		{
+			SetIsInteractableInternal(on: false, changeVisibilityImmediately);
+		}
+		else if (Entity.IsPet && !LocalContext.IsMe(Entity.PetOwner))
+		{
+			SetIsInteractableInternal(on: false, changeVisibilityImmediately);
+		}
+		else if (!_interactionAllowed || !_interactionAllowedBecauseAlive)
+		{
+			SetIsInteractableInternal(on: false, changeVisibilityImmediately);
+		}
+		else
+		{
+			SetIsInteractableInternal(on: true, changeVisibilityImmediately);
+		}
+	}
+
+	/// <summary>
+	/// Enable or disable interactability.
+	/// Example: Decimillipede Segments that were killed, but that are going to reattach.
+	/// </summary>
+	/// <remarks>
+	/// If something else is causing the creature to become uninteractable (e.g. it's a pet and we're in targeting),
+	/// this will not override that state.
+	/// </remarks>
+	public void SetIsInteractable(bool on, bool changeVisibilityImmediately)
+	{
+		_interactionAllowed = on;
+		UpdateInteractability(changeVisibilityImmediately);
+	}
+
+	/// <summary>
+	/// Actually sets the state on the node, making it interactable or not.
+	/// </summary>
+	/// <remarks><paramref name="changeVisibilityImmediately" /> should be set to false when the HP bar would be animated
+	/// in another way, e.g. when the creature is dying.</remarks>
+	private void SetIsInteractableInternal(bool on, bool changeVisibilityImmediately)
 	{
 		IsInteractable = on;
-		_stateDisplay.Visible = !NCombatUi.IsDebugHidingHpBar && on;
+		if (changeVisibilityImmediately)
+		{
+			_stateDisplay.Visible = !NCombatUi.IsDebugHidingHpBar && on;
+		}
 		Hitbox.MouseFilter = (MouseFilterEnum)(on ? 0 : 2);
 		Hitbox.FocusMode = (FocusModeEnum)(on ? 2 : 0);
+		NCombatRoom.Instance?.UpdateCreatureNavigation();
 	}
 
 	public void DisableInteractionForDeath()
 	{
+		_interactionAllowedBecauseAlive = false;
 		if (Hitbox.HasFocus())
 		{
 			ActiveScreenContext.Instance.FocusOnDefaultControl();
 		}
-		Hitbox.FocusMode = FocusModeEnum.None;
-		Hitbox.MouseFilter = MouseFilterEnum.Ignore;
-	}
-
-	public Tween AnimDisableUi()
-	{
-		Tween tween = CreateTween();
-		if (!IsNodeReady())
-		{
-			tween.TweenInterval(0.0);
-			return tween;
-		}
-		tween.TweenProperty(_stateDisplay, "modulate:a", 0f, 0.5).SetDelay(0.5).SetEase(Tween.EaseType.Out)
-			.SetTrans(Tween.TransitionType.Expo);
-		return tween;
-	}
-
-	public Tween AnimEnableUi()
-	{
-		Tween tween = CreateTween();
-		tween.TweenProperty(_stateDisplay, "modulate:a", 1f, 0.5).SetDelay(0.5).SetEase(Tween.EaseType.Out)
-			.SetTrans(Tween.TransitionType.Expo);
-		return tween;
+		UpdateInteractability(changeVisibilityImmediately: false);
 	}
 
 	public float StartDeathAnim(bool shouldRemove)
@@ -646,9 +696,10 @@ public partial class NCreature : Control
 		}
 		if (!_isRemotePlayerOrPet)
 		{
-			AnimEnableUi();
+			_stateDisplay.AnimateInSimple();
 		}
-		Hitbox.MouseFilter = MouseFilterEnum.Stop;
+		_interactionAllowedBecauseAlive = true;
+		UpdateInteractability(changeVisibilityImmediately: true);
 	}
 
 	private void AnimTempRevive()
@@ -670,9 +721,26 @@ public partial class NCreature : Control
 		}
 	}
 
+	public Tween? AnimateOutStateDisplay()
+	{
+		return _stateDisplay.AnimateOutSimple();
+	}
+
+	/// <summary>
+	/// This is called manually when an event with combat layout transitions to real combat.
+	/// Otherwise, you shouldn't need to manually call it, as the state display already does this transition in _Ready.
+	/// </summary>
+	public void AnimateInStateDisplayForCombatStart()
+	{
+		if (!_isRemotePlayerOrPet)
+		{
+			_stateDisplay.AnimateIn(HealthBarAnimMode.SpawnedAtCombatStart);
+		}
+	}
+
 	private async Task AnimDie(bool shouldRemove, CancellationToken cancelToken)
 	{
-		Tween disableUiTween = AnimDisableUi();
+		Tween disableUiTween = _stateDisplay.AnimateOutSimple();
 		if (!RunManager.Instance.IsSingleplayerOrFakeMultiplayer)
 		{
 			OrbManager?.ClearOrbs();
@@ -715,7 +783,7 @@ public partial class NCreature : Control
 			}
 			if (SaveManager.Instance.PrefsSave.FastMode != FastModeType.Instant)
 			{
-				if (disableUiTween.IsValid() && disableUiTween.IsRunning() && !(await disableUiTween.AwaitFinished(this)))
+				if (disableUiTween != null && disableUiTween.IsValid() && disableUiTween.IsRunning() && await disableUiTween.AwaitFinished(this) != TweenOutcome.Finished)
 				{
 					return;
 				}
@@ -732,7 +800,7 @@ public partial class NCreature : Control
 		}
 		else if (Entity.Monster is Osty)
 		{
-			OstyScaleToSize(0f, 0.75);
+			ScaleAndPositionOsty(0f, 0.75);
 		}
 	}
 
@@ -773,7 +841,7 @@ public partial class NCreature : Control
 		}
 	}
 
-	public void OstyScaleToSize(float ostyHealth, double duration)
+	public void ScaleAndPositionOsty(float ostyHealth, double duration)
 	{
 		float num = Mathf.Lerp(Osty.ScaleRange.X, Osty.ScaleRange.Y, Mathf.Clamp(ostyHealth / 150f, 0f, 1f));
 		NCreature nCreature = NCombatRoom.Instance?.GetCreatureNode(Entity.PetOwner.Creature);
@@ -796,6 +864,56 @@ public partial class NCreature : Control
 		{
 			UpdateBounds(Visuals);
 		}));
+	}
+
+	public void PositionWuppy(bool isCombatStart)
+	{
+		NCreature owner = Entity.PetOwner?.Creature.GetCreatureNode();
+		if (owner == null || !LocalContext.IsMe(owner.Entity))
+		{
+			return;
+		}
+		Vector2 offset = new Vector2(50f, -50f);
+		if (Entity.PetOwner.IsOstyAlive)
+		{
+			offset = new Vector2(-25f, -250f);
+		}
+		Node2D heightControl = GetSpecialNode<Node2D>("%HeightControl");
+		if (isCombatStart)
+		{
+			WuppyTweenHelper(owner, heightControl, offset);
+			if (Entity.CurrentHp > 0)
+			{
+				_stateDisplay.AnimateIn(HealthBarAnimMode.SpawnedAtCombatStart);
+			}
+			return;
+		}
+		Vector2 initialOffset = new Vector2(base.Position.X - owner.Position.X - owner.Hitbox.Size.X, Visuals.Bounds.Position.Y + Visuals.Bounds.Size.Y * 0.5f - Wuppy.boundsOffset.Y);
+		if (initialOffset.IsEqualApprox(offset))
+		{
+			return;
+		}
+		if (_wuppyTween == null)
+		{
+			_wuppyTween = new OwnedTween(this);
+		}
+		TaskHelper.RunSafely(_wuppyTween.Play(delegate(Tween tween)
+		{
+			tween.TweenMethod(Callable.From(delegate(Vector2 x)
+			{
+				WuppyTweenHelper(owner, heightControl, x);
+			}), initialOffset, offset, 0.5).SetEase(Tween.EaseType.InOut).SetTrans(Tween.TransitionType.Quad);
+		}));
+	}
+
+	private void WuppyTweenHelper(NCreature owner, Node2D heightControl, Vector2 offset)
+	{
+		base.Position = owner.Position + Vector2.Right * (owner.Hitbox.Size.X + offset.X);
+		heightControl.Position = Wuppy.heightControlOffset + Vector2.Down * offset.Y / heightControl.GetParent<Node2D>().Scale.Y;
+		Visuals.Bounds.Position = Wuppy.boundsOffset + Vector2.Down * offset.Y - Visuals.Bounds.Size * 0.5f;
+		Visuals.VfxSpawnPosition.Position = Visuals.Bounds.Position + Visuals.Bounds.Size * 0.5f;
+		UpdateBounds(Visuals);
+		_stateDisplay.Reposition(Hitbox.Position + new Vector2(Hitbox.Size.X * 0.5f, Hitbox.Size.Y));
 	}
 
 	public static Vector2 GetOstyOffsetFromPlayer(Creature osty)

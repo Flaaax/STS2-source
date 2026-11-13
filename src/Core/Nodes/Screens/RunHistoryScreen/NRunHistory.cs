@@ -65,6 +65,8 @@ public partial class NRunHistory : NSubmenu
 
 	private MegaLabel _hpLabel;
 
+	private Control _goldContainer;
+
 	private MegaLabel _goldLabel;
 
 	private Control _potionHolder;
@@ -126,6 +128,7 @@ public partial class NRunHistory : NSubmenu
 		_screenContents = GetNode<NScrollableContainer>("ScreenContents");
 		_playerIconContainer = GetNode<Control>("%PlayerIconContainer");
 		_hpLabel = GetNode<MegaLabel>("%HpLabel");
+		_goldContainer = GetNode<Control>("%Gold");
 		_goldLabel = GetNode<MegaLabel>("%GoldLabel");
 		_potionHolder = GetNode<Control>("%PotionHolders");
 		_floorLabel = GetNode<MegaLabel>("%FloorNumLabel");
@@ -351,6 +354,7 @@ public partial class NRunHistory : NSubmenu
 
 	private void LoadGoldHpAndPotionInfo(NRunHistoryPlayerIcon icon)
 	{
+		_goldContainer.Visible = _history.GameMode != GameMode.Blitz;
 		if (!_history.MapPointHistory.Any())
 		{
 			CharacterModel characterModel = SaveUtil.CharacterOrDeprecated(icon.Player.Character);
@@ -399,7 +403,6 @@ public partial class NRunHistory : NSubmenu
 	/// Sets the text in the top right that is like Singleplayer: Standard or Multiplayer: Custom, etc.
 	/// </summary>
 	/// <param name="history"></param>
-	/// <exception cref="T:System.ArgumentOutOfRangeException"></exception>
 	private void LoadGameModeDetails(RunHistory history)
 	{
 		LocString locString = new LocString("run_history", "GAME_MODE.title");
@@ -413,14 +416,17 @@ public partial class NRunHistory : NSubmenu
 		}
 		switch (history.GameMode)
 		{
-		case GameMode.Custom:
-			locString.Add("GameMode", new LocString("run_history", "GAME_MODE.custom"));
-			break;
 		case GameMode.Daily:
 			locString.Add("GameMode", new LocString("run_history", "GAME_MODE.daily"));
 			break;
 		case GameMode.Standard:
 			locString.Add("GameMode", new LocString("run_history", "GAME_MODE.standard"));
+			break;
+		case GameMode.Blitz:
+			locString.Add("GameMode", new LocString("run_history", "GAME_MODE.blitz"));
+			break;
+		case GameMode.Dread:
+			locString.Add("GameMode", new LocString("run_history", "GAME_MODE.dread"));
 			break;
 		default:
 			locString.Add("GameMode", new LocString("run_history", "GAME_MODE.unknown"));

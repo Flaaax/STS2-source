@@ -1,5 +1,5 @@
 {
-  "CLEAR_DRAWING.description": "移除你所繪製的所有內容。",
+  "CLEAR_DRAWING.description": "移除你的所有繪圖內容。",
   "CLEAR_DRAWING.title": "清除繪圖",
   "DRAWING_BUTTON.description": "在地圖上繪圖。",
   "DRAWING_BUTTON.title_controller": "地圖繪圖",

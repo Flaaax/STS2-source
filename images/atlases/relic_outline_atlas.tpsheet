@@ -3,8 +3,8 @@
     {
       "image": "relic_outline_atlas.png",
       "size": {
-        "w": 2496,
-        "h": 1200
+        "w": 2784,
+        "h": 1112
       },
       "sprites": [
         {
@@ -20,7 +20,8 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "3f4b147a4c35ec15"
         },
         {
           "filename": "arcane_scroll.png",
@@ -35,7 +36,8 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "dad99e0d2adfe0fd"
         },
         {
           "filename": "archaic_tooth.png",
@@ -50,7 +52,8 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "28a2e63a6c7d2954"
         },
         {
           "filename": "black_star.png",
@@ -65,7 +68,8 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "846922136d374e53"
         },
         {
           "filename": "blood_vial.png",
@@ -80,7 +84,8 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "70947bada72eb3b8"
         },
         {
           "filename": "bone_flute.png",
@@ -95,7 +100,8 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "616165878da124a0"
         },
         {
           "filename": "book_of_five_rings.png",
@@ -110,7 +116,8 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "1b5de53c876bc871"
         },
         {
           "filename": "booming_conch.png",
@@ -125,7 +132,8 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "e5c3c26603009d40"
         },
         {
           "filename": "burning_sticks.png",
@@ -140,7 +148,8 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "c380df806b63745b"
         },
         {
           "filename": "calling_bell.png",
@@ -155,7 +164,8 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "eb382da38474bec8"
         },
         {
           "filename": "candelabra.png",
@@ -170,7 +180,8 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "e61d4985c1b509f4"
         },
         {
           "filename": "captains_wheel.png",
@@ -185,7 +196,8 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "271a68657db37191"
         },
         {
           "filename": "chandelier.png",
@@ -200,7 +212,8 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "be6195816826d308"
         },
         {
           "filename": "choices_paradox.png",
@@ -215,7 +228,8 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "3fd6a6f1735e2a05"
         },
         {
           "filename": "cloak_clasp.png",
@@ -230,7 +244,8 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "3e80f040f88782d7"
         },
         {
           "filename": "collectors_deckbox.png",
@@ -245,12 +260,29 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "4b3ea3e9c29c4e4c"
+        },
+        {
+          "filename": "conductors_baton_small_stroke.png",
+          "region": {
+            "x": 1540,
+            "y": 4,
+            "w": 85,
+            "h": 85
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "26ece7b6dd77b4da"
         },
         {
           "filename": "cursed_pearl.png",
           "region": {
-            "x": 1540,
+            "x": 1636,
             "y": 4,
             "w": 85,
             "h": 85
@@ -260,12 +292,13 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "a40ded866f3cc3ce"
         },
         {
           "filename": "demon_tongue.png",
           "region": {
-            "x": 1636,
+            "x": 1732,
             "y": 4,
             "w": 85,
             "h": 85
@@ -275,12 +308,13 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "84335b009fb50156"
         },
         {
           "filename": "diagram.png",
           "region": {
-            "x": 1732,
+            "x": 1828,
             "y": 4,
             "w": 85,
             "h": 85
@@ -290,12 +324,13 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "98c9437488d3a4b6"
         },
         {
           "filename": "dingy_rug.png",
           "region": {
-            "x": 1828,
+            "x": 1924,
             "y": 4,
             "w": 85,
             "h": 85
@@ -305,12 +340,13 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "8a722d12d9609ca2"
         },
         {
           "filename": "distinguished_cape.png",
           "region": {
-            "x": 1924,
+            "x": 2020,
             "y": 4,
             "w": 85,
             "h": 85
@@ -320,12 +356,13 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "0ab60d62ae3179b7"
         },
         {
           "filename": "dream_catcher.png",
           "region": {
-            "x": 2020,
+            "x": 2116,
             "y": 4,
             "w": 85,
             "h": 85
@@ -335,12 +372,13 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "a54cd82f8370ab5b"
         },
         {
           "filename": "fake_blood_vial.png",
           "region": {
-            "x": 2116,
+            "x": 2212,
             "y": 4,
             "w": 85,
             "h": 85
@@ -350,12 +388,13 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "d376d53f3480f588"
         },
         {
           "filename": "fake_snecko_eye.png",
           "region": {
-            "x": 2212,
+            "x": 2308,
             "y": 4,
             "w": 85,
             "h": 85
@@ -365,12 +404,13 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "08b691baeb3f768c"
         },
         {
           "filename": "fake_strike_dummy.png",
           "region": {
-            "x": 2308,
+            "x": 2404,
             "y": 4,
             "w": 85,
             "h": 85
@@ -380,12 +420,13 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "43da2aa4008ecb6d"
         },
         {
           "filename": "festive_popper.png",
           "region": {
-            "x": 2404,
+            "x": 2500,
             "y": 4,
             "w": 85,
             "h": 85
@@ -395,13 +436,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "b07b09fc98153969"
         },
         {
           "filename": "festive_popper_open.png",
           "region": {
-            "x": 4,
-            "y": 100,
+            "x": 2596,
+            "y": 4,
             "w": 85,
             "h": 85
           },
@@ -410,13 +452,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "14d1d28ae79b65f5"
         },
         {
           "filename": "fiddle.png",
           "region": {
-            "x": 100,
-            "y": 100,
+            "x": 2692,
+            "y": 4,
             "w": 85,
             "h": 85
           },
@@ -425,12 +468,13 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "db9c4ba73ed466f3"
         },
         {
           "filename": "fishing_rod.png",
           "region": {
-            "x": 196,
+            "x": 4,
             "y": 100,
             "w": 85,
             "h": 85
@@ -440,12 +484,13 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "c374539d6cae90fe"
         },
         {
           "filename": "frozen_eye.png",
           "region": {
-            "x": 292,
+            "x": 100,
             "y": 100,
             "w": 85,
             "h": 85
@@ -455,12 +500,13 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "85d116327e99af36"
         },
         {
           "filename": "fur_coat.png",
           "region": {
-            "x": 388,
+            "x": 196,
             "y": 100,
             "w": 85,
             "h": 85
@@ -470,12 +516,13 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "58ba57cc5c614946"
         },
         {
           "filename": "fyshing_float.png",
           "region": {
-            "x": 484,
+            "x": 292,
             "y": 100,
             "w": 85,
             "h": 85
@@ -485,12 +532,13 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "0768cfa69a19bda5"
         },
         {
           "filename": "galactic_dust.png",
           "region": {
-            "x": 580,
+            "x": 388,
             "y": 100,
             "w": 85,
             "h": 85
@@ -500,12 +548,13 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "9209e0e7916b1007"
         },
         {
           "filename": "glitter.png",
           "region": {
-            "x": 676,
+            "x": 484,
             "y": 100,
             "w": 85,
             "h": 85
@@ -515,12 +564,13 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "edcb010e497fc9ff"
         },
         {
           "filename": "golden_pearl.png",
           "region": {
-            "x": 772,
+            "x": 580,
             "y": 100,
             "w": 85,
             "h": 85
@@ -530,12 +580,13 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "93672098b571d88a"
         },
         {
           "filename": "gremlin_horn.png",
           "region": {
-            "x": 868,
+            "x": 676,
             "y": 100,
             "w": 85,
             "h": 85
@@ -545,12 +596,13 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "b292c799d0a5c313"
         },
         {
           "filename": "hand_drill.png",
           "region": {
-            "x": 964,
+            "x": 772,
             "y": 100,
             "w": 85,
             "h": 85
@@ -560,12 +612,13 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "27b52c4e2ba8d6e4"
         },
         {
           "filename": "helical_dart.png",
           "region": {
-            "x": 1060,
+            "x": 868,
             "y": 100,
             "w": 85,
             "h": 85
@@ -575,12 +628,13 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "93e17d9088b53fb6"
         },
         {
           "filename": "infused_core.png",
           "region": {
-            "x": 1156,
+            "x": 964,
             "y": 100,
             "w": 85,
             "h": 85
@@ -590,11 +644,44 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "90807698030fe5d3"
         },
         {
           "filename": "ink_bottle.png",
           "region": {
+            "x": 1060,
+            "y": 100,
+            "w": 85,
+            "h": 85
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "470fb4c923d6ed3e"
+        },
+        {
+          "filename": "joss_paper.png",
+          "region": {
+            "x": 1156,
+            "y": 100,
+            "w": 85,
+            "h": 85
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "3ae9bf3af288a7fd"
+        },
+        {
+          "filename": "juzu_bracelet.png",
+          "region": {
             "x": 1252,
             "y": 100,
             "w": 85,
@@ -605,10 +692,11 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "3df8b93111178151"
         },
         {
-          "filename": "joss_paper.png",
+          "filename": "kunai.png",
           "region": {
             "x": 1348,
             "y": 100,
@@ -620,10 +708,11 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "3d6f98325ad03296"
         },
         {
-          "filename": "juzu_bracelet.png",
+          "filename": "large_capsule.png",
           "region": {
             "x": 1444,
             "y": 100,
@@ -635,10 +724,11 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "69cbad731d28c55c"
         },
         {
-          "filename": "kunai.png",
+          "filename": "lava_rock.png",
           "region": {
             "x": 1540,
             "y": 100,
@@ -650,10 +740,11 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "acb62b6a10afefba"
         },
         {
-          "filename": "large_capsule.png",
+          "filename": "lees_waffle.png",
           "region": {
             "x": 1636,
             "y": 100,
@@ -665,10 +756,11 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "3bbe5af499e12339"
         },
         {
-          "filename": "lava_rock.png",
+          "filename": "letter_opener.png",
           "region": {
             "x": 1732,
             "y": 100,
@@ -680,10 +772,11 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "3d434a5938b71e28"
         },
         {
-          "filename": "lees_waffle.png",
+          "filename": "lizard_tail.png",
           "region": {
             "x": 1828,
             "y": 100,
@@ -695,10 +788,11 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "c7d18038b50db1fc"
         },
         {
-          "filename": "letter_opener.png",
+          "filename": "lords_parasol.png",
           "region": {
             "x": 1924,
             "y": 100,
@@ -710,10 +804,11 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "c941534c812244ef"
         },
         {
-          "filename": "lizard_tail.png",
+          "filename": "lucky_fysh.png",
           "region": {
             "x": 2020,
             "y": 100,
@@ -725,10 +820,11 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "8ecc183cbc9ca0f7"
         },
         {
-          "filename": "lords_parasol.png",
+          "filename": "massive_scroll.png",
           "region": {
             "x": 2116,
             "y": 100,
@@ -740,10 +836,11 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "210ea2ec63b1e226"
         },
         {
-          "filename": "lucky_fysh.png",
+          "filename": "meat_cleaver.png",
           "region": {
             "x": 2212,
             "y": 100,
@@ -755,10 +852,11 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "99dcc174ba5d0cbd"
         },
         {
-          "filename": "massive_scroll.png",
+          "filename": "medicinal_pouch.png",
           "region": {
             "x": 2308,
             "y": 100,
@@ -770,10 +868,11 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "3db2834498546905"
         },
         {
-          "filename": "meat_cleaver.png",
+          "filename": "miniature_cannon.png",
           "region": {
             "x": 2404,
             "y": 100,
@@ -785,10 +884,59 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "7aa496783db5e259"
         },
         {
-          "filename": "medicinal_pouch.png",
+          "filename": "music_box.png",
+          "region": {
+            "x": 2500,
+            "y": 100,
+            "w": 85,
+            "h": 85
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "826e5975ca5535b6"
+        },
+        {
+          "filename": "neows_bones.png",
+          "region": {
+            "x": 2596,
+            "y": 100,
+            "w": 85,
+            "h": 85
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "73ad10a30bbc26ed"
+        },
+        {
+          "filename": "neows_lament.png",
+          "region": {
+            "x": 2692,
+            "y": 100,
+            "w": 85,
+            "h": 85
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "8605bfb681969ba0"
+        },
+        {
+          "filename": "neows_sacrifice.png",
           "region": {
             "x": 4,
             "y": 196,
@@ -800,10 +948,11 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "8605bfb681969ba0"
         },
         {
-          "filename": "miniature_cannon.png",
+          "filename": "neows_torment.png",
           "region": {
             "x": 100,
             "y": 196,
@@ -815,10 +964,11 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "860120ee38fd89b2"
         },
         {
-          "filename": "music_box.png",
+          "filename": "nunchaku.png",
           "region": {
             "x": 196,
             "y": 196,
@@ -830,10 +980,11 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "a734aec9c642a6e2"
         },
         {
-          "filename": "neows_bones.png",
+          "filename": "nutritious_oyster.png",
           "region": {
             "x": 292,
             "y": 196,
@@ -845,10 +996,11 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "82d906e7c3f13862"
         },
         {
-          "filename": "neows_lament.png",
+          "filename": "ocarina_small_stroke.png",
           "region": {
             "x": 388,
             "y": 196,
@@ -860,10 +1012,11 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "5b303c777ba31835"
         },
         {
-          "filename": "neows_sacrifice.png",
+          "filename": "orrery.png",
           "region": {
             "x": 484,
             "y": 196,
@@ -875,10 +1028,11 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "1a58e0f3ea7bfaac"
         },
         {
-          "filename": "neows_torment.png",
+          "filename": "paels_flesh.png",
           "region": {
             "x": 580,
             "y": 196,
@@ -890,10 +1044,11 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "6c13206603b26776"
         },
         {
-          "filename": "nunchaku.png",
+          "filename": "pandoras_box.png",
           "region": {
             "x": 676,
             "y": 196,
@@ -905,10 +1060,11 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "64b778cfd494b3ee"
         },
         {
-          "filename": "nutritious_oyster.png",
+          "filename": "parrying_shield.png",
           "region": {
             "x": 772,
             "y": 196,
@@ -920,10 +1076,11 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "998303fc3a4f366f"
         },
         {
-          "filename": "orrery.png",
+          "filename": "pendulum.png",
           "region": {
             "x": 868,
             "y": 196,
@@ -935,10 +1092,11 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "647dd7c611f522f1"
         },
         {
-          "filename": "paels_flesh.png",
+          "filename": "precarious_shears.png",
           "region": {
             "x": 964,
             "y": 196,
@@ -950,10 +1108,11 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "15a7974ade304e2d"
         },
         {
-          "filename": "pandoras_box.png",
+          "filename": "ring_of_the_snake.png",
           "region": {
             "x": 1060,
             "y": 196,
@@ -965,10 +1124,11 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "f8d4d1bc1b66e5f2"
         },
         {
-          "filename": "parrying_shield.png",
+          "filename": "ringing_triangle.png",
           "region": {
             "x": 1156,
             "y": 196,
@@ -980,10 +1140,11 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "05d54c7dd5dc644a"
         },
         {
-          "filename": "pendulum.png",
+          "filename": "runic_capacitor.png",
           "region": {
             "x": 1252,
             "y": 196,
@@ -995,10 +1156,11 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "4fb756d144dacd01"
         },
         {
-          "filename": "precarious_shears.png",
+          "filename": "runic_cube.png",
           "region": {
             "x": 1348,
             "y": 196,
@@ -1010,10 +1172,11 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "c465e406611875d3"
         },
         {
-          "filename": "ring_of_the_snake.png",
+          "filename": "sai.png",
           "region": {
             "x": 1444,
             "y": 196,
@@ -1025,10 +1188,11 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "c2dc0226e609bc6f"
         },
         {
-          "filename": "ringing_triangle.png",
+          "filename": "scroll_boxes.png",
           "region": {
             "x": 1540,
             "y": 196,
@@ -1040,10 +1204,11 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "b9576750a4164b54"
         },
         {
-          "filename": "runic_capacitor.png",
+          "filename": "self_forming_clay.png",
           "region": {
             "x": 1636,
             "y": 196,
@@ -1055,10 +1220,11 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "3b44683ea92c8338"
         },
         {
-          "filename": "runic_cube.png",
+          "filename": "shovel.png",
           "region": {
             "x": 1732,
             "y": 196,
@@ -1070,10 +1236,11 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "9217f6c49dca8e4b"
         },
         {
-          "filename": "sai.png",
+          "filename": "shuriken.png",
           "region": {
             "x": 1828,
             "y": 196,
@@ -1085,10 +1252,11 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "8446ee3dba837c8c"
         },
         {
-          "filename": "scroll_boxes.png",
+          "filename": "silken_tress.png",
           "region": {
             "x": 1924,
             "y": 196,
@@ -1100,10 +1268,11 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "eda35a0280cd56cc"
         },
         {
-          "filename": "self_forming_clay.png",
+          "filename": "snecko_eye.png",
           "region": {
             "x": 2020,
             "y": 196,
@@ -1115,10 +1284,11 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "c2d10d735f28b358"
         },
         {
-          "filename": "shovel.png",
+          "filename": "song_bow.png",
           "region": {
             "x": 2116,
             "y": 196,
@@ -1130,10 +1300,11 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "5b7188d52465e4ff"
         },
         {
-          "filename": "shuriken.png",
+          "filename": "storyteller_small_stroke.png",
           "region": {
             "x": 2212,
             "y": 196,
@@ -1145,10 +1316,11 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "81190dfa9ef25e49"
         },
         {
-          "filename": "silken_tress.png",
+          "filename": "strike_dummy.png",
           "region": {
             "x": 2308,
             "y": 196,
@@ -1160,10 +1332,11 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "fca8a5b914e7087c"
         },
         {
-          "filename": "snecko_eye.png",
+          "filename": "symbiotic_virus.png",
           "region": {
             "x": 2404,
             "y": 196,
@@ -1175,10 +1348,59 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "84b245ed7983732c"
         },
         {
-          "filename": "strike_dummy.png",
+          "filename": "tanxs_whistle.png",
+          "region": {
+            "x": 2500,
+            "y": 196,
+            "w": 85,
+            "h": 85
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "64ef3cf3c0342648"
+        },
+        {
+          "filename": "the_courier.png",
+          "region": {
+            "x": 2596,
+            "y": 196,
+            "w": 85,
+            "h": 85
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "6cc5b394d6d45179"
+        },
+        {
+          "filename": "unsettling_lamp.png",
+          "region": {
+            "x": 2692,
+            "y": 196,
+            "w": 85,
+            "h": 85
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "786e29b54c3f2111"
+        },
+        {
+          "filename": "vakuus_cape.png",
           "region": {
             "x": 4,
             "y": 292,
@@ -1190,10 +1412,11 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "8929eeb84b6feba8"
         },
         {
-          "filename": "symbiotic_virus.png",
+          "filename": "very_hot_cocoa.png",
           "region": {
             "x": 100,
             "y": 292,
@@ -1205,10 +1428,11 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "673099cfd58797f6"
         },
         {
-          "filename": "tanxs_whistle.png",
+          "filename": "vitruvian_minion.png",
           "region": {
             "x": 196,
             "y": 292,
@@ -1220,10 +1444,11 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "e2d387eed8a26e74"
         },
         {
-          "filename": "the_courier.png",
+          "filename": "war_hammer.png",
           "region": {
             "x": 292,
             "y": 292,
@@ -1235,10 +1460,11 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "c4abf984e7714e48"
         },
         {
-          "filename": "unsettling_lamp.png",
+          "filename": "whispering_earring.png",
           "region": {
             "x": 388,
             "y": 292,
@@ -1250,10 +1476,11 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "e903e6d807856305"
         },
         {
-          "filename": "vakuus_cape.png",
+          "filename": "whittling_knife_small_stroke.png",
           "region": {
             "x": 484,
             "y": 292,
@@ -1265,10 +1492,11 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "e4565d785f514a37"
         },
         {
-          "filename": "very_hot_cocoa.png",
+          "filename": "wongos_mystery_ticket.png",
           "region": {
             "x": 580,
             "y": 292,
@@ -1280,72 +1508,13 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
-        },
-        {
-          "filename": "vitruvian_minion.png",
-          "region": {
-            "x": 676,
-            "y": 292,
-            "w": 85,
-            "h": 85
           },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "war_hammer.png",
-          "region": {
-            "x": 772,
-            "y": 292,
-            "w": 85,
-            "h": 85
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "whispering_earring.png",
-          "region": {
-            "x": 868,
-            "y": 292,
-            "w": 85,
-            "h": 85
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "wongos_mystery_ticket.png",
-          "region": {
-            "x": 964,
-            "y": 292,
-            "w": 85,
-            "h": 85
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
+          "pixel_hash": "647885a26f6b84b6"
         },
         {
           "filename": "beating_remnant.png",
           "region": {
-            "x": 1060,
+            "x": 676,
             "y": 292,
             "w": 84,
             "h": 85
@@ -1355,12 +1524,13 @@
             "y": 0,
             "w": 1,
             "h": 0
-          }
+          },
+          "pixel_hash": "e091a462c9fd11ba"
         },
         {
           "filename": "bellows.png",
           "region": {
-            "x": 1152,
+            "x": 768,
             "y": 292,
             "w": 84,
             "h": 85
@@ -1370,12 +1540,13 @@
             "y": 0,
             "w": 1,
             "h": 0
-          }
+          },
+          "pixel_hash": "f245365270bb35d6"
         },
         {
           "filename": "biiig_hug.png",
           "region": {
-            "x": 1244,
+            "x": 860,
             "y": 292,
             "w": 84,
             "h": 85
@@ -1385,12 +1556,13 @@
             "y": 0,
             "w": 1,
             "h": 0
-          }
+          },
+          "pixel_hash": "4dd102956a589e35"
         },
         {
           "filename": "blessed_antler.png",
           "region": {
-            "x": 1336,
+            "x": 952,
             "y": 292,
             "w": 84,
             "h": 85
@@ -1400,12 +1572,13 @@
             "y": 0,
             "w": 1,
             "h": 0
-          }
+          },
+          "pixel_hash": "eef700fa00c0a6a4"
         },
         {
           "filename": "brilliant_scarf.png",
           "region": {
-            "x": 1428,
+            "x": 1044,
             "y": 292,
             "w": 84,
             "h": 85
@@ -1415,12 +1588,13 @@
             "y": 0,
             "w": 1,
             "h": 0
-          }
+          },
+          "pixel_hash": "55502a76ec0d855c"
         },
         {
           "filename": "bug_buddy.png",
           "region": {
-            "x": 1520,
+            "x": 1136,
             "y": 292,
             "w": 84,
             "h": 85
@@ -1430,12 +1604,13 @@
             "y": 0,
             "w": 1,
             "h": 0
-          }
+          },
+          "pixel_hash": "c686ad409c6aff11"
         },
         {
           "filename": "darkstone_periapt.png",
           "region": {
-            "x": 1612,
+            "x": 1228,
             "y": 292,
             "w": 84,
             "h": 85
@@ -1445,12 +1620,13 @@
             "y": 0,
             "w": 1,
             "h": 0
-          }
+          },
+          "pixel_hash": "769cb8c5966708f9"
         },
         {
           "filename": "driftwood.png",
           "region": {
-            "x": 1704,
+            "x": 1320,
             "y": 292,
             "w": 84,
             "h": 85
@@ -1460,12 +1636,13 @@
             "y": 0,
             "w": 1,
             "h": 0
-          }
+          },
+          "pixel_hash": "9f58262ca9217cd5"
         },
         {
           "filename": "hefty_tablet.png",
           "region": {
-            "x": 1796,
+            "x": 1412,
             "y": 292,
             "w": 84,
             "h": 85
@@ -1475,12 +1652,13 @@
             "y": 0,
             "w": 1,
             "h": 0
-          }
+          },
+          "pixel_hash": "ca58dc57e39d7553"
         },
         {
           "filename": "intimidating_helmet.png",
           "region": {
-            "x": 1888,
+            "x": 1504,
             "y": 292,
             "w": 84,
             "h": 85
@@ -1490,12 +1668,13 @@
             "y": 0,
             "w": 1,
             "h": 0
-          }
+          },
+          "pixel_hash": "d1bcdc7b570103e4"
         },
         {
           "filename": "kaleidoscope.png",
           "region": {
-            "x": 1980,
+            "x": 1596,
             "y": 292,
             "w": 84,
             "h": 85
@@ -1505,12 +1684,13 @@
             "y": 0,
             "w": 1,
             "h": 0
-          }
+          },
+          "pixel_hash": "86f9b2b5f684604a"
         },
         {
           "filename": "lapis_lazuli.png",
           "region": {
-            "x": 2072,
+            "x": 1688,
             "y": 292,
             "w": 84,
             "h": 85
@@ -1520,12 +1700,13 @@
             "y": 0,
             "w": 1,
             "h": 0
-          }
+          },
+          "pixel_hash": "5b3ee9311e8110a0"
         },
         {
           "filename": "lasting_candy.png",
           "region": {
-            "x": 2164,
+            "x": 1780,
             "y": 292,
             "w": 84,
             "h": 85
@@ -1535,12 +1716,13 @@
             "y": 0,
             "w": 1,
             "h": 0
-          }
+          },
+          "pixel_hash": "a797a4c635ee493c"
         },
         {
           "filename": "leafy_poultice.png",
           "region": {
-            "x": 2256,
+            "x": 1872,
             "y": 292,
             "w": 84,
             "h": 85
@@ -1550,12 +1732,13 @@
             "y": 0,
             "w": 1,
             "h": 0
-          }
+          },
+          "pixel_hash": "d18ab80b2813d65d"
         },
         {
           "filename": "mr_struggles.png",
           "region": {
-            "x": 2348,
+            "x": 1964,
             "y": 292,
             "w": 84,
             "h": 85
@@ -1565,10 +1748,123 @@
             "y": 0,
             "w": 1,
             "h": 0
-          }
+          },
+          "pixel_hash": "8a1b2d4c54cba282"
         },
         {
           "filename": "ninja_scroll.png",
+          "region": {
+            "x": 2056,
+            "y": 292,
+            "w": 84,
+            "h": 85
+          },
+          "margin": {
+            "x": 1,
+            "y": 0,
+            "w": 1,
+            "h": 0
+          },
+          "pixel_hash": "86ef00de2c04e330"
+        },
+        {
+          "filename": "paels_growth.png",
+          "region": {
+            "x": 2148,
+            "y": 292,
+            "w": 84,
+            "h": 85
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 1,
+            "h": 0
+          },
+          "pixel_hash": "c55225d0b1604272"
+        },
+        {
+          "filename": "paels_tears.png",
+          "region": {
+            "x": 2240,
+            "y": 292,
+            "w": 84,
+            "h": 85
+          },
+          "margin": {
+            "x": 1,
+            "y": 0,
+            "w": 1,
+            "h": 0
+          },
+          "pixel_hash": "73555be6bd4668de"
+        },
+        {
+          "filename": "phial_holster.png",
+          "region": {
+            "x": 2332,
+            "y": 292,
+            "w": 84,
+            "h": 85
+          },
+          "margin": {
+            "x": 1,
+            "y": 0,
+            "w": 1,
+            "h": 0
+          },
+          "pixel_hash": "f2cf640eece98861"
+        },
+        {
+          "filename": "planisphere.png",
+          "region": {
+            "x": 2424,
+            "y": 292,
+            "w": 84,
+            "h": 85
+          },
+          "margin": {
+            "x": 1,
+            "y": 0,
+            "w": 1,
+            "h": 0
+          },
+          "pixel_hash": "aabdad96084211df"
+        },
+        {
+          "filename": "rainbow_ring.png",
+          "region": {
+            "x": 2516,
+            "y": 292,
+            "w": 84,
+            "h": 85
+          },
+          "margin": {
+            "x": 1,
+            "y": 0,
+            "w": 1,
+            "h": 0
+          },
+          "pixel_hash": "cc95ef1600a3c37c"
+        },
+        {
+          "filename": "ring_of_the_drake.png",
+          "region": {
+            "x": 2608,
+            "y": 292,
+            "w": 84,
+            "h": 85
+          },
+          "margin": {
+            "x": 1,
+            "y": 0,
+            "w": 1,
+            "h": 0
+          },
+          "pixel_hash": "c90b6791568b7b20"
+        },
+        {
+          "filename": "sturdy_clamp.png",
           "region": {
             "x": 4,
             "y": 388,
@@ -1580,10 +1876,11 @@
             "y": 0,
             "w": 1,
             "h": 0
-          }
+          },
+          "pixel_hash": "7979b0de263e3237"
         },
         {
-          "filename": "paels_growth.png",
+          "filename": "thread_and_needle.png",
           "region": {
             "x": 96,
             "y": 388,
@@ -1591,14 +1888,15 @@
             "h": 85
           },
           "margin": {
-            "x": 0,
+            "x": 1,
             "y": 0,
             "w": 1,
             "h": 0
-          }
+          },
+          "pixel_hash": "21719c7d775279eb"
         },
         {
-          "filename": "paels_tears.png",
+          "filename": "tri_boomerang.png",
           "region": {
             "x": 188,
             "y": 388,
@@ -1606,14 +1904,15 @@
             "h": 85
           },
           "margin": {
-            "x": 1,
+            "x": 0,
             "y": 0,
             "w": 1,
             "h": 0
-          }
+          },
+          "pixel_hash": "79d46756a7497061"
         },
         {
-          "filename": "phial_holster.png",
+          "filename": "twine_small_stroke.png",
           "region": {
             "x": 280,
             "y": 388,
@@ -1625,10 +1924,11 @@
             "y": 0,
             "w": 1,
             "h": 0
-          }
+          },
+          "pixel_hash": "996fb4806acd22ec"
         },
         {
-          "filename": "planisphere.png",
+          "filename": "venerable_tea_set.png",
           "region": {
             "x": 372,
             "y": 388,
@@ -1640,10 +1940,11 @@
             "y": 0,
             "w": 1,
             "h": 0
-          }
+          },
+          "pixel_hash": "bec1df83759d32c9"
         },
         {
-          "filename": "rainbow_ring.png",
+          "filename": "vexing_puzzlebox.png",
           "region": {
             "x": 464,
             "y": 388,
@@ -1655,100 +1956,107 @@
             "y": 0,
             "w": 1,
             "h": 0
-          }
+          },
+          "pixel_hash": "d27b3e9d48a5bcd3"
         },
         {
-          "filename": "ring_of_the_drake.png",
+          "filename": "amphorae.png",
           "region": {
             "x": 556,
             "y": 388,
-            "w": 84,
+            "w": 83,
             "h": 85
           },
           "margin": {
             "x": 1,
             "y": 0,
-            "w": 1,
+            "w": 2,
             "h": 0
-          }
+          },
+          "pixel_hash": "fabdae43aa5e55f1"
         },
         {
-          "filename": "sturdy_clamp.png",
+          "filename": "bound_phylactery.png",
           "region": {
             "x": 648,
             "y": 388,
-            "w": 84,
+            "w": 83,
             "h": 85
           },
           "margin": {
             "x": 1,
             "y": 0,
-            "w": 1,
+            "w": 2,
             "h": 0
-          }
+          },
+          "pixel_hash": "3b2859f744aa5bc1"
         },
         {
-          "filename": "thread_and_needle.png",
+          "filename": "claws.png",
           "region": {
             "x": 740,
             "y": 388,
-            "w": 84,
-            "h": 85
-          },
-          "margin": {
-            "x": 1,
-            "y": 0,
-            "w": 1,
-            "h": 0
-          }
-        },
-        {
-          "filename": "tri_boomerang.png",
-          "region": {
-            "x": 832,
-            "y": 388,
-            "w": 84,
+            "w": 83,
             "h": 85
           },
           "margin": {
             "x": 0,
             "y": 0,
-            "w": 1,
+            "w": 2,
             "h": 0
-          }
+          },
+          "pixel_hash": "a899053513a58366"
         },
         {
-          "filename": "venerable_tea_set.png",
+          "filename": "dollys_mirror.png",
+          "region": {
+            "x": 832,
+            "y": 388,
+            "w": 83,
+            "h": 85
+          },
+          "margin": {
+            "x": 1,
+            "y": 0,
+            "w": 2,
+            "h": 0
+          },
+          "pixel_hash": "2c8881d51d83f591"
+        },
+        {
+          "filename": "inaccurate_ephemeris.png",
           "region": {
             "x": 924,
             "y": 388,
-            "w": 84,
+            "w": 83,
             "h": 85
           },
           "margin": {
-            "x": 1,
+            "x": 2,
             "y": 0,
-            "w": 1,
+            "w": 2,
             "h": 0
-          }
+          },
+          "pixel_hash": "1be139c9f1b7be4c"
         },
         {
-          "filename": "vexing_puzzlebox.png",
+          "filename": "iron_club.png",
           "region": {
             "x": 1016,
             "y": 388,
-            "w": 84,
+            "w": 83,
             "h": 85
           },
           "margin": {
             "x": 1,
             "y": 0,
-            "w": 1,
+            "w": 2,
             "h": 0
-          }
+          },
+          "pixel_hash": "b79e2f8501a3e0c8"
         },
         {
-          "filename": "amphorae.png",
+          "filename": "new_leaf.png",
           "region": {
             "x": 1108,
             "y": 388,
@@ -1760,27 +2068,13 @@
             "y": 0,
             "w": 2,
             "h": 0
-          }
+          },
+          "pixel_hash": "ae822938bbdc86b7"
         },
         {
-          "filename": "bound_phylactery.png",
+          "filename": "phylactery_unbound.png",
           "region": {
             "x": 1200,
-            "y": 388,
-            "w": 83,
-            "h": 85
-          },
-          "margin": {
-            "x": 1,
-            "y": 0,
-            "w": 2,
-            "h": 0
-          }
-        },
-        {
-          "filename": "claws.png",
-          "region": {
-            "x": 1292,
             "y": 388,
             "w": 83,
             "h": 85
@@ -1790,10 +2084,27 @@
             "y": 0,
             "w": 2,
             "h": 0
-          }
+          },
+          "pixel_hash": "265e851c5ac1576a"
         },
         {
-          "filename": "dollys_mirror.png",
+          "filename": "punch_dagger.png",
+          "region": {
+            "x": 1292,
+            "y": 388,
+            "w": 83,
+            "h": 85
+          },
+          "margin": {
+            "x": 2,
+            "y": 0,
+            "w": 2,
+            "h": 0
+          },
+          "pixel_hash": "ee0b4c4d4f6ca073"
+        },
+        {
+          "filename": "razor_tooth.png",
           "region": {
             "x": 1384,
             "y": 388,
@@ -1801,14 +2112,15 @@
             "h": 85
           },
           "margin": {
-            "x": 1,
+            "x": 0,
             "y": 0,
             "w": 2,
             "h": 0
-          }
+          },
+          "pixel_hash": "cfcfcd1d050d1c1f"
         },
         {
-          "filename": "inaccurate_ephemeris.png",
+          "filename": "sparkling_rouge.png",
           "region": {
             "x": 1476,
             "y": 388,
@@ -1820,10 +2132,11 @@
             "y": 0,
             "w": 2,
             "h": 0
-          }
+          },
+          "pixel_hash": "790d3cb599fdbd44"
         },
         {
-          "filename": "iron_club.png",
+          "filename": "winged_boots.png",
           "region": {
             "x": 1568,
             "y": 388,
@@ -1831,106 +2144,17 @@
             "h": 85
           },
           "margin": {
-            "x": 1,
-            "y": 0,
-            "w": 2,
-            "h": 0
-          }
-        },
-        {
-          "filename": "new_leaf.png",
-          "region": {
-            "x": 1660,
-            "y": 388,
-            "w": 83,
-            "h": 85
-          },
-          "margin": {
-            "x": 1,
-            "y": 0,
-            "w": 2,
-            "h": 0
-          }
-        },
-        {
-          "filename": "phylactery_unbound.png",
-          "region": {
-            "x": 1752,
-            "y": 388,
-            "w": 83,
-            "h": 85
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 2,
-            "h": 0
-          }
-        },
-        {
-          "filename": "punch_dagger.png",
-          "region": {
-            "x": 1844,
-            "y": 388,
-            "w": 83,
-            "h": 85
-          },
-          "margin": {
             "x": 2,
             "y": 0,
             "w": 2,
             "h": 0
-          }
-        },
-        {
-          "filename": "razor_tooth.png",
-          "region": {
-            "x": 1936,
-            "y": 388,
-            "w": 83,
-            "h": 85
           },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 2,
-            "h": 0
-          }
-        },
-        {
-          "filename": "sparkling_rouge.png",
-          "region": {
-            "x": 2028,
-            "y": 388,
-            "w": 83,
-            "h": 85
-          },
-          "margin": {
-            "x": 2,
-            "y": 0,
-            "w": 2,
-            "h": 0
-          }
-        },
-        {
-          "filename": "winged_boots.png",
-          "region": {
-            "x": 2120,
-            "y": 388,
-            "w": 83,
-            "h": 85
-          },
-          "margin": {
-            "x": 2,
-            "y": 0,
-            "w": 2,
-            "h": 0
-          }
+          "pixel_hash": "69204a469180343a"
         },
         {
           "filename": "ice_cream.png",
           "region": {
-            "x": 2212,
+            "x": 1660,
             "y": 388,
             "w": 82,
             "h": 85
@@ -1940,12 +2164,13 @@
             "y": 0,
             "w": 3,
             "h": 0
-          }
+          },
+          "pixel_hash": "6cc8400cde5a7435"
         },
         {
           "filename": "lunar_pastry.png",
           "region": {
-            "x": 2304,
+            "x": 1752,
             "y": 388,
             "w": 82,
             "h": 85
@@ -1955,12 +2180,13 @@
             "y": 0,
             "w": 3,
             "h": 0
-          }
+          },
+          "pixel_hash": "52b27acb231c9571"
         },
         {
           "filename": "matryoshka.png",
           "region": {
-            "x": 2396,
+            "x": 1844,
             "y": 388,
             "w": 82,
             "h": 85
@@ -1970,13 +2196,14 @@
             "y": 0,
             "w": 3,
             "h": 0
-          }
+          },
+          "pixel_hash": "675828605bd768c5"
         },
         {
           "filename": "paper_krane.png",
           "region": {
-            "x": 4,
-            "y": 484,
+            "x": 1936,
+            "y": 388,
             "w": 82,
             "h": 85
           },
@@ -1985,13 +2212,14 @@
             "y": 0,
             "w": 3,
             "h": 0
-          }
+          },
+          "pixel_hash": "525078883420b751"
         },
         {
           "filename": "red_skull.png",
           "region": {
-            "x": 96,
-            "y": 484,
+            "x": 2028,
+            "y": 388,
             "w": 82,
             "h": 85
           },
@@ -2000,13 +2228,14 @@
             "y": 0,
             "w": 3,
             "h": 0
-          }
+          },
+          "pixel_hash": "81cf1458eceedb7b"
         },
         {
           "filename": "strawberry.png",
           "region": {
-            "x": 188,
-            "y": 484,
+            "x": 2120,
+            "y": 388,
             "w": 82,
             "h": 85
           },
@@ -2015,13 +2244,30 @@
             "y": 0,
             "w": 3,
             "h": 0
-          }
+          },
+          "pixel_hash": "45dcaef6f807409a"
+        },
+        {
+          "filename": "bizarre_lamp_small_stroke.png",
+          "region": {
+            "x": 2212,
+            "y": 388,
+            "w": 81,
+            "h": 85
+          },
+          "margin": {
+            "x": 3,
+            "y": 0,
+            "w": 4,
+            "h": 0
+          },
+          "pixel_hash": "a2dfa43f70eaa79b"
         },
         {
           "filename": "bookmark.png",
           "region": {
-            "x": 280,
-            "y": 484,
+            "x": 2304,
+            "y": 388,
             "w": 81,
             "h": 85
           },
@@ -2030,13 +2276,14 @@
             "y": 0,
             "w": 4,
             "h": 0
-          }
+          },
+          "pixel_hash": "fb24370b01e8e0ce"
         },
         {
           "filename": "daughter_of_the_wind.png",
           "region": {
-            "x": 372,
-            "y": 484,
+            "x": 2396,
+            "y": 388,
             "w": 81,
             "h": 85
           },
@@ -2045,13 +2292,14 @@
             "y": 0,
             "w": 4,
             "h": 0
-          }
+          },
+          "pixel_hash": "eb5c4d2f6a91f475"
         },
         {
           "filename": "fake_lees_waffle.png",
           "region": {
-            "x": 464,
-            "y": 484,
+            "x": 2488,
+            "y": 388,
             "w": 81,
             "h": 85
           },
@@ -2060,13 +2308,14 @@
             "y": 0,
             "w": 4,
             "h": 0
-          }
+          },
+          "pixel_hash": "68c8ed56c93b5061"
         },
         {
           "filename": "lost_soul.png",
           "region": {
-            "x": 556,
-            "y": 484,
+            "x": 2580,
+            "y": 388,
             "w": 81,
             "h": 85
           },
@@ -2075,13 +2324,14 @@
             "y": 0,
             "w": 4,
             "h": 0
-          }
+          },
+          "pixel_hash": "090ac6cb0e9757d4"
         },
         {
           "filename": "paels_claw.png",
           "region": {
-            "x": 648,
-            "y": 484,
+            "x": 2672,
+            "y": 388,
             "w": 81,
             "h": 85
           },
@@ -2090,12 +2340,13 @@
             "y": 0,
             "w": 4,
             "h": 0
-          }
+          },
+          "pixel_hash": "efd2555cafd82e96"
         },
         {
           "filename": "permafrost.png",
           "region": {
-            "x": 740,
+            "x": 4,
             "y": 484,
             "w": 81,
             "h": 85
@@ -2105,12 +2356,13 @@
             "y": 0,
             "w": 4,
             "h": 0
-          }
+          },
+          "pixel_hash": "c0b6948a50e28405"
         },
         {
           "filename": "spiked_gauntlets.png",
           "region": {
-            "x": 832,
+            "x": 96,
             "y": 484,
             "w": 81,
             "h": 85
@@ -2120,12 +2372,13 @@
             "y": 0,
             "w": 4,
             "h": 0
-          }
+          },
+          "pixel_hash": "9f2b6c766b73b1cf"
         },
         {
           "filename": "unceasing_top.png",
           "region": {
-            "x": 924,
+            "x": 188,
             "y": 484,
             "w": 81,
             "h": 85
@@ -2135,13 +2388,14 @@
             "y": 0,
             "w": 4,
             "h": 0
-          }
+          },
+          "pixel_hash": "c42c91b5e032a33f"
         },
         {
           "filename": "anchor.png",
           "region": {
-            "x": 1016,
-            "y": 484,
+            "x": 2700,
+            "y": 292,
             "w": 80,
             "h": 85
           },
@@ -2150,12 +2404,13 @@
             "y": 0,
             "w": 5,
             "h": 0
-          }
+          },
+          "pixel_hash": "4963fe3bdb0839d5"
         },
         {
           "filename": "fake_anchor.png",
           "region": {
-            "x": 1104,
+            "x": 280,
             "y": 484,
             "w": 80,
             "h": 85
@@ -2165,12 +2420,13 @@
             "y": 0,
             "w": 5,
             "h": 0
-          }
+          },
+          "pixel_hash": "2d9223f324a11c19"
         },
         {
           "filename": "fragrant_mushroom.png",
           "region": {
-            "x": 1192,
+            "x": 368,
             "y": 484,
             "w": 80,
             "h": 85
@@ -2180,12 +2436,13 @@
             "y": 0,
             "w": 5,
             "h": 0
-          }
+          },
+          "pixel_hash": "01173b586ad2336d"
         },
         {
           "filename": "mummified_hand.png",
           "region": {
-            "x": 1280,
+            "x": 456,
             "y": 484,
             "w": 80,
             "h": 85
@@ -2195,12 +2452,13 @@
             "y": 0,
             "w": 5,
             "h": 0
-          }
+          },
+          "pixel_hash": "985e0f6c2a911488"
         },
         {
           "filename": "old_coin.png",
           "region": {
-            "x": 1368,
+            "x": 544,
             "y": 484,
             "w": 80,
             "h": 85
@@ -2210,12 +2468,13 @@
             "y": 0,
             "w": 5,
             "h": 0
-          }
+          },
+          "pixel_hash": "fe8a490f7b2a53c1"
         },
         {
           "filename": "oversized_watch.png",
           "region": {
-            "x": 1456,
+            "x": 632,
             "y": 484,
             "w": 80,
             "h": 85
@@ -2225,12 +2484,13 @@
             "y": 0,
             "w": 5,
             "h": 0
-          }
+          },
+          "pixel_hash": "08fdf2173a7f410a"
         },
         {
           "filename": "pomander.png",
           "region": {
-            "x": 1544,
+            "x": 720,
             "y": 484,
             "w": 80,
             "h": 85
@@ -2240,12 +2500,13 @@
             "y": 0,
             "w": 5,
             "h": 0
-          }
+          },
+          "pixel_hash": "237422bc8b83776d"
         },
         {
           "filename": "red_mask.png",
           "region": {
-            "x": 1632,
+            "x": 808,
             "y": 484,
             "w": 80,
             "h": 85
@@ -2255,12 +2516,13 @@
             "y": 0,
             "w": 5,
             "h": 0
-          }
+          },
+          "pixel_hash": "3dfec770269206d3"
         },
         {
           "filename": "silver_crucible.png",
           "region": {
-            "x": 1720,
+            "x": 896,
             "y": 484,
             "w": 80,
             "h": 85
@@ -2270,12 +2532,13 @@
             "y": 0,
             "w": 5,
             "h": 0
-          }
+          },
+          "pixel_hash": "c84b69faba10b045"
         },
         {
           "filename": "blood_soaked_rose.png",
           "region": {
-            "x": 1808,
+            "x": 984,
             "y": 484,
             "w": 79,
             "h": 85
@@ -2285,12 +2548,13 @@
             "y": 0,
             "w": 6,
             "h": 0
-          }
+          },
+          "pixel_hash": "cfa5571cd5473fd4"
         },
         {
           "filename": "divine_destiny.png",
           "region": {
-            "x": 1896,
+            "x": 1072,
             "y": 484,
             "w": 78,
             "h": 85
@@ -2300,12 +2564,13 @@
             "y": 0,
             "w": 7,
             "h": 0
-          }
+          },
+          "pixel_hash": "89ceaaee828159af"
         },
         {
           "filename": "divine_right.png",
           "region": {
-            "x": 1984,
+            "x": 1160,
             "y": 484,
             "w": 78,
             "h": 85
@@ -2315,12 +2580,13 @@
             "y": 0,
             "w": 7,
             "h": 0
-          }
+          },
+          "pixel_hash": "8a92fb0c40e378a6"
         },
         {
           "filename": "mystic_lighter.png",
           "region": {
-            "x": 2072,
+            "x": 1248,
             "y": 484,
             "w": 78,
             "h": 85
@@ -2330,12 +2596,13 @@
             "y": 0,
             "w": 7,
             "h": 0
-          }
+          },
+          "pixel_hash": "dc6c8a1f2be2d6ae"
         },
         {
           "filename": "sword_of_jade.png",
           "region": {
-            "x": 2160,
+            "x": 1336,
             "y": 484,
             "w": 78,
             "h": 85
@@ -2345,12 +2612,13 @@
             "y": 0,
             "w": 7,
             "h": 0
-          }
+          },
+          "pixel_hash": "6ead42a6c6ef43e9"
         },
         {
           "filename": "sword_of_stone.png",
           "region": {
-            "x": 2248,
+            "x": 1424,
             "y": 484,
             "w": 78,
             "h": 85
@@ -2360,12 +2628,13 @@
             "y": 0,
             "w": 7,
             "h": 0
-          }
+          },
+          "pixel_hash": "6ead42a6c6ef43e9"
         },
         {
           "filename": "burning_blood.png",
           "region": {
-            "x": 2336,
+            "x": 1512,
             "y": 484,
             "w": 77,
             "h": 85
@@ -2375,13 +2644,14 @@
             "y": 0,
             "w": 8,
             "h": 0
-          }
+          },
+          "pixel_hash": "77ee58deef1dc480"
         },
         {
           "filename": "paels_tooth.png",
           "region": {
-            "x": 4,
-            "y": 580,
+            "x": 1600,
+            "y": 484,
             "w": 77,
             "h": 85
           },
@@ -2390,13 +2660,14 @@
             "y": 0,
             "w": 8,
             "h": 0
-          }
+          },
+          "pixel_hash": "e3f52c9a1f64ae7e"
         },
         {
           "filename": "preserved_fog.png",
           "region": {
-            "x": 92,
-            "y": 580,
+            "x": 1688,
+            "y": 484,
             "w": 77,
             "h": 85
           },
@@ -2405,13 +2676,14 @@
             "y": 0,
             "w": 8,
             "h": 0
-          }
+          },
+          "pixel_hash": "462779c982ed0b31"
         },
         {
           "filename": "neows_talisman.png",
           "region": {
-            "x": 180,
-            "y": 580,
+            "x": 1776,
+            "y": 484,
             "w": 75,
             "h": 85
           },
@@ -2420,13 +2692,14 @@
             "y": 0,
             "w": 10,
             "h": 0
-          }
+          },
+          "pixel_hash": "d38d88c35a4f53a6"
         },
         {
           "filename": "ruined_helmet.png",
           "region": {
-            "x": 264,
-            "y": 580,
+            "x": 1860,
+            "y": 484,
             "w": 75,
             "h": 85
           },
@@ -2435,13 +2708,14 @@
             "y": 0,
             "w": 10,
             "h": 0
-          }
+          },
+          "pixel_hash": "c3274fc2395856b8"
         },
         {
           "filename": "mini_regent.png",
           "region": {
-            "x": 348,
-            "y": 580,
+            "x": 1944,
+            "y": 484,
             "w": 73,
             "h": 85
           },
@@ -2450,13 +2724,14 @@
             "y": 0,
             "w": 12,
             "h": 0
-          }
+          },
+          "pixel_hash": "77447106bdaac174"
         },
         {
           "filename": "tezcataras_candle.png",
           "region": {
-            "x": 432,
-            "y": 580,
+            "x": 2028,
+            "y": 484,
             "w": 73,
             "h": 85
           },
@@ -2465,13 +2740,14 @@
             "y": 0,
             "w": 12,
             "h": 0
-          }
+          },
+          "pixel_hash": "2cc2f102dbc903c0"
         },
         {
           "filename": "girya.png",
           "region": {
-            "x": 516,
-            "y": 580,
+            "x": 2112,
+            "y": 484,
             "w": 72,
             "h": 85
           },
@@ -2480,13 +2756,14 @@
             "y": 0,
             "w": 13,
             "h": 0
-          }
+          },
+          "pixel_hash": "da4b5cb005dc7799"
         },
         {
           "filename": "pointed_hat.png",
           "region": {
-            "x": 596,
-            "y": 580,
+            "x": 2192,
+            "y": 484,
             "w": 72,
             "h": 85
           },
@@ -2495,13 +2772,14 @@
             "y": 0,
             "w": 13,
             "h": 0
-          }
+          },
+          "pixel_hash": "d52bea20ff7c849a"
         },
         {
           "filename": "power_cell.png",
           "region": {
-            "x": 676,
-            "y": 580,
+            "x": 2272,
+            "y": 484,
             "w": 72,
             "h": 85
           },
@@ -2510,13 +2788,14 @@
             "y": 0,
             "w": 13,
             "h": 0
-          }
+          },
+          "pixel_hash": "c6f1a2499b4bf03a"
         },
         {
           "filename": "toxic_egg.png",
           "region": {
-            "x": 756,
-            "y": 580,
+            "x": 2352,
+            "y": 484,
             "w": 72,
             "h": 85
           },
@@ -2525,13 +2804,14 @@
             "y": 0,
             "w": 13,
             "h": 0
-          }
+          },
+          "pixel_hash": "fdecfe4d4edaadf9"
         },
         {
           "filename": "fresnel_lens.png",
           "region": {
-            "x": 836,
-            "y": 580,
+            "x": 2432,
+            "y": 484,
             "w": 71,
             "h": 85
           },
@@ -2540,13 +2820,14 @@
             "y": 0,
             "w": 14,
             "h": 0
-          }
+          },
+          "pixel_hash": "e9bf3c5e446be725"
         },
         {
           "filename": "frozen_egg.png",
           "region": {
-            "x": 916,
-            "y": 580,
+            "x": 2512,
+            "y": 484,
             "w": 71,
             "h": 85
           },
@@ -2555,13 +2836,14 @@
             "y": 0,
             "w": 14,
             "h": 0
-          }
+          },
+          "pixel_hash": "d72ac6d8d72f8d2f"
         },
         {
           "filename": "mercury_hourglass.png",
           "region": {
-            "x": 996,
-            "y": 580,
+            "x": 2592,
+            "y": 484,
             "w": 71,
             "h": 85
           },
@@ -2570,13 +2852,14 @@
             "y": 0,
             "w": 14,
             "h": 0
-          }
+          },
+          "pixel_hash": "c9fc2dbfc49e33c2"
         },
         {
           "filename": "molten_egg.png",
           "region": {
-            "x": 1076,
-            "y": 580,
+            "x": 2672,
+            "y": 484,
             "w": 71,
             "h": 85
           },
@@ -2585,12 +2868,13 @@
             "y": 0,
             "w": 14,
             "h": 0
-          }
+          },
+          "pixel_hash": "6a2ef14235cf33be"
         },
         {
           "filename": "lantern.png",
           "region": {
-            "x": 1156,
+            "x": 4,
             "y": 580,
             "w": 70,
             "h": 85
@@ -2600,12 +2884,13 @@
             "y": 0,
             "w": 15,
             "h": 0
-          }
+          },
+          "pixel_hash": "1f9642d045edeb08"
         },
         {
           "filename": "screaming_flagon.png",
           "region": {
-            "x": 1236,
+            "x": 84,
             "y": 580,
             "w": 70,
             "h": 85
@@ -2615,12 +2900,13 @@
             "y": 0,
             "w": 15,
             "h": 0
-          }
+          },
+          "pixel_hash": "57dd77be0a6b6c48"
         },
         {
           "filename": "lava_lamp.png",
           "region": {
-            "x": 1316,
+            "x": 164,
             "y": 580,
             "w": 69,
             "h": 85
@@ -2630,12 +2916,13 @@
             "y": 0,
             "w": 16,
             "h": 0
-          }
+          },
+          "pixel_hash": "3b9af618d7725a2f"
         },
         {
           "filename": "metronome.png",
           "region": {
-            "x": 1396,
+            "x": 244,
             "y": 580,
             "w": 69,
             "h": 85
@@ -2645,12 +2932,13 @@
             "y": 0,
             "w": 16,
             "h": 0
-          }
+          },
+          "pixel_hash": "4c7ae260524564cf"
         },
         {
           "filename": "signet_ring.png",
           "region": {
-            "x": 1476,
+            "x": 324,
             "y": 580,
             "w": 69,
             "h": 85
@@ -2660,13 +2948,14 @@
             "y": 0,
             "w": 16,
             "h": 0
-          }
+          },
+          "pixel_hash": "c86dc7f86e1b1107"
         },
         {
           "filename": "pear.png",
           "region": {
-            "x": 2424,
-            "y": 484,
+            "x": 404,
+            "y": 580,
             "w": 68,
             "h": 85
           },
@@ -2675,12 +2964,13 @@
             "y": 0,
             "w": 17,
             "h": 0
-          }
+          },
+          "pixel_hash": "c6387fc4ce78d6ea"
         },
         {
           "filename": "game_piece.png",
           "region": {
-            "x": 1556,
+            "x": 480,
             "y": 580,
             "w": 66,
             "h": 85
@@ -2690,12 +2980,13 @@
             "y": 0,
             "w": 19,
             "h": 0
-          }
+          },
+          "pixel_hash": "292a1875ddd45b73"
         },
         {
           "filename": "fencing_manual.png",
           "region": {
-            "x": 1632,
+            "x": 556,
             "y": 580,
             "w": 65,
             "h": 85
@@ -2705,12 +2996,13 @@
             "y": 0,
             "w": 20,
             "h": 0
-          }
+          },
+          "pixel_hash": "7b822bd80fbe0472"
         },
         {
           "filename": "ivory_tile.png",
           "region": {
-            "x": 1708,
+            "x": 632,
             "y": 580,
             "w": 65,
             "h": 85
@@ -2720,12 +3012,13 @@
             "y": 0,
             "w": 20,
             "h": 0
-          }
+          },
+          "pixel_hash": "7b8e6a2cd457dc4b"
         },
         {
           "filename": "royal_stamp.png",
           "region": {
-            "x": 1784,
+            "x": 708,
             "y": 580,
             "w": 65,
             "h": 85
@@ -2735,12 +3028,13 @@
             "y": 0,
             "w": 20,
             "h": 0
-          }
+          },
+          "pixel_hash": "641354f22c494438"
         },
         {
           "filename": "prayer_wheel.png",
           "region": {
-            "x": 1860,
+            "x": 784,
             "y": 580,
             "w": 63,
             "h": 85
@@ -2750,12 +3044,13 @@
             "y": 0,
             "w": 22,
             "h": 0
-          }
+          },
+          "pixel_hash": "13350d2404fb7426"
         },
         {
           "filename": "bird_faced_urn.png",
           "region": {
-            "x": 1932,
+            "x": 856,
             "y": 580,
             "w": 60,
             "h": 85
@@ -2765,12 +3060,13 @@
             "y": 0,
             "w": 25,
             "h": 0
-          }
+          },
+          "pixel_hash": "781eac4ac375e455"
         },
         {
           "filename": "fake_happy_flower.png",
           "region": {
-            "x": 2000,
+            "x": 924,
             "y": 580,
             "w": 60,
             "h": 85
@@ -2780,12 +3076,13 @@
             "y": 0,
             "w": 25,
             "h": 0
-          }
+          },
+          "pixel_hash": "9cb80ea1065be193"
         },
         {
           "filename": "happy_flower.png",
           "region": {
-            "x": 2068,
+            "x": 992,
             "y": 580,
             "w": 60,
             "h": 85
@@ -2795,12 +3092,13 @@
             "y": 0,
             "w": 25,
             "h": 0
-          }
+          },
+          "pixel_hash": "b47a45d577235cad"
         },
         {
           "filename": "blue_candle.png",
           "region": {
-            "x": 2136,
+            "x": 1060,
             "y": 580,
             "w": 59,
             "h": 85
@@ -2810,13 +3108,14 @@
             "y": 0,
             "w": 26,
             "h": 0
-          }
+          },
+          "pixel_hash": "ef13cf8ba38ecc4f"
         },
         {
           "filename": "everburning_effigy.png",
           "region": {
-            "x": 2440,
-            "y": 292,
+            "x": 1128,
+            "y": 580,
             "w": 52,
             "h": 85
           },
@@ -2825,12 +3124,13 @@
             "y": 0,
             "w": 33,
             "h": 0
-          }
+          },
+          "pixel_hash": "0aea98a3246cf5c3"
         },
         {
           "filename": "amethyst_aubergine.png",
           "region": {
-            "x": 2204,
+            "x": 1188,
             "y": 580,
             "w": 85,
             "h": 84
@@ -2840,12 +3140,13 @@
             "y": 0,
             "w": 0,
             "h": 1
-          }
+          },
+          "pixel_hash": "28f20e37f2e03624"
         },
         {
           "filename": "beautiful_bracelet.png",
           "region": {
-            "x": 2300,
+            "x": 1284,
             "y": 580,
             "w": 85,
             "h": 84
@@ -2855,12 +3156,13 @@
             "y": 1,
             "w": 0,
             "h": 1
-          }
+          },
+          "pixel_hash": "5d0df7dc881fb07e"
         },
         {
           "filename": "bing_bong.png",
           "region": {
-            "x": 2396,
+            "x": 1380,
             "y": 580,
             "w": 85,
             "h": 84
@@ -2870,13 +3172,14 @@
             "y": 1,
             "w": 0,
             "h": 1
-          }
+          },
+          "pixel_hash": "0a803ce24221a289"
         },
         {
           "filename": "bronze_scales.png",
           "region": {
-            "x": 2204,
-            "y": 672,
+            "x": 1476,
+            "y": 580,
             "w": 85,
             "h": 84
           },
@@ -2885,13 +3188,14 @@
             "y": 0,
             "w": 0,
             "h": 1
-          }
+          },
+          "pixel_hash": "c92ab10f144bbee1"
         },
         {
           "filename": "charons_ashes.png",
           "region": {
-            "x": 2300,
-            "y": 672,
+            "x": 1572,
+            "y": 580,
             "w": 85,
             "h": 84
           },
@@ -2900,12 +3204,189 @@
             "y": 0,
             "w": 0,
             "h": 1
-          }
+          },
+          "pixel_hash": "055781d7a1ecfcb6"
         },
         {
           "filename": "cracked_core.png",
           "region": {
-            "x": 2396,
+            "x": 1668,
+            "y": 580,
+            "w": 85,
+            "h": 84
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 1
+          },
+          "pixel_hash": "a1bfd2329b38b373"
+        },
+        {
+          "filename": "data_disk.png",
+          "region": {
+            "x": 1764,
+            "y": 580,
+            "w": 85,
+            "h": 84
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 1
+          },
+          "pixel_hash": "dab16dd74a5c0365"
+        },
+        {
+          "filename": "fake_merchants_rug.png",
+          "region": {
+            "x": 1860,
+            "y": 580,
+            "w": 85,
+            "h": 84
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 1
+          },
+          "pixel_hash": "d3aa101b0b079ef4"
+        },
+        {
+          "filename": "fake_venerable_tea_set.png",
+          "region": {
+            "x": 1956,
+            "y": 580,
+            "w": 85,
+            "h": 84
+          },
+          "margin": {
+            "x": 0,
+            "y": 1,
+            "w": 0,
+            "h": 1
+          },
+          "pixel_hash": "533e0ab45167b401"
+        },
+        {
+          "filename": "fertilizer_small_stroke.png",
+          "region": {
+            "x": 2052,
+            "y": 580,
+            "w": 85,
+            "h": 84
+          },
+          "margin": {
+            "x": 0,
+            "y": 1,
+            "w": 0,
+            "h": 1
+          },
+          "pixel_hash": "bd49a3509dd94366"
+        },
+        {
+          "filename": "kusarigama.png",
+          "region": {
+            "x": 2148,
+            "y": 580,
+            "w": 85,
+            "h": 84
+          },
+          "margin": {
+            "x": 0,
+            "y": 1,
+            "w": 0,
+            "h": 1
+          },
+          "pixel_hash": "fc5d83f8e5abe393"
+        },
+        {
+          "filename": "looming_fruit.png",
+          "region": {
+            "x": 2244,
+            "y": 580,
+            "w": 85,
+            "h": 84
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 1
+          },
+          "pixel_hash": "bb4523be8cef4fa0"
+        },
+        {
+          "filename": "looming_fruit_2.png",
+          "region": {
+            "x": 2340,
+            "y": 580,
+            "w": 85,
+            "h": 84
+          },
+          "margin": {
+            "x": 0,
+            "y": 1,
+            "w": 0,
+            "h": 1
+          },
+          "pixel_hash": "ad40a06976240ac3"
+        },
+        {
+          "filename": "mysterious_cocoon.png",
+          "region": {
+            "x": 2436,
+            "y": 580,
+            "w": 85,
+            "h": 84
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 1
+          },
+          "pixel_hash": "3bc2723a3ee4ccdc"
+        },
+        {
+          "filename": "paels_wing.png",
+          "region": {
+            "x": 2532,
+            "y": 580,
+            "w": 85,
+            "h": 84
+          },
+          "margin": {
+            "x": 0,
+            "y": 1,
+            "w": 0,
+            "h": 1
+          },
+          "pixel_hash": "651896a6330981af"
+        },
+        {
+          "filename": "parrying_dagger.png",
+          "region": {
+            "x": 2628,
+            "y": 580,
+            "w": 85,
+            "h": 84
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 1
+          },
+          "pixel_hash": "e046c2460dc45ed7"
+        },
+        {
+          "filename": "pollinous_core.png",
+          "region": {
+            "x": 1188,
             "y": 672,
             "w": 85,
             "h": 84
@@ -2915,163 +3396,14 @@
             "y": 0,
             "w": 0,
             "h": 1
-          }
-        },
-        {
-          "filename": "data_disk.png",
-          "region": {
-            "x": 4,
-            "y": 676,
-            "w": 85,
-            "h": 84
           },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 1
-          }
-        },
-        {
-          "filename": "fake_merchants_rug.png",
-          "region": {
-            "x": 100,
-            "y": 676,
-            "w": 85,
-            "h": 84
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 1
-          }
-        },
-        {
-          "filename": "fake_venerable_tea_set.png",
-          "region": {
-            "x": 196,
-            "y": 676,
-            "w": 85,
-            "h": 84
-          },
-          "margin": {
-            "x": 0,
-            "y": 1,
-            "w": 0,
-            "h": 1
-          }
-        },
-        {
-          "filename": "kusarigama.png",
-          "region": {
-            "x": 292,
-            "y": 676,
-            "w": 85,
-            "h": 84
-          },
-          "margin": {
-            "x": 0,
-            "y": 1,
-            "w": 0,
-            "h": 1
-          }
-        },
-        {
-          "filename": "looming_fruit.png",
-          "region": {
-            "x": 388,
-            "y": 676,
-            "w": 85,
-            "h": 84
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 1
-          }
-        },
-        {
-          "filename": "looming_fruit_2.png",
-          "region": {
-            "x": 484,
-            "y": 676,
-            "w": 85,
-            "h": 84
-          },
-          "margin": {
-            "x": 0,
-            "y": 1,
-            "w": 0,
-            "h": 1
-          }
-        },
-        {
-          "filename": "mysterious_cocoon.png",
-          "region": {
-            "x": 580,
-            "y": 676,
-            "w": 85,
-            "h": 84
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 1
-          }
-        },
-        {
-          "filename": "paels_wing.png",
-          "region": {
-            "x": 676,
-            "y": 676,
-            "w": 85,
-            "h": 84
-          },
-          "margin": {
-            "x": 0,
-            "y": 1,
-            "w": 0,
-            "h": 1
-          }
-        },
-        {
-          "filename": "parrying_dagger.png",
-          "region": {
-            "x": 772,
-            "y": 676,
-            "w": 85,
-            "h": 84
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 1
-          }
-        },
-        {
-          "filename": "pollinous_core.png",
-          "region": {
-            "x": 868,
-            "y": 676,
-            "w": 85,
-            "h": 84
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 1
-          }
+          "pixel_hash": "d09257f39b97799c"
         },
         {
           "filename": "potion_belt.png",
           "region": {
-            "x": 964,
-            "y": 676,
+            "x": 1284,
+            "y": 672,
             "w": 85,
             "h": 84
           },
@@ -3080,13 +3412,14 @@
             "y": 1,
             "w": 0,
             "h": 1
-          }
+          },
+          "pixel_hash": "5d2de3c08e699125"
         },
         {
           "filename": "preserved_insect.png",
           "region": {
-            "x": 1060,
-            "y": 676,
+            "x": 1380,
+            "y": 672,
             "w": 85,
             "h": 84
           },
@@ -3095,13 +3428,14 @@
             "y": 1,
             "w": 0,
             "h": 1
-          }
+          },
+          "pixel_hash": "865dfdb1070f9603"
         },
         {
           "filename": "sand_castle.png",
           "region": {
-            "x": 1156,
-            "y": 676,
+            "x": 1476,
+            "y": 672,
             "w": 85,
             "h": 84
           },
@@ -3110,13 +3444,14 @@
             "y": 1,
             "w": 0,
             "h": 1
-          }
+          },
+          "pixel_hash": "9fd280d0b94bdadd"
         },
         {
           "filename": "sere_talon.png",
           "region": {
-            "x": 1252,
-            "y": 676,
+            "x": 1572,
+            "y": 672,
             "w": 85,
             "h": 84
           },
@@ -3125,13 +3460,14 @@
             "y": 1,
             "w": 0,
             "h": 1
-          }
+          },
+          "pixel_hash": "97fd6a81323be1a8"
         },
         {
           "filename": "sling_of_courage.png",
           "region": {
-            "x": 1348,
-            "y": 676,
+            "x": 1668,
+            "y": 672,
             "w": 85,
             "h": 84
           },
@@ -3140,13 +3476,14 @@
             "y": 1,
             "w": 0,
             "h": 1
-          }
+          },
+          "pixel_hash": "294dbbdd6cc1bc9f"
         },
         {
           "filename": "throwing_axe.png",
           "region": {
-            "x": 1444,
-            "y": 676,
+            "x": 1764,
+            "y": 672,
             "w": 85,
             "h": 84
           },
@@ -3155,13 +3492,14 @@
             "y": 0,
             "w": 0,
             "h": 1
-          }
+          },
+          "pixel_hash": "5ff0cd9fad5016b2"
         },
         {
           "filename": "tough_bandages.png",
           "region": {
-            "x": 1540,
-            "y": 676,
+            "x": 1860,
+            "y": 672,
             "w": 85,
             "h": 84
           },
@@ -3170,13 +3508,14 @@
             "y": 0,
             "w": 0,
             "h": 1
-          }
+          },
+          "pixel_hash": "2d8d7608a83d85df"
         },
         {
           "filename": "toy_box.png",
           "region": {
-            "x": 1636,
-            "y": 676,
+            "x": 1956,
+            "y": 672,
             "w": 85,
             "h": 84
           },
@@ -3185,13 +3524,14 @@
             "y": 1,
             "w": 0,
             "h": 1
-          }
+          },
+          "pixel_hash": "72a189a8d11cf34e"
         },
         {
           "filename": "vajra.png",
           "region": {
-            "x": 1732,
-            "y": 676,
+            "x": 2052,
+            "y": 672,
             "w": 85,
             "h": 84
           },
@@ -3200,13 +3540,14 @@
             "y": 0,
             "w": 0,
             "h": 1
-          }
+          },
+          "pixel_hash": "f6ec4f0d2e5ba00f"
         },
         {
           "filename": "white_star.png",
           "region": {
-            "x": 1828,
-            "y": 676,
+            "x": 2148,
+            "y": 672,
             "w": 85,
             "h": 84
           },
@@ -3215,13 +3556,14 @@
             "y": 1,
             "w": 0,
             "h": 1
-          }
+          },
+          "pixel_hash": "6cc0254adae88099"
         },
         {
           "filename": "dowsing_rod.png",
           "region": {
-            "x": 1924,
-            "y": 676,
+            "x": 2244,
+            "y": 672,
             "w": 84,
             "h": 84
           },
@@ -3230,13 +3572,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "81bafc0b80efb26c"
         },
         {
           "filename": "electric_shrymp.png",
           "region": {
-            "x": 2016,
-            "y": 676,
+            "x": 2336,
+            "y": 672,
             "w": 84,
             "h": 84
           },
@@ -3245,12 +3588,61 @@
             "y": 1,
             "w": 1,
             "h": 1
-          }
+          },
+          "pixel_hash": "c2745e47784f04be"
         },
         {
           "filename": "reptile_trinket.png",
           "region": {
-            "x": 2108,
+            "x": 2428,
+            "y": 672,
+            "w": 83,
+            "h": 84
+          },
+          "margin": {
+            "x": 1,
+            "y": 1,
+            "w": 2,
+            "h": 1
+          },
+          "pixel_hash": "f7eef00c04e75993"
+        },
+        {
+          "filename": "seal_of_gold.png",
+          "region": {
+            "x": 2520,
+            "y": 672,
+            "w": 83,
+            "h": 84
+          },
+          "margin": {
+            "x": 1,
+            "y": 0,
+            "w": 2,
+            "h": 1
+          },
+          "pixel_hash": "b679400e863d2728"
+        },
+        {
+          "filename": "symbiote.png",
+          "region": {
+            "x": 2612,
+            "y": 672,
+            "w": 83,
+            "h": 84
+          },
+          "margin": {
+            "x": 1,
+            "y": 1,
+            "w": 2,
+            "h": 1
+          },
+          "pixel_hash": "da2405b373694473"
+        },
+        {
+          "filename": "vambrace.png",
+          "region": {
+            "x": 4,
             "y": 676,
             "w": 83,
             "h": 84
@@ -3260,58 +3652,14 @@
             "y": 1,
             "w": 2,
             "h": 1
-          }
-        },
-        {
-          "filename": "seal_of_gold.png",
-          "region": {
-            "x": 2200,
-            "y": 764,
-            "w": 83,
-            "h": 84
           },
-          "margin": {
-            "x": 1,
-            "y": 0,
-            "w": 2,
-            "h": 1
-          }
-        },
-        {
-          "filename": "symbiote.png",
-          "region": {
-            "x": 2292,
-            "y": 764,
-            "w": 83,
-            "h": 84
-          },
-          "margin": {
-            "x": 1,
-            "y": 1,
-            "w": 2,
-            "h": 1
-          }
-        },
-        {
-          "filename": "vambrace.png",
-          "region": {
-            "x": 2384,
-            "y": 764,
-            "w": 83,
-            "h": 84
-          },
-          "margin": {
-            "x": 1,
-            "y": 1,
-            "w": 2,
-            "h": 1
-          }
+          "pixel_hash": "e7d89c65c90e6542"
         },
         {
           "filename": "yummy_cookie_defect.png",
           "region": {
-            "x": 4,
-            "y": 768,
+            "x": 96,
+            "y": 676,
             "w": 83,
             "h": 84
           },
@@ -3320,13 +3668,14 @@
             "y": 1,
             "w": 2,
             "h": 1
-          }
+          },
+          "pixel_hash": "2c410fabc90f55de"
         },
         {
           "filename": "yummy_cookie_necro.png",
           "region": {
-            "x": 96,
-            "y": 768,
+            "x": 188,
+            "y": 676,
             "w": 82,
             "h": 84
           },
@@ -3335,13 +3684,14 @@
             "y": 1,
             "w": 3,
             "h": 1
-          }
+          },
+          "pixel_hash": "d3e853d9856e1ae6"
         },
         {
           "filename": "radiant_pearl.png",
           "region": {
-            "x": 188,
-            "y": 768,
+            "x": 280,
+            "y": 676,
             "w": 81,
             "h": 84
           },
@@ -3350,13 +3700,14 @@
             "y": 0,
             "w": 4,
             "h": 1
-          }
+          },
+          "pixel_hash": "cc9b22d47353d59a"
         },
         {
           "filename": "storybook.png",
           "region": {
-            "x": 280,
-            "y": 768,
+            "x": 372,
+            "y": 676,
             "w": 81,
             "h": 84
           },
@@ -3365,13 +3716,14 @@
             "y": 1,
             "w": 4,
             "h": 1
-          }
+          },
+          "pixel_hash": "0b1bf8354fb21d26"
         },
         {
           "filename": "kifuda.png",
           "region": {
-            "x": 372,
-            "y": 768,
+            "x": 464,
+            "y": 676,
             "w": 79,
             "h": 84
           },
@@ -3380,13 +3732,14 @@
             "y": 1,
             "w": 6,
             "h": 1
-          }
+          },
+          "pixel_hash": "e40e711e1220c711"
         },
         {
           "filename": "ghost_seed.png",
           "region": {
-            "x": 460,
-            "y": 768,
+            "x": 552,
+            "y": 676,
             "w": 77,
             "h": 84
           },
@@ -3395,13 +3748,14 @@
             "y": 1,
             "w": 8,
             "h": 1
-          }
+          },
+          "pixel_hash": "6994922094130b99"
         },
         {
           "filename": "black_blood.png",
           "region": {
-            "x": 548,
-            "y": 768,
+            "x": 2704,
+            "y": 672,
             "w": 72,
             "h": 84
           },
@@ -3410,13 +3764,14 @@
             "y": 1,
             "w": 13,
             "h": 1
-          }
+          },
+          "pixel_hash": "3fe08cebc74b881e"
         },
         {
           "filename": "chemical_x.png",
           "region": {
-            "x": 628,
-            "y": 768,
+            "x": 640,
+            "y": 676,
             "w": 69,
             "h": 84
           },
@@ -3425,13 +3780,14 @@
             "y": 1,
             "w": 16,
             "h": 1
-          }
+          },
+          "pixel_hash": "8fa4c00e8b7eabeb"
         },
         {
           "filename": "empty_cage.png",
           "region": {
-            "x": 708,
-            "y": 768,
+            "x": 720,
+            "y": 676,
             "w": 68,
             "h": 84
           },
@@ -3440,13 +3796,14 @@
             "y": 1,
             "w": 17,
             "h": 1
-          }
+          },
+          "pixel_hash": "0f892c1e2907309e"
         },
         {
           "filename": "lost_wisp.png",
           "region": {
-            "x": 784,
-            "y": 768,
+            "x": 796,
+            "y": 676,
             "w": 61,
             "h": 84
           },
@@ -3455,13 +3812,14 @@
             "y": 1,
             "w": 24,
             "h": 1
-          }
+          },
+          "pixel_hash": "1cb60af758b7ba40"
         },
         {
           "filename": "big_mushroom.png",
           "region": {
-            "x": 856,
-            "y": 768,
+            "x": 868,
+            "y": 676,
             "w": 85,
             "h": 83
           },
@@ -3470,13 +3828,14 @@
             "y": 2,
             "w": 0,
             "h": 2
-          }
+          },
+          "pixel_hash": "f1496bafc2f2ef0e"
         },
         {
           "filename": "centennial_puzzle.png",
           "region": {
-            "x": 952,
-            "y": 768,
+            "x": 964,
+            "y": 676,
             "w": 85,
             "h": 83
           },
@@ -3485,13 +3844,14 @@
             "y": 2,
             "w": 0,
             "h": 2
-          }
+          },
+          "pixel_hash": "94ac619ac8319b40"
         },
         {
           "filename": "delicate_frond.png",
           "region": {
-            "x": 1048,
-            "y": 768,
+            "x": 1060,
+            "y": 676,
             "w": 85,
             "h": 83
           },
@@ -3500,13 +3860,14 @@
             "y": 2,
             "w": 0,
             "h": 2
-          }
+          },
+          "pixel_hash": "69c8146e9d847831"
         },
         {
           "filename": "fake_mango.png",
           "region": {
-            "x": 1144,
-            "y": 768,
+            "x": 1156,
+            "y": 764,
             "w": 85,
             "h": 83
           },
@@ -3515,13 +3876,14 @@
             "y": 2,
             "w": 0,
             "h": 2
-          }
+          },
+          "pixel_hash": "953b0994a566709e"
         },
         {
           "filename": "meal_ticket.png",
           "region": {
-            "x": 1240,
-            "y": 768,
+            "x": 1252,
+            "y": 764,
             "w": 85,
             "h": 83
           },
@@ -3530,13 +3892,14 @@
             "y": 1,
             "w": 0,
             "h": 2
-          }
+          },
+          "pixel_hash": "1d649af32f389a97"
         },
         {
           "filename": "meat_on_the_bone.png",
           "region": {
-            "x": 1336,
-            "y": 768,
+            "x": 1348,
+            "y": 764,
             "w": 85,
             "h": 83
           },
@@ -3545,13 +3908,14 @@
             "y": 2,
             "w": 0,
             "h": 2
-          }
+          },
+          "pixel_hash": "06eb70a3ee2d6cde"
         },
         {
           "filename": "paels_blood.png",
           "region": {
-            "x": 1432,
-            "y": 768,
+            "x": 1444,
+            "y": 764,
             "w": 85,
             "h": 83
           },
@@ -3560,13 +3924,14 @@
             "y": 2,
             "w": 0,
             "h": 2
-          }
+          },
+          "pixel_hash": "2130fa571d9e6c84"
         },
         {
           "filename": "pen_nib.png",
           "region": {
-            "x": 1528,
-            "y": 768,
+            "x": 1540,
+            "y": 764,
             "w": 85,
             "h": 83
           },
@@ -3575,13 +3940,14 @@
             "y": 1,
             "w": 0,
             "h": 2
-          }
+          },
+          "pixel_hash": "77d00da09b694f5c"
         },
         {
           "filename": "pumpkin_candle.png",
           "region": {
-            "x": 1624,
-            "y": 768,
+            "x": 1636,
+            "y": 764,
             "w": 85,
             "h": 83
           },
@@ -3590,13 +3956,14 @@
             "y": 2,
             "w": 0,
             "h": 2
-          }
+          },
+          "pixel_hash": "4055cc27d0d6b9d9"
         },
         {
           "filename": "stone_humidifier.png",
           "region": {
-            "x": 1720,
-            "y": 768,
+            "x": 1732,
+            "y": 764,
             "w": 85,
             "h": 83
           },
@@ -3605,13 +3972,14 @@
             "y": 1,
             "w": 0,
             "h": 2
-          }
+          },
+          "pixel_hash": "1e3b39f54d550980"
         },
         {
           "filename": "toasty_mittens.png",
           "region": {
-            "x": 1816,
-            "y": 768,
+            "x": 1828,
+            "y": 764,
             "w": 85,
             "h": 83
           },
@@ -3620,13 +3988,14 @@
             "y": 1,
             "w": 0,
             "h": 2
-          }
+          },
+          "pixel_hash": "f06f232632a3c3a6"
         },
         {
           "filename": "undulating_mass.png",
           "region": {
-            "x": 1912,
-            "y": 768,
+            "x": 1924,
+            "y": 764,
             "w": 85,
             "h": 83
           },
@@ -3635,13 +4004,14 @@
             "y": 0,
             "w": 0,
             "h": 2
-          }
+          },
+          "pixel_hash": "34ecc06086a61a47"
         },
         {
           "filename": "undying_sigil.png",
           "region": {
-            "x": 2008,
-            "y": 768,
+            "x": 2020,
+            "y": 764,
             "w": 85,
             "h": 83
           },
@@ -3650,13 +4020,14 @@
             "y": 1,
             "w": 0,
             "h": 2
-          }
+          },
+          "pixel_hash": "b230dda3c427020f"
         },
         {
           "filename": "eternal_feather.png",
           "region": {
-            "x": 2104,
-            "y": 768,
+            "x": 2116,
+            "y": 764,
             "w": 84,
             "h": 83
           },
@@ -3665,13 +4036,14 @@
             "y": 0,
             "w": 1,
             "h": 2
-          }
+          },
+          "pixel_hash": "fce78c61d83cb6c1"
         },
         {
           "filename": "wing_charm.png",
           "region": {
-            "x": 2196,
-            "y": 856,
+            "x": 2208,
+            "y": 764,
             "w": 84,
             "h": 83
           },
@@ -3680,13 +4052,30 @@
             "y": 1,
             "w": 1,
             "h": 2
-          }
+          },
+          "pixel_hash": "72dd31820a1be369"
+        },
+        {
+          "filename": "yummy_cookie_fool.png",
+          "region": {
+            "x": 2300,
+            "y": 764,
+            "w": 84,
+            "h": 83
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 1,
+            "h": 2
+          },
+          "pixel_hash": "608b52dd30e48a85"
         },
         {
           "filename": "astrolabe.png",
           "region": {
-            "x": 2288,
-            "y": 856,
+            "x": 2392,
+            "y": 764,
             "w": 83,
             "h": 83
           },
@@ -3695,13 +4084,14 @@
             "y": 2,
             "w": 2,
             "h": 2
-          }
+          },
+          "pixel_hash": "9dedd232892d31e8"
         },
         {
           "filename": "yummy_cookie_silent.png",
           "region": {
-            "x": 2380,
-            "y": 856,
+            "x": 2484,
+            "y": 764,
             "w": 82,
             "h": 83
           },
@@ -3710,13 +4100,14 @@
             "y": 2,
             "w": 3,
             "h": 2
-          }
+          },
+          "pixel_hash": "8b1ed069c27b3509"
         },
         {
           "filename": "cursed_kettle.png",
           "region": {
-            "x": 4,
-            "y": 860,
+            "x": 2576,
+            "y": 764,
             "w": 85,
             "h": 82
           },
@@ -3725,13 +4116,14 @@
             "y": 3,
             "w": 0,
             "h": 3
-          }
+          },
+          "pixel_hash": "e0a8b98ef08eaa26"
         },
         {
           "filename": "dusty_tome.png",
           "region": {
-            "x": 100,
-            "y": 860,
+            "x": 2672,
+            "y": 764,
             "w": 85,
             "h": 82
           },
@@ -3740,13 +4132,14 @@
             "y": 1,
             "w": 0,
             "h": 3
-          }
+          },
+          "pixel_hash": "8eda20fbb8ab158c"
         },
         {
           "filename": "gambling_chip.png",
           "region": {
-            "x": 196,
-            "y": 860,
+            "x": 4,
+            "y": 768,
             "w": 85,
             "h": 82
           },
@@ -3755,13 +4148,14 @@
             "y": 2,
             "w": 0,
             "h": 3
-          }
+          },
+          "pixel_hash": "0f696191f66e147b"
         },
         {
           "filename": "mango.png",
           "region": {
-            "x": 292,
-            "y": 860,
+            "x": 100,
+            "y": 768,
             "w": 85,
             "h": 82
           },
@@ -3770,13 +4164,14 @@
             "y": 3,
             "w": 0,
             "h": 3
-          }
+          },
+          "pixel_hash": "372a04add682b69f"
         },
         {
           "filename": "miniature_tent.png",
           "region": {
-            "x": 388,
-            "y": 860,
+            "x": 196,
+            "y": 768,
             "w": 85,
             "h": 82
           },
@@ -3785,13 +4180,14 @@
             "y": 0,
             "w": 0,
             "h": 3
-          }
+          },
+          "pixel_hash": "1637cbe2d961ff0e"
         },
         {
           "filename": "petrified_toad.png",
           "region": {
-            "x": 484,
-            "y": 860,
+            "x": 292,
+            "y": 768,
             "w": 85,
             "h": 82
           },
@@ -3800,13 +4196,14 @@
             "y": 3,
             "w": 0,
             "h": 3
-          }
+          },
+          "pixel_hash": "b2972bfc3f38fd0c"
         },
         {
           "filename": "precise_scissors.png",
           "region": {
-            "x": 580,
-            "y": 860,
+            "x": 388,
+            "y": 768,
             "w": 85,
             "h": 82
           },
@@ -3815,13 +4212,14 @@
             "y": 3,
             "w": 0,
             "h": 3
-          }
+          },
+          "pixel_hash": "b58c9772af773696"
         },
         {
           "filename": "singing_bowl.png",
           "region": {
-            "x": 676,
-            "y": 860,
+            "x": 484,
+            "y": 768,
             "w": 85,
             "h": 82
           },
@@ -3830,13 +4228,14 @@
             "y": 0,
             "w": 0,
             "h": 3
-          }
+          },
+          "pixel_hash": "e2f1015f46090861"
         },
         {
           "filename": "tuning_fork.png",
           "region": {
-            "x": 772,
-            "y": 860,
+            "x": 580,
+            "y": 768,
             "w": 85,
             "h": 82
           },
@@ -3845,13 +4244,14 @@
             "y": 1,
             "w": 0,
             "h": 3
-          }
+          },
+          "pixel_hash": "fd929928bed8f44f"
         },
         {
           "filename": "white_beast_statue.png",
           "region": {
-            "x": 868,
-            "y": 860,
+            "x": 676,
+            "y": 768,
             "w": 85,
             "h": 82
           },
@@ -3860,13 +4260,14 @@
             "y": 3,
             "w": 0,
             "h": 3
-          }
+          },
+          "pixel_hash": "6b66e5b41ea95cdb"
         },
         {
           "filename": "book_repair_knife.png",
           "region": {
-            "x": 964,
-            "y": 860,
+            "x": 772,
+            "y": 768,
             "w": 84,
             "h": 82
           },
@@ -3875,13 +4276,14 @@
             "y": 1,
             "w": 1,
             "h": 3
-          }
+          },
+          "pixel_hash": "d50b69dbf52a4f19"
         },
         {
           "filename": "sozu.png",
           "region": {
-            "x": 1056,
-            "y": 860,
+            "x": 864,
+            "y": 768,
             "w": 82,
             "h": 82
           },
@@ -3890,13 +4292,14 @@
             "y": 0,
             "w": 3,
             "h": 3
-          }
+          },
+          "pixel_hash": "e0d9836e77b4a652"
         },
         {
           "filename": "stone_cracker.png",
           "region": {
-            "x": 1148,
-            "y": 860,
+            "x": 956,
+            "y": 768,
             "w": 81,
             "h": 82
           },
@@ -3905,13 +4308,14 @@
             "y": 2,
             "w": 4,
             "h": 3
-          }
+          },
+          "pixel_hash": "65d4bf71f2006046"
         },
         {
           "filename": "chosen_cheese.png",
           "region": {
-            "x": 1240,
-            "y": 860,
+            "x": 1048,
+            "y": 768,
             "w": 85,
             "h": 81
           },
@@ -3920,13 +4324,14 @@
             "y": 4,
             "w": 0,
             "h": 4
-          }
+          },
+          "pixel_hash": "91a7fce53acf36f1"
         },
         {
           "filename": "pantograph.png",
           "region": {
-            "x": 1336,
-            "y": 860,
+            "x": 1144,
+            "y": 856,
             "w": 85,
             "h": 81
           },
@@ -3935,13 +4340,14 @@
             "y": 3,
             "w": 0,
             "h": 4
-          }
+          },
+          "pixel_hash": "3bce74bdfa388384"
         },
         {
           "filename": "royal_poison.png",
           "region": {
-            "x": 1432,
-            "y": 860,
+            "x": 1240,
+            "y": 856,
             "w": 85,
             "h": 81
           },
@@ -3950,13 +4356,14 @@
             "y": 1,
             "w": 0,
             "h": 4
-          }
+          },
+          "pixel_hash": "146ab3ad3af8ab03"
         },
         {
           "filename": "royal_scepter.png",
           "region": {
-            "x": 1528,
-            "y": 860,
+            "x": 1336,
+            "y": 856,
             "w": 85,
             "h": 81
           },
@@ -3965,13 +4372,14 @@
             "y": 4,
             "w": 0,
             "h": 4
-          }
+          },
+          "pixel_hash": "7b9b8b4f716783ef"
         },
         {
           "filename": "soup_recipe.png",
           "region": {
-            "x": 1624,
-            "y": 860,
+            "x": 1432,
+            "y": 856,
             "w": 85,
             "h": 81
           },
@@ -3980,13 +4388,14 @@
             "y": 2,
             "w": 0,
             "h": 4
-          }
+          },
+          "pixel_hash": "07cd9ba0205ba189"
         },
         {
           "filename": "tungsten_rod.png",
           "region": {
-            "x": 1720,
-            "y": 860,
+            "x": 1528,
+            "y": 856,
             "w": 85,
             "h": 81
           },
@@ -3995,13 +4404,14 @@
             "y": 1,
             "w": 0,
             "h": 4
-          }
+          },
+          "pixel_hash": "f4185f527f0dba8d"
         },
         {
           "filename": "turnip.png",
           "region": {
-            "x": 1816,
-            "y": 860,
+            "x": 1624,
+            "y": 856,
             "w": 85,
             "h": 81
           },
@@ -4010,13 +4420,14 @@
             "y": 3,
             "w": 0,
             "h": 4
-          }
+          },
+          "pixel_hash": "3b702d9132ae1131"
         },
         {
           "filename": "ostys_devotion.png",
           "region": {
-            "x": 1912,
-            "y": 860,
+            "x": 1720,
+            "y": 856,
             "w": 83,
             "h": 81
           },
@@ -4025,13 +4436,14 @@
             "y": 2,
             "w": 2,
             "h": 4
-          }
+          },
+          "pixel_hash": "523aaf1b4a640a4c"
         },
         {
           "filename": "yummy_cookie_regent.png",
           "region": {
-            "x": 2004,
-            "y": 860,
+            "x": 1812,
+            "y": 856,
             "w": 77,
             "h": 81
           },
@@ -4040,13 +4452,14 @@
             "y": 2,
             "w": 8,
             "h": 4
-          }
+          },
+          "pixel_hash": "067725eb289371ed"
         },
         {
           "filename": "touch_of_orobas.png",
           "region": {
-            "x": 2092,
-            "y": 860,
+            "x": 1900,
+            "y": 856,
             "w": 76,
             "h": 81
           },
@@ -4055,13 +4468,14 @@
             "y": 2,
             "w": 9,
             "h": 4
-          }
+          },
+          "pixel_hash": "e44ed771cfb5a89d"
         },
         {
           "filename": "bag_of_preparation.png",
           "region": {
-            "x": 2176,
-            "y": 948,
+            "x": 1984,
+            "y": 856,
             "w": 85,
             "h": 80
           },
@@ -4070,13 +4484,14 @@
             "y": 4,
             "w": 0,
             "h": 5
-          }
+          },
+          "pixel_hash": "c3103a7dc4cfbc83"
         },
         {
           "filename": "bagh_nakh.png",
           "region": {
-            "x": 2272,
-            "y": 948,
+            "x": 2080,
+            "y": 856,
             "w": 85,
             "h": 80
           },
@@ -4085,13 +4500,14 @@
             "y": 2,
             "w": 0,
             "h": 5
-          }
+          },
+          "pixel_hash": "ac33302dd06c9242"
         },
         {
           "filename": "battle_horn.png",
           "region": {
-            "x": 2368,
-            "y": 948,
+            "x": 2176,
+            "y": 856,
             "w": 85,
             "h": 80
           },
@@ -4100,13 +4516,14 @@
             "y": 2,
             "w": 0,
             "h": 5
-          }
+          },
+          "pixel_hash": "839a86ee1e19f1f6"
         },
         {
           "filename": "jeweled_mask.png",
           "region": {
-            "x": 4,
-            "y": 952,
+            "x": 2272,
+            "y": 856,
             "w": 85,
             "h": 80
           },
@@ -4115,13 +4532,14 @@
             "y": 3,
             "w": 0,
             "h": 5
-          }
+          },
+          "pixel_hash": "e496b8cd7d49ccf3"
         },
         {
           "filename": "medical_kit.png",
           "region": {
-            "x": 100,
-            "y": 952,
+            "x": 2368,
+            "y": 856,
             "w": 85,
             "h": 80
           },
@@ -4130,13 +4548,14 @@
             "y": 4,
             "w": 0,
             "h": 5
-          }
+          },
+          "pixel_hash": "492420466a0c50d1"
         },
         {
           "filename": "nutritious_soup.png",
           "region": {
-            "x": 196,
-            "y": 952,
+            "x": 2464,
+            "y": 856,
             "w": 85,
             "h": 80
           },
@@ -4145,13 +4564,14 @@
             "y": 2,
             "w": 0,
             "h": 5
-          }
+          },
+          "pixel_hash": "af29d2c7ed329ca5"
         },
         {
           "filename": "paels_blob.png",
           "region": {
-            "x": 292,
-            "y": 952,
+            "x": 2560,
+            "y": 856,
             "w": 85,
             "h": 80
           },
@@ -4160,13 +4580,14 @@
             "y": 4,
             "w": 0,
             "h": 5
-          }
+          },
+          "pixel_hash": "6422ebd0da000c32"
         },
         {
           "filename": "regal_pillow.png",
           "region": {
-            "x": 388,
-            "y": 952,
+            "x": 2656,
+            "y": 856,
             "w": 85,
             "h": 80
           },
@@ -4175,13 +4596,14 @@
             "y": 3,
             "w": 0,
             "h": 5
-          }
+          },
+          "pixel_hash": "9ba22a918fc6a9d0"
         },
         {
           "filename": "stone_calendar.png",
           "region": {
-            "x": 484,
-            "y": 952,
+            "x": 4,
+            "y": 860,
             "w": 85,
             "h": 80
           },
@@ -4190,13 +4612,14 @@
             "y": 3,
             "w": 0,
             "h": 5
-          }
+          },
+          "pixel_hash": "6c32e0cfda19c747"
         },
         {
           "filename": "philosophers_stone.png",
           "region": {
-            "x": 580,
-            "y": 952,
+            "x": 100,
+            "y": 860,
             "w": 84,
             "h": 80
           },
@@ -4205,13 +4628,14 @@
             "y": 4,
             "w": 1,
             "h": 5
-          }
+          },
+          "pixel_hash": "fffa9e98aa8107c6"
         },
         {
           "filename": "tingsha.png",
           "region": {
-            "x": 672,
-            "y": 952,
+            "x": 192,
+            "y": 860,
             "w": 84,
             "h": 80
           },
@@ -4220,13 +4644,14 @@
             "y": 2,
             "w": 1,
             "h": 5
-          }
+          },
+          "pixel_hash": "5ec56a40633d833b"
         },
         {
           "filename": "yummy_cookie_ironclad.png",
           "region": {
-            "x": 764,
-            "y": 952,
+            "x": 284,
+            "y": 860,
             "w": 84,
             "h": 80
           },
@@ -4235,13 +4660,14 @@
             "y": 1,
             "w": 1,
             "h": 5
-          }
+          },
+          "pixel_hash": "810fa088cc6a79ee"
         },
         {
           "filename": "gold_plated_cables.png",
           "region": {
-            "x": 856,
-            "y": 952,
+            "x": 376,
+            "y": 860,
             "w": 82,
             "h": 80
           },
@@ -4250,13 +4676,14 @@
             "y": 5,
             "w": 3,
             "h": 5
-          }
+          },
+          "pixel_hash": "f35ce819b7e3903d"
         },
         {
           "filename": "velvet_choker.png",
           "region": {
-            "x": 948,
-            "y": 952,
+            "x": 468,
+            "y": 860,
             "w": 82,
             "h": 80
           },
@@ -4265,13 +4692,14 @@
             "y": 2,
             "w": 3,
             "h": 5
-          }
+          },
+          "pixel_hash": "4dfa331ab3592e90"
         },
         {
           "filename": "dragon_fruit.png",
           "region": {
-            "x": 1040,
-            "y": 952,
+            "x": 560,
+            "y": 860,
             "w": 80,
             "h": 80
           },
@@ -4280,13 +4708,14 @@
             "y": 5,
             "w": 5,
             "h": 5
-          }
+          },
+          "pixel_hash": "d3e6d3d2ec5532c5"
         },
         {
           "filename": "paels_eye.png",
           "region": {
-            "x": 1128,
-            "y": 952,
+            "x": 648,
+            "y": 860,
             "w": 80,
             "h": 80
           },
@@ -4295,13 +4724,14 @@
             "y": 1,
             "w": 5,
             "h": 5
-          }
+          },
+          "pixel_hash": "ed41accda97ccd87"
         },
         {
           "filename": "small_capsule.png",
           "region": {
-            "x": 1216,
-            "y": 952,
+            "x": 736,
+            "y": 860,
             "w": 71,
             "h": 80
           },
@@ -4310,13 +4740,14 @@
             "y": 2,
             "w": 14,
             "h": 5
-          }
+          },
+          "pixel_hash": "660a048440f98e51"
         },
         {
           "filename": "big_hat.png",
           "region": {
-            "x": 1296,
-            "y": 952,
+            "x": 816,
+            "y": 860,
             "w": 85,
             "h": 79
           },
@@ -4325,13 +4756,14 @@
             "y": 4,
             "w": 0,
             "h": 6
-          }
+          },
+          "pixel_hash": "dc91e246fba21b5b"
         },
         {
           "filename": "byrdpip.png",
           "region": {
-            "x": 1392,
-            "y": 952,
+            "x": 912,
+            "y": 860,
             "w": 85,
             "h": 79
           },
@@ -4340,43 +4772,14 @@
             "y": 1,
             "w": 0,
             "h": 6
-          }
-        },
-        {
-          "filename": "golden_compass.png",
-          "region": {
-            "x": 1488,
-            "y": 952,
-            "w": 85,
-            "h": 79
           },
-          "margin": {
-            "x": 0,
-            "y": 3,
-            "w": 0,
-            "h": 6
-          }
+          "pixel_hash": "d6409db7d2b2aa56"
         },
         {
-          "filename": "lost_coffer.png",
+          "filename": "exercise_mat_small_stroke.png",
           "region": {
-            "x": 1584,
-            "y": 952,
-            "w": 85,
-            "h": 79
-          },
-          "margin": {
-            "x": 0,
-            "y": 3,
-            "w": 0,
-            "h": 6
-          }
-        },
-        {
-          "filename": "orange_dough.png",
-          "region": {
-            "x": 1680,
-            "y": 952,
+            "x": 1008,
+            "y": 860,
             "w": 85,
             "h": 79
           },
@@ -4385,43 +4788,14 @@
             "y": 2,
             "w": 0,
             "h": 6
-          }
-        },
-        {
-          "filename": "prismatic_gem.png",
-          "region": {
-            "x": 1776,
-            "y": 952,
-            "w": 85,
-            "h": 79
           },
-          "margin": {
-            "x": 0,
-            "y": 4,
-            "w": 0,
-            "h": 6
-          }
+          "pixel_hash": "551ce03559613429"
         },
         {
-          "filename": "snecko_skull.png",
+          "filename": "golden_compass.png",
           "region": {
-            "x": 1872,
-            "y": 952,
-            "w": 85,
-            "h": 79
-          },
-          "margin": {
-            "x": 0,
-            "y": 1,
-            "w": 0,
-            "h": 6
-          }
-        },
-        {
-          "filename": "twisted_funnel.png",
-          "region": {
-            "x": 1968,
-            "y": 952,
+            "x": 1984,
+            "y": 944,
             "w": 85,
             "h": 79
           },
@@ -4430,13 +4804,94 @@
             "y": 3,
             "w": 0,
             "h": 6
-          }
+          },
+          "pixel_hash": "605c98a6e1a4473a"
+        },
+        {
+          "filename": "lost_coffer.png",
+          "region": {
+            "x": 2080,
+            "y": 944,
+            "w": 85,
+            "h": 79
+          },
+          "margin": {
+            "x": 0,
+            "y": 3,
+            "w": 0,
+            "h": 6
+          },
+          "pixel_hash": "97fdb24c813a471c"
+        },
+        {
+          "filename": "orange_dough.png",
+          "region": {
+            "x": 2176,
+            "y": 944,
+            "w": 85,
+            "h": 79
+          },
+          "margin": {
+            "x": 0,
+            "y": 2,
+            "w": 0,
+            "h": 6
+          },
+          "pixel_hash": "dd2fa11810c53dd0"
+        },
+        {
+          "filename": "prismatic_gem.png",
+          "region": {
+            "x": 2272,
+            "y": 944,
+            "w": 85,
+            "h": 79
+          },
+          "margin": {
+            "x": 0,
+            "y": 4,
+            "w": 0,
+            "h": 6
+          },
+          "pixel_hash": "b130e17225653d18"
+        },
+        {
+          "filename": "snecko_skull.png",
+          "region": {
+            "x": 2368,
+            "y": 944,
+            "w": 85,
+            "h": 79
+          },
+          "margin": {
+            "x": 0,
+            "y": 1,
+            "w": 0,
+            "h": 6
+          },
+          "pixel_hash": "d81804c07d7d5a9c"
+        },
+        {
+          "filename": "twisted_funnel.png",
+          "region": {
+            "x": 2464,
+            "y": 944,
+            "w": 85,
+            "h": 79
+          },
+          "margin": {
+            "x": 0,
+            "y": 3,
+            "w": 0,
+            "h": 6
+          },
+          "pixel_hash": "9d1387873282948e"
         },
         {
           "filename": "regalite.png",
           "region": {
-            "x": 2064,
-            "y": 952,
+            "x": 2560,
+            "y": 944,
             "w": 84,
             "h": 79
           },
@@ -4445,13 +4900,14 @@
             "y": 2,
             "w": 1,
             "h": 6
-          }
+          },
+          "pixel_hash": "e4074985bfffcb2d"
         },
         {
           "filename": "cauldron.png",
           "region": {
-            "x": 2156,
-            "y": 1036,
+            "x": 2652,
+            "y": 944,
             "w": 85,
             "h": 78
           },
@@ -4460,13 +4916,14 @@
             "y": 4,
             "w": 0,
             "h": 7
-          }
+          },
+          "pixel_hash": "5f3077ac08d80f05"
         },
         {
           "filename": "paels_legion.png",
           "region": {
-            "x": 2252,
-            "y": 1036,
+            "x": 4,
+            "y": 948,
             "w": 85,
             "h": 78
           },
@@ -4475,13 +4932,14 @@
             "y": 1,
             "w": 0,
             "h": 7
-          }
+          },
+          "pixel_hash": "bbb276da4dddd209"
         },
         {
           "filename": "runic_pyramid.png",
           "region": {
-            "x": 2348,
-            "y": 1036,
+            "x": 100,
+            "y": 948,
             "w": 85,
             "h": 78
           },
@@ -4490,13 +4948,14 @@
             "y": 6,
             "w": 0,
             "h": 7
-          }
+          },
+          "pixel_hash": "bd6cb761a0c04d99"
         },
         {
           "filename": "tiny_mailbox.png",
           "region": {
-            "x": 4,
-            "y": 1040,
+            "x": 196,
+            "y": 948,
             "w": 85,
             "h": 78
           },
@@ -4505,13 +4964,14 @@
             "y": 6,
             "w": 0,
             "h": 7
-          }
+          },
+          "pixel_hash": "7bf191a56812759d"
         },
         {
           "filename": "wongo_customer_appreciation_badge.png",
           "region": {
-            "x": 100,
-            "y": 1040,
+            "x": 292,
+            "y": 948,
             "w": 85,
             "h": 78
           },
@@ -4520,13 +4980,14 @@
             "y": 3,
             "w": 0,
             "h": 7
-          }
+          },
+          "pixel_hash": "184cbd867dc859fd"
         },
         {
           "filename": "brimstone.png",
           "region": {
-            "x": 196,
-            "y": 1040,
+            "x": 388,
+            "y": 948,
             "w": 84,
             "h": 78
           },
@@ -4535,13 +4996,14 @@
             "y": 3,
             "w": 1,
             "h": 7
-          }
+          },
+          "pixel_hash": "487c9b415adecdef"
         },
         {
           "filename": "gorget.png",
           "region": {
-            "x": 288,
-            "y": 1040,
+            "x": 480,
+            "y": 948,
             "w": 85,
             "h": 77
           },
@@ -4550,13 +5012,14 @@
             "y": 4,
             "w": 0,
             "h": 8
-          }
+          },
+          "pixel_hash": "e9c24e37811f5233"
         },
         {
           "filename": "paels_horn.png",
           "region": {
-            "x": 384,
-            "y": 1040,
+            "x": 576,
+            "y": 948,
             "w": 85,
             "h": 77
           },
@@ -4565,13 +5028,14 @@
             "y": 4,
             "w": 0,
             "h": 8
-          }
+          },
+          "pixel_hash": "f0ff37b82062e169"
         },
         {
           "filename": "pocketwatch.png",
           "region": {
-            "x": 480,
-            "y": 1040,
+            "x": 672,
+            "y": 948,
             "w": 85,
             "h": 77
           },
@@ -4580,13 +5044,14 @@
             "y": 2,
             "w": 0,
             "h": 8
-          }
+          },
+          "pixel_hash": "1dd20ab9e513df81"
         },
         {
           "filename": "glass_eye.png",
           "region": {
-            "x": 576,
-            "y": 1040,
+            "x": 768,
+            "y": 948,
             "w": 77,
             "h": 77
           },
@@ -4595,13 +5060,14 @@
             "y": 5,
             "w": 8,
             "h": 8
-          }
+          },
+          "pixel_hash": "1e6d5c0d2b69cd60"
         },
         {
           "filename": "akabeko.png",
           "region": {
-            "x": 664,
-            "y": 1040,
+            "x": 856,
+            "y": 948,
             "w": 85,
             "h": 76
           },
@@ -4610,13 +5076,14 @@
             "y": 7,
             "w": 0,
             "h": 9
-          }
+          },
+          "pixel_hash": "07240bf352f0a58f"
         },
         {
           "filename": "ornamental_fan.png",
           "region": {
-            "x": 760,
-            "y": 1040,
+            "x": 952,
+            "y": 948,
             "w": 85,
             "h": 76
           },
@@ -4625,13 +5092,14 @@
             "y": 4,
             "w": 0,
             "h": 9
-          }
+          },
+          "pixel_hash": "29e676153d760c02"
         },
         {
           "filename": "toolbox.png",
           "region": {
-            "x": 856,
-            "y": 1040,
+            "x": 1048,
+            "y": 948,
             "w": 85,
             "h": 76
           },
@@ -4640,13 +5108,14 @@
             "y": 6,
             "w": 0,
             "h": 9
-          }
+          },
+          "pixel_hash": "dca7d3ad60c5b25c"
         },
         {
           "filename": "torii.png",
           "region": {
-            "x": 952,
-            "y": 1040,
+            "x": 1144,
+            "y": 948,
             "w": 85,
             "h": 76
           },
@@ -4655,13 +5124,14 @@
             "y": 7,
             "w": 0,
             "h": 9
-          }
+          },
+          "pixel_hash": "60f555f797af2f1d"
         },
         {
           "filename": "ember_tea.png",
           "region": {
-            "x": 1048,
-            "y": 1040,
+            "x": 1240,
+            "y": 948,
             "w": 83,
             "h": 76
           },
@@ -4670,13 +5140,14 @@
             "y": 0,
             "w": 2,
             "h": 9
-          }
+          },
+          "pixel_hash": "cc955a684041ce56"
         },
         {
           "filename": "funerary_mask.png",
           "region": {
-            "x": 1140,
-            "y": 1040,
+            "x": 1332,
+            "y": 948,
             "w": 83,
             "h": 76
           },
@@ -4685,13 +5156,14 @@
             "y": 6,
             "w": 2,
             "h": 9
-          }
+          },
+          "pixel_hash": "798d94a6984b08cd"
         },
         {
           "filename": "jewelry_box.png",
           "region": {
-            "x": 1232,
-            "y": 1040,
+            "x": 1424,
+            "y": 948,
             "w": 85,
             "h": 75
           },
@@ -4700,13 +5172,14 @@
             "y": 6,
             "w": 0,
             "h": 10
-          }
+          },
+          "pixel_hash": "7b4b0f9777f84811"
         },
         {
           "filename": "membership_card.png",
           "region": {
-            "x": 1328,
-            "y": 1040,
+            "x": 1520,
+            "y": 948,
             "w": 85,
             "h": 75
           },
@@ -4715,13 +5188,14 @@
             "y": 8,
             "w": 0,
             "h": 10
-          }
+          },
+          "pixel_hash": "f38c246786e74bc8"
         },
         {
           "filename": "paper_phrog.png",
           "region": {
-            "x": 1424,
-            "y": 1040,
+            "x": 1616,
+            "y": 948,
             "w": 85,
             "h": 75
           },
@@ -4730,13 +5204,14 @@
             "y": 6,
             "w": 0,
             "h": 10
-          }
+          },
+          "pixel_hash": "8170aad0a7b81594"
         },
         {
           "filename": "toric_satisfaction.png",
           "region": {
-            "x": 1520,
-            "y": 1040,
+            "x": 1712,
+            "y": 948,
             "w": 85,
             "h": 75
           },
@@ -4745,13 +5220,14 @@
             "y": 5,
             "w": 0,
             "h": 10
-          }
+          },
+          "pixel_hash": "6b5b9c66bdab9dc7"
         },
         {
           "filename": "history_course.png",
           "region": {
-            "x": 1616,
-            "y": 1040,
+            "x": 1808,
+            "y": 948,
             "w": 85,
             "h": 74
           },
@@ -4760,13 +5236,14 @@
             "y": 8,
             "w": 0,
             "h": 11
-          }
+          },
+          "pixel_hash": "67291f875f7ffd3b"
         },
         {
           "filename": "sea_glass.png",
           "region": {
-            "x": 1712,
-            "y": 1040,
+            "x": 856,
+            "y": 1032,
             "w": 85,
             "h": 74
           },
@@ -4775,13 +5252,14 @@
             "y": 4,
             "w": 0,
             "h": 11
-          }
+          },
+          "pixel_hash": "30765caa433535ef"
         },
         {
           "filename": "the_boot.png",
           "region": {
-            "x": 1808,
-            "y": 1040,
+            "x": 952,
+            "y": 1032,
             "w": 85,
             "h": 74
           },
@@ -4790,13 +5268,14 @@
             "y": 7,
             "w": 0,
             "h": 11
-          }
+          },
+          "pixel_hash": "2c03a39a4e668e59"
         },
         {
           "filename": "whetstone.png",
           "region": {
-            "x": 1904,
-            "y": 1040,
+            "x": 1048,
+            "y": 1032,
             "w": 83,
             "h": 73
           },
@@ -4805,13 +5284,14 @@
             "y": 8,
             "w": 2,
             "h": 12
-          }
+          },
+          "pixel_hash": "080d8d913baa1cb3"
         },
         {
           "filename": "bowler_hat.png",
           "region": {
-            "x": 1996,
-            "y": 1040,
+            "x": 1140,
+            "y": 1032,
             "w": 85,
             "h": 72
           },
@@ -4820,13 +5300,14 @@
             "y": 8,
             "w": 0,
             "h": 13
-          }
+          },
+          "pixel_hash": "c8a9a858eee4ea55"
         },
         {
           "filename": "lead_paperweight.png",
           "region": {
-            "x": 1996,
-            "y": 1120,
+            "x": 1236,
+            "y": 1032,
             "w": 85,
             "h": 72
           },
@@ -4835,13 +5316,14 @@
             "y": 7,
             "w": 0,
             "h": 13
-          }
+          },
+          "pixel_hash": "e259604b11c0a0f1"
         },
         {
           "filename": "oddly_smooth_stone.png",
           "region": {
-            "x": 664,
-            "y": 1124,
+            "x": 1332,
+            "y": 1032,
             "w": 85,
             "h": 72
           },
@@ -4850,13 +5332,14 @@
             "y": 7,
             "w": 0,
             "h": 13
-          }
+          },
+          "pixel_hash": "d889c708d86bd0ee"
         },
         {
           "filename": "paper_lotus.png",
           "region": {
-            "x": 760,
-            "y": 1124,
+            "x": 1428,
+            "y": 1032,
             "w": 85,
             "h": 72
           },
@@ -4865,13 +5348,14 @@
             "y": 10,
             "w": 0,
             "h": 13
-          }
+          },
+          "pixel_hash": "a7efc676406ae6a5"
         },
         {
           "filename": "emotion_chip.png",
           "region": {
-            "x": 856,
-            "y": 1124,
+            "x": 1524,
+            "y": 1032,
             "w": 84,
             "h": 72
           },
@@ -4880,13 +5364,14 @@
             "y": 7,
             "w": 1,
             "h": 13
-          }
+          },
+          "pixel_hash": "445262ec5add323f"
         },
         {
           "filename": "fake_orichalcum.png",
           "region": {
-            "x": 948,
-            "y": 1124,
+            "x": 1616,
+            "y": 1032,
             "w": 85,
             "h": 71
           },
@@ -4895,13 +5380,14 @@
             "y": 8,
             "w": 0,
             "h": 14
-          }
+          },
+          "pixel_hash": "00e435347886c493"
         },
         {
           "filename": "mangled_tiara.png",
           "region": {
-            "x": 1044,
-            "y": 1124,
+            "x": 1712,
+            "y": 1032,
             "w": 85,
             "h": 71
           },
@@ -4910,13 +5396,14 @@
             "y": 1,
             "w": 0,
             "h": 14
-          }
+          },
+          "pixel_hash": "53afa77e9a52ec2f"
         },
         {
           "filename": "orichalcum.png",
           "region": {
-            "x": 1140,
-            "y": 1124,
+            "x": 1808,
+            "y": 1032,
             "w": 85,
             "h": 71
           },
@@ -4925,13 +5412,14 @@
             "y": 8,
             "w": 0,
             "h": 14
-          }
+          },
+          "pixel_hash": "e5ff19137fb83d53"
         },
         {
           "filename": "the_abacus.png",
           "region": {
-            "x": 1236,
-            "y": 1124,
+            "x": 1904,
+            "y": 1032,
             "w": 85,
             "h": 71
           },
@@ -4940,13 +5428,14 @@
             "y": 7,
             "w": 0,
             "h": 14
-          }
+          },
+          "pixel_hash": "57dc48e267616cf3"
         },
         {
           "filename": "ectoplasm.png",
           "region": {
-            "x": 1332,
-            "y": 1124,
+            "x": 2000,
+            "y": 1032,
             "w": 84,
             "h": 71
           },
@@ -4955,13 +5444,14 @@
             "y": 9,
             "w": 1,
             "h": 14
-          }
+          },
+          "pixel_hash": "b6e44be7aec42c62"
         },
         {
           "filename": "maw_bank.png",
           "region": {
-            "x": 1424,
-            "y": 1124,
+            "x": 2092,
+            "y": 1032,
             "w": 85,
             "h": 70
           },
@@ -4970,13 +5460,14 @@
             "y": 7,
             "w": 0,
             "h": 15
-          }
+          },
+          "pixel_hash": "8fc07543f7fcd4af"
         },
         {
           "filename": "diamond_diadem.png",
           "region": {
-            "x": 1520,
-            "y": 1124,
+            "x": 2188,
+            "y": 1032,
             "w": 83,
             "h": 70
           },
@@ -4985,13 +5476,14 @@
             "y": 9,
             "w": 2,
             "h": 15
-          }
+          },
+          "pixel_hash": "b66caf17ad77d151"
         },
         {
           "filename": "crossbow.png",
           "region": {
-            "x": 1612,
-            "y": 1124,
+            "x": 2280,
+            "y": 1032,
             "w": 85,
             "h": 69
           },
@@ -5000,13 +5492,14 @@
             "y": 6,
             "w": 0,
             "h": 16
-          }
+          },
+          "pixel_hash": "8956960c6f3262b1"
         },
         {
           "filename": "stone_ring.png",
           "region": {
-            "x": 1708,
-            "y": 1124,
+            "x": 2376,
+            "y": 1032,
             "w": 85,
             "h": 69
           },
@@ -5015,13 +5508,14 @@
             "y": 8,
             "w": 0,
             "h": 16
-          }
+          },
+          "pixel_hash": "63bf9c9a48a9e85f"
         },
         {
           "filename": "belt_buckle.png",
           "region": {
-            "x": 1804,
-            "y": 1124,
+            "x": 2472,
+            "y": 1032,
             "w": 84,
             "h": 69
           },
@@ -5030,13 +5524,14 @@
             "y": 7,
             "w": 1,
             "h": 16
-          }
+          },
+          "pixel_hash": "79ae29e768bb1e1f"
         },
         {
           "filename": "bag_of_marbles.png",
           "region": {
-            "x": 1896,
-            "y": 1124,
+            "x": 2564,
+            "y": 1032,
             "w": 85,
             "h": 66
           },
@@ -5045,13 +5540,14 @@
             "y": 13,
             "w": 0,
             "h": 19
-          }
+          },
+          "pixel_hash": "3f2a86bdf6c69a9f"
         },
         {
           "filename": "bread.png",
           "region": {
-            "x": 2092,
-            "y": 1124,
+            "x": 2660,
+            "y": 1032,
             "w": 85,
             "h": 66
           },
@@ -5060,13 +5556,14 @@
             "y": 12,
             "w": 0,
             "h": 19
-          }
+          },
+          "pixel_hash": "6b0af96d4fe8419d"
         },
         {
           "filename": "gnarled_hammer.png",
           "region": {
-            "x": 2188,
-            "y": 1124,
+            "x": 4,
+            "y": 1036,
             "w": 84,
             "h": 66
           },
@@ -5075,13 +5572,14 @@
             "y": 6,
             "w": 1,
             "h": 19
-          }
+          },
+          "pixel_hash": "2e3e0ecd3afd6428"
         },
         {
           "filename": "nectar_tea.png",
           "region": {
-            "x": 2280,
-            "y": 1124,
+            "x": 96,
+            "y": 1036,
             "w": 83,
             "h": 64
           },
@@ -5090,13 +5588,14 @@
             "y": 12,
             "w": 2,
             "h": 21
-          }
+          },
+          "pixel_hash": "72b5973fe7fe6acc"
         },
         {
           "filename": "art_of_war.png",
           "region": {
-            "x": 2372,
-            "y": 1124,
+            "x": 188,
+            "y": 1036,
             "w": 85,
             "h": 63
           },
@@ -5105,13 +5604,14 @@
             "y": 14,
             "w": 0,
             "h": 22
-          }
+          },
+          "pixel_hash": "d2b1a5bd8bb09846"
         },
         {
           "filename": "ripple_basin.png",
           "region": {
-            "x": 4,
-            "y": 1128,
+            "x": 284,
+            "y": 1036,
             "w": 85,
             "h": 62
           },
@@ -5120,13 +5620,14 @@
             "y": 13,
             "w": 0,
             "h": 23
-          }
+          },
+          "pixel_hash": "f10bb436a2ad0086"
         },
         {
           "filename": "bone_tea.png",
           "region": {
-            "x": 100,
-            "y": 1128,
+            "x": 380,
+            "y": 1036,
             "w": 83,
             "h": 62
           },
@@ -5135,13 +5636,14 @@
             "y": 14,
             "w": 2,
             "h": 23
-          }
+          },
+          "pixel_hash": "d07fcb882327e327"
         },
         {
           "filename": "tea_of_discourtesy.png",
           "region": {
-            "x": 192,
-            "y": 1128,
+            "x": 472,
+            "y": 1036,
             "w": 83,
             "h": 62
           },
@@ -5150,13 +5652,14 @@
             "y": 14,
             "w": 2,
             "h": 23
-          }
+          },
+          "pixel_hash": "6f3289787fe88a42"
         },
         {
           "filename": "circlet.png",
           "region": {
-            "x": 284,
-            "y": 1128,
+            "x": 564,
+            "y": 1036,
             "w": 85,
             "h": 59
           },
@@ -5165,13 +5668,14 @@
             "y": 21,
             "w": 0,
             "h": 26
-          }
+          },
+          "pixel_hash": "8605d5888307cc1d"
         },
         {
           "filename": "war_paint.png",
           "region": {
-            "x": 380,
-            "y": 1128,
+            "x": 660,
+            "y": 1036,
             "w": 85,
             "h": 59
           },
@@ -5180,13 +5684,14 @@
             "y": 17,
             "w": 0,
             "h": 26
-          }
+          },
+          "pixel_hash": "3451706a01453b97"
         },
         {
           "filename": "horn_cleat.png",
           "region": {
-            "x": 476,
-            "y": 1128,
+            "x": 756,
+            "y": 1036,
             "w": 85,
             "h": 57
           },
@@ -5195,7 +5700,8 @@
             "y": 15,
             "w": 0,
             "h": 28
-          }
+          },
+          "pixel_hash": "513fa329f73f6262"
         }
       ]
     }

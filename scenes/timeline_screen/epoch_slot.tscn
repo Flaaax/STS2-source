@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://4reu0kq3pwf7"]
+[gd_scene load_steps=16 format=3 uid="uid://4reu0kq3pwf7"]
 
 [ext_resource type="Texture2D" uid="uid://dbuw4bu3r43n2" path="res://images/timeline/ui/slot_golden.png" id="1_dco6k"]
 [ext_resource type="Script" uid="uid://cy4lawphfy072" path="res://src/Core/Nodes/Screens/Timeline/NEpochSlot.cs" id="1_skqay"]
@@ -6,7 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://c4mds13m5buvv" path="res://images/timeline/ui/slot_outline.png" id="4_2ne8a"]
 [ext_resource type="Shader" uid="uid://c66gb6g7tup3n" path="res://shaders/hsv.gdshader" id="5_cxfmc"]
 [ext_resource type="Texture2D" uid="uid://bjyue0pdjk8v6" path="res://images/packed/timeline/epoch_slot_locked_small.png" id="5_rliaj"]
-[ext_resource type="Shader" uid="uid://cmylquha3cjx4" path="res://shaders/dark_blur.gdshader" id="6_4qrnp"]
+[ext_resource type="Shader" uid="uid://15shwabns3a4" path="res://shaders/blur/Blur.gdshader" id="6_blurx"]
+[ext_resource type="Shader" uid="uid://bdmk11babrgij" path="res://shaders/blur/canvas_group_mask_blur.gdshader" id="7_blury"]
 [ext_resource type="Script" uid="uid://dtfio45agppyj" path="res://addons/mega_text/MegaLabel.cs" id="10_gufj2"]
 [ext_resource type="FontVariation" uid="uid://cfurftqxyn4mn" path="res://themes/kreon_regular_glyph_space_one.tres" id="10_vc27h"]
 [ext_resource type="PackedScene" uid="uid://bgy88bk44xxvk" path="res://scenes/ui/selection_reticle.tscn" id="12_w0cxx"]
@@ -18,11 +19,15 @@ shader_parameter/h = 1.0
 shader_parameter/s = 1.0
 shader_parameter/v = 1.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hs7p2"]
-resource_local_to_scene = true
-shader = ExtResource("6_4qrnp")
-shader_parameter/lod = 1.0
-shader_parameter/mix_percentage = 0.25
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_blurx"]
+shader = ExtResource("6_blurx")
+shader_parameter/radius = 12.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_blury"]
+shader = ExtResource("7_blury")
+shader_parameter/radius = 12.0
+shader_parameter/mask = false
+shader_parameter/blur = true
 
 [node name="EpochSlot" type="Control"]
 custom_minimum_size = Vector2(162, 100)
@@ -120,49 +125,35 @@ mouse_filter = 2
 texture = ExtResource("4_2ne8a")
 expand_mode = 1
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+[node name="SubViewport" type="SubViewport" parent="."]
 unique_name_in_owner = true
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -81.0
-offset_top = 1350.0
-offset_right = 81.0
-offset_bottom = 1450.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
-unique_name_in_owner = true
+disable_3d = true
 handle_input_locally = false
+gui_disable_input = true
 size = Vector2i(162, 100)
 render_target_update_mode = 0
 
-[node name="BlurPortrait" type="TextureRect" parent="SubViewportContainer/SubViewport"]
+[node name="BlurCanvasGroup" type="CanvasGroup" parent="SubViewport"]
+material = SubResource("ShaderMaterial_blury")
+fit_margin = 1.0
+clear_margin = 1.0
+
+[node name="BlurPortrait" type="TextureRect" parent="SubViewport/BlurCanvasGroup"]
 unique_name_in_owner = true
-material = ExtResource("3_x1hep")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+material = SubResource("ShaderMaterial_blurx")
+offset_right = 162.0
+offset_bottom = 100.0
 mouse_filter = 2
 expand_mode = 1
 
-[node name="Blur" type="ColorRect" parent="SubViewportContainer/SubViewport"]
-unique_name_in_owner = true
-material = SubResource("ShaderMaterial_hs7p2")
+[node name="Darken" type="ColorRect" parent="SubViewport"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+color = Color(0, 0, 0, 0.35)
 
 [node name="DebugLabel" type="Label" parent="."]
 unique_name_in_owner = true

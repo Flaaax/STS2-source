@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://cilj0hp8jcfmj"]
+
+[ext_resource type="Texture2D" uid="uid://q86di1eocspv" path="res://images/ancients/under_construction.png" id="1_5krfm"]
+[ext_resource type="Script" uid="uid://c3wjtdlvxohgy" path="res://src/Core/Nodes/Screens/NUnderConstruction.cs" id="2_wuu4u"]
+[ext_resource type="FontVariation" uid="uid://ciql5khgewwbm" path="res://themes/kreon_bold_glyph_space_two.tres" id="2_xahrk"]
+[ext_resource type="Script" uid="uid://c2oywrx8xbqfx" path="res://addons/mega_text/MegaRichTextLabel.cs" id="3_wuu4u"]
+
+[node name="UnderConstruction" type="TextureRect"]
+custom_minimum_size = Vector2(64, 52)
+offset_left = 24.0
+offset_top = 82.0
+offset_right = 88.0
+offset_bottom = 134.0
+rotation = -0.21924797
+mouse_filter = 2
+texture = ExtResource("1_5krfm")
+expand_mode = 1
+script = ExtResource("2_wuu4u")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="Label" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+clip_contents = false
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = -39.411392
+offset_right = 251.63898
+offset_bottom = 39.411392
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 0.33333334, 0.33333334, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5019608)
+theme_override_constants/line_separation = -3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/normal_font = ExtResource("2_xahrk")
+theme_override_font_sizes/normal_font_size = 24
+text = "Under Construction?! "
+scroll_active = false
+vertical_alignment = 1
+script = ExtResource("3_wuu4u")
+MaxFontSize = 24
+metadata/_custom_type_script = "uid://c2oywrx8xbqfx"

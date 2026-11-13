@@ -47,7 +47,7 @@
   "EXOSKELETONS_WEAK.title": "Esoscheletri",
   "FABRICATOR_NORMAL.loss": "I robot del [gold]{encounter}[/gold] hanno polverizzato {character}.",
   "FABRICATOR_NORMAL.title": "Mechacostruttore",
-  "FAKE_MERCHANT_EVENT_ENCOUNTER.loss": "{character} ha affrontato la furia del... [gold][b]{encounter}[/b][/gold]",
+  "FAKE_MERCHANT_EVENT_ENCOUNTER.loss": "{character} ha affrontato la furia del [gold]{encounter}[/gold]",
   "FAKE_MERCHANT_EVENT_ENCOUNTER.title": "mercante???",
   "FLYCONID_NORMAL.loss": "[gold]{encounter}[/gold] hanno assorbito {character}.",
   "FLYCONID_NORMAL.title": "Un fungo e una Melma",

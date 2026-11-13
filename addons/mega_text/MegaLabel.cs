@@ -96,6 +96,7 @@ public partial class MegaLabel : Label
 	{
 		MegaLabelHelper.AssertThemeFontOverride(this, ThemeConstants.Label.Font);
 		RefreshFont();
+		RefreshTextDirection();
 		AdjustFontSize();
 	}
 
@@ -104,11 +105,29 @@ public partial class MegaLabel : Label
 		this.ApplyLocaleFontSubstitution(FontType.Regular, ThemeConstants.Label.Font);
 	}
 
+	/// <summary>
+	/// For right-to-left languages.
+	/// </summary>
+	private void RefreshTextDirection()
+	{
+		if (!Engine.IsEditorHint() && IsLayoutRtl())
+		{
+			base.TextDirection = TextDirection.Rtl;
+		}
+	}
+
 	public override void _Notification(int what)
 	{
-		if ((long)what == 40 && !(_lastAdjustedSize.DistanceSquaredTo(base.Size) < 0.0001f))
+		if ((long)what == 40)
 		{
-			AdjustFontSize();
+			if (!(_lastAdjustedSize.DistanceSquaredTo(base.Size) < 0.0001f))
+			{
+				AdjustFontSize();
+			}
+		}
+		else if ((long)what == 49)
+		{
+			RefreshTextDirection();
 		}
 	}
 

@@ -58,7 +58,7 @@ public partial class NPotionPopup : Control
 			NPlayerHand? instance = NPlayerHand.Instance;
 			if (instance == null || !instance.IsInCardSelection)
 			{
-				return NOverlayStack.Instance?.Peek() is ICardSelector;
+				return NOverlayStack.Instance?.Peek() is ICardSelectionScreen;
 			}
 			return true;
 		}
@@ -136,7 +136,9 @@ public partial class NPotionPopup : Control
 			}
 			_subscribedPlayer = Potion.Owner;
 			_subscribedPlayer.CanUseOrRemovePotionsChanged += RefreshButtons;
-			if (!Potion.Owner.CanUseOrRemovePotions)
+			RunManager.Instance.OnIsChangingRoomsModified += RefreshButtons;
+			CombatManager.Instance.CombatBegan += OnCombatBegan;
+			if (!Potion.Owner.CanUseOrRemovePotions || RunManager.Instance.IsPotionUseLocked)
 			{
 				_useButton.Disable();
 				_discardButton.Disable();
@@ -279,6 +281,8 @@ public partial class NPotionPopup : Control
 		if (_subscribedPlayer != null)
 		{
 			_subscribedPlayer.CanUseOrRemovePotionsChanged -= RefreshButtons;
+			RunManager.Instance.OnIsChangingRoomsModified -= RefreshButtons;
+			CombatManager.Instance.CombatBegan -= OnCombatBegan;
 		}
 		if (NOverlayStack.Instance != null)
 		{
@@ -310,6 +314,33 @@ public partial class NPotionPopup : Control
 		RefreshButtons();
 	}
 
+	private void OnCombatBegan(CombatState _)
+	{
+		RefreshButtons();
+	}
+
+	/// <summary>
+	/// Whether the use button can be enabled for a potion with the given usage. Automatic potions such as Fairy in a
+	/// Bottle are used by the game, never by the player, so their use button stays disabled no matter how many times
+	/// the buttons are refreshed during combat. A potion that fails its own usability check, such as Foul Potion
+	/// outside combat and away from a merchant, stays disabled too.
+	/// </summary>
+	public static bool CanEnableUseButton(PotionUsage usage, bool canUseInCombatNow, bool passesCustomUsabilityCheck)
+	{
+		if (!passesCustomUsabilityCheck)
+		{
+			return false;
+		}
+		return usage switch
+		{
+			PotionUsage.AnyTime => true, 
+			PotionUsage.CombatOnly => canUseInCombatNow, 
+			PotionUsage.Automatic => false, 
+			PotionUsage.None => throw new InvalidOperationException("No potions should have 'None' usage."), 
+			_ => throw new ArgumentOutOfRangeException("usage"), 
+		};
+	}
+
 	private void RefreshButtons()
 	{
 		if (IsMarkedForRemoval)
@@ -318,12 +349,8 @@ public partial class NPotionPopup : Control
 		}
 		Creature creature = Potion?.Owner.Creature;
 		_discardButton.Enable();
-		PotionModel? potion = Potion;
-		if (potion != null && potion.Usage == PotionUsage.AnyTime)
-		{
-			_useButton.Enable();
-		}
-		else if (creature != null && CombatManager.Instance.IsInProgress && creature.CombatState?.CurrentSide == creature.Side && creature.IsAlive && !InACardSelectScreen && !CombatManager.Instance.PlayerActionsDisabled)
+		bool canUseInCombatNow = creature != null && CombatManager.Instance.IsInProgress && creature.CombatState?.CurrentSide == creature.Side && creature.IsAlive && !InACardSelectScreen && !CombatManager.Instance.PlayerActionsDisabled;
+		if (Potion != null && CanEnableUseButton(Potion.Usage, canUseInCombatNow, Potion.PassesCustomUsabilityCheck))
 		{
 			_useButton.Enable();
 		}
@@ -331,15 +358,22 @@ public partial class NPotionPopup : Control
 		{
 			_useButton.Disable();
 		}
-		PotionModel potion2 = Potion;
-		if (potion2 != null)
+		PotionModel potion = Potion;
+		if (potion != null)
 		{
-			Player owner = potion2.Owner;
+			Player owner = potion.Owner;
 			if (owner != null && !owner.CanUseOrRemovePotions)
 			{
-				_useButton.Disable();
-				_discardButton.Disable();
+				goto IL_0104;
 			}
 		}
+		if (!RunManager.Instance.IsPotionUseLocked)
+		{
+			return;
+		}
+		goto IL_0104;
+		IL_0104:
+		_useButton.Disable();
+		_discardButton.Disable();
 	}
 }

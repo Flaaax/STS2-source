@@ -4,7 +4,7 @@
   "COST_THREE_TIP": "コスト[blue]3+[/blue]カードの表示／非表示。",
   "COST_TWO_TIP": "コスト[blue]2[/blue]カードの表示／非表示。",
   "COST_X_TIP": "コスト[blue]X[/blue]カードの表示／非表示。",
-  "COST_ZERO_TIP": "コスト[blue]0[/blue]および[gold]使用不可[/gold]カードの表示／非表示。",
+  "COST_ZERO_TIP": "コスト[blue]0[/blue]および[gold]プレイ不可[/gold]カードの表示／非表示。",
   "LOCKED.description": "???",
   "LOCKED.title": "ロック中",
   "NO_RESULTS": "該当カードなし",

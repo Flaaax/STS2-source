@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://bg0p6nt1qyotu"
+path="res://.godot/imported/wuppy.skel-1b47620b445f810db39996908ccd8881.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/wuppy/wuppy.skel"
+dest_files=["res://.godot/imported/wuppy.skel-1b47620b445f810db39996908ccd8881.spskel"]
+
+[params]
+

@@ -15,7 +15,7 @@
 [ext_resource type="FontVariation" uid="uid://ciql5khgewwbm" path="res://themes/kreon_bold_glyph_space_two.tres" id="13_dxegn"]
 [ext_resource type="Texture2D" uid="uid://btjc3p508sth1" path="res://images/ui/fuzzy_nine_patch_char_select.png" id="16_neaav"]
 [ext_resource type="Script" uid="uid://dtfio45agppyj" path="res://addons/mega_text/MegaLabel.cs" id="17_6exr3"]
-[ext_resource type="Texture2D" uid="uid://q1y4ux" path="res://images/atlases/compressed.sprites/back_button_x.tres" id="19_g6e16"]
+[ext_resource type="Texture2D" uid="uid://bjwgjm2" path="res://images/atlases/compressed_atlas.sprites/back_button_x.tres" id="19_g6e16"]
 [ext_resource type="PackedScene" uid="uid://i17vjyd5x6eg" path="res://scenes/screens/remote_player_container.tscn" id="20_3temk"]
 [ext_resource type="PackedScene" uid="uid://ieqi0igl308n" path="res://scenes/screens/char_select/char_select_act_dropdown.tscn" id="21_kym8p"]
 [ext_resource type="PackedScene" uid="uid://fmmmk2blulyg" path="res://scenes/screens/char_select/char_select_button.tscn" id="22_4mpcg"]

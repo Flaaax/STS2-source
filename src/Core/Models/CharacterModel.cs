@@ -35,7 +35,14 @@ public abstract class CharacterModel : AbstractModel
 	public virtual bool IsPlayable => true;
 
 	/// <summary>
-	/// The name of the character. e.g. Ironclad, Silent, etc.
+	/// The name of the character without "The". Used in the Dread character select screen for drama.
+	/// e.g. Ironclad, Silent, Regent, etc.
+	/// </summary>
+	public LocString ShortTitle => new LocString("characters", base.Id.Entry + ".shortTitle");
+
+	/// <summary>
+	/// The name of the character usually displayed in various UI.
+	/// e.g. The Ironclad, The Silent, The Regent, etc.
 	/// </summary>
 	public LocString Title => new LocString("characters", base.Id.Entry + ".title");
 
@@ -74,14 +81,6 @@ public abstract class CharacterModel : AbstractModel
 	/// </summary>
 	public LocString? BestiaryKillQuote => LocString.GetIfExists("characters", base.Id.Entry + ".bestiaryKillQuote");
 
-	public LocString PronounObject => new LocString("characters", base.Id.Entry + ".pronounObject");
-
-	public LocString PossessiveAdjective => new LocString("characters", base.Id.Entry + ".possessiveAdjective");
-
-	public LocString PronounPossessive => new LocString("characters", base.Id.Entry + ".pronounPossessive");
-
-	public LocString PronounSubject => new LocString("characters", base.Id.Entry + ".pronounSubject");
-
 	public LocString CardsModifierTitle => new LocString("characters", base.Id.Entry + ".cardsModifierTitle");
 
 	public LocString CardsModifierDescription => new LocString("characters", base.Id.Entry + ".cardsModifierDescription");
@@ -99,6 +98,8 @@ public abstract class CharacterModel : AbstractModel
 	public virtual Color EnergyLabelOutlineColor => new Color("0000000D");
 
 	public virtual int BaseOrbSlotCount => 0;
+
+	public virtual int BaseArrowSlotCount => 0;
 
 	public virtual bool ShouldAlwaysShowStarCounter => false;
 
@@ -170,6 +171,16 @@ public abstract class CharacterModel : AbstractModel
 
 	public string CharacterSelectTransitionPath => "res://materials/transitions/" + base.Id.Entry.ToLowerInvariant() + "_transition_mat.tres";
 
+	public virtual float DreadBgBrightness => 0.7f;
+
+	public virtual float DreadBgContrast => 1.1f;
+
+	/// <summary>
+	/// Color of the name displayed in the Dread character select screen.
+	/// Differs from the norm as it's additive blended on a grayscale bg.
+	/// </summary>
+	public virtual Color DreadNameColor => new Color("ffd500c0");
+
 	protected virtual string MapMarkerPath => ImageHelper.GetImagePath("packed/map/icons/map_marker_" + base.Id.Entry.ToLowerInvariant() + ".png");
 
 	public CompressedTexture2D MapMarker => PreloadManager.Cache.GetCompressedTexture2D(MapMarkerPath);
@@ -214,7 +225,7 @@ public abstract class CharacterModel : AbstractModel
 
 	public string PowerUpSfx => CastSfx;
 
-	public string DeathSfx => $"event:/sfx/characters/{base.Id.Entry.ToLowerInvariant()}/{base.Id.Entry.ToLowerInvariant()}_die";
+	public virtual string DeathSfx => $"event:/sfx/characters/{base.Id.Entry.ToLowerInvariant()}/{base.Id.Entry.ToLowerInvariant()}_die";
 
 	public virtual string CharacterTransitionSfx => "event:/sfx/ui/wipe_" + base.Id.Entry.ToLowerInvariant();
 
@@ -233,6 +244,27 @@ public abstract class CharacterModel : AbstractModel
 	};
 
 	public override bool ShouldReceiveCombatHooks => false;
+
+	private LocString GetPronoun(string pronounKey, FoolPronounGuess pronounGuess)
+	{
+		if (Gender != CharacterGender.Tree)
+		{
+			return new LocString("characters", base.Id.Entry + "." + pronounKey);
+		}
+		return new LocString("characters", $"{base.Id.Entry}.guess.{pronounGuess.ToLocKey()}.{pronounKey}");
+	}
+
+	/// <summary>
+	/// The grammatical gender to use for the Fool, this is whatever the speaker guessed.
+	/// </summary>
+	private CharacterGender GetGrammaticalGender(FoolPronounGuess pronounGuess)
+	{
+		if (Gender != CharacterGender.Tree)
+		{
+			return Gender;
+		}
+		return pronounGuess.ToGrammaticalGender();
+	}
 
 	public NCreatureVisuals CreateVisuals()
 	{
@@ -267,15 +299,21 @@ public abstract class CharacterModel : AbstractModel
 	/// <summary>
 	/// Add details about this character to the given LocString.
 	/// </summary>
-	public void AddDetailsTo(LocString str)
+	/// <param name="str">LocString to add the details to.</param>
+	/// <param name="pronounGuess">
+	/// What the speaker guesses this character's pronouns are. Only used for <see cref="F:MegaCrit.Sts2.Core.Entities.Characters.CharacterGender.Tree" />
+	/// characters. Events and Ancients pass <see cref="P:MegaCrit.Sts2.Core.Models.EventModel.FoolPronounGuess" />; everything else (run history,
+	/// encounter loss messages) uses the default.
+	/// </param>
+	public void AddDetailsTo(LocString str, FoolPronounGuess pronounGuess = FoolPronounGuess.Neutral)
 	{
 		str.Add("character", Title);
 		str.Add("characterObject", TitleObject);
-		str.Add("characterGender", Gender.ToString().ToLowerInvariant());
-		str.Add("possessiveAdjective", PossessiveAdjective);
-		str.Add("pronounObject", PronounObject);
-		str.Add("pronounPossessive", PronounPossessive);
-		str.Add("pronounSubject", PronounSubject);
+		str.Add("characterGender", GetGrammaticalGender(pronounGuess).ToString().ToLowerInvariant());
+		str.Add("possessiveAdjective", GetPronoun("possessiveAdjective", pronounGuess));
+		str.Add("pronounObject", GetPronoun("pronounObject", pronounGuess));
+		str.Add("pronounPossessive", GetPronoun("pronounPossessive", pronounGuess));
+		str.Add("pronounSubject", GetPronoun("pronounSubject", pronounGuess));
 	}
 
 	/// <summary>

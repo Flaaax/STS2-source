@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://tajr0ykregm4"]
+
+[ext_resource type="Shader" uid="uid://c66gb6g7tup3n" path="res://shaders/hsv.gdshader" id="1_6vdqc"]
+[ext_resource type="Texture2D" uid="uid://d11b0pjxt7yqt" path="res://images/ui/main_menu/submenu_dread.png" id="1_7t0i1"]
+[ext_resource type="Texture2D" uid="uid://btx20pgfg0bw8" path="res://images/ui/main_menu/submenu_portrait_frame.png" id="1_ko63s"]
+[ext_resource type="Texture2D" uid="uid://bs66mtqy1aj3o" path="res://images/ui/main_menu/submenu_locked.png" id="3_7t0i1"]
+[ext_resource type="Script" uid="uid://c4ligjko6ij1c" path="res://src/Core/Nodes/CommonUi/NSubmenuPortrait.cs" id="3_veuwc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_veuwc"]
+resource_local_to_scene = true
+shader = ExtResource("1_6vdqc")
+shader_parameter/h = 1.0
+shader_parameter/s = 1.0
+shader_parameter/v = 1.0
+
+[node name="SubmenuPortrait" type="TextureRect"]
+material = SubResource("ShaderMaterial_veuwc")
+offset_right = 252.0
+offset_bottom = 192.0
+mouse_filter = 2
+texture = ExtResource("1_7t0i1")
+expand_mode = 1
+stretch_mode = 6
+script = ExtResource("3_veuwc")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="Lock" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 253.0
+offset_bottom = 190.0
+mouse_filter = 2
+texture = ExtResource("3_7t0i1")
+expand_mode = 1
+
+[node name="Frame" type="TextureRect" parent="."]
+layout_mode = 1
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 261.0
+offset_bottom = 209.0
+mouse_filter = 2
+texture = ExtResource("1_ko63s")
+expand_mode = 1
+stretch_mode = 4

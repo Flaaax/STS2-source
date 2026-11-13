@@ -1,8 +1,6 @@
 using Godot;
 using MegaCrit.Sts2.Core.Helpers;
-using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Models.Relics;
-using MegaCrit.Sts2.Core.Nodes.Vfx;
+using MegaCrit.Sts2.Core.Nodes.Vfx.Ui;
 
 namespace MegaCrit.Sts2.Core.Debug;
 
@@ -11,24 +9,43 @@ namespace MegaCrit.Sts2.Core.Debug;
 /// </summary>
 public partial class NDebugVfxSpawner : Control
 {
-	private static readonly StringName _viewDeck = new StringName("view_deck");
+	private int _links = 10;
 
-	private void Spawn()
+	private NChainVisualization _chainVisualization;
+
+	public override void _Ready()
 	{
-		NRelicFlashVfx nRelicFlashVfx = NRelicFlashVfx.Create(ModelDb.Relic<PaelsEye>());
-		if (nRelicFlashVfx != null)
-		{
-			this.AddChildSafely(nRelicFlashVfx);
-			nRelicFlashVfx.Scale = Vector2.One * 2f;
-			nRelicFlashVfx.Position = Size * 0.5f;
-		}
+		_chainVisualization.Initialize(_links);
 	}
 
-	public override void _Process(double delta)
+	public override void _Input(InputEvent ev)
 	{
-		if (Input.IsActionJustReleased(_viewDeck))
+		if (ev is InputEventKey { Pressed: not false } inputEventKey)
 		{
-			Spawn();
+			if (inputEventKey.Keycode == Key.B)
+			{
+				TaskHelper.RunSafely(_chainVisualization.Break(0f));
+			}
+			else if (inputEventKey.Keycode == Key.R)
+			{
+				_chainVisualization.Reset();
+			}
+			else if (inputEventKey.Keycode == Key.A)
+			{
+				_links++;
+				_chainVisualization.Initialize(_links);
+				TaskHelper.RunSafely(_chainVisualization.AnimateInLastLink(0f, null));
+			}
+			else if (inputEventKey.Keycode == Key.Minus)
+			{
+				_links--;
+				_chainVisualization.Initialize(_links);
+			}
+			else if (inputEventKey.Keycode == Key.Equal)
+			{
+				_links++;
+				_chainVisualization.Initialize(_links);
+			}
 		}
 	}
 }

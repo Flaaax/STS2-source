@@ -93,6 +93,7 @@ public partial class NTopBarRoomIcon : NClickableControl
 		AbstractRoom baseRoom = _runState.BaseRoom;
 		return baseRoom.RoomType switch
 		{
+			RoomType.Elite => "ROOM_UNKNOWN_ELITE", 
 			RoomType.Monster => "ROOM_UNKNOWN_ENEMY", 
 			RoomType.Treasure => "ROOM_UNKNOWN_TREASURE", 
 			RoomType.Shop => "ROOM_UNKNOWN_MERCHANT", 

@@ -53,5 +53,5 @@
   "SCORE_LINE.goldGained": "ได้รับทอง: {GoldAmount}",
   "VICTORY_DAMAGE": "คุณสร้างความเสียหาย [green]{PlayerDamage:n()}[/green] ใส่สถาปนิก... แต่มันยังไม่พอ...\nคุณสร้างความเสียหายรวม [green]{PersonalDamage:n()}[/green] ใส่สถาปนิก\nสถาปนิกยังคงยืนอยู่ แม้จะได้รับความเสียหายรวม [green]{TotalDamage:n()}[/green] จากผู้ที่เผชิญหน้ากับเขาทั้งหมด",
   "VICTORY_DAMAGE_LOCAL": "คุณสร้างความเสียหาย [green]{PlayerDamage:n()}[/green] ใส่สถาปนิก... แต่มันยังไม่พอ...\nคุณสร้างความเสียหายรวม [green]{PersonalDamage:n()}[/green] ใส่สถาปนิก",
-  "VICTORY_UNLOCKED_ASCENSION": "[blue]ปลดล็อกผู้บรรลุ {AscensionLevel} แล้ว![/blue]"
+  "VICTORY_UNLOCKED_ASCENSION": "[blue]ปลดล็อกผู้บรรลุ{IsMultiplayer:โหมดหลายคน|}ขั้น {AscensionLevel} แล้ว![/blue]"
 }

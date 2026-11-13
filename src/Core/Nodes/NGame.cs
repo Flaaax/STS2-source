@@ -10,9 +10,9 @@ using MegaCrit.Sts2.addons.mega_text;
 using MegaCrit.Sts2.Core.Assets;
 using MegaCrit.Sts2.Core.Audio.Debug;
 using MegaCrit.Sts2.Core.AutoSlay;
+using MegaCrit.Sts2.Core.AutoSlay.Scenarios;
 using MegaCrit.Sts2.Core.ControllerInput;
 using MegaCrit.Sts2.Core.Debug;
-using MegaCrit.Sts2.Core.Entities.Multiplayer;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Extensions;
 using MegaCrit.Sts2.Core.Helpers;
@@ -47,7 +47,6 @@ using MegaCrit.Sts2.Core.Runs;
 using MegaCrit.Sts2.Core.Saves;
 using MegaCrit.Sts2.Core.Saves.Runs;
 using MegaCrit.Sts2.Core.Settings;
-using MegaCrit.Sts2.Core.Unlocks;
 
 namespace MegaCrit.Sts2.Core.Nodes;
 
@@ -309,13 +308,18 @@ public partial class NGame : Control
 		{
 			SaveManager.Instance.PrefsSave.FastMode = FastModeType.Fast;
 		}
-		if (!IsReleaseGame() && CommandLineHelper.HasArg("autoslay"))
+		if (!IsReleaseGame() && CommandLineHelper.HasArg("scenario"))
+		{
+			ScenarioRunner.StartFromCommandLine();
+		}
+		else if (!IsReleaseGame() && CommandLineHelper.HasArg("autoslay"))
 		{
 			await LaunchMainMenu(skipLogo: true);
 			string seed = CommandLineHelper.GetValue("seed") ?? SeedHelper.GetRandomSeed();
-			string value = CommandLineHelper.GetValue("log-file");
+			string value = CommandLineHelper.GetValue("mode");
+			string value2 = CommandLineHelper.GetValue("log-file");
 			AutoSlayer autoSlayer = new AutoSlayer();
-			autoSlayer.Start(seed, value);
+			autoSlayer.Start(seed, value, value2);
 		}
 		else if (CommandLineHelper.HasArg("bootstrap"))
 		{
@@ -443,7 +447,11 @@ public partial class NGame : Control
 			throw new ArgumentOutOfRangeException($"Invalid Aspect Ratio: {settingsSave.AspectRatioSetting}");
 		}
 		int num = System.Environment.GetCommandLineArgs().IndexOf("-wpos");
-		if (flag2 && num < 0)
+		if (DisplayServer.GetName().Equals("embedded", StringComparison.OrdinalIgnoreCase))
+		{
+			Log.Info("[Display] Running embedded in the editor. Skipping window mode/size/position changes.");
+		}
+		else if (flag2 && num < 0)
 		{
 			if (_window.Unresizable)
 			{
@@ -480,6 +488,13 @@ public partial class NGame : Control
 				DisplayServer.WindowSetPosition(vector2I2 + vector2I);
 				DisplayServer.WindowSetSize(settingsSave.WindowSize);
 			}
+			else if (settingsSave.TargetDisplay >= DisplayServer.GetScreenCount())
+			{
+				Log.Info($"[Display] FAILED: Display {settingsSave.TargetDisplay + 1} is missing. Fallback to primary.");
+				settingsSave.WindowPosition = new Vector2I(8, 48);
+				DisplayServer.WindowSetSize(DisplayServer.ScreenGetSize(DisplayServer.GetPrimaryScreen()) - new Vector2I(8, 48));
+				DisplayServer.WindowSetPosition(DisplayServer.ScreenGetPosition(DisplayServer.GetPrimaryScreen()) + settingsSave.WindowPosition);
+			}
 			else
 			{
 				Vector2I vector2I3 = DisplayServer.ScreenGetSize(settingsSave.TargetDisplay);
@@ -495,29 +510,19 @@ public partial class NGame : Control
 					Log.Warn("[Display] WARN: Game Window was offscreen. Resetting to top left corner.");
 					vector2I4 = new Vector2I(8, 48);
 				}
-				if (settingsSave.TargetDisplay >= DisplayServer.GetScreenCount())
+				Vector2I vector2I5 = DisplayServer.ScreenGetPosition(settingsSave.TargetDisplay);
+				if (windowSize.X > vector2I3.X)
 				{
-					Log.Info($"[Display] FAILED: Display {settingsSave.TargetDisplay + 1} is missing. Fallback to primary.");
-					settingsSave.WindowPosition = new Vector2I(8, 48);
-					DisplayServer.WindowSetSize(DisplayServer.ScreenGetSize(DisplayServer.GetPrimaryScreen()) - new Vector2I(8, 48));
-					DisplayServer.WindowSetPosition(DisplayServer.ScreenGetPosition(DisplayServer.GetPrimaryScreen()) + settingsSave.WindowPosition);
+					windowSize.X = vector2I3.X;
 				}
-				else
+				if (windowSize.Y > vector2I3.Y)
 				{
-					Vector2I vector2I5 = DisplayServer.ScreenGetPosition(settingsSave.TargetDisplay);
-					if (windowSize.X > vector2I3.X)
-					{
-						windowSize.X = vector2I3.X;
-					}
-					if (windowSize.Y > vector2I3.Y)
-					{
-						windowSize.Y = vector2I3.Y;
-					}
-					Log.Info($"[Display] SUCCESS: {windowSize} Windowed mode in Display {settingsSave.TargetDisplay}: Position {vector2I5 + vector2I4} ({vector2I4})");
-					DisplayServer.WindowSetSize(windowSize);
-					DisplayServer.WindowSetPosition(vector2I5 + vector2I4);
-					Log.Info($"[Display] New size: {DisplayServer.WindowGetSize()} position: {DisplayServer.WindowGetPosition()}");
+					windowSize.Y = vector2I3.Y;
 				}
+				Log.Info($"[Display] SUCCESS: {windowSize} Windowed mode in Display {settingsSave.TargetDisplay}: Position {vector2I5 + vector2I4} ({vector2I4})");
+				DisplayServer.WindowSetSize(windowSize);
+				DisplayServer.WindowSetPosition(vector2I5 + vector2I4);
+				Log.Info($"[Display] New size: {DisplayServer.WindowGetSize()} position: {DisplayServer.WindowGetPosition()}");
 			}
 		}
 		if (flag)
@@ -744,18 +749,18 @@ public partial class NGame : Control
 	/// <summary>
 	/// Start a new singleplayer run on both the front and back ends.
 	/// </summary>
-	/// <param name="character">The character that the player is playing as.</param>
+	/// <param name="player">The player object created for this run.</param>
 	/// <param name="shouldSave">Whether a save file should be created for the run.</param>
 	/// <param name="acts">The canonical acts that should be in the run.</param>
 	/// <param name="modifiers">The modifiers that are applied to the run.</param>
 	/// <param name="seed">The seed that the run's RNG should use.</param>
 	/// <param name="gameMode">The type of game mode that we're starting.</param>
+	/// <param name="isCustomGame">if this is a custom game.</param>
 	/// <param name="ascensionLevel">The ascension level that the run should be played at.</param>
 	/// <param name="dailyTime">Time used to determine the daily run info. Null if not a daily run.</param>
-	public async Task<RunState> StartNewSingleplayerRun(CharacterModel character, bool shouldSave, IReadOnlyList<ActModel> acts, IReadOnlyList<ModifierModel> modifiers, string seed, GameMode gameMode, int ascensionLevel = 0, DateTimeOffset? dailyTime = null)
+	public async Task<RunState> StartNewSingleplayerRun(Player player, bool shouldSave, IReadOnlyList<ActModel> acts, IReadOnlyList<ModifierModel> modifiers, string seed, GameMode gameMode, bool isCustomGame, int ascensionLevel = 0, DateTimeOffset? dailyTime = null)
 	{
-		UnlockState unlockState = SaveManager.Instance.GenerateUnlockStateFromProgress();
-		RunState runState = RunState.CreateForNewRun(new global::_003C_003Ez__ReadOnlySingleElementList<Player>(Player.CreateForNewRun(character, unlockState, 1uL)), acts.Select((ActModel a) => a.ToMutable()).ToList(), modifiers, gameMode, ascensionLevel, seed);
+		RunState runState = RunState.CreateForNewRun(new global::_003C_003Ez__ReadOnlySingleElementList<Player>(player), acts.Select((ActModel a) => a.ToMutable()).ToList(), modifiers, gameMode, isCustomGame, ascensionLevel, seed);
 		RunManager.Instance.SetUpNewSingleplayer(runState, shouldSave, dailyTime);
 		await StartRun(runState);
 		return runState;
@@ -764,6 +769,7 @@ public partial class NGame : Control
 	/// <summary>
 	/// Start a new multiplayer run on both the front and back ends.
 	/// </summary>
+	/// <param name="players">The players generated for this run.</param>
 	/// <param name="lobby">The lobby containing the multiplayer info.</param>
 	/// <param name="shouldSave">Whether a save file should be created for the run.</param>
 	/// <param name="acts">The canonical acts that should be in the run.</param>
@@ -771,9 +777,11 @@ public partial class NGame : Control
 	/// <param name="seed">The seed that the run's RNG should use.</param>
 	/// <param name="ascensionLevel">The ascension level that the run should be played at.</param>
 	/// <param name="dailyTime">Time used to determine the daily run info. Null if not a daily run.</param>
-	public async Task<RunState> StartNewMultiplayerRun(StartRunLobby lobby, bool shouldSave, IReadOnlyList<ActModel> acts, IReadOnlyList<ModifierModel> modifiers, string seed, int ascensionLevel, DateTimeOffset? dailyTime = null)
+	public async Task<RunState> StartNewMultiplayerRun(List<Player> players, StartRunLobby lobby, bool shouldSave, IReadOnlyList<ActModel> acts, IReadOnlyList<ModifierModel> modifiers, string seed, int ascensionLevel, DateTimeOffset? dailyTime = null)
 	{
-		RunState runState = RunState.CreateForNewRun(lobby.Players.Select((StartRunLobbyPlayer p) => Player.CreateForNewRun(p.character, UnlockState.FromSerializable(p.unlockState), p.id)).ToList(), acts.Select((ActModel a) => a.ToMutable()).ToList(), modifiers, lobby.GameMode, ascensionLevel, seed);
+		List<ActModel> list = new List<ActModel>();
+		list.AddRange(acts.Select((ActModel a) => a.ToMutable()));
+		RunState runState = RunState.CreateForNewRun(players, new _003C_003Ez__ReadOnlyList<ActModel>(list), modifiers, lobby.GameMode, lobby.IsCustom, ascensionLevel, seed);
 		RunManager.Instance.SetUpNewMultiplayer(runState, lobby, shouldSave, dailyTime);
 		await StartRun(runState);
 		return runState;
@@ -1092,5 +1100,21 @@ public partial class NGame : Control
 	public static string GetGameVersion()
 	{
 		return ReleaseInfoManager.Instance.ReleaseInfo?.Version ?? GitHelper.ShortCommitId ?? "UNKNOWN";
+	}
+
+	public void InitDebugSeedFromBootstrap(bool isMultiplayer)
+	{
+		if (Bootstrapper.Settings == null)
+		{
+			DebugSeedOverride = null;
+		}
+		else if (!isMultiplayer || Bootstrapper.Settings.BootstrapInMultiplayer)
+		{
+			DebugSeedOverride = Bootstrapper.Settings.Seed;
+		}
+		else
+		{
+			DebugSeedOverride = null;
+		}
 	}
 }

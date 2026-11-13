@@ -12,11 +12,13 @@ namespace MegaCrit.Sts2.Core.Nodes.GodotExtensions;
 /// A base TextEdit class that is used to access the virtual keyboard
 /// for various devices/apis (ie Steam Deck)
 /// </summary>
-public partial class NMegaTextEdit : TextEdit
+public partial class NMegaTextEdit : Control
 {
 	private NSelectionReticle? _selectionReticle;
 
 	private bool _isEditing;
+
+	public TextEdit TextEdit { get; set; }
 
 	/// <summary>
 	/// This mirrors LineEdit.IsEditing()
@@ -28,21 +30,22 @@ public partial class NMegaTextEdit : TextEdit
 
 	public override void _Ready()
 	{
-		RefreshFont();
-		Connect(Control.SignalName.FocusExited, Callable.From(StopEditing));
+		TextEdit = GetNode<TextEdit>("TextEdit");
 		if (HasNode("SelectionReticle"))
 		{
 			_selectionReticle = GetNode<NSelectionReticle>("SelectionReticle");
 		}
+		RefreshFont();
 		Connect(Control.SignalName.FocusEntered, Callable.From(OnFocus));
 		Connect(Control.SignalName.FocusExited, Callable.From(OnUnfocus));
 		Connect(Control.SignalName.MouseEntered, Callable.From(OnFocus));
 		Connect(Control.SignalName.MouseExited, Callable.From(OnUnfocus));
+		TextEdit.Connect(Control.SignalName.FocusExited, Callable.From(StopEditing));
 	}
 
 	public void RefreshFont()
 	{
-		this.ApplyLocaleFontSubstitution(FontType.Regular, ThemeConstants.TextEdit.Font);
+		TextEdit.ApplyLocaleFontSubstitution(FontType.Regular, ThemeConstants.TextEdit.Font);
 	}
 
 	private void OnFocus()
@@ -69,7 +72,11 @@ public partial class NMegaTextEdit : TextEdit
 		{
 			OpenKeyboard();
 		}
-		if (inputEvent.IsActionPressed(MegaInput.cancel) && IsEditing())
+	}
+
+	public override void _Input(InputEvent inputEvent)
+	{
+		if (inputEvent.IsActionReleased(MegaInput.cancel) && IsEditing())
 		{
 			StopEditing();
 			GetViewport()?.SetInputAsHandled();
@@ -78,14 +85,28 @@ public partial class NMegaTextEdit : TextEdit
 
 	private void OpenKeyboard()
 	{
-		this.TryGrabFocus();
-		_isEditing = true;
-		PlatformUtil.OpenVirtualKeyboard();
+		if (!_isEditing)
+		{
+			_isEditing = true;
+			TextEdit.TryGrabFocus();
+			PlatformUtil.OpenVirtualKeyboard();
+			NHotkeyManager.Instance?.AddBlockingScreen(this);
+			if (NControllerManager.Instance.IsUsingDirectionalNavigation)
+			{
+				_selectionReticle?.OnSelect();
+			}
+		}
 	}
 
 	private void StopEditing()
 	{
-		_isEditing = false;
-		PlatformUtil.CloseVirtualKeyboard();
+		if (_isEditing)
+		{
+			_isEditing = false;
+			_selectionReticle?.OnDeselect();
+			PlatformUtil.CloseVirtualKeyboard();
+			NHotkeyManager.Instance?.RemoveBlockingScreen(this);
+			this.TryGrabFocus();
+		}
 	}
 }

@@ -52,6 +52,24 @@ public abstract partial class NCardPlay : Node
 
 	public abstract void Start();
 
+	public override void _EnterTree()
+	{
+		if (NControllerManager.Instance != null)
+		{
+			NControllerManager.Instance.Connect(NControllerManager.SignalName.MouseDetected, Callable.From(CancelPlayCard));
+			NControllerManager.Instance.Connect(NControllerManager.SignalName.ControllerDetected, Callable.From(CancelPlayCard));
+		}
+	}
+
+	public override void _ExitTree()
+	{
+		if (NControllerManager.Instance != null)
+		{
+			NControllerManager.Instance.Disconnect(NControllerManager.SignalName.MouseDetected, Callable.From(CancelPlayCard));
+			NControllerManager.Instance.Disconnect(NControllerManager.SignalName.ControllerDetected, Callable.From(CancelPlayCard));
+		}
+	}
+
 	protected void TryPlayCard(Creature? target)
 	{
 		if (Card == null)
@@ -111,7 +129,7 @@ public abstract partial class NCardPlay : Node
 			if (flag4 && Holder.IsInsideTree())
 			{
 				Vector2 size = GetViewport().GetVisibleRect().Size;
-				Holder.SetTargetPosition(new Vector2(size.X / 2f, size.Y - Holder.Size.Y));
+				Holder.SetTargetPosition(new Vector2(size.X * 0.5f, size.Y - Holder.Size.Y));
 			}
 			Cleanup(isFinished: true);
 			ActiveScreenContext.Instance.FocusOnDefaultControl();
@@ -160,7 +178,7 @@ public abstract partial class NCardPlay : Node
 	protected void CenterCard()
 	{
 		Vector2 size = _viewport.GetVisibleRect().Size;
-		Holder.SetTargetPosition(new Vector2(size.X / 2f, size.Y - Holder.Hitbox.Size.Y * 0.75f / 2f));
+		Holder.SetTargetPosition(new Vector2(size.X * 0.5f, size.Y - Holder.Hitbox.Size.Y * 0.75f * 0.5f));
 		Holder.SetTargetScale(Vector2.One * 0.75f);
 	}
 

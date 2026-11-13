@@ -59,15 +59,27 @@ public partial class NLanguageDropdown : NSettingsDropdown
 		_currentOptionLabel.SetTextAutoSize(GetLanguageNameForCode(CurrentLanguage));
 	}
 
-	private void PopulateOptions()
+	protected override void OnRelease()
+	{
+		if (!base.IsOpen)
+		{
+			PopulateOptions(Input.IsKeyPressed(Key.Ctrl) || Input.IsKeyPressed(Key.Alt));
+		}
+		base.OnRelease();
+	}
+
+	private void PopulateOptions(bool includeHidden = false)
 	{
 		ClearDropdownItems();
 		foreach (string language in LocManager.Languages)
 		{
-			NLanguageDropdownItem nLanguageDropdownItem = _dropdownItemScene.Instantiate<NLanguageDropdownItem>(PackedScene.GenEditState.Disabled);
-			_dropdownItems.AddChildSafely(nLanguageDropdownItem);
-			nLanguageDropdownItem.Connect(NDropdownItem.SignalName.Selected, Callable.From<NDropdownItem>(OnDropdownItemSelected));
-			nLanguageDropdownItem.Init(language);
+			if (includeHidden || !(language != CurrentLanguage) || !LocManager.IsHiddenLanguage(language))
+			{
+				NLanguageDropdownItem nLanguageDropdownItem = _dropdownItemScene.Instantiate<NLanguageDropdownItem>(PackedScene.GenEditState.Disabled);
+				_dropdownItems.AddChildSafely(nLanguageDropdownItem);
+				nLanguageDropdownItem.Connect(NDropdownItem.SignalName.Selected, Callable.From<NDropdownItem>(OnDropdownItemSelected));
+				nLanguageDropdownItem.Init(language);
+			}
 		}
 		_dropdownItems.GetParent<NDropdownContainer>().RefreshLayout();
 	}

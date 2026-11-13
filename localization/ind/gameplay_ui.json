@@ -30,6 +30,8 @@
   "COMBAT_REWARD_ADD_SPECIAL_CARD": "Tambahkan {Card} ke dekmu.",
   "COMBAT_REWARD_CARD_REMOVAL": "Buang sebuah kartu dari dekmu.",
   "COMBAT_REWARD_CARD_REMOVAL.selectionScreenPrompt": "Pilih sebuah kartu untuk dibuang dari dekmu.",
+  "COMBAT_REWARD_CARD_UPGRADE": "Tingkatkan sebuah kartu.",
+  "COMBAT_REWARD_CARD_UPGRADE.selectionScreenPrompt": "Pilih sebuah kartu untuk ditingkatkan.",
   "COMBAT_REWARD_GOLD": "{gold} Emas",
   "COMBAT_REWARD_GOLD_STOLEN": "{gold} Emas (diambil kembali)",
   "COMBAT_REWARD_HEADER_LOOT": "Rampasan!",

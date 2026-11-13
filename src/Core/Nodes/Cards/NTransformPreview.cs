@@ -104,9 +104,9 @@ public partial class NTransformPreview : Control
 			{
 				await Task.Delay(200, _cancelTokenSource.Token);
 			}
-			else
+			else if (!(await Cmd.TryWait(0.2f, _cancelTokenSource.Token, ignoreCombatEnd: true)))
 			{
-				await Cmd.Wait(0.2f, _cancelTokenSource.Token, ignoreCombatEnd: true);
+				break;
 			}
 		}
 	}

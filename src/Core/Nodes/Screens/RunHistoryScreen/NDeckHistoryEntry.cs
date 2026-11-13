@@ -35,6 +35,18 @@ public partial class NDeckHistoryEntry : NButton
 
 	public CardModel Card { get; private set; }
 
+	private float FocusedLabelOffset
+	{
+		get
+		{
+			if (!IsLayoutRtl())
+			{
+				return 8f;
+			}
+			return -8f;
+		}
+	}
+
 	public override void _Ready()
 	{
 		ConnectSignals();
@@ -93,7 +105,7 @@ public partial class NDeckHistoryEntry : NButton
 		_scaleTween?.FastForwardToCompletion();
 		_scaleTween = CreateTween().SetParallel();
 		_scaleTween.TweenProperty(_cardImage, "scale", Vector2.One * 1.5f, 0.05);
-		_scaleTween.TweenProperty(_labelContainer, "position:x", _labelContainer.Position.X + 8f, 0.05);
+		_scaleTween.TweenProperty(_labelContainer, "position:x", _labelContainer.Position.X + FocusedLabelOffset, 0.05);
 	}
 
 	protected override void OnUnfocus()
@@ -101,7 +113,7 @@ public partial class NDeckHistoryEntry : NButton
 		_scaleTween?.FastForwardToCompletion();
 		_scaleTween = CreateTween().SetParallel();
 		_scaleTween.TweenProperty(_cardImage, "scale", Vector2.One, 0.5).SetTrans(Tween.TransitionType.Expo).SetEase(Tween.EaseType.Out);
-		_scaleTween.TweenProperty(_labelContainer, "position:x", _labelContainer.Position.X - 8f, 0.5).SetTrans(Tween.TransitionType.Expo).SetEase(Tween.EaseType.Out);
+		_scaleTween.TweenProperty(_labelContainer, "position:x", _labelContainer.Position.X - FocusedLabelOffset, 0.5).SetTrans(Tween.TransitionType.Expo).SetEase(Tween.EaseType.Out);
 	}
 
 	protected override void OnRelease()

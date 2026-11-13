@@ -28,7 +28,7 @@
   "RATIO_FORMAT": "{Numerator}/{Denominator}",
   "TAB_ACHIEVEMENT.header": "実績",
   "TAB_STATS.header": "統計",
-  "TIP_PLAYTIME.description": "あなたのプレイ回数と最速のクリア記録です。",
+  "TIP_PLAYTIME.description": "あなたのプレイ履歴と最速のクリア記録です。",
   "TIP_PLAYTIME.header": "プレイ時間",
   "TIP_WIN_LOSS.description": "全キャラクターでのアセンションの合計クリア数です。",
   "TIP_WIN_LOSS.header": "アセンション"

@@ -80,7 +80,7 @@ public partial class NPauseMenuButton : NButton
 
 	protected override void OnEnable()
 	{
-		base.OnDisable();
+		base.OnEnable();
 		base.Modulate = Colors.White;
 	}
 

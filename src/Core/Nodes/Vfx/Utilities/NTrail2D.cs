@@ -6,7 +6,7 @@ namespace MegaCrit.Sts2.Core.Nodes.Vfx.Utilities;
 
 public partial class NTrail2D : Line2D
 {
-	private int _maxSegments = 20;
+	private const int _maxSegments = 20;
 
 	private Node2D _parent;
 
@@ -36,11 +36,12 @@ public partial class NTrail2D : Line2D
 		if (_isActive)
 		{
 			_pointQueue.Insert(0, _parent.GlobalPosition);
-			if (_pointQueue.Count >= _maxSegments)
+			if (_pointQueue.Count >= 20)
 			{
 				_pointQueue.RemoveAt(_pointQueue.Count - 1);
 			}
-			base.Points = _pointQueue.Select((Vector2 point) => GetParent<Node2D>().ToLocal(point)).ToArray();
+			Node2D parent = GetParent<Node2D>();
+			base.Points = _pointQueue.Select((Vector2 point) => parent.ToLocal(point)).ToArray();
 		}
 	}
 }

@@ -1,9 +1,15 @@
 using Godot;
 using MegaCrit.Sts2.addons.mega_text;
+using MegaCrit.Sts2.Core.Audio.Debug;
 using MegaCrit.Sts2.Core.ControllerInput;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Localization;
+using MegaCrit.Sts2.Core.Map;
+using MegaCrit.Sts2.Core.Multiplayer.Game;
 using MegaCrit.Sts2.Core.Nodes.GodotExtensions;
+using MegaCrit.Sts2.Core.Nodes.Vfx;
+using MegaCrit.Sts2.Core.Runs;
 
 namespace MegaCrit.Sts2.Core.Nodes.CommonUi;
 
@@ -25,6 +31,8 @@ public partial class NProceedButton : NButton
 	private ShaderMaterial _hsv;
 
 	private Viewport _viewport;
+
+	private NMultiplayerVoteContainer _voteContainer;
 
 	private Color _defaultOutlineColor = StsColors.cream;
 
@@ -52,6 +60,8 @@ public partial class NProceedButton : NButton
 
 	private static readonly Vector2 _hidePosRatio = _showPosRatio + new Vector2(400f, 0f) / NGame.devResolution;
 
+	private IRunState? _runState;
+
 	public static LocString ProceedLoc => new LocString("gameplay_ui", "PROCEED_BUTTON");
 
 	public static LocString SkipLoc => new LocString("gameplay_ui", "CHOOSE_CARD_SKIP_BUTTON");
@@ -71,16 +81,29 @@ public partial class NProceedButton : NButton
 		_buttonImage = GetNode<Control>("%Image");
 		_hsv = (ShaderMaterial)_buttonImage.GetMaterial();
 		_label = GetNode<MegaLabel>("%Label");
+		_voteContainer = GetNode<NMultiplayerVoteContainer>("%MultiplayerVoteContainer");
 		_viewport = GetViewport();
 		base.Position = HidePos;
 		Disable();
 		NGame.Instance.DebugToggleProceedButton += DebugToggleVisibility;
+		RunManager.Instance.MapSelectionSynchronizer.PlayerVoteChanged += OnPlayerVoteChanged;
+		RunManager.Instance.MapSelectionSynchronizer.PlayerVoteCancelled += OnPlayerVoteCancelled;
+		RunManager.Instance.FlavorSynchronizer.MapPingReceived += OnMapPingReceived;
 	}
 
 	public override void _ExitTree()
 	{
 		base._ExitTree();
 		NGame.Instance.DebugToggleProceedButton -= DebugToggleVisibility;
+		RunManager.Instance.MapSelectionSynchronizer.PlayerVoteChanged -= OnPlayerVoteChanged;
+		RunManager.Instance.MapSelectionSynchronizer.PlayerVoteCancelled -= OnPlayerVoteCancelled;
+		RunManager.Instance.FlavorSynchronizer.MapPingReceived -= OnMapPingReceived;
+	}
+
+	public void Initialize(IRunState runState)
+	{
+		_runState = runState;
+		_voteContainer.Initialize(ShouldShowMapVote, runState.Players);
 	}
 
 	/// <summary>
@@ -226,5 +249,59 @@ public partial class NProceedButton : NButton
 	private void UpdateShaderV(float value)
 	{
 		_hsv.SetShaderParameter(_v, value);
+	}
+
+	/// <summary>
+	/// Called when a player votes for a map point.
+	/// This is used to refresh the player heads container when in Blitz mode, where pressing the proceed button votes
+	/// to move on to the next map point.
+	/// </summary>
+	private void OnPlayerVoteChanged(Player player, MapVote? oldLocation, MapVote? newLocation)
+	{
+		_voteContainer.RefreshPlayerVotes();
+	}
+
+	/// <summary>
+	/// Called when a player cancels their vote to move on.
+	/// This is used to refresh the player heads container when in Blitz mode, where pressing the proceed button votes
+	/// to move on to the next map point.
+	/// </summary>
+	private void OnPlayerVoteCancelled(Player player, MapVote? oldLocation)
+	{
+		_voteContainer.RefreshPlayerVotes();
+	}
+
+	/// <summary>
+	/// Called when a player attempts to ping.
+	/// This is called when ANY ping occurs, but should only do something when the proceed button is double-pressed in
+	/// Blitz mode.
+	/// </summary>
+	private void OnMapPingReceived(Player player, MapCoord coord)
+	{
+		if (player.RunState.GameMode == GameMode.Blitz && base.Visible)
+		{
+			NMapPingVfx nMapPingVfx = NMapPingVfx.Create();
+			nMapPingVfx.Modulate = player.Character.MapDrawingColor;
+			this.AddChildSafely(nMapPingVfx);
+			this.MoveChildSafely(nMapPingVfx, 0);
+			nMapPingVfx.Size *= base.Size.Y * (1f / 64f);
+			nMapPingVfx.PivotOffset = nMapPingVfx.Size * 0.5f;
+			nMapPingVfx.Position = base.Size * 0.5f - nMapPingVfx.PivotOffset;
+			NRun.Instance.GlobalUi.MultiplayerPlayerContainer.FlashPlayerReady(player);
+			NDebugAudioManager.Instance.Play("map_ping.mp3", 1f, PitchVariance.Medium);
+		}
+	}
+
+	/// <summary>
+	/// Called by the player vote container to know whether it should show the player head for the given player.
+	/// </summary>
+	private bool ShouldShowMapVote(Player player)
+	{
+		IRunState? runState = _runState;
+		if (runState == null || runState.GameMode != GameMode.Blitz)
+		{
+			return false;
+		}
+		return RunManager.Instance.MapSelectionSynchronizer.GetVote(player).HasValue;
 	}
 }

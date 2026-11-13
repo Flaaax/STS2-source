@@ -25,7 +25,7 @@ public partial class NHealNumVfx : Node2D
 
 	private Vector2 _velocity;
 
-	private static readonly float _deceleration = 2000f;
+	private const float _deceleration = 2000f;
 
 	private static readonly Vector2 _positionOffset = new Vector2(0f, -100f);
 
@@ -74,7 +74,7 @@ public partial class NHealNumVfx : Node2D
 		base.Position += _velocity * num;
 		if (_velocity.LengthSquared() > 1E-06f)
 		{
-			_velocity -= (_velocity.Normalized() * _deceleration * num).LimitLength(_velocity.Length());
+			_velocity -= (_velocity.Normalized() * 2000f * num).LimitLength(_velocity.Length());
 		}
 	}
 

@@ -33,7 +33,7 @@ public partial class MegaRichTextLabel : RichTextLabel
 
 	private Vector2 _lastAdjustedSize;
 
-	private static readonly AbstractMegaRichTextEffect[] _textEffects = new AbstractMegaRichTextEffect[14]
+	private static readonly AbstractMegaRichTextEffect[] _textEffects = new AbstractMegaRichTextEffect[15]
 	{
 		new RichTextAqua(),
 		new RichTextBlue(),
@@ -48,7 +48,8 @@ public partial class MegaRichTextLabel : RichTextLabel
 		new RichTextRed(),
 		new RichTextScramble(),
 		new RichTextSine(),
-		new RichTextThinkyDots()
+		new RichTextThinkyDots(),
+		new RichTextYellow()
 	};
 
 	private bool _isAutoSizing;
@@ -179,6 +180,7 @@ public partial class MegaRichTextLabel : RichTextLabel
 	{
 		MegaLabelHelper.AssertThemeFontOverride(this, ThemeConstants.RichTextLabel.NormalFont);
 		RefreshFont();
+		RefreshTextDirection();
 		InstallEffectsIfNeeded();
 		AdjustFontSize();
 		ParseBbcode(Text);
@@ -189,6 +191,17 @@ public partial class MegaRichTextLabel : RichTextLabel
 		this.ApplyLocaleFontSubstitution(FontType.Regular, ThemeConstants.RichTextLabel.NormalFont);
 		this.ApplyLocaleFontSubstitution(FontType.Bold, ThemeConstants.RichTextLabel.BoldFont);
 		this.ApplyLocaleFontSubstitution(FontType.Italic, ThemeConstants.RichTextLabel.ItalicsFont);
+	}
+
+	/// <summary>
+	/// For right-to-left languages.
+	/// </summary>
+	private void RefreshTextDirection()
+	{
+		if (!Engine.IsEditorHint() && IsLayoutRtl())
+		{
+			base.TextDirection = TextDirection.Rtl;
+		}
 	}
 
 	public override void _Notification(int what)
@@ -207,6 +220,9 @@ public partial class MegaRichTextLabel : RichTextLabel
 			break;
 		case 9002:
 			InstallEffectsIfNeeded();
+			break;
+		case 49:
+			RefreshTextDirection();
 			break;
 		}
 	}

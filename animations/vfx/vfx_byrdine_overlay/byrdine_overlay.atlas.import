@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://dip643fba4520"
+path="res://.godot/imported/byrdine_overlay.atlas-1d70a5c23c84ca8bef1acd820a302c0d.spatlas"
+
+[deps]
+
+source_file="res://animations/vfx/vfx_byrdine_overlay/byrdine_overlay.atlas"
+dest_files=["res://.godot/imported/byrdine_overlay.atlas-1d70a5c23c84ca8bef1acd820a302c0d.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

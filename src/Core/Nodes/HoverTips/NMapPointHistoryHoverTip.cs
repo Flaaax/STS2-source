@@ -5,6 +5,7 @@ using System.Text;
 using Godot;
 using MegaCrit.Sts2.addons.mega_text;
 using MegaCrit.Sts2.Core.Assets;
+using MegaCrit.Sts2.Core.Entities.Merchant;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Map;
 using MegaCrit.Sts2.Core.Models;
@@ -22,6 +23,8 @@ public partial class NMapPointHistoryHoverTip : MarginContainer
 	private readonly LocString _mapPointRoomStatsLoc = new LocString("run_history", "MAP_POINT_HISTORY.room_stats");
 
 	private readonly LocString _mapPointPlayerStatsLoc = new LocString("run_history", "MAP_POINT_HISTORY.player_stats");
+
+	private readonly LocString _mapPointPlayerStatsNoGoldLoc = new LocString("run_history", "MAP_POINT_HISTORY.player_stats_no_gold");
 
 	private readonly LocString _combatStats = new LocString("run_history", "MAP_POINT_HISTORY.combatStats");
 
@@ -85,6 +88,8 @@ public partial class NMapPointHistoryHoverTip : MarginContainer
 
 	private ulong _playerId;
 
+	private GameMode _gameMode;
+
 	private MegaLabel _titleLabel;
 
 	private RichTextLabel _playerStats;
@@ -103,12 +108,18 @@ public partial class NMapPointHistoryHoverTip : MarginContainer
 
 	public static IEnumerable<string> AssetPaths => new global::_003C_003Ez__ReadOnlySingleElementList<string>("res://scenes/ui/map_point_history_hover_tip.tscn");
 
-	public static NMapPointHistoryHoverTip Create(int floorNum, ulong playerId, MapPointHistoryEntry historyEntry)
+	/// <summary>
+	/// Blitz has no gold, so a tip for a Blitz run reports none of it.
+	/// </summary>
+	private bool ShowGold => _gameMode != GameMode.Blitz;
+
+	public static NMapPointHistoryHoverTip Create(int floorNum, ulong playerId, MapPointHistoryEntry historyEntry, GameMode gameMode)
 	{
 		NMapPointHistoryHoverTip nMapPointHistoryHoverTip = PreloadManager.Cache.GetScene("res://scenes/ui/map_point_history_hover_tip.tscn").Instantiate<NMapPointHistoryHoverTip>(PackedScene.GenEditState.Disabled);
 		nMapPointHistoryHoverTip._entry = historyEntry;
 		nMapPointHistoryHoverTip._floorNum = floorNum;
 		nMapPointHistoryHoverTip._playerId = playerId;
+		nMapPointHistoryHoverTip._gameMode = gameMode;
 		return nMapPointHistoryHoverTip;
 	}
 
@@ -170,10 +181,14 @@ public partial class NMapPointHistoryHoverTip : MarginContainer
 		{
 			throw new InvalidOperationException($"Player with ID {_playerId} not found in player stats for this run history!");
 		}
-		_mapPointPlayerStatsLoc.Add("HP", playerMapPointHistoryEntry.CurrentHp);
-		_mapPointPlayerStatsLoc.Add("MaxHP", playerMapPointHistoryEntry.MaxHp);
-		_mapPointPlayerStatsLoc.Add("Gold", playerMapPointHistoryEntry.CurrentGold);
-		_playerStats.Text = _mapPointPlayerStatsLoc.GetFormattedText();
+		LocString locString = (ShowGold ? _mapPointPlayerStatsLoc : _mapPointPlayerStatsNoGoldLoc);
+		locString.Add("HP", playerMapPointHistoryEntry.CurrentHp);
+		locString.Add("MaxHP", playerMapPointHistoryEntry.MaxHp);
+		if (ShowGold)
+		{
+			locString.Add("Gold", playerMapPointHistoryEntry.CurrentGold);
+		}
+		_playerStats.Text = locString.GetFormattedText();
 		PopulateActionStats(playerMapPointHistoryEntry);
 		PopulateRewardAndSkippedEntries(playerMapPointHistoryEntry);
 	}
@@ -345,7 +360,7 @@ public partial class NMapPointHistoryHoverTip : MarginContainer
 			handler.AppendLiteral("\n");
 			stringBuilder15.Append(ref handler);
 		}
-		if (playerEntry.GoldSpent > 0)
+		if (ShowGold && playerEntry.GoldSpent > 0)
 		{
 			_goldSpent.Add("Amount", playerEntry.GoldSpent);
 			StringBuilder stringBuilder2 = stringBuilder;
@@ -355,7 +370,7 @@ public partial class NMapPointHistoryHoverTip : MarginContainer
 			handler.AppendLiteral("\n");
 			stringBuilder16.Append(ref handler);
 		}
-		if (playerEntry.GoldLost > 0)
+		if (ShowGold && playerEntry.GoldLost > 0)
 		{
 			_goldLost.Add("Amount", playerEntry.GoldLost);
 			StringBuilder stringBuilder2 = stringBuilder;
@@ -365,7 +380,7 @@ public partial class NMapPointHistoryHoverTip : MarginContainer
 			handler.AppendLiteral("\n");
 			stringBuilder17.Append(ref handler);
 		}
-		if (playerEntry.GoldStolen > 0)
+		if (ShowGold && playerEntry.GoldStolen > 0)
 		{
 			_goldStolen.Add("Icon", "[img=top]res://images/packed/sprite_fonts/gold_icon.png[/img]");
 			_goldStolen.Add("Amount", playerEntry.GoldStolen);
@@ -383,11 +398,24 @@ public partial class NMapPointHistoryHoverTip : MarginContainer
 	{
 		List<string> list = new List<string>();
 		List<string> list2 = new List<string>();
-		if (playerEntry.GoldGained > 0)
+		if (ShowGold && playerEntry.GoldGained > 0)
 		{
 			_goldGained.Add("Icon", "[img=top]res://images/packed/sprite_fonts/gold_icon.png[/img]");
 			_goldGained.Add("Amount", playerEntry.GoldGained);
 			list.Add(_goldGained.GetFormattedText());
+		}
+		foreach (BlitzMerchantHistoryEntry blitzMerchantChoice in playerEntry.BlitzMerchantChoices)
+		{
+			_obtained.Add("Icon", "[img=top]res://images/packed/sprite_fonts/gold_icon.png[/img]");
+			_obtained.Add("Title", BlitzMerchantEntry.GetTitleForHistory(blitzMerchantChoice));
+			if (blitzMerchantChoice.wasPicked)
+			{
+				list.Add(_obtained.GetFormattedText());
+			}
+			else
+			{
+				list2.Add(_obtained.GetFormattedText());
+			}
 		}
 		foreach (SerializableCard item in playerEntry.CardsGained)
 		{
@@ -468,7 +496,7 @@ public partial class NMapPointHistoryHoverTip : MarginContainer
 			_transformed.Add("Title2", CardModel.FromSerializable(item5.FinalCard).Title);
 			list.Add(_transformed.GetFormattedText() ?? "");
 		}
-		int num = Mathf.Max(5, Mathf.CeilToInt((float)list.Count / 2f));
+		int num = Mathf.Max(5, Mathf.CeilToInt((float)list.Count * 0.5f));
 		_rewardRows[1].Visible = list.Count > 5;
 		_rewardStatsContainer.Visible = list.Count > 0;
 		for (int i = 0; i < list.Count; i++)
@@ -476,7 +504,7 @@ public partial class NMapPointHistoryHoverTip : MarginContainer
 			RichTextLabel richTextLabel = _rewardRows[i / num];
 			richTextLabel.Text = richTextLabel.Text + "\t" + list[i] + "\n";
 		}
-		int num2 = Mathf.Max(5, Mathf.CeilToInt((float)list2.Count / 2f));
+		int num2 = Mathf.Max(5, Mathf.CeilToInt((float)list2.Count * 0.5f));
 		_skippedRows[1].Visible = list2.Count > 5;
 		_skippedStatsContainer.Visible = list2.Count > 0;
 		for (int j = 0; j < list2.Count; j++)

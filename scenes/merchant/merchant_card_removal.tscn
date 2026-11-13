@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ca1bm16oq4u5v"]
+[gd_scene load_steps=15 format=3 uid="uid://ca1bm16oq4u5v"]
 
 [ext_resource type="Script" uid="uid://bkto0y55cule7" path="res://src/Core/Nodes/Screens/Shops/NMerchantCardRemoval.cs" id="1_iqwi2"]
 [ext_resource type="Script" uid="uid://bry8aaeikvcb3" path="res://src/Core/Nodes/GodotExtensions/NClickableControl.cs" id="2_ltd50"]
@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bx8rkdm85ei27" path="res://images/rooms/merchant_room/card_removal_02.png" id="4_wub3p"]
 [ext_resource type="Texture2D" uid="uid://b1kjp5cje35j1" path="res://images/rooms/merchant_room/card_removal_04.png" id="5_835n5"]
 [ext_resource type="Texture2D" uid="uid://bmmuopj81ibpv" path="res://images/rooms/merchant_room/card_removal_05.png" id="6_mf38f"]
-[ext_resource type="Texture2D" path="res://images/atlases/ui_atlas.sprites/top_bar/top_bar_gold.tres" id="8_6mx3w"]
+[ext_resource type="Texture2D" uid="uid://jqn0hv" path="res://images/atlases/ui_atlas.sprites/top_bar/top_bar_gold.tres" id="8_6mx3w"]
 [ext_resource type="FontVariation" uid="uid://ciql5khgewwbm" path="res://themes/kreon_bold_glyph_space_two.tres" id="9_iwyus"]
 
 [sub_resource type="Animation" id="Animation_0dimg"]
@@ -98,7 +98,6 @@ libraries = {
 
 [node name="Hitbox" type="Control" parent="."]
 unique_name_in_owner = true
-layout_mode = 3
 anchors_preset = 0
 offset_left = -157.0
 offset_top = -126.0
@@ -126,13 +125,13 @@ stretch_mode = 5
 [node name="CostLabel" type="Label" parent="Cost"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0.223529, 0.223529, 0.223529, 0)
+theme_override_colors/font_outline_color = Color(0.0666667, 0, 0, 0.431373)
+theme_override_constants/line_spacing = 0
+theme_override_constants/outline_size = 15
+theme_override_constants/shadow_outline_size = 0
 theme_override_fonts/font = ExtResource("9_iwyus")
 theme_override_font_sizes/font_size = 39
 text = "99"
-theme_override_constants/line_spacing = 0.0
-theme_override_constants/outline_size = 15
-theme_override_colors/font_outline_color = Color(0.0666667, 0, 0, 0.431373)
-theme_override_constants/shadow_outline_size = 0
-theme_override_colors/font_shadow_color = Color(0.223529, 0.223529, 0.223529, 0)
 script = ExtResource("4_fr7qx")
 MinFontSize = 40

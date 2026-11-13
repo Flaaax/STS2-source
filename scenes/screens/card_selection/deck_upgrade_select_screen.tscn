@@ -4,13 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://cso1enqajc0tc" path="res://scenes/cards/card_grid.tscn" id="2_8mtaf"]
 [ext_resource type="PackedScene" uid="uid://wjt3nn5ts5o3" path="res://scenes/cards/upgrade_preview.tscn" id="3_b1iyb"]
 [ext_resource type="PackedScene" uid="uid://bl4mbjqjfffa3" path="res://scenes/ui/back_button.tscn" id="3_mpbui"]
-[ext_resource type="Script" uid="uid://h45v44q8fnkx" path="res://src/Core/Nodes/CommonUi/NTickbox.cs" id="5_fn10f"]
 [ext_resource type="PackedScene" uid="uid://bl460ab2i4mkx" path="res://scenes/ui/confirm_button.tscn" id="5_jpiyi"]
 [ext_resource type="PackedScene" uid="uid://bw8f1jtcj62xv" path="res://scenes/ui/tickbox.tscn" id="5_txkyp"]
 [ext_resource type="Shader" uid="uid://c66gb6g7tup3n" path="res://shaders/hsv.gdshader" id="6_2jwa2"]
 [ext_resource type="PackedScene" uid="uid://rxgwkwxf1dsr" path="res://scenes/combat/peek_button.tscn" id="6_8otl7"]
 [ext_resource type="FontVariation" uid="uid://ux4d708e7mk6" path="res://themes/kreon_bold_glyph_space_one.tres" id="7_6oosl"]
 [ext_resource type="Script" uid="uid://dtfio45agppyj" path="res://addons/mega_text/MegaLabel.cs" id="8_pi2l3"]
+[ext_resource type="Script" uid="uid://cktduyaggev5n" path="res://src/Core/Nodes/Screens/InspectScreens/NUpgradePreviewTickbox.cs" id="10_f8hb1"]
 [ext_resource type="FontVariation" uid="uid://c6wnuvk3exmk5" path="res://themes/kreon_regular_shared.tres" id="12_f8hb1"]
 [ext_resource type="FontVariation" uid="uid://bg85h22rkxs6g" path="res://themes/kreon_bold_shared.tres" id="13_ppnbn"]
 [ext_resource type="Script" uid="uid://c2oywrx8xbqfx" path="res://addons/mega_text/MegaRichTextLabel.cs" id="14_cdb0a"]
@@ -212,7 +212,7 @@ theme_override_constants/margin_right = 6
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 0
-script = ExtResource("5_fn10f")
+script = ExtResource("10_f8hb1")
 
 [node name="TickboxVisuals" parent="ViewUpgrades/MarginContainer/Upgrades" instance=ExtResource("5_txkyp")]
 unique_name_in_owner = true

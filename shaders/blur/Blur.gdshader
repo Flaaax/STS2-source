@@ -1,52 +1,62 @@
 // This is the shader used on NCard portrait & ancient portrait when it is blurred.
-// It is intended to be used as the first pass (X or Y) of a Gaussian blur, where the first pass
-// is done by a canvas group.
+// It is the first pass (screen X) of a separable Gaussian blur; the second pass (screen Y) is done by the
+// PortraitCanvasGroup with canvas_group_mask_blur.gdshader.
 
 shader_type canvas_item;
 
-// Radius that the shader was designed for.
-const float DEFAULT_RADIUS = 32.000000000;
+#include "res://shaders/blur/portrait_blur.gdshaderinc"
 
-// Unit vector: (1, 0) or (0, 1)
-uniform vec2 step;
-// Desired blur radius.
-uniform float radius = 32.000000000;
+// Blur radius in PortraitCanvasGroup units. Keep in sync with the canvas group blur materials.
+uniform float radius = 16.0;
+
+// Portrait's region within its atlas, in UV (xy = min, zw = max). Set per node by NCard so that taps are
+// clamped to the sprite instead of bleeding in neighbouring portraits from the atlas.
+instance uniform vec4 uv_region = vec4(0.0, 0.0, 1.0, 1.0);
+// Converts the radius from canvas group units to this node's local units (1 / node scale).
+instance uniform float radius_scale = 1.0;
+
+varying vec2 local_pos;
+
+void vertex() {
+	local_pos = VERTEX;
+}
 
 void fragment() {
-	vec2 s = radius / DEFAULT_RADIUS * step / vec2(textureSize(TEXTURE, 0));
-	COLOR.rgb =
-		0.003523096 * texture(TEXTURE, UV - 32.000000000 * s).rgb +
-		0.008472943 * texture(TEXTURE, UV - 30.470250026 * s).rgb +
-		0.010666648 * texture(TEXTURE, UV - 28.472196679 * s).rgb +
-		0.013220332 * texture(TEXTURE, UV - 26.474144178 * s).rgb +
-		0.016131604 * texture(TEXTURE, UV - 24.476092464 * s).rgb +
-		0.019379095 * texture(TEXTURE, UV - 22.478041477 * s).rgb +
-		0.022919767 * texture(TEXTURE, UV - 20.479991160 * s).rgb +
-		0.026687486 * texture(TEXTURE, UV - 18.481941452 * s).rgb +
-		0.030593271 * texture(TEXTURE, UV - 16.483892295 * s).rgb +
-		0.034527483 * texture(TEXTURE, UV - 14.485843628 * s).rgb +
-		0.038364071 * texture(TEXTURE, UV - 12.487795393 * s).rgb +
-		0.041966740 * texture(TEXTURE, UV - 10.489747531 * s).rgb +
-		0.045196682 * texture(TEXTURE, UV - 8.491699981 * s).rgb +
-		0.047921307 * texture(TEXTURE, UV - 6.493652685 * s).rgb +
-		0.050023206 * texture(TEXTURE, UV - 4.495605582 * s).rgb +
-		0.051408527 * texture(TEXTURE, UV - 2.497558613 * s).rgb +
-		0.052013919 * texture(TEXTURE, UV - 0.499511719 * s).rgb +
-		0.051811334 * texture(TEXTURE, UV + 1.498535160 * s).rgb +
-		0.050810181 * texture(TEXTURE, UV + 3.496582084 * s).rgb +
-		0.049056605 * texture(TEXTURE, UV + 5.494629113 * s).rgb +
-		0.046629956 * texture(TEXTURE, UV + 7.492676305 * s).rgb +
-		0.043636841 * texture(TEXTURE, UV + 9.490723721 * s).rgb +
-		0.040203362 * texture(TEXTURE, UV + 11.488771419 * s).rgb +
-		0.036466342 * texture(TEXTURE, UV + 13.486819461 * s).rgb +
-		0.032564380 * texture(TEXTURE, UV + 15.484867904 * s).rgb +
-		0.028629528 * texture(TEXTURE, UV + 17.482916808 * s).rgb +
-		0.024780288 * texture(TEXTURE, UV + 19.480966233 * s).rgb +
-		0.021116370 * texture(TEXTURE, UV + 21.479016239 * s).rgb +
-		0.017715480 * texture(TEXTURE, UV + 23.477066883 * s).rgb +
-		0.014632124 * texture(TEXTURE, UV + 25.475118226 * s).rgb +
-		0.011898236 * texture(TEXTURE, UV + 27.473170326 * s).rgb +
-		0.009525297 * texture(TEXTURE, UV + 29.471223243 * s).rgb +
-		0.007507498 * texture(TEXTURE, UV + 31.469277035 * s).rgb;
+	vec2 tex_size = vec2(textureSize(TEXTURE, 0));
+
+	// Atlas texels moved per screen pixel along screen X, and local units moved per screen pixel.
+	vec2 texels_per_px = dFdx(UV) * tex_size;
+	float texel_len = max(length(texels_per_px), 1e-6);
+	float local_len = max(length(dFdx(local_pos)), 1e-6);
+
+	float sigma = radius * radius_scale * BLUR_SIGMA_PER_RADIUS * (texel_len / local_len);
+	// UV offset of one texel along screen X.
+	vec2 dir = (texels_per_px / texel_len) / tex_size;
+
+	// Keep bilinear taps half a texel inside the region so they never touch neighbouring sprites.
+	vec2 lo = uv_region.xy + 0.5 * TEXTURE_PIXEL_SIZE;
+	vec2 hi = uv_region.zw - 0.5 * TEXTURE_PIXEL_SIZE;
+
+	vec3 sum = textureLod(TEXTURE, clamp(UV, lo, hi), 0.0).rgb;
+	float wsum = 1.0;
+
+	if (sigma > 0.5) {
+		float unit = blur_unit(sigma);
+		int pairs = blur_pairs(sigma, unit);
+		float inv_two_sigma_sq = 1.0 / (2.0 * sigma * sigma);
+
+		for (int k = 1; k <= BLUR_MAX_PAIRS; k++) {
+			if (k > pairs) {
+				break;
+			}
+			vec2 p = blur_pair(k, unit, inv_two_sigma_sq);
+			vec2 o = dir * p.x;
+			sum += p.y * textureLod(TEXTURE, clamp(UV + o, lo, hi), 0.0).rgb;
+			sum += p.y * textureLod(TEXTURE, clamp(UV - o, lo, hi), 0.0).rgb;
+			wsum += 2.0 * p.y;
+		}
+	}
+
+	COLOR.rgb = sum / wsum;
 	COLOR.a = 1.0;
 }

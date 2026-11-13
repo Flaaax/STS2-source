@@ -3,8 +3,8 @@
     {
       "image": "power_atlas.png",
       "size": {
-        "w": 660,
-        "h": 1768
+        "w": 990,
+        "h": 1182
       },
       "sprites": [
         {
@@ -20,7 +20,8 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "e2d0b44eb29bb31a"
         },
         {
           "filename": "adaptable_power.png",
@@ -35,7 +36,8 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "6b0d3265f84f4e93"
         },
         {
           "filename": "afterimage_power.png",
@@ -50,7 +52,8 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "6aaf50db9ea26d36"
         },
         {
           "filename": "aggression_power.png",
@@ -65,7 +68,8 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "4931ddc6df3bd882"
         },
         {
           "filename": "ambergris_power.png",
@@ -80,7 +84,8 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "ae913ad4402c6a2d"
         },
         {
           "filename": "anticipate_power.png",
@@ -95,7 +100,8 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "a5b94b813207df59"
         },
         {
           "filename": "arsenal_power.png",
@@ -110,7 +116,8 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "22b467f24eda7398"
         },
         {
           "filename": "artifact_power.png",
@@ -125,7 +132,8 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "8e62947a26c5d350"
         },
         {
           "filename": "asleep_power.png",
@@ -140,7 +148,8 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "6aadd287fdf624b7"
         },
         {
           "filename": "automation_power.png",
@@ -155,13 +164,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "5597744094ff9838"
         },
         {
           "filename": "back_attack_left_power.png",
           "region": {
-            "x": 1,
-            "y": 67,
+            "x": 661,
+            "y": 1,
             "w": 64,
             "h": 64
           },
@@ -170,13 +180,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "1532d6039948d6b8"
         },
         {
           "filename": "back_attack_right_power.png",
           "region": {
-            "x": 67,
-            "y": 67,
+            "x": 727,
+            "y": 1,
             "w": 64,
             "h": 64
           },
@@ -185,13 +196,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "445a2d8337fa899b"
         },
         {
           "filename": "beacon_of_hope_power.png",
           "region": {
-            "x": 133,
-            "y": 67,
+            "x": 793,
+            "y": 1,
             "w": 64,
             "h": 64
           },
@@ -200,13 +212,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "df1fbab483df669a"
         },
         {
           "filename": "biased_cognition_power.png",
           "region": {
-            "x": 199,
-            "y": 67,
+            "x": 859,
+            "y": 1,
             "w": 64,
             "h": 64
           },
@@ -215,13 +228,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "1ec237a46a854ceb"
         },
         {
           "filename": "black_hole_power.png",
           "region": {
-            "x": 265,
-            "y": 67,
+            "x": 925,
+            "y": 1,
             "w": 64,
             "h": 64
           },
@@ -230,12 +244,13 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "31fb9b79ea15cb41"
         },
         {
           "filename": "block_next_turn_power.png",
           "region": {
-            "x": 331,
+            "x": 1,
             "y": 67,
             "w": 64,
             "h": 64
@@ -245,12 +260,13 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "68ae86ffcbae587f"
         },
         {
           "filename": "blur_power.png",
           "region": {
-            "x": 397,
+            "x": 67,
             "y": 67,
             "w": 64,
             "h": 64
@@ -260,12 +276,13 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "f0d65a617af08536"
         },
         {
           "filename": "buffer_power.png",
           "region": {
-            "x": 463,
+            "x": 133,
             "y": 67,
             "w": 64,
             "h": 64
@@ -275,12 +292,13 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "f362ad9e41380fc1"
         },
         {
           "filename": "burrowed_power.png",
           "region": {
-            "x": 529,
+            "x": 199,
             "y": 67,
             "w": 64,
             "h": 64
@@ -290,11 +308,92 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "2354200398614103"
         },
         {
           "filename": "calamity_power.png",
           "region": {
+            "x": 265,
+            "y": 67,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "20cc84645e12b031"
+        },
+        {
+          "filename": "calcify_power.png",
+          "region": {
+            "x": 331,
+            "y": 67,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "df46fb7992fd006b"
+        },
+        {
+          "filename": "call_of_the_void_power.png",
+          "region": {
+            "x": 397,
+            "y": 67,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "a60034cfff5f403d"
+        },
+        {
+          "filename": "chains_of_binding_power.png",
+          "region": {
+            "x": 463,
+            "y": 67,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "bb76534abfc325b5"
+        },
+        {
+          "filename": "child_of_the_stars_power.png",
+          "region": {
+            "x": 529,
+            "y": 67,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "5ea670fc508d9f27"
+        },
+        {
+          "filename": "clarity_power.png",
+          "region": {
             "x": 595,
             "y": 67,
             "w": 64,
@@ -305,88 +404,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
-        },
-        {
-          "filename": "calcify_power.png",
-          "region": {
-            "x": 1,
-            "y": 133,
-            "w": 64,
-            "h": 64
           },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "call_of_the_void_power.png",
-          "region": {
-            "x": 67,
-            "y": 133,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "chains_of_binding_power.png",
-          "region": {
-            "x": 133,
-            "y": 133,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "child_of_the_stars_power.png",
-          "region": {
-            "x": 199,
-            "y": 133,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "clarity_power.png",
-          "region": {
-            "x": 265,
-            "y": 133,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
+          "pixel_hash": "0c18eb3ad481cd2b"
         },
         {
           "filename": "colossus_power.png",
           "region": {
-            "x": 331,
-            "y": 133,
+            "x": 661,
+            "y": 67,
             "w": 64,
             "h": 64
           },
@@ -395,13 +420,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "b93ae66c266676ec"
         },
         {
           "filename": "confused_power.png",
           "region": {
-            "x": 397,
-            "y": 133,
+            "x": 727,
+            "y": 67,
             "w": 64,
             "h": 64
           },
@@ -410,13 +436,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "82cc665aee1ebe0d"
         },
         {
           "filename": "conqueror_power.png",
           "region": {
-            "x": 463,
-            "y": 133,
+            "x": 793,
+            "y": 67,
             "w": 64,
             "h": 64
           },
@@ -425,13 +452,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "37e6d0ff4cbb3fc0"
         },
         {
           "filename": "constrict_power.png",
           "region": {
-            "x": 529,
-            "y": 133,
+            "x": 859,
+            "y": 67,
             "w": 64,
             "h": 64
           },
@@ -440,13 +468,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "a594998664d67dca"
         },
         {
           "filename": "coolant_power.png",
           "region": {
-            "x": 595,
-            "y": 133,
+            "x": 925,
+            "y": 67,
             "w": 64,
             "h": 64
           },
@@ -455,13 +484,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "7df785c760d1194f"
         },
         {
           "filename": "corrosive_wave_power.png",
           "region": {
             "x": 1,
-            "y": 199,
+            "y": 133,
             "w": 64,
             "h": 64
           },
@@ -470,13 +500,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "71199d40a006268e"
         },
         {
           "filename": "corruption_power.png",
           "region": {
             "x": 67,
-            "y": 199,
+            "y": 133,
             "w": 64,
             "h": 64
           },
@@ -485,13 +516,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "fae64a15ea6604ac"
         },
         {
           "filename": "covered_power.png",
           "region": {
             "x": 133,
-            "y": 199,
+            "y": 133,
             "w": 64,
             "h": 64
           },
@@ -500,13 +532,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "202baa329cfba100"
         },
         {
           "filename": "crab_rage_power.png",
           "region": {
             "x": 199,
-            "y": 199,
+            "y": 133,
             "w": 64,
             "h": 64
           },
@@ -515,13 +548,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "dafd6e217c215c68"
         },
         {
           "filename": "creative_ai_power.png",
           "region": {
             "x": 265,
-            "y": 199,
+            "y": 133,
             "w": 64,
             "h": 64
           },
@@ -530,13 +564,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "bb30ae9eec27a44c"
         },
         {
           "filename": "crush_under_power.png",
           "region": {
             "x": 331,
-            "y": 199,
+            "y": 133,
             "w": 64,
             "h": 64
           },
@@ -545,13 +580,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "0089bdb6e66c7b59"
         },
         {
           "filename": "curl_up_power.png",
           "region": {
             "x": 397,
-            "y": 199,
+            "y": 133,
             "w": 64,
             "h": 64
           },
@@ -560,13 +596,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "4fe66329b2aaea81"
         },
         {
           "filename": "danse_macabre_power.png",
           "region": {
             "x": 463,
-            "y": 199,
+            "y": 133,
             "w": 64,
             "h": 64
           },
@@ -575,13 +612,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "311ba407bcd6e535"
         },
         {
           "filename": "dark_embrace_power.png",
           "region": {
             "x": 529,
-            "y": 199,
+            "y": 133,
             "w": 64,
             "h": 64
           },
@@ -590,12 +628,109 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "4c5f27ccce2e6878"
         },
         {
           "filename": "dark_shackles_power.png",
           "region": {
             "x": 595,
+            "y": 133,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "c2cb90a8607fd582"
+        },
+        {
+          "filename": "debilitate_power.png",
+          "region": {
+            "x": 661,
+            "y": 133,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "db44bf15574ecf66"
+        },
+        {
+          "filename": "demise_power.png",
+          "region": {
+            "x": 727,
+            "y": 133,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "93f6a02e1122e516"
+        },
+        {
+          "filename": "demon_form_power.png",
+          "region": {
+            "x": 793,
+            "y": 133,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "de9976c965e641b8"
+        },
+        {
+          "filename": "devour_life_power.png",
+          "region": {
+            "x": 859,
+            "y": 133,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "d4e5de40357e624a"
+        },
+        {
+          "filename": "disintegration_power.png",
+          "region": {
+            "x": 925,
+            "y": 133,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "4b0e21e851cc9a3a"
+        },
+        {
+          "filename": "double_damage_power.png",
+          "region": {
+            "x": 1,
             "y": 199,
             "w": 64,
             "h": 64
@@ -605,103 +740,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
-        },
-        {
-          "filename": "debilitate_power.png",
-          "region": {
-            "x": 1,
-            "y": 265,
-            "w": 64,
-            "h": 64
           },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "demise_power.png",
-          "region": {
-            "x": 67,
-            "y": 265,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "demon_form_power.png",
-          "region": {
-            "x": 133,
-            "y": 265,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "devour_life_power.png",
-          "region": {
-            "x": 199,
-            "y": 265,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "disintegration_power.png",
-          "region": {
-            "x": 265,
-            "y": 265,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "double_damage_power.png",
-          "region": {
-            "x": 331,
-            "y": 265,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
+          "pixel_hash": "24328be176042f7e"
         },
         {
           "filename": "dying_star_power.png",
           "region": {
-            "x": 397,
-            "y": 265,
+            "x": 67,
+            "y": 199,
             "w": 64,
             "h": 64
           },
@@ -710,13 +756,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "819656827cd68419"
         },
         {
           "filename": "enfeebling_touch_power.png",
           "region": {
-            "x": 463,
-            "y": 265,
+            "x": 133,
+            "y": 199,
             "w": 64,
             "h": 64
           },
@@ -725,13 +772,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "49fce9c436686fe5"
         },
         {
           "filename": "enrage_power.png",
           "region": {
-            "x": 529,
-            "y": 265,
+            "x": 199,
+            "y": 199,
             "w": 64,
             "h": 64
           },
@@ -740,13 +788,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "9d14b2bf25ce170f"
         },
         {
           "filename": "entropy_power.png",
           "region": {
-            "x": 595,
-            "y": 265,
+            "x": 265,
+            "y": 199,
             "w": 64,
             "h": 64
           },
@@ -755,13 +804,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "727558e9eab476e3"
         },
         {
           "filename": "fasten_power.png",
           "region": {
-            "x": 1,
-            "y": 331,
+            "x": 331,
+            "y": 199,
             "w": 64,
             "h": 64
           },
@@ -770,13 +820,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "d2483c953876b16f"
         },
         {
           "filename": "feel_no_pain_power.png",
           "region": {
-            "x": 67,
-            "y": 331,
+            "x": 397,
+            "y": 199,
             "w": 64,
             "h": 64
           },
@@ -785,13 +836,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "3a39f78352432a48"
         },
         {
           "filename": "feral_power.png",
           "region": {
-            "x": 133,
-            "y": 331,
+            "x": 463,
+            "y": 199,
             "w": 64,
             "h": 64
           },
@@ -800,13 +852,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "27009ded74a94d17"
         },
         {
           "filename": "flame_barrier_power.png",
           "region": {
-            "x": 199,
-            "y": 331,
+            "x": 529,
+            "y": 199,
             "w": 64,
             "h": 64
           },
@@ -815,13 +868,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "6ef92086f126a249"
         },
         {
           "filename": "flanking_power.png",
           "region": {
-            "x": 265,
-            "y": 331,
+            "x": 595,
+            "y": 199,
             "w": 64,
             "h": 64
           },
@@ -830,13 +884,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "e133197a48514f37"
         },
         {
           "filename": "flex_potion_power.png",
           "region": {
-            "x": 331,
-            "y": 331,
+            "x": 661,
+            "y": 199,
             "w": 64,
             "h": 64
           },
@@ -845,13 +900,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "45610fe6ec3b3242"
         },
         {
           "filename": "focused_strike_power.png",
           "region": {
-            "x": 397,
-            "y": 331,
+            "x": 727,
+            "y": 199,
             "w": 64,
             "h": 64
           },
@@ -860,13 +916,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "c45f0118216fc304"
         },
         {
           "filename": "forbidden_grimoire_power.png",
           "region": {
-            "x": 463,
-            "y": 331,
+            "x": 793,
+            "y": 199,
             "w": 64,
             "h": 64
           },
@@ -875,13 +932,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "7b88c68953cb8cdf"
         },
         {
           "filename": "foregone_conclusion_power.png",
           "region": {
-            "x": 529,
-            "y": 331,
+            "x": 859,
+            "y": 199,
             "w": 64,
             "h": 64
           },
@@ -890,13 +948,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "949903d36f41d66b"
         },
         {
           "filename": "furnace_power.png",
           "region": {
-            "x": 595,
-            "y": 331,
+            "x": 925,
+            "y": 199,
             "w": 64,
             "h": 64
           },
@@ -905,13 +964,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "7e8a8ce0b58fcbab"
         },
         {
           "filename": "galvanic_power.png",
           "region": {
             "x": 1,
-            "y": 397,
+            "y": 265,
             "w": 64,
             "h": 64
           },
@@ -920,13 +980,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "b10089a79d80cf9d"
         },
         {
           "filename": "gigantification_power.png",
           "region": {
             "x": 67,
-            "y": 397,
+            "y": 265,
             "w": 64,
             "h": 64
           },
@@ -935,13 +996,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "55b77dea64ba52f8"
         },
         {
           "filename": "guarded_power.png",
           "region": {
             "x": 133,
-            "y": 397,
+            "y": 265,
             "w": 64,
             "h": 64
           },
@@ -950,13 +1012,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "4f256468660af7f9"
         },
         {
           "filename": "hailstorm_power.png",
           "region": {
             "x": 199,
-            "y": 397,
+            "y": 265,
             "w": 64,
             "h": 64
           },
@@ -965,13 +1028,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "051301e2b82a9d4e"
         },
         {
           "filename": "hammer_time_power.png",
           "region": {
             "x": 265,
-            "y": 397,
+            "y": 265,
             "w": 64,
             "h": 64
           },
@@ -980,13 +1044,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "59187d16f8a84965"
         },
         {
           "filename": "hang_power.png",
           "region": {
             "x": 331,
-            "y": 397,
+            "y": 265,
             "w": 64,
             "h": 64
           },
@@ -995,13 +1060,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "a86946f4f9a5781e"
         },
         {
           "filename": "hardened_shell_power.png",
           "region": {
             "x": 397,
-            "y": 397,
+            "y": 265,
             "w": 64,
             "h": 64
           },
@@ -1010,13 +1076,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "1c9865ab784c96e8"
         },
         {
           "filename": "haunt_power.png",
           "region": {
             "x": 463,
-            "y": 397,
+            "y": 265,
             "w": 64,
             "h": 64
           },
@@ -1025,13 +1092,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "fd7d6068c0b2105f"
         },
         {
           "filename": "heist_power.png",
           "region": {
             "x": 529,
-            "y": 397,
+            "y": 265,
             "w": 64,
             "h": 64
           },
@@ -1040,12 +1108,349 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "a80df85d88ee0f23"
         },
         {
           "filename": "helical_dart_power.png",
           "region": {
             "x": 595,
+            "y": 265,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "a6cfc5b4a7764e09"
+        },
+        {
+          "filename": "hello_world_power.png",
+          "region": {
+            "x": 661,
+            "y": 265,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "e4e6c0472834d134"
+        },
+        {
+          "filename": "hellraiser_power.png",
+          "region": {
+            "x": 727,
+            "y": 265,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "d0d8bba76c13a864"
+        },
+        {
+          "filename": "hex_power.png",
+          "region": {
+            "x": 793,
+            "y": 265,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "4fb372b4e16d5f5d"
+        },
+        {
+          "filename": "high_voltage_power.png",
+          "region": {
+            "x": 859,
+            "y": 265,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "c1052f9ae48045b4"
+        },
+        {
+          "filename": "hotfix_power.png",
+          "region": {
+            "x": 925,
+            "y": 265,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "6b677be4e98cef8a"
+        },
+        {
+          "filename": "hyperbeam_focus_down_power.png",
+          "region": {
+            "x": 1,
+            "y": 331,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "30aa121a59bd42e4"
+        },
+        {
+          "filename": "illusion_power.png",
+          "region": {
+            "x": 67,
+            "y": 331,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "1f479bbe95fd06ea"
+        },
+        {
+          "filename": "imbalanced_power.png",
+          "region": {
+            "x": 133,
+            "y": 331,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "ec73b87dae0fad1a"
+        },
+        {
+          "filename": "improvement_power.png",
+          "region": {
+            "x": 199,
+            "y": 331,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "8c9cc5838dc93097"
+        },
+        {
+          "filename": "inferno_power.png",
+          "region": {
+            "x": 265,
+            "y": 331,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "28ec2cc169bc52a2"
+        },
+        {
+          "filename": "infinite_blades_plus_power.png",
+          "region": {
+            "x": 331,
+            "y": 331,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "0d164e1c73ce4a29"
+        },
+        {
+          "filename": "intangible_power.png",
+          "region": {
+            "x": 397,
+            "y": 331,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "a6d57ee417704632"
+        },
+        {
+          "filename": "intercept_power.png",
+          "region": {
+            "x": 463,
+            "y": 331,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "bb075a78c92ea161"
+        },
+        {
+          "filename": "iteration_power.png",
+          "region": {
+            "x": 529,
+            "y": 331,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "1eeb8649719e098f"
+        },
+        {
+          "filename": "juggling_power.png",
+          "region": {
+            "x": 595,
+            "y": 331,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "46a69d0359e0cdc8"
+        },
+        {
+          "filename": "knockdown_power.png",
+          "region": {
+            "x": 661,
+            "y": 331,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "74c6080792ba9e98"
+        },
+        {
+          "filename": "lethality_power.png",
+          "region": {
+            "x": 727,
+            "y": 331,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "75d01a28331152d4"
+        },
+        {
+          "filename": "lightning_rod_power.png",
+          "region": {
+            "x": 793,
+            "y": 331,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "8260ec84c88b5cd9"
+        },
+        {
+          "filename": "loop_power.png",
+          "region": {
+            "x": 859,
+            "y": 331,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "af09645abdeba510"
+        },
+        {
+          "filename": "magic_bomb_power.png",
+          "region": {
+            "x": 925,
+            "y": 331,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "77cb0070d86f02a0"
+        },
+        {
+          "filename": "mangle_power.png",
+          "region": {
+            "x": 1,
             "y": 397,
             "w": 64,
             "h": 64
@@ -1055,313 +1460,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
-        },
-        {
-          "filename": "hello_world_power.png",
-          "region": {
-            "x": 1,
-            "y": 463,
-            "w": 64,
-            "h": 64
           },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "hellraiser_power.png",
-          "region": {
-            "x": 67,
-            "y": 463,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "hex_power.png",
-          "region": {
-            "x": 133,
-            "y": 463,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "high_voltage_power.png",
-          "region": {
-            "x": 199,
-            "y": 463,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "hotfix_power.png",
-          "region": {
-            "x": 265,
-            "y": 463,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "illusion_power.png",
-          "region": {
-            "x": 331,
-            "y": 463,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "imbalanced_power.png",
-          "region": {
-            "x": 397,
-            "y": 463,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "improvement_power.png",
-          "region": {
-            "x": 463,
-            "y": 463,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "inferno_power.png",
-          "region": {
-            "x": 529,
-            "y": 463,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "infinite_blades_plus_power.png",
-          "region": {
-            "x": 595,
-            "y": 463,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "intangible_power.png",
-          "region": {
-            "x": 1,
-            "y": 529,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "intercept_power.png",
-          "region": {
-            "x": 67,
-            "y": 529,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "iteration_power.png",
-          "region": {
-            "x": 133,
-            "y": 529,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "juggling_power.png",
-          "region": {
-            "x": 199,
-            "y": 529,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "knockdown_power.png",
-          "region": {
-            "x": 265,
-            "y": 529,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "lethality_power.png",
-          "region": {
-            "x": 331,
-            "y": 529,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "lightning_rod_power.png",
-          "region": {
-            "x": 397,
-            "y": 529,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "loop_power.png",
-          "region": {
-            "x": 463,
-            "y": 529,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "magic_bomb_power.png",
-          "region": {
-            "x": 529,
-            "y": 529,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "mangle_power.png",
-          "region": {
-            "x": 595,
-            "y": 529,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
+          "pixel_hash": "de8a13ec2addff8e"
         },
         {
           "filename": "master_planner_power.png",
           "region": {
-            "x": 1,
-            "y": 595,
+            "x": 67,
+            "y": 397,
             "w": 64,
             "h": 64
           },
@@ -1370,13 +1476,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "75055ab8ea3f7d92"
         },
         {
           "filename": "mayhem_power.png",
           "region": {
-            "x": 67,
-            "y": 595,
+            "x": 133,
+            "y": 397,
             "w": 64,
             "h": 64
           },
@@ -1385,13 +1492,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "46f8b3e18052811a"
         },
         {
           "filename": "mind_rot_power.png",
           "region": {
-            "x": 133,
-            "y": 595,
+            "x": 199,
+            "y": 397,
             "w": 64,
             "h": 64
           },
@@ -1400,13 +1508,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "57313cf436abcbab"
         },
         {
           "filename": "missing_power.png",
           "region": {
-            "x": 199,
-            "y": 595,
+            "x": 265,
+            "y": 397,
             "w": 64,
             "h": 64
           },
@@ -1415,13 +1524,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "25be52ef644817f0"
         },
         {
           "filename": "monarchs_gaze_power.png",
           "region": {
-            "x": 265,
-            "y": 595,
+            "x": 331,
+            "y": 397,
             "w": 64,
             "h": 64
           },
@@ -1430,13 +1540,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "a5becb05c69b3c31"
         },
         {
           "filename": "monologue_power.png",
           "region": {
-            "x": 331,
-            "y": 595,
+            "x": 397,
+            "y": 397,
             "w": 64,
             "h": 64
           },
@@ -1445,13 +1556,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "4d6e6614d7bd6bfa"
         },
         {
           "filename": "nemesis_power.png",
           "region": {
-            "x": 397,
-            "y": 595,
+            "x": 463,
+            "y": 397,
             "w": 64,
             "h": 64
           },
@@ -1460,13 +1572,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "9f37c95ede8f3ccb"
         },
         {
           "filename": "nightmare_power.png",
           "region": {
-            "x": 463,
-            "y": 595,
+            "x": 529,
+            "y": 397,
             "w": 64,
             "h": 64
           },
@@ -1475,13 +1588,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "7cd0a82a3767d44c"
         },
         {
           "filename": "no_energy_gain_power.png",
           "region": {
-            "x": 529,
-            "y": 595,
+            "x": 595,
+            "y": 397,
             "w": 64,
             "h": 64
           },
@@ -1490,11 +1604,716 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "9e52d7936d1bfaf5"
         },
         {
           "filename": "nostalgia_power.png",
           "region": {
+            "x": 661,
+            "y": 397,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "ee7f8189321236dc"
+        },
+        {
+          "filename": "noxious_fumes_power.png",
+          "region": {
+            "x": 727,
+            "y": 397,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "fa1f8d13cc19727a"
+        },
+        {
+          "filename": "oblivion_power.png",
+          "region": {
+            "x": 793,
+            "y": 397,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "d2c6afdbd2e5d1f6"
+        },
+        {
+          "filename": "one_two_punch_power.png",
+          "region": {
+            "x": 859,
+            "y": 397,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "9a7a013aa4c74a1b"
+        },
+        {
+          "filename": "orbit_power.png",
+          "region": {
+            "x": 925,
+            "y": 397,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "0000a78f74885dd9"
+        },
+        {
+          "filename": "outbreak_power.png",
+          "region": {
+            "x": 1,
+            "y": 463,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "664cf13527bfbdbc"
+        },
+        {
+          "filename": "pagestorm_power.png",
+          "region": {
+            "x": 67,
+            "y": 463,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "d47a3cd2ab100bd1"
+        },
+        {
+          "filename": "painful_stabs_power.png",
+          "region": {
+            "x": 133,
+            "y": 463,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "b79b6bad5fb68c17"
+        },
+        {
+          "filename": "paper_cuts_power.png",
+          "region": {
+            "x": 199,
+            "y": 463,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "94f99a7b92f46a71"
+        },
+        {
+          "filename": "parry_power.png",
+          "region": {
+            "x": 265,
+            "y": 463,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "fd8eafc11148f64b"
+        },
+        {
+          "filename": "phantom_blades_power.png",
+          "region": {
+            "x": 331,
+            "y": 463,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "e3387a860eab4f31"
+        },
+        {
+          "filename": "piercing_wail_power.png",
+          "region": {
+            "x": 397,
+            "y": 463,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "30dd72f49ced9f93"
+        },
+        {
+          "filename": "pillar_of_creation_power.png",
+          "region": {
+            "x": 463,
+            "y": 463,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "7b046e9df68ad1f7"
+        },
+        {
+          "filename": "plating_power.png",
+          "region": {
+            "x": 529,
+            "y": 463,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "434cb42918c56b4d"
+        },
+        {
+          "filename": "plow_power.png",
+          "region": {
+            "x": 595,
+            "y": 463,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "0860547ef5c41aff"
+        },
+        {
+          "filename": "poison_power.png",
+          "region": {
+            "x": 661,
+            "y": 463,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "f295943738fadfc0"
+        },
+        {
+          "filename": "possess_speed_power.png",
+          "region": {
+            "x": 727,
+            "y": 463,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "66c0bd04a1b9b812"
+        },
+        {
+          "filename": "pyre_power.png",
+          "region": {
+            "x": 793,
+            "y": 463,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "5f6e996d5fcd3441"
+        },
+        {
+          "filename": "radiance_power.png",
+          "region": {
+            "x": 859,
+            "y": 463,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "63ccadb6a02d0338"
+        },
+        {
+          "filename": "rage_power.png",
+          "region": {
+            "x": 925,
+            "y": 463,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "50a7b553d45290b4"
+        },
+        {
+          "filename": "ravenous_power.png",
+          "region": {
+            "x": 1,
+            "y": 529,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "cf03d19ef4129a8f"
+        },
+        {
+          "filename": "reaper_form_power.png",
+          "region": {
+            "x": 67,
+            "y": 529,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "cda1626f634dd951"
+        },
+        {
+          "filename": "reattach_power.png",
+          "region": {
+            "x": 133,
+            "y": 529,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "30038bf6c53d4622"
+        },
+        {
+          "filename": "rebound_power.png",
+          "region": {
+            "x": 199,
+            "y": 529,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "aca72a66dcd82ad4"
+        },
+        {
+          "filename": "regen_power.png",
+          "region": {
+            "x": 265,
+            "y": 529,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "c865ef1c8152c196"
+        },
+        {
+          "filename": "reptile_trinket_power.png",
+          "region": {
+            "x": 331,
+            "y": 529,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "b268e25d0b11bd99"
+        },
+        {
+          "filename": "retain_hand_power.png",
+          "region": {
+            "x": 397,
+            "y": 529,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "a07fdae7f8ad10f0"
+        },
+        {
+          "filename": "ringing_power.png",
+          "region": {
+            "x": 463,
+            "y": 529,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "fdd23f446e3693b3"
+        },
+        {
+          "filename": "ritual_power.png",
+          "region": {
+            "x": 529,
+            "y": 529,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "8fde209a046082fc"
+        },
+        {
+          "filename": "rolling_boulder_power.png",
+          "region": {
+            "x": 595,
+            "y": 529,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "eca7b37c2b893dc9"
+        },
+        {
+          "filename": "royalties_power.png",
+          "region": {
+            "x": 661,
+            "y": 529,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "0955bd1cc0d08335"
+        },
+        {
+          "filename": "rupture_power.png",
+          "region": {
+            "x": 727,
+            "y": 529,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "ee8b7e995748cbc2"
+        },
+        {
+          "filename": "sandpit_power.png",
+          "region": {
+            "x": 793,
+            "y": 529,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "c8fd7653663f3ab7"
+        },
+        {
+          "filename": "self_forming_clay_power.png",
+          "region": {
+            "x": 859,
+            "y": 529,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "daeef70814d04fb9"
+        },
+        {
+          "filename": "sentry_mode_power.png",
+          "region": {
+            "x": 925,
+            "y": 529,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "4b82e2611a05501c"
+        },
+        {
+          "filename": "serpent_form_power.png",
+          "region": {
+            "x": 1,
+            "y": 595,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "544043e339292e68"
+        },
+        {
+          "filename": "setup_strike_power.png",
+          "region": {
+            "x": 67,
+            "y": 595,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "498ee639f558ef3d"
+        },
+        {
+          "filename": "shackling_potion_power.png",
+          "region": {
+            "x": 133,
+            "y": 595,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "c2cb90a8607fd582"
+        },
+        {
+          "filename": "shadow_step_power.png",
+          "region": {
+            "x": 199,
+            "y": 595,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "e36ec250b68f1a2e"
+        },
+        {
+          "filename": "shriek_power.png",
+          "region": {
+            "x": 265,
+            "y": 595,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "ea62ac9701d09a68"
+        },
+        {
+          "filename": "shrink_power.png",
+          "region": {
+            "x": 331,
+            "y": 595,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "3acb9bb28027a960"
+        },
+        {
+          "filename": "shroud_power.png",
+          "region": {
+            "x": 397,
+            "y": 595,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "538421c6377ac417"
+        },
+        {
+          "filename": "signal_boost_power.png",
+          "region": {
+            "x": 463,
+            "y": 595,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "9922c2562d91b78e"
+        },
+        {
+          "filename": "sleight_of_flesh_power.png",
+          "region": {
+            "x": 529,
+            "y": 595,
+            "w": 64,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "e0c61eebdfb0f133"
+        },
+        {
+          "filename": "slippery_power.png",
+          "region": {
             "x": 595,
             "y": 595,
             "w": 64,
@@ -1505,673 +2324,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
-        },
-        {
-          "filename": "noxious_fumes_power.png",
-          "region": {
-            "x": 1,
-            "y": 661,
-            "w": 64,
-            "h": 64
           },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "oblivion_power.png",
-          "region": {
-            "x": 67,
-            "y": 661,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "one_two_punch_power.png",
-          "region": {
-            "x": 133,
-            "y": 661,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "orbit_power.png",
-          "region": {
-            "x": 199,
-            "y": 661,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "outbreak_power.png",
-          "region": {
-            "x": 265,
-            "y": 661,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "pagestorm_power.png",
-          "region": {
-            "x": 331,
-            "y": 661,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "painful_stabs_power.png",
-          "region": {
-            "x": 397,
-            "y": 661,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "paper_cuts_power.png",
-          "region": {
-            "x": 463,
-            "y": 661,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "parry_power.png",
-          "region": {
-            "x": 529,
-            "y": 661,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "phantom_blades_power.png",
-          "region": {
-            "x": 595,
-            "y": 661,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "piercing_wail_power.png",
-          "region": {
-            "x": 1,
-            "y": 727,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "pillar_of_creation_power.png",
-          "region": {
-            "x": 67,
-            "y": 727,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "plating_power.png",
-          "region": {
-            "x": 133,
-            "y": 727,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "plow_power.png",
-          "region": {
-            "x": 199,
-            "y": 727,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "poison_power.png",
-          "region": {
-            "x": 265,
-            "y": 727,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "possess_speed_power.png",
-          "region": {
-            "x": 331,
-            "y": 727,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "pyre_power.png",
-          "region": {
-            "x": 397,
-            "y": 727,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "radiance_power.png",
-          "region": {
-            "x": 463,
-            "y": 727,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "rage_power.png",
-          "region": {
-            "x": 529,
-            "y": 727,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "ravenous_power.png",
-          "region": {
-            "x": 595,
-            "y": 727,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "reaper_form_power.png",
-          "region": {
-            "x": 1,
-            "y": 793,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "reattach_power.png",
-          "region": {
-            "x": 67,
-            "y": 793,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "rebound_power.png",
-          "region": {
-            "x": 133,
-            "y": 793,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "regen_power.png",
-          "region": {
-            "x": 199,
-            "y": 793,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "reptile_trinket_power.png",
-          "region": {
-            "x": 265,
-            "y": 793,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "retain_hand_power.png",
-          "region": {
-            "x": 331,
-            "y": 793,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "ringing_power.png",
-          "region": {
-            "x": 397,
-            "y": 793,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "ritual_power.png",
-          "region": {
-            "x": 463,
-            "y": 793,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "rolling_boulder_power.png",
-          "region": {
-            "x": 529,
-            "y": 793,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "royalties_power.png",
-          "region": {
-            "x": 595,
-            "y": 793,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "rupture_power.png",
-          "region": {
-            "x": 1,
-            "y": 859,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "sandpit_power.png",
-          "region": {
-            "x": 67,
-            "y": 859,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "self_forming_clay_power.png",
-          "region": {
-            "x": 133,
-            "y": 859,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "sentry_mode_power.png",
-          "region": {
-            "x": 199,
-            "y": 859,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "serpent_form_power.png",
-          "region": {
-            "x": 265,
-            "y": 859,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "setup_strike_power.png",
-          "region": {
-            "x": 331,
-            "y": 859,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "shackling_potion_power.png",
-          "region": {
-            "x": 397,
-            "y": 859,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "shadow_step_power.png",
-          "region": {
-            "x": 463,
-            "y": 859,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "shriek_power.png",
-          "region": {
-            "x": 529,
-            "y": 859,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "shrink_power.png",
-          "region": {
-            "x": 595,
-            "y": 859,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "shroud_power.png",
-          "region": {
-            "x": 1,
-            "y": 925,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "signal_boost_power.png",
-          "region": {
-            "x": 67,
-            "y": 925,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "sleight_of_flesh_power.png",
-          "region": {
-            "x": 133,
-            "y": 925,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
-        },
-        {
-          "filename": "slippery_power.png",
-          "region": {
-            "x": 199,
-            "y": 925,
-            "w": 64,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 0
-          }
+          "pixel_hash": "99a49127307d3214"
         },
         {
           "filename": "sloth_power.png",
           "region": {
-            "x": 265,
-            "y": 925,
+            "x": 661,
+            "y": 595,
             "w": 64,
             "h": 64
           },
@@ -2180,13 +2340,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "75b9e77025d50ea6"
         },
         {
           "filename": "slumber_power.png",
           "region": {
-            "x": 331,
-            "y": 925,
+            "x": 727,
+            "y": 595,
             "w": 64,
             "h": 64
           },
@@ -2195,13 +2356,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "ac3ce981da69ab75"
         },
         {
           "filename": "smoggy_power.png",
           "region": {
-            "x": 397,
-            "y": 925,
+            "x": 793,
+            "y": 595,
             "w": 64,
             "h": 64
           },
@@ -2210,13 +2372,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "7b4e39aff847ecbe"
         },
         {
           "filename": "smokestack_power.png",
           "region": {
-            "x": 463,
-            "y": 925,
+            "x": 859,
+            "y": 595,
             "w": 64,
             "h": 64
           },
@@ -2225,13 +2388,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "a7ca4b193a8b10a9"
         },
         {
           "filename": "sneaky_power.png",
           "region": {
-            "x": 529,
-            "y": 925,
+            "x": 925,
+            "y": 595,
             "w": 64,
             "h": 64
           },
@@ -2240,13 +2404,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "7febca2af08c5a8f"
         },
         {
           "filename": "soar_power.png",
           "region": {
-            "x": 595,
-            "y": 925,
+            "x": 1,
+            "y": 661,
             "w": 64,
             "h": 64
           },
@@ -2255,13 +2420,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "8d7eeef091612419"
         },
         {
           "filename": "spectrum_shift_plus_power.png",
           "region": {
-            "x": 1,
-            "y": 991,
+            "x": 67,
+            "y": 661,
             "w": 64,
             "h": 64
           },
@@ -2270,13 +2436,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "f39931d89688c58f"
         },
         {
           "filename": "spectrum_shift_power.png",
           "region": {
-            "x": 67,
-            "y": 991,
+            "x": 133,
+            "y": 661,
             "w": 64,
             "h": 64
           },
@@ -2285,13 +2452,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "db9fe1754a613508"
         },
         {
           "filename": "speed_potion_power.png",
           "region": {
-            "x": 133,
-            "y": 991,
+            "x": 199,
+            "y": 661,
             "w": 64,
             "h": 64
           },
@@ -2300,13 +2468,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "1794957fe200f882"
         },
         {
           "filename": "spinner_power.png",
           "region": {
-            "x": 199,
-            "y": 991,
+            "x": 265,
+            "y": 661,
             "w": 64,
             "h": 64
           },
@@ -2315,13 +2484,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "7a0c560cccb5a2e2"
         },
         {
           "filename": "spirit_of_ash_power.png",
           "region": {
-            "x": 265,
-            "y": 991,
+            "x": 331,
+            "y": 661,
             "w": 64,
             "h": 64
           },
@@ -2330,13 +2500,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "044527c195330e6a"
         },
         {
           "filename": "stampede_power.png",
           "region": {
-            "x": 331,
-            "y": 991,
+            "x": 397,
+            "y": 661,
             "w": 64,
             "h": 64
           },
@@ -2345,13 +2516,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "0e220bb28669e614"
         },
         {
           "filename": "steam_eruption_power.png",
           "region": {
-            "x": 397,
-            "y": 991,
+            "x": 463,
+            "y": 661,
             "w": 64,
             "h": 64
           },
@@ -2360,13 +2532,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "d328c93d26b5d922"
         },
         {
           "filename": "stock_power.png",
           "region": {
-            "x": 463,
-            "y": 991,
+            "x": 529,
+            "y": 661,
             "w": 64,
             "h": 64
           },
@@ -2375,13 +2548,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "72539c4c5b2d9ea0"
         },
         {
           "filename": "storm_power.png",
           "region": {
-            "x": 529,
-            "y": 991,
+            "x": 595,
+            "y": 661,
             "w": 64,
             "h": 64
           },
@@ -2390,13 +2564,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "d1064f8ab1c01343"
         },
         {
           "filename": "strangle_power.png",
           "region": {
-            "x": 595,
-            "y": 991,
+            "x": 661,
+            "y": 661,
             "w": 64,
             "h": 64
           },
@@ -2405,13 +2580,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "e6e6e5f9f0fdccb7"
         },
         {
           "filename": "strength_power.png",
           "region": {
-            "x": 1,
-            "y": 1057,
+            "x": 727,
+            "y": 661,
             "w": 64,
             "h": 64
           },
@@ -2420,13 +2596,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "d99d18f01b1babc3"
         },
         {
           "filename": "subroutine_power.png",
           "region": {
-            "x": 67,
-            "y": 1057,
+            "x": 793,
+            "y": 661,
             "w": 64,
             "h": 64
           },
@@ -2435,13 +2612,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "3a3d142d911d3ae2"
         },
         {
           "filename": "suck_power.png",
           "region": {
-            "x": 133,
-            "y": 1057,
+            "x": 859,
+            "y": 661,
             "w": 64,
             "h": 64
           },
@@ -2450,13 +2628,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "d16e14b9e40531ae"
         },
         {
           "filename": "summon_next_turn_power.png",
           "region": {
-            "x": 199,
-            "y": 1057,
+            "x": 925,
+            "y": 661,
             "w": 64,
             "h": 64
           },
@@ -2465,13 +2644,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "e4666918e0df2924"
         },
         {
           "filename": "surprise_power.png",
           "region": {
-            "x": 265,
-            "y": 1057,
+            "x": 1,
+            "y": 727,
             "w": 64,
             "h": 64
           },
@@ -2480,13 +2660,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "809b73ece22320c1"
         },
         {
           "filename": "swipe_power.png",
           "region": {
-            "x": 331,
-            "y": 1057,
+            "x": 67,
+            "y": 727,
             "w": 64,
             "h": 64
           },
@@ -2495,13 +2676,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "8c6ca35d4fc235f3"
         },
         {
           "filename": "sword_sage_power.png",
           "region": {
-            "x": 397,
-            "y": 1057,
+            "x": 133,
+            "y": 727,
             "w": 64,
             "h": 64
           },
@@ -2510,13 +2692,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "287bf5345f8d0d7c"
         },
         {
           "filename": "synchronize_power.png",
           "region": {
-            "x": 463,
-            "y": 1057,
+            "x": 199,
+            "y": 727,
             "w": 64,
             "h": 64
           },
@@ -2525,13 +2708,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "b1b6ebb0ce2dc17b"
         },
         {
           "filename": "tag_team_power.png",
           "region": {
-            "x": 529,
-            "y": 1057,
+            "x": 265,
+            "y": 727,
             "w": 64,
             "h": 64
           },
@@ -2540,13 +2724,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "b4435158d21abd3c"
         },
         {
           "filename": "tangled_power.png",
           "region": {
-            "x": 595,
-            "y": 1057,
+            "x": 331,
+            "y": 727,
             "w": 64,
             "h": 64
           },
@@ -2555,13 +2740,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "d72bf77e91e80c60"
         },
         {
           "filename": "tank_power.png",
           "region": {
-            "x": 1,
-            "y": 1123,
+            "x": 397,
+            "y": 727,
             "w": 64,
             "h": 64
           },
@@ -2570,13 +2756,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "17d7741ef2159102"
         },
         {
           "filename": "territorial_power.png",
           "region": {
-            "x": 67,
-            "y": 1123,
+            "x": 463,
+            "y": 727,
             "w": 64,
             "h": 64
           },
@@ -2585,13 +2772,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "6762b862381f5d0a"
         },
         {
           "filename": "the_bomb_power.png",
           "region": {
-            "x": 133,
-            "y": 1123,
+            "x": 529,
+            "y": 727,
             "w": 64,
             "h": 64
           },
@@ -2600,13 +2788,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "cf00061bd724ea01"
         },
         {
           "filename": "the_hunt_power.png",
           "region": {
-            "x": 199,
-            "y": 1123,
+            "x": 595,
+            "y": 727,
             "w": 64,
             "h": 64
           },
@@ -2615,13 +2804,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "32529c5ca2839b39"
         },
         {
           "filename": "the_sealed_throne_power.png",
           "region": {
-            "x": 265,
-            "y": 1123,
+            "x": 661,
+            "y": 727,
             "w": 64,
             "h": 64
           },
@@ -2630,13 +2820,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "33603d9a08138be2"
         },
         {
           "filename": "thievery_power.png",
           "region": {
-            "x": 331,
-            "y": 1123,
+            "x": 727,
+            "y": 727,
             "w": 64,
             "h": 64
           },
@@ -2645,13 +2836,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "6323afbe2ee947c8"
         },
         {
           "filename": "thorns_power.png",
           "region": {
-            "x": 397,
-            "y": 1123,
+            "x": 793,
+            "y": 727,
             "w": 64,
             "h": 64
           },
@@ -2660,13 +2852,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "9f8d936c52ca8a50"
         },
         {
           "filename": "thunder_power.png",
           "region": {
-            "x": 463,
-            "y": 1123,
+            "x": 859,
+            "y": 727,
             "w": 64,
             "h": 64
           },
@@ -2675,13 +2868,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "526799673132c1aa"
         },
         {
           "filename": "tools_of_the_trade_power.png",
           "region": {
-            "x": 529,
-            "y": 1123,
+            "x": 925,
+            "y": 727,
             "w": 64,
             "h": 64
           },
@@ -2690,13 +2884,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "f8d06dc704b30db3"
         },
         {
           "filename": "toric_toughness_power.png",
           "region": {
-            "x": 595,
-            "y": 1123,
+            "x": 1,
+            "y": 793,
             "w": 64,
             "h": 64
           },
@@ -2705,13 +2900,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "d063c519c282a025"
         },
         {
           "filename": "tracking_power.png",
           "region": {
-            "x": 1,
-            "y": 1189,
+            "x": 67,
+            "y": 793,
             "w": 64,
             "h": 64
           },
@@ -2720,13 +2916,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "c0fc5b76c68037c3"
         },
         {
           "filename": "trash_to_treasure_power.png",
           "region": {
-            "x": 67,
-            "y": 1189,
+            "x": 133,
+            "y": 793,
             "w": 64,
             "h": 64
           },
@@ -2735,13 +2932,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "68d5a19cc5f463d4"
         },
         {
           "filename": "tyranny_power.png",
           "region": {
-            "x": 133,
-            "y": 1189,
+            "x": 199,
+            "y": 793,
             "w": 64,
             "h": 64
           },
@@ -2750,13 +2948,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "e3bfc6192d182414"
         },
         {
           "filename": "unmovable_power.png",
           "region": {
-            "x": 199,
-            "y": 1189,
+            "x": 265,
+            "y": 793,
             "w": 64,
             "h": 64
           },
@@ -2765,13 +2964,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "5a123dca559f5a47"
         },
         {
           "filename": "unrelenting_power.png",
           "region": {
-            "x": 265,
-            "y": 1189,
+            "x": 331,
+            "y": 793,
             "w": 64,
             "h": 64
           },
@@ -2780,13 +2980,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "afce89280c72f15d"
         },
         {
           "filename": "veilpiercer_power.png",
           "region": {
-            "x": 331,
-            "y": 1189,
+            "x": 397,
+            "y": 793,
             "w": 64,
             "h": 64
           },
@@ -2795,13 +2996,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "d4ff891a4c4e01fa"
         },
         {
           "filename": "vigor_power.png",
           "region": {
-            "x": 397,
-            "y": 1189,
+            "x": 463,
+            "y": 793,
             "w": 64,
             "h": 64
           },
@@ -2810,13 +3012,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "ee74e99b75249784"
         },
         {
           "filename": "vital_spark_power.png",
           "region": {
-            "x": 463,
-            "y": 1189,
+            "x": 529,
+            "y": 793,
             "w": 64,
             "h": 64
           },
@@ -2825,13 +3028,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "6b76131f6466f71e"
         },
         {
           "filename": "void_form_power.png",
           "region": {
-            "x": 529,
-            "y": 1189,
+            "x": 595,
+            "y": 793,
             "w": 64,
             "h": 64
           },
@@ -2840,13 +3044,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "d1c09b5d715be8b5"
         },
         {
           "filename": "vulnerable_power.png",
           "region": {
-            "x": 595,
-            "y": 1189,
+            "x": 661,
+            "y": 793,
             "w": 64,
             "h": 64
           },
@@ -2855,13 +3060,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "945a5bc87cbfc2be"
         },
         {
           "filename": "waste_away_power.png",
           "region": {
-            "x": 1,
-            "y": 1255,
+            "x": 727,
+            "y": 793,
             "w": 64,
             "h": 64
           },
@@ -2870,13 +3076,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "d80965e00f5a2284"
         },
         {
           "filename": "weak_power.png",
           "region": {
-            "x": 67,
-            "y": 1255,
+            "x": 793,
+            "y": 793,
             "w": 64,
             "h": 64
           },
@@ -2885,13 +3092,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "665ac08d4a7030d3"
         },
         {
           "filename": "withering_presence_power.png",
           "region": {
-            "x": 133,
-            "y": 1255,
+            "x": 859,
+            "y": 793,
             "w": 64,
             "h": 64
           },
@@ -2900,13 +3108,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "048ab1bca3cacb51"
         },
         {
           "filename": "wraith_form_power.png",
           "region": {
-            "x": 199,
-            "y": 1255,
+            "x": 925,
+            "y": 793,
             "w": 64,
             "h": 64
           },
@@ -2915,13 +3124,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "a54c8473e1ee3eff"
         },
         {
           "filename": "battleworn_dummy_time_limit_power.png",
           "region": {
-            "x": 265,
-            "y": 1255,
+            "x": 1,
+            "y": 859,
             "w": 63,
             "h": 64
           },
@@ -2930,13 +3140,14 @@
             "y": 0,
             "w": 1,
             "h": 0
-          }
+          },
+          "pixel_hash": "430e8c7023e3c1da"
         },
         {
           "filename": "dexterity_down_power.png",
           "region": {
-            "x": 330,
-            "y": 1255,
+            "x": 66,
+            "y": 859,
             "w": 63,
             "h": 64
           },
@@ -2945,13 +3156,14 @@
             "y": 0,
             "w": 1,
             "h": 0
-          }
+          },
+          "pixel_hash": "60c3cad32962a0a6"
         },
         {
           "filename": "dexterity_power.png",
           "region": {
-            "x": 395,
-            "y": 1255,
+            "x": 131,
+            "y": 859,
             "w": 63,
             "h": 64
           },
@@ -2960,13 +3172,14 @@
             "y": 0,
             "w": 1,
             "h": 0
-          }
+          },
+          "pixel_hash": "ecc200764c995ca4"
         },
         {
           "filename": "escape_artist_power.png",
           "region": {
-            "x": 460,
-            "y": 1255,
+            "x": 196,
+            "y": 859,
             "w": 63,
             "h": 64
           },
@@ -2975,13 +3188,14 @@
             "y": 0,
             "w": 1,
             "h": 0
-          }
+          },
+          "pixel_hash": "22d01c9be5155400"
         },
         {
           "filename": "frail_power.png",
           "region": {
-            "x": 525,
-            "y": 1255,
+            "x": 261,
+            "y": 859,
             "w": 63,
             "h": 64
           },
@@ -2990,13 +3204,14 @@
             "y": 0,
             "w": 1,
             "h": 0
-          }
+          },
+          "pixel_hash": "3511a68ce5a0744f"
         },
         {
           "filename": "no_block_power.png",
           "region": {
-            "x": 590,
-            "y": 1255,
+            "x": 326,
+            "y": 859,
             "w": 63,
             "h": 64
           },
@@ -3005,13 +3220,14 @@
             "y": 0,
             "w": 1,
             "h": 0
-          }
+          },
+          "pixel_hash": "9caf1a802986fd09"
         },
         {
           "filename": "tainted_power.png",
           "region": {
-            "x": 1,
-            "y": 1321,
+            "x": 391,
+            "y": 859,
             "w": 63,
             "h": 64
           },
@@ -3020,13 +3236,14 @@
             "y": 0,
             "w": 1,
             "h": 0
-          }
+          },
+          "pixel_hash": "a82776894f68c626"
         },
         {
           "filename": "burst_power.png",
           "region": {
-            "x": 66,
-            "y": 1321,
+            "x": 456,
+            "y": 859,
             "w": 62,
             "h": 64
           },
@@ -3035,13 +3252,14 @@
             "y": 0,
             "w": 2,
             "h": 0
-          }
+          },
+          "pixel_hash": "161aef0eb75fa638"
         },
         {
           "filename": "consuming_shadow_power.png",
           "region": {
-            "x": 130,
-            "y": 1321,
+            "x": 520,
+            "y": 859,
             "w": 62,
             "h": 64
           },
@@ -3050,13 +3268,14 @@
             "y": 0,
             "w": 2,
             "h": 0
-          }
+          },
+          "pixel_hash": "ab751d7d65b8ab6d"
         },
         {
           "filename": "doom_power.png",
           "region": {
-            "x": 194,
-            "y": 1321,
+            "x": 584,
+            "y": 859,
             "w": 62,
             "h": 64
           },
@@ -3065,13 +3284,14 @@
             "y": 0,
             "w": 2,
             "h": 0
-          }
+          },
+          "pixel_hash": "bfdd6cc0a1c3abed"
         },
         {
           "filename": "genesis_power.png",
           "region": {
-            "x": 258,
-            "y": 1321,
+            "x": 648,
+            "y": 859,
             "w": 62,
             "h": 64
           },
@@ -3080,13 +3300,14 @@
             "y": 0,
             "w": 2,
             "h": 0
-          }
+          },
+          "pixel_hash": "6bd14379dd4c7192"
         },
         {
           "filename": "hard_to_kill_power.png",
           "region": {
-            "x": 322,
-            "y": 1321,
+            "x": 712,
+            "y": 859,
             "w": 62,
             "h": 64
           },
@@ -3095,13 +3316,14 @@
             "y": 0,
             "w": 2,
             "h": 0
-          }
+          },
+          "pixel_hash": "e1d6fa68aee687b0"
         },
         {
           "filename": "imitation_learning_power.png",
           "region": {
-            "x": 386,
-            "y": 1321,
+            "x": 776,
+            "y": 859,
             "w": 62,
             "h": 64
           },
@@ -3110,13 +3332,14 @@
             "y": 0,
             "w": 2,
             "h": 0
-          }
+          },
+          "pixel_hash": "13d7c37c35acf702"
         },
         {
           "filename": "minion_power.png",
           "region": {
-            "x": 450,
-            "y": 1321,
+            "x": 840,
+            "y": 859,
             "w": 62,
             "h": 64
           },
@@ -3125,13 +3348,14 @@
             "y": 0,
             "w": 2,
             "h": 0
-          }
+          },
+          "pixel_hash": "ab54458b99e9d6f6"
         },
         {
           "filename": "pale_blue_dot_power.png",
           "region": {
-            "x": 514,
-            "y": 1321,
+            "x": 904,
+            "y": 859,
             "w": 62,
             "h": 64
           },
@@ -3140,13 +3364,14 @@
             "y": 0,
             "w": 2,
             "h": 0
-          }
+          },
+          "pixel_hash": "ce8e615f2dc30d50"
         },
         {
           "filename": "well_laid_plans_power.png",
           "region": {
-            "x": 578,
-            "y": 1321,
+            "x": 1,
+            "y": 925,
             "w": 62,
             "h": 64
           },
@@ -3155,13 +3380,14 @@
             "y": 0,
             "w": 2,
             "h": 0
-          }
+          },
+          "pixel_hash": "e9632774ce454617"
         },
         {
           "filename": "fan_of_knives_power.png",
           "region": {
-            "x": 1,
-            "y": 1387,
+            "x": 65,
+            "y": 925,
             "w": 61,
             "h": 64
           },
@@ -3170,13 +3396,14 @@
             "y": 0,
             "w": 3,
             "h": 0
-          }
+          },
+          "pixel_hash": "786f5f898591c83f"
         },
         {
           "filename": "focus_power.png",
           "region": {
-            "x": 64,
-            "y": 1387,
+            "x": 128,
+            "y": 925,
             "w": 61,
             "h": 64
           },
@@ -3185,13 +3412,14 @@
             "y": 0,
             "w": 3,
             "h": 0
-          }
+          },
+          "pixel_hash": "0b1a68f09e9bbbbf"
         },
         {
           "filename": "free_attack_power.png",
           "region": {
-            "x": 127,
-            "y": 1387,
+            "x": 191,
+            "y": 925,
             "w": 61,
             "h": 64
           },
@@ -3200,13 +3428,14 @@
             "y": 0,
             "w": 3,
             "h": 0
-          }
+          },
+          "pixel_hash": "faf42fb33d67aa91"
         },
         {
           "filename": "free_skill_power.png",
           "region": {
-            "x": 190,
-            "y": 1387,
+            "x": 254,
+            "y": 925,
             "w": 61,
             "h": 64
           },
@@ -3215,13 +3444,14 @@
             "y": 0,
             "w": 3,
             "h": 0
-          }
+          },
+          "pixel_hash": "ff186db0724dc26b"
         },
         {
           "filename": "gravity_power.png",
           "region": {
-            "x": 253,
-            "y": 1387,
+            "x": 317,
+            "y": 925,
             "w": 61,
             "h": 64
           },
@@ -3230,13 +3460,14 @@
             "y": 0,
             "w": 3,
             "h": 0
-          }
+          },
+          "pixel_hash": "f0ea3a71ec1f1913"
         },
         {
           "filename": "possess_strength_power.png",
           "region": {
-            "x": 316,
-            "y": 1387,
+            "x": 380,
+            "y": 925,
             "w": 61,
             "h": 64
           },
@@ -3245,13 +3476,14 @@
             "y": 0,
             "w": 3,
             "h": 0
-          }
+          },
+          "pixel_hash": "2f439da4921af91b"
         },
         {
           "filename": "reflect_plus_power.png",
           "region": {
-            "x": 379,
-            "y": 1387,
+            "x": 443,
+            "y": 925,
             "w": 61,
             "h": 64
           },
@@ -3260,13 +3492,14 @@
             "y": 0,
             "w": 3,
             "h": 0
-          }
+          },
+          "pixel_hash": "11b4a0090f0f09fb"
         },
         {
           "filename": "coordinate_power.png",
           "region": {
-            "x": 442,
-            "y": 1387,
+            "x": 506,
+            "y": 925,
             "w": 60,
             "h": 64
           },
@@ -3275,13 +3508,14 @@
             "y": 0,
             "w": 4,
             "h": 0
-          }
+          },
+          "pixel_hash": "4ea0ec6e8d8f52da"
         },
         {
           "filename": "die_for_you_power.png",
           "region": {
-            "x": 504,
-            "y": 1387,
+            "x": 568,
+            "y": 925,
             "w": 60,
             "h": 64
           },
@@ -3290,13 +3524,14 @@
             "y": 0,
             "w": 4,
             "h": 0
-          }
+          },
+          "pixel_hash": "ec3a9a6dff5c46f2"
         },
         {
           "filename": "personal_hive_power.png",
           "region": {
-            "x": 566,
-            "y": 1387,
+            "x": 630,
+            "y": 925,
             "w": 60,
             "h": 64
           },
@@ -3305,13 +3540,14 @@
             "y": 0,
             "w": 4,
             "h": 0
-          }
+          },
+          "pixel_hash": "c7aea0382859027b"
         },
         {
           "filename": "rampart_power.png",
           "region": {
-            "x": 1,
-            "y": 1453,
+            "x": 692,
+            "y": 925,
             "w": 60,
             "h": 64
           },
@@ -3320,13 +3556,14 @@
             "y": 0,
             "w": 4,
             "h": 0
-          }
+          },
+          "pixel_hash": "ea0c9c8bde577497"
         },
         {
           "filename": "free_power_power.png",
           "region": {
-            "x": 63,
-            "y": 1453,
+            "x": 754,
+            "y": 925,
             "w": 59,
             "h": 64
           },
@@ -3335,13 +3572,14 @@
             "y": 0,
             "w": 5,
             "h": 0
-          }
+          },
+          "pixel_hash": "8accce3b69065f34"
         },
         {
           "filename": "necro_mastery_power.png",
           "region": {
-            "x": 124,
-            "y": 1453,
+            "x": 815,
+            "y": 925,
             "w": 59,
             "h": 64
           },
@@ -3350,13 +3588,14 @@
             "y": 0,
             "w": 5,
             "h": 0
-          }
+          },
+          "pixel_hash": "1b75b2da76e2178a"
         },
         {
           "filename": "tender_power.png",
           "region": {
-            "x": 185,
-            "y": 1453,
+            "x": 876,
+            "y": 925,
             "w": 59,
             "h": 64
           },
@@ -3365,13 +3604,14 @@
             "y": 0,
             "w": 5,
             "h": 0
-          }
+          },
+          "pixel_hash": "014a09acfb4b9474"
         },
         {
           "filename": "dampen_power.png",
           "region": {
-            "x": 246,
-            "y": 1453,
+            "x": 1,
+            "y": 991,
             "w": 58,
             "h": 64
           },
@@ -3380,13 +3620,14 @@
             "y": 0,
             "w": 6,
             "h": 0
-          }
+          },
+          "pixel_hash": "815f20d2a8e71c58"
         },
         {
           "filename": "draw_cards_next_turn_power.png",
           "region": {
-            "x": 306,
-            "y": 1453,
+            "x": 61,
+            "y": 991,
             "w": 58,
             "h": 64
           },
@@ -3395,13 +3636,14 @@
             "y": 0,
             "w": 6,
             "h": 0
-          }
+          },
+          "pixel_hash": "23e23ae33e2aa2bf"
         },
         {
           "filename": "machine_learning_power.png",
           "region": {
-            "x": 366,
-            "y": 1453,
+            "x": 121,
+            "y": 991,
             "w": 58,
             "h": 64
           },
@@ -3410,13 +3652,14 @@
             "y": 0,
             "w": 6,
             "h": 0
-          }
+          },
+          "pixel_hash": "9d8e877a624584c9"
         },
         {
           "filename": "no_draw_power.png",
           "region": {
-            "x": 426,
-            "y": 1453,
+            "x": 181,
+            "y": 991,
             "w": 58,
             "h": 64
           },
@@ -3425,13 +3668,14 @@
             "y": 0,
             "w": 6,
             "h": 0
-          }
+          },
+          "pixel_hash": "2e3e1fb314cfb470"
         },
         {
           "filename": "curious_power.png",
           "region": {
-            "x": 486,
-            "y": 1453,
+            "x": 241,
+            "y": 991,
             "w": 57,
             "h": 64
           },
@@ -3440,13 +3684,14 @@
             "y": 0,
             "w": 7,
             "h": 0
-          }
+          },
+          "pixel_hash": "60d08b92691e727e"
         },
         {
           "filename": "juggernaut_power.png",
           "region": {
-            "x": 545,
-            "y": 1453,
+            "x": 300,
+            "y": 991,
             "w": 57,
             "h": 64
           },
@@ -3455,13 +3700,14 @@
             "y": 0,
             "w": 7,
             "h": 0
-          }
+          },
+          "pixel_hash": "0b6ff756e89a834f"
         },
         {
           "filename": "reflect_power.png",
           "region": {
-            "x": 1,
-            "y": 1519,
+            "x": 359,
+            "y": 991,
             "w": 57,
             "h": 64
           },
@@ -3470,13 +3716,14 @@
             "y": 0,
             "w": 7,
             "h": 0
-          }
+          },
+          "pixel_hash": "34c85b182c2e7d79"
         },
         {
           "filename": "stratagem_power.png",
           "region": {
-            "x": 60,
-            "y": 1519,
+            "x": 418,
+            "y": 991,
             "w": 57,
             "h": 64
           },
@@ -3485,13 +3732,14 @@
             "y": 0,
             "w": 7,
             "h": 0
-          }
+          },
+          "pixel_hash": "22bc3146c8abebb8"
         },
         {
           "filename": "accelerant_power.png",
           "region": {
-            "x": 119,
-            "y": 1519,
+            "x": 477,
+            "y": 991,
             "w": 56,
             "h": 64
           },
@@ -3500,13 +3748,14 @@
             "y": 0,
             "w": 8,
             "h": 0
-          }
+          },
+          "pixel_hash": "65607fc7242115b7"
         },
         {
           "filename": "countdown_power.png",
           "region": {
-            "x": 177,
-            "y": 1519,
+            "x": 535,
+            "y": 991,
             "w": 56,
             "h": 64
           },
@@ -3515,13 +3764,14 @@
             "y": 0,
             "w": 8,
             "h": 0
-          }
+          },
+          "pixel_hash": "20ffd371c51efd8d"
         },
         {
           "filename": "concoct_power.png",
           "region": {
-            "x": 604,
-            "y": 1453,
+            "x": 593,
+            "y": 991,
             "w": 55,
             "h": 64
           },
@@ -3530,13 +3780,14 @@
             "y": 0,
             "w": 9,
             "h": 0
-          }
+          },
+          "pixel_hash": "9d71b23ae46d3ba4"
         },
         {
           "filename": "panache_power.png",
           "region": {
-            "x": 235,
-            "y": 1519,
+            "x": 650,
+            "y": 991,
             "w": 55,
             "h": 64
           },
@@ -3545,13 +3796,14 @@
             "y": 0,
             "w": 9,
             "h": 0
-          }
+          },
+          "pixel_hash": "94434d109caacb37"
         },
         {
           "filename": "skittish_power.png",
           "region": {
-            "x": 292,
-            "y": 1519,
+            "x": 707,
+            "y": 991,
             "w": 54,
             "h": 64
           },
@@ -3560,13 +3812,14 @@
             "y": 0,
             "w": 10,
             "h": 0
-          }
+          },
+          "pixel_hash": "6084cca1f108b2da"
         },
         {
           "filename": "envenom_power.png",
           "region": {
-            "x": 348,
-            "y": 1519,
+            "x": 937,
+            "y": 925,
             "w": 52,
             "h": 64
           },
@@ -3575,13 +3828,14 @@
             "y": 0,
             "w": 12,
             "h": 0
-          }
+          },
+          "pixel_hash": "af83607a6c3af1df"
         },
         {
           "filename": "shadowmeld_power.png",
           "region": {
-            "x": 402,
-            "y": 1519,
+            "x": 763,
+            "y": 991,
             "w": 52,
             "h": 64
           },
@@ -3590,13 +3844,14 @@
             "y": 0,
             "w": 12,
             "h": 0
-          }
+          },
+          "pixel_hash": "d39cb8c3019433e9"
         },
         {
           "filename": "the_gambit_power.png",
           "region": {
-            "x": 456,
-            "y": 1519,
+            "x": 817,
+            "y": 991,
             "w": 49,
             "h": 64
           },
@@ -3605,13 +3860,14 @@
             "y": 0,
             "w": 15,
             "h": 0
-          }
+          },
+          "pixel_hash": "e2cb94f5d0ea4c65"
         },
         {
           "filename": "star_next_turn_power.png",
           "region": {
-            "x": 507,
-            "y": 1519,
+            "x": 868,
+            "y": 991,
             "w": 48,
             "h": 64
           },
@@ -3620,13 +3876,14 @@
             "y": 0,
             "w": 16,
             "h": 0
-          }
+          },
+          "pixel_hash": "9d3fd174df816126"
         },
         {
           "filename": "energy_next_turn_power.png",
           "region": {
-            "x": 557,
-            "y": 1519,
+            "x": 918,
+            "y": 991,
             "w": 43,
             "h": 64
           },
@@ -3635,13 +3892,14 @@
             "y": 0,
             "w": 21,
             "h": 0
-          }
+          },
+          "pixel_hash": "ac68ef79e9bf9db2"
         },
         {
           "filename": "demesne_power.png",
           "region": {
             "x": 1,
-            "y": 1585,
+            "y": 1057,
             "w": 64,
             "h": 63
           },
@@ -3650,13 +3908,14 @@
             "y": 0,
             "w": 0,
             "h": 1
-          }
+          },
+          "pixel_hash": "d6ec8d481fb4b866"
         },
         {
           "filename": "infinite_blades_power.png",
           "region": {
             "x": 67,
-            "y": 1585,
+            "y": 1057,
             "w": 64,
             "h": 63
           },
@@ -3665,13 +3924,14 @@
             "y": 1,
             "w": 0,
             "h": 1
-          }
+          },
+          "pixel_hash": "f311254dfb12a593"
         },
         {
           "filename": "prep_time_power.png",
           "region": {
             "x": 133,
-            "y": 1585,
+            "y": 1057,
             "w": 64,
             "h": 63
           },
@@ -3680,13 +3940,14 @@
             "y": 0,
             "w": 0,
             "h": 1
-          }
+          },
+          "pixel_hash": "61aa9db6d260dfee"
         },
         {
           "filename": "seeking_edge_power.png",
           "region": {
             "x": 199,
-            "y": 1585,
+            "y": 1057,
             "w": 64,
             "h": 63
           },
@@ -3695,13 +3956,14 @@
             "y": 1,
             "w": 0,
             "h": 1
-          }
+          },
+          "pixel_hash": "582c80d83bb6d690"
         },
         {
           "filename": "sic_em_power.png",
           "region": {
             "x": 265,
-            "y": 1585,
+            "y": 1057,
             "w": 64,
             "h": 63
           },
@@ -3710,13 +3972,14 @@
             "y": 1,
             "w": 0,
             "h": 1
-          }
+          },
+          "pixel_hash": "a76a108138381f14"
         },
         {
           "filename": "slow_power.png",
           "region": {
             "x": 331,
-            "y": 1585,
+            "y": 1057,
             "w": 64,
             "h": 63
           },
@@ -3725,13 +3988,14 @@
             "y": 0,
             "w": 0,
             "h": 1
-          }
+          },
+          "pixel_hash": "6273c88e72c19911"
         },
         {
           "filename": "hatch_power.png",
           "region": {
-            "x": 602,
-            "y": 1519,
+            "x": 397,
+            "y": 1057,
             "w": 53,
             "h": 63
           },
@@ -3740,13 +4004,14 @@
             "y": 0,
             "w": 11,
             "h": 1
-          }
+          },
+          "pixel_hash": "458ea6c1640097fa"
         },
         {
           "filename": "diamond_diadem_power.png",
           "region": {
-            "x": 397,
-            "y": 1585,
+            "x": 452,
+            "y": 1057,
             "w": 64,
             "h": 62
           },
@@ -3755,13 +4020,14 @@
             "y": 0,
             "w": 0,
             "h": 2
-          }
+          },
+          "pixel_hash": "7f4d208c9067d7e7"
         },
         {
           "filename": "feeding_frenzy_power.png",
           "region": {
-            "x": 463,
-            "y": 1585,
+            "x": 518,
+            "y": 1057,
             "w": 64,
             "h": 62
           },
@@ -3770,13 +4036,14 @@
             "y": 0,
             "w": 0,
             "h": 2
-          }
+          },
+          "pixel_hash": "3687b39bd3003121"
         },
         {
           "filename": "vicious_power.png",
           "region": {
-            "x": 529,
-            "y": 1585,
+            "x": 584,
+            "y": 1057,
             "w": 64,
             "h": 62
           },
@@ -3785,13 +4052,14 @@
             "y": 1,
             "w": 0,
             "h": 2
-          }
+          },
+          "pixel_hash": "edeaaa7c5b78620f"
         },
         {
           "filename": "echo_form_power.png",
           "region": {
-            "x": 595,
-            "y": 1585,
+            "x": 650,
+            "y": 1057,
             "w": 62,
             "h": 62
           },
@@ -3800,13 +4068,14 @@
             "y": 0,
             "w": 2,
             "h": 2
-          }
+          },
+          "pixel_hash": "d1f515e0de3fc276"
         },
         {
           "filename": "crimson_mantle_power.png",
           "region": {
-            "x": 397,
-            "y": 1649,
+            "x": 714,
+            "y": 1057,
             "w": 64,
             "h": 61
           },
@@ -3815,13 +4084,14 @@
             "y": 3,
             "w": 0,
             "h": 3
-          }
+          },
+          "pixel_hash": "9ad7d5efc912e312"
         },
         {
           "filename": "flutter_power.png",
           "region": {
-            "x": 463,
-            "y": 1649,
+            "x": 780,
+            "y": 1057,
             "w": 64,
             "h": 61
           },
@@ -3830,13 +4100,14 @@
             "y": 3,
             "w": 0,
             "h": 3
-          }
+          },
+          "pixel_hash": "efc4c1db1c80b74a"
         },
         {
           "filename": "leadership_power.png",
           "region": {
-            "x": 529,
-            "y": 1649,
+            "x": 846,
+            "y": 1057,
             "w": 64,
             "h": 61
           },
@@ -3845,13 +4116,14 @@
             "y": 2,
             "w": 0,
             "h": 3
-          }
+          },
+          "pixel_hash": "8d265291ba8e569e"
         },
         {
           "filename": "neurosurge_power.png",
           "region": {
-            "x": 595,
-            "y": 1649,
+            "x": 912,
+            "y": 1057,
             "w": 64,
             "h": 61
           },
@@ -3860,13 +4132,14 @@
             "y": 1,
             "w": 0,
             "h": 3
-          }
+          },
+          "pixel_hash": "eda88fcac5c08fdc"
         },
         {
           "filename": "duplication_power.png",
           "region": {
-            "x": 1,
-            "y": 1650,
+            "x": 714,
+            "y": 1120,
             "w": 62,
             "h": 61
           },
@@ -3875,13 +4148,14 @@
             "y": 2,
             "w": 2,
             "h": 3
-          }
+          },
+          "pixel_hash": "fb6efc3bb7014e6b"
         },
         {
           "filename": "barricade_power.png",
           "region": {
-            "x": 65,
-            "y": 1650,
+            "x": 778,
+            "y": 1120,
             "w": 64,
             "h": 60
           },
@@ -3890,13 +4164,14 @@
             "y": 4,
             "w": 0,
             "h": 4
-          }
+          },
+          "pixel_hash": "7a8f4ab0b5b4dbd7"
         },
         {
           "filename": "cruelty_power.png",
           "region": {
-            "x": 131,
-            "y": 1650,
+            "x": 844,
+            "y": 1120,
             "w": 64,
             "h": 60
           },
@@ -3905,13 +4180,14 @@
             "y": 2,
             "w": 0,
             "h": 4
-          }
+          },
+          "pixel_hash": "9b166c8ca8a8c3c1"
         },
         {
           "filename": "borrowed_time_power.png",
           "region": {
-            "x": 197,
-            "y": 1650,
+            "x": 910,
+            "y": 1120,
             "w": 59,
             "h": 60
           },
@@ -3920,13 +4196,14 @@
             "y": 2,
             "w": 5,
             "h": 4
-          }
+          },
+          "pixel_hash": "2cc05eb847f4f9f2"
         },
         {
           "filename": "speedster_power.png",
           "region": {
-            "x": 258,
-            "y": 1650,
+            "x": 452,
+            "y": 1121,
             "w": 64,
             "h": 58
           },
@@ -3935,13 +4212,14 @@
             "y": 2,
             "w": 0,
             "h": 6
-          }
+          },
+          "pixel_hash": "9bffaf8ec402ba74"
         },
         {
           "filename": "surrounded_power.png",
           "region": {
-            "x": 324,
-            "y": 1650,
+            "x": 518,
+            "y": 1121,
             "w": 64,
             "h": 56
           },
@@ -3950,13 +4228,14 @@
             "y": 4,
             "w": 0,
             "h": 8
-          }
+          },
+          "pixel_hash": "2271c7540a242a18"
         },
         {
           "filename": "hibernate_power.png",
           "region": {
-            "x": 324,
-            "y": 1708,
+            "x": 584,
+            "y": 1121,
             "w": 60,
             "h": 56
           },
@@ -3965,13 +4244,14 @@
             "y": 2,
             "w": 4,
             "h": 8
-          }
+          },
+          "pixel_hash": "583a14ec836eb7b8"
         },
         {
           "filename": "one_for_all_power.png",
           "region": {
-            "x": 258,
-            "y": 1710,
+            "x": 646,
+            "y": 1121,
             "w": 52,
             "h": 56
           },
@@ -3980,13 +4260,14 @@
             "y": 0,
             "w": 12,
             "h": 8
-          }
+          },
+          "pixel_hash": "2e0cd279a4fbe22a"
         },
         {
           "filename": "soulbound_power.png",
           "region": {
-            "x": 65,
-            "y": 1712,
+            "x": 1,
+            "y": 1122,
             "w": 63,
             "h": 55
           },
@@ -3995,13 +4276,14 @@
             "y": 1,
             "w": 1,
             "h": 9
-          }
+          },
+          "pixel_hash": "754ffdaf181b977a"
         },
         {
           "filename": "cacophony_power.png",
           "region": {
-            "x": 130,
-            "y": 1712,
+            "x": 66,
+            "y": 1122,
             "w": 54,
             "h": 54
           },
@@ -4010,13 +4292,14 @@
             "y": 4,
             "w": 10,
             "h": 10
-          }
+          },
+          "pixel_hash": "b6a62612fe7e4177"
         },
         {
           "filename": "infested_power.png",
           "region": {
-            "x": 186,
-            "y": 1712,
+            "x": 122,
+            "y": 1122,
             "w": 64,
             "h": 50
           },
@@ -4025,13 +4308,14 @@
             "y": 8,
             "w": 0,
             "h": 14
-          }
+          },
+          "pixel_hash": "658eee7a47520d99"
         },
         {
           "filename": "monarchs_gaze_strength_down_power.png",
           "region": {
-            "x": 386,
-            "y": 1712,
+            "x": 188,
+            "y": 1122,
             "w": 57,
             "h": 48
           },
@@ -4040,13 +4324,14 @@
             "y": 8,
             "w": 7,
             "h": 16
-          }
+          },
+          "pixel_hash": "608feb04347cef43"
         },
         {
           "filename": "friendship_power.png",
           "region": {
-            "x": 445,
-            "y": 1712,
+            "x": 247,
+            "y": 1122,
             "w": 64,
             "h": 47
           },
@@ -4055,13 +4340,14 @@
             "y": 8,
             "w": 0,
             "h": 17
-          }
+          },
+          "pixel_hash": "cbedff58fd69a694"
         },
         {
           "filename": "fade_power.png",
           "region": {
-            "x": 511,
-            "y": 1712,
+            "x": 313,
+            "y": 1122,
             "w": 45,
             "h": 43
           },
@@ -4070,7 +4356,8 @@
             "y": 11,
             "w": 19,
             "h": 21
-          }
+          },
+          "pixel_hash": "6ee2f0155a29e999"
         }
       ]
     }

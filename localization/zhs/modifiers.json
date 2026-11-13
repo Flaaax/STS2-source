@@ -22,6 +22,7 @@
   "MURDEROUS.description": "你在每场战斗开始时获得[blue]3[/blue]点[gold]力量[/gold]，所有敌人在战斗开始时获得[blue]3[/blue]点[gold]力量[/gold]。",
   "MURDEROUS.title": "嗜杀成性",
   "NIGHT_TERRORS.additionalRestSiteHealText": "暗夜惊魂：+{Heal}生命。\n失去[red]5[/red]点最大生命值。",
+  "NIGHT_TERRORS.additionalRestSiteMendText": "暗夜惊魂：完全回复生命。\n对方失去[red]{MaxHpLoss}[/red]点最大生命值。",
   "NIGHT_TERRORS.description": "在[gold]休息处[/gold]休息会恢复全部生命，但会失去[red]5[/red]点最大生命值。",
   "NIGHT_TERRORS.title": "暗夜惊魂",
   "SEALED_DECK.description": "从[blue]30[/blue]张随机牌中选择[blue]10[/blue]张来构筑你的初始牌组。",

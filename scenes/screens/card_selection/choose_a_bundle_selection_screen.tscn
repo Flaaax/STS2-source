@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c3dwuauvc2oal"]
+[gd_scene load_steps=8 format=3 uid="uid://c3dwuauvc2oal"]
 
 [ext_resource type="Script" uid="uid://dg8ckevxk5juv" path="res://src/Core/Nodes/Screens/CardSelection/NChooseABundleSelectionScreen.cs" id="1_xnlsg"]
 [ext_resource type="PackedScene" uid="uid://7osm1qqwcp6e" path="res://scenes/ui/common_banner.tscn" id="2_fxp4i"]
 [ext_resource type="PackedScene" uid="uid://rxgwkwxf1dsr" path="res://scenes/combat/peek_button.tscn" id="3_ows6q"]
+[ext_resource type="PackedScene" uid="uid://ln43vtcwp04o" path="res://scenes/ui/choice_selection_skip_button.tscn" id="4_i0mwo"]
 [ext_resource type="PackedScene" uid="uid://bl4mbjqjfffa3" path="res://scenes/ui/back_button.tscn" id="4_s8ao4"]
 [ext_resource type="PackedScene" uid="uid://bl460ab2i4mkx" path="res://scenes/ui/confirm_button.tscn" id="5_1f8ay"]
 [ext_resource type="PackedScene" uid="uid://cciqup5nyc2wd" path="res://scenes/screens/inspect_card_screen.tscn" id="5_51xj4"]
@@ -45,6 +46,12 @@ offset_top = -64.0
 offset_right = 228.0
 offset_bottom = 64.0
 grow_horizontal = 1
+
+[node name="SkipButton" parent="." instance=ExtResource("4_i0mwo")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_top = 322.0
+offset_bottom = 395.0
 
 [node name="BundlePreviewContainer" type="Control" parent="."]
 unique_name_in_owner = true

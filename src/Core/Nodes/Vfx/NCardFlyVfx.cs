@@ -56,6 +56,21 @@ public partial class NCardFlyVfx : Node2D
 
 	public TaskCompletionSource? SwooshAwayCompletion { get; private set; }
 
+	public static NCardFlyVfx? Create(NCard card, NCard target, string trailPath)
+	{
+		if (TestMode.IsOn)
+		{
+			return null;
+		}
+		NCardFlyVfx nCardFlyVfx = PreloadManager.Cache.GetScene(_scenePath).Instantiate<NCardFlyVfx>(PackedScene.GenEditState.Disabled);
+		nCardFlyVfx._startPos = card.GlobalPosition;
+		nCardFlyVfx._endPos = target.GlobalPosition;
+		nCardFlyVfx._card = card;
+		nCardFlyVfx._isAddingToPile = false;
+		nCardFlyVfx._trailPath = trailPath;
+		return nCardFlyVfx;
+	}
+
 	public static NCardFlyVfx? Create(NCard card, PileType pileType, bool isAddingToPile, string trailPath)
 	{
 		if (TestMode.IsOn)

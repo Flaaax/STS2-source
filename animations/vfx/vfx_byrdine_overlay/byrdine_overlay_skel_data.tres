@@ -1,0 +1,8 @@
+[gd_resource type="SpineSkeletonDataResource" load_steps=3 format=3 uid="uid://hr6p4vjtqwo6"]
+
+[ext_resource type="SpineAtlasResource" uid="uid://dip643fba4520" path="res://animations/vfx/vfx_byrdine_overlay/byrdine_overlay.atlas" id="1_yqwna"]
+[ext_resource type="SpineSkeletonFileResource" uid="uid://bptrhcmc5o0gq" path="res://animations/monsters/byrdine/byrdine.skel" id="2_28w0b"]
+
+[resource]
+atlas_res = ExtResource("1_yqwna")
+skeleton_file_res = ExtResource("2_28w0b")

@@ -27,6 +27,14 @@ namespace MegaCrit.Sts2.Core.Nodes.Rooms;
 /// </summary>
 public partial class NTreasureRoom : Control, IScreenContext, IRoomWithProceedButton
 {
+	private enum ProceedButtonState
+	{
+		None,
+		Hidden,
+		Skip,
+		Proceed
+	}
+
 	private TreasureRoom _room;
 
 	private IRunState _runState;
@@ -49,7 +57,7 @@ public partial class NTreasureRoom : Control, IScreenContext, IRoomWithProceedBu
 
 	private bool _isRelicCollectionOpen;
 
-	private bool _hasChestBeenOpened;
+	private ProceedButtonState _proceedButtonState = ProceedButtonState.Hidden;
 
 	public NProceedButton ProceedButton => _proceedButton;
 
@@ -96,7 +104,8 @@ public partial class NTreasureRoom : Control, IScreenContext, IRoomWithProceedBu
 		_skipVoteContainer = GetNode<NMultiplayerVoteContainer>("%SkipMultiplayerVoteContainer");
 		_relicCollection.Initialize(_runState);
 		_relicCollection.Visible = false;
-		_proceedButton.Connect(NClickableControl.SignalName.Released, Callable.From<NButton>(OnProceedButtonPressed));
+		_proceedButton.Initialize(_runState);
+		_proceedButton.Connect(NClickableControl.SignalName.Released, Callable.From<NButton>(OnProceedButtonReleased));
 		_proceedButton.UpdateText(NProceedButton.ProceedLoc);
 		_skipVoteContainer.Initialize(IsPlayerVotingForSkip, _runState.Players);
 		_chestButton = GetNode<NTreasureButton>("%Chest");
@@ -122,31 +131,25 @@ public partial class NTreasureRoom : Control, IScreenContext, IRoomWithProceedBu
 		NGame.Instance.ClearScreenShakeTarget();
 	}
 
-	private void OnProceedButtonPressed(NButton _)
+	private void OnProceedButtonReleased(NButton _)
 	{
 		if (_proceedButton.IsSkip)
 		{
 			RunManager.Instance.TreasureRoomRelicSynchronizer.SkipRelicLocally();
 			if (_runState.Players.Count == 1)
 			{
-				NMapScreen.Instance.SetTravelEnabled(enabled: true);
-				TaskHelper.RunSafely(RunManager.Instance.ProceedFromTerminalRewardsScreen());
+				RunManager.Instance.ProceedFromTerminalRewardsScreen();
 			}
 		}
 		else
 		{
-			TaskHelper.RunSafely(RunManager.Instance.ProceedFromTerminalRewardsScreen());
+			RunManager.Instance.ProceedFromTerminalRewardsScreen();
 		}
 	}
 
 	private void RefreshVotes()
 	{
 		_skipVoteContainer.RefreshPlayerVotes();
-	}
-
-	private void OnProceedButtonReleased(NButton _)
-	{
-		NMapScreen.Instance.Open();
 	}
 
 	private void OnChestButtonReleased(NButton _)
@@ -191,15 +194,13 @@ public partial class NTreasureRoom : Control, IScreenContext, IRoomWithProceedBu
 			_proceedButton.UpdateText(NProceedButton.SkipLoc);
 			TaskHelper.RunSafely(EnableSkipAfterDelay(2.5f, cancelSource.Token));
 		}
-		_hasChestBeenOpened = true;
-		await _relicCollection.RelicPickingBegan();
-		await cancelSource.CancelAsync();
-		_proceedButton.Disable();
 		await _relicCollection.RelicPickingFinished();
+		await cancelSource.CancelAsync();
 		_isRelicCollectionOpen = false;
 		_skipVoteContainer.RefreshPlayerVotes();
 		_proceedButton.UpdateText(NProceedButton.ProceedLoc);
 		_proceedButton.Enable();
+		_proceedButtonState = ProceedButtonState.Proceed;
 		_banner.AnimateOut();
 		NMapScreen.Instance.SetTravelEnabled(enabled: true);
 		_relicCollection.AnimOut();
@@ -211,7 +212,11 @@ public partial class NTreasureRoom : Control, IScreenContext, IRoomWithProceedBu
 		await Cmd.Wait(delay, token);
 		if (!token.IsCancellationRequested)
 		{
-			_proceedButton.Enable();
+			_proceedButtonState = ProceedButtonState.Skip;
+			if (ActiveScreenContext.Instance.IsCurrent(this))
+			{
+				_proceedButton.Enable();
+			}
 		}
 	}
 
@@ -221,7 +226,7 @@ public partial class NTreasureRoom : Control, IScreenContext, IRoomWithProceedBu
 		{
 			_relicCollection.SetSelectionEnabled(isEnabled: false);
 			await Cmd.Wait(1f, _cts.Token);
-			Control relicReward = ((!_relicCollection.SingleplayerRelicHolder.Visible) ? ((Control)_relicCollection) : ((Control)_relicCollection.SingleplayerRelicHolder));
+			Control relicReward = ((_relicCollection.HoldersInUse.Count != 1) ? _relicCollection : ((Control)_relicCollection.GetChild(0)));
 			_relicCollection.SetSelectionEnabled(isEnabled: true);
 			NModalContainer.Instance.Add(NRelicRewardFtue.Create(relicReward));
 			SaveManager.Instance.MarkFtueAsComplete("obtain_relic_ftue");
@@ -231,7 +236,7 @@ public partial class NTreasureRoom : Control, IScreenContext, IRoomWithProceedBu
 	private void OnActiveScreenChanged()
 	{
 		this.UpdateControllerNavEnabled();
-		if (ActiveScreenContext.Instance.IsCurrent(this) && _hasChestBeenOpened)
+		if (ActiveScreenContext.Instance.IsCurrent(this) && _proceedButtonState > ProceedButtonState.Hidden)
 		{
 			_proceedButton.Enable();
 		}

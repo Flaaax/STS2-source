@@ -1,0 +1,61 @@
+wuppy.png
+size:380,269
+filter:Linear,Linear
+scale:0.212
+blast
+bounds:318,111,44,59
+rotate:90
+bod
+bounds:188,144,123,76
+rotate:90
+bod stroke
+bounds:139,9,91,63
+rotate:90
+claws bottom
+bounds:253,109,63,33
+claws bottom shadow
+bounds:188,109,63,33
+claws top
+bounds:37,5,70,39
+claws top shadow
+bounds:309,4,69,32
+offsets:0,0,70,39
+dark spots
+bounds:266,157,110,70
+rotate:90
+feather thing 1
+bounds:323,53,55,56
+offsets:0,0,56,56
+feather thing 2
+bounds:60,46,54,54
+offsets:1,0,55,55
+glob1
+bounds:338,204,29,26
+rotate:90
+glob2
+bounds:274,3,33,33
+offsets:0,0,34,33
+light spots
+bounds:204,2,105,68
+rotate:90
+shadow
+bounds:116,7,93,21
+offsets:0,0,94,21
+rotate:90
+shines
+bounds:274,38,69,47
+rotate:90
+slap_splat
+bounds:2,46,221,56
+offsets:0,0,224,57
+rotate:90
+sonic_boom
+bounds:60,102,126,165
+offsets:0,0,127,165
+tail fin
+bounds:338,235,30,32
+tail middle
+bounds:2,3,41,33
+rotate:90
+tail shines
+bounds:338,185,16,17

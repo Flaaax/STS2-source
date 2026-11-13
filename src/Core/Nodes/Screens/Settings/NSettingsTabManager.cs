@@ -89,8 +89,8 @@ public partial class NSettingsTabManager : Control
 
 	public void Enable()
 	{
-		NHotkeyManager.Instance.PushHotkeyPressedBinding(_tabLeftHotkey, TabLeft);
-		NHotkeyManager.Instance.PushHotkeyPressedBinding(_tabRightHotkey, TabRight);
+		NHotkeyManager.Instance.PushHotkeyPressedBinding(_tabLeftHotkey, TabLeft, 0L);
+		NHotkeyManager.Instance.PushHotkeyPressedBinding(_tabRightHotkey, TabRight, 0L);
 	}
 
 	public void Disable()

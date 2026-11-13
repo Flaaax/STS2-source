@@ -30,6 +30,8 @@ public partial class NChooseABundleSelectionScreen : Control, IOverlayScreen, IS
 
 	private Control _bundlePreviewCards;
 
+	private NChoiceSelectionSkipButton _skipButton;
+
 	private NBackButton _previewCancelButton;
 
 	private NConfirmButton _previewConfirmButton;
@@ -47,6 +49,8 @@ public partial class NChooseABundleSelectionScreen : Control, IOverlayScreen, IS
 	private const float _cardXSpacing = 400f;
 
 	private Tween? _cardTween;
+
+	private bool _canSkip;
 
 	private static string ScenePath => SceneHelper.GetScenePath("/screens/card_selection/choose_a_bundle_selection_screen");
 
@@ -75,6 +79,7 @@ public partial class NChooseABundleSelectionScreen : Control, IOverlayScreen, IS
 		_bundlePreviewCards = GetNode<Control>("%Cards");
 		_previewCancelButton = GetNode<NBackButton>("%Cancel");
 		_previewConfirmButton = GetNode<NConfirmButton>("%Confirm");
+		_skipButton = GetNode<NChoiceSelectionSkipButton>("%SkipButton");
 		_banner = GetNode<NCommonBanner>("Banner");
 		_banner.label.SetTextAutoSize(new LocString("gameplay_ui", "CHOOSE_A_PACK").GetRawText());
 		_banner.AnimateIn();
@@ -82,6 +87,8 @@ public partial class NChooseABundleSelectionScreen : Control, IOverlayScreen, IS
 		_previewConfirmButton.Connect(NClickableControl.SignalName.Released, Callable.From<NButton>(ConfirmSelection));
 		_previewCancelButton.Disable();
 		_previewConfirmButton.Disable();
+		_skipButton.Connect(NClickableControl.SignalName.Released, Callable.From<NButton>(OnSkipButtonReleased));
+		UpdateSkipButton();
 		Vector2 vector = Vector2.Left * (_bundles.Count - 1) * 400f * 0.5f;
 		for (int i = 0; i < _bundles.Count; i++)
 		{
@@ -114,11 +121,12 @@ public partial class NChooseABundleSelectionScreen : Control, IOverlayScreen, IS
 		}
 	}
 
-	public static NChooseABundleSelectionScreen ShowScreen(IReadOnlyList<IReadOnlyList<CardModel>> bundles)
+	public static NChooseABundleSelectionScreen ShowScreen(IReadOnlyList<IReadOnlyList<CardModel>> bundles, bool canSkip = false)
 	{
 		NChooseABundleSelectionScreen nChooseABundleSelectionScreen = PreloadManager.Cache.GetScene(ScenePath).Instantiate<NChooseABundleSelectionScreen>(PackedScene.GenEditState.Disabled);
 		nChooseABundleSelectionScreen.Name = "NChooseABundleSelectionScreen";
 		nChooseABundleSelectionScreen._bundles = bundles;
+		nChooseABundleSelectionScreen._canSkip = canSkip;
 		NOverlayStack.Instance?.Push(nChooseABundleSelectionScreen);
 		return nChooseABundleSelectionScreen;
 	}
@@ -132,6 +140,8 @@ public partial class NChooseABundleSelectionScreen : Control, IOverlayScreen, IS
 		_bundleRow.Visible = false;
 		_previewCancelButton.Enable();
 		_previewConfirmButton.Enable();
+		_skipButton.Disable();
+		_skipButton.Visible = false;
 		Vector2 vector = Vector2.Right * (bundleNode.Bundle.Count - 1) * 400f * 0.5f;
 		IReadOnlyList<NCard> readOnlyList = bundleNode.RemoveCardNodes();
 		_cardTween?.Kill();
@@ -181,6 +191,7 @@ public partial class NChooseABundleSelectionScreen : Control, IOverlayScreen, IS
 		_previewConfirmButton.Disable();
 		_selectedBundle = null;
 		_bundleRow.Visible = true;
+		UpdateSkipButton();
 	}
 
 	private void ConfirmSelection(NButton _)
@@ -195,11 +206,31 @@ public partial class NChooseABundleSelectionScreen : Control, IOverlayScreen, IS
 		_completionSource.SetResult(new global::_003C_003Ez__ReadOnlySingleElementList<IReadOnlyList<CardModel>>(_selectedBundle.Bundle));
 	}
 
+	private void OnSkipButtonReleased(NButton _)
+	{
+		_completionSource.SetResult(Array.Empty<IReadOnlyList<CardModel>>());
+	}
+
 	public async Task<IEnumerable<IReadOnlyList<CardModel>>> CardsSelected()
 	{
 		IEnumerable<IReadOnlyList<CardModel>> result = await _completionSource.Task;
 		NOverlayStack.Instance.Remove(this);
 		return result;
+	}
+
+	private void UpdateSkipButton()
+	{
+		if (_canSkip)
+		{
+			_skipButton.Enable();
+			_skipButton.Visible = true;
+			_skipButton.AnimateIn();
+		}
+		else
+		{
+			_skipButton.Disable();
+			_skipButton.Visible = false;
+		}
 	}
 
 	public void AfterOverlayOpened()
@@ -224,6 +255,10 @@ public partial class NChooseABundleSelectionScreen : Control, IOverlayScreen, IS
 			_previewCancelButton.Enable();
 			_previewConfirmButton.Enable();
 		}
+		else
+		{
+			UpdateSkipButton();
+		}
 	}
 
 	public void AfterOverlayHidden()
@@ -231,5 +266,6 @@ public partial class NChooseABundleSelectionScreen : Control, IOverlayScreen, IS
 		base.Visible = false;
 		_previewCancelButton.Disable();
 		_previewConfirmButton.Disable();
+		_skipButton.Disable();
 	}
 }

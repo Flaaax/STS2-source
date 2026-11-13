@@ -13,6 +13,12 @@ public partial class NButton : NClickableControl
 {
 	protected NHotkeyIcon? _hotkeyIcon;
 
+	private string[]? _removedHotkeys;
+
+	private long[]? _removedPressedSequences;
+
+	private long[]? _removedReleasedSequences;
+
 	protected virtual string? ClickedSfx => "event:/sfx/ui/clicks/ui_click";
 
 	protected virtual string? HoveredSfx => "event:/sfx/ui/clicks/ui_hover";
@@ -57,19 +63,6 @@ public partial class NButton : NClickableControl
 	protected virtual void GetControllerIconNode()
 	{
 		_hotkeyIcon = GetNodeOrNull<NHotkeyIcon>("%HotkeyIcon");
-	}
-
-	public override void _EnterTree()
-	{
-		if (NControllerManager.Instance != null)
-		{
-			NControllerManager.Instance.Connect(NControllerManager.SignalName.MouseDetected, Callable.From(UpdateControllerButton));
-			NControllerManager.Instance.Connect(NControllerManager.SignalName.ControllerDetected, Callable.From(UpdateControllerButton));
-		}
-		if (NInputManager.Instance != null)
-		{
-			NInputManager.Instance.Connect(NInputManager.SignalName.InputRebound, Callable.From(UpdateControllerButton));
-		}
 	}
 
 	/// <summary>
@@ -124,28 +117,65 @@ public partial class NButton : NClickableControl
 
 	protected void RegisterHotkeys()
 	{
+		RegisterHotkeys(restorePriority: false);
+	}
+
+	private void RegisterHotkeys(bool restorePriority)
+	{
 		if (HasControllerHotkey && _isEnabled)
 		{
 			string[] hotkeys = Hotkeys;
-			foreach (string hotkey in hotkeys)
+			string[] array = (restorePriority ? _removedHotkeys : null);
+			for (int i = 0; i < hotkeys.Length; i++)
 			{
-				NHotkeyManager.Instance.PushHotkeyPressedBinding(hotkey, base.OnPressHandler);
-				NHotkeyManager.Instance.PushHotkeyReleasedBinding(hotkey, base.OnReleaseHandler);
+				int num = ((array != null) ? Array.IndexOf(array, hotkeys[i]) : (-1));
+				long sequence = ((num >= 0) ? _removedPressedSequences[num] : 0);
+				long sequence2 = ((num >= 0) ? _removedReleasedSequences[num] : 0);
+				NHotkeyManager.Instance.PushHotkeyPressedBinding(hotkeys[i], base.OnPressHandler, sequence);
+				NHotkeyManager.Instance.PushHotkeyReleasedBinding(hotkeys[i], base.OnReleaseHandler, sequence2);
 			}
 		}
+		ForgetRemovedPriorities();
 	}
 
 	protected void UnregisterHotkeys()
 	{
+		ForgetRemovedPriorities();
 		if (HasControllerHotkey)
 		{
 			string[] hotkeys = Hotkeys;
-			foreach (string hotkey in hotkeys)
+			long[] array = new long[hotkeys.Length];
+			long[] array2 = new long[hotkeys.Length];
+			for (int i = 0; i < hotkeys.Length; i++)
 			{
-				NHotkeyManager.Instance.RemoveHotkeyPressedBinding(hotkey, base.OnPressHandler);
-				NHotkeyManager.Instance.RemoveHotkeyReleasedBinding(hotkey, base.OnReleaseHandler);
+				array[i] = NHotkeyManager.Instance.RemoveHotkeyPressedBinding(hotkeys[i], base.OnPressHandler);
+				array2[i] = NHotkeyManager.Instance.RemoveHotkeyReleasedBinding(hotkeys[i], base.OnReleaseHandler);
 			}
+			_removedHotkeys = hotkeys;
+			_removedPressedSequences = array;
+			_removedReleasedSequences = array2;
 		}
+	}
+
+	private void ForgetRemovedPriorities()
+	{
+		_removedHotkeys = null;
+		_removedPressedSequences = null;
+		_removedReleasedSequences = null;
+	}
+
+	public override void _EnterTree()
+	{
+		if (NControllerManager.Instance != null)
+		{
+			NControllerManager.Instance.Connect(NControllerManager.SignalName.MouseDetected, Callable.From(UpdateControllerButton));
+			NControllerManager.Instance.Connect(NControllerManager.SignalName.ControllerDetected, Callable.From(UpdateControllerButton));
+		}
+		if (NInputManager.Instance != null)
+		{
+			NInputManager.Instance.Connect(NInputManager.SignalName.InputRebound, Callable.From(UpdateControllerButton));
+		}
+		RegisterHotkeys(restorePriority: true);
 	}
 
 	public override void _ExitTree()

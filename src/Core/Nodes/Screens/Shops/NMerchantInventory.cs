@@ -4,9 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Godot;
 using Godot.Collections;
+using MegaCrit.Sts2.addons.mega_text;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Merchant;
 using MegaCrit.Sts2.Core.Helpers;
+using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Nodes.CommonUi;
 using MegaCrit.Sts2.Core.Nodes.GodotExtensions;
 using MegaCrit.Sts2.Core.Nodes.Screens.ScreenContext;
@@ -26,6 +28,8 @@ public partial class NMerchantInventory : Control, IScreenContext
 
 	private const float _closedPosition = -1000f;
 
+	public const int blitzColumns = 3;
+
 	private Control? _characterCardContainer;
 
 	private Control? _colorlessCardContainer;
@@ -33,6 +37,10 @@ public partial class NMerchantInventory : Control, IScreenContext
 	protected Control? _relicContainer;
 
 	private Control? _potionContainer;
+
+	private Control? _blitzContainer;
+
+	private MegaRichTextLabel? _blitzSelectionText;
 
 	private NMerchantCardRemoval? _cardRemovalNode;
 
@@ -91,6 +99,8 @@ public partial class NMerchantInventory : Control, IScreenContext
 		_colorlessCardContainer = GetNodeOrNull<Control>("%ColorlessCards");
 		_relicContainer = GetNodeOrNull<Control>("%Relics");
 		_potionContainer = GetNodeOrNull<Control>("%Potions");
+		_blitzContainer = GetNodeOrNull<Control>("%BlitzSlots");
+		_blitzSelectionText = GetNodeOrNull<MegaRichTextLabel>("%BlitzSelectionText");
 		_cardRemovalNode = GetNodeOrNull<NMerchantCardRemoval>("%MerchantCardRemoval");
 		_backButton = GetNode<NBackButton>("%BackButton");
 		_backButton.Connect(NClickableControl.SignalName.Released, Callable.From<NButton>(delegate
@@ -129,6 +139,13 @@ public partial class NMerchantInventory : Control, IScreenContext
 			throw new InvalidOperationException("Merchant inventory already populated.");
 		}
 		Inventory = inventory;
+		_characterCardContainer?.SetVisible(Inventory.CharacterCardEntries.Any());
+		_colorlessCardContainer?.SetVisible(Inventory.ColorlessCardEntries.Any());
+		_potionContainer?.SetVisible(Inventory.PotionEntries.Any());
+		_relicContainer?.SetVisible(Inventory.RelicEntries.Any());
+		_cardRemovalNode?.SetVisible(Inventory.CardRemovalEntry != null);
+		_blitzContainer?.SetVisible(Inventory.BlitzEntries.Any());
+		_blitzSelectionText?.SetVisible(Inventory.BlitzEntries.Any());
 		for (int i = 0; i < Inventory.CharacterCardEntries.Count; i++)
 		{
 			NMerchantCard child = _characterCardContainer.GetChild<NMerchantCard>(i);
@@ -158,6 +175,13 @@ public partial class NMerchantInventory : Control, IScreenContext
 			_cardRemovalNode.Initialize(this);
 			_cardRemovalNode.FillSlot(Inventory.CardRemovalEntry);
 		}
+		for (int m = 0; m < Inventory.BlitzEntries.Count; m++)
+		{
+			NBlitzMerchantSlot child5 = _blitzContainer.GetChild<NBlitzMerchantSlot>(m);
+			child5.Initialize(this);
+			child5.FillSlot(Inventory.BlitzEntries[m]);
+		}
+		UpdateBlitzSelectionText();
 		SubscribeToEntries();
 		UpdateNavigation();
 		foreach (NMerchantSlot slot in GetAllSlots())
@@ -186,9 +210,28 @@ public partial class NMerchantInventory : Control, IScreenContext
 		{
 			cardSlot.OnInventoryOpened();
 		}
-		SfxCmd.Play("event:/sfx/npcs/merchant/merchant_welcome");
 		IsOpen = true;
 		ActiveScreenContext.Instance.Update();
+		TaskHelper.RunSafely(ShowOpenInventory());
+	}
+
+	public async Task ShowOpenInventory()
+	{
+		await Cmd.Wait(0.75f);
+		SfxCmd.Play("event:/sfx/npcs/merchant/merchant_welcome");
+		MerchantInventory inventory = Inventory;
+		if (inventory != null)
+		{
+			IReadOnlyList<BlitzMerchantEntry> blitzEntries = inventory.BlitzEntries;
+			if (blitzEntries != null && blitzEntries.Count > 0)
+			{
+				if (Inventory.BlitzChoicesRemaining <= 0)
+				{
+					_merchantDialogue.ShowForBlitzFinished();
+				}
+				return;
+			}
+		}
 		_merchantDialogue.ShowOnInventoryOpen();
 	}
 
@@ -216,7 +259,7 @@ public partial class NMerchantInventory : Control, IScreenContext
 		await _inventoryTween.AwaitFinished(this);
 	}
 
-	private void Close()
+	public void Close()
 	{
 		MerchantHand.StopPointing(0f);
 		_inventoryTween?.Kill();
@@ -239,12 +282,66 @@ public partial class NMerchantInventory : Control, IScreenContext
 		NMerchantSlot lastSlot = GetAllSlots().FirstOrDefault((NMerchantSlot s) => s.Entry == entry);
 		if (lastSlot != null && !_isInputBlocked)
 		{
-			(from s in GetAllSlots()
-				where s.Visible && s != lastSlot
-				select s).MinBy((NMerchantSlot s) => (s.GlobalPosition - lastSlot.GlobalPosition).Length())?.TryGrabFocus();
+			NMerchantSlot nMerchantSlot = (from s in GetAllSlots()
+				where s.Visible && s.Entry.IsStocked && s != lastSlot
+				select s).MinBy((NMerchantSlot s) => (s.GlobalPosition - lastSlot.GlobalPosition).Length());
+			if (!ActiveScreenContext.Instance.IsCurrent(this))
+			{
+				_lastSlot = nMerchantSlot;
+			}
+			else if (nMerchantSlot != null)
+			{
+				nMerchantSlot.TryGrabFocus();
+			}
+			else
+			{
+				ActiveScreenContext.Instance.FocusOnDefaultControl();
+			}
 		}
 		SfxCmd.Play("event:/sfx/npcs/merchant/merchant_thank_yous");
+		MerchantInventory inventory = Inventory;
+		if (inventory != null)
+		{
+			IReadOnlyList<BlitzMerchantEntry> blitzEntries = inventory.BlitzEntries;
+			if (blitzEntries != null && blitzEntries.Count > 0)
+			{
+				if (Inventory.BlitzChoicesRemaining <= 0)
+				{
+					_merchantDialogue.ShowForBlitzFinished();
+				}
+				UpdateBlitzSelectionText();
+				return;
+			}
+		}
 		_merchantDialogue.ShowForPurchaseAttempt(status);
+	}
+
+	private void UpdateBlitzSelectionText()
+	{
+		if (_blitzSelectionText == null)
+		{
+			return;
+		}
+		MerchantInventory inventory = Inventory;
+		if (inventory == null)
+		{
+			return;
+		}
+		IReadOnlyList<BlitzMerchantEntry> blitzEntries = inventory.BlitzEntries;
+		if (blitzEntries != null && blitzEntries.Count > 0)
+		{
+			LocString locString;
+			if (Inventory.BlitzChoicesRemaining > 0)
+			{
+				locString = new LocString("merchant_room", "MERCHANT.blitzSelection.remaining");
+				locString.Add("Amount", Inventory.BlitzChoicesRemaining);
+			}
+			else
+			{
+				locString = new LocString("merchant_room", "MERCHANT.blitzSelection.none");
+			}
+			_blitzSelectionText.SetTextAutoSize(locString.GetFormattedText());
+		}
 	}
 
 	public void OnCardRemovalUsed()
@@ -252,19 +349,31 @@ public partial class NMerchantInventory : Control, IScreenContext
 		_cardRemovalNode.OnCardRemovalUsed();
 	}
 
+	/// <summary>
+	/// Returns the slots that hold an entry. Containers with no entries for this inventory are hidden in
+	/// <see cref="M:MegaCrit.Sts2.Core.Nodes.Screens.Shops.NMerchantInventory.Initialize(MegaCrit.Sts2.Core.Entities.Merchant.MerchantInventory,MegaCrit.Sts2.Core.Entities.Merchant.MerchantDialogueSet)" /> and their slots are never filled, so they are skipped here.
+	/// </summary>
 	public IEnumerable<NMerchantSlot> GetAllSlots()
 	{
 		List<NMerchantSlot> list = new List<NMerchantSlot>();
 		list.AddRange(GetCardSlots());
-		if (_relicContainer != null)
+		Control relicContainer = _relicContainer;
+		if (relicContainer != null && relicContainer.Visible)
 		{
 			list.AddRange(_relicContainer.GetChildren().OfType<NMerchantRelic>());
 		}
-		if (_potionContainer != null)
+		relicContainer = _potionContainer;
+		if (relicContainer != null && relicContainer.Visible)
 		{
 			list.AddRange(_potionContainer.GetChildren().OfType<NMerchantPotion>());
 		}
-		if (_cardRemovalNode != null)
+		relicContainer = _blitzContainer;
+		if (relicContainer != null && relicContainer.Visible)
+		{
+			list.AddRange(_blitzContainer.GetChildren().OfType<NBlitzMerchantSlot>());
+		}
+		NMerchantCardRemoval cardRemovalNode = _cardRemovalNode;
+		if (cardRemovalNode != null && cardRemovalNode.Visible)
 		{
 			list.Add(_cardRemovalNode);
 		}
@@ -273,17 +382,83 @@ public partial class NMerchantInventory : Control, IScreenContext
 
 	private IEnumerable<NMerchantCard> GetCardSlots()
 	{
-		return new IEnumerable<Node>[2]
-		{
-			_characterCardContainer?.GetChildren() ?? new Array<Node>(),
-			_colorlessCardContainer?.GetChildren() ?? new Array<Node>()
-		}.SelectMany((IEnumerable<Node> n) => n).OfType<NMerchantCard>();
+		IEnumerable<Node>[] array = new IEnumerable<Node>[2];
+		Control characterCardContainer = _characterCardContainer;
+		array[0] = ((characterCardContainer != null && characterCardContainer.Visible) ? _characterCardContainer.GetChildren() : new Array<Node>());
+		characterCardContainer = _colorlessCardContainer;
+		array[1] = ((characterCardContainer != null && characterCardContainer.Visible) ? _colorlessCardContainer.GetChildren() : new Array<Node>());
+		return array.SelectMany((IEnumerable<Node> n) => n).OfType<NMerchantCard>();
 	}
 
 	protected virtual void UpdateNavigation()
 	{
+		Control blitzContainer = _blitzContainer;
+		if (blitzContainer != null && blitzContainer.Visible)
+		{
+			UpdateBlitzNavigation();
+			return;
+		}
 		UpdateHorizontalNavigation();
 		UpdateVerticalNavigation();
+	}
+
+	private void UpdateBlitzNavigation()
+	{
+		List<NMerchantSlot> list = (from c in _blitzContainer?.GetChildren().OfType<NMerchantSlot>()
+			where c.Visible
+			select c).ToList() ?? new List<NMerchantSlot>();
+		if (list.Count == 0)
+		{
+			return;
+		}
+		List<List<NMerchantSlot>> list2 = (from r in list.Chunk(3)
+			select r.ToList()).ToList();
+		for (int num = 0; num < list2.Count; num++)
+		{
+			List<NMerchantSlot> list3 = list2[num];
+			SetWrappedHorizontalNeighbors(list3);
+			for (int num2 = 0; num2 < list3.Count; num2++)
+			{
+				NMerchantSlot nMerchantSlot = list3[num2];
+				nMerchantSlot.FocusNeighborTop = GetStockedSlotInColumn(list2, num, num2, -1).GetPath();
+				nMerchantSlot.FocusNeighborBottom = GetStockedSlotInColumn(list2, num, num2, 1).GetPath();
+			}
+		}
+	}
+
+	private static void SetWrappedHorizontalNeighbors(List<NMerchantSlot> row)
+	{
+		for (int i = 0; i < row.Count; i++)
+		{
+			row[i].FocusNeighborLeft = GetWrappedStockedSlotInRow(row, i, -1).GetPath();
+			row[i].FocusNeighborRight = GetWrappedStockedSlotInRow(row, i, 1).GetPath();
+		}
+	}
+
+	private static NMerchantSlot GetWrappedStockedSlotInRow(List<NMerchantSlot> row, int idx, int dir)
+	{
+		for (int i = 1; i < row.Count; i++)
+		{
+			NMerchantSlot nMerchantSlot = row[Mathf.PosMod(idx + dir * i, row.Count)];
+			if (nMerchantSlot.Entry.IsStocked)
+			{
+				return nMerchantSlot;
+			}
+		}
+		return row[idx];
+	}
+
+	private NMerchantSlot GetStockedSlotInColumn(List<List<NMerchantSlot>> rows, int rowIdx, int col, int dir)
+	{
+		for (int i = rowIdx + dir; i >= 0 && i < rows.Count; i += dir)
+		{
+			List<NMerchantSlot> row = rows[i];
+			if (GetClosestStockedSlot(col, row) is NMerchantSlot result)
+			{
+				return result;
+			}
+		}
+		return rows[rowIdx][col];
 	}
 
 	private void UpdateHorizontalNavigation()
@@ -300,7 +475,7 @@ public partial class NMerchantInventory : Control, IScreenContext
 		List<NMerchantSlot> list3 = (from c in _potionContainer?.GetChildren().OfType<NMerchantSlot>()
 			where c.Visible
 			select c).ToList() ?? new List<NMerchantSlot>();
-		List<NMerchantSlot> list4 = source.ToList();
+		List<NMerchantSlot> wrappedHorizontalNeighbors = source.ToList();
 		IEnumerable<NMerchantSlot> first = list.Concat(list2);
 		IEnumerable<NMerchantSlot> second;
 		if (_cardRemovalNode == null)
@@ -313,7 +488,7 @@ public partial class NMerchantInventory : Control, IScreenContext
 			IEnumerable<NMerchantSlot> enumerable = new global::_003C_003Ez__ReadOnlySingleElementList<NMerchantSlot>(_cardRemovalNode);
 			second = enumerable;
 		}
-		List<NMerchantSlot> list5 = first.Concat(second).ToList();
+		List<NMerchantSlot> wrappedHorizontalNeighbors2 = first.Concat(second).ToList();
 		IEnumerable<NMerchantSlot> first2 = list.Concat(list3);
 		IEnumerable<NMerchantSlot> second2;
 		if (_cardRemovalNode == null)
@@ -326,68 +501,79 @@ public partial class NMerchantInventory : Control, IScreenContext
 			IEnumerable<NMerchantSlot> enumerable = new global::_003C_003Ez__ReadOnlySingleElementList<NMerchantSlot>(_cardRemovalNode);
 			second2 = enumerable;
 		}
-		List<NMerchantSlot> list6 = first2.Concat(second2).ToList();
-		for (int num = 0; num < list4.Count; num++)
+		List<NMerchantSlot> wrappedHorizontalNeighbors3 = first2.Concat(second2).ToList();
+		SetWrappedHorizontalNeighbors(wrappedHorizontalNeighbors);
+		SetWrappedHorizontalNeighbors(wrappedHorizontalNeighbors3);
+		SetWrappedHorizontalNeighbors(wrappedHorizontalNeighbors2);
+		NMerchantSlot firstStockedSlot = GetFirstStockedSlot(GetRelicPotionColumnOrder(list2, list3, fromRight: false));
+		NMerchantSlot firstStockedSlot2 = GetFirstStockedSlot(GetRelicPotionColumnOrder(list2, list3, fromRight: true));
+		if (firstStockedSlot == null || firstStockedSlot2 == null)
 		{
-			list4[num].FocusNeighborLeft = ((num > 0) ? list4[num - 1].GetPath() : list4[num].GetPath());
-			list4[num].FocusNeighborRight = ((num < list4.Count - 1) ? list4[num + 1].GetPath() : list4[num].GetPath());
+			return;
 		}
-		for (int num2 = 0; num2 < list6.Count; num2++)
+		_cardRemovalNode?.SetFocusNeighbor(Side.Left, firstStockedSlot2.GetPath());
+		list.LastOrDefault()?.SetFocusNeighbor(Side.Right, firstStockedSlot.GetPath());
+		if (_cardRemovalNode == null)
 		{
-			list6[num2].FocusNeighborLeft = ((num2 > 0) ? list6[num2 - 1].GetPath() : list6[num2].GetPath());
-			list6[num2].FocusNeighborRight = ((num2 < list6.Count - 1) ? list6[num2 + 1].GetPath() : list6[num2].GetPath());
+			list.FirstOrDefault((NMerchantSlot c) => c.Entry.IsStocked)?.SetFocusNeighbor(Side.Left, firstStockedSlot2.GetPath());
 		}
-		for (int num3 = 0; num3 < list5.Count; num3++)
+	}
+
+	/// <summary>
+	/// Orders relics and potions column by column (relic above potion) starting from the left or right edge.
+	/// </summary>
+	private static IEnumerable<NMerchantSlot?> GetRelicPotionColumnOrder(List<NMerchantSlot> relics, List<NMerchantSlot> potions, bool fromRight)
+	{
+		int columns = Math.Max(relics.Count, potions.Count);
+		for (int i = 0; i < columns; i++)
 		{
-			list5[num3].FocusNeighborLeft = ((num3 > 0) ? list5[num3 - 1].GetPath() : list5[num3].GetPath());
-			list5[num3].FocusNeighborRight = ((num3 < list5.Count - 1) ? list5[num3 + 1].GetPath() : list5[num3].GetPath());
+			int col = (fromRight ? (columns - 1 - i) : i);
+			yield return relics.ElementAtOrDefault(col);
+			yield return potions.ElementAtOrDefault(col);
 		}
-		if (list2.Count == 0 && list3.Count > 0)
-		{
-			if (_cardRemovalNode != null)
-			{
-				_cardRemovalNode.FocusNeighborLeft = list3.Last().GetPath();
-			}
-			if (list.Count > 0)
-			{
-				list.Last().FocusNeighborRight = list3.First().GetPath();
-			}
-		}
+	}
+
+	/// <summary>
+	/// Returns the first candidate that can take focus, skipping missing, hidden, unfilled, and sold out slots.
+	/// </summary>
+	private static NMerchantSlot? GetFirstStockedSlot(IEnumerable<NMerchantSlot?> candidates)
+	{
+		return candidates.FirstOrDefault((NMerchantSlot s) => s != null && s.Visible && (s.Entry?.IsStocked ?? false));
 	}
 
 	private void UpdateVerticalNavigation()
 	{
 		List<NMerchantSlot> source = _characterCardContainer?.GetChildren().OfType<NMerchantSlot>().ToList() ?? new List<NMerchantSlot>();
-		List<NMerchantSlot> first = _colorlessCardContainer?.GetChildren().OfType<NMerchantSlot>().ToList() ?? new List<NMerchantSlot>();
-		List<NMerchantSlot> second = _relicContainer?.GetChildren().OfType<NMerchantSlot>().ToList() ?? new List<NMerchantSlot>();
-		List<NMerchantSlot> second2 = _potionContainer?.GetChildren().OfType<NMerchantSlot>().ToList() ?? new List<NMerchantSlot>();
+		List<NMerchantSlot> colorlessCards = _colorlessCardContainer?.GetChildren().OfType<NMerchantSlot>().ToList() ?? new List<NMerchantSlot>();
+		List<NMerchantSlot> relics = _relicContainer?.GetChildren().OfType<NMerchantSlot>().ToList() ?? new List<NMerchantSlot>();
+		List<NMerchantSlot> potions = _potionContainer?.GetChildren().OfType<NMerchantSlot>().ToList() ?? new List<NMerchantSlot>();
 		List<NMerchantSlot> list = source.ToList();
-		IEnumerable<NMerchantSlot> first2 = first.Concat(second);
-		IEnumerable<NMerchantSlot> second3;
+		IEnumerable<NMerchantSlot> first = colorlessCards.Concat(relics);
+		IEnumerable<NMerchantSlot> second;
 		if (_cardRemovalNode == null)
 		{
 			IEnumerable<NMerchantSlot> enumerable = System.Array.Empty<NMerchantSlot>();
-			second3 = enumerable;
+			second = enumerable;
 		}
 		else
 		{
 			IEnumerable<NMerchantSlot> enumerable = new global::_003C_003Ez__ReadOnlySingleElementList<NMerchantSlot>(_cardRemovalNode);
-			second3 = enumerable;
+			second = enumerable;
 		}
-		List<NMerchantSlot> list2 = first2.Concat(second3).ToList();
-		IEnumerable<NMerchantSlot> first3 = first.Concat(second2);
-		IEnumerable<NMerchantSlot> second4;
+		List<NMerchantSlot> list2 = first.Concat(second).ToList();
+		IEnumerable<NMerchantSlot> first2 = colorlessCards.Concat(potions);
+		IEnumerable<NMerchantSlot> second2;
 		if (_cardRemovalNode == null)
 		{
 			IEnumerable<NMerchantSlot> enumerable = System.Array.Empty<NMerchantSlot>();
-			second4 = enumerable;
+			second2 = enumerable;
 		}
 		else
 		{
 			IEnumerable<NMerchantSlot> enumerable = new global::_003C_003Ez__ReadOnlySingleElementList<NMerchantSlot>(_cardRemovalNode);
-			second4 = enumerable;
+			second2 = enumerable;
 		}
-		List<NMerchantSlot> list3 = first3.Concat(second4).ToList();
+		List<NMerchantSlot> list3 = first2.Concat(second2).ToList();
 		for (int i = 0; i < list.Count; i++)
 		{
 			list[i].FocusNeighborTop = list[i].GetPath();
@@ -408,6 +594,51 @@ public partial class NMerchantInventory : Control, IScreenContext
 			else
 			{
 				list[i].FocusNeighborBottom = list[i].GetPath();
+			}
+		}
+		NMerchantSlot nMerchantSlot = list.ElementAtOrDefault(2);
+		if (nMerchantSlot != null)
+		{
+			NMerchantSlot firstStockedSlot = GetFirstStockedSlot(new global::_003C_003Ez__ReadOnlyArray<NMerchantSlot>(new NMerchantSlot[5]
+			{
+				Relic(0),
+				Relic(1),
+				Potion(0),
+				Potion(1),
+				Colorless(1)
+			}));
+			if (firstStockedSlot != null)
+			{
+				nMerchantSlot.FocusNeighborBottom = firstStockedSlot.GetPath();
+			}
+		}
+		NMerchantSlot nMerchantSlot2 = list.ElementAtOrDefault(3);
+		if (nMerchantSlot2 != null)
+		{
+			NMerchantSlot firstStockedSlot2 = GetFirstStockedSlot(new global::_003C_003Ez__ReadOnlyArray<NMerchantSlot>(new NMerchantSlot[9]
+			{
+				Relic(2),
+				Relic(1),
+				Potion(2),
+				Potion(1),
+				_cardRemovalNode,
+				Relic(0),
+				Potion(0),
+				Colorless(1),
+				Colorless(0)
+			}));
+			if (firstStockedSlot2 != null)
+			{
+				nMerchantSlot2.FocusNeighborBottom = firstStockedSlot2.GetPath();
+			}
+		}
+		NMerchantSlot nMerchantSlot3 = list.ElementAtOrDefault(4);
+		if (nMerchantSlot3 != null)
+		{
+			NMerchantSlot firstStockedSlot3 = GetFirstStockedSlot(new global::_003C_003Ez__ReadOnlySingleElementList<NMerchantSlot>(_cardRemovalNode));
+			if (firstStockedSlot3 != null)
+			{
+				nMerchantSlot3.FocusNeighborBottom = firstStockedSlot3.GetPath();
 			}
 		}
 		for (int j = 0; j < list3.Count; list3[j].FocusNeighborBottom = list3[j].GetPath(), j++)
@@ -439,12 +670,12 @@ public partial class NMerchantInventory : Control, IScreenContext
 				if (closestStockedSlot5 != null)
 				{
 					list2[k].FocusNeighborTop = closestStockedSlot5.GetPath();
-					goto IL_02bb;
+					goto IL_03fd;
 				}
 			}
 			list2[k].FocusNeighborTop = list2[k].GetPath();
-			goto IL_02bb;
-			IL_02bb:
+			goto IL_03fd;
+			IL_03fd:
 			if (list3.Count > 0)
 			{
 				Control closestStockedSlot6 = GetClosestStockedSlot(k, list3);
@@ -455,6 +686,18 @@ public partial class NMerchantInventory : Control, IScreenContext
 				}
 			}
 			list2[k].FocusNeighborBottom = list2[k].GetPath();
+		}
+		NMerchantSlot? Colorless(int index)
+		{
+			return colorlessCards.ElementAtOrDefault(index);
+		}
+		NMerchantSlot? Potion(int index)
+		{
+			return potions.ElementAtOrDefault(index);
+		}
+		NMerchantSlot? Relic(int index)
+		{
+			return relics.ElementAtOrDefault(index);
 		}
 	}
 
@@ -492,14 +735,6 @@ public partial class NMerchantInventory : Control, IScreenContext
 		int num3 = num + 1;
 		while (num2 >= 0 || num3 < row.Count)
 		{
-			if (num3 < row.Count)
-			{
-				if (row[num3].Entry.IsStocked)
-				{
-					return row[num3];
-				}
-				num3++;
-			}
 			if (num2 >= 0)
 			{
 				if (row[num2].Entry.IsStocked)
@@ -507,6 +742,14 @@ public partial class NMerchantInventory : Control, IScreenContext
 					return row[num2];
 				}
 				num2--;
+			}
+			if (num3 < row.Count)
+			{
+				if (row[num3].Entry.IsStocked)
+				{
+					return row[num3];
+				}
+				num3++;
 			}
 		}
 		return null;
@@ -520,7 +763,8 @@ public partial class NMerchantInventory : Control, IScreenContext
 			if (_characterCardContainer != null && NControllerManager.Instance.IsUsingDirectionalNavigation && _inventoryTween != null && _inventoryTween.IsRunning())
 			{
 				float num = 80f - _slotsContainer.Position.Y;
-				MerchantHand.PointAtTarget(_characterCardContainer.GetChild<NMerchantCard>(0), Vector2.Down * num);
+				NMerchantCard child = _characterCardContainer.GetChild<NMerchantCard>(0);
+				MerchantHand.PointAtTarget(child, child.MerchantHandOffset + Vector2.Down * num);
 			}
 			if (!_isInputBlocked)
 			{

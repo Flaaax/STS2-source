@@ -3,20 +3,21 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c3ampfsrjk5ys"
-path="res://.godot/imported/multiplayer_hand_ironclad_scissors.png-20aa82b9c73c801bb60b5202518848da.ctex"
+path.bptc="res://.godot/imported/multiplayer_hand_ironclad_scissors.png-20aa82b9c73c801bb60b5202518848da.bptc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://images/ui/hands/multiplayer_hand_ironclad_scissors.png"
-dest_files=["res://.godot/imported/multiplayer_hand_ironclad_scissors.png-20aa82b9c73c801bb60b5202518848da.ctex"]
+dest_files=["res://.godot/imported/multiplayer_hand_ironclad_scissors.png-20aa82b9c73c801bb60b5202518848da.bptc.ctex"]
 
 [params]
 
-compress/mode=0
-compress/high_quality=false
+compress/mode=2
+compress/high_quality=true
 compress/lossy_quality=1.0
 compress/uastc_level=2
 compress/rdo_quality_loss=0
@@ -33,4 +34,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

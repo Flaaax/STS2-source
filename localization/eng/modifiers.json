@@ -22,6 +22,7 @@
   "MURDEROUS.description": "You start each combat with [blue]3[/blue] [gold]Strength[/gold]. All enemies start combat with [blue]3[/blue] [gold]Strength[/gold].",
   "MURDEROUS.title": "Murderous",
   "NIGHT_TERRORS.additionalRestSiteHealText": "+{Heal} HP from Night Terrors.\nLose [red]5[/red] Max HP.",
+  "NIGHT_TERRORS.additionalRestSiteMendText": "Fully heals from Night Terrors.\nThey lose [red]{MaxHpLoss}[/red] Max HP.",
   "NIGHT_TERRORS.description": "Resting at [gold]Rest Sites[/gold] heals all of your HP, but costs [red]5[/red] Max HP.",
   "NIGHT_TERRORS.title": "Night Terrors",
   "SEALED_DECK.description": "Choose [blue]10[/blue] out of [blue]30[/blue] cards to replace your starting deck.",

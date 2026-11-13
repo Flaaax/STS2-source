@@ -4,8 +4,6 @@
 [ext_resource type="Script" uid="uid://cd11pavkh488l" path="res://src/Core/Nodes/Screens/MainMenu/NSingleplayerSubmenu.cs" id="1_uf82o"]
 [ext_resource type="PackedScene" uid="uid://3aikvufhmv6o" path="res://scenes/ui/submenu_button.tscn" id="2_lcnyd"]
 [ext_resource type="Shader" uid="uid://c66gb6g7tup3n" path="res://shaders/hsv.gdshader" id="3_0766y"]
-[ext_resource type="Texture2D" uid="uid://be5ka206p5qa1" path="res://images/ui/main_menu/submenu_daily.png" id="4_c0ptk"]
-[ext_resource type="Texture2D" uid="uid://00e2a88qdfq7" path="res://images/ui/main_menu/submenu_custom.png" id="4_oio0w"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_frs6w"]
 resource_local_to_scene = true
@@ -20,6 +18,20 @@ shader = ExtResource("3_0766y")
 shader_parameter/h = 0.4800000228
 shader_parameter/s = 0.8
 shader_parameter/v = 0.7
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d5ln6"]
+resource_local_to_scene = true
+shader = ExtResource("3_0766y")
+shader_parameter/h = 0.2400000114
+shader_parameter/s = 1.0000000475
+shader_parameter/v = 0.7
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c8a37"]
+resource_local_to_scene = true
+shader = ExtResource("3_0766y")
+shader_parameter/h = 0.750000035625
+shader_parameter/s = 1.0000000475
+shader_parameter/v = 0.65
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c0ptk"]
 resource_local_to_scene = true
@@ -40,39 +52,76 @@ script = ExtResource("1_uf82o")
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="StandardButton" parent="." instance=ExtResource("2_lcnyd")]
+[node name="ButtonContainer" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
-offset_left = -565.0
-offset_right = -235.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(960, 540)
+theme_override_constants/separation = 0
+alignment = 1
 
-[node name="BgPanel" parent="StandardButton" index="0"]
+[node name="StandardButton" parent="ButtonContainer" instance=ExtResource("2_lcnyd")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="BgPanel" parent="ButtonContainer/StandardButton" index="0"]
 material = SubResource("ShaderMaterial_frs6w")
 
-[node name="DailyButton" parent="." instance=ExtResource("2_lcnyd")]
-layout_mode = 1
-offset_left = -165.0
-offset_right = 165.0
+[node name="Title" parent="ButtonContainer/StandardButton" index="2"]
+text = "Standards"
 
-[node name="BgPanel" parent="DailyButton" index="0"]
+[node name="DailyButton" parent="ButtonContainer" instance=ExtResource("2_lcnyd")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="BgPanel" parent="ButtonContainer/DailyButton" index="0"]
 material = SubResource("ShaderMaterial_oio0w")
 
-[node name="Icon" parent="DailyButton" index="1"]
-texture = ExtResource("4_c0ptk")
+[node name="Title" parent="ButtonContainer/DailyButton" index="2"]
+text = "Day Lee"
 
-[node name="CustomRunButton" parent="." instance=ExtResource("2_lcnyd")]
-layout_mode = 1
-offset_left = 235.0
-offset_right = 565.0
+[node name="BlitzButton" parent="ButtonContainer" instance=ExtResource("2_lcnyd")]
+unique_name_in_owner = true
+layout_mode = 2
 
-[node name="BgPanel" parent="CustomRunButton" index="0"]
+[node name="BgPanel" parent="ButtonContainer/BlitzButton" index="0"]
+material = SubResource("ShaderMaterial_d5ln6")
+
+[node name="Title" parent="ButtonContainer/BlitzButton" index="2"]
+text = "Le Blitz"
+
+[node name="DreadButton" parent="ButtonContainer" instance=ExtResource("2_lcnyd")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="BgPanel" parent="ButtonContainer/DreadButton" index="0"]
+material = SubResource("ShaderMaterial_c8a37")
+
+[node name="Title" parent="ButtonContainer/DreadButton" index="2"]
+text = "Hauntlet"
+
+[node name="Description" parent="ButtonContainer/DreadButton" index="3"]
+text = "Test your mettle... FOOLS"
+
+[node name="CustomRunButton" parent="ButtonContainer" instance=ExtResource("2_lcnyd")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="BgPanel" parent="ButtonContainer/CustomRunButton" index="0"]
 material = SubResource("ShaderMaterial_c0ptk")
 
-[node name="Icon" parent="CustomRunButton" index="1"]
-texture = ExtResource("4_oio0w")
+[node name="Title" parent="ButtonContainer/CustomRunButton" index="2"]
+text = "Custome"
 
 [node name="BackButton" parent="." instance=ExtResource("1_2uxv0")]
 layout_mode = 1
 
-[editable path="StandardButton"]
-[editable path="DailyButton"]
-[editable path="CustomRunButton"]
+[editable path="ButtonContainer/StandardButton"]
+[editable path="ButtonContainer/DailyButton"]
+[editable path="ButtonContainer/BlitzButton"]
+[editable path="ButtonContainer/DreadButton"]
+[editable path="ButtonContainer/CustomRunButton"]

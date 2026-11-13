@@ -30,6 +30,8 @@
   "COMBAT_REWARD_ADD_SPECIAL_CARD": "Nimm {Card} in dein Deck.",
   "COMBAT_REWARD_CARD_REMOVAL": "Entferne eine Karte aus deinem Deck.",
   "COMBAT_REWARD_CARD_REMOVAL.selectionScreenPrompt": "Wähle eine Karte, die du aus deinem Deck entfernst.",
+  "COMBAT_REWARD_CARD_UPGRADE": "Verbessere eine Karte.",
+  "COMBAT_REWARD_CARD_UPGRADE.selectionScreenPrompt": "Wähle eine Karte, die du verbesserst.",
   "COMBAT_REWARD_GOLD": "{gold} Gold",
   "COMBAT_REWARD_GOLD_STOLEN": "{gold} Gold (zurückgestohlen)",
   "COMBAT_REWARD_HEADER_LOOT": "Beute!",

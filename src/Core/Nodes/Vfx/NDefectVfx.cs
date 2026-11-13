@@ -1,6 +1,8 @@
 using Godot;
 using MegaCrit.Sts2.Core.Bindings.MegaSpine;
 
+namespace MegaCrit.Sts2.Core.Nodes.Vfx;
+
 public partial class NDefectVfx : Node
 {
 	private MegaSprite _megaSprite;

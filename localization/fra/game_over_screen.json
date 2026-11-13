@@ -48,10 +48,11 @@
   "SCORE.unlocksRemaining": "Encore à débloquer : {UnlockCount}",
   "SCORE_LINE.ascension": "Ascension : {AscensionLevel}",
   "SCORE_LINE.bossesSlain": "Boss vaincus : {BossCount}",
+  "SCORE_LINE.dread": "Effroi",
   "SCORE_LINE.elitesKilled": "Élites vaincus : {EliteCount}",
   "SCORE_LINE.floorsClimbed": "Étages gravis : {FloorCount}",
   "SCORE_LINE.goldGained": "Pièces d'or amassées : {GoldAmount}",
   "VICTORY_DAMAGE": "Vous avez infligé [green]{PlayerDamage:n()}[/green] dégâts à l'Architecte... mais cela n'a pas suffi...\nVous avez infligé un total de [green]{PersonalDamage:n()}[/green] dégâts à l'Architecte.\nL'Architecte vit encore malgré les [green]{TotalDamage:n()}[/green] dégâts qu'il a subis de tous ceux qui l'ont affronté.",
   "VICTORY_DAMAGE_LOCAL": "Vous avez infligé [green]{PlayerDamage:n()}[/green] dégâts à l'Architecte... mais cela n'a pas suffi...\nVous avez infligé un total de [green]{PersonalDamage:n()}[/green] dégâts à l'Architecte.",
-  "VICTORY_UNLOCKED_ASCENSION": "[blue]Ascension {AscensionLevel} débloquée ![/blue]"
+  "VICTORY_UNLOCKED_ASCENSION": "[blue]Ascension {IsMultiplayer:multijoueur|} {AscensionLevel} débloquée ![/blue]"
 }

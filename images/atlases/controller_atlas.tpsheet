@@ -20,7 +20,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "b3f9104dd3935045"
 				},
 				{
 					"filename": "ps4/b.png",
@@ -35,7 +36,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "e5b4e821768e1787"
 				},
 				{
 					"filename": "ps4/back.png",
@@ -50,7 +52,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "e49e6e6abedc6c95"
 				},
 				{
 					"filename": "ps4/down.png",
@@ -65,7 +68,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "d02d4acdd570321f"
 				},
 				{
 					"filename": "ps4/left.png",
@@ -80,7 +84,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "e34e6047074d011d"
 				},
 				{
 					"filename": "ps4/ls.png",
@@ -95,7 +100,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "5265d7e81d75e081"
 				},
 				{
 					"filename": "ps4/ls_down.png",
@@ -110,7 +116,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "771880253a230873"
 				},
 				{
 					"filename": "ps4/ls_left.png",
@@ -125,7 +132,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "8176ccc752191965"
 				},
 				{
 					"filename": "ps4/ls_right.png",
@@ -140,7 +148,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "8b4200b87b7123a8"
 				},
 				{
 					"filename": "ps4/ls_up.png",
@@ -155,7 +164,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "34353a2883da96e9"
 				},
 				{
 					"filename": "xbox_360/lb.png",
@@ -170,7 +180,8 @@
 						"y": 9,
 						"w": 0,
 						"h": 17
-					}
+					},
+					"pixel_hash": "65e6e3acef036f2e"
 				},
 				{
 					"filename": "ps4/right.png",
@@ -185,7 +196,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "b81363a499521361"
 				},
 				{
 					"filename": "ps4/rs.png",
@@ -200,7 +212,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "59206988da7cbeca"
 				},
 				{
 					"filename": "ps4/rs_down.png",
@@ -215,7 +228,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "0394324f764a2c96"
 				},
 				{
 					"filename": "ps4/rs_left.png",
@@ -230,7 +244,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "20052c3c82bfade5"
 				},
 				{
 					"filename": "ps4/rs_right.png",
@@ -245,7 +260,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "997038fd34af7ab7"
 				},
 				{
 					"filename": "ps4/rs_up.png",
@@ -260,7 +276,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "996ae1d167efb4e5"
 				},
 				{
 					"filename": "ps4/start.png",
@@ -275,7 +292,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "eef7407e0a016a59"
 				},
 				{
 					"filename": "ps4/up.png",
@@ -290,7 +308,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "636b484ee9c1efaf"
 				},
 				{
 					"filename": "ps4/x.png",
@@ -305,7 +324,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "54e437e065d5929f"
 				},
 				{
 					"filename": "ps4/y.png",
@@ -320,7 +340,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "97c0abcfd1f19044"
 				},
 				{
 					"filename": "steam/down.png",
@@ -335,7 +356,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "37729bdad8c00df9"
 				},
 				{
 					"filename": "steam/left.png",
@@ -350,7 +372,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "4288fd0c5ea98767"
 				},
 				{
 					"filename": "steam/right.png",
@@ -365,7 +388,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "27505443f7292d97"
 				},
 				{
 					"filename": "steam/up.png",
@@ -380,7 +404,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "eb24eb7fbbdf5bbc"
 				},
 				{
 					"filename": "switch/a.png",
@@ -395,7 +420,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "79fa91ef126f82af"
 				},
 				{
 					"filename": "switch/b.png",
@@ -410,7 +436,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "11c287ff1f7b0c86"
 				},
 				{
 					"filename": "switch/down.png",
@@ -425,7 +452,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "37729bdad8c00df9"
 				},
 				{
 					"filename": "switch/left.png",
@@ -440,7 +468,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "4288fd0c5ea98767"
 				},
 				{
 					"filename": "xbox_360/rb.png",
@@ -455,7 +484,8 @@
 						"y": 9,
 						"w": 0,
 						"h": 17
-					}
+					},
+					"pixel_hash": "df9b8254c1fb7a3b"
 				},
 				{
 					"filename": "switch/ls.png",
@@ -470,7 +500,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "35cc20c7ca49cbd0"
 				},
 				{
 					"filename": "switch/right.png",
@@ -485,7 +516,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "27505443f7292d97"
 				},
 				{
 					"filename": "switch/rs.png",
@@ -500,7 +532,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "2524940ff3b5f6f3"
 				},
 				{
 					"filename": "switch/up.png",
@@ -515,7 +548,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "eb24eb7fbbdf5bbc"
 				},
 				{
 					"filename": "switch/x.png",
@@ -530,7 +564,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "510e84f4e304e34f"
 				},
 				{
 					"filename": "switch/y.png",
@@ -545,7 +580,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "ef9b072c43513f3e"
 				},
 				{
 					"filename": "xbox_360/a.png",
@@ -560,7 +596,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "83930a7a1e58fec1"
 				},
 				{
 					"filename": "xbox_360/b.png",
@@ -575,7 +612,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "3afbd4cd89579702"
 				},
 				{
 					"filename": "xbox_360/down.png",
@@ -590,7 +628,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "a72d19d583fd267c"
 				},
 				{
 					"filename": "xbox_360/left.png",
@@ -605,7 +644,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "6f7c090eb973d86c"
 				},
 				{
 					"filename": "xbox_360/ls.png",
@@ -620,7 +660,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "4a4cc914c883bbd3"
 				},
 				{
 					"filename": "xbox_360/lt.png",
@@ -635,7 +676,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "5b08631e1ca98dc3"
 				},
 				{
 					"filename": "xbox_360/right.png",
@@ -650,7 +692,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "018580d8b0da3dce"
 				},
 				{
 					"filename": "xbox_360/rs.png",
@@ -665,7 +708,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "910d0259c4dd5b6a"
 				},
 				{
 					"filename": "xbox_360/rt.png",
@@ -680,7 +724,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "ae3efa90f41eefdc"
 				},
 				{
 					"filename": "xbox_360/up.png",
@@ -695,7 +740,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "3d663eed11765002"
 				},
 				{
 					"filename": "xbox_one/lb.png",
@@ -710,7 +756,8 @@
 						"y": 9,
 						"w": 0,
 						"h": 17
-					}
+					},
+					"pixel_hash": "cebf27202e24e30e"
 				},
 				{
 					"filename": "xbox_360/x.png",
@@ -725,7 +772,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "380c7ac1f0892301"
 				},
 				{
 					"filename": "xbox_360/y.png",
@@ -740,7 +788,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "b3087f35f124f933"
 				},
 				{
 					"filename": "xbox_one/a.png",
@@ -755,7 +804,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "d0a1121473ee7a85"
 				},
 				{
 					"filename": "xbox_one/b.png",
@@ -770,7 +820,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "52a24aed6ca39239"
 				},
 				{
 					"filename": "xbox_one/down.png",
@@ -785,7 +836,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "18309e893a174cbf"
 				},
 				{
 					"filename": "xbox_one/left.png",
@@ -800,7 +852,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "42e3671ea5c5edee"
 				},
 				{
 					"filename": "xbox_one/ls.png",
@@ -815,7 +868,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "fec90a736c8a4efc"
 				},
 				{
 					"filename": "xbox_one/lt.png",
@@ -830,7 +884,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "041637cc5fcc0d60"
 				},
 				{
 					"filename": "xbox_one/right.png",
@@ -845,7 +900,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "d53f0e81b8b91397"
 				},
 				{
 					"filename": "xbox_one/rs.png",
@@ -860,7 +916,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "e0d03d21ab4aa35f"
 				},
 				{
 					"filename": "xbox_one/rt.png",
@@ -875,7 +932,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "80c9c279b3d0eb2e"
 				},
 				{
 					"filename": "xbox_one/up.png",
@@ -890,7 +948,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "18a1a4dd93c9df0a"
 				},
 				{
 					"filename": "xbox_one/x.png",
@@ -905,7 +964,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "0c3d1c784da3246e"
 				},
 				{
 					"filename": "xbox_one/y.png",
@@ -920,7 +980,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "ffa59edbc30bb3be"
 				},
 				{
 					"filename": "xbox_one/rb.png",
@@ -935,7 +996,8 @@
 						"y": 9,
 						"w": 0,
 						"h": 17
-					}
+					},
+					"pixel_hash": "a8829b53b3acb54d"
 				},
 				{
 					"filename": "xbox_360/ls_left.png",
@@ -950,7 +1012,8 @@
 						"y": 1,
 						"w": 0,
 						"h": 2
-					}
+					},
+					"pixel_hash": "744f34c81a88e7d6"
 				},
 				{
 					"filename": "xbox_360/ls_right.png",
@@ -965,7 +1028,8 @@
 						"y": 1,
 						"w": 0,
 						"h": 2
-					}
+					},
+					"pixel_hash": "634a3c8ede29209a"
 				},
 				{
 					"filename": "xbox_360/rs_left.png",
@@ -980,7 +1044,8 @@
 						"y": 1,
 						"w": 0,
 						"h": 2
-					}
+					},
+					"pixel_hash": "dc07ffc670f31c45"
 				},
 				{
 					"filename": "xbox_360/rs_right.png",
@@ -995,7 +1060,8 @@
 						"y": 1,
 						"w": 0,
 						"h": 2
-					}
+					},
+					"pixel_hash": "85b080bfe8669b7a"
 				},
 				{
 					"filename": "xbox_one/ls_left.png",
@@ -1010,7 +1076,8 @@
 						"y": 1,
 						"w": 0,
 						"h": 2
-					}
+					},
+					"pixel_hash": "732826f5926108a9"
 				},
 				{
 					"filename": "xbox_one/ls_right.png",
@@ -1025,7 +1092,8 @@
 						"y": 1,
 						"w": 0,
 						"h": 2
-					}
+					},
+					"pixel_hash": "e20dc2cb8a90cad0"
 				},
 				{
 					"filename": "xbox_one/rs_left.png",
@@ -1040,7 +1108,8 @@
 						"y": 1,
 						"w": 0,
 						"h": 2
-					}
+					},
+					"pixel_hash": "fda0a5b4c536267f"
 				},
 				{
 					"filename": "xbox_one/rs_right.png",
@@ -1055,7 +1124,8 @@
 						"y": 1,
 						"w": 0,
 						"h": 2
-					}
+					},
+					"pixel_hash": "e18462b9b8236448"
 				},
 				{
 					"filename": "switch/lt.png",
@@ -1070,7 +1140,8 @@
 						"y": 1,
 						"w": 0,
 						"h": 3
-					}
+					},
+					"pixel_hash": "7f0ab9626500ee05"
 				},
 				{
 					"filename": "switch/rt.png",
@@ -1085,7 +1156,8 @@
 						"y": 1,
 						"w": 0,
 						"h": 3
-					}
+					},
+					"pixel_hash": "e74a41f12e4792e3"
 				},
 				{
 					"filename": "switch/ls_left.png",
@@ -1100,7 +1172,8 @@
 						"y": 2,
 						"w": 0,
 						"h": 4
-					}
+					},
+					"pixel_hash": "5d75e6a66f50cfe2"
 				},
 				{
 					"filename": "switch/ls_right.png",
@@ -1115,7 +1188,8 @@
 						"y": 2,
 						"w": 0,
 						"h": 4
-					}
+					},
+					"pixel_hash": "f7594b725bf84bd0"
 				},
 				{
 					"filename": "switch/rs_left.png",
@@ -1130,7 +1204,8 @@
 						"y": 2,
 						"w": 0,
 						"h": 4
-					}
+					},
+					"pixel_hash": "5f85d028eb283091"
 				},
 				{
 					"filename": "switch/rs_right.png",
@@ -1145,7 +1220,8 @@
 						"y": 2,
 						"w": 0,
 						"h": 4
-					}
+					},
+					"pixel_hash": "57ab87baf5c850a5"
 				},
 				{
 					"filename": "ps4/lb.png",
@@ -1160,7 +1236,8 @@
 						"y": 6,
 						"w": 0,
 						"h": 12
-					}
+					},
+					"pixel_hash": "4e70880f0d8930a4"
 				},
 				{
 					"filename": "ps4/rb.png",
@@ -1175,7 +1252,8 @@
 						"y": 6,
 						"w": 0,
 						"h": 12
-					}
+					},
+					"pixel_hash": "4b25937ed49b5b4c"
 				},
 				{
 					"filename": "ps4/touchpad.png",
@@ -1190,7 +1268,8 @@
 						"y": 6,
 						"w": 0,
 						"h": 12
-					}
+					},
+					"pixel_hash": "baafee144b49ad32"
 				},
 				{
 					"filename": "xbox_360/back.png",
@@ -1205,7 +1284,8 @@
 						"y": 4,
 						"w": 0,
 						"h": 12
-					}
+					},
+					"pixel_hash": "92f46b54b95be16d"
 				},
 				{
 					"filename": "xbox_360/start.png",
@@ -1220,7 +1300,8 @@
 						"y": 4,
 						"w": 0,
 						"h": 12
-					}
+					},
+					"pixel_hash": "5cca186a51ddadf1"
 				},
 				{
 					"filename": "steam/lb.png",
@@ -1235,7 +1316,8 @@
 						"y": 8,
 						"w": 0,
 						"h": 16
-					}
+					},
+					"pixel_hash": "1e53bf2dbb41e111"
 				},
 				{
 					"filename": "steam/rb.png",
@@ -1250,7 +1332,8 @@
 						"y": 8,
 						"w": 0,
 						"h": 16
-					}
+					},
+					"pixel_hash": "b8fc1ad5a296b4f7"
 				},
 				{
 					"filename": "xbox_360/ls_down.png",
@@ -1265,7 +1348,8 @@
 						"y": 0,
 						"w": 2,
 						"h": 0
-					}
+					},
+					"pixel_hash": "c58d10700d368084"
 				},
 				{
 					"filename": "xbox_360/ls_up.png",
@@ -1280,7 +1364,8 @@
 						"y": 0,
 						"w": 2,
 						"h": 0
-					}
+					},
+					"pixel_hash": "73a6e3ce5b767a21"
 				},
 				{
 					"filename": "xbox_360/rs_down.png",
@@ -1295,7 +1380,8 @@
 						"y": 0,
 						"w": 2,
 						"h": 0
-					}
+					},
+					"pixel_hash": "bd2011f7254fe270"
 				},
 				{
 					"filename": "xbox_360/rs_up.png",
@@ -1310,7 +1396,8 @@
 						"y": 0,
 						"w": 2,
 						"h": 0
-					}
+					},
+					"pixel_hash": "dea8f7a65d2bb596"
 				},
 				{
 					"filename": "xbox_one/ls_down.png",
@@ -1325,7 +1412,8 @@
 						"y": 0,
 						"w": 2,
 						"h": 0
-					}
+					},
+					"pixel_hash": "3c3ac6c9b5158e20"
 				},
 				{
 					"filename": "xbox_one/ls_up.png",
@@ -1340,7 +1428,8 @@
 						"y": 0,
 						"w": 2,
 						"h": 0
-					}
+					},
+					"pixel_hash": "03735f23f6f8b55a"
 				},
 				{
 					"filename": "xbox_one/rs_down.png",
@@ -1355,7 +1444,8 @@
 						"y": 0,
 						"w": 2,
 						"h": 0
-					}
+					},
+					"pixel_hash": "0c8cde4e91b7956d"
 				},
 				{
 					"filename": "xbox_one/rs_up.png",
@@ -1370,7 +1460,8 @@
 						"y": 0,
 						"w": 2,
 						"h": 0
-					}
+					},
+					"pixel_hash": "e2228344d897037e"
 				},
 				{
 					"filename": "ps4/lt.png",
@@ -1385,7 +1476,8 @@
 						"y": 0,
 						"w": 3,
 						"h": 0
-					}
+					},
+					"pixel_hash": "c47db36a9bb74291"
 				},
 				{
 					"filename": "ps4/rt.png",
@@ -1400,7 +1492,8 @@
 						"y": 0,
 						"w": 3,
 						"h": 0
-					}
+					},
+					"pixel_hash": "aac5291f2a506ba8"
 				},
 				{
 					"filename": "switch/ls_down.png",
@@ -1415,7 +1508,8 @@
 						"y": 0,
 						"w": 4,
 						"h": 0
-					}
+					},
+					"pixel_hash": "c0fb76a80984ba6f"
 				},
 				{
 					"filename": "steam/back.png",
@@ -1430,7 +1524,8 @@
 						"y": 8,
 						"w": 2,
 						"h": 16
-					}
+					},
+					"pixel_hash": "5cd59cd9b2bf7099"
 				},
 				{
 					"filename": "switch/ls_up.png",
@@ -1445,7 +1540,8 @@
 						"y": 0,
 						"w": 4,
 						"h": 0
-					}
+					},
+					"pixel_hash": "79f6600bdd39f327"
 				},
 				{
 					"filename": "switch/rs_down.png",
@@ -1460,7 +1556,8 @@
 						"y": 0,
 						"w": 4,
 						"h": 0
-					}
+					},
+					"pixel_hash": "4f1f0f94fcfa9bf3"
 				},
 				{
 					"filename": "switch/start.png",
@@ -1475,7 +1572,8 @@
 						"y": 2,
 						"w": 3,
 						"h": 3
-					}
+					},
+					"pixel_hash": "9f54306ba7f971d4"
 				},
 				{
 					"filename": "switch/rs_up.png",
@@ -1490,7 +1588,8 @@
 						"y": 0,
 						"w": 4,
 						"h": 0
-					}
+					},
+					"pixel_hash": "b2b8af80d647c708"
 				},
 				{
 					"filename": "steam/ls.png",
@@ -1505,7 +1604,8 @@
 						"y": 1,
 						"w": 2,
 						"h": 2
-					}
+					},
+					"pixel_hash": "355d28a2cc0c4645"
 				},
 				{
 					"filename": "switch/lb.png",
@@ -1520,7 +1620,8 @@
 						"y": 2,
 						"w": 2,
 						"h": 4
-					}
+					},
+					"pixel_hash": "292209944a22f4a9"
 				},
 				{
 					"filename": "xbox_one/back.png",
@@ -1535,7 +1636,8 @@
 						"y": 1,
 						"w": 2,
 						"h": 2
-					}
+					},
+					"pixel_hash": "a376f67d98f114b4"
 				},
 				{
 					"filename": "xbox_one/start.png",
@@ -1550,7 +1652,8 @@
 						"y": 1,
 						"w": 2,
 						"h": 2
-					}
+					},
+					"pixel_hash": "a6f9605044b01ecc"
 				},
 				{
 					"filename": "switch/rb.png",
@@ -1565,7 +1668,8 @@
 						"y": 2,
 						"w": 2,
 						"h": 4
-					}
+					},
+					"pixel_hash": "3cf05ac59d60f072"
 				},
 				{
 					"filename": "switch/back.png",
@@ -1580,7 +1684,8 @@
 						"y": 13,
 						"w": 3,
 						"h": 26
-					}
+					},
+					"pixel_hash": "f0d15c54b7d3f147"
 				},
 				{
 					"filename": "steam/a.png",
@@ -1595,7 +1700,8 @@
 						"y": 3,
 						"w": 6,
 						"h": 6
-					}
+					},
+					"pixel_hash": "f90d63b3c9fb8062"
 				},
 				{
 					"filename": "steam/b.png",
@@ -1610,7 +1716,8 @@
 						"y": 3,
 						"w": 6,
 						"h": 6
-					}
+					},
+					"pixel_hash": "c18ea36fd8268f2d"
 				},
 				{
 					"filename": "steam/x.png",
@@ -1625,7 +1732,8 @@
 						"y": 3,
 						"w": 6,
 						"h": 6
-					}
+					},
+					"pixel_hash": "54a97657477e7813"
 				},
 				{
 					"filename": "steam/y.png",
@@ -1640,7 +1748,8 @@
 						"y": 3,
 						"w": 6,
 						"h": 6
-					}
+					},
+					"pixel_hash": "dcea724ccf6b405d"
 				},
 				{
 					"filename": "steam/start.png",
@@ -1655,7 +1764,8 @@
 						"y": 8,
 						"w": 2,
 						"h": 16
-					}
+					},
+					"pixel_hash": "7f8abe6629c185e7"
 				},
 				{
 					"filename": "steam/rt.png",
@@ -1670,7 +1780,8 @@
 						"y": 5,
 						"w": 7,
 						"h": 9
-					}
+					},
+					"pixel_hash": "0e08dcebe799f8f3"
 				},
 				{
 					"filename": "steam/lt.png",
@@ -1685,7 +1796,8 @@
 						"y": 5,
 						"w": 8,
 						"h": 9
-					}
+					},
+					"pixel_hash": "db095646e5f320e5"
 				}
 			]
 		}

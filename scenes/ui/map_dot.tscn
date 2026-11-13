@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ky4h68aw28dk"]
 
-[ext_resource type="Texture2D" path="res://images/atlases/compressed.sprites/map/map_dot.tres" id="1_4ks8a"]
+[ext_resource type="Texture2D" uid="uid://yxo441" path="res://images/atlases/compressed_atlas.sprites/map_dot.tres" id="1_4ks8a"]
 
 [node name="PathDot" type="TextureRect"]
 anchors_preset = 8

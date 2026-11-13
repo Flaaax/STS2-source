@@ -1,5 +1,4 @@
 using Godot;
-using MegaCrit.Sts2.Core.Context;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Nodes.GodotExtensions;
@@ -15,8 +14,6 @@ public partial class NTopBarPortraitTip : NClickableControl
 {
 	private IHoverTip _hoverTip;
 
-	public bool ShowTip { get; private set; }
-
 	public override void _Ready()
 	{
 		ConnectSignals();
@@ -24,22 +21,13 @@ public partial class NTopBarPortraitTip : NClickableControl
 
 	public void Initialize(IRunState runState)
 	{
-		int ascensionLevel = runState.AscensionLevel;
-		bool flag = runState.GameMode.AreAchievementsAndEpochsLocked();
-		ShowTip = ascensionLevel > 0 || flag;
-		if (ShowTip)
-		{
-			_hoverTip = AscensionHelper.GetHoverTip(LocalContext.GetMe(runState).Character, ascensionLevel, flag);
-		}
-		base.FocusMode = (FocusModeEnum)(ShowTip ? 2 : 0);
+		_hoverTip = AscensionHelper.GetPortraitHoverTip(runState);
+		base.FocusMode = FocusModeEnum.All;
 	}
 
 	protected override void OnFocus()
 	{
-		if (ShowTip)
-		{
-			NHoverTipSet.CreateAndShow(this, _hoverTip)?.SetGlobalPosition(base.GlobalPosition + new Vector2(0f, base.Size.Y + 20f));
-		}
+		NHoverTipSet.CreateAndShow(this, _hoverTip)?.SetGlobalPosition(base.GlobalPosition + new Vector2(0f, base.Size.Y + 20f));
 	}
 
 	protected override void OnUnfocus()

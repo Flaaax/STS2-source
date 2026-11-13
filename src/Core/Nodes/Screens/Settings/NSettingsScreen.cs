@@ -37,7 +37,7 @@ public partial class NSettingsScreen : NSubmenu
 
 	private bool _isInRun;
 
-	public static readonly Vector2 settingTipsOffset = new Vector2(1012f, -60f);
+	private static readonly Vector2 _settingTipsOffset = new Vector2(1012f, -60f);
 
 	public static string[] AssetPaths => new string[2] { _scenePath, "res://images/ui/language_warning.png" };
 
@@ -51,9 +51,23 @@ public partial class NSettingsScreen : NSubmenu
 		_isInRun = isInRun;
 	}
 
+	/// <summary>
+	/// Where to put the hover tip for a settings line: just past the end of the line, which is its left side when the
+	/// screen is mirrored for a right-to-left language.
+	/// </summary>
+	public static Vector2 GetSettingTipPosition(Control settingsLine)
+	{
+		if (settingsLine.IsLayoutRtl())
+		{
+			return settingsLine.GlobalPosition + new Vector2(-360f, _settingTipsOffset.Y);
+		}
+		return settingsLine.GlobalPosition + _settingTipsOffset;
+	}
+
 	public override void _Ready()
 	{
 		ConnectSignals();
+		this.ApplyRtlLayout();
 		_settingsTabManager = GetNode<NSettingsTabManager>("%SettingsTabManager");
 		_feedbackScreenButton = GetNode<NOpenFeedbackScreenButton>("%FeedbackButton");
 		_moddingScreenButton = GetNode<NOpenModdingScreenButton>("%ModdingButton");

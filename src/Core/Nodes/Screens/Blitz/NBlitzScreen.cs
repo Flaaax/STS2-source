@@ -1,0 +1,779 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Godot;
+using MegaCrit.Sts2.addons.mega_text;
+using MegaCrit.Sts2.Core.Assets;
+using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.ControllerInput;
+using MegaCrit.Sts2.Core.Debug;
+using MegaCrit.Sts2.Core.Entities.Multiplayer;
+using MegaCrit.Sts2.Core.Entities.Players;
+using MegaCrit.Sts2.Core.Entities.UI;
+using MegaCrit.Sts2.Core.Helpers;
+using MegaCrit.Sts2.Core.Localization;
+using MegaCrit.Sts2.Core.Logging;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Multiplayer;
+using MegaCrit.Sts2.Core.Multiplayer.Game;
+using MegaCrit.Sts2.Core.Multiplayer.Game.Lobby;
+using MegaCrit.Sts2.Core.Multiplayer.Messages.Lobby;
+using MegaCrit.Sts2.Core.Nodes.Audio;
+using MegaCrit.Sts2.Core.Nodes.CommonUi;
+using MegaCrit.Sts2.Core.Nodes.Debug;
+using MegaCrit.Sts2.Core.Nodes.GodotExtensions;
+using MegaCrit.Sts2.Core.Nodes.Multiplayer;
+using MegaCrit.Sts2.Core.Nodes.Screens.CharacterSelect;
+using MegaCrit.Sts2.Core.Nodes.Screens.Dread;
+using MegaCrit.Sts2.Core.Nodes.Screens.MainMenu;
+using MegaCrit.Sts2.Core.Nodes.Vfx.Ui;
+using MegaCrit.Sts2.Core.Nodes.Vfx.Utilities;
+using MegaCrit.Sts2.Core.Platform;
+using MegaCrit.Sts2.Core.Runs;
+using MegaCrit.Sts2.Core.Saves;
+using MegaCrit.Sts2.Core.TestSupport;
+using MegaCrit.Sts2.Core.Unlocks;
+
+namespace MegaCrit.Sts2.Core.Nodes.Screens.Blitz;
+
+public partial class NBlitzScreen : NSubmenu, IStartRunLobbyListener, ICharacterSelectButtonDelegate
+{
+	private NBackButton _backButton;
+
+	private NConfirmButton _embarkButton;
+
+	private Control _underConstruction;
+
+	private Control _infoPanel;
+
+	private MegaLabel _name;
+
+	private MegaRichTextLabel _description;
+
+	private MegaLabel _hp;
+
+	private MegaLabel _gold;
+
+	private MegaRichTextLabel _relicTitle;
+
+	private MegaRichTextLabel _relicDescription;
+
+	private TextureRect _relicIcon;
+
+	private TextureRect _relicIconOutline;
+
+	private Tween? _infoPanelTween;
+
+	private Vector2 _infoPanelPosFinalVal;
+
+	private NCharacterSelectButton? _selectedButton;
+
+	private Control _bgContainer;
+
+	private Control _charButtonContainer;
+
+	private Control _readyAndWaitingContainer;
+
+	private NBackButton _unreadyButton;
+
+	private NCharacterSelectButton _randomCharacterButton;
+
+	private const string _sceneCharSelectButtonPath = "screens/char_select/char_select_button";
+
+	private NDreadInfoButton _infoButton;
+
+	private NAscensionPanel _ascensionPanel;
+
+	private NRemoteLobbyPlayerContainer _remotePlayerContainer;
+
+	private Control _characterUnlockAnimationBackstop;
+
+	private IBootstrapSettings? _settings;
+
+	private StartRunLobby _lobby;
+
+	public StartRunLobby Lobby => _lobby;
+
+	protected override Control InitialFocusedControl => _selectedButton ?? _charButtonContainer.GetChild<Control>(0);
+
+	public override void _Ready()
+	{
+		ConnectSignals();
+		_underConstruction = GetNode<Control>("%UnderConstruction");
+		_underConstruction.OffsetLeft = 24f;
+		_underConstruction.OffsetTop = 82f;
+		_infoPanel = GetNode<Control>("InfoPanel");
+		_name = GetNode<MegaLabel>("InfoPanel/VBoxContainer/Name");
+		_description = GetNode<MegaRichTextLabel>("InfoPanel/VBoxContainer/DescriptionLabel");
+		_hp = GetNode<MegaLabel>("InfoPanel/VBoxContainer/HpGoldSpacer/HpGold/Hp/Label");
+		_gold = GetNode<MegaLabel>("InfoPanel/VBoxContainer/HpGoldSpacer/HpGold/Gold/Label");
+		_relicTitle = GetNode<MegaRichTextLabel>("InfoPanel/VBoxContainer/Relic/Name/RichTextLabel");
+		_relicDescription = GetNode<MegaRichTextLabel>("InfoPanel/VBoxContainer/Relic/Description");
+		_relicIcon = GetNode<TextureRect>("InfoPanel/VBoxContainer/Relic/Icon");
+		_relicIconOutline = GetNode<TextureRect>("InfoPanel/VBoxContainer/Relic/Icon/Outline");
+		_bgContainer = GetNode<Control>("AnimatedBg");
+		_charButtonContainer = GetNode<Control>("CharSelectButtons/ButtonContainer");
+		_remotePlayerContainer = GetNode<NRemoteLobbyPlayerContainer>("RemotePlayerContainer");
+		_readyAndWaitingContainer = GetNode<Control>("ReadyAndWaitingPanel");
+		GetNode<MegaRichTextLabel>("%WaitingForPlayers").Text = new LocString("main_menu_ui", "CHARACTER_SELECT.waitingForPlayers").GetFormattedText();
+		_characterUnlockAnimationBackstop = GetNode<Control>("%CharacterUnlockAnimationBackstop");
+		_ascensionPanel = GetNode<NAscensionPanel>("%AscensionPanel");
+		_ascensionPanel.Connect(NAscensionPanel.SignalName.AscensionLevelChanged, Callable.From(OnAscensionPanelLevelChanged));
+		_backButton = GetNode<NBackButton>("BackButton");
+		_unreadyButton = GetNode<NBackButton>("UnreadyButton");
+		_embarkButton = GetNode<NConfirmButton>("ConfirmButton");
+		_embarkButton.OverrideHotkeys(new string[1] { MegaInput.select });
+		_embarkButton.Connect(NClickableControl.SignalName.Released, Callable.From<NButton>(OnEmbarkPressed));
+		_unreadyButton.Connect(NClickableControl.SignalName.Released, Callable.From<NButton>(OnUnreadyPressed));
+		_unreadyButton.Disable();
+		_infoButton = GetNode<NDreadInfoButton>("%BlitzInfoButton");
+		_infoButton.Connect(NClickableControl.SignalName.Released, Callable.From<NButton>(OpenBlitzInfo));
+		InitCharacterButtons();
+		Type type = BootstrapSettingsUtil.Get();
+		if (type != null)
+		{
+			_settings = (IBootstrapSettings)Activator.CreateInstance(type);
+			PreloadManager.Enabled = _settings.DoPreloading;
+		}
+	}
+
+	public void InitializeSingleplayer()
+	{
+		_lobby = new StartRunLobby(GameMode.Blitz, isCustom: false, new NetSingleplayerGameService(), this, 1);
+		_ascensionPanel.Initialize(MultiplayerUiMode.Singleplayer, GameMode.Blitz);
+		_lobby.AddLocalHostPlayer(new UnlockState(SaveManager.Instance.Progress), 0, SaveManager.Instance.Progress.MaxBlitzAscension);
+		OnAscensionPanelLevelChanged();
+		AfterInitialized();
+	}
+
+	public void InitializeMultiplayerAsHost(INetGameService gameService, int maxPlayers)
+	{
+		if (gameService.Type != NetGameType.Host)
+		{
+			throw new InvalidOperationException($"Initialized Blitz with GameService of type {gameService.Type} when hosting!");
+		}
+		_lobby = new StartRunLobby(GameMode.Blitz, isCustom: false, gameService, this, maxPlayers);
+		_ascensionPanel.Initialize(MultiplayerUiMode.Host, GameMode.Blitz);
+		_lobby.AddLocalHostPlayer(new UnlockState(SaveManager.Instance.Progress), SaveManager.Instance.Progress.MaxMultiplayerAscension, SaveManager.Instance.Progress.MaxBlitzAscension);
+		OnAscensionPanelLevelChanged();
+		AfterInitialized();
+	}
+
+	public void InitializeMultiplayerAsClient(INetGameService gameService, ClientLobbyJoinResponseMessage message)
+	{
+		if (gameService.Type != NetGameType.Client)
+		{
+			throw new InvalidOperationException($"Initialized Blitz with GameService of type {gameService.Type} when joining!");
+		}
+		_lobby = new StartRunLobby(GameMode.Blitz, isCustom: false, gameService, this, -1);
+		_ascensionPanel.Initialize(MultiplayerUiMode.Client, GameMode.Blitz);
+		_lobby.InitializeFromMessage(message);
+		AfterInitialized();
+	}
+
+	private void InitCharacterButtons()
+	{
+		foreach (CharacterModel allCharacter in ModelDb.AllCharacters)
+		{
+			NCharacterSelectButton nCharacterSelectButton = SceneHelper.Instantiate<NCharacterSelectButton>("screens/char_select/char_select_button");
+			_charButtonContainer.AddChildSafely(nCharacterSelectButton);
+			nCharacterSelectButton.Init(allCharacter, this);
+		}
+		_randomCharacterButton = SceneHelper.Instantiate<NCharacterSelectButton>("screens/char_select/char_select_button");
+		_charButtonContainer.AddChildSafely(_randomCharacterButton);
+		_randomCharacterButton.InitAsRandom(this);
+		UpdateRandomCharacterVisibility();
+		List<NCharacterSelectButton> list = (from c in _charButtonContainer.GetChildren().OfType<NCharacterSelectButton>()
+			where c.Visible
+			select c).ToList();
+		for (int num = 0; num < list.Count; num++)
+		{
+			list[num].FocusNeighborTop = list[num].GetPath();
+			list[num].FocusNeighborBottom = list[num].GetPath();
+			NCharacterSelectButton nCharacterSelectButton2 = list[num];
+			NodePath path;
+			if (num <= 0)
+			{
+				path = list[list.Count - 1].GetPath();
+			}
+			else
+			{
+				path = list[num - 1].GetPath();
+			}
+			nCharacterSelectButton2.FocusNeighborLeft = path;
+			list[num].FocusNeighborRight = ((num < list.Count - 1) ? list[num + 1].GetPath() : list[0].GetPath());
+		}
+	}
+
+	private void UpdateRandomCharacterVisibility()
+	{
+		if (_lobby == null)
+		{
+			return;
+		}
+		bool visible = false;
+		foreach (StartRunLobbyPlayer player in _lobby.Players)
+		{
+			UnlockState unlockState = UnlockState.FromSerializable(player.unlockState);
+			bool flag = true;
+			foreach (CharacterModel allCharacter in ModelDb.AllCharacters)
+			{
+				if (!unlockState.Characters.Contains(allCharacter))
+				{
+					flag = false;
+					break;
+				}
+			}
+			if (flag)
+			{
+				visible = true;
+				break;
+			}
+		}
+		_randomCharacterButton.Visible = visible;
+	}
+
+	public override void OnSubmenuOpened()
+	{
+		base.OnSubmenuOpened();
+		foreach (NCharacterSelectButton item in _charButtonContainer.GetChildren().OfType<NCharacterSelectButton>())
+		{
+			if (!item.IsLocked)
+			{
+				item.Enable();
+			}
+			else
+			{
+				item.UnlockIfPossible();
+			}
+			item.Reset();
+		}
+		_embarkButton.Enable();
+		if (SaveManager.Instance.Progress.PendingCharacterUnlock == ModelId.none)
+		{
+			(GetPreferredCharacterButton() ?? _charButtonContainer.GetChild<NCharacterSelectButton>(0)).Select();
+		}
+		else
+		{
+			TaskHelper.RunSafely(PlayUnlockCharacterAnimation(SaveManager.Instance.Progress.PendingCharacterUnlock));
+		}
+		_remotePlayerContainer.Visible = _lobby.NetService.Type != NetGameType.Singleplayer;
+		_remotePlayerContainer.Initialize(_lobby, displayLocalPlayer: true);
+		if (_lobby.NetService.Type == NetGameType.Client)
+		{
+			_ascensionPanel.SetAscensionLevel(_lobby.Ascension);
+		}
+		_readyAndWaitingContainer.Visible = false;
+		_underConstruction.Visible = !_remotePlayerContainer.Visible;
+		foreach (StartRunLobbyPlayer player in _lobby.Players)
+		{
+			RefreshButtonSelectionForPlayer(player);
+		}
+	}
+
+	private async Task PlayUnlockCharacterAnimation(ModelId character)
+	{
+		await this.AwaitProcessFrame();
+		_backButton.Disable();
+		_embarkButton.Disable();
+		_infoPanel.Visible = false;
+		_characterUnlockAnimationBackstop.Visible = true;
+		foreach (NCharacterSelectButton button in _charButtonContainer.GetChildren().OfType<NCharacterSelectButton>())
+		{
+			if (button.Character.Id == character)
+			{
+				button.LockForAnimation();
+				await Cmd.Wait(0.3f);
+				await button.AnimateUnlock();
+				button.Select();
+			}
+		}
+		_infoPanel.Visible = true;
+		_characterUnlockAnimationBackstop.Visible = false;
+		_backButton.Enable();
+		_embarkButton.Enable();
+		SaveManager.Instance.Progress.PendingCharacterUnlock = ModelId.none;
+	}
+
+	/// <summary>
+	/// Returns the button for the character we last embarked with in Blitz. Singleplayer and multiplayer are tracked
+	/// separately. Returns null if there is no preference or the preferred character isn't selectable.
+	/// </summary>
+	private NCharacterSelectButton? GetPreferredCharacterButton()
+	{
+		ModelId preferredCharacterId = ((_lobby.NetService.Type == NetGameType.Singleplayer) ? SaveManager.Instance.Progress.PreferredBlitzCharacter : SaveManager.Instance.Progress.PreferredMultiplayerBlitzCharacter);
+		if (preferredCharacterId == ModelId.none)
+		{
+			return null;
+		}
+		return _charButtonContainer.GetChildren().OfType<NCharacterSelectButton>().FirstOrDefault((NCharacterSelectButton button) => !button.IsLocked && button.Visible && button.Character.Id == preferredCharacterId);
+	}
+
+	/// <summary>
+	/// Saves the character the local player is embarking with so that it's selected the next time this screen opens.
+	/// If the player chose the random character button, we remember that rather than the character it rolled.
+	/// </summary>
+	private void UpdatePreferredBlitzCharacter()
+	{
+		if (_selectedButton == null)
+		{
+			return;
+		}
+		ModelId id = _selectedButton.Character.Id;
+		ProgressState progress = SaveManager.Instance.Progress;
+		if (_lobby.NetService.Type == NetGameType.Singleplayer)
+		{
+			if (progress.PreferredBlitzCharacter == id)
+			{
+				return;
+			}
+			Log.Info($"Setting preferred Blitz character to {id}");
+			progress.PreferredBlitzCharacter = id;
+		}
+		else
+		{
+			if (progress.PreferredMultiplayerBlitzCharacter == id)
+			{
+				return;
+			}
+			Log.Info($"Setting preferred multiplayer Blitz character to {id}");
+			progress.PreferredMultiplayerBlitzCharacter = id;
+		}
+		SaveManager.Instance.SaveProgressFile();
+	}
+
+	public override void OnSubmenuClosed()
+	{
+		base.OnSubmenuClosed();
+		_embarkButton.Disable();
+		_remotePlayerContainer.Cleanup();
+		_ascensionPanel.Cleanup();
+		if (_lobby.NetService.Type.IsMultiplayer())
+		{
+			PlatformUtil.SetRichPresence("MAIN_MENU", null, null);
+		}
+		CleanUpLobby(disconnectSession: true);
+	}
+
+	private void OnEmbarkPressed(NButton _)
+	{
+		_embarkButton.Disable();
+		_lobby.SetReady(ready: true);
+		foreach (NCharacterSelectButton item in _charButtonContainer.GetChildren().OfType<NCharacterSelectButton>())
+		{
+			item.Disable();
+		}
+		_backButton.Disable();
+		if (_lobby.NetService.Type.IsMultiplayer() && !_lobby.IsAboutToBeginGame())
+		{
+			_readyAndWaitingContainer.Visible = true;
+			_unreadyButton.Enable();
+		}
+	}
+
+	public override void _Process(double delta)
+	{
+		if (_lobby != null && _lobby.NetService.IsConnected)
+		{
+			_lobby.NetService.Update();
+		}
+	}
+
+	private void CleanUpLobby(bool disconnectSession, NetError error = NetError.Quit)
+	{
+		_lobby.PlayerFailedToConnect -= RemoteClientFailedToConnectToLocalHost;
+		_lobby.CleanUp(disconnectSession, error);
+		_lobby = null;
+	}
+
+	/// <summary>
+	/// Upon embarking with RandomCharacter selected, we roll a random character which changes the character select
+	/// background, so delay a little bit
+	/// </summary>
+	private async Task DoRandomCharacterChange(Player player)
+	{
+		NGame.Instance?.ScreenShake(ShakeStrength.Weak, ShakeDuration.Short, 90f);
+		SfxCmd.Play(player.Character.CharacterSelectSfx);
+		Control child = PreloadManager.Cache.GetScene(player.Character.CharacterSelectBg).Instantiate<Control>(PackedScene.GenEditState.Disabled);
+		_bgContainer.AddChildSafely(child);
+		await Cmd.Wait(1f);
+	}
+
+	private async Task StartNewSingleplayerRun(string seed, List<ActModel> acts)
+	{
+		Log.Info($"Embarking on a singleplayer {_lobby.LocalPlayer.character.Id.Entry} run. Ascension: {_lobby.Ascension} Seed: {seed}");
+		int ascensionToEmbark = _lobby.Ascension;
+		Player player = _lobby.GeneratePlayers(seed)[0];
+		if (_randomCharacterButton.IsSelected)
+		{
+			await DoRandomCharacterChange(player);
+		}
+		try
+		{
+			SfxCmd.Play(player.Character.CharacterTransitionSfx);
+			await NGame.Instance.Transition.FadeOut(0.8f, player.Character.CharacterSelectTransitionPath);
+			await NGame.Instance.StartNewSingleplayerRun(player, shouldSave: true, acts, Array.Empty<ModifierModel>(), seed, GameMode.Blitz, isCustomGame: false, ascensionToEmbark);
+		}
+		catch (Exception ex)
+		{
+			Log.Error($"Exception starting singleplayer run : {ex}");
+			CleanUpLobby(disconnectSession: true, NetError.InternalError);
+			await NGame.Instance.ReturnToMainMenuWithInternalError(ex);
+			return;
+		}
+		CleanUpLobby(disconnectSession: false);
+	}
+
+	private async Task StartNewMultiplayerRun(string seed, List<ActModel> acts)
+	{
+		Log.Info($"Embarking on a multiplayer blitz. Players: {string.Join(",", _lobby.Players)}. Ascension: {_lobby.Ascension} Seed: {seed}");
+		List<Player> players = _lobby.GeneratePlayers(seed);
+		Player localPlayer = players.First((Player p) => p.NetId == _lobby.LocalPlayer.id);
+		if (_randomCharacterButton.IsSelected)
+		{
+			await DoRandomCharacterChange(localPlayer);
+		}
+		SfxCmd.Play(localPlayer.Character.CharacterTransitionSfx);
+		await NGame.Instance.Transition.FadeOut(0.8f, localPlayer.Character.CharacterSelectTransitionPath);
+		if (Bootstrapper.Settings?.BootstrapInMultiplayer ?? false)
+		{
+			using (new NetLoadingHandle(_lobby.NetService))
+			{
+				Bootstrapper bootstrapper = new Bootstrapper().WithActs(acts).WithPlayers(players).WithRunManagerSetup(delegate(RunState r, bool s)
+				{
+					RunManager.Instance.SetUpNewMultiplayer(r, _lobby, s);
+				})
+					.WithSeed(seed);
+				try
+				{
+					await bootstrapper.SetupRun();
+				}
+				catch (Exception ex)
+				{
+					Log.Error($"Exception starting bootstrap multiplayer run : {ex}");
+					CleanUpLobby(disconnectSession: true, NetError.InternalError);
+					await NGame.Instance.ReturnToMainMenuWithInternalError(ex);
+					return;
+				}
+				CleanUpLobby(disconnectSession: false);
+				await bootstrapper.EnterFirstRoom();
+			}
+		}
+		else
+		{
+			try
+			{
+				await NGame.Instance.StartNewMultiplayerRun(players, _lobby, shouldSave: true, acts, Array.Empty<ModifierModel>(), seed, _lobby.Ascension);
+			}
+			catch (Exception ex2)
+			{
+				Log.Error($"Exception starting multiplayer run : {ex2}");
+				CleanUpLobby(disconnectSession: true, NetError.InternalError);
+				await NGame.Instance.ReturnToMainMenuWithInternalError(ex2);
+				return;
+			}
+			CleanUpLobby(disconnectSession: false);
+		}
+	}
+
+	private void RemoteClientFailedToConnectToLocalHost(ulong sender, NetErrorInfo info)
+	{
+		bool showReportBugButton;
+		string formattedText = NErrorPopup.LocStringFromNetError(info, out showReportBugButton).GetFormattedText();
+		LocString locString = new LocString("main_menu_ui", "NETWORK_ERROR.HOST.PREFIX.body");
+		locString.Add("playerName", PlatformUtil.GetPlayerName(_lobby.NetService.Platform, sender));
+		locString.Add("info", formattedText);
+		this.AddChildSafely(NFailedJoinVfx.Create(locString.GetFormattedText()));
+	}
+
+	/// <summary>
+	/// Called when the player selects a Character! Also called when you open the character select screen.
+	/// </summary>
+	public void SelectCharacter(NCharacterSelectButton charSelectButton)
+	{
+		CharacterModel character = charSelectButton.Character;
+		if (!charSelectButton.IsRandom)
+		{
+			SfxCmd.Play(character.CharacterSelectSfx);
+		}
+		NGame.Instance?.ScreenShake(ShakeStrength.Weak, ShakeDuration.Short, 90f);
+		if (_infoPanelTween != null)
+		{
+			_infoPanel.Position = _infoPanelPosFinalVal;
+		}
+		_infoPanelPosFinalVal = _infoPanel.Position;
+		_infoPanelTween?.Kill();
+		_infoPanelTween = CreateTween().SetParallel();
+		_infoPanelTween.TweenProperty(_infoPanel, "position", _infoPanel.Position, 0.5).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Expo)
+			.From(_infoPanel.Position - new Vector2(300f, 0f));
+		foreach (Node child in _bgContainer.GetChildren())
+		{
+			_bgContainer.RemoveChildSafely(child);
+			child.QueueFreeSafely();
+		}
+		_selectedButton = charSelectButton;
+		if (!charSelectButton.IsLocked)
+		{
+			_embarkButton.Enable();
+			Control control = PreloadManager.Cache.GetScene(character.CharacterSelectBg).Instantiate<Control>(PackedScene.GenEditState.Disabled);
+			control.Name = character.Id.Entry + "_bg";
+			_bgContainer.AddChildSafely(control);
+			string formattedText = new LocString("characters", character.CharacterSelectTitle).GetFormattedText();
+			_name.SetTextAutoSize(formattedText);
+			_description.Text = new LocString("characters", character.CharacterSelectDesc).GetFormattedText();
+			if (!_selectedButton.IsRandom)
+			{
+				_hp.SetTextAutoSize($"{character.StartingHp}/{character.StartingHp}");
+				_gold.SetTextAutoSize($"{character.StartingGold}");
+				RelicModel relicModel = character.StartingRelics[0];
+				_relicTitle.Text = relicModel.Title.GetFormattedText();
+				_relicDescription.Text = relicModel.DynamicDescription.GetFormattedText();
+				_relicIcon.Texture = relicModel.Icon;
+				_relicIconOutline.Texture = relicModel.IconOutline;
+				_relicIcon.SelfModulate = Colors.White;
+				_relicIconOutline.SelfModulate = StsColors.halfTransparentBlack;
+			}
+			else
+			{
+				_hp.SetTextAutoSize("??/??");
+				_gold.SetTextAutoSize("???");
+				_relicIcon.SelfModulate = StsColors.transparentBlack;
+				_relicIconOutline.SelfModulate = StsColors.transparentBlack;
+				_relicTitle.Text = string.Empty;
+				_relicDescription.Text = string.Empty;
+			}
+			_lobby.SetLocalCharacter(character);
+			if (!_lobby.NetService.Type.IsMultiplayer())
+			{
+				_ascensionPanel.AnimIn();
+			}
+		}
+		else
+		{
+			_embarkButton.Disable();
+			string formattedText2 = new LocString("main_menu_ui", "CHARACTER_SELECT.locked.title").GetFormattedText();
+			_name.SetTextAutoSize(formattedText2);
+			_description.Text = character.GetUnlockText().GetFormattedText();
+			_hp.SetTextAutoSize("??/??");
+			_gold.SetTextAutoSize("???");
+			if (!_selectedButton.IsRandom)
+			{
+				RelicModel relicModel2 = character.StartingRelics[0];
+				_relicTitle.Text = new LocString("main_menu_ui", "CHARACTER_SELECT.lockedRelic.title").GetFormattedText();
+				_relicDescription.Text = new LocString("main_menu_ui", "CHARACTER_SELECT.lockedRelic.description").GetFormattedText();
+				_relicIcon.Texture = relicModel2.Icon;
+				_relicIconOutline.Texture = relicModel2.IconOutline;
+				_relicIcon.SelfModulate = StsColors.ninetyPercentBlack;
+				_relicIconOutline.SelfModulate = StsColors.halfTransparentWhite;
+			}
+			else
+			{
+				_relicIcon.SelfModulate = StsColors.transparentBlack;
+				_relicIconOutline.SelfModulate = StsColors.transparentBlack;
+				_relicTitle.Text = string.Empty;
+				_relicDescription.Text = string.Empty;
+			}
+			_ascensionPanel.Visible = false;
+		}
+		foreach (NCharacterSelectButton item in _charButtonContainer.GetChildren().OfType<NCharacterSelectButton>())
+		{
+			if (item != _selectedButton)
+			{
+				item.Deselect();
+			}
+		}
+	}
+
+	/// <summary>
+	/// Called when the ascension is changed from the ascension panel.
+	/// When the host hits the left and right arrow, we want to send the ascension change to clients.
+	/// On the clients, this is called when the ascension sync message is received, but we don't want to do anything.
+	/// </summary>
+	private void OnAscensionPanelLevelChanged()
+	{
+		if (_lobby.NetService.Type != NetGameType.Client && _lobby.Ascension != _ascensionPanel.Ascension)
+		{
+			_lobby.SyncAscensionChange(_ascensionPanel.Ascension);
+		}
+	}
+
+	/// <summary>
+	/// Called when the player presses the unready button in multiplayer. You can't unready in singleplayer.
+	/// </summary>
+	private void OnUnreadyPressed(NButton _)
+	{
+		_lobby.SetReady(ready: false);
+		foreach (NCharacterSelectButton item in _charButtonContainer.GetChildren().OfType<NCharacterSelectButton>())
+		{
+			item.Enable();
+		}
+		_selectedButton?.TryGrabFocus();
+		_readyAndWaitingContainer.Visible = false;
+		_embarkButton.Enable();
+		_backButton.Enable();
+		_unreadyButton.Disable();
+	}
+
+	private void OpenBlitzInfo(NButton _)
+	{
+		this.AddChildSafely(NBlitzInfoDisclaimer.Create(isDelayedOpen: false));
+	}
+
+	private void UpdateRichPresence()
+	{
+		if (_lobby.NetService.Type.IsMultiplayer())
+		{
+			PlatformUtil.SetRichPresence("BLITZ_MP_LOBBY", _lobby.NetService.GetRawLobbyIdentifier(), _lobby.Players.Count);
+		}
+	}
+
+	/// <summary>
+	/// Called when another player joins with a max ascension level lower than the current one.
+	/// Also called when the lobby is first initialized.
+	/// Also called in singleplayer if choosing a character changes the max ascension.
+	/// Called on both host and client.
+	/// </summary>
+	public void MaxAscensionChanged()
+	{
+		_ascensionPanel.SetMaxAscension(_lobby.MaxAscension);
+	}
+
+	public void PlayerConnected(StartRunLobbyPlayer player)
+	{
+		_remotePlayerContainer.OnPlayerConnected(player);
+		RefreshButtonSelectionForPlayer(player);
+		UpdateRichPresence();
+		UpdateRandomCharacterVisibility();
+	}
+
+	public void PlayerChanged(StartRunLobbyPlayer player)
+	{
+		_remotePlayerContainer.OnPlayerChanged(player);
+		RefreshButtonSelectionForPlayer(player);
+	}
+
+	private void RefreshButtonSelectionForPlayer(StartRunLobbyPlayer player)
+	{
+		if (player.id == _lobby.LocalPlayer.id)
+		{
+			return;
+		}
+		foreach (NCharacterSelectButton item in _charButtonContainer.GetChildren().OfType<NCharacterSelectButton>())
+		{
+			if (item.RemoteSelectedPlayers.Contains(player.id) && player.character != item.Character)
+			{
+				item.OnRemotePlayerDeselected(player.id);
+			}
+			else if (player.character == item.Character)
+			{
+				item.OnRemotePlayerSelected(player.id);
+			}
+		}
+	}
+
+	public void AscensionChanged()
+	{
+		_ascensionPanel.SetAscensionLevel(_lobby.Ascension);
+	}
+
+	public void SeedChanged()
+	{
+		throw new NotImplementedException("Seed should not be changed in Blitz!");
+	}
+
+	public void ModifiersChanged()
+	{
+		throw new NotImplementedException("Modifiers should not be changed in Blitz!");
+	}
+
+	public void GameModeChanged()
+	{
+		throw new NotImplementedException("Game mode should not be changed in Blitz!");
+	}
+
+	public void RemotePlayerDisconnected(StartRunLobbyPlayer player)
+	{
+		_remotePlayerContainer.OnPlayerDisconnected(player);
+		foreach (NCharacterSelectButton item in _charButtonContainer.GetChildren().OfType<NCharacterSelectButton>())
+		{
+			if (item.RemoteSelectedPlayers.Contains(player.id) && player.character == item.Character)
+			{
+				item.OnRemotePlayerDeselected(player.id);
+			}
+		}
+		UpdateRichPresence();
+		UpdateRandomCharacterVisibility();
+	}
+
+	public void BeginRun(string seed, List<ActModel> acts, IReadOnlyList<ModifierModel> modifiers)
+	{
+		if (modifiers.Count > 0)
+		{
+			Log.Error("Modifiers list is not empty while starting a Blitz, ignoring!");
+		}
+		NAudioManager.Instance?.StopMusic();
+		_ascensionPanel.Cleanup();
+		_ascensionPanel.Disable();
+		_embarkButton.Disable();
+		_unreadyButton.Disable();
+		UpdatePreferredBlitzCharacter();
+		if (_lobby.NetService.Type == NetGameType.Singleplayer)
+		{
+			TaskHelper.RunSafely(StartNewSingleplayerRun(seed, acts));
+		}
+		else
+		{
+			TaskHelper.RunSafely(StartNewMultiplayerRun(seed, acts));
+		}
+	}
+
+	public void LocalPlayerDisconnected(NetErrorInfo info)
+	{
+		if ((info.SelfInitiated && info.GetReason() == NetError.Quit) || !this.IsValid() || _stack == null)
+		{
+			return;
+		}
+		if (_stack.Peek() == this)
+		{
+			_stack.Pop();
+		}
+		if (TestMode.IsOff)
+		{
+			NErrorPopup nErrorPopup = NErrorPopup.Create(info);
+			if (nErrorPopup != null)
+			{
+				NModalContainer.Instance.Add(nErrorPopup);
+			}
+		}
+	}
+
+	private void AfterInitialized()
+	{
+		NGame.Instance.RemoteCursorContainer.Initialize(_lobby.InputSynchronizer, _lobby.Players.Select((StartRunLobbyPlayer p) => p.id));
+		NGame.Instance.ReactionContainer.InitializeNetworking(_lobby.NetService);
+		NGame.Instance.TimeoutOverlay.Initialize(_lobby.NetService, isGameLevel: true);
+		_lobby.PlayerFailedToConnect += RemoteClientFailedToConnectToLocalHost;
+		UpdateRichPresence();
+		UpdateRandomCharacterVisibility();
+		MegaCrit.Sts2.Core.Logging.Logger.logLevelTypeMap[LogType.Network] = ((_lobby.NetService.Type == NetGameType.Singleplayer) ? LogLevel.Info : LogLevel.Debug);
+		MegaCrit.Sts2.Core.Logging.Logger.logLevelTypeMap[LogType.Actions] = ((_lobby.NetService.Type == NetGameType.Singleplayer) ? LogLevel.Info : LogLevel.VeryDebug);
+		MegaCrit.Sts2.Core.Logging.Logger.logLevelTypeMap[LogType.GameSync] = ((_lobby.NetService.Type == NetGameType.Singleplayer) ? LogLevel.Info : LogLevel.VeryDebug);
+		if (_lobby.NetService.Type != NetGameType.Singleplayer)
+		{
+			IBootstrapSettings? settings = _settings;
+			if (settings != null && settings.BootstrapInMultiplayer)
+			{
+				NGame.Instance.DebugSeedOverride = _settings.Seed;
+				goto IL_0150;
+			}
+		}
+		NGame.Instance.DebugSeedOverride = null;
+		goto IL_0150;
+		IL_0150:
+		if (!SaveManager.Instance.SeenPopup("blitz_disclaimer"))
+		{
+			this.AddChildSafely(NBlitzInfoDisclaimer.Create(isDelayedOpen: true));
+		}
+	}
+}

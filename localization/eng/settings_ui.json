@@ -92,7 +92,7 @@
   "INPUT_SETTINGS.RESET_TO_DEFAULT": "Reset to Default",
   "INPUT_SETTINGS.STEAM_INPUT_DETECTED": "[green][b]Steam Input Detected![/b][/green] Controller remapping disabled.\n[blue](Use Steam's Controller Configurator)[/blue]",
   "INPUT_SETTINGS.STEAM_INPUT_NOT_DETECTED": "[red][b]Steam Input NOT detected![/b][/red] Controller remapping enabled.",
-  "KEYBOARD_ONLY_MODE_DESCRIPTION": "Allows you to play the game without a mouse, just the keyboard! This also displays hotkeys in the UI.\n\nPress any arrow key to enter Keyboard-Only Mode.\nRecommended for laptop users.",
+  "KEYBOARD_ONLY_MODE_DESCRIPTION": "Allows you to play the game without a mouse, just the keyboard! This also displays hotkeys in the UI.\n\nPress any directional key to enter Keyboard-Only Mode.\nRecommended for laptop users.",
   "KEYBOARD_ONLY_MODE_DISABLED": "Keyboard-Only Mode: OFF",
   "KEYBOARD_ONLY_MODE_ENABLED": "Keyboard-Only Mode: ON",
   "KEYBOARD_ONLY_MODE_HEADER": "Keyboard-Only Mode",

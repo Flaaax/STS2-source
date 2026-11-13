@@ -1,0 +1,9 @@
+{
+  "TO_DISCARD": "اختر {Amount:plural:بطاقة واحدة|{} بطاقات} للتخلص منها.",
+  "TO_ENCHANT": "اختر {Amount:plural:بطاقة واحدة|{} بطاقات} لتعزيزها.",
+  "TO_EXHAUST": "اختر {Amount:plural:بطاقة واحدة|{} بطاقات} لاستهلاكها.",
+  "TO_REMOVE": "اختر {Amount:plural:بطاقة واحدة|{} بطاقات} لإزالتها.",
+  "TO_TRANSFORM": "اختر {Amount:plural:بطاقة واحدة|{} بطاقات} لتحويلها.",
+  "TO_UPGRADE": "اختر {Amount:plural:بطاقة واحدة|{} بطاقات} لترقيتها.",
+  "VIEW_UPGRADES": "عرض الترقيات"
+}

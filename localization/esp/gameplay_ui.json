@@ -30,6 +30,8 @@
   "COMBAT_REWARD_ADD_SPECIAL_CARD": "Suma {Card} a tu mazo.",
   "COMBAT_REWARD_CARD_REMOVAL": "Quita una carta de tu mazo.",
   "COMBAT_REWARD_CARD_REMOVAL.selectionScreenPrompt": "Elige una carta para quitarla de tu mazo.",
+  "COMBAT_REWARD_CARD_UPGRADE": "Mejoras una carta.",
+  "COMBAT_REWARD_CARD_UPGRADE.selectionScreenPrompt": "Elige una carta para mejorar.",
   "COMBAT_REWARD_GOLD": "{gold} de oro",
   "COMBAT_REWARD_GOLD_STOLEN": "{gold} de oro (recuperado)",
   "COMBAT_REWARD_HEADER_LOOT": "¡Botín!",

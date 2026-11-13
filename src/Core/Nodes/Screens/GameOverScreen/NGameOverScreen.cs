@@ -11,6 +11,7 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Context;
 using MegaCrit.Sts2.Core.Entities.Multiplayer;
 using MegaCrit.Sts2.Core.Entities.Players;
+using MegaCrit.Sts2.Core.Entities.Save;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Logging;
@@ -45,7 +46,7 @@ public partial class NGameOverScreen : NClickableControl, IOverlayScreen, IScree
 
 	private RunState _runState;
 
-	private SerializableRun _serializableRun;
+	private PostRunProgressUpdateResult _result;
 
 	private RunHistory _history;
 
@@ -144,7 +145,7 @@ public partial class NGameOverScreen : NClickableControl, IOverlayScreen, IScree
 		{
 			Win = win
 		};
-		_score = ScoreUtility.CalculateScore(_serializableRun, _history.Win);
+		_score = ScoreUtility.CalculateScore(_result.run, _history.Win);
 		_uiNode = GetNode<Control>("%Ui");
 		_continueButton = GetNode<NGameOverContinueButton>("%ContinueButton");
 		_continueButton.Connect(NClickableControl.SignalName.Released, Callable.From<NButton>(OpenSummaryScreen));
@@ -214,12 +215,12 @@ public partial class NGameOverScreen : NClickableControl, IOverlayScreen, IScree
 			locString.Add("PlayerDamage", _score);
 			locString.Add("PersonalDamage", personalArchitectDamage);
 			stringBuilder.Append(locString.GetFormattedText());
-			int ascensionLevel = _runState.AscensionLevel;
-			if (ascensionLevel < 10 && ascensionLevel > 0 && _runState.AscensionLevel >= _localPlayer.MaxAscensionWhenRunStarted && _runState.GameMode == GameMode.Standard)
+			if (_result.newMaxAscension > _result.oldMaxAscension && (_result.oldMaxAscension > 0 || !_result.isSingleplayer) && !GameModeHelper.AreAchievementsAndEpochsLockedForRun(_runState))
 			{
 				stringBuilder.Append("\n\n");
 				LocString locString2 = new LocString("game_over_screen", "VICTORY_UNLOCKED_ASCENSION");
 				locString2.Add("AscensionLevel", _runState.AscensionLevel + 1);
+				locString2.Add("IsMultiplayer", !_result.isSingleplayer);
 				stringBuilder.Append(locString2.GetFormattedText());
 			}
 			_victoryDamageLabel.Text = stringBuilder.ToString();
@@ -242,7 +243,7 @@ public partial class NGameOverScreen : NClickableControl, IOverlayScreen, IScree
 			_quoteTween?.Kill();
 			_quoteTween = CreateTween();
 			_quoteTween.TweenProperty(_deathQuote, "modulate:a", 0f, 0.25);
-			if (!(await _quoteTween.AwaitFinished(this)))
+			if (await _quoteTween.AwaitFinished(this) != TweenOutcome.Finished)
 			{
 				return;
 			}
@@ -273,7 +274,7 @@ public partial class NGameOverScreen : NClickableControl, IOverlayScreen, IScree
 	/// Create an instance of this screen.
 	/// Null if we're in test mode.
 	/// </summary>
-	public static NGameOverScreen? Create(RunState runState, SerializableRun serializableRun)
+	public static NGameOverScreen? Create(RunState runState, PostRunProgressUpdateResult result)
 	{
 		if (TestMode.IsOn)
 		{
@@ -281,7 +282,7 @@ public partial class NGameOverScreen : NClickableControl, IOverlayScreen, IScree
 		}
 		NGameOverScreen nGameOverScreen = PreloadManager.Cache.GetScene(ScenePath).Instantiate<NGameOverScreen>(PackedScene.GenEditState.Disabled);
 		nGameOverScreen._runState = runState;
-		nGameOverScreen._serializableRun = serializableRun;
+		nGameOverScreen._result = result;
 		nGameOverScreen._localPlayer = LocalContext.GetMe(runState);
 		return nGameOverScreen;
 	}
@@ -353,24 +354,35 @@ public partial class NGameOverScreen : NClickableControl, IOverlayScreen, IScree
 
 	private async Task AnimateScoreLines()
 	{
+		SerializableRun run = _result.run;
 		_scoreLines.Clear();
-		AddScoreLine("SCORE_LINE.floorsClimbed", "FloorCount", _runState.TotalFloor, $"+{ScoreUtility.GetScoreForFloor(_serializableRun.MapPointHistory)}", "res://images/ui/game_over_screen/score_floor.png");
-		int amount = _serializableRun.MapPointHistory.SelectMany((List<MapPointHistoryEntry> actEntries) => actEntries).Sum((MapPointHistoryEntry e) => e.GetEntry(_localPlayer.NetId).GoldGained);
-		AddScoreLine("SCORE_LINE.goldGained", "GoldAmount", amount, $"+{ScoreUtility.GetScoreForGoldGained(_serializableRun.MapPointHistory, _serializableRun.Players.Count)}", "res://images/ui/game_over_screen/score_gold.png");
-		int elitesKilledCount = ScoreUtility.GetElitesKilledCount(_serializableRun.MapPointHistory);
+		AddScoreLine("SCORE_LINE.floorsClimbed", "FloorCount", _runState.TotalFloor, $"+{ScoreUtility.GetScoreForFloor(run.MapPointHistory)}", "res://images/ui/game_over_screen/score_floor.png");
+		if (run.GameMode != GameMode.Blitz)
+		{
+			int amount = run.MapPointHistory.SelectMany((List<MapPointHistoryEntry> actEntries) => actEntries).Sum((MapPointHistoryEntry e) => e.GetEntry(_localPlayer.NetId).GoldGained);
+			AddScoreLine("SCORE_LINE.goldGained", "GoldAmount", amount, $"+{ScoreUtility.GetScoreForGoldGained(run.MapPointHistory, run.Players.Count)}", "res://images/ui/game_over_screen/score_gold.png");
+		}
+		int elitesKilledCount = ScoreUtility.GetElitesKilledCount(run.MapPointHistory);
 		if (elitesKilledCount > 0)
 		{
 			AddScoreLine("SCORE_LINE.elitesKilled", "EliteCount", elitesKilledCount, $"+{ScoreUtility.GetScoreForElitesKilled(elitesKilledCount)}", "res://images/ui/game_over_screen/score_elite.png");
 		}
-		int bossesSlainCount = ScoreUtility.GetBossesSlainCount(_serializableRun.MapPointHistory, _history.Win);
+		int bossesSlainCount = ScoreUtility.GetBossesSlainCount(run.MapPointHistory, _history.Win);
 		if (bossesSlainCount > 0)
 		{
 			AddScoreLine("SCORE_LINE.bossesSlain", "BossCount", bossesSlainCount, $"+{ScoreUtility.GetScoreForBossesSlain(bossesSlainCount)}", "res://images/ui/game_over_screen/score_boss.png");
 		}
-		int ascension = _history.Ascension;
-		if (ascension > 0)
+		if (run.GameMode == GameMode.Dread)
 		{
-			AddScoreLine("SCORE_LINE.ascension", "AscensionLevel", ascension, "x" + GetAscensionMulti(ascension), "res://images/ui/game_over_screen/score_ascension.png");
+			AddScoreLine("SCORE_LINE.dread", null, 0, "x3", "res://images/ui/game_over_screen/score_dread.png");
+		}
+		else
+		{
+			int ascension = _history.Ascension;
+			if (ascension > 0)
+			{
+				AddScoreLine("SCORE_LINE.ascension", "AscensionLevel", ascension, "x" + GetAscensionMulti(ascension), "res://images/ui/game_over_screen/score_ascension.png");
+			}
 		}
 		foreach (NScoreLine scoreLine in _scoreLines)
 		{
@@ -381,12 +393,13 @@ public partial class NGameOverScreen : NClickableControl, IOverlayScreen, IScree
 
 	private async Task AnimateBadges()
 	{
-		List<Badge> badges = ScoreUtility.GetBadges(_serializableRun, _localPlayer.NetId, _history.Win);
+		SerializableRun run = _result.run;
+		List<Badge> badges = ScoreUtility.GetBadges(run, _localPlayer.NetId, _history.Win);
 		foreach (Badge item in badges)
 		{
 			_badgeContainer.AddChildSafely(NBadge.Create(item));
 		}
-		if (!_serializableRun.GameMode.AreAchievementsAndEpochsLocked())
+		if (!GameModeHelper.AreAchievementsAndEpochsLockedForSerializableRun(run))
 		{
 			SaveBadgesToProgress(badges);
 			SaveManager.Instance.SaveProgressFile();
@@ -457,7 +470,7 @@ public partial class NGameOverScreen : NClickableControl, IOverlayScreen, IScree
 			_scoreFg.Scale = new Vector2((float)currentScore / (float)_scoreThreshold, 1f);
 			Tween scoreTween = CreateTween();
 			scoreTween.TweenProperty(_scoreBar, "modulate:a", 1f, 0.3);
-			if (!(await scoreTween.AwaitFinished(this)))
+			if (await scoreTween.AwaitFinished(this) != TweenOutcome.Finished)
 			{
 				return;
 			}
@@ -478,7 +491,7 @@ public partial class NGameOverScreen : NClickableControl, IOverlayScreen, IScree
 				scoreTween.TweenCallback(Callable.From(PlayUnlockSfx));
 				scoreTween.TweenProperty(node, "modulate:a", 1f, 0.25);
 				scoreTween.TweenProperty(node, "position:y", -60f, 0.25).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Spring);
-				if (!(await scoreTween.AwaitFinished(this)))
+				if (await scoreTween.AwaitFinished(this) != TweenOutcome.Finished)
 				{
 					return;
 				}
@@ -487,7 +500,7 @@ public partial class NGameOverScreen : NClickableControl, IOverlayScreen, IScree
 				{
 					NGame.Instance.AddChildSafely(NGainEpochVfx.Create(epochModel));
 					_localPlayer.DiscoveredEpochs.Add(epochModel.Id);
-					LocalContext.GetMe(_serializableRun).DiscoveredEpochs.Add(epochModel.Id);
+					LocalContext.GetMe(_result.run).DiscoveredEpochs.Add(epochModel.Id);
 				}
 				LocString locString2 = new LocString("game_over_screen", "SCORE.unlocksRemaining");
 				locString2.Add("UnlockCount", unlocksRemaining - 1);
@@ -533,7 +546,7 @@ public partial class NGameOverScreen : NClickableControl, IOverlayScreen, IScree
 						scoreTween.TweenProperty(_scoreFg, "scale:x", (float)currentScore / (float)newThreshold, 1.0).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic)
 							.From(0f);
 					}
-					if (await scoreTween.AwaitFinished(this))
+					if (await scoreTween.AwaitFinished(this) == TweenOutcome.Finished)
 					{
 					}
 				}
@@ -731,7 +744,7 @@ public partial class NGameOverScreen : NClickableControl, IOverlayScreen, IScree
 		foreach (NCreature item2 in list2)
 		{
 			item2.AnimHideIntent();
-			item2.AnimDisableUi();
+			item2.AnimateOutStateDisplay();
 		}
 		foreach (NCreatureVisuals item3 in list)
 		{
@@ -764,13 +777,13 @@ public partial class NGameOverScreen : NClickableControl, IOverlayScreen, IScree
 		}
 		Variant shaderParameter = _backstopMaterial.GetShaderParameter(_threshold);
 		backstopTween.TweenMethod(Callable.From<float>(UpdateBackstopMaterial), shaderParameter, 1f, 1.5).SetEase(Tween.EaseType.InOut).SetTrans(Tween.TransitionType.Sine);
-		if (await backstopTween.AwaitFinished(this))
+		if (await backstopTween.AwaitFinished(this) == TweenOutcome.Finished)
 		{
 			_banner.AnimateIn();
 			backstopTween.Kill();
 			Tween tween = CreateTween();
 			tween.TweenProperty(_uiNode, "modulate:a", 1f, 0.25);
-			if (await tween.AwaitFinished(this))
+			if (await tween.AwaitFinished(this) == TweenOutcome.Finished)
 			{
 				TaskHelper.RunSafely(AnimateInQuote());
 				_continueButton.Enable();
@@ -802,8 +815,6 @@ public partial class NGameOverScreen : NClickableControl, IOverlayScreen, IScree
 	/// <summary>
 	/// Little helper function that creates the x1.1 sort of string for the Score Line.
 	/// </summary>
-	/// <param name="ascension"></param>
-	/// <returns></returns>
 	private string GetAscensionMulti(int ascension)
 	{
 		int value = ascension / 10 + 1;

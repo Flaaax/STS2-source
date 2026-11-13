@@ -5,7 +5,7 @@
 [ext_resource type="FontVariation" uid="uid://cfurftqxyn4mn" path="res://themes/kreon_regular_glyph_space_one.tres" id="3_l11io"]
 [ext_resource type="Texture2D" path="res://images/atlases/ui_atlas.sprites/top_bar/top_bar_ascension.tres" id="3_rmbib"]
 [ext_resource type="Script" uid="uid://dtfio45agppyj" path="res://addons/mega_text/MegaLabel.cs" id="4_bgfi8"]
-[ext_resource type="Texture2D" path="res://images/atlases/compressed.sprites/confirm_button_tick.tres" id="6_l11io"]
+[ext_resource type="Texture2D" uid="uid://yqkcb4" path="res://images/atlases/compressed_atlas.sprites/confirm_button_tick.tres" id="6_l11io"]
 
 [node name="CharacterContainer" type="Control"]
 unique_name_in_owner = true

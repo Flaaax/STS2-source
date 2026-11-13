@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.Assets;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Helpers;
+using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Nodes.Combat;
 using MegaCrit.Sts2.Core.Nodes.GodotExtensions;
 using MegaCrit.Sts2.Core.Nodes.Vfx.Utilities;
@@ -39,7 +40,7 @@ public partial class NSpeechBubbleVfx : Control
 
 	private const string _path = "res://scenes/vfx/vfx_speech_bubble.tscn";
 
-	private Tween? _tween;
+	private readonly OwnerFreeingTween _tween;
 
 	private const float _spawnProportionToTopOfHitbox = 0.75f;
 
@@ -64,6 +65,11 @@ public partial class NSpeechBubbleVfx : Control
 	public static IEnumerable<string> AssetPaths => new global::_003C_003Ez__ReadOnlySingleElementList<string>("res://scenes/vfx/vfx_speech_bubble.tscn");
 
 	public double SecondsToDisplay { get; private set; }
+
+	public NSpeechBubbleVfx()
+	{
+		_tween = new OwnerFreeingTween(this);
+	}
 
 	/// <summary>
 	/// Creates a speech bubble given a creature. Use this when you want creatures to talk during combat!
@@ -107,6 +113,7 @@ public partial class NSpeechBubbleVfx : Control
 		_shadow = GetNode<Sprite2D>("%Shadow");
 		_container = GetNode<Control>("%Container");
 		_label = GetNode<MegaRichTextLabel>("%Text");
+		_label.ApplyRtlText();
 		_hsv = (ShaderMaterial)_bubble.Material;
 		SetSpeechBubbleColor();
 		base.GlobalPosition = _startPos;
@@ -127,6 +134,11 @@ public partial class NSpeechBubbleVfx : Control
 			_hsv.SetShaderParameter(_h, 0.05f);
 			_hsv.SetShaderParameter(_s, 1.3f);
 			_hsv.SetShaderParameter(_v, 0.55f);
+			break;
+		case VfxColor.Fool:
+			_hsv.SetShaderParameter(_h, 0.58f);
+			_hsv.SetShaderParameter(_s, 1.1f);
+			_hsv.SetShaderParameter(_v, 0.5f);
 			break;
 		case VfxColor.Green:
 			_hsv.SetShaderParameter(_h, 0.8f);
@@ -171,41 +183,39 @@ public partial class NSpeechBubbleVfx : Control
 		}
 	}
 
-	public override void _ExitTree()
+	private Task AnimateSpeechBubble()
 	{
-		_tween?.Kill();
-	}
-
-	private async Task AnimateSpeechBubble()
-	{
-		_tween = CreateTween().SetParallel();
 		float value = 60f * ((_side == DialogueSide.Left) ? (-1f) : 1f);
 		_label.Text = $"[center][fly_in offset_x={value} offset_y=40]{_text}[/fly_in][/center]";
-		_tween.TweenProperty(this, "modulate:a", 1f, 0.4).From(0f);
-		_tween.TweenProperty(_label, "visible_ratio", 1f, 0.4).From(0f);
-		_tween.TweenProperty(_bubble, "scale", new Vector2(0.75f, 0.75f), 0.5).From(new Vector2(0.25f, 0.25f)).SetEase(Tween.EaseType.Out)
-			.SetTrans(Tween.TransitionType.Expo);
-		_tween.TweenProperty(this, "rotation_degrees", 0f, 0.3).From(7f).SetEase(Tween.EaseType.Out)
-			.SetTrans(Tween.TransitionType.Sine);
-		_tween.Chain();
-		double time = Math.Max(SecondsToDisplay - 1.0, 1.0);
-		_tween.TweenInterval(time);
-		_tween.Chain();
-		await AnimOutInternal();
+		return _tween.Play(delegate(Tween tween)
+		{
+			tween.SetParallel();
+			tween.TweenProperty(this, "modulate:a", 1f, 0.4).From(0f);
+			tween.TweenProperty(_label, "visible_ratio", 1f, 0.4).From(0f);
+			tween.TweenProperty(_bubble, "scale", new Vector2(0.75f, 0.75f), 0.5).From(new Vector2(0.25f, 0.25f)).SetEase(Tween.EaseType.Out)
+				.SetTrans(Tween.TransitionType.Expo);
+			tween.TweenProperty(this, "rotation_degrees", 0f, 0.3).From(7f).SetEase(Tween.EaseType.Out)
+				.SetTrans(Tween.TransitionType.Sine);
+			tween.Chain();
+			double time = Math.Max(SecondsToDisplay - 1.0, 1.0);
+			tween.TweenInterval(time);
+			tween.Chain();
+			AddFadeOut(tween);
+		});
 	}
 
-	public async Task AnimOut()
+	public Task AnimOut()
 	{
-		_tween?.Kill();
-		_tween = CreateTween().SetParallel();
-		await AnimOutInternal();
+		return _tween.Play(delegate(Tween tween)
+		{
+			tween.SetParallel();
+			AddFadeOut(tween);
+		});
 	}
 
-	private async Task AnimOutInternal()
+	private void AddFadeOut(Tween tween)
 	{
-		_tween.TweenProperty(this, "modulate", StsColors.transparentBlack, 0.4).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Sine);
-		await _tween.AwaitFinished(this);
-		this.QueueFreeSafely();
+		tween.TweenProperty(this, "modulate", StsColors.transparentBlack, 0.4).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Sine);
 	}
 
 	private static NSpeechBubbleVfx CreateInternal(string text, DialogueSide side, double secondsToDisplay)

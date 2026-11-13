@@ -12,6 +12,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Extensions;
 using MegaCrit.Sts2.Core.Helpers;
+using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.Cards;
 using MegaCrit.Sts2.Core.Nodes.Cards.Holders;
@@ -287,6 +288,20 @@ public partial class NPlayerHand : Control
 	/// </summary>
 	public NHandCardHolder Add(NCard card, int index = -1)
 	{
+		foreach (NHandCardHolder item in Holders.Concat(_holdersAwaitingQueue))
+		{
+			if (item.CardNode == card)
+			{
+				Log.Error($"Tried to add duplicate card {card.Model} to hand! Holder already exists which has the same node. Ignoring.");
+				return item;
+			}
+			if (item.CardNode?.Model == card.Model)
+			{
+				Log.Error($"Tried to add duplicate card {card.Model} to hand! Holder already exists which has the same backing model. Freeing the new node.");
+				card.QueueFreeSafely();
+				return item;
+			}
+		}
 		Vector2 globalPosition = card.GlobalPosition;
 		NHandCardHolder nHandCardHolder = NHandCardHolder.Create(card, this);
 		AddCardHolder(nHandCardHolder, index);
@@ -538,9 +553,9 @@ public partial class NPlayerHand : Control
 		}
 		if (flag)
 		{
-			bool flag2 = me == null || !state.Players.Except(new global::_003C_003Ez__ReadOnlySingleElementList<Player>(me)).All(CombatManager.Instance.IsPlayerReadyToEndTurn);
-			bool flag3 = state.CurrentSide == CombatSide.Enemy;
-			if (flag3 || flag2)
+			bool flag2 = me != null && state.Players.Except(new global::_003C_003Ez__ReadOnlySingleElementList<Player>(me)).All(CombatManager.Instance.IsPlayerReadyToEndTurn);
+			bool flag3 = RunManager.Instance.ActionQueueSet.AreAnyPlayerDrivenActionsBeingExecuted(excludeEndOfTurn: true);
+			if (state.CurrentSide == CombatSide.Enemy || !flag2 || flag3)
 			{
 				AnimDisable();
 			}
@@ -986,7 +1001,6 @@ public partial class NPlayerHand : Control
 			_animEnableTween.TweenProperty(this, "modulate", Colors.White, 0.2).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);
 			_isDisabled = false;
 			EnableControllerNavigation();
-			DefaultFocusedControl.TryGrabFocus();
 		}
 	}
 
@@ -1041,17 +1055,30 @@ public partial class NPlayerHand : Control
 		{
 			_currentCardPlay.Holder.FocusMode = FocusModeEnum.All;
 		}
+		Viewport viewport = GetViewport();
+		if (viewport != null && viewport.GuiGetFocusOwner() == CardHolderContainer)
+		{
+			DefaultFocusedControl.TryGrabFocus();
+		}
 	}
 
 	public void DisableControllerNavigation()
 	{
+		bool flag = false;
+		Viewport viewport = GetViewport();
 		foreach (NHandCardHolder holder in Holders)
 		{
+			flag |= viewport != null && viewport.GuiGetFocusOwner() == holder;
 			holder.FocusMode = FocusModeEnum.None;
 		}
 		if (InCardPlay)
 		{
+			flag |= viewport != null && viewport.GuiGetFocusOwner() == _currentCardPlay.Holder;
 			_currentCardPlay.Holder.FocusMode = FocusModeEnum.None;
+		}
+		if (flag)
+		{
+			CardHolderContainer.TryGrabFocus();
 		}
 	}
 

@@ -1,4 +1,5 @@
 {
+  "TO_ABSORB": "Pilih {Amount:choose(1):sebuah kartu|[blue]{}[/blue] kartu} untuk [gold]Diserap[/gold].",
   "TO_DISCARD": "Pilih {Amount:choose(1):sebuah kartu|[blue]{}[/blue] kartu} untuk di [gold]Singkirkan[/gold].",
   "TO_ENCHANT": "Pilih {Amount:choose(1):sebuah kartu|[blue]{}[/blue] kartu} untuk di tambah [purple]efek[/purple].",
   "TO_EXHAUST": "Pilih {Amount:choose(1):sebuah kartu|[blue]{}[/blue] kartu} untuk di [gold]Hanguskan[/gold].",

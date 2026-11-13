@@ -5,6 +5,11 @@ using Godot;
 
 namespace MegaCrit.Sts2.Core.Logging;
 
+/// <summary>
+/// This log printer is used when the game is launched from the Godot editor. It prints logs with color codes which
+/// would normally make the logs hard to read if viewed raw outside the Godot editor. It also uses reflection
+/// for each method which would incur a performance penalty if used in a production build.
+/// </summary>
 public class EditorLogPrinter : ILogPrinter
 {
 	private static string GetColorCode(LogLevel level)

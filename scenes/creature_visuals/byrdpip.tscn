@@ -9,14 +9,14 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="Visuals" type="SpineSprite" parent="."]
-unique_name_in_owner = true
-position = Vector2(0, -18)
-scale = Vector2(0.25, 0.25)
 skeleton_data_res = ExtResource("2_7trqt")
 preview_skin = "default"
 preview_animation = "idle_loop"
 preview_frame = false
 preview_time = 0.0
+unique_name_in_owner = true
+position = Vector2(0, -18)
+scale = Vector2(0.18, 0.18)
 
 [node name="Bounds" type="Control" parent="."]
 unique_name_in_owner = true

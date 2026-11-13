@@ -1,4 +1,5 @@
 {
+  "TO_ABSORB": "[gold]Özümlemek[/gold] için {Amount:plural:bir kart|[blue]{}[/blue] kart} seç.",
   "TO_DISCARD": "[gold]El'inden çıkarmak[/gold] için {Amount:plural:kart|[blue]{}[/blue] kart} seç.",
   "TO_ENCHANT": "[purple]Büyülemek[/purple] için {Amount:plural:kart|[blue]{}[/blue] kart} seç.",
   "TO_EXHAUST": "[gold]Tüketmek[/gold] için {Amount:plural:kart|[blue]{}[/blue] kart} seç.",

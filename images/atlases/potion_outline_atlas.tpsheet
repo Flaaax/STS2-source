@@ -4,7 +4,7 @@
       "image": "potion_outline_atlas.png",
       "size": {
         "w": 164,
-        "h": 2615
+        "h": 2770
       },
       "sprites": [
         {
@@ -20,7 +20,8 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "142a74c7e761ac45"
         },
         {
           "filename": "ashwater.png",
@@ -35,7 +36,8 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "39a8bef3f23fc51b"
         },
         {
           "filename": "attack_potion.png",
@@ -50,7 +52,8 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "7b7c286fbdd08c18"
         },
         {
           "filename": "beetle_juice.png",
@@ -65,7 +68,8 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "51ccbf27cdc0ee14"
         },
         {
           "filename": "bone_brew.png",
@@ -80,7 +84,8 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "1b17dae05dc83030"
         },
         {
           "filename": "bottled_potential.png",
@@ -95,10 +100,11 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "85bc678ffcaa89a7"
         },
         {
-          "filename": "colorless_potion.png",
+          "filename": "bottled_song.png",
           "region": {
             "x": 1,
             "y": 247,
@@ -110,10 +116,11 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "f5cc658232c8b879"
         },
         {
-          "filename": "cosmic_concoction.png",
+          "filename": "colorless_potion.png",
           "region": {
             "x": 83,
             "y": 247,
@@ -125,13 +132,46 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "ff2a0d368160bffc"
+        },
+        {
+          "filename": "cosmic_concoction.png",
+          "region": {
+            "x": 1,
+            "y": 329,
+            "w": 80,
+            "h": 80
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "d3e2dc3855d783e5"
+        },
+        {
+          "filename": "crystalline_euphoria.png",
+          "region": {
+            "x": 83,
+            "y": 329,
+            "w": 80,
+            "h": 80
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "c510f0dabd40f764"
         },
         {
           "filename": "distilled_chaos.png",
           "region": {
             "x": 1,
-            "y": 329,
+            "y": 411,
             "w": 80,
             "h": 80
           },
@@ -140,13 +180,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "0bc34df4db08db24"
         },
         {
           "filename": "droplet_of_precognition.png",
           "region": {
             "x": 83,
-            "y": 329,
+            "y": 411,
             "w": 80,
             "h": 80
           },
@@ -155,13 +196,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "d1a8928162c769d8"
         },
         {
           "filename": "duplicator.png",
           "region": {
             "x": 1,
-            "y": 411,
+            "y": 493,
             "w": 80,
             "h": 80
           },
@@ -170,13 +212,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "710ecbcaeb84dac9"
         },
         {
           "filename": "energy_potion.png",
           "region": {
             "x": 83,
-            "y": 411,
+            "y": 493,
             "w": 80,
             "h": 80
           },
@@ -185,13 +228,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "3f4e8e5898319456"
         },
         {
           "filename": "fairy_in_a_bottle.png",
           "region": {
             "x": 1,
-            "y": 493,
+            "y": 575,
             "w": 80,
             "h": 80
           },
@@ -200,13 +244,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "88a0fc935f21d15d"
         },
         {
           "filename": "fire_potion.png",
           "region": {
             "x": 83,
-            "y": 493,
+            "y": 575,
             "w": 80,
             "h": 80
           },
@@ -215,13 +260,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "1c92fa2121cfdcea"
         },
         {
           "filename": "ghost_in_a_jar.png",
           "region": {
             "x": 1,
-            "y": 575,
+            "y": 657,
             "w": 80,
             "h": 80
           },
@@ -230,13 +276,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "b609743e0abfb983"
         },
         {
           "filename": "gigantification_potion.png",
           "region": {
             "x": 83,
-            "y": 575,
+            "y": 657,
             "w": 80,
             "h": 80
           },
@@ -245,13 +292,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "3a677bceba8ea53b"
         },
         {
           "filename": "heart_of_iron.png",
           "region": {
             "x": 1,
-            "y": 657,
+            "y": 739,
             "w": 80,
             "h": 80
           },
@@ -260,13 +308,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "a3ac2bf84013b1d8"
         },
         {
           "filename": "kings_courage.png",
           "region": {
             "x": 83,
-            "y": 657,
+            "y": 739,
             "w": 80,
             "h": 80
           },
@@ -275,13 +324,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "6a8fe088874eef6b"
         },
         {
           "filename": "orobic_acid.png",
           "region": {
             "x": 1,
-            "y": 739,
+            "y": 821,
             "w": 80,
             "h": 80
           },
@@ -290,13 +340,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "ada878a6efe72302"
         },
         {
           "filename": "poison_potion.png",
           "region": {
             "x": 83,
-            "y": 739,
+            "y": 821,
             "w": 80,
             "h": 80
           },
@@ -305,13 +356,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "81202d712a56407b"
         },
         {
           "filename": "pot_of_ghouls.png",
           "region": {
             "x": 1,
-            "y": 821,
+            "y": 903,
             "w": 80,
             "h": 80
           },
@@ -320,13 +372,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "e1278b65bf1951ed"
         },
         {
           "filename": "potion_of_binding.png",
           "region": {
             "x": 83,
-            "y": 821,
+            "y": 903,
             "w": 80,
             "h": 80
           },
@@ -335,13 +388,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "a3092858a53026ef"
         },
         {
           "filename": "potion_of_capacity.png",
           "region": {
             "x": 1,
-            "y": 903,
+            "y": 985,
             "w": 80,
             "h": 80
           },
@@ -350,13 +404,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "66ea79a7151ff930"
         },
         {
           "filename": "potion_shaped_rock.png",
           "region": {
             "x": 83,
-            "y": 903,
+            "y": 985,
             "w": 80,
             "h": 80
           },
@@ -365,13 +420,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "f7c03e0270fec900"
         },
         {
           "filename": "power_potion.png",
           "region": {
             "x": 1,
-            "y": 985,
+            "y": 1067,
             "w": 80,
             "h": 80
           },
@@ -380,13 +436,30 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "7b7c286fbdd08c18"
+        },
+        {
+          "filename": "precision_potion.png",
+          "region": {
+            "x": 83,
+            "y": 1067,
+            "w": 80,
+            "h": 80
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          },
+          "pixel_hash": "6f93b7c3d5b3a32a"
         },
         {
           "filename": "radiant_tincture.png",
           "region": {
-            "x": 83,
-            "y": 985,
+            "x": 1,
+            "y": 1149,
             "w": 80,
             "h": 80
           },
@@ -395,13 +468,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "f401b038e22acc41"
         },
         {
           "filename": "regen_potion.png",
           "region": {
-            "x": 1,
-            "y": 1067,
+            "x": 83,
+            "y": 1149,
             "w": 80,
             "h": 80
           },
@@ -410,13 +484,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "03abb2ccd9521085"
         },
         {
           "filename": "shackling_potion.png",
           "region": {
-            "x": 83,
-            "y": 1067,
+            "x": 1,
+            "y": 1231,
             "w": 80,
             "h": 80
           },
@@ -425,13 +500,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "fd35359e54b3b68c"
         },
         {
           "filename": "ship_in_a_bottle.png",
           "region": {
-            "x": 1,
-            "y": 1149,
+            "x": 83,
+            "y": 1231,
             "w": 80,
             "h": 80
           },
@@ -440,13 +516,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "87ddea22cbb015b8"
         },
         {
           "filename": "skill_potion.png",
           "region": {
-            "x": 83,
-            "y": 1149,
+            "x": 1,
+            "y": 1313,
             "w": 80,
             "h": 80
           },
@@ -455,13 +532,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "f35ef0764e0ff310"
         },
         {
           "filename": "stable_serum.png",
           "region": {
-            "x": 1,
-            "y": 1231,
+            "x": 83,
+            "y": 1313,
             "w": 80,
             "h": 80
           },
@@ -470,13 +548,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "fb26d2d4e175a9d5"
         },
         {
           "filename": "strength_potion.png",
           "region": {
-            "x": 83,
-            "y": 1231,
+            "x": 1,
+            "y": 1395,
             "w": 80,
             "h": 80
           },
@@ -485,13 +564,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "0825560d713eadd8"
         },
         {
           "filename": "blessing_of_the_forge.png",
           "region": {
-            "x": 1,
-            "y": 1313,
+            "x": 83,
+            "y": 1395,
             "w": 80,
             "h": 79
           },
@@ -500,13 +580,14 @@
             "y": 1,
             "w": 0,
             "h": 1
-          }
+          },
+          "pixel_hash": "355b65bda4d1bc8e"
         },
         {
           "filename": "cunning_potion.png",
           "region": {
             "x": 83,
-            "y": 1313,
+            "y": 1476,
             "w": 79,
             "h": 80
           },
@@ -515,13 +596,14 @@
             "y": 0,
             "w": 1,
             "h": 0
-          }
+          },
+          "pixel_hash": "18e42912e2b54ef6"
         },
         {
           "filename": "cure_all.png",
           "region": {
             "x": 1,
-            "y": 1394,
+            "y": 1477,
             "w": 80,
             "h": 79
           },
@@ -530,13 +612,14 @@
             "y": 1,
             "w": 0,
             "h": 1
-          }
+          },
+          "pixel_hash": "88e99826b1230b72"
         },
         {
           "filename": "focus_potion.png",
           "region": {
-            "x": 83,
-            "y": 1395,
+            "x": 1,
+            "y": 1558,
             "w": 79,
             "h": 80
           },
@@ -545,13 +628,14 @@
             "y": 0,
             "w": 1,
             "h": 0
-          }
+          },
+          "pixel_hash": "12ef14176b907a5a"
         },
         {
           "filename": "liquid_bronze.png",
           "region": {
-            "x": 1,
-            "y": 1475,
+            "x": 82,
+            "y": 1558,
             "w": 79,
             "h": 80
           },
@@ -560,13 +644,14 @@
             "y": 0,
             "w": 1,
             "h": 0
-          }
+          },
+          "pixel_hash": "9da35ba30fe353dd"
         },
         {
           "filename": "liquid_memories.png",
           "region": {
-            "x": 82,
-            "y": 1477,
+            "x": 1,
+            "y": 1640,
             "w": 79,
             "h": 80
           },
@@ -575,13 +660,14 @@
             "y": 0,
             "w": 1,
             "h": 0
-          }
+          },
+          "pixel_hash": "12fa479b0b314ffa"
         },
         {
           "filename": "lucky_tonic.png",
           "region": {
-            "x": 1,
-            "y": 1557,
+            "x": 82,
+            "y": 1640,
             "w": 79,
             "h": 80
           },
@@ -590,13 +676,14 @@
             "y": 0,
             "w": 1,
             "h": 0
-          }
+          },
+          "pixel_hash": "c66b6b8600a25a4d"
         },
         {
           "filename": "potion_of_doom.png",
           "region": {
-            "x": 82,
-            "y": 1559,
+            "x": 1,
+            "y": 1722,
             "w": 79,
             "h": 80
           },
@@ -605,55 +692,11 @@
             "y": 0,
             "w": 1,
             "h": 0
-          }
+          },
+          "pixel_hash": "7add384fe803e1b4"
         },
         {
           "filename": "powdered_demise.png",
-          "region": {
-            "x": 1,
-            "y": 1639,
-            "w": 79,
-            "h": 80
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 1,
-            "h": 0
-          }
-        },
-        {
-          "filename": "star_potion.png",
-          "region": {
-            "x": 82,
-            "y": 1641,
-            "w": 80,
-            "h": 79
-          },
-          "margin": {
-            "x": 0,
-            "y": 1,
-            "w": 0,
-            "h": 1
-          }
-        },
-        {
-          "filename": "swift_potion.png",
-          "region": {
-            "x": 1,
-            "y": 1721,
-            "w": 79,
-            "h": 80
-          },
-          "margin": {
-            "x": 1,
-            "y": 0,
-            "w": 1,
-            "h": 0
-          }
-        },
-        {
-          "filename": "touch_of_insanity.png",
           "region": {
             "x": 82,
             "y": 1722,
@@ -665,85 +708,75 @@
             "y": 0,
             "w": 1,
             "h": 0
-          }
+          },
+          "pixel_hash": "d3e26167d79a33ea"
         },
         {
-          "filename": "entropic_brew.png",
+          "filename": "star_potion.png",
           "region": {
             "x": 1,
-            "y": 1803,
-            "w": 78,
-            "h": 80
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 2,
-            "h": 0
-          }
-        },
-        {
-          "filename": "essence_of_darkness.png",
-          "region": {
-            "x": 81,
             "y": 1804,
             "w": 80,
-            "h": 78
+            "h": 79
           },
           "margin": {
             "x": 0,
             "y": 1,
             "w": 0,
-            "h": 2
-          }
+            "h": 1
+          },
+          "pixel_hash": "5bf6abf50f5fc3eb"
         },
         {
-          "filename": "explosive_ampoule.png",
+          "filename": "swift_potion.png",
           "region": {
-            "x": 81,
-            "y": 1884,
-            "w": 78,
+            "x": 83,
+            "y": 1804,
+            "w": 79,
             "h": 80
           },
           "margin": {
             "x": 1,
             "y": 0,
-            "w": 2,
+            "w": 1,
             "h": 0
-          }
+          },
+          "pixel_hash": "e53d3d7260e194ab"
         },
         {
-          "filename": "foul_potion.png",
+          "filename": "touch_of_insanity.png",
           "region": {
             "x": 1,
             "y": 1885,
-            "w": 78,
+            "w": 79,
             "h": 80
           },
           "margin": {
             "x": 0,
             "y": 0,
-            "w": 2,
+            "w": 1,
             "h": 0
-          }
+          },
+          "pixel_hash": "a0b32c63e3716420"
         },
         {
-          "filename": "fruit_juice.png",
+          "filename": "clarity.png",
           "region": {
-            "x": 81,
-            "y": 1966,
-            "w": 78,
-            "h": 80
+            "x": 82,
+            "y": 1886,
+            "w": 79,
+            "h": 79
           },
           "margin": {
-            "x": 0,
+            "x": 1,
             "y": 0,
-            "w": 2,
-            "h": 0
-          }
+            "w": 1,
+            "h": 1
+          },
+          "pixel_hash": "2f8db0a4a0daaf7b"
         },
         {
-          "filename": "fysh_oil.png",
+          "filename": "entropic_brew.png",
           "region": {
             "x": 1,
             "y": 1967,
@@ -755,13 +788,94 @@
             "y": 0,
             "w": 2,
             "h": 0
-          }
+          },
+          "pixel_hash": "91990920f70f112b"
+        },
+        {
+          "filename": "essence_of_darkness.png",
+          "region": {
+            "x": 81,
+            "y": 1967,
+            "w": 80,
+            "h": 78
+          },
+          "margin": {
+            "x": 0,
+            "y": 1,
+            "w": 0,
+            "h": 2
+          },
+          "pixel_hash": "3d5994a0d94de995"
+        },
+        {
+          "filename": "explosive_ampoule.png",
+          "region": {
+            "x": 81,
+            "y": 2047,
+            "w": 78,
+            "h": 80
+          },
+          "margin": {
+            "x": 1,
+            "y": 0,
+            "w": 2,
+            "h": 0
+          },
+          "pixel_hash": "e7a9aecd0fdce89b"
+        },
+        {
+          "filename": "foul_potion.png",
+          "region": {
+            "x": 1,
+            "y": 2049,
+            "w": 78,
+            "h": 80
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 2,
+            "h": 0
+          },
+          "pixel_hash": "dc9369c4190aa5d4"
+        },
+        {
+          "filename": "fruit_juice.png",
+          "region": {
+            "x": 81,
+            "y": 2129,
+            "w": 78,
+            "h": 80
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 2,
+            "h": 0
+          },
+          "pixel_hash": "a19ec17ded114f34"
+        },
+        {
+          "filename": "fysh_oil.png",
+          "region": {
+            "x": 1,
+            "y": 2131,
+            "w": 78,
+            "h": 80
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 2,
+            "h": 0
+          },
+          "pixel_hash": "6ac0caf6b5819688"
         },
         {
           "filename": "blood_potion.png",
           "region": {
             "x": 81,
-            "y": 2048,
+            "y": 2211,
             "w": 77,
             "h": 80
           },
@@ -770,13 +884,14 @@
             "y": 0,
             "w": 3,
             "h": 0
-          }
+          },
+          "pixel_hash": "353f9758e75f5ff0"
         },
         {
           "filename": "soldiers_stew.png",
           "region": {
             "x": 1,
-            "y": 2130,
+            "y": 2293,
             "w": 80,
             "h": 77
           },
@@ -785,13 +900,14 @@
             "y": 3,
             "w": 0,
             "h": 3
-          }
+          },
+          "pixel_hash": "05f35e1f0d4618ac"
         },
         {
           "filename": "weak_potion.png",
           "region": {
             "x": 83,
-            "y": 2130,
+            "y": 2293,
             "w": 80,
             "h": 77
           },
@@ -800,13 +916,14 @@
             "y": 3,
             "w": 0,
             "h": 3
-          }
+          },
+          "pixel_hash": "637bc92f024d66cf"
         },
         {
           "filename": "block_potion.png",
           "region": {
             "x": 1,
-            "y": 2209,
+            "y": 2372,
             "w": 76,
             "h": 80
           },
@@ -815,13 +932,14 @@
             "y": 0,
             "w": 4,
             "h": 0
-          }
+          },
+          "pixel_hash": "94d42c5901bcd2cf"
         },
         {
           "filename": "mazaleths_gift.png",
           "region": {
             "x": 79,
-            "y": 2209,
+            "y": 2372,
             "w": 76,
             "h": 80
           },
@@ -830,103 +948,14 @@
             "y": 0,
             "w": 4,
             "h": 0
-          }
-        },
-        {
-          "filename": "flex_potion.png",
-          "region": {
-            "x": 1,
-            "y": 2291,
-            "w": 80,
-            "h": 75
           },
-          "margin": {
-            "x": 0,
-            "y": 5,
-            "w": 0,
-            "h": 5
-          }
-        },
-        {
-          "filename": "glowwater_potion.png",
-          "region": {
-            "x": 83,
-            "y": 2291,
-            "w": 75,
-            "h": 80
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 5,
-            "h": 0
-          }
-        },
-        {
-          "filename": "gamblers_brew.png",
-          "region": {
-            "x": 1,
-            "y": 2368,
-            "w": 74,
-            "h": 80
-          },
-          "margin": {
-            "x": 4,
-            "y": 0,
-            "w": 6,
-            "h": 0
-          }
-        },
-        {
-          "filename": "snecko_oil.png",
-          "region": {
-            "x": 77,
-            "y": 2373,
-            "w": 72,
-            "h": 80
-          },
-          "margin": {
-            "x": 5,
-            "y": 0,
-            "w": 8,
-            "h": 0
-          }
-        },
-        {
-          "filename": "dexterity_potion.png",
-          "region": {
-            "x": 1,
-            "y": 2450,
-            "w": 70,
-            "h": 80
-          },
-          "margin": {
-            "x": 2,
-            "y": 0,
-            "w": 10,
-            "h": 0
-          }
-        },
-        {
-          "filename": "clarity.png",
-          "region": {
-            "x": 73,
-            "y": 2455,
-            "w": 79,
-            "h": 79
-          },
-          "margin": {
-            "x": 1,
-            "y": 0,
-            "w": 1,
-            "h": 1
-          }
+          "pixel_hash": "1dbdfa8bee2f8bee"
         },
         {
           "filename": "vulnerable_potion.png",
           "region": {
             "x": 1,
-            "y": 2049,
+            "y": 2213,
             "w": 77,
             "h": 78
           },
@@ -935,13 +964,46 @@
             "y": 1,
             "w": 3,
             "h": 2
-          }
+          },
+          "pixel_hash": "abc29deb28cc50cc"
+        },
+        {
+          "filename": "flex_potion.png",
+          "region": {
+            "x": 1,
+            "y": 2454,
+            "w": 80,
+            "h": 75
+          },
+          "margin": {
+            "x": 0,
+            "y": 5,
+            "w": 0,
+            "h": 5
+          },
+          "pixel_hash": "f401ae5fdc0b3378"
+        },
+        {
+          "filename": "glowwater_potion.png",
+          "region": {
+            "x": 83,
+            "y": 2454,
+            "w": 75,
+            "h": 80
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 5,
+            "h": 0
+          },
+          "pixel_hash": "72a8584a7ec6ca0a"
         },
         {
           "filename": "fortifier.png",
           "region": {
             "x": 1,
-            "y": 2536,
+            "y": 2531,
             "w": 78,
             "h": 76
           },
@@ -950,13 +1012,30 @@
             "y": 2,
             "w": 2,
             "h": 4
-          }
+          },
+          "pixel_hash": "7dae9e2bf325e54c"
+        },
+        {
+          "filename": "gamblers_brew.png",
+          "region": {
+            "x": 81,
+            "y": 2536,
+            "w": 74,
+            "h": 80
+          },
+          "margin": {
+            "x": 4,
+            "y": 0,
+            "w": 6,
+            "h": 0
+          },
+          "pixel_hash": "6d4cd645e00466ce"
         },
         {
           "filename": "speed_potion.png",
           "region": {
-            "x": 81,
-            "y": 2536,
+            "x": 1,
+            "y": 2609,
             "w": 75,
             "h": 78
           },
@@ -965,7 +1044,40 @@
             "y": 2,
             "w": 5,
             "h": 2
-          }
+          },
+          "pixel_hash": "3c143afd4ab5a80c"
+        },
+        {
+          "filename": "snecko_oil.png",
+          "region": {
+            "x": 78,
+            "y": 2618,
+            "w": 72,
+            "h": 80
+          },
+          "margin": {
+            "x": 5,
+            "y": 0,
+            "w": 8,
+            "h": 0
+          },
+          "pixel_hash": "1533a2e7304b0f93"
+        },
+        {
+          "filename": "dexterity_potion.png",
+          "region": {
+            "x": 1,
+            "y": 2689,
+            "w": 70,
+            "h": 80
+          },
+          "margin": {
+            "x": 2,
+            "y": 0,
+            "w": 10,
+            "h": 0
+          },
+          "pixel_hash": "aa6bdb410904cc30"
         }
       ]
     }

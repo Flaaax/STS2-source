@@ -208,7 +208,7 @@ public partial class NOverlayStack : Control
 		{
 			if (ActiveScreenContext.Instance.IsCurrent(overlayScreen))
 			{
-				base.FocusBehaviorRecursive = FocusBehaviorRecursiveEnum.Enabled;
+				base.FocusBehaviorRecursive = FocusBehaviorRecursiveEnum.Inherited;
 			}
 			else
 			{

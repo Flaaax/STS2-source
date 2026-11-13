@@ -1,0 +1,149 @@
+[gd_scene load_steps=13 format=3 uid="uid://c3yiwcrgdc5dw"]
+
+[ext_resource type="Script" uid="uid://dh4d0sqk21k6" path="res://src/Core/Nodes/Combat/NEnergyCounter.cs" id="1_lbwhu"]
+[ext_resource type="PackedScene" uid="uid://7y75kcsi1xdw" path="res://scenes/vfx/energy/ironclad/ironclad_energy_vfx_back.tscn" id="2_1t236"]
+[ext_resource type="Material" uid="uid://ft58cpw2uxdl" path="res://materials/ui/energy_orb_dark.tres" id="3_521e4"]
+[ext_resource type="Texture2D" uid="uid://bob4qya8687bn" path="res://images/ui/combat/energy_counters/fool/fool_orb_layer_1.png" id="4_lbwhu"]
+[ext_resource type="Texture2D" uid="uid://db2pevuqju8br" path="res://images/ui/combat/energy_counters/fool/fool_orb_layer_2.png" id="6_1t236"]
+[ext_resource type="Texture2D" uid="uid://dks8p06ah7tqt" path="res://images/ui/combat/energy_counters/fool/fool_orb_layer_3.png" id="6_lbwhu"]
+[ext_resource type="Texture2D" uid="uid://dqh36vh1xwku3" path="res://images/ui/combat/energy_counters/fool/fool_orb_layer_4.png" id="7_521e4"]
+[ext_resource type="Texture2D" uid="uid://beetm6g1vp6xv" path="res://images/ui/combat/energy_counters/fool/fool_orb_layer_5.png" id="8_2l4ma"]
+[ext_resource type="PackedScene" uid="uid://dvsi8v1mbnt3q" path="res://scenes/vfx/energy/ironclad/ironclad_energy_vfx_front.tscn" id="9_ljbfj"]
+[ext_resource type="FontVariation" uid="uid://bg85h22rkxs6g" path="res://themes/kreon_bold_shared.tres" id="10_d6b80"]
+[ext_resource type="Script" uid="uid://dtfio45agppyj" path="res://addons/mega_text/MegaLabel.cs" id="11_syryg"]
+
+[sub_resource type="FontVariation" id="FontVariation_x0k5t"]
+base_font = ExtResource("10_d6b80")
+spacing_glyph = 2
+
+[node name="FoolEnergyCounter" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 128.0
+offset_bottom = 128.0
+pivot_offset = Vector2(64, 64)
+script = ExtResource("1_lbwhu")
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="EnergyVfxBack" parent="." instance=ExtResource("2_1t236")]
+unique_name_in_owner = true
+position = Vector2(64, 64)
+
+[node name="Layers" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Layer1" type="TextureRect" parent="Layers"]
+material = ExtResource("3_521e4")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_lbwhu")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="RotationLayers" type="Control" parent="Layers"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Layer2" type="TextureRect" parent="Layers/RotationLayers"]
+material = ExtResource("3_521e4")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(64, 64)
+mouse_filter = 2
+texture = ExtResource("6_1t236")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Layer3" type="TextureRect" parent="Layers/RotationLayers"]
+material = ExtResource("3_521e4")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(64, 64)
+mouse_filter = 2
+texture = ExtResource("6_lbwhu")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Layer4" type="TextureRect" parent="Layers"]
+material = ExtResource("3_521e4")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("7_521e4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Layer5" type="TextureRect" parent="Layers"]
+material = ExtResource("3_521e4")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("8_2l4ma")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="EnergyVfxFront" parent="." instance=ExtResource("9_ljbfj")]
+unique_name_in_owner = true
+position = Vector2(64, 64)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -29.0
+offset_right = -16.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.964706, 0.886275, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.188235)
+theme_override_colors/font_outline_color = Color(0.35238287, 0.26735857, 0.06600649, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 16
+theme_override_constants/shadow_outline_size = 16
+theme_override_fonts/font = SubResource("FontVariation_x0k5t")
+theme_override_font_sizes/font_size = 36
+text = "3/3"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("11_syryg")
+MinFontSize = 32
+MaxFontSize = 36

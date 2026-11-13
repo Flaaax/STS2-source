@@ -28,7 +28,7 @@
   "RATIO_FORMAT": "{Numerator}/{Denominator}",
   "TAB_ACHIEVEMENT.header": "Obiettivi",
   "TAB_STATS.header": "Statistiche",
-  "TIP_PLAYTIME.description": "Mostra quanto tempo hai giocato e la partita che hai vinto più velocemente.",
+  "TIP_PLAYTIME.description": "Mostra quanto tempo hai giocato e la sessione che hai vinto più velocemente.",
   "TIP_PLAYTIME.header": "Tempo di gioco",
   "TIP_WIN_LOSS.description": "Mostra le Ascensioni totali completate con ogni personaggio.",
   "TIP_WIN_LOSS.header": "Ascensioni"

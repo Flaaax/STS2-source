@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Godot;
 using MegaCrit.Sts2.addons.mega_text;
 using MegaCrit.Sts2.Core.Context;
@@ -67,7 +68,7 @@ public partial class NRelicInventory : FlowContainer
 		{
 			Add(relic, startsShown: true);
 		}
-		UpdateNavigation();
+		UpdateNavigationAfterOneFrame();
 	}
 
 	private void ConnectPlayerEvents()
@@ -120,7 +121,7 @@ public partial class NRelicInventory : FlowContainer
 			Color modulate = nRelicInventoryHolder.Relic.Icon.Modulate;
 			modulate.A = 0f;
 			icon.Modulate = modulate;
-			UpdateNavigation();
+			UpdateNavigationAfterOneFrame();
 		}
 		nRelicInventoryHolder.Connect(NClickableControl.SignalName.Released, Callable.From<NButton>(delegate
 		{
@@ -145,7 +146,7 @@ public partial class NRelicInventory : FlowContainer
 			_relicNodes.Remove(nRelicInventoryHolder);
 			this.RemoveChildSafely(nRelicInventoryHolder);
 			EmitSignalRelicsChanged();
-			UpdateNavigation();
+			UpdateNavigationAfterOneFrame();
 		}
 	}
 
@@ -193,7 +194,7 @@ public partial class NRelicInventory : FlowContainer
 
 	public void AnimShow()
 	{
-		base.FocusBehaviorRecursive = FocusBehaviorRecursiveEnum.Enabled;
+		base.FocusBehaviorRecursive = FocusBehaviorRecursiveEnum.Inherited;
 		_curTween?.Kill();
 		_curTween = CreateTween();
 		_curTween.TweenProperty(this, "global_position:y", _originalPos.Y, 0.25).SetTrans(Tween.TransitionType.Cubic).SetEase(Tween.EaseType.Out);
@@ -261,8 +262,20 @@ public partial class NRelicInventory : FlowContainer
 		_isDebugHidden = !_isDebugHidden;
 	}
 
-	private void UpdateNavigation()
+	private void UpdateNavigationAfterOneFrame()
 	{
+		TaskHelper.RunSafely(UpdateNavigationAfterOneFrameAsync());
+	}
+
+	private async Task UpdateNavigationAfterOneFrameAsync()
+	{
+		await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+		UpdateNavigation();
+	}
+
+	public void UpdateNavigation()
+	{
+		List<Control> list = NRun.Instance?.GlobalUi.TopBar.GetAllNavigableElements() ?? new List<Control>();
 		for (int i = 0; i < RelicNodes.Count; i++)
 		{
 			NRelicInventoryHolder nRelicInventoryHolder = RelicNodes[i];
@@ -278,17 +291,29 @@ public partial class NRelicInventory : FlowContainer
 			}
 			nRelicInventoryHolder.FocusNeighborLeft = path;
 			nRelicInventoryHolder.FocusNeighborRight = ((i < RelicNodes.Count - 1) ? RelicNodes[i + 1].GetPath() : RelicNodes[0].GetPath());
-			Control firstPotionControl = NRun.Instance.GlobalUi.TopBar.PotionContainer.FirstPotionControl;
-			nRelicInventoryHolder.FocusNeighborTop = ((firstPotionControl != null && GodotObject.IsInstanceValid(firstPotionControl)) ? firstPotionControl.GetPath() : nRelicInventoryHolder.GetPath());
-			NMultiplayerPlayerStateContainer multiplayerPlayerContainer = NRun.Instance.GlobalUi.MultiplayerPlayerContainer;
-			if (multiplayerPlayerContainer.GetChildCount() > 0)
+			Control control = null;
+			float num = 0f;
+			Vector2 vector = nRelicInventoryHolder.GlobalPosition + nRelicInventoryHolder.Size * 0.5f;
+			foreach (Control item in list)
 			{
-				Control control = multiplayerPlayerContainer.FirstPlayerState?.Hitbox;
-				nRelicInventoryHolder.FocusNeighborBottom = ((control != null && GodotObject.IsInstanceValid(control)) ? control.GetPath() : nRelicInventoryHolder.GetPath());
+				Vector2 to = item.GlobalPosition + item.Size * 0.5f;
+				float num2 = vector.DistanceSquaredTo(to);
+				if (control == null || num2 < num)
+				{
+					control = item;
+					num = num2;
+				}
+			}
+			nRelicInventoryHolder.FocusNeighborTop = control?.GetPath() ?? nRelicInventoryHolder.GetPath();
+			NMultiplayerPlayerStateContainer nMultiplayerPlayerStateContainer = NRun.Instance?.GlobalUi.MultiplayerPlayerContainer;
+			if (nMultiplayerPlayerStateContainer != null && nMultiplayerPlayerStateContainer.GetChildCount() > 0)
+			{
+				Control control2 = nMultiplayerPlayerStateContainer.FirstPlayerState?.Hitbox;
+				nRelicInventoryHolder.FocusNeighborBottom = ((control2 != null && GodotObject.IsInstanceValid(control2)) ? control2.GetPath() : nRelicInventoryHolder.GetPath());
 			}
 			else
 			{
-				nRelicInventoryHolder.FocusNeighborBottom = NRun.Instance.GlobalUi.TopBar.ActiveScreenProxy.GetPath();
+				nRelicInventoryHolder.FocusNeighborBottom = NRun.Instance?.GlobalUi.TopBar.ActiveScreenProxy.GetPath() ?? nRelicInventoryHolder.GetPath();
 			}
 		}
 	}

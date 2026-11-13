@@ -1,0 +1,6 @@
+{
+  "COMMON": "[gold][font_size=28][b]شائع:[/b][/font_size][/gold] أكثر الجرعات شيوعًا التي يُعثر عليها في البرج.",
+  "RARE": "[gold][font_size=28][b]نادر:[/b][/font_size][/gold] جرعات فريدة وقوية نادرًا ما تُرى.",
+  "SPECIAL": "[gold][font_size=28][b]خاص:[/b][/font_size][/gold] جرعات يتم الحصول عليها من الأحداث أو تُنشأ بوسائل أخرى.",
+  "UNCOMMON": "[gold][font_size=28][b]غير شائع:[/b][/font_size][/gold] جرعات أقوى تظهر أقل من الجرعات الشائعة."
+}

@@ -15,7 +15,7 @@ public class NodePool<T> : INodePool where T : Node, IPoolable
 
 	private static Variant _signalStr = Variant.CreateFrom("signal");
 
-	private string _scenePath;
+	private readonly string _scenePath;
 
 	private readonly List<T> _freeObjects = new List<T>();
 

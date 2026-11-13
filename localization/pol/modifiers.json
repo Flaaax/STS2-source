@@ -22,6 +22,7 @@
   "MURDEROUS.description": "Zaczynasz każdą walkę z [blue]3[/blue] pkt. [gold]Siły[/gold]. Twoi przeciwnicy również.",
   "MURDEROUS.title": "Mordercza walka",
   "NIGHT_TERRORS.additionalRestSiteHealText": "+{Heal} PŻ od Koszmarów.\nUtrać [red]5[/red] maks. PŻ.",
+  "NIGHT_TERRORS.additionalRestSiteMendText": "W pełni przywraca sobie zdrowie od Koszmarów.\nUtraci [red]{MaxHpLoss}[/red] maks. PŻ,",
   "NIGHT_TERRORS.description": "Odpoczynek w [gold]Obozowiskach[/gold] przywraca wszystkie PŻ, ale tracisz [red]5[/red] maks. PŻ.",
   "NIGHT_TERRORS.title": "Koszmary",
   "SEALED_DECK.description": "Stwórz talię startową, wybierając [blue]10[/blue] z [blue]30[/blue] losowych kart.",

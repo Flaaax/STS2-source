@@ -1,0 +1,11 @@
+{
+  "ANCIENT": "[gold][font_size=28][b]عتيق:[/b][/font_size][/gold] آثار يقدّمها القدماء.",
+  "ANCIENT_SUBCATEGORY": "[blue][font_size=28][b]{Ancient}:[/b][/font_size][/blue]",
+  "COMMON": "[gold][font_size=28][b]شائع:[/b][/font_size][/gold] آثار ضعيفة يُعثر عليها كثيرًا.",
+  "EVENT": "[gold][font_size=28][b]حدث:[/b][/font_size][/gold] آثار لا يتم الحصول عليها إلا عبر الأحداث.",
+  "RARE": "[gold][font_size=28][b]نادر:[/b][/font_size][/gold] آثار فريدة وقوية نادرًا ما تُرى.",
+  "SHOP": "[gold][font_size=28][b]متجر:[/b][/font_size][/gold] آثار لا يمكن شراؤها إلا من التاجر.",
+  "STARTER": "[gold][font_size=28][b]بداية:[/b][/font_size][/gold] تبدأ الشخصيات جولتها بهذه الآثار.",
+  "UNCOMMON": "[gold][font_size=28][b]غير شائع:[/b][/font_size][/gold] آثار أقوى تظهر أقل من الآثار الشائعة.",
+  "UNKNOWN_ANCIENT": "???"
+}

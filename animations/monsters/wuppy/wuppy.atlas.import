@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://5n4bsyuykkut"
+path="res://.godot/imported/wuppy.atlas-b051a59f55e0c1352c837f78164924dd.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/wuppy/wuppy.atlas"
+dest_files=["res://.godot/imported/wuppy.atlas-b051a59f55e0c1352c837f78164924dd.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

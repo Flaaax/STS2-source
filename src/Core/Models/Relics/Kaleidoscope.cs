@@ -37,7 +37,7 @@ public sealed class Kaleidoscope : RelicModel
 		for (int i = 0; i < base.DynamicVars.Cards.IntValue; i++)
 		{
 			List<CardModel> list2 = new List<CardModel>();
-			IEnumerable<CardPoolModel> enumerable = base.Owner.UnlockState.CharacterCardPools.Where((CardPoolModel p) => p != base.Owner.Character.CardPool).ToList().StableShuffle(base.Owner.RunState.Rng.Niche)
+			IEnumerable<CardPoolModel> enumerable = base.Owner.UnlockState.CharacterCardPools.Where((CardPoolModel p) => p != base.Owner.Character.CardPool).ToList().StableShuffle(base.Owner.PlayerRng.NonCombatGeneration)
 				.Take(3);
 			foreach (CardPoolModel item in enumerable)
 			{

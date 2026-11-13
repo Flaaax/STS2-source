@@ -26,15 +26,17 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(1280, 600)
 script = ExtResource("1_2cgkb")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="SpineSprite" type="SpineSprite" parent="."]
-position = Vector2(-185, -20)
-scale = Vector2(0.46, 0.46)
 skeleton_data_res = ExtResource("1_hym5c")
 preview_skin = "default"
 preview_animation = "animation"
 preview_frame = false
 preview_time = 0.0
+position = Vector2(-185, -20)
+scale = Vector2(0.46, 0.46)
 
 [node name="_SpineMesh2D_148096" type="SpineMesh2D" parent="SpineSprite"]
 show_behind_parent = true

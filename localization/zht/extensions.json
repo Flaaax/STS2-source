@@ -12,7 +12,7 @@
   "EXTENSION.piles.clickHint.deck": "點選以檢視牌組",
   "EXTENSION.piles.clickHint.discardPile": "點選以檢視棄牌堆",
   "EXTENSION.piles.clickHint.drawPile": "點選以檢視抽牌堆",
-  "EXTENSION.poll.voteReceived": "投票已送出！",
+  "EXTENSION.poll.voteReceived": "已收到投票！",
   "EXTENSION.tutorial.back": "返回",
   "EXTENSION.tutorial.finish": "知道了！",
   "EXTENSION.tutorial.hoverIndicator": "看到此指示圖示時，將游標停在直播畫面上，即可檢視 {{streamerName}} 的卡牌、遺物和藥水：",

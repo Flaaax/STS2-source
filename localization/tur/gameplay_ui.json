@@ -30,6 +30,8 @@
   "COMBAT_REWARD_ADD_SPECIAL_CARD": "Destene {Card} kartını ekle.",
   "COMBAT_REWARD_CARD_REMOVAL": "Destenden bir kartı kaldır.",
   "COMBAT_REWARD_CARD_REMOVAL.selectionScreenPrompt": "Destenden kaldırmak için bir kart seç.",
+  "COMBAT_REWARD_CARD_UPGRADE": "Bir kartı geliştir.",
+  "COMBAT_REWARD_CARD_UPGRADE.selectionScreenPrompt": "Geliştirmek için bir kart seç.",
   "COMBAT_REWARD_GOLD": "{gold} Altın",
   "COMBAT_REWARD_GOLD_STOLEN": "{gold} Altın (geri çalındı)",
   "COMBAT_REWARD_HEADER_LOOT": "Ganimet!",

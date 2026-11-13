@@ -6,7 +6,7 @@ public partial class NSendFeedbackCartoon : TextureRect
 {
 	private static readonly float _rot1 = Mathf.DegToRad(5f);
 
-	private static readonly float _rot2 = 0f;
+	private const float _rot2 = 0f;
 
 	private Tween? _tween;
 
@@ -15,11 +15,11 @@ public partial class NSendFeedbackCartoon : TextureRect
 
 	public void SetRotation1()
 	{
-		base.Rotation = (opposite ? _rot1 : _rot2);
+		base.Rotation = (opposite ? _rot1 : 0f);
 	}
 
 	public void SetRotation2()
 	{
-		base.Rotation = (opposite ? _rot2 : _rot1);
+		base.Rotation = (opposite ? 0f : _rot1);
 	}
 }

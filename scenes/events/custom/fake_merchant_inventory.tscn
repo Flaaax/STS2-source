@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://p34nsajneq80" path="res://src/Core/Nodes/Screens/Shops/NMerchantHand.cs" id="9_ldg6o"]
 [ext_resource type="PackedScene" uid="uid://slvrtr0urml" path="res://scenes/merchant/merchant_rug_dialogue.tscn" id="10_8cll6"]
 
-[node name="MerchantInventory" type="Control"]
+[node name="FakeMerchantInventory" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

@@ -30,6 +30,8 @@
   "COMBAT_REWARD_ADD_SPECIAL_CARD": "Adicione {Card} ao seu baralho.",
   "COMBAT_REWARD_CARD_REMOVAL": "Remova uma carta do seu baralho.",
   "COMBAT_REWARD_CARD_REMOVAL.selectionScreenPrompt": "Escolha uma carta para remover do seu baralho.",
+  "COMBAT_REWARD_CARD_UPGRADE": "Aprimore uma carta.",
+  "COMBAT_REWARD_CARD_UPGRADE.selectionScreenPrompt": "Escolha uma carta para aprimorar.",
   "COMBAT_REWARD_GOLD": "{gold} de Ouro",
   "COMBAT_REWARD_GOLD_STOLEN": "{gold} de Ouro (recuperado)",
   "COMBAT_REWARD_HEADER_LOOT": "Espólios!",

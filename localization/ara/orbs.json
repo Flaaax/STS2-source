@@ -1,0 +1,21 @@
+{
+  "DARK_ORB.description": "جرم: عند [gold]استدعائه[/gold]، يسبب ضررًا للعدو الأقل صحة. يزداد ضرره كل دور.",
+  "DARK_ORB.smartDescription": "[gold]سلبي:[/gold] في نهاية الدور، زد ضرر هذا الجرم بمقدار [blue]{Passive}[/blue].\n[gold]استدعاء:[/gold] ألحق [blue]{Evoke}[/blue] ضررًا بالعدو الأقل صحة.",
+  "DARK_ORB.title": "ظلام",
+  "EMPTY_SLOT.description": "يمكن توجيه الأجرام إلى هذه الخانات.",
+  "EMPTY_SLOT.title": "خانة جرم",
+  "FROST_ORB.description": "جرم: يمنح [gold]دفاع[/gold].",
+  "FROST_ORB.smartDescription": "[gold]سلبي:[/gold] في نهاية الدور، اكسب [blue]{Passive}[/blue] [gold]دفاع[/gold].\n[gold]استدعاء:[/gold] اكسب [blue]{Evoke}[/blue] [gold]دفاع[/gold].",
+  "FROST_ORB.title": "صقيع",
+  "GLASS_ORB.description": "جرم: يسبب ضررًا لجميع الأعداء. ينخفض ضرره كل دور.",
+  "GLASS_ORB.smartDescription": "[gold]سلبي:[/gold] في نهاية الدور، ألحق [blue]{Passive}[/blue] ضررًا بجميع الأعداء وخفّض قيمة هذا الجرم بمقدار [blue]1[/blue].\n[gold]استدعاء:[/gold] ألحق [blue]{Evoke}[/blue] ضررًا بجميع الأعداء.",
+  "GLASS_ORB.title": "زجاج",
+  "LIGHTNING_ORB.description": "جرم: يسبب ضررًا لعدو عشوائي.",
+  "LIGHTNING_ORB.smartDescription": "[gold]سلبي:[/gold] في نهاية الدور، ألحق [blue]{Passive}[/blue] ضررًا بعدو عشوائي.\n[gold]استدعاء:[/gold] ألحق [blue]{Evoke}[/blue] ضررًا بعدو عشوائي.",
+  "LIGHTNING_ORB.title": "برق",
+  "MOCK_COMBAT_CLEANUP_ORB.description": "",
+  "MOCK_COMBAT_CLEANUP_ORB.title": "تنظيف معركة تجريبية",
+  "PLASMA_ORB.description": "جرم: يمنح طاقة.",
+  "PLASMA_ORB.smartDescription": "[gold]سلبي:[/gold] في بداية الدور،\nاكسب {energyPrefix:energyIcons(1)}.\n[gold]استدعاء:[/gold] اكسب {energyPrefix:energyIcons(2)}.\nالبلازما لا تتأثر بـ [gold]التركيز[/gold].",
+  "PLASMA_ORB.title": "بلازما"
+}

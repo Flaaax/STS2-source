@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://swfqv6hpeq0o"
-path.s3tc="res://.godot/imported/characterselect_necrobinder.png-ff5f89f7a8f6e568ebd1a0c86d3e8398.s3tc.ctex"
+path.bptc="res://.godot/imported/characterselect_necrobinder.png-ff5f89f7a8f6e568ebd1a0c86d3e8398.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,12 +12,12 @@ metadata={
 [deps]
 
 source_file="res://animations/character_select/necrobinder/characterselect_necrobinder.png"
-dest_files=["res://.godot/imported/characterselect_necrobinder.png-ff5f89f7a8f6e568ebd1a0c86d3e8398.s3tc.ctex"]
+dest_files=["res://.godot/imported/characterselect_necrobinder.png-ff5f89f7a8f6e568ebd1a0c86d3e8398.bptc.ctex"]
 
 [params]
 
 compress/mode=2
-compress/high_quality=false
+compress/high_quality=true
 compress/lossy_quality=1.0
 compress/uastc_level=2
 compress/rdo_quality_loss=0

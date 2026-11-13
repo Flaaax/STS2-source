@@ -38,7 +38,7 @@ public sealed class BoneShards : CardModel
 			await CreatureCmd.GainBlock(base.Owner.Creature, base.DynamicVars.Block, cardPlay);
 			if (base.Owner.IsOstyAlive)
 			{
-				await CreatureCmd.Kill(base.Owner.Osty);
+				await CreatureCmd.Kill(base.Owner.Osty, this);
 			}
 		}
 	}

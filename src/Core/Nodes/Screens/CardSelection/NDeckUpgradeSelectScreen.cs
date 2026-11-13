@@ -268,6 +268,11 @@ public sealed partial class NDeckUpgradeSelectScreen : NCardGridSelectionScreen
 		{
 			_viewUpgrades.IsTicked = false;
 			ToggleShowUpgrades(_viewUpgrades);
+			_viewUpgrades.Disable();
+		}
+		else
+		{
+			_viewUpgrades.Enable();
 		}
 	}
 }

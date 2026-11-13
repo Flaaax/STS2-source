@@ -1,0 +1,96 @@
+[gd_scene load_steps=5 format=3 uid="uid://c1s5vvtdl1jrc"]
+
+[ext_resource type="Script" uid="uid://ct0y28xqrgmr7" path="res://src/Core/Nodes/Screens/Dread/NDreadNameText.cs" id="1_ad1j4"]
+[ext_resource type="Script" uid="uid://c2oywrx8xbqfx" path="res://addons/mega_text/MegaRichTextLabel.cs" id="2_ad1j4"]
+[ext_resource type="FontVariation" uid="uid://b8ce4a71ref23" path="res://themes/spectral_bold_shared.tres" id="2_cjewt"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_cjewt"]
+blend_mode = 1
+
+[node name="DreadNameText" type="Control"]
+custom_minimum_size = Vector2(1200, 155)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -600.0
+offset_top = -468.0
+offset_right = 600.0
+offset_bottom = -312.99976
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(600, 77.5)
+mouse_filter = 2
+script = ExtResource("1_ad1j4")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="Name" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+self_modulate = Color(1, 0.8352941, 0, 0.7529412)
+material = SubResource("CanvasItemMaterial_cjewt")
+clip_contents = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("2_cjewt")
+theme_override_font_sizes/normal_font_size = 64
+theme_override_font_sizes/bold_font_size = 64
+theme_override_font_sizes/bold_italics_font_size = 64
+theme_override_font_sizes/italics_font_size = 64
+theme_override_font_sizes/mono_font_size = 64
+bbcode_enabled = true
+text = "Test"
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+script = ExtResource("2_ad1j4")
+AutoSizeEnabled = false
+MinFontSize = 18
+MaxFontSize = 48
+IsVerticallyBound = false
+IsHorizontallyBound = true
+metadata/_custom_type_script = "uid://c2oywrx8xbqfx"
+
+[node name="Shadow" type="RichTextLabel" parent="Name"]
+unique_name_in_owner = true
+modulate = Color(0, 0, 0, 0.25)
+show_behind_parent = true
+clip_contents = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 5.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("2_cjewt")
+theme_override_font_sizes/normal_font_size = 64
+theme_override_font_sizes/bold_font_size = 64
+theme_override_font_sizes/bold_italics_font_size = 64
+theme_override_font_sizes/italics_font_size = 64
+theme_override_font_sizes/mono_font_size = 64
+bbcode_enabled = true
+text = "Test"
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+script = ExtResource("2_ad1j4")
+AutoSizeEnabled = false
+MinFontSize = 18
+MaxFontSize = 48
+IsVerticallyBound = false
+IsHorizontallyBound = true
+metadata/_custom_type_script = "uid://c2oywrx8xbqfx"

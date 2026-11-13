@@ -14,11 +14,11 @@ public partial class NSendFeedbackFlower : Control
 		NoddingFast
 	}
 
-	private const string _normalImage = "res://images/atlases/compressed.sprites/feedback/flower.tres";
+	private const string _normalImage = "res://images/atlases/compressed_atlas.sprites/flower.tres";
 
-	private const string _noddingImage = "res://images/atlases/compressed.sprites/feedback/flower_happy.tres";
+	private const string _noddingImage = "res://images/atlases/compressed_atlas.sprites/flower_happy.tres";
 
-	private const string _anticipationImage = "res://images/atlases/compressed.sprites/feedback/flower_anticipation.tres";
+	private const string _anticipationImage = "res://images/atlases/compressed_atlas.sprites/flower_anticipation.tres";
 
 	private Tween? _tween;
 
@@ -44,7 +44,7 @@ public partial class NSendFeedbackFlower : Control
 			_tween.TweenProperty(this, "rotation", Mathf.DegToRad(8f), 0.5);
 			_tween.TweenProperty(this, "rotation", Mathf.DegToRad(-8f), 0.5);
 			_tween.SetLoops();
-			Cartoon.Texture = PreloadManager.Cache.GetTexture2D("res://images/atlases/compressed.sprites/feedback/flower_happy.tres");
+			Cartoon.Texture = PreloadManager.Cache.GetTexture2D("res://images/atlases/compressed_atlas.sprites/flower_happy.tres");
 			break;
 		case State.NoddingFast:
 			_tween?.Kill();
@@ -52,12 +52,12 @@ public partial class NSendFeedbackFlower : Control
 			_tween.TweenProperty(this, "rotation", Mathf.DegToRad(8f), 0.2);
 			_tween.TweenProperty(this, "rotation", Mathf.DegToRad(-8f), 0.2);
 			_tween.SetLoops();
-			Cartoon.Texture = PreloadManager.Cache.GetTexture2D("res://images/atlases/compressed.sprites/feedback/flower_happy.tres");
+			Cartoon.Texture = PreloadManager.Cache.GetTexture2D("res://images/atlases/compressed_atlas.sprites/flower_happy.tres");
 			break;
 		case State.Anticipation:
 			_tween?.Kill();
 			_tween = null;
-			Cartoon.Texture = PreloadManager.Cache.GetTexture2D("res://images/atlases/compressed.sprites/feedback/flower_anticipation.tres");
+			Cartoon.Texture = PreloadManager.Cache.GetTexture2D("res://images/atlases/compressed_atlas.sprites/flower_anticipation.tres");
 			_tween = CreateTween();
 			_tween.TweenInterval(0.05000000074505806);
 			_tween.TweenCallback(Callable.From(SetRandomPosition));
@@ -67,7 +67,7 @@ public partial class NSendFeedbackFlower : Control
 			base.Rotation = 0f;
 			_tween?.Kill();
 			_tween = null;
-			Cartoon.Texture = PreloadManager.Cache.GetTexture2D("res://images/atlases/compressed.sprites/feedback/flower.tres");
+			Cartoon.Texture = PreloadManager.Cache.GetTexture2D("res://images/atlases/compressed_atlas.sprites/flower.tres");
 			break;
 		}
 		MyState = state;

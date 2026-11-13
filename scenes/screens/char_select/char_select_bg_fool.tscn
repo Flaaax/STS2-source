@@ -1,0 +1,424 @@
+[gd_scene load_steps=27 format=3 uid="uid://dbu0huahtq7jg"]
+
+[ext_resource type="Shader" uid="uid://cke5p12p315c6" path="res://shaders/vfx/vfx_water_reflection.gdshader" id="1_kk88w"]
+[ext_resource type="Texture2D" uid="uid://dlkwp7hpcsm6n" path="res://images/rooms/underdocks/underdocks_00.png" id="2_8a2sl"]
+[ext_resource type="Script" uid="uid://b0oho7pjc1dtg" path="res://src/Core/Nodes/Animation/NSpineAutoPlayer.cs" id="2_qperr"]
+[ext_resource type="Texture2D" uid="uid://u4yf766pscbr" path="res://animations/character_select/fool/fool_character_select_bg_2.jpg" id="3_j6v4r"]
+[ext_resource type="SpineSkeletonDataResource" uid="uid://doe3nur04kake" path="res://animations/character_select/fool/character_select_fool_skel_data.tres" id="4_xiggv"]
+[ext_resource type="Texture2D" uid="uid://b72mj3cao7go2" path="res://images/vfx/short_rice_no_glow_particle.png" id="5_6tnpo"]
+[ext_resource type="Material" uid="uid://c4ycqv0gdxvmr" path="res://themes/canvas_item_material_additive_shared.tres" id="6_kk88w"]
+[ext_resource type="Texture2D" uid="uid://bxa6vlqeby20" path="res://images/vfx/light.png" id="7_8a2sl"]
+[ext_resource type="Script" uid="uid://8tp7h0nkic6u" path="res://scenes/backgrounds/little_light_script.gd" id="8_jv4bw"]
+[ext_resource type="Texture2D" uid="uid://bukyhsjanpsnl" path="res://images/vfx/monsters/queen/false_queen_light.png" id="14_8a2sl"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xvgmd"]
+noise_type = 0
+frequency = 0.0259
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ro3e1"]
+width = 10
+height = 5
+noise = SubResource("FastNoiseLite_xvgmd")
+seamless = true
+seamless_blend_skirt = 0.093
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8a2sl"]
+shader = ExtResource("1_kk88w")
+shader_parameter/noise = SubResource("NoiseTexture2D_ro3e1")
+shader_parameter/mask = ExtResource("2_8a2sl")
+shader_parameter/speed = 0.023
+shader_parameter/strength = 0.05000000237499
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ou856"]
+
+[sub_resource type="Curve" id="Curve_jv4bw"]
+_data = [Vector2(0, 0.321019), 0.0, 0.0, 0, 0, Vector2(0.502521, 0.507939), 0.0, 0.0, 0, 0, Vector2(1, 0.36242), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_xiggv"]
+offsets = PackedFloat32Array(0, 0.411546, 0.994413)
+colors = PackedColorArray(0.34902, 0.34902, 0.34902, 1, 1, 1, 1, 1, 0.34902, 0.34902, 0.34902, 1)
+
+[sub_resource type="Gradient" id="Gradient_jv4bw"]
+offsets = PackedFloat32Array(0, 0.178337, 1)
+colors = PackedColorArray(0.913725, 0.313726, 0.227451, 0, 0.6117647, 0.49411765, 0, 1, 0.5019608, 0.59607846, 0, 1)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xiggv"]
+blend_mode = 1
+light_mode = 1
+
+[sub_resource type="Curve" id="Curve_j6v4r"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveTexture" id="CurveTexture_sa8aq"]
+curve = SubResource("Curve_j6v4r")
+
+[sub_resource type="Gradient" id="Gradient_xvgmd"]
+offsets = PackedFloat32Array(0, 0.170306, 0.286026, 0.423581, 0.611354, 0.720524, 0.847162, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0.513726, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.513726, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_sbu3o"]
+gradient = SubResource("Gradient_xvgmd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ng3s5"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(0, 0, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_max = 0.5
+color = Color(0.8509804, 1, 0, 0.4745098)
+color_ramp = SubResource("GradientTexture1D_sbu3o")
+alpha_curve = SubResource("CurveTexture_sa8aq")
+
+[sub_resource type="Curve" id="Curve_ibpab"]
+_limits = [0.0, 100.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.988235, 29.0474), 27.7148, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_54qbr"]
+_data = [Vector2(0, 0.417635), 0.0, 0.0, 0, 0, Vector2(0.502521, 0.507939), 0.0, 0.0, 0, 0, Vector2(1, 0.423164), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_l0e17"]
+offsets = PackedFloat32Array(0, 0.487896, 0.98324)
+colors = PackedColorArray(0.2757, 0.2757, 0.2757, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[node name="FoolBg" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -523.0
+offset_right = 1600.0
+offset_bottom = 677.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(1280, 600)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_8a2sl")
+layout_mode = 0
+offset_left = -297.0
+offset_top = -86.0
+offset_right = 2173.2
+offset_bottom = 1087.715
+texture = ExtResource("3_j6v4r")
+expand_mode = 2
+
+[node name="SpineSprite" type="SpineSprite" parent="."]
+skeleton_data_res = ExtResource("4_xiggv")
+preview_skin = "default"
+preview_animation = "animation"
+preview_frame = false
+preview_time = 0.0
+position = Vector2(886, 538.655)
+scale = Vector2(0.46, 0.46)
+
+[node name="_SpineMesh2D_148096" type="SpineMesh2D" parent="SpineSprite"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_ou856")
+
+[node name="_SpineMesh2D_148097" type="SpineMesh2D" parent="SpineSprite"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_ou856")
+
+[node name="_SpineMesh2D_148098" type="SpineMesh2D" parent="SpineSprite"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_ou856")
+
+[node name="_SpineMesh2D_148099" type="SpineMesh2D" parent="SpineSprite"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_ou856")
+
+[node name="_SpineMesh2D_148100" type="SpineMesh2D" parent="SpineSprite"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_ou856")
+
+[node name="_SpineMesh2D_148101" type="SpineMesh2D" parent="SpineSprite"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_ou856")
+
+[node name="_SpineMesh2D_148102" type="SpineMesh2D" parent="SpineSprite"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_ou856")
+
+[node name="_SpineMesh2D_148103" type="SpineMesh2D" parent="SpineSprite"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_ou856")
+
+[node name="_SpineMesh2D_148104" type="SpineMesh2D" parent="SpineSprite"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_ou856")
+
+[node name="_SpineMesh2D_148105" type="SpineMesh2D" parent="SpineSprite"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_ou856")
+
+[node name="_SpineMesh2D_148106" type="SpineMesh2D" parent="SpineSprite"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_ou856")
+
+[node name="_SpineMesh2D_148107" type="SpineMesh2D" parent="SpineSprite"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_ou856")
+
+[node name="_SpineMesh2D_148108" type="SpineMesh2D" parent="SpineSprite"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_ou856")
+
+[node name="_SpineMesh2D_148109" type="SpineMesh2D" parent="SpineSprite"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_ou856")
+
+[node name="_SpineMesh2D_148110" type="SpineMesh2D" parent="SpineSprite"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_ou856")
+
+[node name="_SpineMesh2D_148111" type="SpineMesh2D" parent="SpineSprite"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_ou856")
+
+[node name="_SpineMesh2D_148112" type="SpineMesh2D" parent="SpineSprite"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_ou856")
+
+[node name="_SpineMesh2D_148113" type="SpineMesh2D" parent="SpineSprite"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_ou856")
+
+[node name="@SpineMesh2D@230945" type="SpineMesh2D" parent="SpineSprite"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_ou856")
+
+[node name="@SpineMesh2D@230946" type="SpineMesh2D" parent="SpineSprite"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_ou856")
+
+[node name="@SpineMesh2D@230947" type="SpineMesh2D" parent="SpineSprite"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_ou856")
+
+[node name="@SpineMesh2D@230948" type="SpineMesh2D" parent="SpineSprite"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_ou856")
+
+[node name="@SpineMesh2D@230949" type="SpineMesh2D" parent="SpineSprite"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_ou856")
+
+[node name="@SpineMesh2D@230950" type="SpineMesh2D" parent="SpineSprite"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_ou856")
+
+[node name="@SpineMesh2D@230951" type="SpineMesh2D" parent="SpineSprite"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_ou856")
+
+[node name="@SpineMesh2D@230952" type="SpineMesh2D" parent="SpineSprite"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_ou856")
+
+[node name="@SpineMesh2D@230953" type="SpineMesh2D" parent="SpineSprite"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_ou856")
+
+[node name="@SpineMesh2D@230954" type="SpineMesh2D" parent="SpineSprite"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_ou856")
+
+[node name="@SpineMesh2D@230955" type="SpineMesh2D" parent="SpineSprite"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_ou856")
+
+[node name="@SpineMesh2D@230956" type="SpineMesh2D" parent="SpineSprite"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_ou856")
+
+[node name="@SpineMesh2D@230957" type="SpineMesh2D" parent="SpineSprite"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_ou856")
+
+[node name="@SpineMesh2D@230958" type="SpineMesh2D" parent="SpineSprite"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_ou856")
+
+[node name="@SpineMesh2D@230959" type="SpineMesh2D" parent="SpineSprite"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_ou856")
+
+[node name="@SpineMesh2D@230960" type="SpineMesh2D" parent="SpineSprite"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_ou856")
+
+[node name="@SpineMesh2D@230961" type="SpineMesh2D" parent="SpineSprite"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_ou856")
+
+[node name="@SpineMesh2D@230962" type="SpineMesh2D" parent="SpineSprite"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_ou856")
+
+[node name="NSpineAutoPlayer" type="Node" parent="SpineSprite"]
+script = ExtResource("2_qperr")
+metadata/_custom_type_script = "uid://b0oho7pjc1dtg"
+
+[node name="SpineBoneNode" type="SpineBoneNode" parent="SpineSprite"]
+color = Color(1, 0, 0, 1)
+bone_name = "eye1"
+show_behind_parent = true
+position = Vector2(977.7886, -271.60638)
+rotation = -1.5660342
+
+[node name="light_small2" type="CPUParticles2D" parent="SpineSprite/SpineBoneNode"]
+material = ExtResource("6_kk88w")
+position = Vector2(8.82019, -1.7435837)
+rotation = 0.30927277
+scale = Vector2(0.717, 0.757)
+amount = 2
+texture = ExtResource("7_8a2sl")
+lifetime = 3.0
+local_coords = true
+spread = 20.21
+gravity = Vector2(0, 0)
+scale_amount_min = 4.49
+scale_amount_max = 4.49
+scale_amount_curve = SubResource("Curve_jv4bw")
+color = Color(0.14932233, 0.9999997, 0.2553713, 1)
+color_ramp = SubResource("Gradient_xiggv")
+script = ExtResource("8_jv4bw")
+
+[node name="SpineBoneNode2" type="SpineBoneNode" parent="SpineSprite"]
+color = Color(1, 0, 0, 1)
+bone_name = "eye2"
+show_behind_parent = true
+position = Vector2(689.1682, -271.60638)
+rotation = -1.5660342
+
+[node name="light_small2" type="CPUParticles2D" parent="SpineSprite/SpineBoneNode2"]
+material = ExtResource("6_kk88w")
+position = Vector2(8.82019, -1.7435837)
+rotation = 0.30927277
+scale = Vector2(0.717, 0.757)
+amount = 2
+texture = ExtResource("7_8a2sl")
+lifetime = 3.0
+local_coords = true
+spread = 20.21
+gravity = Vector2(0, 0)
+scale_amount_min = 4.49
+scale_amount_max = 4.49
+scale_amount_curve = SubResource("Curve_jv4bw")
+color = Color(0.14932233, 0.9999997, 0.2553713, 1)
+color_ramp = SubResource("Gradient_xiggv")
+script = ExtResource("8_jv4bw")
+
+[node name="ash3" type="CPUParticles2D" parent="."]
+position = Vector2(120, -157)
+amount = 10
+texture = ExtResource("5_6tnpo")
+lifetime = 15.0
+preprocess = 15.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(800, 500)
+gravity = Vector2(50, 50)
+angular_velocity_min = 131.43
+angular_velocity_max = 131.43
+orbit_velocity_max = 0.03
+radial_accel_max = 1.0
+angle_max = 353.6
+scale_amount_min = 5.0
+scale_amount_max = 5.0
+color = Color(1, 1, 1, 0.32156864)
+color_ramp = SubResource("Gradient_jv4bw")
+
+[node name="light_overlay3" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_xiggv")
+position = Vector2(315, 484.00003)
+rotation = -0.15009831
+scale = Vector2(1.35, 2.945)
+amount = 1
+texture = ExtResource("14_8a2sl")
+lifetime = 10.0
+preprocess = 2.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_ng3s5")
+
+[node name="light_overlay4" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_xiggv")
+position = Vector2(799.00006, 174)
+rotation = -1.0314896
+scale = Vector2(-1.35, 2.945)
+amount = 1
+texture = ExtResource("14_8a2sl")
+lifetime = 10.0
+preprocess = 2.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_ng3s5")
+
+[node name="fireflies" type="CPUParticles2D" parent="."]
+material = ExtResource("6_kk88w")
+position = Vector2(938, 433.99997)
+scale = Vector2(0.469, 0.469)
+amount = 40
+texture = ExtResource("7_8a2sl")
+lifetime = 10.0
+preprocess = 5.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(3000, 500)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 188.95
+initial_velocity_max = 188.95
+orbit_velocity_max = 0.01
+radial_accel_max = 0.1
+damping_min = 3.797
+damping_max = 6.329
+damping_curve = SubResource("Curve_ibpab")
+scale_amount_min = 0.3
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_54qbr")
+color = Color(0.321569, 0.662745, 0.360784, 0.192157)
+color_ramp = SubResource("Gradient_l0e17")
+
+[node name="light_small2" type="CPUParticles2D" parent="."]
+material = ExtResource("6_kk88w")
+position = Vector2(113.99999, -30.000002)
+rotation = 0.30927277
+scale = Vector2(0.717, 0.757)
+amount = 2
+texture = ExtResource("7_8a2sl")
+lifetime = 3.0
+local_coords = true
+spread = 20.21
+gravity = Vector2(0, 0)
+scale_amount_min = 20.36
+scale_amount_max = 20.36
+scale_amount_curve = SubResource("Curve_jv4bw")
+color = Color(0.9098039, 0.8509804, 0, 0.2509804)
+color_ramp = SubResource("Gradient_xiggv")
+script = ExtResource("8_jv4bw")
+
+[node name="light_small3" type="CPUParticles2D" parent="."]
+material = ExtResource("6_kk88w")
+position = Vector2(1588.9999, 1118.9999)
+rotation = 0.30927277
+scale = Vector2(0.717, 0.757)
+amount = 2
+texture = ExtResource("7_8a2sl")
+lifetime = 3.0
+local_coords = true
+spread = 20.21
+gravity = Vector2(0, 0)
+scale_amount_min = 20.36
+scale_amount_max = 20.36
+scale_amount_curve = SubResource("Curve_jv4bw")
+color = Color(0.9098039, 0.8509804, 0, 0.2509804)
+color_ramp = SubResource("Gradient_xiggv")
+script = ExtResource("8_jv4bw")

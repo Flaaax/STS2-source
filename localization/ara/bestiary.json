@@ -1,0 +1,14 @@
+{
+  "ACTIONS.header": "الأفعال",
+  "ACTION_NAME.attack": "هجوم",
+  "ACTION_NAME.cast": "إلقاء",
+  "ACTION_NAME.die": "موت",
+  "ACTION_NAME.hurt": "تضرر",
+  "ACTION_NAME.revive": "إحياء",
+  "ACTION_NAME.stun": "صعق",
+  "DESCRIPTION.placeholder": "لم تُكشف معلومات هذا الوحش بعد...",
+  "LOCKED.monsterName": "مغلق",
+  "LOCKED.monsterTitle": "مغلق",
+  "UNDER_CONSTRUCTION": "قيد التطوير",
+  "UNSEEN.monsterName": "[lb]مجهول[rb]"
+}

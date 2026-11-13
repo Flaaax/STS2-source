@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cij4nlmt4b1di"]
+[gd_scene load_steps=19 format=3 uid="uid://cij4nlmt4b1di"]
 
 [ext_resource type="Script" uid="uid://s3hkv8x1gcxt" path="res://src/Core/Nodes/Screens/Bestiary/NBestiary.cs" id="1_41s1u"]
 [ext_resource type="FontVariation" uid="uid://b8ce4a71ref23" path="res://themes/spectral_bold_shared.tres" id="2_he457"]
@@ -16,8 +16,7 @@
 [ext_resource type="FontVariation" uid="uid://ux4d708e7mk6" path="res://themes/kreon_bold_glyph_space_one.tres" id="8_w1gfe"]
 [ext_resource type="Texture2D" uid="uid://dq7iib8cadxmf" path="res://images/ui/dialogue_nine_patch.png" id="11_x8jeb"]
 [ext_resource type="PackedScene" uid="uid://ddb8daodx7qsl" path="res://scenes/ui/hotkey_icon.tscn" id="12_3jq4s"]
-[ext_resource type="Texture2D" uid="uid://q86di1eocspv" path="res://images/ancients/under_construction.png" id="12_w1gfe"]
-[ext_resource type="FontVariation" uid="uid://ciql5khgewwbm" path="res://themes/kreon_bold_glyph_space_two.tres" id="13_lxch6"]
+[ext_resource type="PackedScene" uid="uid://cilj0hp8jcfmj" path="res://scenes/screens/under_construction.tscn" id="17_n0fpd"]
 [ext_resource type="PackedScene" uid="uid://ki7kvq1te08p" path="res://scenes/screens/bestiary/bestiary_mode_button.tscn" id="19_yexn3"]
 
 [node name="Bestiary" type="Control"]
@@ -510,50 +509,10 @@ accessibility_flow_to_nodes = Array[NodePath]([])
 unique_name_in_owner = true
 layout_mode = 1
 
-[node name="UnderConstruction" type="TextureRect" parent="."]
-custom_minimum_size = Vector2(64, 52)
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 24.0
-offset_top = -998.0
-offset_right = 88.0
-offset_bottom = -946.0
-grow_vertical = 0
-rotation = -0.21924797
-texture = ExtResource("12_w1gfe")
-expand_mode = 1
-
-[node name="ConstructionLabel" type="RichTextLabel" parent="UnderConstruction"]
-unique_name_in_owner = true
-clip_contents = false
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 4.0
-offset_top = -39.411392
-offset_right = 251.63898
-offset_bottom = 39.411392
-grow_horizontal = 0
-grow_vertical = 2
-theme_override_colors/default_color = Color(1, 0.33333334, 0.33333334, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5019608)
-theme_override_constants/line_separation = -3
-theme_override_constants/shadow_offset_x = 3
-theme_override_constants/shadow_offset_y = 2
-theme_override_fonts/normal_font = ExtResource("13_lxch6")
-theme_override_font_sizes/normal_font_size = 24
-text = "Under Construction?! "
-scroll_active = false
-vertical_alignment = 1
-script = ExtResource("4_h1koc")
-MaxFontSize = 24
-metadata/_custom_type_script = "uid://c2oywrx8xbqfx"
-
 [node name="ModeButton" parent="." instance=ExtResource("19_yexn3")]
 unique_name_in_owner = true
 layout_mode = 1
+
+[node name="UnderConstruction" parent="." instance=ExtResource("17_n0fpd")]
+unique_name_in_owner = true
+layout_mode = 0

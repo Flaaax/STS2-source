@@ -18,11 +18,15 @@ public partial class NMapCircleVfx : Control
 
 	private const string _path = "res://scenes/vfx/map_circle_vfx.tscn";
 
-	private static readonly string[] _textures = new string[5] { "res://images/atlases/compressed.sprites/map/map_circle_0.tres", "res://images/atlases/compressed.sprites/map/map_circle_1.tres", "res://images/atlases/compressed.sprites/map/map_circle_2.tres", "res://images/atlases/compressed.sprites/map/map_circle_3.tres", "res://images/atlases/compressed.sprites/map/map_circle_4.tres" };
+	private static readonly string[] _textures = new string[5] { "res://images/atlases/compressed_atlas.sprites/map_circle_0.tres", "res://images/atlases/compressed_atlas.sprites/map_circle_1.tres", "res://images/atlases/compressed_atlas.sprites/map_circle_2.tres", "res://images/atlases/compressed_atlas.sprites/map_circle_3.tres", "res://images/atlases/compressed_atlas.sprites/map_circle_4.tres" };
 
 	private const double _animInterval = 1.0 / 24.0;
 
 	private bool _playAnim;
+
+	private float _minScale;
+
+	private float _maxScale;
 
 	private MapCoord _mapCoord;
 
@@ -36,7 +40,7 @@ public partial class NMapCircleVfx : Control
 		_image.Texture = PreloadManager.Cache.GetTexture2D(_textures[0]);
 		Rng rng = new Rng((ulong)((long)_runState.Rng.Seed + (long)_mapCoord.row + 131L * (long)_mapCoord.row));
 		base.RotationDegrees = rng.NextFloat(360f);
-		Vector2 vector = Vector2.One * rng.NextFloat(0.85f, 0.9f);
+		Vector2 vector = Vector2.One * rng.NextFloat(_minScale, _maxScale);
 		if (_playAnim)
 		{
 			Tween tween = CreateTween().SetParallel();
@@ -66,7 +70,7 @@ public partial class NMapCircleVfx : Control
 		}
 	}
 
-	public static NMapCircleVfx? Create(IRunState runState, MapCoord mapCoord, bool playAnim)
+	public static NMapCircleVfx? Create(IRunState runState, MapCoord mapCoord, bool playAnim, float minScale = 0.85f, float maxScale = 0.9f)
 	{
 		if (TestMode.IsOn)
 		{
@@ -76,6 +80,8 @@ public partial class NMapCircleVfx : Control
 		nMapCircleVfx._playAnim = playAnim;
 		nMapCircleVfx._mapCoord = mapCoord;
 		nMapCircleVfx._runState = runState;
+		nMapCircleVfx._minScale = minScale;
+		nMapCircleVfx._maxScale = maxScale;
 		return nMapCircleVfx;
 	}
 }

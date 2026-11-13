@@ -1,4 +1,5 @@
 {
+  "TO_ABSORB": "カードを{Amount:choose(1):1|[blue]{}[/blue]}枚選んで[gold]吸収[/gold]する。",
   "TO_DISCARD": "[gold]捨てる[/gold]カードを[blue]{Amount}[/blue]枚選択",
   "TO_ENCHANT": "[purple]エンチャント[/purple]するカードを[blue]{Amount}[/blue]枚選択",
   "TO_EXHAUST": "[gold]廃棄[/gold]するカードを[blue]{Amount}[/blue]枚選択",

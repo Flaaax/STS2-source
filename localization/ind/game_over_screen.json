@@ -48,10 +48,11 @@
   "SCORE.unlocksRemaining": "Tersisa: {UnlockCount}",
   "SCORE_LINE.ascension": "Angkatan: {AscensionLevel}",
   "SCORE_LINE.bossesSlain": "Bos Dikalahkan: {BossCount}",
+  "SCORE_LINE.dread": "Kelam",
   "SCORE_LINE.elitesKilled": "Elit Dikalahkan: {EliteCount}",
   "SCORE_LINE.floorsClimbed": "Lantai Didaki: {FloorCount}",
   "SCORE_LINE.goldGained": "Emas didapat: {GoldAmount}",
   "VICTORY_DAMAGE": "Kamu melakukan [green]{PlayerDamage:n()}[/green] kerusakan ke sang Arsitek... tapi itu belum cukup...\nKamu telah melakukan total [green]{PersonalDamage:n()}[/green] kerusakan ke sang Arsitek.\nSang Arsitek masih berdiri meski mendapat [green]{TotalDamage:n()}[/green] kerusakan dari semua yang telah menghadapinya.",
   "VICTORY_DAMAGE_LOCAL": "Kamu melakukan [green]{PlayerDamage:n()}[/green] kerusakan ke sang Arsitek... tapi itu belum cukup...\nKamu telah melakukan total [green]{PersonalDamage:n()}[/green] kerusakan ke sang Arsitek.",
-  "VICTORY_UNLOCKED_ASCENSION": "[blue]Angkatan {AscensionLevel} terbuka![/blue]"
+  "VICTORY_UNLOCKED_ASCENSION": "[blue]{IsMultiplayer:Multiplayer |}Angkatan {AscensionLevel} terbuka![/blue]"
 }

@@ -19,7 +19,7 @@ public partial class NDeleteProfileButton : NButton
 
 	private static readonly LocString _description = new LocString("main_menu_ui", "PROFILE_SCREEN.DELETE_CONFIRM_POPUP.description");
 
-	private static readonly LocString _buttonMesssage = new LocString("main_menu_ui", "PROFILE_SCREEN.DELETE_BUTTON.label");
+	private static readonly LocString _buttonMessage = new LocString("main_menu_ui", "PROFILE_SCREEN.DELETE_BUTTON.label");
 
 	private TextureRect _icon;
 
@@ -37,7 +37,7 @@ public partial class NDeleteProfileButton : NButton
 	{
 		ConnectSignals();
 		_label = GetNode<MegaLabel>("%MegaLabel");
-		_label.SetTextAutoSize(_buttonMesssage.GetFormattedText());
+		_label.SetTextAutoSize(_buttonMessage.GetFormattedText());
 		_icon = GetNode<TextureRect>("Icon");
 		_hsv = (ShaderMaterial)_icon.Material;
 	}

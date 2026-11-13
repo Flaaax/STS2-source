@@ -6,6 +6,7 @@ using Godot;
 using MegaCrit.Sts2.addons.mega_text;
 using MegaCrit.Sts2.Core.Assets;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Ascension;
 using MegaCrit.Sts2.Core.Entities.Multiplayer;
 using MegaCrit.Sts2.Core.Entities.UI;
 using MegaCrit.Sts2.Core.Helpers;
@@ -19,6 +20,7 @@ using MegaCrit.Sts2.Core.Nodes.Audio;
 using MegaCrit.Sts2.Core.Nodes.CommonUi;
 using MegaCrit.Sts2.Core.Nodes.GodotExtensions;
 using MegaCrit.Sts2.Core.Nodes.Multiplayer;
+using MegaCrit.Sts2.Core.Nodes.Screens.Dread;
 using MegaCrit.Sts2.Core.Nodes.Screens.MainMenu;
 using MegaCrit.Sts2.Core.Nodes.Vfx.Ui;
 using MegaCrit.Sts2.Core.Platform;
@@ -39,11 +41,19 @@ public partial class NMultiplayerLoadGameScreen : NSubmenu, ILoadRunLobbyListene
 
 	private MegaLabel _hp;
 
+	private Control _goldContainer;
+
 	private MegaLabel _gold;
 
 	private NCharacterSelectButton? _selectedButton;
 
 	private Control _bgContainer;
+
+	private Control _grayScaler;
+
+	private Control _blitzTitle;
+
+	private Control _rotatingImage;
 
 	private NConfirmButton _confirmButton;
 
@@ -86,10 +96,14 @@ public partial class NMultiplayerLoadGameScreen : NSubmenu, ILoadRunLobbyListene
 		_infoPanel = GetNode<Control>("InfoPanel");
 		_name = GetNode<MegaLabel>("InfoPanel/VBoxContainer/Name");
 		_hp = GetNode<MegaLabel>("InfoPanel/VBoxContainer/HpGoldSpacer/HpGold/Hp/Label");
+		_goldContainer = GetNode<Control>("InfoPanel/VBoxContainer/HpGoldSpacer/HpGold/Gold");
 		_gold = GetNode<MegaLabel>("InfoPanel/VBoxContainer/HpGoldSpacer/HpGold/Gold/Label");
 		_actLabel = GetNode<MegaRichTextLabel>("InfoPanel/VBoxContainer/RunLocation/ActLabel");
 		_floorLabel = GetNode<MegaRichTextLabel>("InfoPanel/VBoxContainer/RunLocation/FloorLabel");
-		_bgContainer = GetNode<Control>("AnimatedBg");
+		_bgContainer = GetNode<Control>("%AnimatedBg");
+		_grayScaler = GetNode<Control>("%GrayScaler");
+		_blitzTitle = GetNode<Control>("%BlitzPlaceholder");
+		_rotatingImage = GetNode<Control>("%RotatingImage");
 		_ascensionPanel = GetNode<NAscensionPanel>("%AscensionPanel");
 		_remotePlayerContainer = GetNode<NRemoteLoadLobbyPlayerContainer>("RemotePlayerLoadContainer");
 		_confirmButton = GetNode<NConfirmButton>("ConfirmButton");
@@ -98,6 +112,9 @@ public partial class NMultiplayerLoadGameScreen : NSubmenu, ILoadRunLobbyListene
 		_confirmButton.Connect(NClickableControl.SignalName.Released, Callable.From<NButton>(OnEmbarkPressed));
 		_unreadyButton.Connect(NClickableControl.SignalName.Released, Callable.From<NButton>(OnUnreadyPressed));
 		_unreadyButton.Disable();
+		Tween tween = CreateTween();
+		tween.TweenProperty(_rotatingImage, "rotation", (float)Math.PI * 2f, 10.0).From(0f).SetTrans(Tween.TransitionType.Linear);
+		tween.SetLoops();
 	}
 
 	public void InitializeAsHost(INetGameService gameService, SerializableRun run)
@@ -134,8 +151,8 @@ public partial class NMultiplayerLoadGameScreen : NSubmenu, ILoadRunLobbyListene
 		base.OnSubmenuOpened();
 		_confirmButton.Enable();
 		_remotePlayerContainer.Initialize(_runLobby, displayLocalPlayer: false);
-		_ascensionPanel.Initialize(MultiplayerUiMode.Load);
-		_ascensionPanel.SetAscensionLevel(_runLobby.Run.Ascension);
+		_ascensionPanel.Initialize(MultiplayerUiMode.Load, _runLobby.Run.GameMode);
+		_ascensionPanel.SetAscensionLevel(AscensionManager.ClampToMode(_runLobby.Run.GameMode, _runLobby.Run.Ascension));
 	}
 
 	public override void OnSubmenuClosed()
@@ -308,9 +325,19 @@ public partial class NMultiplayerLoadGameScreen : NSubmenu, ILoadRunLobbyListene
 		Control control = PreloadManager.Cache.GetScene(byId.CharacterSelectBg).Instantiate<Control>(PackedScene.GenEditState.Disabled);
 		control.Name = byId.Id.Entry + "_bg";
 		_bgContainer.AddChildSafely(control);
+		_grayScaler.Visible = _runLobby.Run.GameMode == GameMode.Dread;
+		_blitzTitle.Visible = _runLobby.Run.GameMode == GameMode.Blitz;
+		_goldContainer.Visible = _runLobby.Run.GameMode != GameMode.Blitz;
+		_rotatingImage.Visible = serializablePlayer.ExtraFields.IsPlayingRotatingCharacter;
+		ShaderMaterial shaderMaterial = (ShaderMaterial)_grayScaler.Material;
+		shaderMaterial.SetShaderParameter(NDreadScreen.shaderParameterBrightness, byId.DreadBgBrightness);
+		shaderMaterial.SetShaderParameter(NDreadScreen.shaderParameterContrast, byId.DreadBgContrast);
 		_name.SetTextAutoSize(byId.Title.GetFormattedText());
 		_hp.SetTextAutoSize($"{serializablePlayer.CurrentHp}/{serializablePlayer.MaxHp}");
-		_gold.SetTextAutoSize($"{serializablePlayer.Gold}");
+		if (_goldContainer.Visible)
+		{
+			_gold.SetTextAutoSize($"{serializablePlayer.Gold}");
+		}
 		LocString locString = new LocString("main_menu_ui", "MULTIPLAYER_LOAD_MENU.FLOOR");
 		locString.Add("floor", _runLobby.Run.VisitedMapCoords.Count);
 		_floorLabel.Text = locString.GetFormattedText();

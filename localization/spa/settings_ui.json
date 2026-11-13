@@ -153,6 +153,7 @@
   "TEXT_EFFECTS": "Efectos de texto",
   "TEXT_EFFECTS_DESCRIPTION": "Activa o desactiva efectos de texto como la ondulación o el temblor.",
   "TEXT_SIZE": "Tamaño del texto",
+  "TOAST_CANNOT_REMAP_INPUT": "No se puede definir un comando para {Hotkey} para {ControlType}.",
   "TOAST_FAST_MODE_OFF": "las acciones de combate y transiciones de pantalla serán más lentas.",
   "TOAST_FAST_MODE_ON": "Las acciones de combate y transiciones de pantalla serán más rápidas.",
   "TOAST_GAMEPLAY_DATA_OFF": "No se enviarán las métricas del juego ni los informes de errores.",

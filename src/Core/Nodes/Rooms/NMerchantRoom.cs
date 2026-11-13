@@ -18,9 +18,8 @@ using MegaCrit.Sts2.Core.Nodes.Screens.Shops;
 using MegaCrit.Sts2.Core.Nodes.Vfx;
 using MegaCrit.Sts2.Core.Nodes.Vfx.Utilities;
 using MegaCrit.Sts2.Core.Random;
-using MegaCrit.Sts2.Core.Rooms;
+using MegaCrit.Sts2.Core.Runs;
 using MegaCrit.Sts2.Core.Saves;
-using MegaCrit.Sts2.Core.TestSupport;
 
 namespace MegaCrit.Sts2.Core.Nodes.Rooms;
 
@@ -28,15 +27,13 @@ namespace MegaCrit.Sts2.Core.Nodes.Rooms;
 /// Manages the starting UI flow for a merchant room. i.e. opening the inventory and proceeding to the map.
 /// This does not include the merchant items themselves. Those are handled by <see cref="T:MegaCrit.Sts2.Core.Nodes.Screens.Shops.NMerchantInventory" />.
 /// </summary>
-public partial class NMerchantRoom : Control, IScreenContext, IRoomWithProceedButton
+public abstract partial class NMerchantRoom : Control, IScreenContext, IRoomWithProceedButton
 {
-	private const float _animVariance = 0.5f;
-
 	private static readonly string _scenePath = SceneHelper.GetScenePath("rooms/merchant_room");
 
-	private readonly List<Player> _players = new List<Player>();
+	protected readonly List<Player> _players = new List<Player>();
 
-	private MerchantDialogueSet _dialogue;
+	protected MerchantDialogueSet _dialogue;
 
 	private NProceedButton _proceedButton;
 
@@ -44,49 +41,29 @@ public partial class NMerchantRoom : Control, IScreenContext, IRoomWithProceedBu
 
 	private readonly List<NMerchantCharacter> _playerVisuals = new List<NMerchantCharacter>();
 
-	public static IEnumerable<string> AssetPaths => new global::_003C_003Ez__ReadOnlySingleElementList<string>(_scenePath);
-
 	public static NMerchantRoom? Instance => NRun.Instance?.MerchantRoom;
 
 	public NProceedButton ProceedButton => _proceedButton;
 
-	public MerchantRoom Room { get; private set; }
-
 	public NMerchantInventory Inventory { get; private set; }
 
-	public NMerchantButton MerchantButton { get; private set; }
+	public abstract NMerchantButton MerchantButton { get; }
 
 	public IReadOnlyList<NMerchantCharacter> PlayerVisuals => _playerVisuals;
 
 	public Control DefaultFocusedControl => this;
 
-	public static NMerchantRoom? Create(MerchantRoom room, IReadOnlyList<Player> players)
-	{
-		if (TestMode.IsOn)
-		{
-			return null;
-		}
-		NMerchantRoom nMerchantRoom = PreloadManager.Cache.GetScene(_scenePath).Instantiate<NMerchantRoom>(PackedScene.GenEditState.Disabled);
-		nMerchantRoom.Room = room;
-		nMerchantRoom._players.AddRange(players);
-		nMerchantRoom._dialogue = MerchantRoom.Dialogue;
-		return nMerchantRoom;
-	}
-
 	public override void _Ready()
 	{
 		_proceedButton = GetNode<NProceedButton>("%ProceedButton");
-		_proceedButton.Connect(NClickableControl.SignalName.Released, Callable.From<NButton>(HideScreen));
+		_proceedButton.Connect(NClickableControl.SignalName.Released, Callable.From<NButton>(OnProceedButtonReleased));
 		_proceedButton.UpdateText(NProceedButton.ProceedLoc);
 		_proceedButton.SetPulseState(isPulsing: false);
+		_proceedButton.Initialize(_players[0].RunState);
 		_proceedButton.Enable();
-		MerchantButton = GetNode<NMerchantButton>("%MerchantButton");
-		MerchantButton.IsLocalPlayerDead = LocalContext.GetMe(_players).Creature.IsDead;
-		MerchantButton.PlayerDeadLines = _dialogue.PlayerDeadLines;
-		MerchantButton.Connect(NMerchantButton.SignalName.MerchantOpened, Callable.From<NMerchantButton>(OnMerchantOpened));
 		Inventory = GetNode<NMerchantInventory>("%Inventory");
 		Inventory.MouseFilter = MouseFilterEnum.Ignore;
-		Inventory.Initialize(Room.GetLocalInventory(), _dialogue);
+		Inventory.Initialize(RunManager.Instance.MerchantSynchronizer.GetLocalInventory(), _dialogue);
 		_characterContainer = GetNode<Control>("%CharacterContainer");
 		NMapScreen.Instance.SetTravelEnabled(enabled: true);
 		NGame.Instance.SetScreenShakeTarget(this);
@@ -157,11 +134,11 @@ public partial class NMerchantRoom : Control, IScreenContext, IRoomWithProceedBu
 		}
 	}
 
-	private void HideScreen(NButton _)
+	private void OnProceedButtonReleased(NButton _)
 	{
 		if (!MerchantFtueCheck())
 		{
-			NMapScreen.Instance.Open();
+			RunManager.Instance.Proceed();
 		}
 	}
 
@@ -176,26 +153,12 @@ public partial class NMerchantRoom : Control, IScreenContext, IRoomWithProceedBu
 		return false;
 	}
 
-	private void OnMerchantOpened(NMerchantButton _)
+	protected void OnMerchantOpened(NMerchantButton _)
 	{
 		OpenInventory();
 	}
 
-	public void OpenInventory()
-	{
-		if (!Inventory.IsOpen)
-		{
-			_proceedButton.Disable();
-			Inventory.Open();
-			MerchantButton.Disable();
-			Inventory.Connect(NMerchantInventory.SignalName.InventoryClosed, Callable.From(delegate
-			{
-				MerchantButton.Enable();
-				_proceedButton.Enable();
-				_proceedButton.SetPulseState(isPulsing: true);
-			}), 4u);
-		}
-	}
+	public abstract void OpenInventory();
 
 	private void OnActiveScreenUpdated()
 	{

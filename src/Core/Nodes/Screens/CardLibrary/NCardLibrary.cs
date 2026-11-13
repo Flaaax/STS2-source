@@ -56,6 +56,8 @@ public sealed partial class NCardLibrary : NSubmenu
 
 	private NCardPoolFilter _necrobinderFilter;
 
+	private NCardPoolFilter _foolFilter;
+
 	private NCardPoolFilter _colorlessFilter;
 
 	private NCardPoolFilter _ancientsFilter;
@@ -152,6 +154,7 @@ public sealed partial class NCardLibrary : NSubmenu
 		_defectFilter = GetNode<NCardPoolFilter>("%DefectPool");
 		_regentFilter = GetNode<NCardPoolFilter>("%RegentPool");
 		_necrobinderFilter = GetNode<NCardPoolFilter>("%NecrobinderPool");
+		_foolFilter = GetNode<NCardPoolFilter>("%FoolPool");
 		_colorlessFilter = GetNode<NCardPoolFilter>("%ColorlessPool");
 		_ancientsFilter = GetNode<NCardPoolFilter>("%AncientsPool");
 		_miscPoolFilter = GetNode<NCardPoolFilter>("%MiscPool");
@@ -161,6 +164,7 @@ public sealed partial class NCardLibrary : NSubmenu
 		_defectFilter.Connect(NCardPoolFilter.SignalName.Toggled, callable);
 		_regentFilter.Connect(NCardPoolFilter.SignalName.Toggled, callable);
 		_necrobinderFilter.Connect(NCardPoolFilter.SignalName.Toggled, callable);
+		_foolFilter.Connect(NCardPoolFilter.SignalName.Toggled, callable);
 		_colorlessFilter.Connect(NCardPoolFilter.SignalName.Toggled, callable);
 		_ancientsFilter.Connect(NCardPoolFilter.SignalName.Toggled, callable);
 		_miscPoolFilter.Connect(NCardPoolFilter.SignalName.Toggled, callable);
@@ -169,6 +173,7 @@ public sealed partial class NCardLibrary : NSubmenu
 		_poolFilters.Add(_defectFilter, (CardModel c) => c.Pool is DefectCardPool);
 		_poolFilters.Add(_regentFilter, (CardModel c) => c.Pool is RegentCardPool);
 		_poolFilters.Add(_necrobinderFilter, (CardModel c) => c.Pool is NecrobinderCardPool);
+		_poolFilters.Add(_foolFilter, (CardModel c) => c.Pool is FoolCardPool);
 		_poolFilters.Add(_colorlessFilter, (CardModel c) => c.Pool is ColorlessCardPool);
 		_poolFilters.Add(_ancientsFilter, (CardModel c) => c.Rarity == CardRarity.Ancient);
 		_poolFilters.Add(_miscPoolFilter, delegate(CardModel c)
@@ -278,6 +283,7 @@ public sealed partial class NCardLibrary : NSubmenu
 		_cardPoolFilters.Add(ModelDb.Character<Defect>(), _defectFilter);
 		_cardPoolFilters.Add(ModelDb.Character<Necrobinder>(), _necrobinderFilter);
 		_cardPoolFilters.Add(ModelDb.Character<Regent>(), _regentFilter);
+		_cardPoolFilters.Add(ModelDb.Character<Fool>(), _foolFilter);
 		UnlockState unlockState = SaveManager.Instance.GenerateUnlockStateFromProgress();
 		foreach (KeyValuePair<CharacterModel, NCardPoolFilter> cardPoolFilter in _cardPoolFilters)
 		{
@@ -308,6 +314,10 @@ public sealed partial class NCardLibrary : NSubmenu
 		_necrobinderFilter.Connect(Control.SignalName.FocusEntered, Callable.From(delegate
 		{
 			_lastHoveredControl = _necrobinderFilter;
+		}));
+		_foolFilter.Connect(Control.SignalName.FocusEntered, Callable.From(delegate
+		{
+			_lastHoveredControl = _foolFilter;
 		}));
 		_colorlessFilter.Connect(Control.SignalName.FocusEntered, Callable.From(delegate
 		{

@@ -8,7 +8,6 @@ using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Context;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
-using MegaCrit.Sts2.Core.Entities.Multiplayer;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Extensions;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -525,7 +524,7 @@ public static class CardPileCmd
 			if (item3 != null)
 			{
 				item3.Play();
-				if (!(await item3.AwaitFinished(NCombatRoom.Instance)))
+				if (await item3.AwaitFinished(NCombatRoom.Instance) != TweenOutcome.Finished)
 				{
 					return results;
 				}
@@ -548,9 +547,9 @@ public static class CardPileCmd
 	/// <summary>
 	/// Returns a tween which shows the card moving from one pile to another.
 	/// </summary>
-	/// <param name="results">A result from <see cref="o:CardPileCmd.Add" />.</param>
+	/// <param name="results">A result from <see cref="M:MegaCrit.Sts2.Core.Commands.CardPileCmd.Add(System.Collections.Generic.IEnumerable{MegaCrit.Sts2.Core.Models.CardModel},MegaCrit.Sts2.Core.Entities.Cards.CardPile,MegaCrit.Sts2.Core.Entities.Cards.CardPilePosition,MegaCrit.Sts2.Core.Models.AbstractModel,System.Boolean,System.Boolean)" />.</param>
 	/// <param name="fromSilentAdd">If this tween was called after passing skipVisuals as true to
-	/// <see cref="o:CardPileCmd.Add" />, then passing this param will cause the tween to correctly call the pile changed
+	/// <see cref="M:MegaCrit.Sts2.Core.Commands.CardPileCmd.Add(System.Collections.Generic.IEnumerable{MegaCrit.Sts2.Core.Models.CardModel},MegaCrit.Sts2.Core.Entities.Cards.CardPile,MegaCrit.Sts2.Core.Entities.Cards.CardPilePosition,MegaCrit.Sts2.Core.Models.AbstractModel,System.Boolean,System.Boolean)" />, then passing this param will cause the tween to correctly call the pile changed
 	/// callbacks on the old pile which were skipped as part of the original call.</param>
 	/// <returns>A tuple of:
 	///  - The resulting tween that was generated, if any
@@ -685,7 +684,7 @@ public static class CardPileCmd
 			return null;
 		}
 		NPlayerHand handNode = NCombatRoom.Instance?.Ui.Hand;
-		Tween tween = NCombatRoom.Instance?.CreateTween().SetParallel();
+		Tween tween = null;
 		foreach (var card2 in cards)
 		{
 			NCard cardNode = card2.Item1;
@@ -706,9 +705,9 @@ public static class CardPileCmd
 				}
 				if (flag2)
 				{
-					tween?.Parallel().TweenProperty(cardNode, "position", cardNode.Position + Vector2.Down * 25f, (SaveManager.Instance.PrefsSave.FastMode == FastModeType.Fast) ? 0.2f : 0.3f);
-					tween?.Parallel().TweenProperty(cardNode, "modulate", StsColors.exhaustGray, (SaveManager.Instance.PrefsSave.FastMode == FastModeType.Fast) ? 0.2f : 0.3f);
-					tween?.Chain().TweenCallback(Callable.From(cardNode.QueueFreeSafely));
+					GetTween()?.Parallel().TweenProperty(cardNode, "position", cardNode.Position + Vector2.Down * 25f, (SaveManager.Instance.PrefsSave.FastMode == FastModeType.Fast) ? 0.2f : 0.3f);
+					GetTween()?.Parallel().TweenProperty(cardNode, "modulate", StsColors.exhaustGray, (SaveManager.Instance.PrefsSave.FastMode == FastModeType.Fast) ? 0.2f : 0.3f);
+					GetTween()?.Chain().TweenCallback(Callable.From(cardNode.QueueFreeSafely));
 					continue;
 				}
 				switch (newPileType)
@@ -717,9 +716,9 @@ public static class CardPileCmd
 					card.Pile?.InvokeCardAddFinished();
 					if (item.HasValue && item != PileType.Hand && item != PileType.Play)
 					{
-						AppendPileLerpTween(tween, cardNode, PileType.Play, item);
+						AppendPileLerpTween(GetTween(), cardNode, PileType.Play, item);
 						FastModeType fastMode = SaveManager.Instance.PrefsSave.FastMode;
-						tween?.Chain().TweenInterval(fastMode switch
+						GetTween()?.Chain().TweenInterval(fastMode switch
 						{
 							FastModeType.Instant => 0.01f, 
 							FastModeType.Fast => 0.2f, 
@@ -728,7 +727,7 @@ public static class CardPileCmd
 					}
 					if (item == PileType.Hand)
 					{
-						tween?.Chain().TweenCallback(Callable.From(delegate
+						GetTween()?.Chain().TweenCallback(Callable.From(delegate
 						{
 							NCardExhaustQuickVfx nCardExhaustQuickVfx = NCardExhaustQuickVfx.Create(cardNode);
 							if (nCardExhaustQuickVfx != null)
@@ -743,7 +742,7 @@ public static class CardPileCmd
 						}));
 						continue;
 					}
-					tween?.Chain().TweenCallback(Callable.From(delegate
+					GetTween()?.Chain().TweenCallback(Callable.From(delegate
 					{
 						NCombatRoom instance = NCombatRoom.Instance;
 						NCardExhaustVfx nCardExhaustVfx = ((instance != null) ? NCardExhaustVfx.Create(cardNode) : null);
@@ -762,26 +761,26 @@ public static class CardPileCmd
 				case PileType.Hand:
 					if (item.HasValue)
 					{
-						AppendPileLerpTween(tween, cardNode, PileType.Hand, item);
-						tween?.Parallel().TweenCallback(Callable.From(delegate
+						AppendPileLerpTween(GetTween(), cardNode, PileType.Hand, item);
+						GetTween()?.Parallel().TweenCallback(Callable.From(delegate
 						{
 							handNode?.Add(cardNode);
 						}));
 					}
 					else
 					{
-						tween?.Chain().TweenCallback(Callable.From(delegate
+						GetTween()?.Chain().TweenCallback(Callable.From(delegate
 						{
 							handNode?.Add(cardNode);
 						}));
 					}
 					continue;
 				case PileType.Play:
-					AppendPlayPileLerpTween(tween, cardNode, item);
+					AppendPlayPileLerpTween(GetTween(), cardNode, item);
 					continue;
 				}
 				string trailPath = card.Owner.Character.TrailPath;
-				tween?.TweenCallback(Callable.From(delegate
+				GetTween()?.TweenCallback(Callable.From(delegate
 				{
 					if (newPileType.IsCombatPile() && !CombatManager.Instance.IsInProgress)
 					{
@@ -812,10 +811,14 @@ public static class CardPileCmd
 			}
 			else
 			{
-				tween?.TweenCallback(Callable.From(cardNode.QueueFreeSafely));
+				GetTween()?.TweenCallback(Callable.From(cardNode.QueueFreeSafely));
 			}
 		}
 		return tween;
+		Tween? GetTween()
+		{
+			return tween ?? (tween = NCombatRoom.Instance?.CreateTween().SetParallel());
+		}
 	}
 
 	/// <summary>
@@ -855,7 +858,7 @@ public static class CardPileCmd
 			AppendPlayPileLerpTween(tween, nCard, oldPile?.Type);
 			nCard.PlayPileTween = tween;
 			tween.Play();
-			if (card.Type == CardType.Power && !(await tween.AwaitFinished(NCombatRoom.Instance)))
+			if (card.Type == CardType.Power && await tween.AwaitFinished(NCombatRoom.Instance) != TweenOutcome.Finished)
 			{
 				return;
 			}
@@ -988,7 +991,7 @@ public static class CardPileCmd
 	/// Draw cards without needing to know the result.
 	/// This can be used as a shortcut when the target of the draw may be different than the owner of the action which
 	/// caused the draw, and you do not wish the draw to block the originating action.
-	/// If you must know the results of the draw, then you need to construct your own DelegatingPlayerChoiceContext and
+	/// If you must know the results of the draw, then you need to construct your own BranchingPlayerChoiceContext and
 	/// pass it the full task of the draw + modifications.
 	/// </summary>
 	/// <param name="choiceContext">The context with which to handle player choices.</param>
@@ -999,7 +1002,7 @@ public static class CardPileCmd
 	/// <returns>Cards that were drawn.</returns>
 	public static Task DrawWithoutBlockingOnOtherPlayers(PlayerChoiceContext choiceContext, decimal count, Player player, CardModel source, bool fromHandDraw = false)
 	{
-		BranchingPlayerChoiceContext branchingPlayerChoiceContext = new BranchingPlayerChoiceContext(source, LocalContext.NetId.Value, GameActionType.Combat, choiceContext);
+		BranchingPlayerChoiceContext branchingPlayerChoiceContext = new BranchingPlayerChoiceContext(source, LocalContext.NetId.Value, choiceContext);
 		Task<IEnumerable<CardModel>> task = Draw(branchingPlayerChoiceContext, count, player, fromHandDraw);
 		return branchingPlayerChoiceContext.AssignTaskAndWaitForPauseOrCompletion(task);
 	}
@@ -1120,9 +1123,9 @@ public static class CardPileCmd
 		}
 		foreach (Tween item2 in tweens)
 		{
-			if (item2.IsRunning() && await item2.AwaitFinished(NCombatRoom.Instance))
+			if (item2.IsRunning())
 			{
-				return;
+				await item2.AwaitFinished(NCombatRoom.Instance);
 			}
 		}
 		await Cmd.CustomScaledWait(0.2f, 0.5f);
@@ -1130,6 +1133,13 @@ public static class CardPileCmd
 		{
 			await Hook.AfterShuffle(player.Creature.CombatState, choiceContext, player);
 		}
+	}
+
+	public static async Task AutoPlayFromDrawPile(PlayerChoiceContext choiceContext, Player player, int count, CardPilePosition position, bool forceExhaust)
+	{
+		await AutoPlayFromDrawPile(choiceContext, player, count, position, forceExhaust, delegate
+		{
+		});
 	}
 
 	/// <summary>
@@ -1142,7 +1152,8 @@ public static class CardPileCmd
 	/// <param name="count">Number of cards to play.</param>
 	/// <param name="position">Position to play the cards from.</param>
 	/// <param name="forceExhaust">Whether or not to force the played cards to be exhausted after.</param>
-	public static async Task AutoPlayFromDrawPile(PlayerChoiceContext choiceContext, Player player, int count, CardPilePosition position, bool forceExhaust)
+	/// <param name="cardModification">Modification to perform on the card before it gets played. ie The Devil+ upgrades the card before it gets played</param>
+	public static async Task AutoPlayFromDrawPile(PlayerChoiceContext choiceContext, Player player, int count, CardPilePosition position, bool forceExhaust, Action<CardModel> cardModification)
 	{
 		if (CombatManager.Instance.IsOverOrEnding)
 		{
@@ -1164,6 +1175,7 @@ public static class CardPileCmd
 			{
 				break;
 			}
+			cardModification(cardModel);
 			cards.Add(cardModel);
 			await Add(cardModel, PileType.Play);
 		}

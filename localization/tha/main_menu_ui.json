@@ -35,7 +35,7 @@
   "COMPENDIUM_RELIC_COLLECTION.unknown.title": "ปริศนา",
   "COMPENDIUM_RUN_HISTORY.title": "ประวัติการเดินทาง",
   "CONTINUE": "เล่นต่อ",
-  "CONTINUE_RUN_INFO.ascension": "[b]ผู้บรรลุ [/b]",
+  "CONTINUE_RUN_INFO.ascension": "[b]ผู้บรรลุ[/b]",
   "CONTINUE_RUN_INFO.floor": "ชั้น",
   "CONTINUE_RUN_INFO.saved": "[b][gold]เซฟล่าสุด:[/gold][/b]\n{LastSavedTime}",
   "CONTINUE_RUN_INFO.savedTimeFormat": "dddd d MMM yyyy HH:mm",

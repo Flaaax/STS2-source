@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://rx6l2d1lfj44"]
+
+[ext_resource type="Texture2D" uid="uid://4cb1pixtvyrx" path="res://images/ui/top_panel/character_icon_fool.png" id="1_mxcuo"]
+
+[node name="IroncladIcon" type="TextureRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_mxcuo")
+expand_mode = 1
+stretch_mode = 5

@@ -25,7 +25,7 @@ public partial class NMerchantCard : NMerchantSlot
 
 	private Tween? _hoverTween;
 
-	private MerchantCardEntry _cardEntry;
+	private MerchantCardEntry? _cardEntry;
 
 	public bool IsShowingUpgradedCard => _cardNode?.Model?.IsUpgraded == true;
 
@@ -52,47 +52,58 @@ public partial class NMerchantCard : NMerchantSlot
 	protected override void UpdateVisual()
 	{
 		base.UpdateVisual();
-		if (_cardEntry.CreationResult == null)
+		MerchantCardEntry cardEntry = _cardEntry;
+		if (cardEntry != null && cardEntry.CreationResult == null)
 		{
 			base.Visible = false;
 			base.MouseFilter = MouseFilterEnum.Ignore;
 			ClearHoverTip();
 			return;
 		}
-		if (_cardNode != null && _cardNode.Model != _cardEntry.CreationResult.Card)
+		if (_cardEntry != null && _cardNode != null && _cardNode.Model != _cardEntry.CreationResult.Card)
 		{
 			_cardNode.QueueFreeSafely();
 			_cardNode = null;
 		}
-		if (_cardNode == null)
+		if (_cardEntry != null && _cardNode == null)
 		{
 			_cardNode = NCard.Create(_cardEntry.CreationResult.Card);
 			_cardHolder.AddChildSafely(_cardNode);
 			_cardNode.UpdateVisuals(PileType.None, CardPreviewMode.Normal);
 		}
-		_costLabel.SetTextAutoSize(_cardEntry.Cost.ToString());
-		_saleVisual.Visible = _cardEntry.IsOnSale;
-		if (!_cardEntry.EnoughGold)
+		if (_cardEntry != null)
 		{
-			_costLabel.Modulate = StsColors.red;
-		}
-		else
-		{
-			_costLabel.Modulate = (_cardEntry.IsOnSale ? StsColors.green : StsColors.cream);
+			_costLabel.SetTextAutoSize(_cardEntry.Cost.ToString());
+			_saleVisual.Visible = _cardEntry.IsOnSale;
+			if (!_cardEntry.EnoughGold)
+			{
+				_costLabel.Modulate = StsColors.red;
+			}
+			else
+			{
+				_costLabel.Modulate = (_cardEntry.IsOnSale ? StsColors.green : StsColors.cream);
+			}
 		}
 	}
 
 	public void OnInventoryOpened()
 	{
-		CardCreationResult? creationResult = _cardEntry.CreationResult;
-		if (creationResult != null && creationResult.HasBeenModified)
+		if (_cardEntry != null)
 		{
-			TaskHelper.RunSafely(DoRelicFlash());
+			CardCreationResult? creationResult = _cardEntry.CreationResult;
+			if (creationResult != null && creationResult.HasBeenModified)
+			{
+				TaskHelper.RunSafely(DoRelicFlash());
+			}
 		}
 	}
 
 	private async Task DoRelicFlash()
 	{
+		if (_cardEntry == null)
+		{
+			return;
+		}
 		SceneTreeTimer source = GetTree().CreateTimer(0.4);
 		await source.AwaitSignal(SceneTreeTimer.SignalName.Timeout, this);
 		foreach (RelicModel modifyingRelic in _cardEntry.CreationResult.ModifyingRelics)
@@ -100,11 +111,6 @@ public partial class NMerchantCard : NMerchantSlot
 			modifyingRelic.Flash();
 			_cardNode?.FlashRelicOnCard(modifyingRelic);
 		}
-	}
-
-	protected override async Task OnTryPurchase(MerchantInventory? inventory)
-	{
-		await _cardEntry.OnTryPurchaseWrapper(inventory);
 	}
 
 	protected void OnSuccessfulPurchase(PurchaseStatus _, MerchantEntry __)
@@ -131,15 +137,21 @@ public partial class NMerchantCard : NMerchantSlot
 
 	protected override void CreateHoverTip()
 	{
-		NHoverTipSet.CreateAndShow(this, _cardEntry.CreationResult.Card.HoverTips)?.SetAlignment(_hitbox, HoverTip.GetHoverTipAlignment(this));
+		if (_cardEntry != null)
+		{
+			NHoverTipSet.CreateAndShow(this, _cardEntry.CreationResult.Card.HoverTips)?.SetAlignment(GetHoveredHitboxGlobalRect(), HoverTip.GetHoverTipAlignment(this));
+		}
 	}
 
 	public override void _ExitTree()
 	{
 		base._ExitTree();
 		_cardNode?.QueueFreeSafely();
-		_cardEntry.EntryUpdated -= UpdateVisual;
-		_cardEntry.PurchaseFailed -= base.OnPurchaseFailed;
-		_cardEntry.PurchaseCompleted -= OnSuccessfulPurchase;
+		if (_cardEntry != null)
+		{
+			_cardEntry.EntryUpdated -= UpdateVisual;
+			_cardEntry.PurchaseFailed -= base.OnPurchaseFailed;
+			_cardEntry.PurchaseCompleted -= OnSuccessfulPurchase;
+		}
 	}
 }

@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Godot;
 using MegaCrit.Sts2.addons.mega_text;
@@ -53,8 +52,6 @@ public partial class NEpochInspectScreen : NClickableControl, IScreenContext
 	private NEpochPaginateButton _prevChapterButton;
 
 	private NUnlockInfo _unlockInfo;
-
-	private List<SerializableEpoch> _allEpochs;
 
 	private EpochModel _epoch;
 
@@ -338,7 +335,7 @@ public partial class NEpochInspectScreen : NClickableControl, IScreenContext
 		_unlockTween = CreateTween().SetParallel();
 		_unlockTween.TweenProperty(_chains, "scale", Vector2.One * 0.98f, isFast ? 0.25 : 0.5).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Expo)
 			.SetDelay(isFast ? 0.25 : 0.5);
-		if (await _unlockTween.AwaitFinished(this))
+		if (await _unlockTween.AwaitFinished(this) == TweenOutcome.Finished)
 		{
 			_chains.Unlock();
 			await _chains.AwaitSignal(NEpochChains.SignalName.OnAnimationFinished, this);

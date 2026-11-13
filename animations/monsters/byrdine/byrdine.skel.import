@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://bptrhcmc5o0gq"
+path="res://.godot/imported/byrdine.skel-d475172535c3512054e0fe61b8c2366d.spskel"
+
+[deps]
+
+source_file="res://animations/monsters/byrdine/byrdine.skel"
+dest_files=["res://.godot/imported/byrdine.skel-d475172535c3512054e0fe61b8c2366d.spskel"]
+
+[params]
+

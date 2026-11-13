@@ -1,0 +1,20 @@
+{
+  "MERCHANT.cardRemovalService.description": "أزل بطاقة من مجموعتك. تكلفة هذه الخدمة تزيد بمقدار [blue]{Amount}[/blue] لبقية هذه الجولة.",
+  "MERCHANT.cardRemovalService.title": "خدمة إزالة البطاقات",
+  "MERCHANT.talk.foulPotion.line1": "أجل، هذا ما أريده!",
+  "MERCHANT.talk.foulPotion.line2": "واصل إحضاره!",
+  "MERCHANT.talk.foulPotion.line3": "آه... منعش جدًا.",
+  "MERCHANT.talk.playerDead.line1": "ملاحظة: لا أتعامل مع الجثث.",
+  "MERCHANT.talk.playerDead.line2": "لا صحة، لا خدمة.",
+  "MERCHANT.talk.purchaseFailureForbidden.line1": "يبدو أنك لا تستطيع فعل ذلك.",
+  "MERCHANT.talk.purchaseFailureForbidden.line2": "هل من مشكلة؟",
+  "MERCHANT.talk.purchaseFailureGold.line1": "ستحتاج إلى مزيد من النقود.",
+  "MERCHANT.talk.purchaseFailureGold.line2": "[sine]هذه ليست جمعية خيرية.[/sine]",
+  "MERCHANT.talk.purchaseFailureGold.line3": "عُد حين تصبح [jitter]أغنى[/jitter] قليلًا.",
+  "MERCHANT.talk.purchaseFailureGold.line4": "لا أبيع بالدَّين.",
+  "MERCHANT.talk.purchaseFailureSpace.line1": "جرعاتي قوية أكثر مما تحتمله حقيبتك!",
+  "MERCHANT.talk.purchaseFailureSpace.line2": "عذرًا، يبدو أنك تحمل الكثير بالفعل...",
+  "MERCHANT.talk.purchaseSuccess.line1": "ساند متجرك المحلي.",
+  "MERCHANT.talk.purchaseSuccess.line2": "شكرًا لثقتك بي.",
+  "MERCHANT.talk.purchaseSuccess.line3": "استمتع بمشترياتك."
+}

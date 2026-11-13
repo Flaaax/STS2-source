@@ -3,45 +3,15 @@
     {
       "image": "compressed_atlas.png",
       "size": {
-        "w": 1484,
-        "h": 1360
+        "w": 608,
+        "h": 3324
       },
       "sprites": [
         {
-          "filename": "map_select_box.png",
-          "region": {
-            "x": 1,
-            "y": 1,
-            "w": 600,
-            "h": 180
-          },
-          "margin": {
-            "x": 19,
-            "y": 14,
-            "w": 40,
-            "h": 28
-          }
-        },
-        {
-          "filename": "ancient_portrait_mask_large.png",
-          "region": {
-            "x": 603,
-            "y": 1,
-            "w": 408,
-            "h": 574
-          },
-          "margin": {
-            "x": 1,
-            "y": 1,
-            "w": 2,
-            "h": 2
-          }
-        },
-        {
           "filename": "ancient_card_border.png",
           "region": {
-            "x": 1,
-            "y": 183,
+            "x": 4,
+            "y": 4,
             "w": 410,
             "h": 573
           },
@@ -50,28 +20,62 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "00627658cacda34d"
         },
         {
-          "filename": "proceed_button_outline.png",
+          "filename": "ancient_portrait_mask_large.png",
           "region": {
-            "x": 413,
-            "y": 577,
-            "w": 391,
-            "h": 188
+            "x": 4,
+            "y": 588,
+            "w": 408,
+            "h": 574
           },
           "margin": {
             "x": 1,
-            "y": 2,
+            "y": 1,
+            "w": 2,
+            "h": 2
+          },
+          "pixel_hash": "3b15bf545be7a4ff"
+        },
+        {
+          "filename": "card_highlight_ancient.png",
+          "region": {
+            "x": 4,
+            "y": 1172,
+            "w": 408,
+            "h": 570
+          },
+          "margin": {
+            "x": 2,
+            "y": 4,
             "w": 2,
             "h": 4
-          }
+          },
+          "pixel_hash": "93e076cc385cb2f1"
+        },
+        {
+          "filename": "map_select_box.png",
+          "region": {
+            "x": 4,
+            "y": 1752,
+            "w": 600,
+            "h": 180
+          },
+          "margin": {
+            "x": 19,
+            "y": 14,
+            "w": 40,
+            "h": 28
+          },
+          "pixel_hash": "3504f9ff9f98a94e"
         },
         {
           "filename": "ancient_text_bg_power.png",
           "region": {
-            "x": 1,
-            "y": 758,
+            "x": 4,
+            "y": 1940,
             "w": 344,
             "h": 266
           },
@@ -80,28 +84,30 @@
             "y": 2,
             "w": 4,
             "h": 2
-          }
+          },
+          "pixel_hash": "9fcb44ad810c0f6b"
         },
         {
-          "filename": "ancient_text_bg_skill.png",
+          "filename": "proceed_button_outline.png",
           "region": {
-            "x": 806,
-            "y": 577,
-            "w": 344,
-            "h": 216
+            "x": 4,
+            "y": 2216,
+            "w": 391,
+            "h": 188
           },
           "margin": {
-            "x": 2,
-            "y": 52,
-            "w": 4,
-            "h": 52
-          }
+            "x": 1,
+            "y": 2,
+            "w": 2,
+            "h": 4
+          },
+          "pixel_hash": "18eddd55e8d73528"
         },
         {
           "filename": "ancient_text_bg_attack.png",
           "region": {
-            "x": 1013,
-            "y": 1,
+            "x": 4,
+            "y": 2412,
             "w": 343,
             "h": 264
           },
@@ -110,43 +116,30 @@
             "y": 4,
             "w": 5,
             "h": 4
-          }
+          },
+          "pixel_hash": "44e63b263b04c706"
         },
         {
-          "filename": "back_button_outline.png",
+          "filename": "ancient_text_bg_skill.png",
           "region": {
-            "x": 1013,
-            "y": 267,
-            "w": 259,
-            "h": 137
+            "x": 4,
+            "y": 2684,
+            "w": 344,
+            "h": 216
           },
           "margin": {
-            "x": 0,
-            "y": 23,
-            "w": 41,
-            "h": 65
-          }
-        },
-        {
-          "filename": "confirm_button_outline.png",
-          "region": {
-            "x": 1013,
-            "y": 406,
-            "w": 259,
-            "h": 137
+            "x": 2,
+            "y": 52,
+            "w": 4,
+            "h": 52
           },
-          "margin": {
-            "x": 41,
-            "y": 22,
-            "w": 41,
-            "h": 65
-          }
+          "pixel_hash": "bd6488aa03fab607"
         },
         {
           "filename": "flower.png",
           "region": {
-            "x": 347,
-            "y": 767,
+            "x": 356,
+            "y": 1940,
             "w": 235,
             "h": 253
           },
@@ -155,13 +148,14 @@
             "y": 3,
             "w": 21,
             "h": 3
-          }
+          },
+          "pixel_hash": "d86ecf73e4bc9fb7"
         },
         {
           "filename": "flower_anticipation.png",
           "region": {
-            "x": 584,
-            "y": 795,
+            "x": 356,
+            "y": 2412,
             "w": 235,
             "h": 253
           },
@@ -170,13 +164,14 @@
             "y": 3,
             "w": 21,
             "h": 3
-          }
+          },
+          "pixel_hash": "6be0ea9b26693f94"
         },
         {
           "filename": "flower_happy.png",
           "region": {
-            "x": 1,
-            "y": 1026,
+            "x": 356,
+            "y": 2676,
             "w": 235,
             "h": 253
           },
@@ -185,13 +180,14 @@
             "y": 3,
             "w": 21,
             "h": 3
-          }
+          },
+          "pixel_hash": "4ad010ca5f818a9b"
         },
         {
           "filename": "the_sun.png",
           "region": {
-            "x": 238,
-            "y": 1026,
+            "x": 4,
+            "y": 2908,
             "w": 234,
             "h": 224
           },
@@ -200,13 +196,46 @@
             "y": 17,
             "w": 22,
             "h": 32
-          }
+          },
+          "pixel_hash": "5cb686b2e5a1b7db"
+        },
+        {
+          "filename": "back_button_outline.png",
+          "region": {
+            "x": 248,
+            "y": 2940,
+            "w": 259,
+            "h": 137
+          },
+          "margin": {
+            "x": 0,
+            "y": 23,
+            "w": 41,
+            "h": 65
+          },
+          "pixel_hash": "33c16fc5aec9456a"
+        },
+        {
+          "filename": "confirm_button_outline.png",
+          "region": {
+            "x": 248,
+            "y": 3088,
+            "w": 259,
+            "h": 137
+          },
+          "margin": {
+            "x": 41,
+            "y": 22,
+            "w": 41,
+            "h": 65
+          },
+          "pixel_hash": "382b3fb4ac25f8db"
         },
         {
           "filename": "cupcake.png",
           "region": {
-            "x": 413,
-            "y": 183,
+            "x": 424,
+            "y": 4,
             "w": 149,
             "h": 216
           },
@@ -215,58 +244,14 @@
             "y": 21,
             "w": 107,
             "h": 40
-          }
-        },
-        {
-          "filename": "popup_confirm_button_outline.png",
-          "region": {
-            "x": 821,
-            "y": 795,
-            "w": 198,
-            "h": 91
           },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 5
-          }
-        },
-        {
-          "filename": "popup_cancel_button_outline.png",
-          "region": {
-            "x": 821,
-            "y": 888,
-            "w": 196,
-            "h": 89
-          },
-          "margin": {
-            "x": 0,
-            "y": 0,
-            "w": 0,
-            "h": 7
-          }
-        },
-        {
-          "filename": "back_button_arrow.png",
-          "region": {
-            "x": 413,
-            "y": 401,
-            "w": 174,
-            "h": 146
-          },
-          "margin": {
-            "x": 0,
-            "y": 17,
-            "w": 6,
-            "h": 34
-          }
+          "pixel_hash": "c22d402b1bea9d80"
         },
         {
           "filename": "confirm_button_circle.png",
           "region": {
-            "x": 1019,
-            "y": 888,
+            "x": 424,
+            "y": 228,
             "w": 169,
             "h": 169
           },
@@ -275,28 +260,14 @@
             "y": 6,
             "w": 11,
             "h": 11
-          }
-        },
-        {
-          "filename": "confirm_button_tick.png",
-          "region": {
-            "x": 1152,
-            "y": 545,
-            "w": 169,
-            "h": 144
           },
-          "margin": {
-            "x": 6,
-            "y": 17,
-            "w": 11,
-            "h": 36
-          }
+          "pixel_hash": "3d98855d5dbaa9e0"
         },
         {
           "filename": "back_button_x.png",
           "region": {
-            "x": 1274,
-            "y": 267,
+            "x": 424,
+            "y": 408,
             "w": 166,
             "h": 166
           },
@@ -305,13 +276,78 @@
             "y": 7,
             "w": 14,
             "h": 14
-          }
+          },
+          "pixel_hash": "bc15faa8017073f9"
+        },
+        {
+          "filename": "back_button_arrow.png",
+          "region": {
+            "x": 424,
+            "y": 584,
+            "w": 174,
+            "h": 146
+          },
+          "margin": {
+            "x": 0,
+            "y": 17,
+            "w": 6,
+            "h": 34
+          },
+          "pixel_hash": "d902a65c30f3bd83"
+        },
+        {
+          "filename": "confirm_button_tick.png",
+          "region": {
+            "x": 420,
+            "y": 740,
+            "w": 169,
+            "h": 144
+          },
+          "margin": {
+            "x": 6,
+            "y": 17,
+            "w": 11,
+            "h": 36
+          },
+          "pixel_hash": "39fb7be2ce3a08e7"
+        },
+        {
+          "filename": "popup_confirm_button_outline.png",
+          "region": {
+            "x": 404,
+            "y": 2204,
+            "w": 198,
+            "h": 91
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 5
+          },
+          "pixel_hash": "0acd3ad56359d74c"
+        },
+        {
+          "filename": "popup_cancel_button_outline.png",
+          "region": {
+            "x": 404,
+            "y": 2304,
+            "w": 196,
+            "h": 89
+          },
+          "margin": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 7
+          },
+          "pixel_hash": "c4635a63fc7d1f22"
         },
         {
           "filename": "map_complete_icon.png",
           "region": {
-            "x": 1358,
-            "y": 1,
+            "x": 420,
+            "y": 892,
             "w": 125,
             "h": 128
           },
@@ -320,13 +356,14 @@
             "y": 66,
             "w": 131,
             "h": 128
-          }
+          },
+          "pixel_hash": "0da7bc4bd1d2f1eb"
         },
         {
           "filename": "map_circle_3.png",
           "region": {
-            "x": 1358,
-            "y": 131,
+            "x": 420,
+            "y": 1028,
             "w": 121,
             "h": 118
           },
@@ -335,13 +372,14 @@
             "y": 37,
             "w": 71,
             "h": 74
-          }
+          },
+          "pixel_hash": "9c6cf51c205e8248"
         },
         {
           "filename": "map_circle_4.png",
           "region": {
-            "x": 1152,
-            "y": 691,
+            "x": 420,
+            "y": 1156,
             "w": 121,
             "h": 118
           },
@@ -350,13 +388,14 @@
             "y": 37,
             "w": 71,
             "h": 74
-          }
+          },
+          "pixel_hash": "ea38cfa52bcbe546"
         },
         {
           "filename": "map_circle_2.png",
           "region": {
-            "x": 474,
-            "y": 1050,
+            "x": 420,
+            "y": 1284,
             "w": 96,
             "h": 118
           },
@@ -365,13 +404,14 @@
             "y": 37,
             "w": 96,
             "h": 74
-          }
+          },
+          "pixel_hash": "e10f7e91a2bf5d38"
         },
         {
           "filename": "map_chest_boss_outline.png",
           "region": {
-            "x": 1021,
-            "y": 795,
+            "x": 420,
+            "y": 1412,
             "w": 96,
             "h": 83
           },
@@ -380,13 +420,14 @@
             "y": 16,
             "w": 32,
             "h": 45
-          }
+          },
+          "pixel_hash": "ea031a8264104084"
         },
         {
           "filename": "map_elite_outline.png",
           "region": {
-            "x": 1274,
-            "y": 435,
+            "x": 420,
+            "y": 1504,
             "w": 95,
             "h": 77
           },
@@ -395,28 +436,14 @@
             "y": 24,
             "w": 33,
             "h": 51
-          }
-        },
-        {
-          "filename": "map_rest_outline.png",
-          "region": {
-            "x": 572,
-            "y": 1050,
-            "w": 73,
-            "h": 95
           },
-          "margin": {
-            "x": 29,
-            "y": 15,
-            "w": 55,
-            "h": 33
-          }
+          "pixel_hash": "6060af572cd753f5"
         },
         {
           "filename": "map_circle_1.png",
           "region": {
-            "x": 647,
-            "y": 1050,
+            "x": 420,
+            "y": 1592,
             "w": 92,
             "h": 80
           },
@@ -425,73 +452,30 @@
             "y": 37,
             "w": 100,
             "h": 112
-          }
+          },
+          "pixel_hash": "576fa744ff3674a5"
         },
         {
-          "filename": "map_rest_traversed.png",
+          "filename": "map_rest_outline.png",
           "region": {
-            "x": 741,
-            "y": 1050,
-            "w": 61,
-            "h": 90
+            "x": 524,
+            "y": 1284,
+            "w": 73,
+            "h": 95
           },
           "margin": {
-            "x": 33,
-            "y": 18,
-            "w": 67,
-            "h": 38
-          }
-        },
-        {
-          "filename": "map_elite_traversed.png",
-          "region": {
-            "x": 1119,
-            "y": 811,
-            "w": 89,
-            "h": 70
+            "x": 29,
+            "y": 15,
+            "w": 55,
+            "h": 33
           },
-          "margin": {
-            "x": 19,
-            "y": 27,
-            "w": 39,
-            "h": 58
-          }
-        },
-        {
-          "filename": "map_chest_outline.png",
-          "region": {
-            "x": 647,
-            "y": 1132,
-            "w": 88,
-            "h": 67
-          },
-          "margin": {
-            "x": 20,
-            "y": 31,
-            "w": 40,
-            "h": 61
-          }
-        },
-        {
-          "filename": "map_chest_traversed.png",
-          "region": {
-            "x": 474,
-            "y": 1170,
-            "w": 84,
-            "h": 59
-          },
-          "margin": {
-            "x": 23,
-            "y": 34,
-            "w": 44,
-            "h": 69
-          }
+          "pixel_hash": "227fff119ff50f74"
         },
         {
           "filename": "map_unknown_traversed.png",
           "region": {
-            "x": 560,
-            "y": 1170,
+            "x": 520,
+            "y": 1592,
             "w": 81,
             "h": 80
           },
@@ -500,13 +484,30 @@
             "y": 24,
             "w": 47,
             "h": 48
-          }
+          },
+          "pixel_hash": "e1b95dcee06e8d7d"
+        },
+        {
+          "filename": "map_elite_traversed.png",
+          "region": {
+            "x": 4,
+            "y": 3140,
+            "w": 89,
+            "h": 70
+          },
+          "margin": {
+            "x": 19,
+            "y": 27,
+            "w": 39,
+            "h": 58
+          },
+          "pixel_hash": "3f7368808c3db3a2"
         },
         {
           "filename": "drawing_clear_glow.png",
           "region": {
-            "x": 474,
-            "y": 1231,
+            "x": 524,
+            "y": 1388,
             "w": 80,
             "h": 80
           },
@@ -515,13 +516,14 @@
             "y": 0,
             "w": 0,
             "h": 0
-          }
+          },
+          "pixel_hash": "7f6f70eaa1721166"
         },
         {
           "filename": "map_unknown_outline.png",
           "region": {
-            "x": 1,
-            "y": 1281,
+            "x": 524,
+            "y": 1476,
             "w": 80,
             "h": 78
           },
@@ -530,13 +532,30 @@
             "y": 25,
             "w": 48,
             "h": 50
-          }
+          },
+          "pixel_hash": "a221495b4cf1d83d"
+        },
+        {
+          "filename": "map_chest_outline.png",
+          "region": {
+            "x": 516,
+            "y": 2940,
+            "w": 88,
+            "h": 67
+          },
+          "margin": {
+            "x": 20,
+            "y": 31,
+            "w": 40,
+            "h": 61
+          },
+          "pixel_hash": "aa10b391ed141c51"
         },
         {
           "filename": "drawing_eraser_glow.png",
           "region": {
-            "x": 83,
-            "y": 1281,
+            "x": 516,
+            "y": 3016,
             "w": 80,
             "h": 76
           },
@@ -545,13 +564,14 @@
             "y": 4,
             "w": 0,
             "h": 4
-          }
+          },
+          "pixel_hash": "061f4de49ba38883"
         },
         {
           "filename": "drawing_quill_glow.png",
           "region": {
-            "x": 165,
-            "y": 1281,
+            "x": 516,
+            "y": 3100,
             "w": 80,
             "h": 76
           },
@@ -560,13 +580,30 @@
             "y": 3,
             "w": 0,
             "h": 4
-          }
+          },
+          "pixel_hash": "4db7cc8eb5ee72c5"
+        },
+        {
+          "filename": "map_rest_traversed.png",
+          "region": {
+            "x": 104,
+            "y": 3140,
+            "w": 61,
+            "h": 90
+          },
+          "margin": {
+            "x": 33,
+            "y": 18,
+            "w": 67,
+            "h": 38
+          },
+          "pixel_hash": "6a2f04f4a2e80845"
         },
         {
           "filename": "map_shop_outline.png",
           "region": {
-            "x": 247,
-            "y": 1252,
+            "x": 516,
+            "y": 3184,
             "w": 74,
             "h": 76
           },
@@ -575,13 +612,14 @@
             "y": 25,
             "w": 54,
             "h": 52
-          }
+          },
+          "pixel_hash": "e5eb0ef8f0d29cee"
         },
         {
           "filename": "map_monster_outline.png",
           "region": {
-            "x": 323,
-            "y": 1252,
+            "x": 4,
+            "y": 3220,
             "w": 72,
             "h": 74
           },
@@ -590,13 +628,30 @@
             "y": 27,
             "w": 56,
             "h": 54
-          }
+          },
+          "pixel_hash": "3b147082094190c7"
+        },
+        {
+          "filename": "map_chest_traversed.png",
+          "region": {
+            "x": 420,
+            "y": 1680,
+            "w": 84,
+            "h": 59
+          },
+          "margin": {
+            "x": 23,
+            "y": 34,
+            "w": 44,
+            "h": 69
+          },
+          "pixel_hash": "94cd2066350e488a"
         },
         {
           "filename": "map_shop_traversed.png",
           "region": {
-            "x": 397,
-            "y": 1252,
+            "x": 176,
+            "y": 3236,
             "w": 69,
             "h": 72
           },
@@ -605,28 +660,14 @@
             "y": 30,
             "w": 59,
             "h": 56
-          }
-        },
-        {
-          "filename": "map_circle_0.png",
-          "region": {
-            "x": 1013,
-            "y": 545,
-            "w": 72,
-            "h": 27
           },
-          "margin": {
-            "x": 66,
-            "y": 37,
-            "w": 120,
-            "h": 165
-          }
+          "pixel_hash": "82624e5e368f13aa"
         },
         {
           "filename": "ancient_card_flame_5.png",
           "region": {
-            "x": 804,
-            "y": 1050,
+            "x": 556,
+            "y": 892,
             "w": 48,
             "h": 68
           },
@@ -635,13 +676,14 @@
             "y": 0,
             "w": 1,
             "h": 0
-          }
+          },
+          "pixel_hash": "97231388a2bb2b2d"
         },
         {
           "filename": "ancient_card_flame_0.png",
           "region": {
-            "x": 821,
-            "y": 979,
+            "x": 556,
+            "y": 968,
             "w": 48,
             "h": 67
           },
@@ -650,13 +692,14 @@
             "y": 1,
             "w": 1,
             "h": 1
-          }
+          },
+          "pixel_hash": "34653970719eb53b"
         },
         {
           "filename": "ancient_card_flame_9.png",
           "region": {
-            "x": 854,
-            "y": 1048,
+            "x": 552,
+            "y": 1044,
             "w": 48,
             "h": 67
           },
@@ -665,13 +708,14 @@
             "y": 1,
             "w": 1,
             "h": 1
-          }
+          },
+          "pixel_hash": "a55249ec6589325e"
         },
         {
           "filename": "ancient_card_flame_3.png",
           "region": {
-            "x": 871,
-            "y": 979,
+            "x": 552,
+            "y": 1120,
             "w": 48,
             "h": 65
           },
@@ -680,13 +724,14 @@
             "y": 3,
             "w": 1,
             "h": 3
-          }
+          },
+          "pixel_hash": "34ce4c8dda01d6cb"
         },
         {
           "filename": "ancient_card_flame_8.png",
           "region": {
-            "x": 904,
-            "y": 1046,
+            "x": 552,
+            "y": 1196,
             "w": 48,
             "h": 65
           },
@@ -695,88 +740,14 @@
             "y": 3,
             "w": 1,
             "h": 3
-          }
-        },
-        {
-          "filename": "ancient_card_flame_6.png",
-          "region": {
-            "x": 921,
-            "y": 979,
-            "w": 49,
-            "h": 64
           },
-          "margin": {
-            "x": 0,
-            "y": 4,
-            "w": 0,
-            "h": 4
-          }
-        },
-        {
-          "filename": "ancient_card_flame_4.png",
-          "region": {
-            "x": 954,
-            "y": 1045,
-            "w": 48,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 4,
-            "w": 1,
-            "h": 4
-          }
-        },
-        {
-          "filename": "ancient_card_flame_7.png",
-          "region": {
-            "x": 1004,
-            "y": 1059,
-            "w": 48,
-            "h": 64
-          },
-          "margin": {
-            "x": 0,
-            "y": 4,
-            "w": 1,
-            "h": 4
-          }
-        },
-        {
-          "filename": "ancient_card_flame_1.png",
-          "region": {
-            "x": 804,
-            "y": 1120,
-            "w": 48,
-            "h": 62
-          },
-          "margin": {
-            "x": 0,
-            "y": 6,
-            "w": 1,
-            "h": 6
-          }
-        },
-        {
-          "filename": "ancient_card_flame_2.png",
-          "region": {
-            "x": 737,
-            "y": 1142,
-            "w": 49,
-            "h": 60
-          },
-          "margin": {
-            "x": 0,
-            "y": 8,
-            "w": 0,
-            "h": 8
-          }
+          "pixel_hash": "5ac3ba16fbddd534"
         },
         {
           "filename": "drawing_clear.png",
           "region": {
-            "x": 643,
-            "y": 1201,
+            "x": 512,
+            "y": 1680,
             "w": 58,
             "h": 56
           },
@@ -785,13 +756,110 @@
             "y": 11,
             "w": 22,
             "h": 24
-          }
+          },
+          "pixel_hash": "198bc79667f2f641"
+        },
+        {
+          "filename": "ancient_card_flame_6.png",
+          "region": {
+            "x": 176,
+            "y": 3140,
+            "w": 49,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 4,
+            "w": 0,
+            "h": 4
+          },
+          "pixel_hash": "e8d196adda0d0d77"
+        },
+        {
+          "filename": "ancient_card_flame_4.png",
+          "region": {
+            "x": 256,
+            "y": 3236,
+            "w": 48,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 4,
+            "w": 1,
+            "h": 4
+          },
+          "pixel_hash": "29b44490034052f7"
+        },
+        {
+          "filename": "ancient_card_flame_7.png",
+          "region": {
+            "x": 312,
+            "y": 3236,
+            "w": 48,
+            "h": 64
+          },
+          "margin": {
+            "x": 0,
+            "y": 4,
+            "w": 1,
+            "h": 4
+          },
+          "pixel_hash": "bc630e2e8d274fae"
+        },
+        {
+          "filename": "ancient_card_flame_1.png",
+          "region": {
+            "x": 368,
+            "y": 3236,
+            "w": 48,
+            "h": 62
+          },
+          "margin": {
+            "x": 0,
+            "y": 6,
+            "w": 1,
+            "h": 6
+          },
+          "pixel_hash": "075a19f281401c77"
+        },
+        {
+          "filename": "ancient_card_flame_2.png",
+          "region": {
+            "x": 424,
+            "y": 3236,
+            "w": 49,
+            "h": 60
+          },
+          "margin": {
+            "x": 0,
+            "y": 8,
+            "w": 0,
+            "h": 8
+          },
+          "pixel_hash": "7a1fb87db676f4ae"
+        },
+        {
+          "filename": "map_circle_0.png",
+          "region": {
+            "x": 84,
+            "y": 3240,
+            "w": 72,
+            "h": 27
+          },
+          "margin": {
+            "x": 66,
+            "y": 37,
+            "w": 120,
+            "h": 165
+          },
+          "pixel_hash": "79437d59ca021254"
         },
         {
           "filename": "drawing_quill.png",
           "region": {
-            "x": 556,
-            "y": 1252,
+            "x": 484,
+            "y": 3268,
             "w": 54,
             "h": 50
           },
@@ -800,13 +868,14 @@
             "y": 16,
             "w": 26,
             "h": 30
-          }
+          },
+          "pixel_hash": "5d6192f3a473ae6d"
         },
         {
           "filename": "drawing_eraser.png",
           "region": {
-            "x": 854,
-            "y": 1117,
+            "x": 548,
+            "y": 3268,
             "w": 53,
             "h": 48
           },
@@ -815,13 +884,14 @@
             "y": 18,
             "w": 27,
             "h": 32
-          }
+          },
+          "pixel_hash": "8253d1a50d318407"
         },
         {
           "filename": "map_dot.png",
           "region": {
-            "x": 972,
-            "y": 979,
+            "x": 584,
+            "y": 4,
             "w": 14,
             "h": 25
           },
@@ -830,7 +900,8 @@
             "y": 3,
             "w": 18,
             "h": 7
-          }
+          },
+          "pixel_hash": "cdb7d31b2f681532"
         }
       ]
     }

@@ -1,0 +1,11 @@
+{
+  "BLOCKED_BY_HOOK": "أنا محجوب\nبواسطة [red]{BlockingHook}[/red].",
+  "HAND_FULL": "يدي ممتلئة\nبالبطاقات...",
+  "NOT_ENOUGH_ENERGY": "ليس لدي\n[red]طاقة[/red] كافية.",
+  "NOT_ENOUGH_STARS": "ليس لدي\n[red]نجوم[/red] كافية.",
+  "NO_DRAW": "ليس لدي بطاقات\nكافية للسحب.",
+  "NO_LIVING_ALLIES": "ليس لدي\nحلفاء أحياء.",
+  "OPEN_EMPTY_DISCARD": "كومة الرمي لدي\n[red]فارغة[/red].",
+  "OPEN_EMPTY_DRAW": "كومة السحب لدي\n[red]فارغة[/red].",
+  "UNPLAYABLE": "لا أستطيع لعب\nهذه البطاقة."
+}

@@ -22,6 +22,7 @@
   "MURDEROUS.description": "Comienzas cada combate con [blue]3[/blue] de [gold]fuerza[/gold]. Todos los enemigos comienzan el combate con [blue]3[/blue] de [gold]fuerza[/gold].",
   "MURDEROUS.title": "Homicida",
   "NIGHT_TERRORS.additionalRestSiteHealText": "+{Heal} PV por los terrores nocturnos.\nPierdes [red]5[/red] PV máx.",
+  "NIGHT_TERRORS.additionalRestSiteMendText": "Se cura por completo con Terrores nocturnos.\nPierdes [red]{MaxHpLoss}[/red] PV máx.",
   "NIGHT_TERRORS.description": "Al descansar en los [gold]puntos de descanso[/gold], recuperas todos los PV, pero pierdes [red]5[/red] PV máx.",
   "NIGHT_TERRORS.title": "Terrores nocturnos",
   "SEALED_DECK.description": "Eliges [blue]10[/blue] de [blue]30[/blue] cartas para reemplazar tu mazo inicial.",

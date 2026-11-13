@@ -236,7 +236,7 @@ position = Vector2(646.535, -72.2772)
 amount = 30
 texture = ExtResource("6_1civg")
 lifetime = 14.0
-preprocess = 15.0
+preprocess = 14.0
 process_material = SubResource("ParticleProcessMaterial_ttyx7")
 
 [node name="square_specks" type="GPUParticles2D" parent="SceneContainer/BgContainer"]
@@ -245,7 +245,7 @@ position = Vector2(1712.87, 64.3564)
 amount = 30
 texture = ExtResource("6_1civg")
 lifetime = 14.0
-preprocess = 15.0
+preprocess = 14.0
 process_material = SubResource("ParticleProcessMaterial_ttyx7")
 
 [node name="light_small5" type="CPUParticles2D" parent="SceneContainer"]

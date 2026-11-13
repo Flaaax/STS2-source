@@ -1,6 +1,10 @@
 {
+  "BLITZ_MP_LOBBY": "Sala de Modo Blitz",
   "CUSTOM_MP_LOBBY": "Sala Personalizada",
   "DAILY_MP_LOBBY": "Sala de Partida Diária",
+  "DREAD_MP_LOBBY": "Sala de Modo Pesadelo",
+  "IN_BLITZ_RUN": "Blitz: {#%Character%_title} - {#%Act%_title} A%Ascension%",
+  "IN_DREAD_RUN": "Pesadelo: {#%Character%_title} - {#%Act%_title} P%DreadStreak%",
   "IN_RUN": "{#%Character%_title} - {#%Act%_title} A%Ascension%",
   "LOADING_MP_LOBBY": "Sala de Jogo em Progresso",
   "MAIN_MENU": "Menu Principal",

@@ -28,7 +28,7 @@ public sealed class BrightestFlame : CardModel
 	{
 		await PlayerCmd.GainEnergy(base.DynamicVars.Energy.IntValue, base.Owner);
 		await CardPileCmd.Draw(choiceContext, base.DynamicVars.Cards.BaseValue, base.Owner);
-		await CreatureCmd.LoseMaxHp(choiceContext, base.Owner.Creature, base.DynamicVars.MaxHp.BaseValue, isFromCard: true);
+		await CreatureCmd.LoseMaxHp(choiceContext, base.Owner.Creature, base.DynamicVars.MaxHp.BaseValue, this);
 	}
 
 	protected override void OnUpgrade()

@@ -48,10 +48,11 @@
   "SCORE.unlocksRemaining": "Epoki do odblokowania: {UnlockCount}",
   "SCORE_LINE.ascension": "Poziom Wyniesienia: {AscensionLevel}",
   "SCORE_LINE.bossesSlain": "Pokonani Bossowie: {BossCount}",
+  "SCORE_LINE.dread": "Groza",
   "SCORE_LINE.elitesKilled": "Pokonani Elitarni: {EliteCount}",
   "SCORE_LINE.floorsClimbed": "Pokonane piętra: {FloorCount}",
   "SCORE_LINE.goldGained": "Zyskane Złoto: {GoldAmount}",
   "VICTORY_DAMAGE": "Architekt otrzymał [green]{PlayerDamage:n()}[/green] pkt. obrażeń... ale to nie wystarczyło...\nZadano Architektowi łącznie [green]{PersonalDamage:n()}[/green] pkt. obrażeń.\nArchitekt wciąż żyje, mimo że otrzymał łącznie [green]{TotalDamage:n()}[/green] pkt. obrażeń od wszystkich, którzy się z nim zmierzyli.",
   "VICTORY_DAMAGE_LOCAL": "Architekt otrzymał [green]{PlayerDamage:n()}[/green] pkt. obrażeń... ale to nie wystarczyło...\nZadano Architektowi łącznie [green]{PersonalDamage:n()}[/green] pkt. obrażeń.",
-  "VICTORY_UNLOCKED_ASCENSION": "[blue]Odblokowano {AscensionLevel}. poziom Wyniesienia![/blue]"
+  "VICTORY_UNLOCKED_ASCENSION": "[blue]Odblokowano {AscensionLevel}. poziom Wyniesienia{IsMultiplayer: w trybie wieloosobowym|}![/blue]"
 }

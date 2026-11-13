@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://m6a6rhyid50j"]
+
+[ext_resource type="Texture2D" uid="uid://dp3s1ili4ie82" path="res://images/ui/chain_link.png" id="1_3ujuq"]
+
+[node name="ChainLink" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 120.0
+offset_bottom = 60.0
+pivot_offset = Vector2(60, 30)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+self_modulate = Color(0.35253903, 1, 0.91775256, 0.8)
+layout_mode = 0
+offset_right = 120.0
+offset_bottom = 60.0
+pivot_offset = Vector2(60, 30)
+texture = ExtResource("1_3ujuq")
+expand_mode = 1

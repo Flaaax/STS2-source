@@ -14,7 +14,7 @@
   "MOCK_SELF_DAMAGE_AFFLICTION.title": "[テスト用] 自傷の災禍",
   "MOCK_USELESS_AFFLICTION.title": "[テスト用] 無用な災禍",
   "RINGING.description": "このターン、カードを[blue]1[/blue]枚しかプレイできない。",
-  "RINGING.extraCardText": "鳴動",
+  "RINGING.extraCardText": "鳴動。",
   "RINGING.title": "鳴動",
   "SMOG.description": "このターン、これ以上[gold]スキル[/gold]をプレイできない。ターン終了時に解除される。",
   "SMOG.title": "スモッグ",

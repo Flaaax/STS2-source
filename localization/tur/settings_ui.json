@@ -153,6 +153,7 @@
   "TEXT_EFFECTS": "Metin Efektleri",
   "TEXT_EFFECTS_DESCRIPTION": "Dalgalı veya titrek yazı gibi metin efektlerinin aktif olup olmadığını kontrol eder.",
   "TEXT_SIZE": "Metin Boyutu",
+  "TOAST_CANNOT_REMAP_INPUT": "{ControlType} için {Hotkey} tuşu bir girdi olarak kullanılamaz.",
   "TOAST_FAST_MODE_OFF": "Savaş eylemleri ve ekran geçişleri daha yavaş gerçekleşir.",
   "TOAST_FAST_MODE_ON": "Savaş eylemleri ve ekran geçişleri daha hızlı gerçekleşir.",
   "TOAST_GAMEPLAY_DATA_OFF": "Oyun istatistikleri ve hata kayıtları gönderilmeyecek.",

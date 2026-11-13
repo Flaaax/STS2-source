@@ -24,7 +24,7 @@
   "INSTINCT.description": "このカードのアタックダメージが2倍になる。",
   "INSTINCT.title": "本能",
   "MOCK_FREE_ENCHANTMENT.title": "[テスト用]無料エンチャント",
-  "MOMENTUM.description": "プレイ時、この戦闘中に限りこのカードのダメージが[blue]{Amount}[/blue]増加する。",
+  "MOMENTUM.description": "プレイ時、この戦闘中に限りこのカードのアタックダメージが[blue]{Amount}[/blue]増加する。",
   "MOMENTUM.extraCardText": "この戦闘中、ダメージが{Amount}増加する。",
   "MOMENTUM.title": "モメンタム",
   "NIMBLE.description": "このカードから得る[gold]ブロック[/gold]が[blue]{Amount}[/blue]増加する。",
@@ -52,8 +52,8 @@
   "SWIFT.description": "各戦闘で初めてプレイした時、カードを[blue]{Amount}[/blue]枚引く。",
   "SWIFT.extraCardText": "初めてプレイした時、カードを{Amount}枚引く。",
   "SWIFT.title": "迅速",
-  "TEZCATARAS_EMBER.description": "コストが[blue]0[/blue]になり、追加ダメージ[blue]{Damage}[/blue]と[gold]永劫[/gold]を得る。",
+  "TEZCATARAS_EMBER.description": "コストが[blue]0[/blue]になり、ダメージが[blue]{Damage}[/blue]増加し、[gold]永劫[/gold]を得る。",
   "TEZCATARAS_EMBER.title": "テスカタラの残り火",
-  "VIGOROUS.description": "各戦闘で初めてプレイした時、[blue]{Amount}[/blue]の追加ダメージを与える。",
+  "VIGOROUS.description": "各戦闘で初めてプレイした時、ダメージが[blue]{Amount}[/blue]増加する。",
   "VIGOROUS.title": "活気"
 }

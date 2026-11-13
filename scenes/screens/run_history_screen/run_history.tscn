@@ -75,9 +75,11 @@ custom_minimum_size = Vector2(0, 92)
 layout_mode = 2
 
 [node name="RightAlignedStuff" type="VBoxContainer" parent="ScreenContents/Content/Container/TopSection"]
-layout_mode = 0
-offset_left = 1248.0
-offset_right = 1420.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -172.0
 offset_bottom = 154.0
 grow_horizontal = 0
 theme_override_constants/separation = -2
@@ -230,6 +232,7 @@ script = ExtResource("7_63he4")
 AutoSizeEnabled = false
 
 [node name="Gold" type="HBoxContainer" parent="ScreenContents/Content/Container/TopSection/LeftAlignedStuff"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 theme_override_constants/separation = 6
@@ -405,6 +408,7 @@ theme_override_constants/margin_bottom = 6
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ScreenContents/Content/Container/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 0
 
 [node name="DeathQuoteLabel" type="RichTextLabel" parent="ScreenContents/Content/Container/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
@@ -431,9 +435,8 @@ metadata/_custom_type_script = "uid://c2oywrx8xbqfx"
 
 [node name="BadgeContainer" type="HBoxContainer" parent="ScreenContents/Content/Container/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 64)
+custom_minimum_size = Vector2(400, 64)
 layout_mode = 2
-size_flags_horizontal = 3
 alignment = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="ScreenContents/Content/Container"]
@@ -603,14 +606,19 @@ script = ExtResource("7_63he4")
 
 [node name="LeftArrow" parent="." instance=ExtResource("29_i073e")]
 layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.087000005
+anchor_right = 0.087000005
+offset_left = -127.04001
+offset_right = 0.95999146
 
 [node name="RightArrow" parent="." instance=ExtResource("29_i073e")]
 layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -174.0
-offset_right = -46.0
+anchors_preset = -1
+anchor_left = 0.90900004
+anchor_right = 0.90900004
+offset_left = 0.7199707
+offset_right = 128.71997
 grow_horizontal = 0
 
 [node name="BackButton" parent="." instance=ExtResource("6_2xrly")]
@@ -635,14 +643,7 @@ size_flags_horizontal = 8
 size_flags_vertical = 8
 
 [node name="TextureRect" type="TextureRect" parent="ShareButton"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 mouse_filter = 2
 texture = ExtResource("34_nalpt")
 expand_mode = 1

@@ -164,7 +164,7 @@ public partial class AtlasResourceLoader : ResourceFormatLoader
 	/// Returns the fallback path for a sprite not found in the atlas.
 	/// Different atlases have different fallback conventions.
 	/// </summary>
-	private static string? GetFallbackPath(string atlasName, string spriteName)
+	internal static string? GetFallbackPath(string atlasName, string spriteName)
 	{
 		switch (atlasName)
 		{
@@ -176,11 +176,27 @@ public partial class AtlasResourceLoader : ResourceFormatLoader
 		case "card_atlas":
 			return GetCardFallbackPath(spriteName);
 		case "potion_atlas":
-		case "potion_outline_atlas":
 			return GetPotionFallbackPath(spriteName);
+		case "epoch_atlas":
+			return GetEpochFallbackPath(spriteName);
 		default:
 			return null;
 		}
+	}
+
+	private static string? GetEpochFallbackPath(string spriteName)
+	{
+		string text = "res://images/timeline/epoch_portraits/" + spriteName + ".png";
+		if (ResourceLoader.Exists(text))
+		{
+			return text;
+		}
+		string text2 = "res://images/timeline/epoch_portraits/placeholder/" + spriteName + ".png";
+		if (ResourceLoader.Exists(text2))
+		{
+			return text2;
+		}
+		return null;
 	}
 
 	private static string? GetRelicFallbackPath(string spriteName)
@@ -237,7 +253,7 @@ public partial class AtlasResourceLoader : ResourceFormatLoader
 
 	private static string? GetPotionFallbackPath(string spriteName)
 	{
-		string text = "res://images/potions/" + spriteName + ".png";
+		string text = "res://images/potions/large/" + spriteName + ".png";
 		if (ResourceLoader.Exists(text))
 		{
 			return text;

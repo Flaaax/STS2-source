@@ -30,6 +30,11 @@ const WEIGHT_TEXT: = "res://preload_weight_text.json"
 
 
 const LOCALE_FONTS: = {
+    "ara": {
+        "regular": "res://themes/fonts/ara/alyamama_regular_shared.tres", 
+        "bold": "res://themes/fonts/ara/alyamama_bold_shared.tres", 
+        "italic": "res://themes/fonts/ara/alyamama_regular_shared.tres", 
+    }, 
     "jpn": {
         "regular": "res://themes/fonts/jpn/noto_sans_cjkjp_regular_shared.tres", 
         "bold": "res://themes/fonts/jpn/noto_sans_cjkjp_bold_shared.tres", 

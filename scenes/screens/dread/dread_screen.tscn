@@ -1,0 +1,427 @@
+[gd_scene load_steps=25 format=3 uid="uid://c5p4i6oqplsy0"]
+
+[ext_resource type="Script" uid="uid://p1dcmnk0210n" path="res://src/Core/Nodes/Screens/Dread/NDreadScreen.cs" id="1_quaa0"]
+[ext_resource type="Script" uid="uid://bwr42v37ujq67" path="res://src/Core/Nodes/Screens/CharacterSelect/NCharacterSelectScreenBg.cs" id="2_kds8m"]
+[ext_resource type="Shader" uid="uid://d32q7yb1kjmt4" path="res://shaders/grayscale.gdshader" id="3_1xt7t"]
+[ext_resource type="PackedScene" uid="uid://i17vjyd5x6eg" path="res://scenes/screens/remote_player_container.tscn" id="4_6yqtd"]
+[ext_resource type="Shader" uid="uid://c66gb6g7tup3n" path="res://shaders/hsv.gdshader" id="5_g2xgj"]
+[ext_resource type="PackedScene" uid="uid://c1s5vvtdl1jrc" path="res://scenes/screens/dread/dread_name_text.tscn" id="6_g7osb"]
+[ext_resource type="Texture2D" uid="uid://d0j4xwh3huahn" path="res://images/ui/main_menu/rotating_character.png" id="7_rhmbc"]
+[ext_resource type="Script" uid="uid://chqrlmkktk6y" path="res://src/Core/Nodes/Vfx/Ui/NChainVisualization.cs" id="7_uuwjr"]
+[ext_resource type="Texture2D" uid="uid://btjc3p508sth1" path="res://images/ui/fuzzy_nine_patch_char_select.png" id="8_2t2in"]
+[ext_resource type="FontFile" uid="uid://c680ei46ddqdb" path="res://fonts/bitter_medium_italic.ttf" id="8_73uxh"]
+[ext_resource type="Script" uid="uid://b0mx1nnwxvtmx" path="res://src/Core/Nodes/Screens/Dread/NDreadBeginRotationTickbox.cs" id="9_r0vnk"]
+[ext_resource type="FontVariation" uid="uid://ciql5khgewwbm" path="res://themes/kreon_bold_glyph_space_two.tres" id="9_vg3s7"]
+[ext_resource type="PackedScene" uid="uid://bw8f1jtcj62xv" path="res://scenes/ui/tickbox.tscn" id="10_73uxh"]
+[ext_resource type="Script" uid="uid://c2oywrx8xbqfx" path="res://addons/mega_text/MegaRichTextLabel.cs" id="10_sxqac"]
+[ext_resource type="PackedScene" uid="uid://bl460ab2i4mkx" path="res://scenes/ui/confirm_button.tscn" id="11_7ycld"]
+[ext_resource type="PackedScene" uid="uid://bl4mbjqjfffa3" path="res://scenes/ui/back_button.tscn" id="12_n7x8t"]
+[ext_resource type="Texture2D" uid="uid://bjwgjm2" path="res://images/atlases/compressed_atlas.sprites/back_button_x.tres" id="13_e08v1"]
+[ext_resource type="FontVariation" uid="uid://bhyxo1pcdm73o" path="res://themes/bitter_medium_italic_glyph_space_one.tres" id="14_x431b"]
+[ext_resource type="PackedScene" uid="uid://cdtbn6lx312pq" path="res://scenes/screens/dread/dread_info_button.tscn" id="15_rn1hs"]
+[ext_resource type="PackedScene" uid="uid://cilj0hp8jcfmj" path="res://scenes/screens/under_construction.tscn" id="16_1gmt4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7o1i2"]
+shader = ExtResource("3_1xt7t")
+shader_parameter/amount = 1.0
+shader_parameter/brightness = 0.70000003325
+shader_parameter/contrast = 1.10000005225
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f1ixv"]
+resource_local_to_scene = true
+shader = ExtResource("5_g2xgj")
+shader_parameter/h = 1.0
+shader_parameter/s = 0.50000002375
+shader_parameter/v = 0.9
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r0vnk"]
+resource_local_to_scene = true
+shader = ExtResource("5_g2xgj")
+shader_parameter/h = 1.0
+shader_parameter/s = 1.0
+shader_parameter/v = 1.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jwiv2"]
+blend_mode = 1
+
+[node name="DreadScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_quaa0")
+metadata/_edit_group_ = true
+metadata/_edit_vertical_guides_ = [-33.0]
+metadata/_edit_lock_ = true
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1920, 1140)
+render_target_update_mode = 4
+
+[node name="StaticBg" type="TextureRect" parent="SubViewportContainer/SubViewport"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1348.0
+offset_top = -620.0
+offset_right = 1212.0
+offset_bottom = 580.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.1, 1.1)
+pivot_offset = Vector2(1280, 600)
+script = ExtResource("2_kds8m")
+
+[node name="AnimatedBg" type="Control" parent="SubViewportContainer/SubViewport"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -388.0
+offset_top = -80.0
+offset_right = 252.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.1, 1.1)
+pivot_offset = Vector2(1280, 600)
+script = ExtResource("2_kds8m")
+
+[node name="BigRotatingContainer" type="Control" parent="SubViewportContainer/SubViewport"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RotatingImage" type="TextureRect" parent="SubViewportContainer/SubViewport/BigRotatingContainer"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(150, 150)
+texture = ExtResource("7_rhmbc")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="GrayScaler" type="ColorRect" parent="SubViewportContainer/SubViewport"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_7o1i2")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RemotePlayerContainer" parent="." instance=ExtResource("4_6yqtd")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 48.0
+offset_top = 36.0
+offset_right = 566.0
+offset_bottom = 435.0
+
+[node name="Background" parent="RemotePlayerContainer/Container/InviteButtonContainer/InviteButton" index="0"]
+material = SubResource("ShaderMaterial_f1ixv")
+
+[node name="DreadNameText" parent="." instance=ExtResource("6_g7osb")]
+unique_name_in_owner = true
+layout_mode = 1
+
+[node name="DreadWinStreak" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -307.0
+offset_right = -12.0
+offset_bottom = -307.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_uuwjr")
+
+[node name="RotatingTickbox" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -186.0
+offset_top = -299.0
+offset_right = 188.0
+offset_bottom = -235.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("9_r0vnk")
+
+[node name="Container" type="HBoxContainer" parent="RotatingTickbox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TickboxVisuals" parent="RotatingTickbox/Container" instance=ExtResource("10_73uxh")]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_r0vnk")
+layout_mode = 2
+
+[node name="RotatingContainer" type="Control" parent="RotatingTickbox/Container"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="TickboxRotatingImage" type="TextureRect" parent="RotatingTickbox/Container/RotatingContainer"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(25, 35)
+texture = ExtResource("7_rhmbc")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="RotatingExplanation" type="RichTextLabel" parent="RotatingTickbox/Container"]
+unique_name_in_owner = true
+self_modulate = Color(1, 0.9651667, 0.89, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("8_73uxh")
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+theme_override_font_sizes/bold_italics_font_size = 20
+theme_override_font_sizes/italics_font_size = 20
+theme_override_font_sizes/mono_font_size = 20
+bbcode_enabled = true
+text = "Begin Rotating Streak"
+fit_content = true
+vertical_alignment = 1
+script = ExtResource("10_sxqac")
+MinFontSize = 12
+MaxFontSize = 20
+metadata/_custom_type_script = "uid://c2oywrx8xbqfx"
+
+[node name="CharSelectButtons" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ButtonContainer" type="HBoxContainer" parent="CharSelectButtons"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -237.5
+offset_top = -189.0
+offset_right = 237.5
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="ReadyAndWaitingPanel" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -368.0
+offset_top = -195.0
+offset_right = 368.0
+offset_bottom = -73.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Background" type="NinePatchRect" parent="ReadyAndWaitingPanel"]
+modulate = Color(0, 0, 0, 0.5019608)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_2t2in")
+patch_margin_left = 42
+patch_margin_top = 42
+patch_margin_right = 42
+patch_margin_bottom = 42
+
+[node name="WaitingForPlayers" type="RichTextLabel" parent="ReadyAndWaitingPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.498039, 1, 0, 1)
+theme_override_fonts/normal_font = ExtResource("9_vg3s7")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 32
+theme_override_font_sizes/bold_italics_font_size = 32
+theme_override_font_sizes/italics_font_size = 32
+theme_override_font_sizes/mono_font_size = 32
+bbcode_enabled = true
+text = "[thinky_dots]Waiting for other players...[/thinky_dots]"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("10_sxqac")
+MinFontSize = 32
+MaxFontSize = 32
+metadata/_custom_type_script = "uid://c2oywrx8xbqfx"
+
+[node name="ConfirmButton" parent="." instance=ExtResource("11_7ycld")]
+unique_name_in_owner = true
+layout_mode = 1
+
+[node name="Image" parent="ConfirmButton" index="2"]
+material = SubResource("ShaderMaterial_f1ixv")
+
+[node name="UnreadyButton" parent="." instance=ExtResource("12_n7x8t")]
+unique_name_in_owner = true
+layout_mode = 1
+
+[node name="Image" parent="UnreadyButton" index="2"]
+material = SubResource("ShaderMaterial_f1ixv")
+
+[node name="Icon" parent="UnreadyButton/Image" index="0"]
+texture = ExtResource("13_e08v1")
+
+[node name="BackButton" parent="." instance=ExtResource("12_n7x8t")]
+unique_name_in_owner = true
+layout_mode = 1
+
+[node name="Image" parent="BackButton" index="2"]
+material = SubResource("ShaderMaterial_f1ixv")
+
+[node name="ScoreContainer" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+modulate = Color(0.5294118, 0.80784315, 0.92156863, 0.7529412)
+material = SubResource("CanvasItemMaterial_jwiv2")
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 48.0
+offset_top = -94.0
+offset_right = 334.0
+offset_bottom = -40.0
+grow_vertical = 0
+theme_override_constants/separation = 48
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="ScoreLabels" type="RichTextLabel" parent="ScoreContainer"]
+unique_name_in_owner = true
+use_parent_material = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("14_x431b")
+theme_override_font_sizes/normal_font_size = 22
+text = "Best Streak
+Best (Older Version)"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 2
+script = ExtResource("10_sxqac")
+AutoSizeEnabled = false
+MaxFontSize = 32
+metadata/_custom_type_script = "uid://c2oywrx8xbqfx"
+
+[node name="ScoreValues" type="RichTextLabel" parent="ScoreContainer"]
+unique_name_in_owner = true
+use_parent_material = true
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("14_x431b")
+theme_override_font_sizes/normal_font_size = 22
+text = "0
+0"
+fit_content = true
+scroll_active = false
+autowrap_mode = 2
+vertical_alignment = 2
+script = ExtResource("10_sxqac")
+AutoSizeEnabled = false
+MaxFontSize = 32
+metadata/_custom_type_script = "uid://c2oywrx8xbqfx"
+
+[node name="DreadInfoButton" parent="." instance=ExtResource("15_rn1hs")]
+unique_name_in_owner = true
+layout_mode = 1
+
+[node name="UnderConstruction" parent="." instance=ExtResource("16_1gmt4")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 64.0
+offset_bottom = 52.0
+
+[editable path="RemotePlayerContainer"]
+[editable path="ConfirmButton"]
+[editable path="UnreadyButton"]
+[editable path="BackButton"]

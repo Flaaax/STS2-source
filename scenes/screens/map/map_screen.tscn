@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://bq0yj4xeu85h0" path="res://src/Core/Nodes/Screens/Map/NMapScreen.cs" id="1_se68p"]
 [ext_resource type="Script" uid="uid://dhh64x1cvm7ka" path="res://src/Core/Nodes/Screens/Map/NMapBg.cs" id="3_mc8yn"]
+[ext_resource type="PackedScene" uid="uid://d1fomc3ir7g2e" path="res://scenes/screens/map/map_marker.tscn" id="4_dd8od"]
 [ext_resource type="Texture2D" uid="uid://b8ra3w" path="res://images/atlases/ui_atlas.sprites/map/map_legend.tres" id="5_i7oy3"]
 [ext_resource type="PackedScene" uid="uid://ddb8daodx7qsl" path="res://scenes/ui/hotkey_icon.tscn" id="6_i7oy3"]
 [ext_resource type="Script" uid="uid://bedja71dpxxef" path="res://src/Core/Nodes/Screens/Map/NMapDrawings.cs" id="7_qa21d"]
 [ext_resource type="Texture2D" uid="uid://lplp03" path="res://images/atlases/ui_atlas.sprites/map/icons/map_unknown.tres" id="9_i7oy3"]
-[ext_resource type="Script" uid="uid://6xk4veb5i7om" path="res://src/Core/Nodes/Screens/Map/NMapMarker.cs" id="10_cf1pj"]
 [ext_resource type="Texture2D" uid="uid://b52jis7" path="res://images/atlases/ui_atlas.sprites/map/icons/map_shop.tres" id="10_i7oy3"]
 [ext_resource type="Texture2D" uid="uid://b3sludl" path="res://images/atlases/ui_atlas.sprites/map/icons/map_chest.tres" id="11_i7oy3"]
 [ext_resource type="Texture2D" uid="uid://b7jjoqq" path="res://images/atlases/ui_atlas.sprites/map/icons/map_rest.tres" id="12_i7oy3"]
@@ -29,7 +29,7 @@
 [ext_resource type="Script" uid="uid://bydoucv4eno1k" path="res://src/Core/Nodes/Screens/Map/NMapClearButton.cs" id="30_q7r3k"]
 [ext_resource type="Material" uid="uid://c4ycqv0gdxvmr" path="res://themes/canvas_item_material_additive_shared.tres" id="shared_additive_mat"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dd8od"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mde66"]
 resource_local_to_scene = true
 shader = ExtResource("26_058ps")
 shader_parameter/h = 1.0
@@ -135,25 +135,9 @@ offset_bottom = 1640.0
 mouse_filter = 2
 script = ExtResource("7_qa21d")
 
-[node name="MapMarker" type="TextureRect" parent="TheMap"]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -960.0
-offset_top = -540.0
-offset_right = -920.0
-offset_bottom = -500.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(20, 20)
-mouse_filter = 2
-expand_mode = 2
-stretch_mode = 5
-script = ExtResource("10_cf1pj")
+[node name="MapMarker" parent="TheMap" instance=ExtResource("4_dd8od")]
+layout_mode = 0
+anchors_preset = 0
 
 [node name="MapLegend" type="TextureRect" parent="."]
 unique_name_in_owner = true
@@ -651,7 +635,7 @@ stretch_mode = 5
 
 [node name="ShareButton" parent="." instance=ExtResource("25_8lavf")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_dd8od")
+material = SubResource("ShaderMaterial_mde66")
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0

@@ -1,0 +1,8 @@
+[gd_resource type="SpineSkeletonDataResource" load_steps=3 format=3 uid="uid://cin0ok230u04y"]
+
+[ext_resource type="SpineAtlasResource" uid="uid://8fqsb8ykaoiq" path="res://animations/vfx/vfx_byrd_evolution/byrdpip_evolution.atlas" id="1_dtm8s"]
+[ext_resource type="SpineSkeletonFileResource" uid="uid://cl0kpibiy6me7" path="res://animations/monsters/byrdpip/byrdpip.skel" id="2_0t7ac"]
+
+[resource]
+atlas_res = ExtResource("1_dtm8s")
+skeleton_file_res = ExtResource("2_0t7ac")

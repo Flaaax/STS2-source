@@ -1,4 +1,5 @@
 {
+  "TO_ABSORB": "Wybierz {Amount:plural:kartę|[blue]{}[/blue] karty|[blue]{}[/blue] kart} i [gold]Pochłoń[/gold] je.",
   "TO_DISCARD": "Wybierz {Amount:plural:kartę|[blue]{}[/blue] karty|[blue]{}[/blue] kart} do [gold]Odrzucenia[/gold].",
   "TO_ENCHANT": "Wybierz {Amount:plural:kartę|[blue]{}[/blue] karty|[blue]{}[/blue] kart} do [purple]Zaklęcia[/purple].",
   "TO_EXHAUST": "Wybierz {Amount:plural:kartę|[blue]{}[/blue] karty|[blue]{}[/blue] kart} do [gold]Wyczerpania[/gold].",

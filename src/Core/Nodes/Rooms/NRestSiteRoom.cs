@@ -130,6 +130,7 @@ public partial class NRestSiteRoom : Control, IScreenContext, IRoomWithProceedBu
 		BgContainer.MoveChildSafely(control, 0);
 		_restSiteLighting = control.GetNode<Control>("%RestSiteLighting");
 		Header.SetTextAutoSize(new LocString("rest_site_ui", "PROMPT").GetFormattedText());
+		_proceedButton.Initialize(_runState);
 		_proceedButton.Connect(NClickableControl.SignalName.Released, Callable.From<NButton>(OnProceedButtonReleased));
 		_proceedButton.UpdateText(NProceedButton.ProceedLoc);
 		if (_isDebugUiVisible)
@@ -384,18 +385,25 @@ public partial class NRestSiteRoom : Control, IScreenContext, IRoomWithProceedBu
 		global::_003CPrivateImplementationDetails_003E.InlineArrayElementRef<global::_003C_003Ey__InlineArray2<Task>, Task>(ref buffer, 0) = task;
 		global::_003CPrivateImplementationDetails_003E.InlineArrayElementRef<global::_003C_003Ey__InlineArray2<Task>, Task>(ref buffer, 1) = task2;
 		await Task.WhenAll(global::_003CPrivateImplementationDetails_003E.InlineArrayAsReadOnlySpan<global::_003C_003Ey__InlineArray2<Task>, Task>(in buffer, 2));
+		if (!this.IsValid() || !IsInsideTree())
+		{
+			return;
+		}
 		UpdateRestSiteOptions();
 		ShowProceedButton();
 		if (Options.Count > 0)
 		{
 			await ShowChoices(_cts.Token);
-			DefaultFocusedControl?.TryGrabFocus();
+			if (this.IsValid() && IsInsideTree())
+			{
+				DefaultFocusedControl?.TryGrabFocus();
+			}
 		}
 	}
 
 	private void ShowProceedButton()
 	{
-		if (!_proceedButton.IsEnabled)
+		if (this.IsValid() && IsInsideTree() && !_proceedButton.IsEnabled)
 		{
 			_proceedButton.Enable();
 			NMapScreen.Instance.SetTravelEnabled(enabled: true);
@@ -404,7 +412,7 @@ public partial class NRestSiteRoom : Control, IScreenContext, IRoomWithProceedBu
 
 	private void OnProceedButtonReleased(NButton _)
 	{
-		NMapScreen.Instance.Open();
+		RunManager.Instance.Proceed();
 	}
 
 	public void SetText(string formattedText)
@@ -461,7 +469,7 @@ public partial class NRestSiteRoom : Control, IScreenContext, IRoomWithProceedBu
 		_choicesTween?.Kill();
 		_choicesTween = CreateTween();
 		_choicesTween.TweenProperty(_choicesScreen, "modulate:a", 1f, 0.5).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);
-		await _choicesTween.AwaitFinished(ct);
+		await _choicesTween.AwaitFinished(this, ct);
 	}
 
 	private async Task HideChoices(CancellationToken ct)
@@ -474,7 +482,7 @@ public partial class NRestSiteRoom : Control, IScreenContext, IRoomWithProceedBu
 		_choicesTween = CreateTween();
 		_choicesTween.TweenProperty(_choicesScreen, "modulate:a", 0f, 0.5);
 		_lastFocused = null;
-		await _choicesTween.AwaitFinished(ct);
+		await _choicesTween.AwaitFinished(this, ct);
 	}
 
 	private void OnActiveScreenUpdated()

@@ -48,10 +48,11 @@
   "SCORE.unlocksRemaining": "Осталось разблокировать: {UnlockCount}",
   "SCORE_LINE.ascension": "Возвышение: {AscensionLevel}",
   "SCORE_LINE.bossesSlain": "Убито боссов: {BossCount}",
+  "SCORE_LINE.dread": "Кошмар",
   "SCORE_LINE.elitesKilled": "Убито элитных врагов: {EliteCount}",
   "SCORE_LINE.floorsClimbed": "Пройдено этажей: {FloorCount}",
   "SCORE_LINE.goldGained": "Заработано золота: {GoldAmount}",
   "VICTORY_DAMAGE": "Вы нанесли Архитектору [green]{PlayerDamage:n()}[/green] урона. Но этого оказалось мало…\nВы нанесли Архитектору в общей сложности [green]{PersonalDamage:n()}[/green] урона.\nАрхитектор получил в общей сложности [green]{TotalDamage:n()}[/green] урона от соперников, но он по-прежнему жив.",
   "VICTORY_DAMAGE_LOCAL": "Вы нанесли Архитектору [green]{PlayerDamage:n()}[/green] урона. Но этого оказалось мало…\nВы нанесли Архитектору в общей сложности [green]{PersonalDamage:n()}[/green] урона.",
-  "VICTORY_UNLOCKED_ASCENSION": "[blue]Вы открыли {AscensionLevel}-й уровень Возвышения![/blue]"
+  "VICTORY_UNLOCKED_ASCENSION": "[blue]{IsMultiplayer:Multiplayer |}Вы открыли {AscensionLevel}-й уровень Возвышения![/blue]"
 }

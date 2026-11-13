@@ -3,19 +3,20 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bothgta0h6tir"
-path="res://.godot/imported/event1_epoch.png-40a39ab19db3ac80340d00601c388b46.ctex"
+path.s3tc="res://.godot/imported/event1_epoch.png-40a39ab19db3ac80340d00601c388b46.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://images/timeline/epoch_portraits/placeholder/event1_epoch.png"
-dest_files=["res://.godot/imported/event1_epoch.png-40a39ab19db3ac80340d00601c388b46.ctex"]
+dest_files=["res://.godot/imported/event1_epoch.png-40a39ab19db3ac80340d00601c388b46.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=1.0
 compress/uastc_level=2
@@ -33,4 +34,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

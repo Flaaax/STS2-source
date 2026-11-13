@@ -48,10 +48,11 @@
   "SCORE.unlocksRemaining": "剩餘解鎖項目：{UnlockCount}",
   "SCORE_LINE.ascension": "晉階：{AscensionLevel}",
   "SCORE_LINE.bossesSlain": "頭目擊殺數：{BossCount}",
+  "SCORE_LINE.dread": "恐懼",
   "SCORE_LINE.elitesKilled": "菁英擊殺數：{EliteCount}",
   "SCORE_LINE.floorsClimbed": "攀登樓層數：{FloorCount}",
   "SCORE_LINE.goldGained": "獲得金幣：{GoldAmount}",
   "VICTORY_DAMAGE": "你對建築師造成了 [green]{PlayerDamage:n()}[/green] 點傷害……但仍然不夠……\n你對建築師累計造成了 [green]{PersonalDamage:n()}[/green] 點傷害。\n儘管所有挑戰者合計造成了 [green]{TotalDamage:n()}[/green] 點傷害，建築師依然屹立不搖。",
   "VICTORY_DAMAGE_LOCAL": "你對建築師造成了 [green]{PlayerDamage:n()}[/green] 點傷害……但仍然不夠……\n你對建築師累計造成了 [green]{PersonalDamage:n()}[/green] 點傷害。",
-  "VICTORY_UNLOCKED_ASCENSION": "[blue]晉階 {AscensionLevel} 已解鎖！[/blue]"
+  "VICTORY_UNLOCKED_ASCENSION": "[blue]{IsMultiplayer:多人遊戲|}晉階 {AscensionLevel} 已解鎖！[/blue]"
 }

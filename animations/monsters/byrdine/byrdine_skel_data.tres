@@ -1,0 +1,8 @@
+[gd_resource type="SpineSkeletonDataResource" load_steps=3 format=3 uid="uid://bhimool3rt6ya"]
+
+[ext_resource type="SpineAtlasResource" uid="uid://bot6p5e1hofes" path="res://animations/monsters/byrdine/byrdine.atlas" id="1_5vs02"]
+[ext_resource type="SpineSkeletonFileResource" uid="uid://bptrhcmc5o0gq" path="res://animations/monsters/byrdine/byrdine.skel" id="2_0enl8"]
+
+[resource]
+atlas_res = ExtResource("1_5vs02")
+skeleton_file_res = ExtResource("2_0enl8")

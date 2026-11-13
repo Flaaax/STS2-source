@@ -1,0 +1,449 @@
+[gd_scene load_steps=15 format=3 uid="uid://crg05cswiwkmb"]
+
+[ext_resource type="Script" uid="uid://c4moglgy0e12j" path="res://src/Core/Nodes/Screens/Dread/NDreadInfoDisclaimer.cs" id="1_a8312"]
+[ext_resource type="Shader" uid="uid://c66gb6g7tup3n" path="res://shaders/hsv.gdshader" id="2_n0w4w"]
+[ext_resource type="Texture2D" uid="uid://dkl8hnhyro3ob" path="res://images/ui/reward_screen/reward_panel.png" id="3_dfn0y"]
+[ext_resource type="FontVariation" uid="uid://bc8knt63hq4co" path="res://themes/kreon_bold_glyph_space_three.tres" id="4_08o5y"]
+[ext_resource type="Script" uid="uid://dtfio45agppyj" path="res://addons/mega_text/MegaLabel.cs" id="5_ifcg4"]
+[ext_resource type="FontVariation" uid="uid://cfurftqxyn4mn" path="res://themes/kreon_regular_glyph_space_one.tres" id="6_8o85l"]
+[ext_resource type="FontVariation" uid="uid://ux4d708e7mk6" path="res://themes/kreon_bold_glyph_space_one.tres" id="7_yhjty"]
+[ext_resource type="Script" uid="uid://c2oywrx8xbqfx" path="res://addons/mega_text/MegaRichTextLabel.cs" id="8_tx7co"]
+[ext_resource type="Texture2D" uid="uid://cyruikkcbbm0f" path="res://images/ui/reward_screen/reward_skip_button.png" id="9_x8fx2"]
+[ext_resource type="Script" uid="uid://bihdhvper2vdv" path="res://src/Core/Nodes/Screens/Dread/NDreadDisclaimerConfirmButton.cs" id="10_m2ctn"]
+[ext_resource type="FontVariation" uid="uid://ciql5khgewwbm" path="res://themes/kreon_bold_glyph_space_two.tres" id="11_p4nbi"]
+[ext_resource type="PackedScene" uid="uid://ddb8daodx7qsl" path="res://scenes/ui/hotkey_icon.tscn" id="12_heue6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s6mxa"]
+resource_local_to_scene = true
+shader = ExtResource("2_n0w4w")
+shader_parameter/h = 0.750000035625
+shader_parameter/s = 0.10000000475
+shader_parameter/v = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ibbdc"]
+resource_local_to_scene = true
+shader = ExtResource("2_n0w4w")
+shader_parameter/h = 0.4800000228
+shader_parameter/s = 1.50000007125
+shader_parameter/v = 0.8
+
+[node name="DreadInfoDisclaimer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_a8312")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="Bg" type="ColorRect" parent="."]
+unique_name_in_owner = true
+modulate = Color(0, 0, 0, 0.8)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Image" type="TextureRect" parent="."]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_s6mxa")
+custom_minimum_size = Vector2(728, 830)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -364.0
+offset_top = -415.0
+offset_right = 364.0
+offset_bottom = 415.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_dfn0y")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="Image"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 92
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 84
+theme_override_constants/margin_bottom = 148
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Image/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Header" type="Label" parent="Image/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.9372549, 0.78431374, 0.31764707, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.2509804)
+theme_override_colors/font_outline_color = Color(0.2, 0.1764706, 0.101960786, 1)
+theme_override_constants/shadow_offset_x = 6
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 16
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("4_08o5y")
+theme_override_font_sizes/font_size = 40
+text = "Dread"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("5_ifcg4")
+MinFontSize = 28
+MaxFontSize = 40
+metadata/_custom_type_script = "uid://dtfio45agppyj"
+
+[node name="Description" type="RichTextLabel" parent="Image/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(1, 0.9647059, 0.8862745, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.2509804)
+theme_override_constants/line_separation = -1
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/normal_font = ExtResource("6_8o85l")
+theme_override_fonts/bold_font = ExtResource("7_yhjty")
+theme_override_font_sizes/normal_font_size = 26
+theme_override_font_sizes/bold_font_size = 26
+theme_override_font_sizes/bold_italics_font_size = 26
+theme_override_font_sizes/italics_font_size = 26
+theme_override_font_sizes/mono_font_size = 26
+bbcode_enabled = true
+text = "gaunt mod so hard oh no... there's so amny chhanges.
+
+like uhh. bad guy strong because boss make strong. More mean cards. Must win anyway >:(! Winning good! Losing bad.
+
+Okay, good luck me."
+scroll_active = false
+vertical_alignment = 1
+script = ExtResource("8_tx7co")
+MaxFontSize = 26
+metadata/_custom_type_script = "uid://c2oywrx8xbqfx"
+
+[node name="ConfirmButton" type="TextureRect" parent="Image"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_ibbdc")
+custom_minimum_size = Vector2(338, 68)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -169.0
+offset_top = -135.0
+offset_right = 169.0
+offset_bottom = -67.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(169, 34)
+texture = ExtResource("9_x8fx2")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("10_m2ctn")
+
+[node name="Label" type="Label" parent="Image/ConfirmButton"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -111.0
+offset_top = -30.0
+offset_right = 111.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9372549, 0.78431374, 0.31764707, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.2509804)
+theme_override_colors/font_outline_color = Color(0.2, 0.16406667, 0.102, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 12
+theme_override_constants/shadow_outline_size = 12
+theme_override_fonts/font = ExtResource("11_p4nbi")
+theme_override_font_sizes/font_size = 32
+text = "Confirmy"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("5_ifcg4")
+MinFontSize = 18
+MaxFontSize = 32
+metadata/_custom_type_script = "uid://dtfio45agppyj"
+
+[node name="HotkeyIcon" parent="Image/ConfirmButton" instance=ExtResource("12_heue6")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 102.99994
+offset_top = 3.8146973e-06
+offset_right = 150.99994
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LeftList" type="VBoxContainer" parent="Image"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(480, 600)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -808.0
+offset_top = -300.0
+offset_right = -328.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Ascension1" type="RichTextLabel" parent="Image/LeftList"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(1, 0.9647059, 0.8862745, 1)
+theme_override_fonts/normal_font = ExtResource("6_8o85l")
+theme_override_fonts/bold_font = ExtResource("7_yhjty")
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
+bbcode_enabled = true
+text = "[gold]Swarming Elites[/gold]
+[gold]Elites[/gold] spawn more often."
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_tx7co")
+MaxFontSize = 24
+metadata/_custom_type_script = "uid://c2oywrx8xbqfx"
+
+[node name="Ascension2" type="RichTextLabel" parent="Image/LeftList"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(1, 0.9647059, 0.8862745, 1)
+theme_override_fonts/normal_font = ExtResource("6_8o85l")
+theme_override_fonts/bold_font = ExtResource("7_yhjty")
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
+bbcode_enabled = true
+text = "[gold]Ascension too[/gold]
+Return of hard stuff."
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_tx7co")
+MaxFontSize = 24
+metadata/_custom_type_script = "uid://c2oywrx8xbqfx"
+
+[node name="Ascension3" type="RichTextLabel" parent="Image/LeftList"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(1, 0.9647059, 0.8862745, 1)
+theme_override_fonts/normal_font = ExtResource("6_8o85l")
+theme_override_fonts/bold_font = ExtResource("7_yhjty")
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
+bbcode_enabled = true
+text = "[gold]Attention III[/gold]
+Are you paying enough attention?"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_tx7co")
+MaxFontSize = 24
+metadata/_custom_type_script = "uid://c2oywrx8xbqfx"
+
+[node name="Ascension4" type="RichTextLabel" parent="Image/LeftList"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(1, 0.9647059, 0.8862745, 1)
+theme_override_fonts/normal_font = ExtResource("6_8o85l")
+theme_override_fonts/bold_font = ExtResource("7_yhjty")
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
+bbcode_enabled = true
+text = "[b]Ascension 1[/b]
+[gold]Elites[/gold] spawn more often."
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_tx7co")
+MaxFontSize = 24
+metadata/_custom_type_script = "uid://c2oywrx8xbqfx"
+
+[node name="Ascension5" type="RichTextLabel" parent="Image/LeftList"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(1, 0.9647059, 0.8862745, 1)
+theme_override_fonts/normal_font = ExtResource("6_8o85l")
+theme_override_fonts/bold_font = ExtResource("7_yhjty")
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
+bbcode_enabled = true
+text = "[b]Ascension 1[/b]
+[gold]Elites[/gold] spawn more often."
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_tx7co")
+MaxFontSize = 24
+metadata/_custom_type_script = "uid://c2oywrx8xbqfx"
+
+[node name="RightList" type="VBoxContainer" parent="Image"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(480, 600)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 328.0
+offset_top = -300.0
+offset_right = 808.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Ascension6" type="RichTextLabel" parent="Image/RightList"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(1, 0.9647059, 0.8862745, 1)
+theme_override_fonts/normal_font = ExtResource("6_8o85l")
+theme_override_fonts/bold_font = ExtResource("7_yhjty")
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
+bbcode_enabled = true
+text = "Swarming Elites
+[gold]Elites[/gold] spawn more often."
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_tx7co")
+MaxFontSize = 24
+metadata/_custom_type_script = "uid://c2oywrx8xbqfx"
+
+[node name="Ascension7" type="RichTextLabel" parent="Image/RightList"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(1, 0.9647059, 0.8862745, 1)
+theme_override_fonts/normal_font = ExtResource("6_8o85l")
+theme_override_fonts/bold_font = ExtResource("7_yhjty")
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
+bbcode_enabled = true
+text = "[b]Ascension 1[/b]
+[gold]Elites[/gold] spawn more often."
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_tx7co")
+MaxFontSize = 24
+metadata/_custom_type_script = "uid://c2oywrx8xbqfx"
+
+[node name="Ascension8" type="RichTextLabel" parent="Image/RightList"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(1, 0.9647059, 0.8862745, 1)
+theme_override_fonts/normal_font = ExtResource("6_8o85l")
+theme_override_fonts/bold_font = ExtResource("7_yhjty")
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
+bbcode_enabled = true
+text = "[b]Ascension 1[/b]
+[gold]Elites[/gold] spawn more often."
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_tx7co")
+MaxFontSize = 24
+metadata/_custom_type_script = "uid://c2oywrx8xbqfx"
+
+[node name="Ascension9" type="RichTextLabel" parent="Image/RightList"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(1, 0.9647059, 0.8862745, 1)
+theme_override_fonts/normal_font = ExtResource("6_8o85l")
+theme_override_fonts/bold_font = ExtResource("7_yhjty")
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
+bbcode_enabled = true
+text = "[b]Ascension 1[/b]
+[gold]Elites[/gold] spawn more often."
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_tx7co")
+MaxFontSize = 24
+metadata/_custom_type_script = "uid://c2oywrx8xbqfx"
+
+[node name="Ascension10" type="RichTextLabel" parent="Image/RightList"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(1, 0.9647059, 0.8862745, 1)
+theme_override_fonts/normal_font = ExtResource("6_8o85l")
+theme_override_fonts/bold_font = ExtResource("7_yhjty")
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
+bbcode_enabled = true
+text = "[b]Ascension 1[/b]
+[gold]Elites[/gold] spawn more often."
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_tx7co")
+MaxFontSize = 24
+metadata/_custom_type_script = "uid://c2oywrx8xbqfx"

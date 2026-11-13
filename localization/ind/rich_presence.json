@@ -1,6 +1,10 @@
 {
+  "BLITZ_MP_LOBBY": "Lobi Kilat",
   "CUSTOM_MP_LOBBY": "Lobi Kustom",
   "DAILY_MP_LOBBY": "Lobi Harian",
+  "DREAD_MP_LOBBY": "Lobi Kelam",
+  "IN_BLITZ_RUN": "Kilat: {#%Character%_title} - {#%Act%_title} A%Ascension%",
+  "IN_DREAD_RUN": "Kelam: {#%Character%_title} - {#%Act%_title} K%DreadStreak%",
   "IN_RUN": "{#%Character%_title} - {#%Act%_title} A%Ascension%",
   "LOADING_MP_LOBBY": "Lobi Permainan Tersimpan",
   "MAIN_MENU": "Menu Utama",

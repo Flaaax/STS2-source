@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://bot6p5e1hofes"
+path="res://.godot/imported/byrdine.atlas-3a912ab49b53a22b03b59ed02e237797.spatlas"
+
+[deps]
+
+source_file="res://animations/monsters/byrdine/byrdine.atlas"
+dest_files=["res://.godot/imported/byrdine.atlas-3a912ab49b53a22b03b59ed02e237797.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

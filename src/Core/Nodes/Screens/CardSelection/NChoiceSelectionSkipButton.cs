@@ -2,6 +2,7 @@ using System.Linq;
 using Godot;
 using MegaCrit.Sts2.addons.mega_text;
 using MegaCrit.Sts2.Core.ControllerInput;
+using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Nodes.GodotExtensions;
 
 namespace MegaCrit.Sts2.Core.Nodes.Screens.CardSelection;
@@ -16,8 +17,6 @@ public partial class NChoiceSelectionSkipButton : NButton
 	private TextureRect _image;
 
 	private MegaLabel _label;
-
-	private string? _optionName;
 
 	private Tween? _animInTween;
 
@@ -41,6 +40,8 @@ public partial class NChoiceSelectionSkipButton : NButton
 
 	private static readonly Vector2 _downScale = Vector2.One * 0.95f;
 
+	private LocString Title => new LocString("card_reward_ui", "OPTION_SKIP.name");
+
 	protected override string[] Hotkeys => new string[1] { MegaInput.cancel };
 
 	public override void _Ready()
@@ -50,10 +51,7 @@ public partial class NChoiceSelectionSkipButton : NButton
 		_label = GetNode<MegaLabel>("Label");
 		_hsv = (ShaderMaterial)_image.Material;
 		_showPosition = base.Position;
-		if (_optionName != null)
-		{
-			_label.SetTextAutoSize(_optionName);
-		}
+		_label.SetTextAutoSize(Title.GetFormattedText());
 		_hotkeyIcon.UpdateInput(Hotkeys.First());
 	}
 

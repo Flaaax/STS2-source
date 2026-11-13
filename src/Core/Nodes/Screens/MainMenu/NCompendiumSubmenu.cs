@@ -4,6 +4,7 @@ using System.Runtime.InteropServices;
 using Godot;
 using MegaCrit.Sts2.Core.Assets;
 using MegaCrit.Sts2.Core.Helpers;
+using MegaCrit.Sts2.Core.Nodes.CommonUi;
 using MegaCrit.Sts2.Core.Nodes.GodotExtensions;
 using MegaCrit.Sts2.Core.Nodes.Screens.Bestiary;
 using MegaCrit.Sts2.Core.Nodes.Screens.CardLibrary;
@@ -36,7 +37,24 @@ public partial class NCompendiumSubmenu : NSubmenu
 
 	private NCompendiumBottomButton _runHistoryButton;
 
+	private const string _keyCardLibrary = "COMPENDIUM_CARD_LIBRARY";
+
+	private const string _keyRelicCollection = "COMPENDIUM_RELIC_COLLECTION";
+
+	private const string _keyPotionLab = "COMPENDIUM_POTION_LAB";
+
+	private const string _keyBestiary = "COMPENDIUM_BESTIARY";
+
 	private IRunState _runState;
+
+	public static string[] AssetPaths => new string[5]
+	{
+		_scenePath,
+		NSubmenuPortrait.GetIconPath("COMPENDIUM_CARD_LIBRARY"),
+		NSubmenuPortrait.GetIconPath("COMPENDIUM_RELIC_COLLECTION"),
+		NSubmenuPortrait.GetIconPath("COMPENDIUM_POTION_LAB"),
+		NSubmenuPortrait.GetIconPath("COMPENDIUM_BESTIARY")
+	};
 
 	protected override Control InitialFocusedControl => _cardLibraryButton;
 

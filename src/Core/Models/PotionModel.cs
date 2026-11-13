@@ -9,7 +9,6 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Context;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
-using MegaCrit.Sts2.Core.Entities.Multiplayer;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Potions;
 using MegaCrit.Sts2.Core.GameActions;
@@ -183,6 +182,11 @@ public abstract class PotionModel : AbstractModel
 
 	public virtual IEnumerable<IHoverTip> ExtraHoverTips => Array.Empty<IHoverTip>();
 
+	/// <summary>
+	/// HoverTip for the Fugitive's Arrows. Include in ExtraHoverTips when this potion mentions Arrows.
+	/// </summary>
+	protected IHoverTip ArrowHoverTip => HoverTipFactory.ForArrow(base.IsMutable ? _owner : null);
+
 	public PotionModel CanonicalInstance
 	{
 		get
@@ -330,7 +334,7 @@ public abstract class PotionModel : AbstractModel
 		CombatId? effectCombatId = CombatManager.Instance.BeginCardOrPotionEffect(Owner);
 		try
 		{
-			BranchingPlayerChoiceContext branchingPlayerChoiceContext = new BranchingPlayerChoiceContext(this, LocalContext.NetId.Value, GameActionType.Combat, choiceContext);
+			BranchingPlayerChoiceContext branchingPlayerChoiceContext = new BranchingPlayerChoiceContext(this, LocalContext.NetId.Value, choiceContext);
 			branchingPlayerChoiceContext.PushModel(this);
 			Task task = OnUse(branchingPlayerChoiceContext, target);
 			await branchingPlayerChoiceContext.AssignTaskAndWaitForPauseOrCompletion(task);

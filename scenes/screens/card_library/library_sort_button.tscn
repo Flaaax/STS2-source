@@ -4,7 +4,7 @@
 [ext_resource type="Shader" uid="uid://c66gb6g7tup3n" path="res://shaders/hsv.gdshader" id="2_fatav"]
 [ext_resource type="Texture2D" uid="uid://cl2heluxpg3p1" path="res://images/ui/reward_screen/reward_item_button.png" id="3_jpbdt"]
 [ext_resource type="FontVariation" uid="uid://ux4d708e7mk6" path="res://themes/kreon_bold_glyph_space_one.tres" id="4_bradj"]
-[ext_resource type="Texture2D" path="res://images/atlases/ui_atlas.sprites/sort_descending.tres" id="4_secij"]
+[ext_resource type="Texture2D" uid="uid://5dw6lw" path="res://images/atlases/ui_atlas.sprites/sort_descending.tres" id="4_secij"]
 [ext_resource type="Script" uid="uid://dtfio45agppyj" path="res://addons/mega_text/MegaLabel.cs" id="5_v3xm2"]
 [ext_resource type="PackedScene" uid="uid://bgy88bk44xxvk" path="res://scenes/ui/selection_reticle.tscn" id="7_v3xm3"]
 
@@ -16,11 +16,11 @@ shader_parameter/s = 0.8
 shader_parameter/v = 0.8
 
 [node name="LibrarySortButton" type="Control"]
-custom_minimum_size = Vector2(0, 42)
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 256.0
-offset_bottom = 42.0
+offset_bottom = 40.0
 focus_mode = 2
 script = ExtResource("1_1fkog")
 
@@ -32,16 +32,17 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.05, 1)
-pivot_offset = Vector2(128, 24)
+pivot_offset = Vector2(128, 20)
 mouse_filter = 2
 texture = ExtResource("3_jpbdt")
 expand_mode = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-custom_minimum_size = Vector2(0, 48)
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -84,8 +85,8 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -5.0
-offset_top = -7.0
+offset_top = -2.0
 offset_right = 4.0
-offset_bottom = 3.0
+offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2

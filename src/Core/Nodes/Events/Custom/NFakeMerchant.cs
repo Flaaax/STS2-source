@@ -21,6 +21,7 @@ using MegaCrit.Sts2.Core.Nodes.Screens.ScreenContext;
 using MegaCrit.Sts2.Core.Nodes.Screens.Shops;
 using MegaCrit.Sts2.Core.Nodes.Vfx;
 using MegaCrit.Sts2.Core.Random;
+using MegaCrit.Sts2.Core.Runs;
 
 namespace MegaCrit.Sts2.Core.Nodes.Events.Custom;
 
@@ -70,9 +71,10 @@ public partial class NFakeMerchant : Control, ICustomEventNode, IScreenContext
 	public override void _Ready()
 	{
 		_proceedButton = GetNode<NProceedButton>("%ProceedButton");
-		_proceedButton.Connect(NClickableControl.SignalName.Released, Callable.From<NButton>(HideScreen));
+		_proceedButton.Connect(NClickableControl.SignalName.Released, Callable.From<NButton>(OnProceedButtonReleased));
 		_proceedButton.UpdateText(NProceedButton.ProceedLoc);
 		_proceedButton.SetPulseState(isPulsing: false);
+		_proceedButton.Initialize(_players[0].RunState);
 		_proceedButton.Enable();
 		MerchantButton = GetNode<NMerchantButton>("%MerchantButton");
 		if (_event.StartedFight)
@@ -190,9 +192,9 @@ public partial class NFakeMerchant : Control, ICustomEventNode, IScreenContext
 		}
 	}
 
-	private void HideScreen(NButton _)
+	private void OnProceedButtonReleased(NButton _)
 	{
-		NMapScreen.Instance.Open();
+		RunManager.Instance.Proceed();
 	}
 
 	private void OnMerchantOpened(NMerchantButton _)

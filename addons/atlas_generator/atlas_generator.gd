@@ -48,7 +48,7 @@ const ATLAS_NAMES: = [
     "potion_atlas", 
     "potion_outline_atlas", 
     "era_atlas", 
-    "compressed"
+    "compressed_atlas"
 ]
 
 func _enter_tree() -> void :

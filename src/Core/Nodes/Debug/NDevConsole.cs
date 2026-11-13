@@ -10,6 +10,7 @@ using MegaCrit.Sts2.Core.DevConsole;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Modding;
+using MegaCrit.Sts2.Core.Platform;
 using MegaCrit.Sts2.Core.Saves;
 using MegaCrit.Sts2.Core.TestSupport;
 
@@ -59,6 +60,13 @@ public partial class NDevConsole : Panel
 	/// is never instantiated), unlike <see cref="P:MegaCrit.Sts2.Core.Nodes.Debug.NDevConsole.Instance" /> which throws when absent.
 	/// </summary>
 	public static bool IsConsoleVisible => _instance?.Visible ?? false;
+
+	/// <summary>
+	/// The console if one was ever created, or null. Use this over <see cref="P:MegaCrit.Sts2.Core.Nodes.Debug.NDevConsole.Instance" /> from code
+	/// that can also run without a console node, such as a scenario run, where the throw would be a
+	/// failure of the caller rather than of the console.
+	/// </summary>
+	public static NDevConsole? InstanceOrNull => _instance;
 
 	public static CanvasLayer? Create()
 	{
@@ -118,7 +126,8 @@ public partial class NDevConsole : Panel
 		UpdatePromptStyle();
 		_inputBuffer.TextChanged += OnInputTextChanged;
 		PrintUsage();
-		bool shouldAllowDebugCommands = OS.HasFeature("editor") || TestMode.IsOn || ModManager.IsRunningModded() || SaveManager.Instance.SettingsSave.FullConsole;
+		PlatformBranch platformBranch = PlatformUtil.GetPlatformBranch();
+		bool shouldAllowDebugCommands = OS.HasFeature("editor") || TestMode.IsOn || ModManager.IsRunningModded() || platformBranch == PlatformBranch.None || platformBranch == PlatformBranch.PrivateBeta || platformBranch == PlatformBranch.DevTest || SaveManager.Instance.SettingsSave.FullConsole;
 		_devConsole = new MegaCrit.Sts2.Core.DevConsole.DevConsole(shouldAllowDebugCommands);
 	}
 
@@ -727,7 +736,7 @@ public partial class NDevConsole : Panel
 		_inputContainer.Position = new Vector2(0f, num - 40f);
 		_outputBuffer.SetSize(new Vector2(size.X, num));
 		_tabBuffer.SetSize(new Vector2(size.X, num));
-		SetSize(new Vector2(size.X, size.Y / 2f));
+		SetSize(new Vector2(size.X, size.Y * 0.5f));
 		_isFullscreen = false;
 	}
 

@@ -1,82 +1,66 @@
 shop_merchant_top.png
-size:606,3010
+size:486,1500
 filter:Linear,Linear
+scale:0.625
 head
-bounds:314,320,219,282
-offsets:0,0,226,282
+bounds:165,3,137,176
+offsets:0,0,141,176
+head highlight
+bounds:3,1296,201,344
 rotate:90
-head_highlight
-bounds:3,2687,320,550
-offsets:1,0,321,550
+head s
+bounds:315,592,156,191
+l bottom
+bounds:330,1138,147,96
+l bottom s
+bounds:317,854,162,111
+l leg
+bounds:270,497,202,89
+offsets:0,0,202,90
+l leg s
+bounds:255,306,217,105
+l top
+bounds:3,185,228,246
 rotate:90
-head_s
-bounds:3,399,249,305
-offsets:0,1,250,306
+l top s
+bounds:3,419,243,261
 rotate:90
-l_bottom
-bounds:235,33,235,153
+left arm
+bounds:270,609,33,53
+left arm s
+bounds:430,151,48,68
+left hand 1
+bounds:308,53,47,84
 rotate:90
-l_bottom_s
-bounds:426,1371,259,177
+left hand 1 s
+bounds:415,46,62,99
+left highlight
+bounds:3,867,308,209
+r bottom
+bounds:330,971,161,141
 rotate:90
-l_leg
-bounds:3,654,323,142
-offsets:0,0,323,144
-l_leg_s
-bounds:426,1018,347,167
-offsets:0,0,347,168
+r bottom s
+bounds:3,3,176,156
 rotate:90
-l_top
-bounds:3,927,365,393
+r foot
+bounds:308,106,101,46
+r foot s
+bounds:308,158,116,61
+r leg
+bounds:315,789,168,59
+r leg s
+bounds:270,417,183,74
+right arm
+bounds:353,1240,113,123
 rotate:90
-l_top_s
-bounds:3,1298,389,417
+right arm s
+bounds:353,1359,128,138
+right highlight
+bounds:255,225,75,215
 rotate:90
-left_arm
-bounds:394,3,52,84
-left_arm_s
-bounds:522,2573,76,108
-left_hand_1
-bounds:522,2433,75,134
-offsets:0,0,75,135
-left_hand_1_s
-bounds:500,2102,98,158
-offsets:0,1,99,159
-left_highlight
-bounds:3,2008,491,335
-offsets:0,0,492,335
-r_bottom
-bounds:3,12,256,226
-offsets:1,0,257,226
+right top
+bounds:3,668,193,306
 rotate:90
-r_bottom_s
-bounds:352,545,280,250
-offsets:1,0,281,250
-rotate:90
-r_foot
-bounds:522,2266,161,73
-rotate:90
-r_foot_s
-bounds:500,1911,185,97
-rotate:90
-r_leg
-bounds:498,1636,269,95
-rotate:90
-r_leg_s
-bounds:3,274,293,119
-right_arm
-bounds:402,831,181,197
-rotate:90
-right_arm_s
-bounds:394,93,205,221
-right_highlight
-bounds:3,802,119,343
-offsets:0,0,120,344
-rotate:90
-right_top
-bounds:3,1693,309,489
-rotate:90
-right_top_s
-bounds:3,2349,332,513
-offsets:1,0,333,513
+right top s
+bounds:3,1082,208,321
 rotate:90

@@ -1,0 +1,22 @@
+{
+  "OPTION_CLONE.description": "انسخ كل البطاقات المسحورة بـ [gold]{EnchantmentName}[/gold].",
+  "OPTION_CLONE.name": "استنساخ",
+  "OPTION_COOK.description": "[gold]أزل[/gold] [blue]{Cards}[/blue] بطاقات من [gold]مجموعتك[/gold] واكسب [green]{MaxHp}[/green] صحة قصوى.",
+  "OPTION_COOK.descriptionDisabled": "[red]تحتاج إلى بطاقتين قابلتين للإزالة على الأقل في مجموعتك.[/red]",
+  "OPTION_COOK.name": "طهو",
+  "OPTION_DIG.description": "احفر بحثًا عن [gold]أثر[/gold].",
+  "OPTION_DIG.name": "حفر",
+  "OPTION_HATCH.description": "افقس [green]بيضة بيردونيس[/green] الخاصة بك.",
+  "OPTION_HATCH.name": "فقس",
+  "OPTION_HEAL.description": "استعد 30% من صحتك القصوى ({Heal}).{ExtraText}",
+  "OPTION_HEAL.name": "راحة",
+  "OPTION_KINDLE.description": "أضف {RekindleAmount} من الشحنات إلى [gold]{RelicName}[/gold].",
+  "OPTION_KINDLE.name": "إشعال",
+  "OPTION_LIFT.description": "ابدأ المعارك بـ +1 قوة. ({LiftsLeft} متبقية)",
+  "OPTION_LIFT.name": "تدرّب",
+  "OPTION_MEND.name": "ترميم",
+  "OPTION_SMITH.description": "[gold]طوّر[/gold] بطاقة في [gold]مجموعتك[/gold].",
+  "OPTION_SMITH.descriptionDisabled": "[red]ليست لديك بطاقات متاحة للتطوير.[/red]",
+  "OPTION_SMITH.name": "حدادة",
+  "PROMPT": "ماذا أفعل؟"
+}

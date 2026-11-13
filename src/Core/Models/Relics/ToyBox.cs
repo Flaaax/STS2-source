@@ -89,7 +89,7 @@ public sealed class ToyBox : RelicModel
 		List<Reward> list = new List<Reward>();
 		for (int i = 0; i < base.DynamicVars["Relics"].IntValue; i++)
 		{
-			RelicModel relicModel = RelicFactory.PullNextRelicFromFront(base.Owner).ToMutable();
+			RelicModel relicModel = RelicFactory.PullNextRelicForRewardFromFront(base.Owner).ToMutable();
 			relicModel.IsWax = true;
 			list.Add(new RelicReward(relicModel, base.Owner));
 		}

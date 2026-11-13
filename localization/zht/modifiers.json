@@ -22,6 +22,7 @@
   "MURDEROUS.description": "每場戰鬥開始時，你擁有 [blue]3[/blue] 層[gold]力量[/gold]。所有敵人也擁有 [blue]3[/blue] 層[gold]力量[/gold]。",
   "MURDEROUS.title": "殺氣騰騰",
   "NIGHT_TERRORS.additionalRestSiteHealText": "暗夜驚魂：+{Heal} 點生命。\n失去 [red]5[/red] 點最大生命。",
+  "NIGHT_TERRORS.additionalRestSiteMendText": "暗夜驚魂：恢復所有生命。\n失去 [red]{MaxHpLoss}[/red] 點最大生命。",
   "NIGHT_TERRORS.description": "在[gold]休息處[/gold]休息會完全恢復生命，但會失去 [red]5[/red] 點最大生命。",
   "NIGHT_TERRORS.title": "暗夜驚魂",
   "SEALED_DECK.description": "從 [blue]30[/blue] 張牌中選擇 [blue]10[/blue] 張，取代你的起始牌組。",

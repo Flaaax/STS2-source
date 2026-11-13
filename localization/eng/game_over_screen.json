@@ -48,10 +48,11 @@
   "SCORE.unlocksRemaining": "Unlocks Remaining: {UnlockCount}",
   "SCORE_LINE.ascension": "Ascension: {AscensionLevel}",
   "SCORE_LINE.bossesSlain": "Bosses Slain: {BossCount}",
+  "SCORE_LINE.dread": "Dread",
   "SCORE_LINE.elitesKilled": "Elites Killed: {EliteCount}",
   "SCORE_LINE.floorsClimbed": "Floors Climbed: {FloorCount}",
   "SCORE_LINE.goldGained": "Gold Gained: {GoldAmount}",
   "VICTORY_DAMAGE": "You dealt [green]{PlayerDamage:n()}[/green] damage to the Architect... but it wasn't enough...\nYou have dealt a total of [green]{PersonalDamage:n()}[/green] damage to the Architect.\nThe Architect still stands despite taking [green]{TotalDamage:n()}[/green] damage from all who have faced him.",
   "VICTORY_DAMAGE_LOCAL": "You dealt [green]{PlayerDamage:n()}[/green] damage to the Architect... but it wasn't enough...\nYou have dealt a total of [green]{PersonalDamage:n()}[/green] damage to the Architect.",
-  "VICTORY_UNLOCKED_ASCENSION": "[blue]Ascension {AscensionLevel} unlocked![/blue]"
+  "VICTORY_UNLOCKED_ASCENSION": "[blue]{IsMultiplayer:Multiplayer |}Ascension {AscensionLevel} unlocked![/blue]"
 }

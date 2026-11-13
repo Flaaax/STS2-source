@@ -1,4 +1,5 @@
 {
+  "TO_ABSORB": "选择{Amount:choose(1):一张牌|[blue]{}[/blue]张牌}来[gold]吸收[/gold]。",
   "TO_DISCARD": "选择[blue]{Amount}[/blue]张牌来[gold]丢弃[/gold]。",
   "TO_ENCHANT": "选择[blue]{Amount}[/blue]张牌来[purple]附魔[/purple]。",
   "TO_EXHAUST": "选择[blue]{Amount}[/blue]张牌来[gold]消耗[/gold]。",

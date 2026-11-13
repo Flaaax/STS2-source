@@ -22,6 +22,7 @@
   "MURDEROUS.description": "Você inicia cada combate com [blue]3[/blue] de [gold]Força[/gold]. Todos os inimigos iniciam o combate com [blue]3[/blue] de [gold]Força[/gold].",
   "MURDEROUS.title": "Violência",
   "NIGHT_TERRORS.additionalRestSiteHealText": "+{Heal} PV por Terrores Noturnos.\nPerca [red]5[/red] PV Máximos.",
+  "NIGHT_TERRORS.additionalRestSiteMendText": "Cure completamente por Terrores Noturnos.\nO jogador perde [red]{MaxHpLoss}[/red] PV Máximos.",
   "NIGHT_TERRORS.description": "Descansar em [gold]Locais de Descanso[/gold] cura todos os seus PV, mas custa [red]5[/red] PV Máximos.",
   "NIGHT_TERRORS.title": "Terrores Noturnos",
   "SEALED_DECK.description": "Escolha [blue]10[/blue] entre [blue]30[/blue] cartas para substituir seu baralho inicial.",

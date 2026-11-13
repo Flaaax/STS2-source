@@ -1,87 +1,80 @@
 byrdpip.png
-size:1630,237
+size:697,94
 filter:Linear,Linear
-scale:0.6
+scale:0.239
 beak bottom
-bounds:1061,38,34,27
-offsets:0,1,34,29
+bounds:397,12,14,11
 rotate:90
 beak top
-bounds:1466,94,43,47
+bounds:676,40,17,19
+rotate:90
 bod
-bounds:1061,74,161,134
+bounds:397,28,64,53
 rotate:90
 bottom foot
-bounds:1090,38,34,17
-offsets:1,0,35,17
-rotate:90
+bounds:360,2,14,7
 bottom leg 1
-bounds:1155,22,50,87
+bounds:430,6,20,35
 rotate:90
 bottom leg 2
-bounds:1128,8,25,64
-offsets:0,0,26,64
+bounds:467,3,10,26
 butt_feather
-bounds:1244,2,81,46
-rotate:90
+bounds:615,2,32,18
 extra_feather
-bounds:1054,4,51,27
+bounds:649,4,20,11
+rotate:90
 eyes
-bounds:372,2,17,10
+bounds:390,2,7,4
+rotate:90
 head
-bounds:1539,83,87,71
+bounds:615,22,35,28
+rotate:90
 neck
-bounds:1541,32,49,82
+bounds:479,9,20,33
 rotate:90
 shadow
-bounds:2,4,231,80
-offsets:1,1,233,82
-rotate:90
+bounds:597,59,92,33
+offsets:1,0,93,33
 skin_egg1
-bounds:672,15,220,297
-offsets:0,0,220,298
+bounds:239,5,87,119
 rotate:90
 skin_egg2
-bounds:372,14,221,298
+bounds:118,4,88,119
 rotate:90
 skin_egg3
-bounds:84,12,223,286
-offsets:0,0,223,298
+bounds:2,3,89,114
+offsets:0,0,89,119
 rotate:90
 skin_hair 1
-bounds:1539,156,79,89
-rotate:90
+bounds:582,12,31,36
 skin_hair 2
-bounds:1370,117,118,91
+bounds:524,45,47,36
 rotate:90
 skin_hair 3
-bounds:1292,13,87,92
-offsets:1,0,89,92
+bounds:514,2,35,37
 skin_hair 4
-bounds:1381,10,83,105
-offsets:0,7,83,112
+bounds:562,50,33,42
+offsets:0,3,33,45
 top foot
-bounds:1107,5,31,19
-rotate:90
+bounds:376,2,12,7
 top leg 1
-bounds:1466,6,73,75
-offsets:103,1,176,227
+bounds:645,26,29,31
+offsets:41,0,70,91
 top leg 2
-bounds:971,2,29,81
-offsets:1,1,30,83
+bounds:396,4,5,32
+offsets:7,1,12,33
 rotate:90
 wing 3
-bounds:1197,85,150,79
-offsets:1,0,152,80
+bounds:452,31,61,32
 rotate:90
 wing 4
-bounds:971,33,202,88
+bounds:360,11,81,35
 rotate:90
 wing copy 2
-bounds:1463,143,92,74
-offsets:1,2,96,76
+bounds:551,6,37,29
+offsets:0,1,38,30
 rotate:90
 wing copy 3
-bounds:1278,107,128,90
-offsets:1,2,131,92
+bounds:486,41,51,36
+offsets:0,1,52,37
 rotate:90

@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0hw8p160wnrv"]
+
+[ext_resource type="Texture2D" uid="uid://bhts5p7br5knj" path="res://images/packed/fool/fool_symbol_glow.png" id="1_ued53"]
+[ext_resource type="Texture2D" uid="uid://cwo0q6c0n531g" path="res://images/packed/fool/symbol_wah.png" id="2_qhkgw"]
+[ext_resource type="Script" uid="uid://o3e5iub3ljbj" path="res://src/Core/Nodes/Combat/NFoolCombatSymbol.cs" id="2_r5hvj"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_m0ht6"]
+blend_mode = 1
+
+[node name="FoolCombatSymbol" type="Control"]
+self_modulate = Color(1, 0, 0.6000004, 0.5019608)
+material = SubResource("CanvasItemMaterial_m0ht6")
+custom_minimum_size = Vector2(84, 84)
+layout_mode = 3
+anchors_preset = 0
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 74.0
+offset_bottom = 74.0
+pivot_offset = Vector2(42, 42)
+script = ExtResource("2_r5hvj")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="Symbol" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(42, 42)
+mouse_filter = 2
+texture = ExtResource("2_qhkgw")
+expand_mode = 1
+
+[node name="Glow" type="TextureRect" parent="Symbol"]
+unique_name_in_owner = true
+self_modulate = Color(1, 0, 0.6, 0.5019608)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ued53")
+expand_mode = 1

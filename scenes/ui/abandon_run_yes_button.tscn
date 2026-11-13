@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://ce8s1or8wkljj"]
 
 [ext_resource type="Script" uid="uid://baaxo4sba5b7a" path="res://src/Core/Nodes/CommonUi/NPopupYesNoButton.cs" id="1_8jc4u"]
-[ext_resource type="Texture2D" uid="uid://bnlknhj" path="res://images/atlases/compressed.sprites/popup_confirm_button_outline.tres" id="2_8jc4u"]
+[ext_resource type="Texture2D" uid="uid://bap1v00" path="res://images/atlases/compressed_atlas.sprites/popup_confirm_button_outline.tres" id="2_8jc4u"]
 [ext_resource type="Texture2D" uid="uid://cp58l7v" path="res://images/atlases/ui_atlas.sprites/popup_confirm_button.tres" id="3_8jc4u"]
 [ext_resource type="FontVariation" uid="uid://ciql5khgewwbm" path="res://themes/kreon_bold_glyph_space_two.tres" id="4_k3w4m"]
 [ext_resource type="Script" uid="uid://dtfio45agppyj" path="res://addons/mega_text/MegaLabel.cs" id="5_yme5y"]

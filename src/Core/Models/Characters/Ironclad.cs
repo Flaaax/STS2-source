@@ -72,6 +72,12 @@ public sealed class Ironclad : CharacterModel
 
 	public override Color RemoteTargetingLineOutline => new Color("801212FF");
 
+	public override float DreadBgBrightness => 0.9f;
+
+	public override float DreadBgContrast => 1.1f;
+
+	public override Color DreadNameColor => new Color("FF211AC0");
+
 	protected override List<(AnimState, string)> AnimationStates => base.AnimationStates.Concat<(AnimState, string)>(new global::_003C_003Ez__ReadOnlySingleElementList<(AnimState, string)>((new AnimState("attack_heavy"), "heavyAttack"))).ToList();
 
 	public override List<string> GetArchitectAttackVfx()

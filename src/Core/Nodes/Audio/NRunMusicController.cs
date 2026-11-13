@@ -11,7 +11,7 @@ using MegaCrit.Sts2.Core.Runs;
 namespace MegaCrit.Sts2.Core.Nodes.Audio;
 
 /// <summary>
-/// Manages the music specifically for run.
+/// Manages the music specifically for a run.
 /// Looking into info such as room type to decided what tracks to transition to.
 /// </summary>
 public partial class NRunMusicController : Node
@@ -47,21 +47,21 @@ public partial class NRunMusicController : Node
 
 	private const string _musicProgressParameter = "Progress";
 
-	private const string _updateGlobalParameterCallback = "update_global_parameter";
+	private static readonly StringName _updateGlobalParameterCallback = new StringName("update_global_parameter");
 
-	private const string _updateMusicParameterCallback = "update_music_parameter";
+	private static readonly StringName _updateMusicParameterCallback = new StringName("update_music_parameter");
 
-	private const string _updateMusicCallback = "update_music";
+	private static readonly StringName _updateMusicCallback = new StringName("update_music");
 
-	private const string _updateAmbienceCallback = "update_ambience";
+	private static readonly StringName _updateAmbienceCallback = new StringName("update_ambience");
 
-	private const string _updateCampfireAmbienceCallback = "update_campfire_ambience";
+	private static readonly StringName _updateCampfireAmbienceCallback = new StringName("update_campfire_ambience");
 
-	private const string _updateCustomTrack = "update_custom_track";
+	private static readonly StringName _updateCustomTrack = new StringName("update_custom_track");
 
-	private const string _loadActBankCallback = "load_act_bank";
+	private static readonly StringName _loadActBankCallback = new StringName("load_act_bank");
 
-	private const string _unloadActBanksCallback = "unload_act_banks";
+	private static readonly StringName _unloadActBanksCallback = new StringName("unload_act_banks");
 
 	private const string _bgMusicRngName = "bg_music";
 
@@ -162,8 +162,8 @@ public partial class NRunMusicController : Node
 			}
 			_failedTrack = null;
 			_currentTrack = musicSelection.Value.Track;
-			_proxy.Call("update_music", _currentTrack);
-			_proxy.Call("update_global_parameter", "Progress", 0);
+			_proxy.Call(_updateMusicCallback, _currentTrack);
+			_proxy.Call(_updateGlobalParameterCallback, "Progress", 0);
 			UpdateAmbience();
 		}
 	}
@@ -173,7 +173,7 @@ public partial class NRunMusicController : Node
 		if (!NonInteractiveMode.IsActive)
 		{
 			_proxy.Call(_stopMusic);
-			_proxy.Call("update_music", customMusic);
+			_proxy.Call(_updateMusicCallback, customMusic);
 		}
 	}
 
@@ -181,7 +181,7 @@ public partial class NRunMusicController : Node
 	{
 		if (!NonInteractiveMode.IsActive && RunManager.Instance.IsInProgress)
 		{
-			_proxy.Call("update_custom_track", customTrack, label);
+			_proxy.Call(_updateCustomTrack, customTrack, label);
 		}
 	}
 
@@ -192,8 +192,8 @@ public partial class NRunMusicController : Node
 			_proxy.Call(_stopMusic);
 			if (_currentTrack != null)
 			{
-				_proxy.Call("update_music", _currentTrack);
-				_proxy.Call("update_global_parameter", "Progress", 7);
+				_proxy.Call(_updateMusicCallback, _currentTrack);
+				_proxy.Call(_updateGlobalParameterCallback, "Progress", 7);
 			}
 		}
 	}
@@ -211,34 +211,39 @@ public partial class NRunMusicController : Node
 			if (_currentAmbience != ambientSfx)
 			{
 				_currentAmbience = ambientSfx;
-				_proxy.Call("update_ambience", _currentAmbience);
+				_proxy.Call(_updateAmbienceCallback, _currentAmbience);
 			}
 		}
 	}
 
 	public void UpdateTrack()
 	{
+		UpdateTrack(_runState.CurrentRoom.RoomType);
+	}
+
+	public void UpdateTrack(RoomType roomType)
+	{
 		if (!NonInteractiveMode.IsActive)
 		{
-			MusicProgressTrack track = GetTrack(_runState.CurrentRoom.RoomType);
+			MusicProgressTrack track = GetTrack(roomType);
 			UpdateTrack("Progress", (float)track);
 			if (_runState.CurrentRoom is RestSiteRoom)
 			{
-				_proxy.Call("update_campfire_ambience", 0);
+				_proxy.Call(_updateCampfireAmbienceCallback, 0);
 			}
 		}
 	}
 
 	private void UpdateTrack(string label, float trackIndex)
 	{
-		_proxy.Call("update_global_parameter", label, trackIndex);
+		_proxy.Call(_updateGlobalParameterCallback, label, trackIndex);
 	}
 
 	public void UpdateMusicParameter(string label, float trackIndex)
 	{
 		if (!NonInteractiveMode.IsActive)
 		{
-			_proxy.Call("update_music_parameter", label, trackIndex);
+			_proxy.Call(_updateMusicParameterCallback, label, trackIndex);
 		}
 	}
 
@@ -252,7 +257,7 @@ public partial class NRunMusicController : Node
 			}
 			NMapScreen? instance = NMapScreen.Instance;
 			MusicProgressTrack musicProgressTrack = ((instance != null && instance.IsVisible()) ? MusicProgressTrack.MerchantEnd : MusicProgressTrack.Merchant);
-			_proxy.Call("update_global_parameter", "Progress", (int)musicProgressTrack);
+			_proxy.Call(_updateGlobalParameterCallback, "Progress", (int)musicProgressTrack);
 		}
 	}
 
@@ -264,7 +269,7 @@ public partial class NRunMusicController : Node
 			{
 				throw new InvalidOperationException("You can only trigger the elite transition in an elite room");
 			}
-			_proxy.Call("update_global_parameter", "Progress", 8);
+			_proxy.Call(_updateGlobalParameterCallback, "Progress", 8);
 		}
 	}
 
@@ -276,7 +281,7 @@ public partial class NRunMusicController : Node
 			{
 				throw new InvalidOperationException("You can only trigger the rest site transition in a rest site room");
 			}
-			_proxy.Call("update_campfire_ambience", 1);
+			_proxy.Call(_updateCampfireAmbienceCallback, 1);
 		}
 	}
 
@@ -284,7 +289,7 @@ public partial class NRunMusicController : Node
 	{
 		if (!NonInteractiveMode.IsActive)
 		{
-			_proxy.Call("update_global_parameter", "Progress", 0);
+			_proxy.Call(_updateGlobalParameterCallback, "Progress", 0);
 			_proxy.Call(_stopMusic);
 			_proxy.Call(_stopAmbience);
 			_currentTrack = null;
@@ -295,11 +300,11 @@ public partial class NRunMusicController : Node
 
 	private bool LoadActBank(string bankPath, string verifyEvent)
 	{
-		return ActBankLoadRetry.Run(bankPath, () => _proxy.Call("load_act_bank", bankPath, verifyEvent).AsBool());
+		return ActBankLoadRetry.Run(bankPath, () => _proxy.Call(_loadActBankCallback, bankPath, verifyEvent).AsBool());
 	}
 
 	private void UnloadActBanks()
 	{
-		_proxy.Call("unload_act_banks");
+		_proxy.Call(_unloadActBanksCallback);
 	}
 }

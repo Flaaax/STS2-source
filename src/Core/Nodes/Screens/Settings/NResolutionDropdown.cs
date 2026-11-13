@@ -44,8 +44,17 @@ public partial class NResolutionDropdown : NSettingsDropdown
 		if (base.IsEnabled)
 		{
 			_currentResolution = DisplayServer.WindowGetSize();
-			_currentOptionLabel.SetTextAutoSize($"{_currentResolution.X} x {_currentResolution.Y}");
+			_currentOptionLabel.SetTextAutoSize(FormatResolution(_currentResolution));
 		}
+	}
+
+	/// <summary>
+	/// Formats a resolution as "1920 x 1080". The text is wrapped in a left-to-right isolate (LRI ... PDI) so that
+	/// right-to-left labels don't reorder the numbers and the "x" into "x 1080 1920".
+	/// </summary>
+	public static string FormatResolution(Vector2I resolution)
+	{
+		return $"\u2066{resolution.X} x {resolution.Y}\u2069";
 	}
 
 	/// <summary>

@@ -18,6 +18,7 @@
   "IMBUED.description": "Juegas esta carta de forma automática al comienzo de cada combate.",
   "IMBUED.extraCardText": "Impregnación.",
   "IMBUED.title": "Impregnación",
+  "INKY.description": "Aplica [blue]{WeakPower}[/blue] de [gold]debilitamiento[/gold].",
   "INKY.extraCardText": "Aplicas [blue]{WeakPower}[/blue] de [gold]debilitamiento[/gold]{TargetType:choose(AllEnemies): a TODOS los enemigos|}.",
   "INKY.title": "Entintado",
   "INSTINCT.description": "Se duplica el daño de ataque de esta carta.",

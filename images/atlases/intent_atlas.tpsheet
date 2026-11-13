@@ -20,7 +20,8 @@
 						"y": 0,
 						"w": 0,
 						"h": 0
-					}
+					},
+					"pixel_hash": "d186d5024f20e87e"
 				},
 				{
 					"filename": "attack/intent_attack_5.png",
@@ -35,7 +36,8 @@
 						"y": 7,
 						"w": 9,
 						"h": 10
-					}
+					},
+					"pixel_hash": "c6c1839ab7a19b76"
 				},
 				{
 					"filename": "intent_stun.png",
@@ -50,7 +52,8 @@
 						"y": 7,
 						"w": 0,
 						"h": 19
-					}
+					},
+					"pixel_hash": "9c3257102bb72a17"
 				},
 				{
 					"filename": "stun/intent_stunned_00.png",
@@ -65,7 +68,8 @@
 						"y": 7,
 						"w": 0,
 						"h": 19
-					}
+					},
+					"pixel_hash": "9c3257102bb72a17"
 				},
 				{
 					"filename": "stun/intent_stunned_08.png",
@@ -80,7 +84,8 @@
 						"y": 7,
 						"w": 0,
 						"h": 19
-					}
+					},
+					"pixel_hash": "cdd050f9e343027f"
 				},
 				{
 					"filename": "debuff/intent_megadebuff_00.png",
@@ -95,7 +100,8 @@
 						"y": 3,
 						"w": 16,
 						"h": 4
-					}
+					},
+					"pixel_hash": "afa4adf648a66007"
 				},
 				{
 					"filename": "intent_debuff.png",
@@ -110,7 +116,8 @@
 						"y": 3,
 						"w": 16,
 						"h": 4
-					}
+					},
+					"pixel_hash": "afa4adf648a66007"
 				},
 				{
 					"filename": "stun/intent_stunned_02.png",
@@ -125,7 +132,8 @@
 						"y": 3,
 						"w": 15,
 						"h": 6
-					}
+					},
+					"pixel_hash": "e8a8f3eade41b30b"
 				},
 				{
 					"filename": "stun/intent_stunned_10.png",
@@ -140,7 +148,8 @@
 						"y": 3,
 						"w": 15,
 						"h": 6
-					}
+					},
+					"pixel_hash": "4273957c0a4891ea"
 				},
 				{
 					"filename": "debuff/intent_megadebuff_10.png",
@@ -155,7 +164,8 @@
 						"y": 6,
 						"w": 14,
 						"h": 7
-					}
+					},
+					"pixel_hash": "b441f541c4999356"
 				},
 				{
 					"filename": "debuff/intent_megadebuff_07.png",
@@ -170,7 +180,8 @@
 						"y": 7,
 						"w": 15,
 						"h": 8
-					}
+					},
+					"pixel_hash": "d865a00cf75f8359"
 				},
 				{
 					"filename": "debuff/intent_megadebuff_05.png",
@@ -185,7 +196,8 @@
 						"y": 7,
 						"w": 16,
 						"h": 8
-					}
+					},
+					"pixel_hash": "8f29a534aef739fe"
 				},
 				{
 					"filename": "debuff/intent_megadebuff_06.png",
@@ -200,7 +212,8 @@
 						"y": 9,
 						"w": 15,
 						"h": 10
-					}
+					},
+					"pixel_hash": "cdc31e2a99a6f6ef"
 				},
 				{
 					"filename": "debuff/intent_megadebuff_09.png",
@@ -215,7 +228,8 @@
 						"y": 9,
 						"w": 15,
 						"h": 10
-					}
+					},
+					"pixel_hash": "1a4f8f0bf48b782a"
 				},
 				{
 					"filename": "stun/intent_stunned_03.png",
@@ -230,7 +244,8 @@
 						"y": 4,
 						"w": 14,
 						"h": 10
-					}
+					},
+					"pixel_hash": "7cf68aef2a8580a7"
 				},
 				{
 					"filename": "stun/intent_stunned_11.png",
@@ -245,7 +260,8 @@
 						"y": 4,
 						"w": 14,
 						"h": 10
-					}
+					},
+					"pixel_hash": "3d45509abb5ea15c"
 				},
 				{
 					"filename": "debuff/intent_megadebuff_08.png",
@@ -260,7 +276,8 @@
 						"y": 10,
 						"w": 12,
 						"h": 11
-					}
+					},
+					"pixel_hash": "2ae4910d4df46d85"
 				},
 				{
 					"filename": "stun/intent_stunned_01.png",
@@ -275,7 +292,8 @@
 						"y": 5,
 						"w": 7,
 						"h": 12
-					}
+					},
+					"pixel_hash": "e79db94854e2310d"
 				},
 				{
 					"filename": "stun/intent_stunned_09.png",
@@ -290,7 +308,8 @@
 						"y": 5,
 						"w": 7,
 						"h": 12
-					}
+					},
+					"pixel_hash": "ba34f746643cafea"
 				},
 				{
 					"filename": "attack/intent_attack_4.png",
@@ -305,7 +324,8 @@
 						"y": 9,
 						"w": 14,
 						"h": 12
-					}
+					},
+					"pixel_hash": "4925a682636fbebc"
 				},
 				{
 					"filename": "debuff/intent_megadebuff_03.png",
@@ -320,7 +340,8 @@
 						"y": 10,
 						"w": 16,
 						"h": 11
-					}
+					},
+					"pixel_hash": "93eca266a8a8cea4"
 				},
 				{
 					"filename": "debuff/intent_megadebuff_04.png",
@@ -335,7 +356,8 @@
 						"y": 10,
 						"w": 16,
 						"h": 11
-					}
+					},
+					"pixel_hash": "0c62608430330990"
 				},
 				{
 					"filename": "stun/intent_stunned_04.png",
@@ -350,7 +372,8 @@
 						"y": 7,
 						"w": 15,
 						"h": 13
-					}
+					},
+					"pixel_hash": "5afc7c89381921b9"
 				},
 				{
 					"filename": "stun/intent_stunned_12.png",
@@ -365,7 +388,8 @@
 						"y": 7,
 						"w": 15,
 						"h": 13
-					}
+					},
+					"pixel_hash": "2a9555ffd4f73806"
 				},
 				{
 					"filename": "debuff/intent_megadebuff_01.png",
@@ -380,7 +404,8 @@
 						"y": 12,
 						"w": 16,
 						"h": 13
-					}
+					},
+					"pixel_hash": "12f7cfb105419583"
 				},
 				{
 					"filename": "stun/intent_stunned_07.png",
@@ -395,7 +420,8 @@
 						"y": 13,
 						"w": 0,
 						"h": 29
-					}
+					},
+					"pixel_hash": "b59b77656e6a1365"
 				},
 				{
 					"filename": "stun/intent_stunned_15.png",
@@ -410,7 +436,8 @@
 						"y": 13,
 						"w": 0,
 						"h": 29
-					}
+					},
+					"pixel_hash": "144981ea854179d5"
 				},
 				{
 					"filename": "stun/intent_stunned_06.png",
@@ -425,7 +452,8 @@
 						"y": 12,
 						"w": 6,
 						"h": 27
-					}
+					},
+					"pixel_hash": "11c46623e9124b55"
 				},
 				{
 					"filename": "stun/intent_stunned_14.png",
@@ -440,7 +468,8 @@
 						"y": 12,
 						"w": 6,
 						"h": 27
-					}
+					},
+					"pixel_hash": "a78861f54f3b0dea"
 				},
 				{
 					"filename": "heal/intent_heal_14.png",
@@ -455,7 +484,8 @@
 						"y": 7,
 						"w": 18,
 						"h": 13
-					}
+					},
+					"pixel_hash": "6fe973589c11e203"
 				},
 				{
 					"filename": "debuff/intent_megadebuff_02.png",
@@ -470,7 +500,8 @@
 						"y": 13,
 						"w": 16,
 						"h": 14
-					}
+					},
+					"pixel_hash": "9349e7eec89ed616"
 				},
 				{
 					"filename": "attack/intent_attack_3.png",
@@ -485,7 +516,8 @@
 						"y": 11,
 						"w": 15,
 						"h": 16
-					}
+					},
+					"pixel_hash": "6ea82d13067ccef3"
 				},
 				{
 					"filename": "heal/intent_heal_12.png",
@@ -500,7 +532,8 @@
 						"y": 7,
 						"w": 17,
 						"h": 14
-					}
+					},
+					"pixel_hash": "7c2c1f4341de8df2"
 				},
 				{
 					"filename": "stun/intent_stunned_05.png",
@@ -515,7 +548,8 @@
 						"y": 9,
 						"w": 14,
 						"h": 22
-					}
+					},
+					"pixel_hash": "9d5c71a242d531e2"
 				},
 				{
 					"filename": "stun/intent_stunned_13.png",
@@ -530,7 +564,8 @@
 						"y": 9,
 						"w": 14,
 						"h": 22
-					}
+					},
+					"pixel_hash": "df38af63dcdf5102"
 				},
 				{
 					"filename": "heal/intent_heal_13.png",
@@ -545,7 +580,8 @@
 						"y": 7,
 						"w": 17,
 						"h": 14
-					}
+					},
+					"pixel_hash": "09dc6ff0bed9520d"
 				},
 				{
 					"filename": "heal/intent_heal_11.png",
@@ -560,7 +596,8 @@
 						"y": 8,
 						"w": 18,
 						"h": 15
-					}
+					},
+					"pixel_hash": "249a33c950148c48"
 				},
 				{
 					"filename": "heal/intent_heal_10.png",
@@ -575,7 +612,8 @@
 						"y": 9,
 						"w": 19,
 						"h": 15
-					}
+					},
+					"pixel_hash": "57510a04e0e65e80"
 				},
 				{
 					"filename": "card_debuff/intent_carddebuff_10.png",
@@ -590,7 +628,8 @@
 						"y": 7,
 						"w": 32,
 						"h": 15
-					}
+					},
+					"pixel_hash": "d7172d079223d63a"
 				},
 				{
 					"filename": "heal/intent_heal_15.png",
@@ -605,7 +644,8 @@
 						"y": 7,
 						"w": 19,
 						"h": 13
-					}
+					},
+					"pixel_hash": "181cb87f0705bb9d"
 				},
 				{
 					"filename": "summon/intent_summon_05.png",
@@ -620,7 +660,8 @@
 						"y": 5,
 						"w": 20,
 						"h": 13
-					}
+					},
+					"pixel_hash": "ec88e96f635dd39d"
 				},
 				{
 					"filename": "status/intent_statuscard_07.png",
@@ -635,7 +676,8 @@
 						"y": 7,
 						"w": 26,
 						"h": 15
-					}
+					},
+					"pixel_hash": "4161725d38fa8e7c"
 				},
 				{
 					"filename": "intent_death_blow.png",
@@ -650,7 +692,8 @@
 						"y": 14,
 						"w": 17,
 						"h": 21
-					}
+					},
+					"pixel_hash": "4da68be67c0e6d79"
 				},
 				{
 					"filename": "unknown/intent_unknown_26.png",
@@ -665,7 +708,8 @@
 						"y": 12,
 						"w": 17,
 						"h": 21
-					}
+					},
+					"pixel_hash": "f463810fd8523e74"
 				},
 				{
 					"filename": "unknown/intent_unknown_07.png",
@@ -680,7 +724,8 @@
 						"y": 8,
 						"w": 38,
 						"h": 17
-					}
+					},
+					"pixel_hash": "2b726ff673d80044"
 				},
 				{
 					"filename": "buff/intent_buff_01.png",
@@ -695,7 +740,8 @@
 						"y": 16,
 						"w": 26,
 						"h": 20
-					}
+					},
+					"pixel_hash": "1b221b70401130b6"
 				},
 				{
 					"filename": "unknown/intent_unknown_23.png",
@@ -710,7 +756,8 @@
 						"y": 12,
 						"w": 18,
 						"h": 21
-					}
+					},
+					"pixel_hash": "8d42ec08e391f1d6"
 				},
 				{
 					"filename": "unknown/intent_unknown_24.png",
@@ -725,7 +772,8 @@
 						"y": 12,
 						"w": 18,
 						"h": 21
-					}
+					},
+					"pixel_hash": "8573d17987b068eb"
 				},
 				{
 					"filename": "unknown/intent_unknown_06.png",
@@ -740,7 +788,8 @@
 						"y": 9,
 						"w": 37,
 						"h": 18
-					}
+					},
+					"pixel_hash": "c43a2941ff0dddd0"
 				},
 				{
 					"filename": "summon/intent_summon_09.png",
@@ -755,7 +804,8 @@
 						"y": 5,
 						"w": 21,
 						"h": 13
-					}
+					},
+					"pixel_hash": "8db732363b896030"
 				},
 				{
 					"filename": "summon/intent_summon_11.png",
@@ -770,7 +820,8 @@
 						"y": 5,
 						"w": 21,
 						"h": 13
-					}
+					},
+					"pixel_hash": "c63b135c90e8ab4e"
 				},
 				{
 					"filename": "summon/intent_summon_22.png",
@@ -785,7 +836,8 @@
 						"y": 5,
 						"w": 21,
 						"h": 13
-					}
+					},
+					"pixel_hash": "d71dda8b3bc37ba2"
 				},
 				{
 					"filename": "summon/intent_summon_24.png",
@@ -800,7 +852,8 @@
 						"y": 5,
 						"w": 20,
 						"h": 13
-					}
+					},
+					"pixel_hash": "93f09061966865d1"
 				},
 				{
 					"filename": "summon/intent_summon_04.png",
@@ -815,7 +868,8 @@
 						"y": 6,
 						"w": 20,
 						"h": 14
-					}
+					},
+					"pixel_hash": "af53c8e6f5df2ac0"
 				},
 				{
 					"filename": "attack/intent_attack_2.png",
@@ -830,7 +884,8 @@
 						"y": 11,
 						"w": 19,
 						"h": 16
-					}
+					},
+					"pixel_hash": "1fd1e9fec0721f83"
 				},
 				{
 					"filename": "unknown/intent_unknown_25.png",
@@ -845,7 +900,8 @@
 						"y": 12,
 						"w": 18,
 						"h": 21
-					}
+					},
+					"pixel_hash": "508a97f7810b9f04"
 				},
 				{
 					"filename": "summon/intent_summon_07.png",
@@ -860,7 +916,8 @@
 						"y": 6,
 						"w": 19,
 						"h": 14
-					}
+					},
+					"pixel_hash": "5f67262b49fce138"
 				},
 				{
 					"filename": "summon/intent_summon_08.png",
@@ -875,7 +932,8 @@
 						"y": 6,
 						"w": 19,
 						"h": 14
-					}
+					},
+					"pixel_hash": "2b1ec09199777e78"
 				},
 				{
 					"filename": "summon/intent_summon_21.png",
@@ -890,7 +948,8 @@
 						"y": 6,
 						"w": 19,
 						"h": 14
-					}
+					},
+					"pixel_hash": "ead262f7296ca404"
 				},
 				{
 					"filename": "summon/intent_summon_10.png",
@@ -905,7 +964,8 @@
 						"y": 6,
 						"w": 20,
 						"h": 14
-					}
+					},
+					"pixel_hash": "1df705ddb45e9385"
 				},
 				{
 					"filename": "summon/intent_summon_17.png",
@@ -920,7 +980,8 @@
 						"y": 6,
 						"w": 20,
 						"h": 14
-					}
+					},
+					"pixel_hash": "619179c1ac4ccf29"
 				},
 				{
 					"filename": "summon/intent_summon_23.png",
@@ -935,7 +996,8 @@
 						"y": 6,
 						"w": 20,
 						"h": 14
-					}
+					},
+					"pixel_hash": "ab48d79765e5da24"
 				},
 				{
 					"filename": "unknown/intent_unknown_08.png",
@@ -950,7 +1012,8 @@
 						"y": 14,
 						"w": 30,
 						"h": 14
-					}
+					},
+					"pixel_hash": "cf580063b8e49844"
 				},
 				{
 					"filename": "status/intent_statuscard_12.png",
@@ -965,7 +1028,8 @@
 						"y": 7,
 						"w": 25,
 						"h": 15
-					}
+					},
+					"pixel_hash": "0da2ac17514c40cb"
 				},
 				{
 					"filename": "status/intent_statuscard_14.png",
@@ -980,7 +1044,8 @@
 						"y": 7,
 						"w": 26,
 						"h": 15
-					}
+					},
+					"pixel_hash": "58533c7d1ec3be33"
 				},
 				{
 					"filename": "status/intent_statuscard_18.png",
@@ -995,7 +1060,8 @@
 						"y": 7,
 						"w": 24,
 						"h": 15
-					}
+					},
+					"pixel_hash": "b1dda41885e9adcc"
 				},
 				{
 					"filename": "summon/intent_summon_03.png",
@@ -1010,7 +1076,8 @@
 						"y": 7,
 						"w": 22,
 						"h": 15
-					}
+					},
+					"pixel_hash": "e8f06ee1618d2870"
 				},
 				{
 					"filename": "summon/intent_summon_14.png",
@@ -1025,7 +1092,8 @@
 						"y": 7,
 						"w": 23,
 						"h": 15
-					}
+					},
+					"pixel_hash": "099f6eaab4909f06"
 				},
 				{
 					"filename": "summon/intent_summon_15.png",
@@ -1040,7 +1108,8 @@
 						"y": 7,
 						"w": 23,
 						"h": 15
-					}
+					},
+					"pixel_hash": "a27866de88238a74"
 				},
 				{
 					"filename": "card_debuff/intent_carddebuff_14.png",
@@ -1055,7 +1124,8 @@
 						"y": 7,
 						"w": 32,
 						"h": 15
-					}
+					},
+					"pixel_hash": "f1db10484a7e2bfe"
 				},
 				{
 					"filename": "unknown/intent_unknown_05.png",
@@ -1070,7 +1140,8 @@
 						"y": 14,
 						"w": 33,
 						"h": 23
-					}
+					},
+					"pixel_hash": "c93a72d080661907"
 				},
 				{
 					"filename": "escape/intent_escape_10.png",
@@ -1085,7 +1156,8 @@
 						"y": 14,
 						"w": 19,
 						"h": 25
-					}
+					},
+					"pixel_hash": "151c98d13d79b57f"
 				},
 				{
 					"filename": "summon/intent_summon_16.png",
@@ -1100,7 +1172,8 @@
 						"y": 7,
 						"w": 23,
 						"h": 15
-					}
+					},
+					"pixel_hash": "c8cf6dc3b69822e9"
 				},
 				{
 					"filename": "summon/intent_summon_20.png",
@@ -1115,7 +1188,8 @@
 						"y": 7,
 						"w": 19,
 						"h": 15
-					}
+					},
+					"pixel_hash": "154231e78c0aae09"
 				},
 				{
 					"filename": "summon/intent_summon_18.png",
@@ -1130,7 +1204,8 @@
 						"y": 8,
 						"w": 19,
 						"h": 16
-					}
+					},
+					"pixel_hash": "d1c00343f814d846"
 				},
 				{
 					"filename": "summon/intent_summon_01.png",
@@ -1145,7 +1220,8 @@
 						"y": 8,
 						"w": 23,
 						"h": 16
-					}
+					},
+					"pixel_hash": "dbc07c78f5a5c161"
 				},
 				{
 					"filename": "summon/intent_summon_06.png",
@@ -1160,7 +1236,8 @@
 						"y": 8,
 						"w": 20,
 						"h": 16
-					}
+					},
+					"pixel_hash": "5588ea5fbb4fb1b9"
 				},
 				{
 					"filename": "summon/intent_summon_02.png",
@@ -1175,7 +1252,8 @@
 						"y": 8,
 						"w": 23,
 						"h": 16
-					}
+					},
+					"pixel_hash": "7ced33fa51134c9d"
 				},
 				{
 					"filename": "summon/intent_summon_19.png",
@@ -1190,7 +1268,8 @@
 						"y": 8,
 						"w": 19,
 						"h": 16
-					}
+					},
+					"pixel_hash": "6785bdc077b1b304"
 				},
 				{
 					"filename": "status/intent_statuscard_04.png",
@@ -1205,7 +1284,8 @@
 						"y": 10,
 						"w": 21,
 						"h": 18
-					}
+					},
+					"pixel_hash": "a1356211f5b39636"
 				},
 				{
 					"filename": "unknown/intent_unknown_10.png",
@@ -1220,7 +1300,8 @@
 						"y": 12,
 						"w": 24,
 						"h": 15
-					}
+					},
+					"pixel_hash": "717d3cd9777fc3fd"
 				},
 				{
 					"filename": "unknown/intent_unknown_11.png",
@@ -1235,7 +1316,8 @@
 						"y": 12,
 						"w": 24,
 						"h": 15
-					}
+					},
+					"pixel_hash": "fe9ca5a424c0fec4"
 				},
 				{
 					"filename": "status/intent_statuscard_06.png",
@@ -1250,7 +1332,8 @@
 						"y": 8,
 						"w": 24,
 						"h": 16
-					}
+					},
+					"pixel_hash": "43fd7e32d018bd06"
 				},
 				{
 					"filename": "card_debuff/intent_carddebuff_12.png",
@@ -1265,7 +1348,8 @@
 						"y": 8,
 						"w": 32,
 						"h": 16
-					}
+					},
+					"pixel_hash": "57d7192887930bae"
 				},
 				{
 					"filename": "status/intent_statuscard_11.png",
@@ -1280,7 +1364,8 @@
 						"y": 8,
 						"w": 25,
 						"h": 16
-					}
+					},
+					"pixel_hash": "24bd616db67d1e1e"
 				},
 				{
 					"filename": "status/intent_statuscard_17.png",
@@ -1295,7 +1380,8 @@
 						"y": 8,
 						"w": 26,
 						"h": 16
-					}
+					},
+					"pixel_hash": "17acb926ccb123eb"
 				},
 				{
 					"filename": "unknown/intent_unknown_09.png",
@@ -1310,7 +1396,8 @@
 						"y": 15,
 						"w": 23,
 						"h": 16
-					}
+					},
+					"pixel_hash": "edb01d36276b0703"
 				},
 				{
 					"filename": "status/intent_statuscard_13.png",
@@ -1325,7 +1412,8 @@
 						"y": 8,
 						"w": 27,
 						"h": 16
-					}
+					},
+					"pixel_hash": "67018a9de3f9fe68"
 				},
 				{
 					"filename": "buff/intent_buff_03.png",
@@ -1340,7 +1428,8 @@
 						"y": 18,
 						"w": 21,
 						"h": 22
-					}
+					},
+					"pixel_hash": "a1fc05e651f6d49e"
 				},
 				{
 					"filename": "card_debuff/intent_carddebuff_06.png",
@@ -1355,7 +1444,8 @@
 						"y": 14,
 						"w": 23,
 						"h": 22
-					}
+					},
+					"pixel_hash": "f95474684c3ca88a"
 				},
 				{
 					"filename": "status/intent_statuscard_05.png",
@@ -1370,7 +1460,8 @@
 						"y": 9,
 						"w": 22,
 						"h": 17
-					}
+					},
+					"pixel_hash": "49be81f9a0996eab"
 				},
 				{
 					"filename": "intent_summon.png",
@@ -1385,7 +1476,8 @@
 						"y": 9,
 						"w": 23,
 						"h": 17
-					}
+					},
+					"pixel_hash": "e58d1037816dbde0"
 				},
 				{
 					"filename": "summon/intent_summon_00.png",
@@ -1400,7 +1492,8 @@
 						"y": 9,
 						"w": 23,
 						"h": 17
-					}
+					},
+					"pixel_hash": "e58d1037816dbde0"
 				},
 				{
 					"filename": "summon/intent_summon_13.png",
@@ -1415,7 +1508,8 @@
 						"y": 9,
 						"w": 24,
 						"h": 17
-					}
+					},
+					"pixel_hash": "b60d09aa4e789163"
 				},
 				{
 					"filename": "sleep/intent_sleep_07.png",
@@ -1430,7 +1524,8 @@
 						"y": 7,
 						"w": 24,
 						"h": 18
-					}
+					},
+					"pixel_hash": "120500f57f1316b6"
 				},
 				{
 					"filename": "status/intent_statuscard_16.png",
@@ -1445,7 +1540,8 @@
 						"y": 9,
 						"w": 26,
 						"h": 17
-					}
+					},
+					"pixel_hash": "a99cc898351c6621"
 				},
 				{
 					"filename": "status/intent_statuscard_09.png",
@@ -1460,7 +1556,8 @@
 						"y": 10,
 						"w": 26,
 						"h": 18
-					}
+					},
+					"pixel_hash": "e37fca82f7570ffd"
 				},
 				{
 					"filename": "buff/intent_buff_04.png",
@@ -1475,7 +1572,8 @@
 						"y": 19,
 						"w": 20,
 						"h": 23
-					}
+					},
+					"pixel_hash": "5b2ca9663d893a87"
 				},
 				{
 					"filename": "escape/intent_escape_11.png",
@@ -1490,7 +1588,8 @@
 						"y": 14,
 						"w": 19,
 						"h": 25
-					}
+					},
+					"pixel_hash": "b09f45d38bf89e54"
 				},
 				{
 					"filename": "status/intent_statuscard_02.png",
@@ -1505,7 +1604,8 @@
 						"y": 12,
 						"w": 20,
 						"h": 20
-					}
+					},
+					"pixel_hash": "6c9cfd60efe6d2b0"
 				},
 				{
 					"filename": "status/intent_statuscard_03.png",
@@ -1520,7 +1620,8 @@
 						"y": 11,
 						"w": 21,
 						"h": 19
-					}
+					},
+					"pixel_hash": "978a6f961b1b3024"
 				},
 				{
 					"filename": "defend/intent_defend_00.png",
@@ -1535,7 +1636,8 @@
 						"y": 13,
 						"w": 22,
 						"h": 20
-					}
+					},
+					"pixel_hash": "2f3676d16cc3a32e"
 				},
 				{
 					"filename": "escape/intent_escape_03.png",
@@ -1550,7 +1652,8 @@
 						"y": 14,
 						"w": 39,
 						"h": 36
-					}
+					},
+					"pixel_hash": "224f85e15016fa9b"
 				},
 				{
 					"filename": "escape/intent_escape_04.png",
@@ -1565,7 +1668,8 @@
 						"y": 14,
 						"w": 39,
 						"h": 36
-					}
+					},
+					"pixel_hash": "c913f480564a19fc"
 				},
 				{
 					"filename": "defend/intent_defend_01.png",
@@ -1580,7 +1684,8 @@
 						"y": 13,
 						"w": 22,
 						"h": 20
-					}
+					},
+					"pixel_hash": "fa0272c5229ab3fb"
 				},
 				{
 					"filename": "card_debuff/intent_carddebuff_07.png",
@@ -1595,7 +1700,8 @@
 						"y": 11,
 						"w": 24,
 						"h": 19
-					}
+					},
+					"pixel_hash": "aeaa5d892ac9e74a"
 				},
 				{
 					"filename": "defend/intent_defend_02.png",
@@ -1610,7 +1716,8 @@
 						"y": 13,
 						"w": 22,
 						"h": 20
-					}
+					},
+					"pixel_hash": "ab7d2e7324718eb6"
 				},
 				{
 					"filename": "escape/intent_escape_02.png",
@@ -1625,7 +1732,8 @@
 						"y": 14,
 						"w": 43,
 						"h": 36
-					}
+					},
+					"pixel_hash": "64e5075b3c4be8d5"
 				},
 				{
 					"filename": "escape/intent_escape_12.png",
@@ -1640,7 +1748,8 @@
 						"y": 14,
 						"w": 19,
 						"h": 25
-					}
+					},
+					"pixel_hash": "b09f45d38bf89e54"
 				},
 				{
 					"filename": "unknown/intent_unknown_22.png",
@@ -1655,7 +1764,8 @@
 						"y": 12,
 						"w": 19,
 						"h": 21
-					}
+					},
+					"pixel_hash": "45daf0042622bdba"
 				},
 				{
 					"filename": "intent_unknown.png",
@@ -1670,7 +1780,8 @@
 						"y": 12,
 						"w": 35,
 						"h": 21
-					}
+					},
+					"pixel_hash": "8dbbfddd06f0271e"
 				},
 				{
 					"filename": "escape/intent_escape_13.png",
@@ -1685,7 +1796,8 @@
 						"y": 14,
 						"w": 19,
 						"h": 25
-					}
+					},
+					"pixel_hash": "b09f45d38bf89e54"
 				},
 				{
 					"filename": "escape/intent_escape_14.png",
@@ -1700,7 +1812,8 @@
 						"y": 14,
 						"w": 19,
 						"h": 25
-					}
+					},
+					"pixel_hash": "b09f45d38bf89e54"
 				},
 				{
 					"filename": "escape/intent_escape_15.png",
@@ -1715,7 +1828,8 @@
 						"y": 14,
 						"w": 19,
 						"h": 25
-					}
+					},
+					"pixel_hash": "b09f45d38bf89e54"
 				},
 				{
 					"filename": "escape/intent_escape_16.png",
@@ -1730,7 +1844,8 @@
 						"y": 14,
 						"w": 19,
 						"h": 25
-					}
+					},
+					"pixel_hash": "b09f45d38bf89e54"
 				},
 				{
 					"filename": "escape/intent_escape_17.png",
@@ -1745,7 +1860,8 @@
 						"y": 14,
 						"w": 19,
 						"h": 25
-					}
+					},
+					"pixel_hash": "b09f45d38bf89e54"
 				},
 				{
 					"filename": "escape/intent_escape_18.png",
@@ -1760,7 +1876,8 @@
 						"y": 14,
 						"w": 19,
 						"h": 25
-					}
+					},
+					"pixel_hash": "b09f45d38bf89e54"
 				},
 				{
 					"filename": "escape/intent_escape_19.png",
@@ -1775,7 +1892,8 @@
 						"y": 14,
 						"w": 19,
 						"h": 25
-					}
+					},
+					"pixel_hash": "b09f45d38bf89e54"
 				},
 				{
 					"filename": "escape/intent_escape_20.png",
@@ -1790,7 +1908,8 @@
 						"y": 14,
 						"w": 19,
 						"h": 25
-					}
+					},
+					"pixel_hash": "b09f45d38bf89e54"
 				},
 				{
 					"filename": "escape/intent_escape_21.png",
@@ -1805,7 +1924,8 @@
 						"y": 14,
 						"w": 19,
 						"h": 25
-					}
+					},
+					"pixel_hash": "b09f45d38bf89e54"
 				},
 				{
 					"filename": "escape/intent_escape_22.png",
@@ -1820,7 +1940,8 @@
 						"y": 14,
 						"w": 19,
 						"h": 25
-					}
+					},
+					"pixel_hash": "b09f45d38bf89e54"
 				},
 				{
 					"filename": "escape/intent_escape_23.png",
@@ -1835,7 +1956,8 @@
 						"y": 14,
 						"w": 19,
 						"h": 25
-					}
+					},
+					"pixel_hash": "b09f45d38bf89e54"
 				},
 				{
 					"filename": "escape/intent_escape_24.png",
@@ -1850,7 +1972,8 @@
 						"y": 14,
 						"w": 19,
 						"h": 25
-					}
+					},
+					"pixel_hash": "b09f45d38bf89e54"
 				},
 				{
 					"filename": "escape/intent_escape_25.png",
@@ -1865,7 +1988,8 @@
 						"y": 14,
 						"w": 19,
 						"h": 25
-					}
+					},
+					"pixel_hash": "b09f45d38bf89e54"
 				},
 				{
 					"filename": "buff/intent_buff_00.png",
@@ -1880,7 +2004,8 @@
 						"y": 17,
 						"w": 24,
 						"h": 21
-					}
+					},
+					"pixel_hash": "793c479da8c031b7"
 				},
 				{
 					"filename": "card_debuff/intent_carddebuff_09.png",
@@ -1895,7 +2020,8 @@
 						"y": 9,
 						"w": 31,
 						"h": 17
-					}
+					},
+					"pixel_hash": "3bcc674c845bb930"
 				},
 				{
 					"filename": "status/intent_statuscard_10.png",
@@ -1910,7 +2036,8 @@
 						"y": 9,
 						"w": 27,
 						"h": 17
-					}
+					},
+					"pixel_hash": "74201350e3562e64"
 				},
 				{
 					"filename": "card_debuff/intent_carddebuff_01.png",
@@ -1925,7 +2052,8 @@
 						"y": 14,
 						"w": 30,
 						"h": 22
-					}
+					},
+					"pixel_hash": "533bc54a14832506"
 				},
 				{
 					"filename": "escape/intent_escape_26.png",
@@ -1940,7 +2068,8 @@
 						"y": 14,
 						"w": 19,
 						"h": 25
-					}
+					},
+					"pixel_hash": "b09f45d38bf89e54"
 				},
 				{
 					"filename": "escape/intent_escape_27.png",
@@ -1955,7 +2084,8 @@
 						"y": 14,
 						"w": 19,
 						"h": 25
-					}
+					},
+					"pixel_hash": "b09f45d38bf89e54"
 				},
 				{
 					"filename": "escape/intent_escape_28.png",
@@ -1970,7 +2100,8 @@
 						"y": 14,
 						"w": 19,
 						"h": 25
-					}
+					},
+					"pixel_hash": "b09f45d38bf89e54"
 				},
 				{
 					"filename": "escape/intent_escape_29.png",
@@ -1985,7 +2116,8 @@
 						"y": 14,
 						"w": 19,
 						"h": 25
-					}
+					},
+					"pixel_hash": "b09f45d38bf89e54"
 				},
 				{
 					"filename": "heal/intent_heal_39.png",
@@ -2000,7 +2132,8 @@
 						"y": 12,
 						"w": 20,
 						"h": 25
-					}
+					},
+					"pixel_hash": "74054172c6d814ea"
 				},
 				{
 					"filename": "unknown/intent_unknown_21.png",
@@ -2015,7 +2148,8 @@
 						"y": 12,
 						"w": 20,
 						"h": 21
-					}
+					},
+					"pixel_hash": "5d2d52ea14d694ea"
 				},
 				{
 					"filename": "defend/intent_defend_03.png",
@@ -2030,7 +2164,8 @@
 						"y": 13,
 						"w": 22,
 						"h": 20
-					}
+					},
+					"pixel_hash": "62d7f62146c776d3"
 				},
 				{
 					"filename": "defend/intent_defend_04.png",
@@ -2045,7 +2180,8 @@
 						"y": 13,
 						"w": 22,
 						"h": 20
-					}
+					},
+					"pixel_hash": "949ac43f4799ded7"
 				},
 				{
 					"filename": "defend/intent_defend_05.png",
@@ -2060,7 +2196,8 @@
 						"y": 13,
 						"w": 22,
 						"h": 20
-					}
+					},
+					"pixel_hash": "db2b7578ded4c2ee"
 				},
 				{
 					"filename": "card_debuff/intent_carddebuff_08.png",
@@ -2075,7 +2212,8 @@
 						"y": 11,
 						"w": 28,
 						"h": 19
-					}
+					},
+					"pixel_hash": "b6e1bfae6cf5237c"
 				},
 				{
 					"filename": "status/intent_statuscard_15.png",
@@ -2090,7 +2228,8 @@
 						"y": 10,
 						"w": 26,
 						"h": 18
-					}
+					},
+					"pixel_hash": "d1456d24673643a0"
 				},
 				{
 					"filename": "sleep/intent_sleep_06.png",
@@ -2105,7 +2244,8 @@
 						"y": 8,
 						"w": 24,
 						"h": 19
-					}
+					},
+					"pixel_hash": "f83c463267cded98"
 				},
 				{
 					"filename": "unknown/intent_unknown_00.png",
@@ -2120,7 +2260,8 @@
 						"y": 12,
 						"w": 35,
 						"h": 21
-					}
+					},
+					"pixel_hash": "8dbbfddd06f0271e"
 				},
 				{
 					"filename": "intent_status_card.png",
@@ -2135,7 +2276,8 @@
 						"y": 14,
 						"w": 21,
 						"h": 22
-					}
+					},
+					"pixel_hash": "9d30c3440a554e82"
 				},
 				{
 					"filename": "status/intent_statuscard_00.png",
@@ -2150,7 +2292,8 @@
 						"y": 14,
 						"w": 21,
 						"h": 22
-					}
+					},
+					"pixel_hash": "9d30c3440a554e82"
 				},
 				{
 					"filename": "status/intent_statuscard_01.png",
@@ -2165,7 +2308,8 @@
 						"y": 13,
 						"w": 21,
 						"h": 21
-					}
+					},
+					"pixel_hash": "e8fe113c50b87f6d"
 				},
 				{
 					"filename": "defend/intent_defend_06.png",
@@ -2180,7 +2324,8 @@
 						"y": 13,
 						"w": 22,
 						"h": 20
-					}
+					},
+					"pixel_hash": "43b1e8b4ee49cffb"
 				},
 				{
 					"filename": "defend/intent_defend_07.png",
@@ -2195,7 +2340,8 @@
 						"y": 13,
 						"w": 22,
 						"h": 20
-					}
+					},
+					"pixel_hash": "776b4f1a80455e84"
 				},
 				{
 					"filename": "defend/intent_defend_08.png",
@@ -2210,7 +2356,8 @@
 						"y": 13,
 						"w": 22,
 						"h": 20
-					}
+					},
+					"pixel_hash": "d06cab55c21a4f90"
 				},
 				{
 					"filename": "defend/intent_defend_09.png",
@@ -2225,7 +2372,8 @@
 						"y": 13,
 						"w": 22,
 						"h": 20
-					}
+					},
+					"pixel_hash": "d06cab55c21a4f90"
 				},
 				{
 					"filename": "defend/intent_defend_10.png",
@@ -2240,7 +2388,8 @@
 						"y": 13,
 						"w": 22,
 						"h": 20
-					}
+					},
+					"pixel_hash": "d06cab55c21a4f90"
 				},
 				{
 					"filename": "defend/intent_defend_11.png",
@@ -2255,7 +2404,8 @@
 						"y": 13,
 						"w": 22,
 						"h": 20
-					}
+					},
+					"pixel_hash": "d06cab55c21a4f90"
 				},
 				{
 					"filename": "defend/intent_defend_12.png",
@@ -2270,7 +2420,8 @@
 						"y": 13,
 						"w": 22,
 						"h": 20
-					}
+					},
+					"pixel_hash": "d06cab55c21a4f90"
 				},
 				{
 					"filename": "heal/intent_heal_31.png",
@@ -2285,7 +2436,8 @@
 						"y": 14,
 						"w": 19,
 						"h": 27
-					}
+					},
+					"pixel_hash": "87055d757090b556"
 				},
 				{
 					"filename": "escape/intent_escape_30.png",
@@ -2300,7 +2452,8 @@
 						"y": 20,
 						"w": 19,
 						"h": 31
-					}
+					},
+					"pixel_hash": "8c4fc5eb47fb6234"
 				},
 				{
 					"filename": "attack/intent_attack_1.png",
@@ -2315,7 +2468,8 @@
 						"y": 13,
 						"w": 25,
 						"h": 23
-					}
+					},
+					"pixel_hash": "a036b9458bca31f4"
 				},
 				{
 					"filename": "heal/intent_heal_00.png",
@@ -2330,7 +2484,8 @@
 						"y": 14,
 						"w": 29,
 						"h": 27
-					}
+					},
+					"pixel_hash": "22b56be719d2a7ea"
 				},
 				{
 					"filename": "escape/intent_escape_06.png",
@@ -2345,7 +2500,8 @@
 						"y": 14,
 						"w": 39,
 						"h": 30
-					}
+					},
+					"pixel_hash": "a3ad22b70aae6292"
 				},
 				{
 					"filename": "heal/intent_heal_32.png",
@@ -2360,7 +2516,8 @@
 						"y": 14,
 						"w": 20,
 						"h": 27
-					}
+					},
+					"pixel_hash": "bb8bfa4938e087c7"
 				},
 				{
 					"filename": "heal/intent_heal_33.png",
@@ -2375,7 +2532,8 @@
 						"y": 14,
 						"w": 20,
 						"h": 27
-					}
+					},
+					"pixel_hash": "2567d9d3e1e0e7ea"
 				},
 				{
 					"filename": "heal/intent_heal_05.png",
@@ -2390,7 +2548,8 @@
 						"y": 14,
 						"w": 23,
 						"h": 27
-					}
+					},
+					"pixel_hash": "8052c477dd3ab399"
 				},
 				{
 					"filename": "defend/intent_defend_13.png",
@@ -2405,7 +2564,8 @@
 						"y": 13,
 						"w": 22,
 						"h": 20
-					}
+					},
+					"pixel_hash": "d06cab55c21a4f90"
 				},
 				{
 					"filename": "defend/intent_defend_14.png",
@@ -2420,7 +2580,8 @@
 						"y": 13,
 						"w": 22,
 						"h": 20
-					}
+					},
+					"pixel_hash": "d06cab55c21a4f90"
 				},
 				{
 					"filename": "heal/intent_heal_34.png",
@@ -2435,7 +2596,8 @@
 						"y": 14,
 						"w": 20,
 						"h": 27
-					}
+					},
+					"pixel_hash": "f57eee5b6bd31da3"
 				},
 				{
 					"filename": "heal/intent_heal_35.png",
@@ -2450,7 +2612,8 @@
 						"y": 14,
 						"w": 20,
 						"h": 27
-					}
+					},
+					"pixel_hash": "95754da41b57d315"
 				},
 				{
 					"filename": "heal/intent_heal_36.png",
@@ -2465,7 +2628,8 @@
 						"y": 14,
 						"w": 20,
 						"h": 27
-					}
+					},
+					"pixel_hash": "92379867d37443cd"
 				},
 				{
 					"filename": "escape/intent_escape_09.png",
@@ -2480,7 +2644,8 @@
 						"y": 14,
 						"w": 21,
 						"h": 27
-					}
+					},
+					"pixel_hash": "bf8ab7b25635545c"
 				},
 				{
 					"filename": "heal/intent_heal_37.png",
@@ -2495,7 +2660,8 @@
 						"y": 14,
 						"w": 20,
 						"h": 27
-					}
+					},
+					"pixel_hash": "33d209dc1995d634"
 				},
 				{
 					"filename": "heal/intent_heal_38.png",
@@ -2510,7 +2676,8 @@
 						"y": 13,
 						"w": 20,
 						"h": 26
-					}
+					},
+					"pixel_hash": "c5c8e0a3756b0ada"
 				},
 				{
 					"filename": "defend/intent_defend_15.png",
@@ -2525,7 +2692,8 @@
 						"y": 13,
 						"w": 22,
 						"h": 20
-					}
+					},
+					"pixel_hash": "d06cab55c21a4f90"
 				},
 				{
 					"filename": "escape/intent_escape_05.png",
@@ -2540,7 +2708,8 @@
 						"y": 14,
 						"w": 39,
 						"h": 34
-					}
+					},
+					"pixel_hash": "7ec6a8c8eb5dea0f"
 				},
 				{
 					"filename": "defend/intent_defend_16.png",
@@ -2555,7 +2724,8 @@
 						"y": 13,
 						"w": 22,
 						"h": 20
-					}
+					},
+					"pixel_hash": "d06cab55c21a4f90"
 				},
 				{
 					"filename": "defend/intent_defend_17.png",
@@ -2570,7 +2740,8 @@
 						"y": 13,
 						"w": 22,
 						"h": 20
-					}
+					},
+					"pixel_hash": "d06cab55c21a4f90"
 				},
 				{
 					"filename": "defend/intent_defend_18.png",
@@ -2585,7 +2756,8 @@
 						"y": 13,
 						"w": 22,
 						"h": 20
-					}
+					},
+					"pixel_hash": "d06cab55c21a4f90"
 				},
 				{
 					"filename": "defend/intent_defend_19.png",
@@ -2600,7 +2772,8 @@
 						"y": 13,
 						"w": 22,
 						"h": 20
-					}
+					},
+					"pixel_hash": "d06cab55c21a4f90"
 				},
 				{
 					"filename": "defend/intent_defend_20.png",
@@ -2615,7 +2788,8 @@
 						"y": 13,
 						"w": 22,
 						"h": 20
-					}
+					},
+					"pixel_hash": "d06cab55c21a4f90"
 				},
 				{
 					"filename": "defend/intent_defend_21.png",
@@ -2630,7 +2804,8 @@
 						"y": 13,
 						"w": 22,
 						"h": 20
-					}
+					},
+					"pixel_hash": "d06cab55c21a4f90"
 				},
 				{
 					"filename": "defend/intent_defend_22.png",
@@ -2645,7 +2820,8 @@
 						"y": 13,
 						"w": 22,
 						"h": 20
-					}
+					},
+					"pixel_hash": "d06cab55c21a4f90"
 				},
 				{
 					"filename": "defend/intent_defend_23.png",
@@ -2660,7 +2836,8 @@
 						"y": 13,
 						"w": 22,
 						"h": 20
-					}
+					},
+					"pixel_hash": "d06cab55c21a4f90"
 				},
 				{
 					"filename": "defend/intent_defend_24.png",
@@ -2675,7 +2852,8 @@
 						"y": 13,
 						"w": 22,
 						"h": 20
-					}
+					},
+					"pixel_hash": "d06cab55c21a4f90"
 				},
 				{
 					"filename": "defend/intent_defend_25.png",
@@ -2690,7 +2868,8 @@
 						"y": 13,
 						"w": 22,
 						"h": 20
-					}
+					},
+					"pixel_hash": "d06cab55c21a4f90"
 				},
 				{
 					"filename": "buff/intent_buff_05.png",
@@ -2705,7 +2884,8 @@
 						"y": 17,
 						"w": 24,
 						"h": 21
-					}
+					},
+					"pixel_hash": "793c479da8c031b7"
 				},
 				{
 					"filename": "buff/intent_buff_02.png",
@@ -2720,7 +2900,8 @@
 						"y": 15,
 						"w": 27,
 						"h": 19
-					}
+					},
+					"pixel_hash": "02895e419eb33f25"
 				},
 				{
 					"filename": "buff/intent_buff_06.png",
@@ -2735,7 +2916,8 @@
 						"y": 17,
 						"w": 24,
 						"h": 21
-					}
+					},
+					"pixel_hash": "793c479da8c031b7"
 				},
 				{
 					"filename": "defend/intent_defend_26.png",
@@ -2750,7 +2932,8 @@
 						"y": 13,
 						"w": 22,
 						"h": 20
-					}
+					},
+					"pixel_hash": "d06cab55c21a4f90"
 				},
 				{
 					"filename": "defend/intent_defend_27.png",
@@ -2765,7 +2948,8 @@
 						"y": 13,
 						"w": 22,
 						"h": 20
-					}
+					},
+					"pixel_hash": "d06cab55c21a4f90"
 				},
 				{
 					"filename": "sleep/intent_sleep_08.png",
@@ -2780,7 +2964,8 @@
 						"y": 8,
 						"w": 24,
 						"h": 19
-					}
+					},
+					"pixel_hash": "9f5e6c72bfe6a1bd"
 				},
 				{
 					"filename": "defend/intent_defend_28.png",
@@ -2795,7 +2980,8 @@
 						"y": 13,
 						"w": 22,
 						"h": 20
-					}
+					},
+					"pixel_hash": "d06cab55c21a4f90"
 				},
 				{
 					"filename": "defend/intent_defend_29.png",
@@ -2810,7 +2996,8 @@
 						"y": 13,
 						"w": 22,
 						"h": 20
-					}
+					},
+					"pixel_hash": "d06cab55c21a4f90"
 				},
 				{
 					"filename": "sleep/intent_sleep_09.png",
@@ -2825,7 +3012,8 @@
 						"y": 8,
 						"w": 24,
 						"h": 19
-					}
+					},
+					"pixel_hash": "42383c1c22d80785"
 				},
 				{
 					"filename": "unknown/intent_unknown_13.png",
@@ -2840,7 +3028,8 @@
 						"y": 12,
 						"w": 23,
 						"h": 21
-					}
+					},
+					"pixel_hash": "37d8c6b642e23b4d"
 				},
 				{
 					"filename": "defend/intent_defend_30.png",
@@ -2855,7 +3044,8 @@
 						"y": 13,
 						"w": 22,
 						"h": 20
-					}
+					},
+					"pixel_hash": "d06cab55c21a4f90"
 				},
 				{
 					"filename": "status/intent_statuscard_08.png",
@@ -2870,7 +3060,8 @@
 						"y": 11,
 						"w": 26,
 						"h": 19
-					}
+					},
+					"pixel_hash": "558b78e9be5299d8"
 				},
 				{
 					"filename": "defend/intent_defend_31.png",
@@ -2885,7 +3076,8 @@
 						"y": 13,
 						"w": 22,
 						"h": 20
-					}
+					},
+					"pixel_hash": "d06cab55c21a4f90"
 				},
 				{
 					"filename": "defend/intent_defend_32.png",
@@ -2900,7 +3092,8 @@
 						"y": 13,
 						"w": 22,
 						"h": 20
-					}
+					},
+					"pixel_hash": "d06cab55c21a4f90"
 				},
 				{
 					"filename": "defend/intent_defend_33.png",
@@ -2915,7 +3108,8 @@
 						"y": 13,
 						"w": 22,
 						"h": 20
-					}
+					},
+					"pixel_hash": "d06cab55c21a4f90"
 				},
 				{
 					"filename": "defend/intent_defend_34.png",
@@ -2930,7 +3124,8 @@
 						"y": 13,
 						"w": 22,
 						"h": 20
-					}
+					},
+					"pixel_hash": "d06cab55c21a4f90"
 				},
 				{
 					"filename": "defend/intent_defend_35.png",
@@ -2945,7 +3140,8 @@
 						"y": 13,
 						"w": 22,
 						"h": 20
-					}
+					},
+					"pixel_hash": "d06cab55c21a4f90"
 				},
 				{
 					"filename": "defend/intent_defend_36.png",
@@ -2960,7 +3156,8 @@
 						"y": 13,
 						"w": 22,
 						"h": 20
-					}
+					},
+					"pixel_hash": "d06cab55c21a4f90"
 				},
 				{
 					"filename": "defend/intent_defend_37.png",
@@ -2975,7 +3172,8 @@
 						"y": 13,
 						"w": 22,
 						"h": 20
-					}
+					},
+					"pixel_hash": "d06cab55c21a4f90"
 				},
 				{
 					"filename": "defend/intent_defend_38.png",
@@ -2990,7 +3188,8 @@
 						"y": 13,
 						"w": 22,
 						"h": 20
-					}
+					},
+					"pixel_hash": "d06cab55c21a4f90"
 				},
 				{
 					"filename": "defend/intent_defend_39.png",
@@ -3005,7 +3204,8 @@
 						"y": 13,
 						"w": 22,
 						"h": 20
-					}
+					},
+					"pixel_hash": "d06cab55c21a4f90"
 				},
 				{
 					"filename": "defend/intent_defend_40.png",
@@ -3020,7 +3220,8 @@
 						"y": 13,
 						"w": 22,
 						"h": 20
-					}
+					},
+					"pixel_hash": "d06cab55c21a4f90"
 				},
 				{
 					"filename": "heal/intent_heal_25.png",
@@ -3035,7 +3236,8 @@
 						"y": 14,
 						"w": 29,
 						"h": 27
-					}
+					},
+					"pixel_hash": "22b56be719d2a7ea"
 				},
 				{
 					"filename": "defend/intent_defend_41.png",
@@ -3050,7 +3252,8 @@
 						"y": 13,
 						"w": 22,
 						"h": 20
-					}
+					},
+					"pixel_hash": "d06cab55c21a4f90"
 				},
 				{
 					"filename": "heal/intent_heal_26.png",
@@ -3065,7 +3268,8 @@
 						"y": 14,
 						"w": 29,
 						"h": 27
-					}
+					},
+					"pixel_hash": "22b56be719d2a7ea"
 				},
 				{
 					"filename": "heal/intent_heal_27.png",
@@ -3080,7 +3284,8 @@
 						"y": 14,
 						"w": 29,
 						"h": 27
-					}
+					},
+					"pixel_hash": "22b56be719d2a7ea"
 				},
 				{
 					"filename": "defend/intent_defend_42.png",
@@ -3095,7 +3300,8 @@
 						"y": 13,
 						"w": 22,
 						"h": 20
-					}
+					},
+					"pixel_hash": "d06cab55c21a4f90"
 				},
 				{
 					"filename": "defend/intent_defend_43.png",
@@ -3110,7 +3316,8 @@
 						"y": 13,
 						"w": 22,
 						"h": 20
-					}
+					},
+					"pixel_hash": "d06cab55c21a4f90"
 				},
 				{
 					"filename": "defend/intent_defend_44.png",
@@ -3125,7 +3332,8 @@
 						"y": 13,
 						"w": 22,
 						"h": 20
-					}
+					},
+					"pixel_hash": "d06cab55c21a4f90"
 				},
 				{
 					"filename": "intent_defend.png",
@@ -3140,7 +3348,8 @@
 						"y": 13,
 						"w": 22,
 						"h": 20
-					}
+					},
+					"pixel_hash": "2f3676d16cc3a32e"
 				},
 				{
 					"filename": "buff/intent_buff_07.png",
@@ -3155,7 +3364,8 @@
 						"y": 17,
 						"w": 24,
 						"h": 21
-					}
+					},
+					"pixel_hash": "793c479da8c031b7"
 				},
 				{
 					"filename": "card_debuff/intent_carddebuff_02.png",
@@ -3170,7 +3380,8 @@
 						"y": 14,
 						"w": 30,
 						"h": 22
-					}
+					},
+					"pixel_hash": "d514cb5825c62bef"
 				},
 				{
 					"filename": "escape/intent_escape_31.png",
@@ -3185,7 +3396,8 @@
 						"y": 21,
 						"w": 22,
 						"h": 32
-					}
+					},
+					"pixel_hash": "5e3e074a781a2836"
 				},
 				{
 					"filename": "escape/intent_escape_32.png",
@@ -3200,7 +3412,8 @@
 						"y": 21,
 						"w": 22,
 						"h": 32
-					}
+					},
+					"pixel_hash": "131ca2a8b7406b00"
 				},
 				{
 					"filename": "escape/intent_escape_33.png",
@@ -3215,7 +3428,8 @@
 						"y": 22,
 						"w": 22,
 						"h": 33
-					}
+					},
+					"pixel_hash": "327e098c14b5c9a3"
 				},
 				{
 					"filename": "escape/intent_escape_34.png",
@@ -3230,7 +3444,8 @@
 						"y": 28,
 						"w": 22,
 						"h": 39
-					}
+					},
+					"pixel_hash": "1f46d9181cda6a2a"
 				},
 				{
 					"filename": "heal/intent_heal_04.png",
@@ -3245,7 +3460,8 @@
 						"y": 14,
 						"w": 22,
 						"h": 27
-					}
+					},
+					"pixel_hash": "26ab47e987684114"
 				},
 				{
 					"filename": "card_debuff/intent_carddebuff_03.png",
@@ -3260,7 +3476,8 @@
 						"y": 14,
 						"w": 27,
 						"h": 22
-					}
+					},
+					"pixel_hash": "928a5c2962a5b339"
 				},
 				{
 					"filename": "heal/intent_heal_07.png",
@@ -3275,7 +3492,8 @@
 						"y": 12,
 						"w": 22,
 						"h": 25
-					}
+					},
+					"pixel_hash": "2c87268c575b65a8"
 				},
 				{
 					"filename": "heal/intent_heal_08.png",
@@ -3290,7 +3508,8 @@
 						"y": 11,
 						"w": 22,
 						"h": 24
-					}
+					},
+					"pixel_hash": "0efff8830cc3789a"
 				},
 				{
 					"filename": "unknown/intent_unknown_12.png",
@@ -3305,7 +3524,8 @@
 						"y": 12,
 						"w": 24,
 						"h": 19
-					}
+					},
+					"pixel_hash": "53e0993b98841bf9"
 				},
 				{
 					"filename": "sleep/intent_sleep_10.png",
@@ -3320,7 +3540,8 @@
 						"y": 8,
 						"w": 24,
 						"h": 20
-					}
+					},
+					"pixel_hash": "1b3fa9ed451f2109"
 				},
 				{
 					"filename": "heal/intent_heal_09.png",
@@ -3335,7 +3556,8 @@
 						"y": 10,
 						"w": 22,
 						"h": 23
-					}
+					},
+					"pixel_hash": "8fe3efe7ea42f4ee"
 				},
 				{
 					"filename": "heal/intent_heal_16.png",
@@ -3350,7 +3572,8 @@
 						"y": 14,
 						"w": 22,
 						"h": 23
-					}
+					},
+					"pixel_hash": "ea716f1280b86c8c"
 				},
 				{
 					"filename": "buff/intent_buff_08.png",
@@ -3365,7 +3588,8 @@
 						"y": 17,
 						"w": 24,
 						"h": 21
-					}
+					},
+					"pixel_hash": "793c479da8c031b7"
 				},
 				{
 					"filename": "summon/intent_summon_12.png",
@@ -3380,7 +3604,8 @@
 						"y": 11,
 						"w": 24,
 						"h": 20
-					}
+					},
+					"pixel_hash": "913c90449fd5809a"
 				},
 				{
 					"filename": "unknown/intent_unknown_14.png",
@@ -3395,7 +3620,8 @@
 						"y": 12,
 						"w": 23,
 						"h": 21
-					}
+					},
+					"pixel_hash": "1a4978e3aa0b8ae4"
 				},
 				{
 					"filename": "buff/intent_buff_09.png",
@@ -3410,7 +3636,8 @@
 						"y": 17,
 						"w": 24,
 						"h": 21
-					}
+					},
+					"pixel_hash": "793c479da8c031b7"
 				},
 				{
 					"filename": "buff/intent_buff_10.png",
@@ -3425,7 +3652,8 @@
 						"y": 17,
 						"w": 24,
 						"h": 21
-					}
+					},
+					"pixel_hash": "793c479da8c031b7"
 				},
 				{
 					"filename": "buff/intent_buff_11.png",
@@ -3440,7 +3668,8 @@
 						"y": 17,
 						"w": 24,
 						"h": 21
-					}
+					},
+					"pixel_hash": "793c479da8c031b7"
 				},
 				{
 					"filename": "heal/intent_heal_17.png",
@@ -3455,7 +3684,8 @@
 						"y": 14,
 						"w": 22,
 						"h": 24
-					}
+					},
+					"pixel_hash": "d9e703f2901cf913"
 				},
 				{
 					"filename": "heal/intent_heal_18.png",
@@ -3470,7 +3700,8 @@
 						"y": 14,
 						"w": 22,
 						"h": 25
-					}
+					},
+					"pixel_hash": "25d3250b718e3570"
 				},
 				{
 					"filename": "buff/intent_buff_12.png",
@@ -3485,7 +3716,8 @@
 						"y": 17,
 						"w": 24,
 						"h": 21
-					}
+					},
+					"pixel_hash": "793c479da8c031b7"
 				},
 				{
 					"filename": "buff/intent_buff_13.png",
@@ -3500,7 +3732,8 @@
 						"y": 17,
 						"w": 24,
 						"h": 21
-					}
+					},
+					"pixel_hash": "793c479da8c031b7"
 				},
 				{
 					"filename": "heal/intent_heal_19.png",
@@ -3515,7 +3748,8 @@
 						"y": 14,
 						"w": 22,
 						"h": 26
-					}
+					},
+					"pixel_hash": "22636eda7a182df4"
 				},
 				{
 					"filename": "buff/intent_buff_14.png",
@@ -3530,7 +3764,8 @@
 						"y": 17,
 						"w": 24,
 						"h": 21
-					}
+					},
+					"pixel_hash": "793c479da8c031b7"
 				},
 				{
 					"filename": "buff/intent_buff_15.png",
@@ -3545,7 +3780,8 @@
 						"y": 17,
 						"w": 24,
 						"h": 21
-					}
+					},
+					"pixel_hash": "793c479da8c031b7"
 				},
 				{
 					"filename": "buff/intent_buff_16.png",
@@ -3560,7 +3796,8 @@
 						"y": 17,
 						"w": 24,
 						"h": 21
-					}
+					},
+					"pixel_hash": "793c479da8c031b7"
 				},
 				{
 					"filename": "buff/intent_buff_17.png",
@@ -3575,7 +3812,8 @@
 						"y": 17,
 						"w": 24,
 						"h": 21
-					}
+					},
+					"pixel_hash": "793c479da8c031b7"
 				},
 				{
 					"filename": "buff/intent_buff_18.png",
@@ -3590,7 +3828,8 @@
 						"y": 17,
 						"w": 24,
 						"h": 21
-					}
+					},
+					"pixel_hash": "793c479da8c031b7"
 				},
 				{
 					"filename": "buff/intent_buff_19.png",
@@ -3605,7 +3844,8 @@
 						"y": 17,
 						"w": 24,
 						"h": 21
-					}
+					},
+					"pixel_hash": "793c479da8c031b7"
 				},
 				{
 					"filename": "buff/intent_buff_20.png",
@@ -3620,7 +3860,8 @@
 						"y": 17,
 						"w": 24,
 						"h": 21
-					}
+					},
+					"pixel_hash": "793c479da8c031b7"
 				},
 				{
 					"filename": "heal/intent_heal_20.png",
@@ -3635,7 +3876,8 @@
 						"y": 14,
 						"w": 22,
 						"h": 27
-					}
+					},
+					"pixel_hash": "e92bbaea3ecee3e0"
 				},
 				{
 					"filename": "heal/intent_heal_21.png",
@@ -3650,7 +3892,8 @@
 						"y": 14,
 						"w": 22,
 						"h": 27
-					}
+					},
+					"pixel_hash": "49402af25d4fd15b"
 				},
 				{
 					"filename": "buff/intent_buff_21.png",
@@ -3665,7 +3908,8 @@
 						"y": 17,
 						"w": 24,
 						"h": 21
-					}
+					},
+					"pixel_hash": "793c479da8c031b7"
 				},
 				{
 					"filename": "buff/intent_buff_22.png",
@@ -3680,7 +3924,8 @@
 						"y": 17,
 						"w": 24,
 						"h": 21
-					}
+					},
+					"pixel_hash": "793c479da8c031b7"
 				},
 				{
 					"filename": "buff/intent_buff_23.png",
@@ -3695,7 +3940,8 @@
 						"y": 17,
 						"w": 24,
 						"h": 21
-					}
+					},
+					"pixel_hash": "793c479da8c031b7"
 				},
 				{
 					"filename": "buff/intent_buff_24.png",
@@ -3710,7 +3956,8 @@
 						"y": 17,
 						"w": 24,
 						"h": 21
-					}
+					},
+					"pixel_hash": "793c479da8c031b7"
 				},
 				{
 					"filename": "buff/intent_buff_25.png",
@@ -3725,7 +3972,8 @@
 						"y": 17,
 						"w": 24,
 						"h": 21
-					}
+					},
+					"pixel_hash": "793c479da8c031b7"
 				},
 				{
 					"filename": "buff/intent_buff_26.png",
@@ -3740,7 +3988,8 @@
 						"y": 17,
 						"w": 24,
 						"h": 21
-					}
+					},
+					"pixel_hash": "793c479da8c031b7"
 				},
 				{
 					"filename": "buff/intent_buff_27.png",
@@ -3755,7 +4004,8 @@
 						"y": 17,
 						"w": 24,
 						"h": 21
-					}
+					},
+					"pixel_hash": "793c479da8c031b7"
 				},
 				{
 					"filename": "buff/intent_buff_28.png",
@@ -3770,7 +4020,8 @@
 						"y": 17,
 						"w": 24,
 						"h": 21
-					}
+					},
+					"pixel_hash": "793c479da8c031b7"
 				},
 				{
 					"filename": "heal/intent_heal_30.png",
@@ -3785,7 +4036,8 @@
 						"y": 14,
 						"w": 22,
 						"h": 27
-					}
+					},
+					"pixel_hash": "e4251eaf6472e1f4"
 				},
 				{
 					"filename": "card_debuff/intent_carddebuff_05.png",
@@ -3800,7 +4052,8 @@
 						"y": 14,
 						"w": 26,
 						"h": 22
-					}
+					},
+					"pixel_hash": "c14c90f6eed52982"
 				},
 				{
 					"filename": "buff/intent_buff_29.png",
@@ -3815,7 +4068,8 @@
 						"y": 17,
 						"w": 24,
 						"h": 21
-					}
+					},
+					"pixel_hash": "793c479da8c031b7"
 				},
 				{
 					"filename": "escape/intent_escape_35.png",
@@ -3830,7 +4084,8 @@
 						"y": 28,
 						"w": 26,
 						"h": 39
-					}
+					},
+					"pixel_hash": "1567133eecd21bb6"
 				},
 				{
 					"filename": "card_debuff/intent_carddebuff_11.png",
@@ -3845,7 +4100,8 @@
 						"y": 10,
 						"w": 32,
 						"h": 18
-					}
+					},
+					"pixel_hash": "074e1e9624c52ec2"
 				},
 				{
 					"filename": "card_debuff/intent_carddebuff_13.png",
@@ -3860,7 +4116,8 @@
 						"y": 10,
 						"w": 32,
 						"h": 18
-					}
+					},
+					"pixel_hash": "ee8b46c00309c78f"
 				},
 				{
 					"filename": "card_debuff/intent_carddebuff_00.png",
@@ -3875,7 +4132,8 @@
 						"y": 14,
 						"w": 32,
 						"h": 21
-					}
+					},
+					"pixel_hash": "2646384d506dab51"
 				},
 				{
 					"filename": "intent_buff.png",
@@ -3890,7 +4148,8 @@
 						"y": 17,
 						"w": 24,
 						"h": 21
-					}
+					},
+					"pixel_hash": "793c479da8c031b7"
 				},
 				{
 					"filename": "sleep/intent_sleep_11.png",
@@ -3905,7 +4164,8 @@
 						"y": 9,
 						"w": 24,
 						"h": 21
-					}
+					},
+					"pixel_hash": "b53c269b0d47f104"
 				},
 				{
 					"filename": "sleep/intent_sleep_12.png",
@@ -3920,7 +4180,8 @@
 						"y": 9,
 						"w": 24,
 						"h": 21
-					}
+					},
+					"pixel_hash": "6783847644d703d3"
 				},
 				{
 					"filename": "escape/intent_escape_36.png",
@@ -3935,7 +4196,8 @@
 						"y": 28,
 						"w": 35,
 						"h": 39
-					}
+					},
+					"pixel_hash": "5990a2d1d6a17985"
 				},
 				{
 					"filename": "intent_card_debuff.png",
@@ -3950,7 +4212,8 @@
 						"y": 14,
 						"w": 32,
 						"h": 21
-					}
+					},
+					"pixel_hash": "2646384d506dab51"
 				},
 				{
 					"filename": "sleep/intent_sleep_04.png",
@@ -3965,7 +4228,8 @@
 						"y": 10,
 						"w": 24,
 						"h": 22
-					}
+					},
+					"pixel_hash": "a36073709d670b9a"
 				},
 				{
 					"filename": "unknown/intent_unknown_20.png",
@@ -3980,7 +4244,8 @@
 						"y": 12,
 						"w": 25,
 						"h": 21
-					}
+					},
+					"pixel_hash": "48407fc1cc1f1eb3"
 				},
 				{
 					"filename": "sleep/intent_sleep_02.png",
@@ -3995,7 +4260,8 @@
 						"y": 10,
 						"w": 24,
 						"h": 23
-					}
+					},
+					"pixel_hash": "f6d0af29610361f4"
 				},
 				{
 					"filename": "sleep/intent_sleep_05.png",
@@ -4010,7 +4276,8 @@
 						"y": 11,
 						"w": 23,
 						"h": 23
-					}
+					},
+					"pixel_hash": "b1dccb4a8d669aa8"
 				},
 				{
 					"filename": "heal/intent_heal_06.png",
@@ -4025,7 +4292,8 @@
 						"y": 11,
 						"w": 23,
 						"h": 24
-					}
+					},
+					"pixel_hash": "c2aa5831ddec942c"
 				},
 				{
 					"filename": "sleep/intent_sleep_03.png",
@@ -4040,7 +4308,8 @@
 						"y": 10,
 						"w": 24,
 						"h": 23
-					}
+					},
+					"pixel_hash": "c791ef8c8c1af49d"
 				},
 				{
 					"filename": "card_debuff/intent_carddebuff_04.png",
@@ -4055,7 +4324,8 @@
 						"y": 14,
 						"w": 27,
 						"h": 22
-					}
+					},
+					"pixel_hash": "2aa569eb43c22d1a"
 				},
 				{
 					"filename": "heal/intent_heal_40.png",
@@ -4070,7 +4340,8 @@
 						"y": 12,
 						"w": 22,
 						"h": 25
-					}
+					},
+					"pixel_hash": "045e33dd2f6e6f00"
 				},
 				{
 					"filename": "escape/intent_escape_08.png",
@@ -4085,7 +4356,8 @@
 						"y": 14,
 						"w": 25,
 						"h": 29
-					}
+					},
+					"pixel_hash": "bdb02dd11f84de09"
 				},
 				{
 					"filename": "sleep/intent_sleep_13.png",
@@ -4100,7 +4372,8 @@
 						"y": 10,
 						"w": 24,
 						"h": 23
-					}
+					},
+					"pixel_hash": "8ae79cfff44a83f0"
 				},
 				{
 					"filename": "sleep/intent_sleep_14.png",
@@ -4115,7 +4388,8 @@
 						"y": 10,
 						"w": 24,
 						"h": 23
-					}
+					},
+					"pixel_hash": "8fc9ad95ffff8af7"
 				},
 				{
 					"filename": "unknown/intent_unknown_01.png",
@@ -4130,7 +4404,8 @@
 						"y": 12,
 						"w": 35,
 						"h": 21
-					}
+					},
+					"pixel_hash": "8dbbfddd06f0271e"
 				},
 				{
 					"filename": "heal/intent_heal_41.png",
@@ -4145,7 +4420,8 @@
 						"y": 12,
 						"w": 23,
 						"h": 25
-					}
+					},
+					"pixel_hash": "d893e29e048fa06c"
 				},
 				{
 					"filename": "unknown/intent_unknown_02.png",
@@ -4160,7 +4436,8 @@
 						"y": 12,
 						"w": 35,
 						"h": 21
-					}
+					},
+					"pixel_hash": "8dbbfddd06f0271e"
 				},
 				{
 					"filename": "sleep/intent_sleep_15.png",
@@ -4175,7 +4452,8 @@
 						"y": 10,
 						"w": 25,
 						"h": 23
-					}
+					},
+					"pixel_hash": "3c4409ea244d4837"
 				},
 				{
 					"filename": "unknown/intent_unknown_03.png",
@@ -4190,7 +4468,8 @@
 						"y": 12,
 						"w": 35,
 						"h": 21
-					}
+					},
+					"pixel_hash": "8dbbfddd06f0271e"
 				},
 				{
 					"filename": "heal/intent_heal_42.png",
@@ -4205,7 +4484,8 @@
 						"y": 12,
 						"w": 24,
 						"h": 25
-					}
+					},
+					"pixel_hash": "315d50d251de6b3e"
 				},
 				{
 					"filename": "escape/intent_escape_07.png",
@@ -4220,7 +4500,8 @@
 						"y": 14,
 						"w": 35,
 						"h": 29
-					}
+					},
+					"pixel_hash": "d984d1bfa609996d"
 				},
 				{
 					"filename": "heal/intent_heal_29.png",
@@ -4235,7 +4516,8 @@
 						"y": 14,
 						"w": 23,
 						"h": 27
-					}
+					},
+					"pixel_hash": "01b4ccc65d857d09"
 				},
 				{
 					"filename": "heal/intent_heal_01.png",
@@ -4250,7 +4532,8 @@
 						"y": 14,
 						"w": 26,
 						"h": 27
-					}
+					},
+					"pixel_hash": "62b7ce646b998aa9"
 				},
 				{
 					"filename": "escape/intent_escape_37.png",
@@ -4265,7 +4548,8 @@
 						"y": 29,
 						"w": 44,
 						"h": 40
-					}
+					},
+					"pixel_hash": "f26aee00bc9b1c96"
 				},
 				{
 					"filename": "unknown/intent_unknown_04.png",
@@ -4280,7 +4564,8 @@
 						"y": 12,
 						"w": 35,
 						"h": 21
-					}
+					},
+					"pixel_hash": "8dbbfddd06f0271e"
 				},
 				{
 					"filename": "unknown/intent_unknown_15.png",
@@ -4295,7 +4580,8 @@
 						"y": 12,
 						"w": 35,
 						"h": 21
-					}
+					},
+					"pixel_hash": "8dbbfddd06f0271e"
 				},
 				{
 					"filename": "unknown/intent_unknown_16.png",
@@ -4310,7 +4596,8 @@
 						"y": 12,
 						"w": 35,
 						"h": 21
-					}
+					},
+					"pixel_hash": "8dbbfddd06f0271e"
 				},
 				{
 					"filename": "heal/intent_heal_43.png",
@@ -4325,7 +4612,8 @@
 						"y": 14,
 						"w": 29,
 						"h": 27
-					}
+					},
+					"pixel_hash": "22b56be719d2a7ea"
 				},
 				{
 					"filename": "escape/intent_escape_38.png",
@@ -4340,7 +4628,8 @@
 						"y": 30,
 						"w": 47,
 						"h": 42
-					}
+					},
+					"pixel_hash": "ca74ea307d78839a"
 				},
 				{
 					"filename": "heal/intent_heal_44.png",
@@ -4355,7 +4644,8 @@
 						"y": 14,
 						"w": 29,
 						"h": 27
-					}
+					},
+					"pixel_hash": "22b56be719d2a7ea"
 				},
 				{
 					"filename": "intent_heal.png",
@@ -4370,7 +4660,8 @@
 						"y": 14,
 						"w": 29,
 						"h": 27
-					}
+					},
+					"pixel_hash": "22b56be719d2a7ea"
 				},
 				{
 					"filename": "intent_sleep.png",
@@ -4385,7 +4676,8 @@
 						"y": 11,
 						"w": 24,
 						"h": 25
-					}
+					},
+					"pixel_hash": "6e8354c8cb3d6cbb"
 				},
 				{
 					"filename": "heal/intent_heal_03.png",
@@ -4400,7 +4692,8 @@
 						"y": 14,
 						"w": 24,
 						"h": 27
-					}
+					},
+					"pixel_hash": "1a884f87be3f94ba"
 				},
 				{
 					"filename": "unknown/intent_unknown_17.png",
@@ -4415,7 +4708,8 @@
 						"y": 12,
 						"w": 35,
 						"h": 21
-					}
+					},
+					"pixel_hash": "8dbbfddd06f0271e"
 				},
 				{
 					"filename": "unknown/intent_unknown_18.png",
@@ -4430,7 +4724,8 @@
 						"y": 12,
 						"w": 35,
 						"h": 21
-					}
+					},
+					"pixel_hash": "8dbbfddd06f0271e"
 				},
 				{
 					"filename": "heal/intent_heal_22.png",
@@ -4445,7 +4740,8 @@
 						"y": 14,
 						"w": 24,
 						"h": 27
-					}
+					},
+					"pixel_hash": "9440618349814f69"
 				},
 				{
 					"filename": "heal/intent_heal_02.png",
@@ -4460,7 +4756,8 @@
 						"y": 14,
 						"w": 25,
 						"h": 27
-					}
+					},
+					"pixel_hash": "b26fae9f81ed4875"
 				},
 				{
 					"filename": "unknown/intent_unknown_19.png",
@@ -4475,7 +4772,8 @@
 						"y": 12,
 						"w": 35,
 						"h": 21
-					}
+					},
+					"pixel_hash": "8dbbfddd06f0271e"
 				},
 				{
 					"filename": "sleep/intent_sleep_00.png",
@@ -4490,7 +4788,8 @@
 						"y": 11,
 						"w": 24,
 						"h": 25
-					}
+					},
+					"pixel_hash": "6e8354c8cb3d6cbb"
 				},
 				{
 					"filename": "sleep/intent_sleep_01.png",
@@ -4505,7 +4804,8 @@
 						"y": 11,
 						"w": 24,
 						"h": 25
-					}
+					},
+					"pixel_hash": "922b8166175f5ad2"
 				},
 				{
 					"filename": "heal/intent_heal_28.png",
@@ -4520,7 +4820,8 @@
 						"y": 14,
 						"w": 24,
 						"h": 27
-					}
+					},
+					"pixel_hash": "98e39064a8dfba3f"
 				},
 				{
 					"filename": "unknown/intent_unknown_27.png",
@@ -4535,7 +4836,8 @@
 						"y": 12,
 						"w": 35,
 						"h": 21
-					}
+					},
+					"pixel_hash": "8dbbfddd06f0271e"
 				},
 				{
 					"filename": "heal/intent_heal_23.png",
@@ -4550,7 +4852,8 @@
 						"y": 14,
 						"w": 25,
 						"h": 27
-					}
+					},
+					"pixel_hash": "a7f20ee7c2ecf9e9"
 				},
 				{
 					"filename": "unknown/intent_unknown_28.png",
@@ -4565,7 +4868,8 @@
 						"y": 12,
 						"w": 35,
 						"h": 21
-					}
+					},
+					"pixel_hash": "8dbbfddd06f0271e"
 				},
 				{
 					"filename": "unknown/intent_unknown_29.png",
@@ -4580,7 +4884,8 @@
 						"y": 12,
 						"w": 35,
 						"h": 21
-					}
+					},
+					"pixel_hash": "8dbbfddd06f0271e"
 				},
 				{
 					"filename": "heal/intent_heal_24.png",
@@ -4595,7 +4900,8 @@
 						"y": 14,
 						"w": 26,
 						"h": 27
-					}
+					},
+					"pixel_hash": "562b3bffbc2d47d7"
 				},
 				{
 					"filename": "escape/intent_escape_01.png",
@@ -4610,7 +4916,8 @@
 						"y": 14,
 						"w": 51,
 						"h": 44
-					}
+					},
+					"pixel_hash": "2607fe94902d6539"
 				},
 				{
 					"filename": "escape/intent_escape_00.png",
@@ -4625,7 +4932,8 @@
 						"y": 14,
 						"w": 51,
 						"h": 52
-					}
+					},
+					"pixel_hash": "d061decb53f37aa2"
 				},
 				{
 					"filename": "escape/intent_escape_39.png",
@@ -4640,7 +4948,8 @@
 						"y": 34,
 						"w": 58,
 						"h": 56
-					}
+					},
+					"pixel_hash": "59ff60d09a495ac7"
 				},
 				{
 					"filename": "intent_hidden.png",
@@ -4655,7 +4964,8 @@
 						"y": 0,
 						"w": 69,
 						"h": 60
-					}
+					},
+					"pixel_hash": "943cf28841434e75"
 				}
 			]
 		}

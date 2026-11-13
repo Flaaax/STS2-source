@@ -2,10 +2,12 @@ using System;
 using Godot;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Nodes.Screens.Bestiary;
+using MegaCrit.Sts2.Core.Nodes.Screens.Blitz;
 using MegaCrit.Sts2.Core.Nodes.Screens.CardLibrary;
 using MegaCrit.Sts2.Core.Nodes.Screens.CharacterSelect;
 using MegaCrit.Sts2.Core.Nodes.Screens.CustomRun;
 using MegaCrit.Sts2.Core.Nodes.Screens.DailyRun;
+using MegaCrit.Sts2.Core.Nodes.Screens.Dread;
 using MegaCrit.Sts2.Core.Nodes.Screens.ModdingScreen;
 using MegaCrit.Sts2.Core.Nodes.Screens.PotionLab;
 using MegaCrit.Sts2.Core.Nodes.Screens.ProfileScreen;
@@ -28,6 +30,12 @@ public partial class NMainMenuSubmenuStack : NSubmenuStack
 
 	[Export(PropertyHint.None, "")]
 	private PackedScene _characterSelectScreenScene;
+
+	[Export(PropertyHint.None, "")]
+	private PackedScene _dreadScreenScene;
+
+	[Export(PropertyHint.None, "")]
+	private PackedScene _blitzScreenScene;
 
 	private NSingleplayerSubmenu? _singleplayerSubmenu;
 
@@ -71,10 +79,15 @@ public partial class NMainMenuSubmenuStack : NSubmenuStack
 
 	private NProfileScreen? _profileScreen;
 
+	private NDreadScreen? _dreadScreen;
+
+	private NBlitzScreen? _blitzScreen;
+
 	public override void _Ready()
 	{
 		GetSubmenuType<NSettingsScreen>();
 		GetSubmenuType<NCharacterSelectScreen>();
+		GetSubmenuType<NDreadScreen>();
 	}
 
 	public override T PushSubmenuType<T>()
@@ -316,6 +329,26 @@ public partial class NMainMenuSubmenuStack : NSubmenuStack
 				this.AddChildSafely(_profileScreen);
 			}
 			return _profileScreen;
+		}
+		if (type == typeof(NDreadScreen))
+		{
+			if (_dreadScreen == null)
+			{
+				_dreadScreen = _dreadScreenScene.Instantiate<NDreadScreen>(PackedScene.GenEditState.Disabled);
+				_dreadScreen.Visible = false;
+				this.AddChildSafely(_dreadScreen);
+			}
+			return _dreadScreen;
+		}
+		if (type == typeof(NBlitzScreen))
+		{
+			if (_blitzScreen == null)
+			{
+				_blitzScreen = _blitzScreenScene.Instantiate<NBlitzScreen>(PackedScene.GenEditState.Disabled);
+				_blitzScreen.Visible = false;
+				this.AddChildSafely(_blitzScreen);
+			}
+			return _blitzScreen;
 		}
 		throw new ArgumentException($"No such submenu {type} in main menu");
 	}

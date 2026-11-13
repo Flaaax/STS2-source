@@ -1,0 +1,379 @@
+[gd_scene load_steps=51 format=3 uid="uid://cvvugdih6sqsf"]
+
+[ext_resource type="Script" uid="uid://cghtlla3sw0po" path="res://src/Core/Nodes/Combat/NCreatureVisuals.cs" id="1_686cr"]
+[ext_resource type="SpineSkeletonDataResource" uid="uid://doh4bkjtncyr0" path="res://animations/characters/fool/fool_skel_data.tres" id="3_1fepb"]
+[ext_resource type="Script" uid="uid://cuydqt3hcbhfr" path="res://src/Core/Nodes/Vfx/NFoolVfx.cs" id="3_ml1w6"]
+[ext_resource type="Texture2D" uid="uid://tyr3askql6cp" path="res://images/vfx/characters/fool_leaf.png" id="4_ejddg"]
+[ext_resource type="Texture2D" uid="uid://mph0favu8gs" path="res://images/vfx/characters/fool_magic_leaf.png" id="6_rac42"]
+[ext_resource type="Texture2D" uid="uid://dvw2rqjsymmus" path="res://images/vfx/characters/fool_star_impact.png" id="7_ldyg7"]
+[ext_resource type="Texture2D" uid="uid://dasy8p6di0w84" path="res://images/vfx/characters/fool_note.png" id="7_m0q6c"]
+[ext_resource type="Texture2D" uid="uid://bx5p1gwbiy12x" path="res://images/vfx/characters/fool_impact_blast.png" id="8_ip7mi"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ml1w6"]
+particles_animation = true
+particles_anim_h_frames = 2
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_rac42"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.3014354, 0.79185736), -1.8000764, -1.8000764, 0, 0, Vector2(0.5287081, 0.15553534), -3.8908477, -3.8908477, 0, 0, Vector2(0.53588516, 0.15553534), 6.779508, 6.779508, 0, 0, Vector2(0.7535885, 0.821592), 0.103574745, 0.103574745, 0, 0, Vector2(1, 0), -7.867219, 0.0, 0, 0]
+point_count = 6
+
+[sub_resource type="Curve" id="Curve_m0q6c"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.71291864, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -5.0672445, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_ldyg7"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_ip7mi"]
+curve_x = SubResource("Curve_rac42")
+curve_y = SubResource("Curve_m0q6c")
+curve_z = SubResource("Curve_ldyg7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m70sp"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+direction = Vector3(0, 0, 0)
+spread = 5.0
+initial_velocity_min = 500.0
+initial_velocity_max = 700.0
+angular_velocity_min = -300.0
+angular_velocity_max = 299.99997
+gravity = Vector3(0, 300, 0)
+scale_min = 0.59999996
+scale_max = 0.7
+scale_curve = SubResource("CurveXYZTexture_ip7mi")
+anim_offset_max = 1.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_m0q6c"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_m70sp"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.40191388, 0.17337614), -3.6157365, -3.6157365, 0, 0, Vector2(0.41626793, 0.17932308), 4.532963, 4.532963, 0, 0, Vector2(0.7368421, 1), 0.103574745, 0.103574745, 0, 0, Vector2(1, 0), -9.642805, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="Curve" id="Curve_mcphd"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.576555, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -5.0672445, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_7fwoq"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_5alx0"]
+curve_x = SubResource("Curve_m70sp")
+curve_y = SubResource("Curve_mcphd")
+curve_z = SubResource("Curve_7fwoq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_x7fgs"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+direction = Vector3(0, 0, 0)
+spread = 15.0
+initial_velocity_min = 200.0
+initial_velocity_max = 1400.0
+angular_velocity_min = -500.0
+angular_velocity_max = 499.99997
+gravity = Vector3(0, 360, 0)
+scale_min = 0.7
+scale_curve = SubResource("CurveXYZTexture_5alx0")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ip7mi"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_gdrsl"]
+_data = [Vector2(0.67464113, 1), 0.0, 0.0, 0, 0, Vector2(0.9904306, 0.006861925), -5.5452833, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ncr3h"]
+curve = SubResource("Curve_gdrsl")
+
+[sub_resource type="Gradient" id="Gradient_m70sp"]
+colors = PackedColorArray(0.95686275, 0.91764706, 0.44705883, 1, 0.70000005, 1, 0.27999997, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mcphd"]
+gradient = SubResource("Gradient_m70sp")
+
+[sub_resource type="Curve" id="Curve_x7fgs"]
+_limits = [0.0, 100.0, 0.0, 1.0]
+_data = [Vector2(0.42105263, 0), 0.0, 9.252458, 0, 0, Vector2(0.9904307, 100), 77.14611, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_gdrsl"]
+curve = SubResource("Curve_x7fgs")
+
+[sub_resource type="Curve" id="Curve_ncr3h"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.48086125, 0.821592), 0.0, 0.0, 0, 0, Vector2(0.81578946, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.46477592), -7.9545956, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_j017q"]
+curve = SubResource("Curve_ncr3h")
+
+[sub_resource type="Curve" id="Curve_bpdnq"]
+_data = [Vector2(0, 0), 0.0, 13.520814, 0, 0, Vector2(0.009302326, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_p2a2x"]
+curve = SubResource("Curve_bpdnq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4o4pj"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 700.0
+initial_velocity_max = 1500.0
+angular_velocity_min = -1.6093254e-05
+angular_velocity_max = -1.6093254e-05
+gravity = Vector3(0, 0, 0)
+damping_min = 100.00001
+damping_max = 100.00001
+damping_curve = SubResource("CurveTexture_gdrsl")
+scale_min = 0.39999998
+scale_max = 0.59999996
+scale_curve = SubResource("CurveTexture_j017q")
+color_initial_ramp = SubResource("GradientTexture1D_mcphd")
+alpha_curve = SubResource("CurveTexture_ncr3h")
+turbulence_noise_strength = 8.13
+turbulence_noise_scale = 1.0
+turbulence_noise_speed = Vector3(4, 0, 0)
+turbulence_noise_speed_random = 0.6
+turbulence_influence_over_life = SubResource("CurveTexture_p2a2x")
+
+[sub_resource type="Curve" id="Curve_j017q"]
+_data = [Vector2(0.67464113, 1), 0.0, 0.0, 0, 0, Vector2(0.9904306, 0.006861925), -5.5452833, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_bpdnq"]
+curve = SubResource("Curve_j017q")
+
+[sub_resource type="Curve" id="Curve_bqvo8"]
+_limits = [0.0, 100.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 322.67847, 0, 0, Vector2(0.63397133, 100), 0.0, 0.0, 0, 0, Vector2(1, 100), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_nmpsp"]
+curve = SubResource("Curve_bqvo8")
+
+[sub_resource type="Curve" id="Curve_hbx8g"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.6267942, 0.64913094), -1.9057925, -1.9057925, 0, 0, Vector2(1, 0.0009150505), -0.1285764, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_f5yny"]
+curve = SubResource("Curve_hbx8g")
+
+[sub_resource type="Curve" id="Curve_b6s0l"]
+_data = [Vector2(0, 0), 0.0, 13.520814, 0, 0, Vector2(0.009302326, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_o785h"]
+curve = SubResource("Curve_b6s0l")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yvfyb"]
+particle_flag_disable_z = true
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+direction = Vector3(0, 0, 0)
+spread = 180.0
+angular_velocity_min = -1.6093254e-05
+angular_velocity_max = -1.6093254e-05
+gravity = Vector3(0, 0, 0)
+damping_min = 100.00001
+damping_max = 100.00001
+damping_curve = SubResource("CurveTexture_nmpsp")
+scale_min = 3.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_f5yny")
+color = Color(0.95686275, 0.91764706, 0.44705883, 1)
+alpha_curve = SubResource("CurveTexture_bpdnq")
+turbulence_noise_strength = 8.13
+turbulence_noise_scale = 1.0
+turbulence_noise_speed = Vector3(4, 0, 0)
+turbulence_noise_speed_random = 0.6
+turbulence_influence_over_life = SubResource("CurveTexture_o785h")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ldyg7"]
+
+[sub_resource type="Curve" id="Curve_5alx0"]
+_data = [Vector2(0, 0.3398903), 0.0, 0.59443486, 0, 0, Vector2(0.284689, 1), 0.0, 0.0, 0, 0, Vector2(0.55741626, 0.76212263), 0.0, 0.0, 0, 0, Vector2(0.8181818, 0.98215926), 0.0, 0.0, 0, 0, Vector2(0.9521531, 0.7383349), -4.438966, -4.438966, 0, 0, Vector2(1, 0), -29.956982, 0.0, 0, 0]
+point_count = 6
+
+[sub_resource type="CurveTexture" id="CurveTexture_x7fgs"]
+curve = SubResource("Curve_5alx0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_j017q"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+angle_min = -7.9999895
+angle_max = 8.0000105
+direction = Vector3(0, -1, 0)
+spread = 15.0
+initial_velocity_min = 300.0
+initial_velocity_max = 600.0
+angular_velocity_min = -1.6093254e-05
+angular_velocity_max = -1.6093254e-05
+gravity = Vector3(0, -100, 0)
+scale_min = 0.5
+scale_max = 0.79999995
+scale_curve = SubResource("CurveTexture_x7fgs")
+
+[sub_resource type="Curve" id="Curve_ejddg"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.44258374, 0.82753897), -0.08018771, -0.08018771, 0, 0, Vector2(0.8157895, 0.97697085), 0.103574745, 0.103574745, 0, 0, Vector2(1, 0), -7.867219, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Curve" id="Curve_ml1w6"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.81100476, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -9.997921, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_ip7mi"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_m70sp"]
+curve_x = SubResource("Curve_ejddg")
+curve_y = SubResource("Curve_ml1w6")
+curve_z = SubResource("Curve_ip7mi")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mcphd"]
+lifetime_randomness = 0.3
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(80, 1, 1)
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+direction = Vector3(0, 1, 0)
+spread = 10.0
+initial_velocity_min = 300.0
+initial_velocity_max = 600.0
+angular_velocity_min = -300.0
+angular_velocity_max = 299.99997
+gravity = Vector3(0, 300, 0)
+scale_min = 1.5999999
+scale_max = 1.9
+scale_curve = SubResource("CurveXYZTexture_m70sp")
+anim_offset_max = 1.0
+
+[node name="Fool" type="Node2D"]
+script = ExtResource("1_686cr")
+metadata/_edit_group_ = true
+
+[node name="FormVfx" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Visuals" type="SpineSprite" parent="."]
+skeleton_data_res = ExtResource("3_1fepb")
+preview_skin = "Default"
+preview_animation = "hurt"
+preview_frame = false
+preview_time = 0.0
+unique_name_in_owner = true
+position = Vector2(11.999992, -15.000001)
+scale = Vector2(0.34, 0.34)
+
+[node name="ParticleCannonSlot" type="SpineSlotNode" parent="Visuals"]
+slot_name = "cannon_particles_attach"
+show_behind_parent = true
+position = Vector2(906.0725, 827.78406)
+scale = Vector2(0.9999999, 0.9999999)
+
+[node name="LeafCannonParticles" type="GPUParticles2D" parent="Visuals/ParticleCannonSlot"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_ml1w6")
+scale = Vector2(0.9999998, 0.99999976)
+amount = 6
+texture = ExtResource("4_ejddg")
+lifetime = 1.7
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_m70sp")
+
+[node name="MagicLeafParticles" type="GPUParticles2D" parent="Visuals/ParticleCannonSlot"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_m0q6c")
+scale = Vector2(0.9999998, 0.99999976)
+amount = 6
+texture = ExtResource("6_rac42")
+lifetime = 1.4
+explosiveness = 1.0
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_x7fgs")
+
+[node name="StarParticles" type="GPUParticles2D" parent="Visuals/ParticleCannonSlot"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_ip7mi")
+scale = Vector2(0.9999998, 0.99999976)
+amount = 6
+texture = ExtResource("7_ldyg7")
+lifetime = 0.4
+explosiveness = 1.0
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_4o4pj")
+
+[node name="ImpactParticle" type="GPUParticles2D" parent="Visuals/ParticleCannonSlot"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_ip7mi")
+scale = Vector2(0.9999998, 0.99999976)
+amount = 1
+texture = ExtResource("8_ip7mi")
+lifetime = 0.15000000000000002
+explosiveness = 1.0
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_yvfyb")
+
+[node name="MusicParticles" type="GPUParticles2D" parent="Visuals/ParticleCannonSlot"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_ldyg7")
+scale = Vector2(0.9999998, 0.99999976)
+amount = 5
+texture = ExtResource("7_m0q6c")
+lifetime = 1.4
+explosiveness = 0.5
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_j017q")
+
+[node name="LeafWaterfallSlot" type="SpineSlotNode" parent="Visuals"]
+slot_name = "leaf_waterfall_attach"
+show_behind_parent = true
+position = Vector2(900.00006, 949.9999)
+scale = Vector2(0.9999999, 0.9999999)
+
+[node name="LeafWaterfallParticles" type="GPUParticles2D" parent="Visuals/LeafWaterfallSlot"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_ml1w6")
+scale = Vector2(0.9999998, 0.9999999)
+amount = 20
+texture = ExtResource("4_ejddg")
+lifetime = 0.5
+fixed_fps = 0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_mcphd")
+
+[node name="NFoolVfx" type="Node2D" parent="Visuals"]
+show_behind_parent = true
+script = ExtResource("3_ml1w6")
+
+[node name="Bounds" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -121.0
+offset_top = -327.0
+offset_right = 164.0
+mouse_filter = 2
+
+[node name="CenterPos" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(26, -162)
+
+[node name="IntentPos" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(30, -394)

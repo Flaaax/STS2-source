@@ -47,6 +47,7 @@ public partial class NRunModifierTickbox : NTickbox
 	public override void _Ready()
 	{
 		ConnectSignals();
+		this.ApplyRtlLayout();
 		_label = GetNode<MegaRichTextLabel>("%Description");
 		_highlight = GetNode<Control>("Highlight");
 		if (Modifier != null)

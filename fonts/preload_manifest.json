@@ -1,8 +1,37 @@
 {
+  "fonts/ara/alyamama_bold.ttf.import": {
+    "corpus_hash": "b5b76998de706f5e",
+    "font_hash": "cf48f343b705c6e7",
+    "glyph_hash": "4b63149924f717fb",
+    "glyphs": 217,
+    "sources": [
+      [
+        "ara",
+        "bold"
+      ]
+    ]
+  },
+  "fonts/ara/alyamama_regular.ttf.import": {
+    "corpus_hash": "5e805e5e8bb4600f",
+    "font_hash": "0eb7b93899fa6b37",
+    "glyph_hash": "73f66f548bfa0f01",
+    "glyphs": 297,
+    "sources": [
+      [
+        "ara",
+        "italic"
+      ],
+      [
+        "ara",
+        "regular"
+      ]
+    ]
+  },
   "fonts/jpn/NotoSansCJKjp-Bold.otf.import": {
-    "corpus_hash": "c00d413dda973452",
-    "glyph_hash": "cab95ef35b385a1e",
-    "glyphs": 834,
+    "corpus_hash": "57d387d7313054d9",
+    "font_hash": "9ca911f033c61616",
+    "glyph_hash": "4a36b7f826feb2ab",
+    "glyphs": 866,
     "sources": [
       [
         "jpn",
@@ -11,9 +40,10 @@
     ]
   },
   "fonts/jpn/NotoSansCJKjp-Medium.otf.import": {
-    "corpus_hash": "6b00243f6982d63c",
-    "glyph_hash": "ced96f184027d661",
-    "glyphs": 129,
+    "corpus_hash": "31d53d8e9bd2eac8",
+    "font_hash": "bcda0bcc22bab28e",
+    "glyph_hash": "7814843868ffac0a",
+    "glyphs": 138,
     "sources": [
       [
         "jpn",
@@ -22,7 +52,8 @@
     ]
   },
   "fonts/rus/FiraSansExtraCondensed-Bold.ttf.import": {
-    "corpus_hash": "1d2bca03b7f8935f",
+    "corpus_hash": "bac4f832aad83c94",
+    "font_hash": "3e385cfbd93c8a92",
     "glyph_hash": "ea2b49f1d2635884",
     "glyphs": 153,
     "sources": [
@@ -37,9 +68,10 @@
     ]
   },
   "fonts/rus/FiraSansExtraCondensed-Italic.ttf.import": {
-    "corpus_hash": "8a1899448ed287e3",
-    "glyph_hash": "dfd3fd011425a01c",
-    "glyphs": 92,
+    "corpus_hash": "461cbac59bf3d2ef",
+    "font_hash": "088f1c48c502447c",
+    "glyph_hash": "223411d6cfd4c2c4",
+    "glyphs": 93,
     "sources": [
       [
         "pol",
@@ -52,9 +84,10 @@
     ]
   },
   "fonts/zhs/SourceHanSerifSC-Bold.otf.import": {
-    "corpus_hash": "7219c6cdd06b2b9c",
-    "glyph_hash": "d53aad13109448c2",
-    "glyphs": 1147,
+    "corpus_hash": "ca24740b394ee392",
+    "font_hash": "4564e8fb84d572e0",
+    "glyph_hash": "c4300ee0883f2257",
+    "glyphs": 1192,
     "sources": [
       [
         "zhs",
@@ -63,9 +96,10 @@
     ]
   },
   "fonts/zhs/SourceHanSerifSC-Medium.otf.import": {
-    "corpus_hash": "180313106e4e61bd",
-    "glyph_hash": "9a9a08c423cded52",
-    "glyphs": 129,
+    "corpus_hash": "6959d3a258282a40",
+    "font_hash": "210dc788c6cc15ed",
+    "glyph_hash": "508a521dcb7a638a",
+    "glyphs": 133,
     "sources": [
       [
         "zhs",
@@ -74,9 +108,10 @@
     ]
   },
   "fonts/zht/SourceHanSerifTC-Bold.otf.import": {
-    "corpus_hash": "dc48888a6cced773",
-    "glyph_hash": "f064c17ca8c08ac2",
-    "glyphs": 1095,
+    "corpus_hash": "51f7b2695a261bae",
+    "font_hash": "5dfc336214dc81d9",
+    "glyph_hash": "309eab295f160f97",
+    "glyphs": 1145,
     "sources": [
       [
         "zht",
@@ -85,9 +120,10 @@
     ]
   },
   "fonts/zht/SourceHanSerifTC-Medium.otf.import": {
-    "corpus_hash": "d5918b2c1c6e1cc9",
-    "glyph_hash": "84f74f2a47840f3e",
-    "glyphs": 130,
+    "corpus_hash": "5675ca0e16483442",
+    "font_hash": "8025c5b5747d56e0",
+    "glyph_hash": "9698ca6fcfb6eef8",
+    "glyphs": 135,
     "sources": [
       [
         "zht",

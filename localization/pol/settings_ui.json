@@ -153,6 +153,7 @@
   "TEXT_EFFECTS": "Efekty tekstu",
   "TEXT_EFFECTS_DESCRIPTION": "Przełącza efekty tekstu takie jak falowanie lub trzęsienie.",
   "TEXT_SIZE": "Rozmiar tekstu",
+  "TOAST_CANNOT_REMAP_INPUT": "Nie można przypisać klawisza {Hotkey} dla {ControlType}.",
   "TOAST_FAST_MODE_OFF": "Walki i przejścia będą wolniejsze.",
   "TOAST_FAST_MODE_ON": "Walki i przejścia będą szybsze.",
   "TOAST_GAMEPLAY_DATA_OFF": "Dane rozgrywki i dzienniki błędów nie będą wysyłane.",

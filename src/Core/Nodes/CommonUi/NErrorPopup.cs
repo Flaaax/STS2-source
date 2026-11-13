@@ -9,6 +9,8 @@ using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Nodes.GodotExtensions;
 using MegaCrit.Sts2.Core.Nodes.Screens.FeedbackScreen;
 using MegaCrit.Sts2.Core.Nodes.Screens.ScreenContext;
+using MegaCrit.Sts2.Core.Platform;
+using MegaCrit.Sts2.Core.Saves;
 using MegaCrit.Sts2.Core.TestSupport;
 
 namespace MegaCrit.Sts2.Core.Nodes.CommonUi;
@@ -20,6 +22,11 @@ namespace MegaCrit.Sts2.Core.Nodes.CommonUi;
 /// </summary>
 public partial class NErrorPopup : NVerticalPopup, IScreenContext
 {
+	/// <summary>
+	/// The popup text and buttons for a run save that could not be loaded.
+	/// </summary>
+	public readonly record struct RunSaveErrorContent(LocString Title, LocString Body, LocString? Cancel, bool ShowReportBugButton);
+
 	private NVerticalPopup _verticalPopup;
 
 	private string _title;
@@ -103,6 +110,21 @@ public partial class NErrorPopup : NVerticalPopup, IScreenContext
 		return nErrorPopup;
 	}
 
+	public static NErrorPopup? CreateForRunSave(ReadSaveStatus status)
+	{
+		RunSaveErrorContent runSaveErrorContent = GetRunSaveErrorContent(status);
+		return Create(runSaveErrorContent.Title, runSaveErrorContent.Body, runSaveErrorContent.Cancel, runSaveErrorContent.ShowReportBugButton);
+	}
+
+	public static RunSaveErrorContent GetRunSaveErrorContent(ReadSaveStatus status)
+	{
+		if (status == ReadSaveStatus.FutureVersion)
+		{
+			return new RunSaveErrorContent(new LocString("main_menu_ui", "FUTURE_VERSION_RUN_POPUP.title"), new LocString("main_menu_ui", "FUTURE_VERSION_RUN_POPUP.description"), null, ShowReportBugButton: false);
+		}
+		return new RunSaveErrorContent(new LocString("main_menu_ui", "INVALID_SAVE_POPUP.title"), new LocString("main_menu_ui", "INVALID_SAVE_POPUP.description_run"), new LocString("main_menu_ui", "INVALID_SAVE_POPUP.dismiss"), ShowReportBugButton: true);
+	}
+
 	public static LocString LocStringFromNetError(NetErrorInfo info, out bool showReportBugButton)
 	{
 		NetError reason = info.GetReason();
@@ -130,6 +152,17 @@ public partial class NErrorPopup : NVerticalPopup, IScreenContext
 			showReportBugButton = !info.IsModded;
 		}
 		locString.Add("info", info.GetErrorString());
+		if (info.JoinExtraInfo != null)
+		{
+			if (info.JoinExtraInfo.hostId.HasValue)
+			{
+				locString.Add("HostName", PlatformUtil.GetPlayerName(info.JoinExtraInfo.platform, info.JoinExtraInfo.hostId.Value));
+			}
+			else
+			{
+				locString.Add("HostName", "???");
+			}
+		}
 		return locString;
 	}
 
@@ -171,6 +204,12 @@ public partial class NErrorPopup : NVerticalPopup, IScreenContext
 			break;
 		case NetError.ModMismatch:
 			text2 = "MOD_MISMATCH.body";
+			break;
+		case NetError.DreadNotUnlocked:
+			text2 = "DREAD_NOT_UNLOCKED.body";
+			break;
+		case NetError.BlitzNotUnlocked:
+			text2 = "BLITZ_NOT_UNLOCKED.body";
 			break;
 		case NetError.JoinBlockedByUser:
 			text2 = "JOIN_BLOCKED_BY_USER.body";

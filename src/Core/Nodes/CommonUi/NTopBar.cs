@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using Godot;
 using MegaCrit.Sts2.addons.mega_text;
@@ -8,6 +10,7 @@ using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.GodotExtensions;
 using MegaCrit.Sts2.Core.Nodes.Potions;
+using MegaCrit.Sts2.Core.Nodes.Relics;
 using MegaCrit.Sts2.Core.Nodes.Screens.Capstones;
 using MegaCrit.Sts2.Core.Nodes.Screens.ScreenContext;
 using MegaCrit.sts2.Core.Nodes.TopBar;
@@ -23,27 +26,29 @@ namespace MegaCrit.Sts2.Core.Nodes.CommonUi;
 /// </summary>
 public partial class NTopBar : Control
 {
+	private Control _modifiersContainer;
+
+	private ShaderMaterial _topBarMat;
+
 	private NCapstoneContainer _capstoneContainer;
+
+	private static readonly StringName _fontColorTheme = "font_color";
 
 	private static readonly StringName _fontOutlineTheme = "font_outline_color";
 
 	private static readonly StringName _h = new StringName("h");
 
+	private static readonly StringName _s = new StringName("s");
+
 	private static readonly StringName _v = new StringName("v");
-
-	private static readonly Color _redLabelOutline = new Color("593400");
-
-	private static readonly Color _blueLabelOutline = new Color("004759");
-
-	private Control _modifiersContainer;
 
 	private Control _achievementLock;
 
-	private Control _ascensionIcon;
+	private TextureRect _ascensionIcon;
 
 	private MegaLabel _ascensionLabel;
 
-	private ShaderMaterial _ascensionHsv;
+	private ShaderMaterial _ascensionIconHsv;
 
 	private Tween? _hideTween;
 
@@ -51,29 +56,37 @@ public partial class NTopBar : Control
 
 	private Player? _player;
 
+	public NTopBarPortrait Portrait { get; private set; }
+
+	public NTopBarPortraitTip PortraitTip { get; private set; }
+
+	public NTopBarHp Hp { get; private set; }
+
+	public NTopBarGold Gold { get; private set; }
+
+	public NPotionContainer PotionContainer { get; private set; }
+
+	public NTopBarRoomIcon RoomIcon { get; private set; }
+
+	public Control RoomIconsContainer { get; private set; }
+
+	public NBlitzTopBarMap BlitzMap { get; private set; }
+
+	public NTopBarFloorIcon FloorIcon { get; private set; }
+
+	public NTopBarBossIcon BossIcon { get; private set; }
+
+	public NRunTimer Timer { get; private set; }
+
 	public NTopBarMapButton Map { get; private set; }
 
 	public NTopBarDeckButton Deck { get; private set; }
 
 	public NTopBarPauseButton Pause { get; private set; }
 
-	public NPotionContainer PotionContainer { get; private set; }
+	public Container LeftContainer { get; private set; }
 
-	public NTopBarRoomIcon RoomIcon { get; private set; }
-
-	public NTopBarFloorIcon FloorIcon { get; private set; }
-
-	public NTopBarBossIcon BossIcon { get; private set; }
-
-	public NTopBarGold Gold { get; private set; }
-
-	public NTopBarHp Hp { get; private set; }
-
-	public NTopBarPortrait Portrait { get; private set; }
-
-	public NTopBarPortraitTip PortraitTip { get; private set; }
-
-	public NRunTimer Timer { get; private set; }
+	public Container RightContainer { get; private set; }
 
 	public Node TrailContainer { get; private set; }
 
@@ -93,6 +106,8 @@ public partial class NTopBar : Control
 		Pause = GetNode<NTopBarPauseButton>("%PauseButton");
 		PotionContainer = GetNode<NPotionContainer>("%PotionContainer");
 		RoomIcon = GetNode<NTopBarRoomIcon>("%RoomIcon");
+		RoomIconsContainer = GetNode<Control>("%RoomIcons");
+		BlitzMap = GetNode<NBlitzTopBarMap>("%BlitzMap");
 		FloorIcon = GetNode<NTopBarFloorIcon>("%FloorIcon");
 		BossIcon = GetNode<NTopBarBossIcon>("%BossIcon");
 		Gold = GetNode<NTopBarGold>("%TopBarGold");
@@ -101,11 +116,14 @@ public partial class NTopBar : Control
 		PortraitTip = GetNode<NTopBarPortraitTip>("%TopBarPortraitTip");
 		Timer = GetNode<NRunTimer>("%TimerContainer");
 		ActiveScreenProxy = GetNode<Control>("%ActiveScreenProxy");
+		LeftContainer = GetNode<Container>("LeftAlignedStuff");
+		RightContainer = GetNode<Container>("RightAlignedStuff");
 		_achievementLock = GetNode<Control>("%AchievementLock");
-		_ascensionIcon = GetNode<Control>("%AscensionIcon");
+		_ascensionIcon = GetNode<TextureRect>("%AscensionIcon");
 		_ascensionLabel = GetNode<MegaLabel>("%AscensionLabel");
-		_ascensionHsv = (ShaderMaterial)_ascensionIcon.Material;
+		_ascensionIconHsv = (ShaderMaterial)_ascensionIcon.Material;
 		_modifiersContainer = GetNode<Control>("%Modifiers");
+		_topBarMat = (ShaderMaterial)GetNode<Control>("%BgImage").GetMaterial();
 		ActiveScreenProxy.Connect(Control.SignalName.FocusEntered, Callable.From(delegate
 		{
 			ActiveScreenContext.Instance.GetCurrentScreen()?.FocusedControlFromTopBar?.TryGrabFocus();
@@ -115,26 +133,39 @@ public partial class NTopBar : Control
 		_capstoneContainer.Connect(Node.SignalName.ChildExitingTree, Callable.From<Node>(ToggleAnimState));
 	}
 
+	/// <summary>
+	/// Called at the start of Run (or loading a save).
+	/// The top bar is NOT recreated between rooms/acts/etc.
+	/// </summary>
+	/// <param name="runState"></param>
 	public void Initialize(IRunState runState)
 	{
-		if (runState.AscensionLevel > 0)
+		if (runState.GameMode == GameMode.Dread)
 		{
-			if (runState.Players.Count > 1)
-			{
-				_ascensionHsv.SetShaderParameter(_h, 0.52f);
-				_ascensionHsv.SetShaderParameter(_v, 1.2f);
-				_ascensionLabel.AddThemeColorOverride(_fontOutlineTheme, _blueLabelOutline);
-			}
-			else
-			{
-				_ascensionHsv.SetShaderParameter(_h, 1f);
-				_ascensionHsv.SetShaderParameter(_v, 1f);
-				_ascensionLabel.AddThemeColorOverride(_fontOutlineTheme, _redLabelOutline);
-			}
-			_ascensionIcon.Visible = true;
-			_ascensionLabel.SetTextAutoSize(runState.AscensionLevel.ToString());
+			int dreadStreak = AscensionHelper.GetDreadStreak(runState);
+			ApplyAscensionIconConfig(new DreadIconConfig(), (dreadStreak > 0) ? dreadStreak.ToString() : null);
 		}
-		_achievementLock.Visible = runState.GameMode.AreAchievementsAndEpochsLocked();
+		else if (runState.GameMode == GameMode.Blitz)
+		{
+			ApplyAscensionIconConfig(new BlitzIconConfig(), (runState.AscensionLevel > 0) ? runState.AscensionLevel.ToString() : null);
+		}
+		else if (runState.AscensionLevel > 0)
+		{
+			ApplyAscensionIconConfig(new AscensionIconConfig(runState.Players.Count > 1), runState.AscensionLevel.ToString());
+		}
+		else
+		{
+			_ascensionIcon.Visible = false;
+		}
+		if (runState.GameMode == GameMode.Blitz)
+		{
+			Gold.Visible = false;
+			RoomIconsContainer.Visible = false;
+			Map.Visible = false;
+			Map.Disable();
+			BlitzMap.Initialize(runState, this);
+		}
+		_achievementLock.Visible = GameModeHelper.AreAchievementsAndEpochsLockedForRun(runState);
 		_modifiersContainer.Visible = runState.Modifiers.Count > 0;
 		foreach (ModifierModel modifier in runState.Modifiers)
 		{
@@ -152,10 +183,30 @@ public partial class NTopBar : Control
 		Portrait.Initialize(_player);
 		PortraitTip.Initialize(runState);
 		PotionContainer.Initialize(runState);
+		_topBarMat.SetShaderParameter(_s, (runState.GameMode == GameMode.Dread) ? 0.25f : 1f);
 		_player.RelicObtained += OnRelicsUpdated;
 		_player.RelicRemoved += OnRelicsUpdated;
 		_player.MaxPotionCountChanged += MaxPotionsChanged;
 		Callable.From(UpdateNavigation).CallDeferred();
+	}
+
+	/// <summary>
+	/// Shows the AscensionIcon styled with the given config. A null labelText hides the number and shows only the icon.
+	/// </summary>
+	private void ApplyAscensionIconConfig(TopBarAscensionIconConfig config, string? labelText)
+	{
+		_ascensionIcon.Texture = config.Texture;
+		_ascensionIconHsv.SetShaderParameter(_h, config.Hue);
+		_ascensionIconHsv.SetShaderParameter(_s, config.Saturation);
+		_ascensionIconHsv.SetShaderParameter(_v, config.Value);
+		_ascensionLabel.AddThemeColorOverride(_fontColorTheme, config.FontColor);
+		_ascensionLabel.AddThemeColorOverride(_fontOutlineTheme, config.FontOutlineColor);
+		_ascensionLabel.Visible = labelText != null;
+		if (labelText != null)
+		{
+			_ascensionLabel.SetTextAutoSize(labelText);
+		}
+		_ascensionIcon.Visible = true;
 	}
 
 	public override void _EnterTree()
@@ -217,7 +268,7 @@ public partial class NTopBar : Control
 
 	public void AnimShow()
 	{
-		base.FocusBehaviorRecursive = FocusBehaviorRecursiveEnum.Enabled;
+		base.FocusBehaviorRecursive = FocusBehaviorRecursiveEnum.Inherited;
 		_hideTween?.Kill();
 		_hideTween = CreateTween();
 		_hideTween.TweenProperty(this, "position:y", 0f, 0.25).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);
@@ -233,70 +284,71 @@ public partial class NTopBar : Control
 		Callable.From(UpdateNavigation).CallDeferred();
 	}
 
-	private void UpdateNavigation()
+	public List<Control> GetAllNavigableElements()
 	{
-		Control control = NRun.Instance?.GlobalUi.RelicInventory.RelicNodes.FirstOrDefault();
-		if (control == null)
+		List<Control> list = new List<Control>();
+		list.Add(PortraitTip);
+		list.Add(Hp);
+		list.Add(Gold);
+		list.AddRange(PotionContainer.Holders);
+		list.Add(RoomIcon);
+		list.Add(FloorIcon);
+		list.Add(BossIcon);
+		list.AddRange(BlitzMap.MapPoints);
+		list.AddRange(_modifiersContainer.GetChildren().OfType<Control>());
+		return (from c in list.ToArray()
+			where c.IsVisibleInTree()
+			select c).ToList();
+	}
+
+	public void UpdateNavigation()
+	{
+		IReadOnlyList<NRelicInventoryHolder> readOnlyList = NRun.Instance?.GlobalUi.RelicInventory.RelicNodes ?? Array.Empty<NRelicInventoryHolder>();
+		List<Control> allNavigableElements = GetAllNavigableElements();
+		for (int i = 0; i < allNavigableElements.Count; i++)
 		{
-			return;
+			Control control = allNavigableElements[i];
+			Control control2 = null;
+			for (int j = 1; j <= allNavigableElements.Count; j++)
+			{
+				control2 = allNavigableElements[(i - j + allNavigableElements.Count) % allNavigableElements.Count];
+				if (control2.IsVisibleInTree())
+				{
+					break;
+				}
+			}
+			Control control3 = null;
+			for (int k = 1; k <= allNavigableElements.Count; k++)
+			{
+				control3 = allNavigableElements[(i + k) % allNavigableElements.Count];
+				if (control3.IsVisibleInTree())
+				{
+					break;
+				}
+			}
+			Control control4 = null;
+			float num = 0f;
+			Vector2 vector = control.GlobalPosition + control.Size * 0.5f;
+			foreach (NRelicInventoryHolder item in readOnlyList)
+			{
+				Vector2 to = item.GlobalPosition + item.Size * 0.5f;
+				float num2 = vector.DistanceSquaredTo(to);
+				if (control4 == null || num2 < num)
+				{
+					control4 = item;
+					num = num2;
+				}
+			}
+			control.FocusNeighborLeft = control2?.GetPath() ?? control.GetPath();
+			control.FocusNeighborRight = control3?.GetPath() ?? control.GetPath();
+			control.FocusNeighborTop = control.GetPath();
+			control.FocusNeighborBottom = control4?.GetPath() ?? control.GetPath();
 		}
-		Gold.FocusNeighborBottom = control.GetPath();
-		Hp.FocusNeighborBottom = control.GetPath();
-		FloorIcon.FocusNeighborBottom = control.GetPath();
-		RoomIcon.FocusNeighborBottom = control.GetPath();
-		BossIcon.FocusNeighborBottom = control.GetPath();
-		Gold.FocusNeighborTop = Gold.GetPath();
-		Hp.FocusNeighborTop = Hp.GetPath();
-		FloorIcon.FocusNeighborTop = FloorIcon.GetPath();
-		RoomIcon.FocusNeighborTop = RoomIcon.GetPath();
-		BossIcon.FocusNeighborTop = BossIcon.GetPath();
-		Hp.FocusNeighborLeft = Hp.GetPath();
-		Hp.FocusNeighborRight = Gold.GetPath();
-		Gold.FocusNeighborLeft = Hp.GetPath();
-		Gold.FocusNeighborRight = PotionContainer.FirstPotionControl?.GetPath();
-		RoomIcon.FocusNeighborLeft = PotionContainer.LastPotionControl?.GetPath();
-		RoomIcon.FocusNeighborRight = FloorIcon.GetPath();
-		FloorIcon.FocusNeighborLeft = RoomIcon.GetPath();
-		FloorIcon.FocusNeighborRight = BossIcon.GetPath();
-		BossIcon.FocusNeighborLeft = FloorIcon.GetPath();
-		BossIcon.FocusNeighborRight = BossIcon.GetPath();
-		if (PortraitTip.ShowTip)
-		{
-			PortraitTip.FocusNeighborRight = Hp.GetPath();
-			PortraitTip.FocusNeighborLeft = PortraitTip.GetPath();
-			PortraitTip.FocusNeighborTop = PortraitTip.GetPath();
-			PortraitTip.FocusNeighborBottom = PortraitTip.GetPath();
-			Hp.FocusNeighborLeft = PortraitTip.GetPath();
-		}
+		NRun.Instance?.GlobalUi.RelicInventory.UpdateNavigation();
 		Viewport viewport = GetViewport();
 		if (viewport != null && viewport.GuiGetFocusOwner() == ActiveScreenProxy)
 		{
 			ActiveScreenContext.Instance.FocusOnDefaultControl();
-		}
-		if (!_modifiersContainer.Visible)
-		{
-			return;
-		}
-		Control[] array = _modifiersContainer.GetChildren().OfType<Control>().ToArray();
-		BossIcon.FocusNeighborRight = array.First().GetPath();
-		if (!BossIcon.IsVisible())
-		{
-			FloorIcon.FocusNeighborRight = array.First().GetPath();
-		}
-		for (int i = 0; i < array.Length; i++)
-		{
-			Control control2 = array[i];
-			control2.FocusNeighborTop = control2.GetPath();
-			control2.FocusNeighborBottom = control.GetPath();
-			control2.FocusNeighborRight = ((i < array.Length - 1) ? array[i + 1].GetPath() : control2.GetPath());
-			if (i > 0)
-			{
-				control2.FocusNeighborLeft = array[i - 1].GetPath();
-			}
-			else
-			{
-				control2.FocusNeighborLeft = (BossIcon.IsVisible() ? BossIcon.GetPath() : FloorIcon.GetPath());
-			}
 		}
 	}
 }

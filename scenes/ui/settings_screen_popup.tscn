@@ -1,19 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://cu00jxuwhu8h0"]
+[gd_scene load_steps=5 format=3 uid="uid://cu00jxuwhu8h0"]
 
 [ext_resource type="Shader" uid="uid://c66gb6g7tup3n" path="res://shaders/hsv.gdshader" id="1_lwat3"]
 [ext_resource type="Script" uid="uid://brs35vrqsjusy" path="res://src/Core/Nodes/CommonUi/NSettingsScreenPopup.cs" id="2_g0tq6"]
 [ext_resource type="PackedScene" uid="uid://dqberqa21r6y8" path="res://scenes/ui/vertical_popup.tscn" id="3_o2fl0"]
-[ext_resource type="Texture2D" uid="uid://b6yryuf4syvy8" path="res://images/atlases/ui_atlas_0.png" id="4_kx83p"]
+[ext_resource type="Texture2D" uid="uid://bnk4r2y" path="res://images/atlases/ui_atlas.sprites/popup_vertical.tres" id="4_kx83p"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7wii2"]
 shader = ExtResource("1_lwat3")
 shader_parameter/h = 0.08
 shader_parameter/s = 0.4
 shader_parameter/v = 1.2
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1ufcf"]
-atlas = ExtResource("4_kx83p")
-region = Rect2(1, 83, 716, 816)
 
 [node name="SettingsScreenPopup" type="TextureRect"]
 material = SubResource("ShaderMaterial_7wii2")
@@ -28,7 +24,7 @@ offset_right = 237.5
 offset_bottom = 267.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("AtlasTexture_1ufcf")
+texture = ExtResource("4_kx83p")
 expand_mode = 1
 stretch_mode = 5
 script = ExtResource("2_g0tq6")

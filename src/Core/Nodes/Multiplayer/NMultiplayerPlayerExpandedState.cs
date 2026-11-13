@@ -82,7 +82,7 @@ public partial class NMultiplayerPlayerExpandedState : Control, ICapstoneScreen,
 
 	private Player _player;
 
-	private List<CardModel> _cards = new List<CardModel>();
+	private readonly List<CardModel> _cards = new List<CardModel>();
 
 	public bool UseSharedBackstop => true;
 

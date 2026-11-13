@@ -12,7 +12,7 @@
   "ENTRY_CHAR_WIN_LOSS.bottom": "[green]{Wins} Siege[/green]  [red]{Losses} Niederlagen[/red]",
   "ENTRY_CHAR_WIN_LOSS.top": "Aufstieg [blue]{Amount}[/blue]",
   "ENTRY_EVENTS.bottom": "Entdeckt [blue]{Amount}[/blue]",
-  "ENTRY_EVENTS.top": "Ereignisse entdeckt [blue]{Amount}[/blue]",
+  "ENTRY_EVENTS.top": "Ereignissen begegnet [blue]{Amount}[/blue]",
   "ENTRY_MONSTER.bottom": "Entdeckt [blue]{Amount}[/blue]",
   "ENTRY_MONSTER.top": "Insgesamt bezwungen [red]{Amount}[/red]",
   "ENTRY_PLAYTIME.bottom": "Schnellster Sieg [blue]{FastestWin}[/blue]",

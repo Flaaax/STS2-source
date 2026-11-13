@@ -100,7 +100,7 @@
   "NEOW.title": "涅奧",
   "NONUPEIPE.epithet": "機緣化身",
   "NONUPEIPE.talk.ANY.0-0r.ancient": "瘋狂正在塔頂等候著。披上我的力量，將其消滅。",
-  "NONUPEIPE.talk.ANY.1-0r.ancient": "你可真遠道而來到我這裡！\n靠近些，接受我的祝福吧。",
+  "NONUPEIPE.talk.ANY.1-0r.ancient": "你跋涉了這麼遠，終於來到我面前！\n靠近些，接受我的祝福吧。",
   "NONUPEIPE.talk.DEFECT.0-0.ancient": "構造體真配得上我的祝福嗎？\n上前來吧，故障機器人。你將成為所有自動機械中最美麗的存在。",
   "NONUPEIPE.talk.DEFECT.1-0r.ancient": "可憐又傷痕累累的機器啊，讓我為你淬鍊一番。",
   "NONUPEIPE.talk.DEFECT.2-0.ancient": "我通常不喜歡建築師造的東西，但我得承認我越來越喜歡你了。",
@@ -330,6 +330,11 @@
   "THE_ARCHITECT.talk.DEFECT.2-1r.char": "<隨機亂碼>",
   "THE_ARCHITECT.talk.DEFECT.2-1r.next": "繼續",
   "THE_ARCHITECT.talk.DEFECT.2-2r.ancient": "愚蠢。",
+  "THE_ARCHITECT.talk.FOOL.0-0r.ancient": "TEMP：你又是哪位？",
+  "THE_ARCHITECT.talk.FOOL.0-0r.next": "回答",
+  "THE_ARCHITECT.talk.FOOL.0-1r.char": "TEMP：……",
+  "THE_ARCHITECT.talk.FOOL.0-1r.next": "繼續",
+  "THE_ARCHITECT.talk.FOOL.0-2r.ancient": "TEMP：晚點再來吧。",
   "THE_ARCHITECT.talk.IRONCLAD.0-0r.ancient": "大惡魔的奴僕終於來了？",
   "THE_ARCHITECT.talk.IRONCLAD.0-0r.next": "威脅",
   "THE_ARCHITECT.talk.IRONCLAD.0-1r.char": "敵人……\n殺掉……",
@@ -431,6 +436,6 @@
   "VAKUU.talk.SILENT.2-1.char": "[sine]……[/sine]",
   "VAKUU.talk.SILENT.2-1.next": "繼續",
   "VAKUU.talk.SILENT.2-2.ancient": "無需言語，我們是一樣的。",
-  "VAKUU.talk.firstVisitEver.0-0.ancient": "把你委身給我，你就會像我一樣令眾生畏懼。",
+  "VAKUU.talk.firstVisitEver.0-0.ancient": "委身給我，你就會像我一樣令眾生畏懼。",
   "VAKUU.title": "瓦庫"
 }

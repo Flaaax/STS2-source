@@ -36,7 +36,7 @@ public sealed class DistinguishedCape : RelicModel
 		List<CardPileAddResult> curseResults = new List<CardPileAddResult>();
 		for (int i = 0; i < base.DynamicVars["Curses"].IntValue; i++)
 		{
-			CardModel cardModel = base.Owner.RunState.Rng.Niche.NextItem(availableCurses);
+			CardModel cardModel = base.Owner.PlayerRng.NonCombatGeneration.NextItem(availableCurses);
 			availableCurses.Remove(cardModel);
 			CardModel card = base.Owner.RunState.CreateCard(cardModel, base.Owner);
 			curseResults.Add(await CardPileCmd.Add(card, PileType.Deck));

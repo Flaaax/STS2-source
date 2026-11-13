@@ -1,0 +1,18 @@
+[gd_resource type="SpineSkeletonDataResource" load_steps=5 format=3 uid="uid://b8waj4ndyc5wa"]
+
+[ext_resource type="SpineAtlasResource" uid="uid://5n4bsyuykkut" path="res://animations/monsters/wuppy/wuppy.atlas" id="1_1tb30"]
+[ext_resource type="SpineSkeletonFileResource" uid="uid://bg0p6nt1qyotu" path="res://animations/monsters/wuppy/wuppy.skel" id="2_hcxl4"]
+
+[sub_resource type="SpineAnimationMix" id="SpineAnimationMix_8p8p0"]
+from = "hurt"
+to = "hurt"
+
+[sub_resource type="SpineAnimationMix" id="SpineAnimationMix_qnihx"]
+from = "hurt"
+to = "die"
+
+[resource]
+atlas_res = ExtResource("1_1tb30")
+skeleton_file_res = ExtResource("2_hcxl4")
+default_mix = 0.02
+animation_mixes = [SubResource("SpineAnimationMix_8p8p0"), SubResource("SpineAnimationMix_qnihx")]

@@ -1,0 +1,23 @@
+{
+  "EXTENSION.card.humanizedCardTypes.attack": "هجوم",
+  "EXTENSION.card.humanizedCardTypes.curse": "عبء",
+  "EXTENSION.card.humanizedCardTypes.power": "قوة",
+  "EXTENSION.card.humanizedCardTypes.quest": "مهمة",
+  "EXTENSION.card.humanizedCardTypes.skill": "مهارة",
+  "EXTENSION.card.humanizedCardTypes.status": "حالة",
+  "EXTENSION.config.activate": "يرجى تفعيل الإضافة باستخدام زر 'تفعيل' أسفل يمين هذه الشاشة.",
+  "EXTENSION.config.categoryWarning": "تأكد أن فئة Twitch مضبوطة على Slay the Spire 2 وإلا لن تظهر الإضافة للمشاهدين!",
+  "EXTENSION.config.inGameConnect": "اذهب إلى قائمة الإعدادات داخل اللعبة للاتصال وضبط التكامل.",
+  "EXTENSION.config.title": "رفيق Slay the Spire 2",
+  "EXTENSION.piles.clickHint.deck": "اضغط لرؤية المجموعة",
+  "EXTENSION.piles.clickHint.discardPile": "اضغط لرؤية كومة الرمي",
+  "EXTENSION.piles.clickHint.drawPile": "اضغط لرؤية كومة السحب",
+  "EXTENSION.poll.voteReceived": "تم استلام التصويت!",
+  "EXTENSION.tutorial.back": "رجوع",
+  "EXTENSION.tutorial.finish": "فهمت!",
+  "EXTENSION.tutorial.hoverIndicator": "مرّر المؤشر فوق البث لتفقد بطاقات وآثار وجرعات {{streamerName}} عندما ترى هذا المؤشر:",
+  "EXTENSION.tutorial.next": "التالي",
+  "EXTENSION.tutorial.title": "Slay the Spire 2",
+  "EXTENSION.tutorial.twitchIntegration": "تكامل Twitch",
+  "EXTENSION.tutorial.voting": "ستتمكن أيضًا من التصويت على البطاقات التي يجب أن يأخذها {{streamerName}} كمكافأة، وإلى أين يذهب بعد ذلك على الخريطة."
+}

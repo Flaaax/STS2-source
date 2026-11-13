@@ -1,7 +1,6 @@
-[gd_scene load_steps=40 format=3 uid="uid://b78ea5dgmfh7w"]
+[gd_scene load_steps=39 format=3 uid="uid://b78ea5dgmfh7w"]
 
 [ext_resource type="Material" uid="uid://c4ycqv0gdxvmr" path="res://themes/canvas_item_material_additive_shared.tres" id="2_8qgcf"]
-[ext_resource type="Texture2D" uid="uid://pluoyq0c1u65" path="res://images/ancients/vakuu_placeholder.png" id="3_1kn3x"]
 [ext_resource type="Texture2D" uid="uid://b47r2blhe2i3" path="res://images/vfx/fire/cinder_particle.png" id="3_elg35"]
 [ext_resource type="Texture2D" uid="uid://bukyhsjanpsnl" path="res://images/vfx/monsters/queen/false_queen_light.png" id="4_gxvyd"]
 [ext_resource type="Texture2D" uid="uid://dydejju6qx4gr" path="res://images/packed/vfx/generic/square_speck.png" id="5_dh405"]
@@ -212,7 +211,6 @@ offset_left = -332.0
 offset_top = -41.0
 offset_right = 2250.0
 offset_bottom = 1180.0
-texture = ExtResource("3_1kn3x")
 expand_mode = 2
 
 [node name="sparks big" type="GPUParticles2D" parent="."]

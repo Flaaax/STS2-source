@@ -1,6 +1,10 @@
 {
+  "BLITZ_MP_LOBBY": "Blitz-Lobby",
   "CUSTOM_MP_LOBBY": "Spezial-Lobby",
   "DAILY_MP_LOBBY": "Tagesrun-Lobby",
+  "DREAD_MP_LOBBY": "Grauen-Lobby",
+  "IN_BLITZ_RUN": "Blitz: {#%Character%_title} - {#%Act%_title} A%Ascension%",
+  "IN_DREAD_RUN": "Grauen: {#%Character%_title} - {#%Act%_title} G%DreadStreak%",
   "IN_RUN": "{#%Character%_title} - {#%Act%_title} A%Ascension%",
   "LOADING_MP_LOBBY": "Speicherstand-Lobby",
   "MAIN_MENU": "Hauptmenü",

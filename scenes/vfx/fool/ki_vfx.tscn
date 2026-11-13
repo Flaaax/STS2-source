@@ -1,0 +1,103 @@
+[gd_scene load_steps=13 format=3 uid="uid://blv8c0kgmla56"]
+
+[ext_resource type="Script" uid="uid://byrtac5fv4o1h" path="res://src/Core/Nodes/Vfx/NKiVfx.cs" id="1_tk1p2"]
+[ext_resource type="Texture2D" uid="uid://cf8k44l87g2db" path="res://images/vfx/vfx_thrash/sparkle_circle.png" id="2_tk1p2"]
+[ext_resource type="Texture2D" uid="uid://cii41i1fsqilu" path="res://images/packed/fool/symbol_ki.png" id="3_tk1p2"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_13rly"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_ddpj8"]
+_data = [Vector2(0, 0), 0.0, 7.427175, 0, 0, Vector2(0.130137, 0.88172674), -0.1437658, -0.1437658, 0, 0, Vector2(0.260274, 0.2551297), 0.0, 0.0, 0, 0, Vector2(0.41095892, 1), 0.0, 0.0, 0, 0, Vector2(0.630137, 0.10414243), 0.0, 0.0, 0, 0, Vector2(0.7534247, 0.85152924), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.7093487, 0.0, 0, 0]
+point_count = 7
+
+[sub_resource type="CurveTexture" id="CurveTexture_275co"]
+width = 128
+curve = SubResource("Curve_ddpj8")
+
+[sub_resource type="Curve" id="Curve_0ht35"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 0.4045683), 0.0, 2.2044134, 0, 0, Vector2(0.16438359, 2), -1.3226484, -1.3226484, 0, 0, Vector2(0.390411, 0), 0.0, 0.0, 0, 0, Vector2(0.4863014, 1.9144406), 0.0, 0.0, 0, 0, Vector2(0.77397263, 0), 0.0, 0.0, 0, 0, Vector2(1, 1.4765778), -12.194949, 0.0, 0, 0]
+point_count = 6
+
+[sub_resource type="CurveTexture" id="CurveTexture_gp0eb"]
+width = 128
+curve = SubResource("Curve_0ht35")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_k7qn8"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(180, 180, 1)
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.9
+emission_ring_cone_angle = 90.0
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_over_velocity_min = 0.5
+scale_over_velocity_max = 1.0
+scale_over_velocity_curve = SubResource("CurveTexture_gp0eb")
+color = Color(1, 0.95, 0, 1)
+alpha_curve = SubResource("CurveTexture_275co")
+hue_variation_min = -0.100000024
+hue_variation_max = 0.09999997
+turbulence_enabled = true
+turbulence_noise_strength = 20.0
+
+[sub_resource type="Curve" id="Curve_kin38"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 2), 0.0, 0.33066195, 0, 0, Vector2(0.477169, 0.917925), 1.5745816, 1.5745816, 0, 0, Vector2(1, 0.9481224), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_mosi5"]
+curve = SubResource("Curve_kin38")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tk1p2"]
+particle_flag_disable_z = true
+gravity = Vector3(0, -100, 0)
+linear_accel_min = -100.0
+linear_accel_max = -2.2351742e-06
+scale_min = 2.0
+scale_max = 2.1
+scale_curve = SubResource("CurveTexture_mosi5")
+alpha_curve = SubResource("CurveTexture_275co")
+turbulence_enabled = true
+turbulence_noise_strength = 5.0
+turbulence_noise_speed = Vector3(10, 10, 0)
+turbulence_noise_speed_random = 4.0
+
+[node name="KiVfx" type="Node2D"]
+material = SubResource("CanvasItemMaterial_13rly")
+position = Vector2(877, 576)
+script = ExtResource("1_tk1p2")
+
+[node name="KiSparks" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+use_parent_material = true
+emitting = false
+amount = 96
+texture = ExtResource("2_tk1p2")
+lifetime = 1.5
+one_shot = true
+explosiveness = 0.75
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_k7qn8")
+
+[node name="KiSymbol" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.2509804)
+use_parent_material = true
+emitting = false
+amount = 3
+texture = ExtResource("3_tk1p2")
+lifetime = 0.8
+one_shot = true
+explosiveness = 0.9
+randomness = 0.1
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_tk1p2")

@@ -13,7 +13,7 @@ public partial class NClearSearchButton : NButton
 	{
 		ConnectSignals();
 		_image = GetNode<Control>("Image");
-		_image.PivotOffset = _image.Size / 2f;
+		_image.PivotOffset = _image.Size * 0.5f;
 	}
 
 	protected override void OnFocus()

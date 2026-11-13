@@ -98,9 +98,10 @@ public class LocManager
 
 	private readonly List<LocaleChangeCallback> _localeChangeCallbacks = new List<LocaleChangeCallback>();
 
-	private static readonly (string Language, string CultureCode)[] _supportedLanguages = new(string, string)[16]
+	private static readonly (string Language, string CultureCode)[] _supportedLanguages = new(string, string)[17]
 	{
 		("eng", "en"),
+		("ara", "ar"),
 		("zhs", "zh-hans"),
 		("zht", "zh-hant"),
 		("deu", "de"),
@@ -119,6 +120,10 @@ public class LocManager
 	};
 
 	private static readonly Dictionary<string, string> _cultureCodeByLanguage = _supportedLanguages.ToDictionary(((string Language, string CultureCode) entry) => entry.Language, ((string Language, string CultureCode) entry) => entry.CultureCode);
+
+	private static readonly HashSet<string> _rtlLanguages = new HashSet<string> { "ara" };
+
+	private static readonly HashSet<string> _hiddenLanguages = new HashSet<string> { "ara" };
 
 	private static readonly CultureInfo _englishCultureInfo = GetCultureInfoSafe("en");
 
@@ -142,9 +147,30 @@ public class LocManager
 
 	public static List<string> Languages { get; } = _supportedLanguages.Select(((string Language, string CultureCode) entry) => entry.Language).ToList();
 
+	/// <summary>
+	/// True if the current language is read right-to-left.
+	/// </summary>
+	public bool IsRtl => IsRtlLanguage(Language);
+
 	public CultureInfo CultureInfo { get; private set; }
 
 	public StringComparer StringComparer { get; private set; }
+
+	/// <summary>
+	/// Returns true if the language should only be selectable through the hidden Ctrl/Alt+open dropdown.
+	/// </summary>
+	public static bool IsHiddenLanguage(string language)
+	{
+		return _hiddenLanguages.Contains(language);
+	}
+
+	/// <summary>
+	/// Returns true if the language is read right-to-left, like Arabic.
+	/// </summary>
+	public static bool IsRtlLanguage(string language)
+	{
+		return _rtlLanguages.Contains(language);
+	}
 
 	private static CultureInfo GetCultureInfoSafe(string name)
 	{
@@ -184,7 +210,7 @@ public class LocManager
 		{
 			string rawLanguage = PlatformUtil.GetRawLanguage();
 			text = PlatformUtil.GetThreeLetterLanguageCode();
-			if (text == null || !Languages.Contains(text))
+			if (text == null || !Languages.Contains(text) || IsHiddenLanguage(text))
 			{
 				Log.Warn($"Could not initialize language from platform language: {rawLanguage} (resolved: {text}). Defaulting to english");
 				text = "eng";
@@ -228,6 +254,7 @@ public class LocManager
 	/// </summary>
 	private void LoadLocFormatters()
 	{
+		ArabicPluralRule.Register();
 		_smartFormatter = new SmartFormatter();
 		ListFormatter listFormatter = new ListFormatter();
 		_smartFormatter.AddExtensions(listFormatter, new DictionarySource(), new ValueTupleSource(), new ReflectionSource(), new DefaultSource());

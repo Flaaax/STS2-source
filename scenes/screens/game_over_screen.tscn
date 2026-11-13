@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://7osm1qqwcp6e" path="res://scenes/ui/common_banner.tscn" id="4_xrmrt"]
 [ext_resource type="Script" uid="uid://c2oywrx8xbqfx" path="res://addons/mega_text/MegaRichTextLabel.cs" id="5_dic48"]
 [ext_resource type="Texture2D" uid="uid://dg21w1q37pjaq" path="res://images/ui/noise_mask_for_lines.tres" id="6_injdd"]
-[ext_resource type="PackedScene" uid="uid://blcq7fxwi2tmr" path="res://scenes/screens/game_over_screen/discovered_item.tscn" id="7_vpeer"]
+[ext_resource type="PackedScene" path="res://scenes/screens/game_over_screen/discovered_item.tscn" id="7_vpeer"]
 [ext_resource type="Texture2D" uid="uid://boylmf6d6m4ys" path="res://images/ui/game_over_screen/discovery_potion.png" id="9_7y85p"]
 [ext_resource type="Texture2D" uid="uid://bkv3xa2ojn5jk" path="res://images/ui/game_over_screen/discovery_relic.png" id="9_cif5j"]
 [ext_resource type="Texture2D" uid="uid://dtffadxlvm32b" path="res://images/ui/game_over_screen/discovery_epoch.png" id="9_spbre"]
@@ -25,10 +25,10 @@
 [ext_resource type="PackedScene" uid="uid://b075h3ucmd4a1" path="res://scenes/screens/game_over_screen/game_over_button.tscn" id="17_yfy86"]
 [ext_resource type="Script" uid="uid://b4eaix3d55se3" path="res://src/Core/Nodes/Screens/GameOverScreen/NReturnToMainMenuButton.cs" id="18_2i5l7"]
 [ext_resource type="Shader" uid="uid://c66gb6g7tup3n" path="res://shaders/hsv.gdshader" id="20_cjrdj"]
-[ext_resource type="PackedScene" uid="uid://cyhw3s1faj4c7" path="res://scenes/screens/leaderboard_day_paginator.tscn" id="21_0f6go"]
+[ext_resource type="PackedScene" uid="uid://xefunrst80xl" path="res://scenes/screens/leaderboard_day_paginator.tscn" id="21_0f6go"]
 [ext_resource type="PackedScene" path="res://scenes/ui/hotkey_icon.tscn" id="21_o0e6m"]
 [ext_resource type="Texture2D" uid="uid://cp6ed2au5l4cs" path="res://images/ui/game_over_screen/run_summary_merchant.png" id="22_hr6ft"]
-[ext_resource type="PackedScene" path="res://scenes/screens/game_over_screen/leaderboard_paginator_arrow.tscn" id="25_4krn0"]
+[ext_resource type="PackedScene" uid="uid://lknfal844kqr" path="res://scenes/screens/game_over_screen/leaderboard_paginator_arrow.tscn" id="25_4krn0"]
 
 [sub_resource type="Gradient" id="Gradient_xomtg"]
 offsets = PackedFloat32Array(0, 0.5, 1)

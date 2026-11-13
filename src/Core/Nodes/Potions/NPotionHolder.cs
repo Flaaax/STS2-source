@@ -342,7 +342,7 @@ public partial class NPotionHolder : NClickableControl
 				if (merchantScreenContext != null)
 				{
 					savedFocusBehavior = merchantScreenContext.FocusBehaviorRecursive;
-					merchantScreenContext.FocusBehaviorRecursive = FocusBehaviorRecursiveEnum.Enabled;
+					merchantScreenContext.FocusBehaviorRecursive = FocusBehaviorRecursiveEnum.Inherited;
 				}
 				if (!merchantButton.IsEnabled)
 				{
@@ -358,7 +358,7 @@ public partial class NPotionHolder : NClickableControl
 			Node node = await instance.SelectionFinished();
 			NCombatRoom.Instance?.EnableControllerNavigation();
 			NRun.Instance.GlobalUi.MultiplayerPlayerContainer.UnlockNavigation();
-			if (node != null)
+			if (node != null && !RunManager.Instance.IsPotionUseLocked)
 			{
 				Creature creature2;
 				if (!(node is NCreature nCreature))

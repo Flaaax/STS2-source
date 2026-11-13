@@ -1,9 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://crywiwx34d2q5"]
+[gd_scene load_steps=18 format=3 uid="uid://crywiwx34d2q5"]
 
 [ext_resource type="Script" uid="uid://ctwnr3vney5j0" path="res://src/Core/Nodes/Screens/CardSelection/NDeckTransformSelectScreen.cs" id="1_lua1l"]
 [ext_resource type="PackedScene" uid="uid://cso1enqajc0tc" path="res://scenes/cards/card_grid.tscn" id="2_lua1l"]
 [ext_resource type="PackedScene" uid="uid://bl4mbjqjfffa3" path="res://scenes/ui/back_button.tscn" id="3_0rt34"]
-[ext_resource type="Script" uid="uid://h45v44q8fnkx" path="res://src/Core/Nodes/CommonUi/NTickbox.cs" id="4_imv6c"]
 [ext_resource type="PackedScene" uid="uid://bw8f1jtcj62xv" path="res://scenes/ui/tickbox.tscn" id="5_203a6"]
 [ext_resource type="Shader" uid="uid://c66gb6g7tup3n" path="res://shaders/hsv.gdshader" id="6_ghcaf"]
 [ext_resource type="FontVariation" uid="uid://ux4d708e7mk6" path="res://themes/kreon_bold_glyph_space_one.tres" id="7_bg8k5"]
@@ -14,9 +13,11 @@
 [ext_resource type="PackedScene" uid="uid://bl460ab2i4mkx" path="res://scenes/ui/confirm_button.tscn" id="9_roxce"]
 [ext_resource type="Texture2D" uid="uid://nxhrbcu264p5" path="res://images/ui/cards/upgrade_preview/upgrade_arrow.png" id="10_0rt34"]
 [ext_resource type="Script" uid="uid://c2oywrx8xbqfx" path="res://addons/mega_text/MegaRichTextLabel.cs" id="10_bg8k5"]
+[ext_resource type="Script" uid="uid://cktduyaggev5n" path="res://src/Core/Nodes/Screens/InspectScreens/NUpgradePreviewTickbox.cs" id="11_ghcaf"]
 [ext_resource type="PackedScene" uid="uid://rxgwkwxf1dsr" path="res://scenes/combat/peek_button.tscn" id="11_n13sk"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hotkey_icon.tscn" id="12_bg8k5"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lua1l"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n27k8"]
 resource_local_to_scene = true
 shader = ExtResource("6_ghcaf")
 shader_parameter/h = 1.0
@@ -261,11 +262,16 @@ theme_override_constants/margin_right = 6
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 0
-script = ExtResource("4_imv6c")
+script = ExtResource("11_ghcaf")
+
+[node name="HotkeyIcon" parent="ViewUpgrades/MarginContainer/Upgrades" instance=ExtResource("12_bg8k5")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
 
 [node name="TickboxVisuals" parent="ViewUpgrades/MarginContainer/Upgrades" instance=ExtResource("5_203a6")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_lua1l")
+material = SubResource("ShaderMaterial_n27k8")
 layout_mode = 2
 
 [node name="ViewUpgradesLabel" type="Label" parent="ViewUpgrades/MarginContainer/Upgrades"]

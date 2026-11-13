@@ -1,0 +1,145 @@
+[gd_scene load_steps=14 format=3 uid="uid://bt2nwjl6x7oyo"]
+
+[ext_resource type="Script" uid="uid://dkmsda1d37h0f" path="res://src/Core/Nodes/Screens/Shops/NBlitzMerchantSlot.cs" id="1_3qyj8"]
+[ext_resource type="PackedScene" uid="uid://cimeloj78lsfl" path="res://scenes/vfx/card_sparkles_vfx.tscn" id="3_kj3c6"]
+[ext_resource type="Texture2D" uid="uid://ck1p3wpxr5kxh" path="res://images/vfx/epoch_offscreen_indicator.png" id="4_kj3c6"]
+[ext_resource type="Script" uid="uid://bry8aaeikvcb3" path="res://src/Core/Nodes/GodotExtensions/NClickableControl.cs" id="7_7t7ui"]
+[ext_resource type="Texture2D" uid="uid://jqn0hv" path="res://images/atlases/ui_atlas.sprites/top_bar/top_bar_gold.tres" id="8_uj27l"]
+[ext_resource type="FontVariation" uid="uid://ciql5khgewwbm" path="res://themes/kreon_bold_glyph_space_two.tres" id="9_crhy1"]
+[ext_resource type="Script" uid="uid://dtfio45agppyj" path="res://addons/mega_text/MegaLabel.cs" id="10_4r2e0"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_o7s0n"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_kj3c6"]
+_data = [Vector2(0, 0), 0.0, 4.8841066, 0, 0, Vector2(0.50202423, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -5.5853343, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_kj3c6"]
+width = 128
+curve = SubResource("Curve_kj3c6")
+
+[sub_resource type="Gradient" id="Gradient_kj3c6"]
+offsets = PackedFloat32Array(0.027149322, 0.561086, 1)
+colors = PackedColorArray(0.7000003, 0, 1, 1, 0.7000003, 0, 1, 1, 0.33333302, 0, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_o7s0n"]
+gradient = SubResource("Gradient_kj3c6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ihv8b"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 50.0
+angle_min = -179.99998
+angle_max = 180.00002
+spread = 180.0
+angular_velocity_min = -50.000015
+angular_velocity_max = 49.99998
+gravity = Vector3(0, 0, 0)
+color = Color(1, 1, 1, 0.5019608)
+color_ramp = SubResource("GradientTexture1D_o7s0n")
+alpha_curve = SubResource("CurveTexture_kj3c6")
+hue_variation_min = -0.050000023
+hue_variation_max = 0.049999975
+turbulence_enabled = true
+turbulence_influence_max = 0.36900002
+
+[node name="MerchantBlitzEntry" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 2
+mouse_filter = 2
+script = ExtResource("1_3qyj8")
+
+[node name="Hitbox" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = -121.0
+offset_top = -120.0
+offset_right = 119.0
+offset_bottom = 120.0
+script = ExtResource("7_7t7ui")
+
+[node name="Icon" type="TextureRect" parent="Hitbox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 240)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(120, 120)
+expand_mode = 1
+
+[node name="Shadow" type="TextureRect" parent="Hitbox/Icon"]
+unique_name_in_owner = true
+modulate = Color(0, 0, 0, 0.2509804)
+show_behind_parent = true
+custom_minimum_size = Vector2(240, 240)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 16.0
+offset_right = 20.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(120, 120)
+expand_mode = 1
+
+[node name="RareVfx" parent="Hitbox" instance=ExtResource("3_kj3c6")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(121, 120)
+local_coords = true
+
+[node name="CursedVfx" type="GPUParticles2D" parent="Hitbox"]
+unique_name_in_owner = true
+visible = false
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_o7s0n")
+position = Vector2(121, 120)
+texture = ExtResource("4_kj3c6")
+lifetime = 3.0
+preprocess = 1.0
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_ihv8b")
+
+[node name="CostContainer" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = -120.0
+offset_top = 120.0
+offset_right = 120.0
+offset_bottom = 160.0
+alignment = 1
+
+[node name="CoinIcon" type="TextureRect" parent="CostContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("8_uj27l")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CostLabel" type="Label" parent="CostContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.964706, 0.886275, 1)
+theme_override_colors/font_shadow_color = Color(0.223529, 0.223529, 0.223529, 0)
+theme_override_colors/font_outline_color = Color(0.0666667, 0, 0, 0.431373)
+theme_override_constants/line_spacing = 0
+theme_override_constants/outline_size = 15
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("9_crhy1")
+theme_override_font_sizes/font_size = 28
+text = "99"
+vertical_alignment = 1
+script = ExtResource("10_4r2e0")
+AutoSizeEnabled = false

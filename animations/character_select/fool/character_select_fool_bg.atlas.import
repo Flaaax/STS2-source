@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://bknnqs73bh836"
+path="res://.godot/imported/character_select_fool_bg.atlas-132a275f6b0e6cc37d7d2caf3db954ba.spatlas"
+
+[deps]
+
+source_file="res://animations/character_select/fool/character_select_fool_bg.atlas"
+dest_files=["res://.godot/imported/character_select_fool_bg.atlas-132a275f6b0e6cc37d7d2caf3db954ba.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

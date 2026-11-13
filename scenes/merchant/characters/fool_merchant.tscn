@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bp0l3ei8t6yyk"]
+
+[ext_resource type="Script" uid="uid://b2ww8leotjikm" path="res://src/Core/Nodes/Screens/Shops/NMerchantCharacter.cs" id="1_37vf3"]
+[ext_resource type="SpineSkeletonDataResource" uid="uid://doh4bkjtncyr0" path="res://animations/characters/fool/fool_skel_data.tres" id="2_dapf5"]
+
+[node name="FoolMerchant" type="Node2D"]
+script = ExtResource("1_37vf3")
+
+[node name="SpineSprite" type="SpineSprite" parent="."]
+skeleton_data_res = ExtResource("2_dapf5")
+preview_skin = "Default"
+preview_animation = "relaxed_loop"
+preview_frame = false
+preview_time = 5.4
+scale = Vector2(0.47, 0.47)

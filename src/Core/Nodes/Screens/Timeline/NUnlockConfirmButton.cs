@@ -45,10 +45,6 @@ public partial class NUnlockConfirmButton : NButton
 		_hoverTween.TweenProperty(this, "scale", Vector2.One * 1.1f, 0.05);
 	}
 
-	public override void _Process(double delta)
-	{
-	}
-
 	protected override void OnPress()
 	{
 		base.OnPress();

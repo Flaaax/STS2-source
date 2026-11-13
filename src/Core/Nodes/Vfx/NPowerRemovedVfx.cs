@@ -17,7 +17,7 @@ public partial class NPowerRemovedVfx : Node2D
 {
 	private const string _scenePath = "res://scenes/vfx/power_removed_vfx.tscn";
 
-	private static LocString _wearsOffLoc = new LocString("vfx", "POWER_WEARS_OFF");
+	private static readonly LocString _wearsOffLoc = new LocString("vfx", "POWER_WEARS_OFF");
 
 	private TextureRect _sprite;
 

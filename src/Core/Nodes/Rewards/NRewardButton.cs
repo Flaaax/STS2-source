@@ -6,6 +6,7 @@ using MegaCrit.Sts2.addons.mega_text;
 using MegaCrit.Sts2.Core.Assets;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.Combat;
 using MegaCrit.Sts2.Core.Nodes.CommonUi;
@@ -71,6 +72,7 @@ public partial class NRewardButton : NButton
 		_label = GetNode<MegaRichTextLabel>("%Label");
 		_reticle = GetNode<NSelectionReticle>("%SelectionReticle");
 		_hsv = (ShaderMaterial)_background.Material;
+		this.ApplyRtlLayout();
 		Reload();
 	}
 

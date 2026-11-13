@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://dmpp1qcet6qvk" path="res://src/Core/Nodes/GodotExtensions/NMegaLineEdit.cs" id="7_kpsm6"]
 [ext_resource type="FontVariation" uid="uid://bg85h22rkxs6g" path="res://themes/kreon_bold_shared.tres" id="9_fnbrg"]
 [ext_resource type="Script" uid="uid://cb70d28ckk11v" path="res://src/Core/Nodes/Multiplayer/NRemoteLoadLobbyPlayerContainer.cs" id="11_03w06"]
-[ext_resource type="Texture2D" uid="uid://q1y4ux" path="res://images/atlases/compressed.sprites/back_button_x.tres" id="12_3pewd"]
+[ext_resource type="Texture2D" uid="uid://bjwgjm2" path="res://images/atlases/compressed_atlas.sprites/back_button_x.tres" id="12_3pewd"]
 [ext_resource type="Shader" uid="uid://c66gb6g7tup3n" path="res://shaders/hsv.gdshader" id="13_kpsm6"]
 [ext_resource type="PackedScene" uid="uid://iq6wsnph1mun" path="res://scenes/screens/custom_run/modifiers_list.tscn" id="13_xp0mt"]
 [ext_resource type="Texture2D" uid="uid://btjc3p508sth1" path="res://images/ui/fuzzy_nine_patch_char_select.png" id="14_pgm5a"]

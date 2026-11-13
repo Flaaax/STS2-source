@@ -33,6 +33,12 @@ public partial class NControllerCardPlay : NCardPlay
 
 	private bool _signalsConnected;
 
+	public override void _ExitTree()
+	{
+		base._ExitTree();
+		DisconnectTargetingSignals();
+	}
+
 	public override void _Input(InputEvent inputEvent)
 	{
 		if (!(inputEvent is InputEventAction inputEventAction))
@@ -117,7 +123,9 @@ public partial class NControllerCardPlay : NCardPlay
 			CancelPlayCard();
 			return;
 		}
-		List<NCreature> list2 = list.Select((Creature c) => NCombatRoom.Instance.GetCreatureNode(c)).OfType<NCreature>().ToList();
+		List<NCreature> list2 = (from c in list.Select((Creature c) => NCombatRoom.Instance.GetCreatureNode(c)).OfType<NCreature>()
+			where c.IsVisible()
+			select c).ToList();
 		if (list2.Count == 0)
 		{
 			CancelPlayCard();
@@ -159,11 +167,6 @@ public partial class NControllerCardPlay : NCardPlay
 		{
 			DisconnectTargetingSignals();
 		}
-	}
-
-	public override void _ExitTree()
-	{
-		DisconnectTargetingSignals();
 	}
 
 	private void DisconnectTargetingSignals()

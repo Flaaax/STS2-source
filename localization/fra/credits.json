@@ -18,6 +18,8 @@
   "LOC_ESP.team": "Translator’s Tale Team",
   "LOC_FRA.header": "Français",
   "LOC_FRA.names": "Responsable de traduction||Timothy Tamim\nTraducteur||Vincent Larcin",
+  "LOC_IND.header": "Indonésien",
+  "LOC_IND.names": "Peter Christian Erastus (Peterce3)",
   "LOC_ITA.header": "Italien",
   "LOC_ITA.names": "Traducteur||Daniele Iannilli\nRelecteur||Francesco Caligiuri",
   "LOC_ITA.team": "To Transcreation and Beyond",
@@ -39,6 +41,8 @@
   "LOC_TUR.names": "Traducteur||Berke Oğuz Yılmaz (Secundus)\nRelecteur||Ömer Can Aytekin",
   "LOC_ZHS.header": "Chinois simplifié",
   "LOC_ZHS.names": "Traducteur / Relecteur||Sound of Mystery\nTraducteur / Relecteur||IrisRaphael",
+  "LOC_ZHT.header": "Chinois traditionnel",
+  "LOC_ZHT.names": "DK Liao (HexaLoc Lab)",
   "MARKETING_SUPPORT.header": "Soutien marketing",
   "MARKETING_SUPPORT.names": "Dana Trebella",
   "MEGA_CRIT.header": "Mega Crit",
@@ -58,5 +62,5 @@
   "TWITCH.header": "Intégration Twitch",
   "TWITCH.names": "Outils de streaming||Thomas Tuts",
   "VOICES.header": "Voix (Incomplet)",
-  "VOICES.names": "Neow, Marchand (réel et factice), Tanx, Adepte calcifié (masculin), Fongibrume, Grignotin, Poissâme, Opérateur de tourelle, Chevalier rainette||Will Lewis\nRégent||Mark Ota\nNonupeipée||Demi Montes\nDarv||Phillip Corrado\nLa Tribu||Chris Gortz\nAdepte calcifiée (féminin)||Marlowe Dobbe\nMachiniste||Genevieve Green\nEncrelin||Lil Chan\nChevalier-mage||Ed Lu\nMéca-chevalier||Jose Pacio\nRôdeurs rubis (Brute)||CJ Rhone\nRôdeurs rubis (Arbalète)||Carter “Diency” Staley\nRôdeurs rubis (Traqueur)||Peter “Raven” Havran\nVoyou marin||Galen Drew\nBerserker de vase||Ben Brode\nMante chapardeuse||Jaiden Gerig\nRats bicaudés||Mars Orach"
+  "VOICES.names": "Neow, Marchand (réel et factice), Tanx, Adepte calcifié (masculin), Fongibrume, Grignotin, Poissâme, Opérateur de tourelle, Chevalier rainette||Will Lewis\nRégent||Mark Ota\nNonupeipée||Demi Montes\nDarv||Phillip Corrado\nLa Tribu||Chris Gortz\nAdepte calcifiée (féminin)||Marlowe Dobbe\nMachiniste||Genevieve Green\nEncrelin||Lil Chan\nChevalier-mage||Ed Lu\nMéca-chevalier||Jose Pacio\nRôdeurs rubis (Brute)||CJ Rhone\nRôdeurs rubis (Arbalète)||Carter “Diency” Staley\nRôdeurs rubis (Traqueur)||Peter “Raven” Havran\nVoyou marin||Galen Drew\nBerserker de vase||Ben Brode\nMante chapardeuse||Jaiden Gerig\nRats bicaudés||Mars Orach\nEmployé de Wongo||L'épouse de Casey"
 }

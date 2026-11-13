@@ -1,8 +1,6 @@
-using System.Threading.Tasks;
 using Godot;
 using MegaCrit.Sts2.Core.Entities.Merchant;
 using MegaCrit.Sts2.Core.Helpers;
-using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Nodes.HoverTips;
@@ -45,10 +43,6 @@ public partial class NMerchantCardRemoval : NMerchantSlot
 		_removalEntry.EntryUpdated += UpdateVisual;
 		_removalEntry.PurchaseFailed += base.OnPurchaseFailed;
 		_removalEntry.PurchaseCompleted += OnSuccessfulPurchase;
-		if (!Hook.ShouldAllowMerchantCardRemoval(base.Player.RunState, base.Player))
-		{
-			_removalEntry.SetUsed();
-		}
 		UpdateVisual();
 	}
 
@@ -80,11 +74,6 @@ public partial class NMerchantCardRemoval : NMerchantSlot
 		}
 	}
 
-	protected override async Task OnTryPurchase(MerchantInventory? inventory)
-	{
-		await _removalEntry.OnTryPurchaseWrapper(inventory);
-	}
-
 	protected void OnSuccessfulPurchase(PurchaseStatus _, MerchantEntry __)
 	{
 		TriggerMerchantHandToPointHere();
@@ -93,7 +82,6 @@ public partial class NMerchantCardRemoval : NMerchantSlot
 
 	public void OnCardRemovalUsed()
 	{
-		_removalEntry.SetUsed();
 		UpdateVisual();
 	}
 
@@ -106,23 +94,19 @@ public partial class NMerchantCardRemoval : NMerchantSlot
 		if (nHoverTipSet != null)
 		{
 			nHoverTipSet.GlobalPosition = base.GlobalPosition;
-			if (base.GlobalPosition.X > GetViewport().GetVisibleRect().Size.X * 0.5f)
-			{
-				nHoverTipSet.SetAlignment(this, HoverTipAlignment.Left);
-				nHoverTipSet.GlobalPosition -= base.Size * 0.5f * base.Scale;
-			}
-			else
-			{
-				nHoverTipSet.GlobalPosition += Vector2.Right * base.Size.X * 0.5f * base.Scale + Vector2.Up * base.Size.Y * 0.5f * base.Scale;
-			}
+			bool flag = base.GlobalPosition.X > GetViewport().GetVisibleRect().Size.X * 0.5f;
+			nHoverTipSet.SetAlignment(GetHoveredHitboxGlobalRect(), flag ? HoverTipAlignment.Left : HoverTipAlignment.Right);
 		}
 	}
 
 	public override void _ExitTree()
 	{
 		base._ExitTree();
-		_removalEntry.EntryUpdated -= UpdateVisual;
-		_removalEntry.PurchaseFailed -= base.OnPurchaseFailed;
-		_removalEntry.PurchaseCompleted -= OnSuccessfulPurchase;
+		if (base.IsInitialized)
+		{
+			_removalEntry.EntryUpdated -= UpdateVisual;
+			_removalEntry.PurchaseFailed -= base.OnPurchaseFailed;
+			_removalEntry.PurchaseCompleted -= OnSuccessfulPurchase;
+		}
 	}
 }

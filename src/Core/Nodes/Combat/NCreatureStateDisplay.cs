@@ -179,6 +179,15 @@ public partial class NCreatureStateDisplay : Control
 		base.Modulate = modulate;
 	}
 
+	public void Reposition(Vector2 position)
+	{
+		_originalPosition = position;
+		base.Position = position;
+	}
+
+	/// <summary>
+	/// Called to animate the HP bar in under various circumstances.
+	/// </summary>
 	public void AnimateIn(HealthBarAnimMode mode)
 	{
 		if (SaveManager.Instance.PrefsSave.FastMode == FastModeType.Instant)
@@ -213,6 +222,9 @@ public partial class NCreatureStateDisplay : Control
 		}
 	}
 
+	/// <summary>
+	/// Called when the HP bar is unhovered and it should be animated out.
+	/// </summary>
 	public void AnimateOut()
 	{
 		if (SaveManager.Instance.PrefsSave.FastMode == FastModeType.Instant)
@@ -228,6 +240,43 @@ public partial class NCreatureStateDisplay : Control
 		_showHideTween.TweenProperty(this, "modulate:a", 0f, 0.5).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Sine);
 		_showHideTween.TweenProperty(this, "position", _healthBarAnimOffset, 0.25).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Quad);
 		_showHideTween.Chain().TweenCallback(Callable.From(() => base.Visible = false));
+	}
+
+	/// <summary>
+	/// Called ONLY when the creature is revived. All other paths use AnimateIn.
+	/// </summary>
+	public Tween AnimateInSimple()
+	{
+		_showHideTween?.Kill();
+		base.Position = _originalPosition;
+		_showHideTween = CreateTween();
+		_showHideTween.TweenProperty(this, "modulate:a", 1f, 0.5).SetDelay(0.5).SetEase(Tween.EaseType.Out)
+			.SetTrans(Tween.TransitionType.Expo);
+		return _showHideTween;
+	}
+
+	/// <summary>
+	/// Called when the creature dies and the HP bar should be animated out.
+	/// </summary>
+	public Tween? AnimateOutSimple()
+	{
+		if (!IsNodeReady())
+		{
+			return null;
+		}
+		if (SaveManager.Instance.PrefsSave.FastMode == FastModeType.Instant)
+		{
+			Color modulate = base.Modulate;
+			modulate.A = 0f;
+			base.Modulate = modulate;
+			base.Visible = false;
+			return null;
+		}
+		_showHideTween?.Kill();
+		_showHideTween = CreateTween();
+		_showHideTween.TweenProperty(this, "modulate:a", 0f, 0.5).SetDelay(0.5).SetEase(Tween.EaseType.Out)
+			.SetTrans(Tween.TransitionType.Expo);
+		return _showHideTween;
 	}
 
 	private void OnCreatureDied(Creature _)

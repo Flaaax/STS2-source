@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using MegaCrit.Sts2.Core.Combat;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Extensions;
 using MegaCrit.Sts2.Core.Hooks;
@@ -72,7 +73,7 @@ public class CardPile
 	/// Use <see cref="M:MegaCrit.Sts2.Core.Commands.CardPileCmd.Shuffle(MegaCrit.Sts2.Core.GameActions.Multiplayer.PlayerChoiceContext,MegaCrit.Sts2.Core.Entities.Players.Player)" /> instead.
 	/// This is primarily meant for randomizing the order of the draw pile when a combat first starts.
 	/// </summary>
-	public void RandomizeOrderInternal(Player player, Rng rng, CombatState state)
+	public void RandomizeOrderInternal(Player player, Rng rng, ICombatState state)
 	{
 		_cards.UnstableShuffle(rng);
 		TestRngInjector.ConsumeInitialShuffleOverride()?.Invoke(_cards);
@@ -104,6 +105,10 @@ public class CardPile
 		if (IsCombatPile && CombatManager.Instance.IsInProgress)
 		{
 			CombatManager.Instance.StateTracker.Subscribe(card);
+			if (card.Tags.Contains(CardTag.Shoot) && card.Owner.Character.BaseArrowSlotCount == 0 && card.Owner.PlayerCombatState.Arrows.Count == 0)
+			{
+				ArrowCmd.GainArrowSlot(card.Owner);
+			}
 		}
 		if (!silent)
 		{

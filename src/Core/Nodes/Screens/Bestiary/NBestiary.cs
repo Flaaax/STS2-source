@@ -148,7 +148,9 @@ public partial class NBestiary : NSubmenu
 	{
 		ConnectSignals();
 		GetNode<MegaLabel>("%MoveHeader").SetTextAutoSize(new LocString("bestiary", "ACTIONS.header").GetFormattedText());
-		GetNode<MegaRichTextLabel>("%ConstructionLabel").SetTextAutoSize(new LocString("bestiary", "UNDER_CONSTRUCTION").GetRawText());
+		Control node = GetNode<Control>("%UnderConstruction");
+		node.OffsetLeft = 24f;
+		node.OffsetTop = 82f;
 		_sidebar = GetNode<NScrollableContainer>("%Sidebar");
 		_bestiaryList = GetNode<VBoxContainer>("%BestiaryList");
 		_monsterNameLabel = GetNode<MegaRichTextLabel>("%MonsterName");
@@ -826,8 +828,8 @@ public partial class NBestiary : NSubmenu
 
 	private void EnableStatsModeHotkeys()
 	{
-		NHotkeyManager.Instance.PushHotkeyPressedBinding(_filterLeftHotkey, FilterLeft);
-		NHotkeyManager.Instance.PushHotkeyPressedBinding(_filterRightHotkey, FilterRight);
+		NHotkeyManager.Instance.PushHotkeyPressedBinding(_filterLeftHotkey, FilterLeft, 0L);
+		NHotkeyManager.Instance.PushHotkeyPressedBinding(_filterRightHotkey, FilterRight, 0L);
 	}
 
 	private void DisableStatsModeHotkeys()

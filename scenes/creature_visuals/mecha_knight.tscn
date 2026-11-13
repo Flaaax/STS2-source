@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://ihjpxxm3o87h" path="res://images/vfx/fire/basic_fire_noise.png" id="9_6apbm"]
 [ext_resource type="Texture2D" uid="uid://bxa6vlqeby20" path="res://images/vfx/light.png" id="9_hbeli"]
 [ext_resource type="Texture2D" uid="uid://b47r2blhe2i3" path="res://images/vfx/fire/cinder_particle.png" id="10_x2u3l"]
-[ext_resource type="CanvasItemMaterial" uid="uid://c4ycqv0gdxvmr" path="res://themes/canvas_item_material_additive_shared.tres" id="shared_additive_mat"]
+[ext_resource type="Material" uid="uid://c4ycqv0gdxvmr" path="res://themes/canvas_item_material_additive_shared.tres" id="shared_additive_mat"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lfyio"]
 shader = ExtResource("3_jcvva")
@@ -350,25 +350,25 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="Visuals" type="SpineSprite" parent="."]
-unique_name_in_owner = true
-position = Vector2(29, -46)
-scale = Vector2(0.15, 0.15)
 skeleton_data_res = ExtResource("5_ws8aa")
 preview_skin = "default"
 preview_animation = "attack_flame"
 preview_frame = false
 preview_time = 0.0
+unique_name_in_owner = true
+position = Vector2(29, -46)
+scale = Vector2(0.15, 0.15)
 
 [node name="EngineSlot" type="SpineSlotNode" parent="Visuals"]
-show_behind_parent = true
-position = Vector2(-380.815, -1926.44)
-rotation = 2.89386
-scale = Vector2(1, 1)
 slot_name = "engine_flame"
+show_behind_parent = true
+position = Vector2(-344.57693, -1962.275)
+rotation = 3.0213661
 
 [node name="EngineBone" type="SpineBoneNode" parent="Visuals/EngineSlot"]
-show_behind_parent = true
 bone_name = "launch_flame_attach"
+show_behind_parent = true
+position = Vector2(3.0517578e-05, -0.00024414063)
 
 [node name="EngineParticlesDark" type="GPUParticles2D" parent="Visuals/EngineSlot/EngineBone"]
 show_behind_parent = true
@@ -406,12 +406,12 @@ trail_sections = 2
 process_material = SubResource("ParticleProcessMaterial_bti5a")
 
 [node name="FlameParticlesBone" type="SpineBoneNode" parent="Visuals"]
-show_behind_parent = true
-position = Vector2(-2842.81, -2778.86)
-rotation = -1.65635
-scale = Vector2(5.69817, 3.08074)
-skew = -0.225352
 bone_name = "flame_thrower_attach"
+show_behind_parent = true
+position = Vector2(-2479.094, -3093.5793)
+rotation = -1.6563485
+scale = Vector2(5.6981735, 3.0807433)
+skew = -0.22535157
 
 [node name="FlameParticlesDark" type="GPUParticles2D" parent="Visuals/FlameParticlesBone"]
 show_behind_parent = true
@@ -479,3 +479,6 @@ position = Vector2(23, -355)
 [node name="IntentPos" type="Marker2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(0, -547)
+
+[node name="ArrowPosition" type="Marker2D" parent="."]
+position = Vector2(-118, -178)

@@ -583,7 +583,7 @@ public static class SentryService
 		{
 			return null;
 		}
-		if (sentryEvent.Exception is AutoSlayTimeoutException)
+		if (sentryEvent.Exception is DriverTimeoutException)
 		{
 			return null;
 		}
